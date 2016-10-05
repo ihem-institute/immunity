@@ -20,7 +20,7 @@ public class Endosome {
 	// globals
 	public double rcyl = 10.0;
 	public double mincyl = 6 * Math.PI * rcyl * rcyl;
-	
+	// space
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
 	double area = 30000; // initial value, but should change
