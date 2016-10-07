@@ -166,6 +166,14 @@ public class Endosome {
 	  System.out.println(b.area);
 	}
 
+	public double getArea() {
+		return area;
+	}
+
+	public double getVolume() {
+		return volume;
+	}
+
 
 }
 
