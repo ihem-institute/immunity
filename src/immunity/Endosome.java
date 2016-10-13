@@ -24,7 +24,8 @@ public class Endosome {
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
 	double area = 30000; // initial value, but should change
-	double volume = 200000; // initial value, but should change
+	public double volume = 200000; // initial value, but should change
+	public double size = 200000; // initial value, but should change
 	public double speed = 2; // initial value, but should change
 	public double heading = 0; // initial value, but should change
 	ArrayList<Element> areaElement = new ArrayList<Element>();
@@ -56,10 +57,10 @@ public class Endosome {
 		split();
 		size();
 	}
-	public void size(){
+	public double size(){
 		 double rsphere = Math.pow(this.volume * 3d / 4d / Math.PI, ( 1d / 3d ));
 		 double size = rsphere  * 10d; // cellscale ;calculate size proportional to volume (radius of sphere with this volume)
-	
+	return size;
 	}
 	public void fusion() {
 		GridPoint pt = grid.getLocation(this);

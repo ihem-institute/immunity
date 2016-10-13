@@ -31,7 +31,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	@Override
 	public Color getColor(Endosome object) {
 		int f = Math.abs( (int)object.getArea() % 256 );
-		return new Color(f, f, f);
+		return new Color(f, 0, 0);
 	}
 
 	@Override
@@ -51,7 +51,8 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	@Override
 	public float getScale(Endosome object) {
-		return (float) object.getArea();
+		object.size();
+		return (float) 20;
 	}
 
 	@Override
