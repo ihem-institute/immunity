@@ -59,7 +59,7 @@ public class Endosome {
 	}
 	public double size(){
 		 double rsphere = Math.pow(this.volume * 3d / 4d / Math.PI, ( 1d / 3d ));
-		 double size = rsphere  * 10d; // cellscale ;calculate size proportional to volume (radius of sphere with this volume)
+		 double size = rsphere; // cellscale ;calculate size proportional to volume (radius of sphere with this volume)
 	return size;
 	}
 	public void fusion() {

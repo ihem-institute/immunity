@@ -15,6 +15,7 @@ import saf.v3d.scene.VSpatial;
 public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	ShapeFactory2D factory;
+	private double String;
 	
 	@Override
 	public void init(ShapeFactory2D factory) {
@@ -24,7 +25,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	@Override
 	public VSpatial getVSpatial(Endosome object, VSpatial spatial) {
-		VSpatial createCircle = this.factory.createCircle(10, 0);
+		VSpatial createCircle = this.factory.createRectangle(20, 5);
 		return createCircle;
 	}
 
@@ -46,23 +47,22 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	@Override
 	public float getRotation(Endosome object) {
-		return 0;
+		return (float) Math.random() * 360f;
 	}
 
 	@Override
 	public float getScale(Endosome object) {
-		object.size();
-		return (float) 20;
+		
+		return (float) object.size() / 10f;
 	}
 
 	@Override
 	public String getLabel(Endosome object) {
-		return object.toString();
+		return "radius " + Math.abs((int)object.size());
 	}
-
 	@Override
 	public Font getLabelFont(Endosome object) {
-		return new Font("sansserif", Font.PLAIN, 12);
+		return new Font("sansserif", Font.PLAIN, 14);
 	}
 
 	@Override
