@@ -25,7 +25,10 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	@Override
 	public VSpatial getVSpatial(Endosome object, VSpatial spatial) {
-		VSpatial createCircle = this.factory.createRectangle(20, 5);
+		double s = object.getArea();
+		double v = object.getVolume();
+		int svr =(int) ((s * s * s) / (v * v)/ (113d));
+		VSpatial createCircle = this.factory.createRectangle(10, 10 * svr);
 		return createCircle;
 	}
 
