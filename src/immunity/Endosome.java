@@ -156,7 +156,7 @@ public class Endosome {
 	  this.area = sVesicle;
 	  this.volume = vVesicle;
 
-	  Endosome b = new Endosome();
+	  Endosome b = new Endosome(this.space, this.grid);
 	  b.area = scylinder;
 	  b.volume = vcylinder;	  
 	  moveTowards();
@@ -164,7 +164,8 @@ public class Endosome {
 	  System.out.println(this.area * this.area * this.area / this.volume / this.volume /113);
 	  System.out.println("new Area3/V2");	 
 	  System.out.println(b.area * b.area * b.area / b.volume * b.volume /113);	 
-
+	  Context<Object> context = ContextUtils.getContext(this);
+	  context.add(b) ;
 	}
 
 	public double getArea() {
