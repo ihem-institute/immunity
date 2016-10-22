@@ -4,13 +4,13 @@
   <styles>
     <entry>
       <string>immunity.Endosome</string>
-      <string>repast.simphony.visualization.editedStyle.EditedStyle2D</string>
+      <string>immunity.EndosomeStyle</string>
     </entry>
   </styles>
   <editedStyles>
     <entry>
       <string>immunity.Endosome</string>
-      <string>immunity.Endosome.style_3.xml</string>
+      <null/>
     </entry>
   </editedStyles>
   <netStyles>

@@ -23,8 +23,9 @@ public class Endosome {
 	// space
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
-	double area = 30000; // initial value, but should change
-	double volume = 200000; // initial value, but should change
+	double area = 4d * Math.PI * 30d * 30d; // initial value, but should change
+	public double volume = 4d / 3d * Math.PI * 30d * 30d *30d ; // initial value, but should change
+	//public double size = 200000; // initial value, but should change
 	public double speed = 2; // initial value, but should change
 	public double heading = 0; // initial value, but should change
 	ArrayList<Element> areaElement = new ArrayList<Element>();
@@ -56,10 +57,10 @@ public class Endosome {
 		split();
 		size();
 	}
-	public void size(){
+	public double size(){
 		 double rsphere = Math.pow(this.volume * 3d / 4d / Math.PI, ( 1d / 3d ));
-		 double size = rsphere  * 10d; // cellscale ;calculate size proportional to volume (radius of sphere with this volume)
-	
+		 double size = rsphere; // cellscale ;calculate size proportional to volume (radius of sphere with this volume)
+	return size;
 	}
 	public void fusion() {
 		GridPoint pt = grid.getLocation(this);
@@ -158,12 +159,20 @@ public class Endosome {
 	  Endosome b = new Endosome();
 	  b.area = scylinder;
 	  b.volume = vcylinder;	  
-	  System.out.println("this Volume and Area");	 
-	  System.out.println(this.volume);	 
-	  System.out.println(this.area);
-	  System.out.println("new Volume and Area");	 
-	  System.out.println(b.volume);	 
-	  System.out.println(b.area);
+	  moveTowards();
+	  System.out.println("this Area3/V2");	 
+	  System.out.println(this.area * this.area * this.area / this.volume / this.volume /113);
+	  System.out.println("new Area3/V2");	 
+	  System.out.println(b.area * b.area * b.area / b.volume * b.volume /113);	 
+
+	}
+
+	public double getArea() {
+		return area;
+	}
+
+	public double getVolume() {
+		return volume;
 	}
 
 

@@ -1,5 +1,6 @@
+
 2016-10-14 11:15:23,206 - SimpleLog4JLogSystem initialized using logfile 'velocity.log'
-2016-10-14 11:15:23,206 - ************************************************************** 
+2016-10-14 11:15:23,206 - **************************************************************
 2016-10-14 11:15:23,221 - Starting Jakarta Velocity v1.4
 2016-10-14 11:15:23,221 - RuntimeInstance initializing.
 2016-10-14 11:15:23,221 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
