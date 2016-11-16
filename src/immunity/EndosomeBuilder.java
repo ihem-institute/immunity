@@ -50,6 +50,9 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 
 		Parameters params = RunEnvironment.getInstance().getParameters();
 		int endosomeCount = (Integer) params.getValue("endosome_count");
+		for (int i = 0 ; i<5 ; i++){
+			context.add(new MT(space, grid));
+		}
 		for (int i = 0; i < endosomeCount; i++) {
 			context.add(new Endosome(space, grid));
 		}
