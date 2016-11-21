@@ -24,7 +24,7 @@ import repast.simphony.util.ContextUtils;
 import repast.simphony.valueLayer.GridValueLayer;
 
 
- public class Endosome {
+public class Endosome {
 	// space
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
@@ -32,7 +32,7 @@ import repast.simphony.valueLayer.GridValueLayer;
 	double area = 4d * Math.PI * 30d * 30d; // initial value, but should change
 	double volume = 4d / 3d * Math.PI * 30d * 30d * 30d ; // initial value, but should change
 	double size = Math.pow(volume * 3d / 4d / Math.PI, ( 1d / 3d ));
-	double speed = 10d/size; // initial value, but should change
+	double speed = 5d/size; // initial value, but should change
 	double heading = Math.random() * 360d; // initial value, but should change
 	ArrayList<Element> areaElement = new ArrayList<Element>();
 	ArrayList<Element> volumeElement = new ArrayList<Element>();
@@ -62,7 +62,7 @@ import repast.simphony.valueLayer.GridValueLayer;
 
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-		changeDirection();
+		if (Math.random()< 0.1) changeDirection();
 		moveTowards();
 		fusion();
 		split();
@@ -81,22 +81,22 @@ import repast.simphony.valueLayer.GridValueLayer;
 		}
 
 	public double changeDirection(){
+		if (Math.random()< 0.9) {
+			this.heading = this.heading + (0.5d - Math.random()) * 90d *30 / size();
+		return this.heading;
+		}
 		if(mts == null) {
 			mts = associateMt();
-			
 		}
 		for (MT mt : mts){
 			if(distance(this, mt)< this.size){
-			this.heading = Math.atan((((MT) mt).getYend() - ((MT) mt).getYorigin())/(((MT) mt).getXend() - ((MT) mt).getXorigin()));
+			this.heading = mt.getMtheading();
+			System.out.println("headingMT");  
+			System.out.println(this.heading);
 			return this.heading;
 		}
 		}
-		
-		if (Math.random()< 0.1) {
-			this.heading = this.heading + (0.5d - Math.random()) * 90d * 30d / size();
-		}
-			return this.heading;
-		
+		return this.heading;
 	}
 	
 	private double distance(Endosome endosome, MT obj) {
@@ -140,7 +140,7 @@ import repast.simphony.valueLayer.GridValueLayer;
 			context.remove(endosome);
 		}
 		  size();
-		  this.speed = 10/size();
+		  this.speed = 5/size();
 	}
 	
 	public void moveTowards() {
@@ -230,7 +230,7 @@ import repast.simphony.valueLayer.GridValueLayer;
 		  
 	  }
 	  size();
-	  this.speed = 10/size();
+	  this.speed = 5/size();
 
 	  Endosome b = new Endosome(this.space, this.grid);
 	  Context<Object> context = ContextUtils.getContext(this);
@@ -245,7 +245,8 @@ import repast.simphony.valueLayer.GridValueLayer;
 	  }
 	  double rsphere = Math.pow(b.volume * 3d / 4d / Math.PI, ( 1d / 3d ));
 	  b.size = rsphere; 
-	  b.speed = 10/b.size;
+	  b.speed = 5/b.size;
+	  b.heading = -this.heading;
 	  NdPoint myPoint = space.getLocation(this);
 		double x = myPoint.getX();
 		double y = myPoint.getY();

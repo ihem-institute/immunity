@@ -4,7 +4,7 @@
 	<parameter name="randomSeed" displayName="Default Random Seed" type="int" defaultValue="__NULL__" />
 
 	<parameter name="endosome_count" displayName="Endosome Count" type="int" 
-			defaultValue="200" 
+			defaultValue="20" 
 			isReadOnly="false" 
 			converter="repast.simphony.parameter.StringConverterFactory$IntConverter"									
 		/>
