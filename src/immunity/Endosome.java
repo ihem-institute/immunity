@@ -2,6 +2,7 @@ package immunity;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import repast.simphony.context.Context;
@@ -37,6 +38,7 @@ public class Endosome {
 	ArrayList<Element> areaElement = new ArrayList<Element>();
 	ArrayList<Element> volumeElement = new ArrayList<Element>();
 	private List<MT> mts;
+	HashMap<String, Float> rabCompatibility = new HashMap<String, Float>();
 	public class Element {
 		double proportion;
 		String type;
@@ -54,12 +56,15 @@ public class Endosome {
 	}
 	
 	// constructor 2 with a grid and space (does not work)
-	public	Endosome (ContinuousSpace<Object> sp, Grid<Object> gr) {
+	public	Endosome (ContinuousSpace<Object> sp, Grid<Object> gr, ArrayList<Element> rabs) {
 		this.space = sp;
 		this.grid = gr;
-
-				}
-
+		this.areaElement = rabs;
+		rabCompatibility.put("AA", 1.0f);
+		rabCompatibility.put("AB", 0.1f);
+		rabCompatibility.put("BB", 1.0f);
+		// TODO: agregar todas las combinaciones
+	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
 		if (Math.random()< 0.1) changeDirection();
@@ -259,8 +264,8 @@ public class Endosome {
 	  }
 	  size();
 	  this.speed = 5/size();
-
-	  Endosome b = new Endosome(this.space, this.grid);
+//ContinuousSpace<Object> sp, Grid<Object> gr, ArrayList<Element> rabs
+	  Endosome b = new Endosome(this.space, this.grid, null);
 	  Context<Object> context = ContextUtils.getContext(this);
 	  context.add(b) ;
 

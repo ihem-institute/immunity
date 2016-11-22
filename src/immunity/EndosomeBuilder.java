@@ -54,7 +54,7 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			context.add(new MT(space, grid));
 		}
 		for (int i = 0; i < endosomeCount; i++) {
-			context.add(new Endosome(space, grid));
+			context.add(new Endosome(space, grid, null));
 		}
 
 		for (Object obj : context) {
