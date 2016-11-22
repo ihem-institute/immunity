@@ -3,9 +3,14 @@
 
 	<parameter name="randomSeed" displayName="Default Random Seed" type="int" defaultValue="__NULL__" />
 
-	<parameter name="endosome_count" displayName="Endosome Count" type="int" 
-			defaultValue="20" 
+	<parameter name="endosome_rabA_count" displayName="Endosome RabA Count" type="int" 
+			defaultValue="10" 
 			isReadOnly="false" 
+			converter="repast.simphony.parameter.StringConverterFactory$IntConverter"									
+		/>
+	<parameter name="endosome_rabB_count" displayName="Endosome RabB Count" type="int" 
+			defaultValue="10" 
+			isReadOnly="false"
 			converter="repast.simphony.parameter.StringConverterFactory$IntConverter"									
 		/>
 </parameters>

@@ -1,5 +1,8 @@
 package immunity;
 
+import java.util.ArrayList;
+import immunity.Element;
+
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
 import repast.simphony.context.space.continuous.ContinuousSpaceFactory;
@@ -49,12 +52,23 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 						new SimpleGridAdder<Object>(), true, 50, 50));
 
 		Parameters params = RunEnvironment.getInstance().getParameters();
-		int endosomeCount = (Integer) params.getValue("endosome_count");
+		int endosome_rabA_count = (Integer) params.getValue("endosome_rabA_count");
+		for (int i = 0; i < endosome_rabA_count; i++) {
+			
+			ArrayList<Element> rabs = new ArrayList<Element>();
+			rabs.add(new Element(1.0f, "A"));
+			context.add(new Endosome(space, grid, rabs ));
+		}
+		int endosome_rabB_count = (Integer) params.getValue("endosome_rabB_count");
+		for (int i = 0; i < endosome_rabB_count; i++) {
+			
+			ArrayList<Element> rabs = new ArrayList<Element>();
+			rabs.add(new Element(1.0f, "B"));
+			context.add(new Endosome(space, grid, rabs ));
+		}
+
 		for (int i = 0 ; i<5 ; i++){
 			context.add(new MT(space, grid));
-		}
-		for (int i = 0; i < endosomeCount; i++) {
-			context.add(new Endosome(space, grid, null));
 		}
 
 		for (Object obj : context) {
