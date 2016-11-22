@@ -39,7 +39,7 @@ public class Endosome {
 	ArrayList<Element> volumeElement = new ArrayList<Element>();
 	private List<MT> mts;
 	HashMap<String, Float> rabCompatibility = new HashMap<String, Float>();
-	public class Element {
+	/*public class Element {
 		double proportion;
 		String type;
 		public Element(float pr, String t) {
@@ -48,7 +48,7 @@ public class Endosome {
 
 		}
 
-	}
+	}*/
 	// constructor 1 (without parameters)
 	public	Endosome () {
 		Element e = new Element(0.5f, "Rab1");

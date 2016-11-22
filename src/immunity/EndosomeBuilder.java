@@ -1,7 +1,7 @@
 package immunity;
 
 import java.util.ArrayList;
-//import immunity.Element;
+import immunity.Element;
 
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
