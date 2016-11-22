@@ -119,6 +119,34 @@ public class Endosome {
 		 double size = rsphere; // cellscale ;calculate size proportional to volume (radius of sphere with this volume)
 	return size;
 	}
+	// TRAIDO DE RABS
+	/*private float getCompatibility(String rabX, String rabY) {
+		
+		try {
+			if(rabCompatibility.containsKey(rabX+rabY)) {
+				return rabCompatibility.get(rabX+rabY);
+			} else {
+				return rabCompatibility.get(rabY+rabX);
+			}
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	private boolean compatibles(Endosome endosome, Endosome obj) {
+		float sum = 0;
+		for (Element element : endosome.areaElement) {
+			for (Element element2 : obj.areaElement) {
+				float comp = getCompatibility(element.type, element2.type) * element.proportion * element2.proportion;
+				sum += comp;
+			}
+		}
+		return Math.random() < sum;
+	}
+	// HASTA ACÁ
+	*/
 	public void fusion() {
 		GridPoint pt = grid.getLocation(this);
 		List<Endosome> endosomes_to_delete = new ArrayList<Endosome>();
