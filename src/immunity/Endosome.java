@@ -39,23 +39,9 @@ public class Endosome {
 	ArrayList<Element> volumeElement = new ArrayList<Element>();
 	private List<MT> mts;
 	HashMap<String, Float> rabCompatibility = new HashMap<String, Float>();
-	/*public class Element {
-		double proportion;
-		String type;
-		public Element(float pr, String t) {
-			this.proportion = pr;
-			this.type = t;
 
-		}
-
-	}*/
-	// constructor 1 (without parameters)
-	public	Endosome () {
-		Element e = new Element(0.5f, "Rab1");
-		this.areaElement.add(e );
-	}
-	
-	// constructor 2 with a grid and space (does not work)
+	// constructor of endosomes with grid, space and a set of area elements (contents)
+	// I need to add a set of volume contents.
 	public	Endosome (ContinuousSpace<Object> sp, Grid<Object> gr, ArrayList<Element> rabs) {
 		this.space = sp;
 		this.grid = gr;
@@ -63,7 +49,10 @@ public class Endosome {
 		rabCompatibility.put("AA", 1.0f);
 		rabCompatibility.put("AB", 0.1f);
 		rabCompatibility.put("BB", 1.0f);
-		// TODO: agregar todas las combinaciones
+		/* TODO: agregar todas las combinaciones.  
+		No sé por qué tienen que estar
+		aquí. Me da error si las saco fuera del constructur y en realidad serían
+		propiedades de la cellula y no de los endosomas*/
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
@@ -90,9 +79,9 @@ public class Endosome {
 			this.heading = this.heading + (0.5d - Math.random()) * 90d *30 / size();
 		return this.heading;
 		}
-		if(mts == null) {
+		//if (mts == null) {
 			mts = associateMt();
-		}
+		//}
 		for (MT mt : mts){
 			if(distance(this, mt)< this.size){
 			this.heading = mt.getMtheading();
@@ -124,13 +113,15 @@ public class Endosome {
 		 double size = rsphere; // cellscale ;calculate size proportional to volume (radius of sphere with this volume)
 	return size;
 	}
-	// TRAIDO DE RABS
-	/*private float getCompatibility(String rabX, String rabY) {
+	//TRAIDO DE RABS
+	private float getCompatibility(String rabX, String rabY) {
 		
 		try {
 			if(rabCompatibility.containsKey(rabX+rabY)) {
 				return rabCompatibility.get(rabX+rabY);
 			} else {
+				System.out.println("COMPATIB");
+				System.out.println(rabCompatibility.get(rabY+rabX));
 				return rabCompatibility.get(rabY+rabX);
 			}
 		} catch (Exception e) {
@@ -151,7 +142,7 @@ public class Endosome {
 		return Math.random() < sum;
 	}
 	// HASTA ACÁ
-	*/
+
 	public void fusion() {
 		GridPoint pt = grid.getLocation(this);
 		List<Endosome> endosomes_to_delete = new ArrayList<Endosome>();
@@ -160,15 +151,10 @@ public class Endosome {
 				endosomes_to_delete.add((Endosome) obj);
 			}
 		}
-		 /* System.out.println("this Volume and Area");	 
-		  System.out.println(this.volume);	 
-		  System.out.println(this.area);*/
+
 		for (Endosome endosome : endosomes_to_delete) {
 			this.volume = this.volume + endosome.volume;
 			this.area = this.area + endosome.area;
-			  /*System.out.println("new Volume and Area");	 
-			  System.out.println(this.volume);	 
-			  System.out.println(this.area);*/
 			Context<Object> context = ContextUtils.getContext(endosome);
 			context.remove(endosome);
 		}
@@ -199,7 +185,6 @@ public class Endosome {
 		if (so * so * so / (vo * vo) <= 36 * Math.PI) return; //if s^3 / v^2 is equal to 36*PI then it is an sphere and cannot form a tubule		
 		if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) == Cell.rcyl / 2){
 			System.out.println("tubule");
-
 			return;	
 		}
 		

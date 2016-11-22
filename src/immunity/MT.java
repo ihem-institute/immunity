@@ -23,17 +23,15 @@ import repast.simphony.space.grid.Grid;
 		this.grid = gr;
 		}
 	
-	@ScheduledMethod(start = 1, interval = 1000)
+	@ScheduledMethod(start = 1, interval = 100)
 	public void step() {
 		changePosition();	
 	}
 	public void changePosition() {
 		// move the origin and the end of the MT
 		xorigin = RandomHelper.nextDoubleFromTo(10, 40);
-		while (xend == xorigin) {
-			xend = RandomHelper.nextDoubleFromTo(10, 40);
-		}
-		double mth = Math.atan((yend - yorigin)/(xend - xorigin));
+		xend = RandomHelper.nextDoubleFromTo(10, 40);
+		double mth = Math.abs(Math.atan((50)/(xend - xorigin)));
 		mtheading = - mth * 180 / Math.PI;
 		}
 
