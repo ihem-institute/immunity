@@ -1,7 +1,7 @@
 package immunity;
 
 import java.util.ArrayList;
-import immunity.Element;
+//import immunity.Element;
 
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
@@ -57,7 +57,7 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			
 			ArrayList<Element> rabs = new ArrayList<Element>();
 			rabs.add(new Element(1.0f, "A"));
-			context.add(new Endosome(space, grid, rabs ));
+			context.add(new Endosome(space, grid, rabs));
 		}
 		int endosome_rabB_count = (Integer) params.getValue("endosome_rabB_count");
 		for (int i = 0; i < endosome_rabB_count; i++) {
