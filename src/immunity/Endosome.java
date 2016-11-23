@@ -113,7 +113,7 @@ public class Endosome {
 		 double size = rsphere; // cellscale ;calculate size proportional to volume (radius of sphere with this volume)
 	return size;
 	}
-	//TRAIDO DE RABS
+	//TRAIDO DE RABS.  NO SE LLAMA. NO FUNCIONA
 	private float getCompatibility(String rabX, String rabY) {
 		
 		try {
@@ -139,6 +139,8 @@ public class Endosome {
 				sum += comp;
 			}
 		}
+		System.out.println("probabFusion");
+		System.out.println(sum);
 		return Math.random() < sum;
 	}
 	// HASTA ACÁ
@@ -147,14 +149,16 @@ public class Endosome {
 		GridPoint pt = grid.getLocation(this);
 		List<Endosome> endosomes_to_delete = new ArrayList<Endosome>();
 		for (Object obj : grid.getObjectsAt(pt.getX(), pt.getY())) {
-			if (obj instanceof Endosome && obj != this) {
-				endosomes_to_delete.add((Endosome) obj);
-			}
+			if (obj instanceof Endosome && obj != this) {	
+				//if( compatibles(this, (Endosome) obj) ) { COMO SE HACE, NO ME FUNCIONA
+					endosomes_to_delete.add((Endosome) obj);
+				}
 		}
 
 		for (Endosome endosome : endosomes_to_delete) {
 			this.volume = this.volume + endosome.volume;
 			this.area = this.area + endosome.area;
+			this.areaElement = sumareaElement(this, endosome);
 			Context<Object> context = ContextUtils.getContext(endosome);
 			context.remove(endosome);
 		}
@@ -162,6 +166,20 @@ public class Endosome {
 		  this.speed = 5/size();
 	}
 	
+	private ArrayList<Element> sumareaElement(Endosome endosome,
+			Endosome endosome2) {
+		/* COMO SE SUMA UNA LISTA AAAAAGGGGGG
+		for (Element element : endosome.areaElement){
+		for (Element element2 : endosome2.areaElement){
+			if (endosome.areaElement.type = endosome2.areaElement.type){
+		float proportionSuma = 	(endosome.areaElement.proportion * endosome.area +
+					endosome2.areaElement.proportion * endosome2.area)/ (endosome.area + endosome2.area);
+		}
+		ArrayList areaSum = new ArrayList;
+
+		return areaSum;*/
+		return null;
+	}
 	public void moveTowards() {
 		// only move if we are not already in this grid location
 
