@@ -16,20 +16,20 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	ShapeFactory2D factory;
 	private double String;
-	
+
 	@Override
 	public void init(ShapeFactory2D factory) {
 		this.factory = factory;
 
 	}
-
+	
 	@Override
 	public VSpatial getVSpatial(Endosome object, VSpatial spatial) {
 		double s = object.getArea();
 		double v = object.getVolume();
 		int svr =(int) ((s * s * s) / (v * v)/ (113d));
-		VSpatial createCircle = this.factory.createRectangle(10, 10 * svr);
-		return createCircle;
+		VSpatial createRectangle = this.factory.createRectangle(5* svr, 5);
+		return createRectangle;
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	@Override
 	public float getRotation(Endosome object) {
-		return (float) Math.random() * 360f;
+		return (float) -object.getHeading();
 	}
 
 	@Override
