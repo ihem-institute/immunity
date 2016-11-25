@@ -56,7 +56,7 @@ public class Endosome {
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-		if (Math.random()< 0.1) changeDirection();
+		changeDirection();
 		moveTowards();
 		fusion();
 		split();
@@ -76,6 +76,9 @@ public class Endosome {
 
 	public double changeDirection(){
 		if (Math.random()< 0.9) {
+		return this.heading;
+		}
+		if (Math.random()< 0.5) {
 			this.heading = this.heading + (0.5d - Math.random()) * 90d *30 / size();
 		return this.heading;
 		}
