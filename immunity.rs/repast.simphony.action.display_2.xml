@@ -6,10 +6,18 @@
       <string>immunity.Endosome</string>
       <string>immunity.EndosomeStyle</string>
     </entry>
+     <entry>
+      <string>immunity.MT</string>
+      <string>immunity.MTStyle</string>
+    </entry>
   </styles>
   <editedStyles>
     <entry>
       <string>immunity.Endosome</string>
+      <null/>
+    </entry>
+        <entry>
+      <string>immunity.MT</string>
       <null/>
     </entry>
   </editedStyles>

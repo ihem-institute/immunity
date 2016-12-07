@@ -1,8 +1,9 @@
 package immunity;
 
 import java.util.ArrayList;
-import immunity.Element;
+import java.util.HashMap;
 
+import immunity.Element;
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
 import repast.simphony.context.space.continuous.ContinuousSpaceFactory;
@@ -54,17 +55,24 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 		Parameters params = RunEnvironment.getInstance().getParameters();
 		int endosome_rabA_count = (Integer) params.getValue("endosome_rabA_count");
 		for (int i = 0; i < endosome_rabA_count; i++) {
-			
-			ArrayList<Element> rabs = new ArrayList<Element>();
-			rabs.add(new Element(1.0f, "A"));
-			context.add(new Endosome(space, grid, rabs));
+			HashMap<String, Double> rabContent = new HashMap<String, Double>();
+			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
+			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
+			rabContent.put("RabA", 1.0d);
+			membraneContent.put("Tf",4d * Math.PI * 30d * 30d );
+			solubleContent.put("dextran",4d / 3d * Math.PI * 30d * 30d * 30d );
+			context.add(new Endosome(space, grid, rabContent, membraneContent, solubleContent));
+			 System.out.println(membraneContent+" "+solubleContent + rabContent);
 		}
 		int endosome_rabB_count = (Integer) params.getValue("endosome_rabB_count");
 		for (int i = 0; i < endosome_rabB_count; i++) {
-			
-			ArrayList<Element> rabs = new ArrayList<Element>();
-			rabs.add(new Element(1.0f, "B"));
-			context.add(new Endosome(space, grid, rabs ));
+			HashMap<String, Double> rabContent = new HashMap<String, Double>();
+			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
+			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
+			rabContent.put("RabB", 1.0d);
+			membraneContent.put("Tf", 0.0d);
+			solubleContent.put("dextran", 0.0d);
+			context.add(new Endosome(space, grid, rabContent, membraneContent, solubleContent));
 		}
 
 		for (int i = 0 ; i<5 ; i++){
@@ -74,6 +82,13 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 		for (Object obj : context) {
 			NdPoint pt = space.getLocation(obj);
 			grid.moveTo(obj, (int) pt.getX(), (int) pt.getY());
+		}
+		for (Object obj : context) {
+			if (obj instanceof MT){
+			space.moveTo(obj, 25, 25);
+			grid.moveTo(obj, 25, 25);	
+			}
+
 		}
 		
 		if (RunEnvironment.getInstance().isBatch()) {

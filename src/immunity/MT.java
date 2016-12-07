@@ -10,8 +10,8 @@ import repast.simphony.space.grid.Grid;
 	//globals
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
-	double xorigin = 0;
-	double xend = 25;
+	double xorigin = 10;
+	double xend = 40;
 	double yorigin = 0;
 	double yend = 50;
 	double mth = Math.atan((yend - yorigin)/(xend - xorigin));
@@ -23,17 +23,30 @@ import repast.simphony.space.grid.Grid;
 		this.grid = gr;
 		}
 	
-	@ScheduledMethod(start = 1, interval = 100)
+	@ScheduledMethod(start = 1, interval = 1000)
 	public void step() {
 		changePosition();	
 	}
 	public void changePosition() {
+		if (Math.random() < 0.5) return;
 		// move the origin and the end of the MT
 		xorigin = RandomHelper.nextDoubleFromTo(10, 40);
 		xend = RandomHelper.nextDoubleFromTo(10, 40);
-		double mth = Math.abs(Math.atan((50)/(xend - xorigin)));
-		mtheading = - mth * 180 / Math.PI;
+		double mth = Math.atan((50)/(xend - xorigin));
+		System.out.println("a-tang");  
+		System.out.println(mth * 180 / Math.PI);
+		if (mth < 0){
+			mth = 180 + (mth * 180 / Math.PI);
 		}
+		else mth = mth * 180 / Math.PI;
+		mtheading = - mth;
+
+		double y = 25;
+		double x = xorigin + 25 * Math.cos(mtheading * Math.PI/180);
+		space.moveTo(this, x, y);
+		grid.moveTo(this, (int)x, (int)y);
+		//}
+	}
 
 public double getXorigin() {
 	return xorigin;
