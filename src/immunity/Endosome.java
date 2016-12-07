@@ -312,7 +312,7 @@ public class Endosome {
 	  double scylinder = Cell.mincyl; // surface minimum cylinder 2*radius cylinder high
 	  double vcylinder = 2 * Math.PI* Math.pow(Cell.rcyl,  3); // volume minimum cylinder
 
-	  while ((so - ssphere - scylinder > 4 * Math.PI* Math.pow(Cell.rcyl,  2))&& (rabContent.get(rabInTube) * so > 4 * Math.PI* Math.pow(Cell.rcyl,  2))){
+	  while ((so - ssphere - scylinder > 4 * Math.PI* Math.pow(Cell.rcyl,  2))&& (rabContent.get(rabInTube) - scylinder > 4 * Math.PI* Math.pow(Cell.rcyl,  2))){
 		/*while there is enough membrane and enough rab surface, the tubule grows*/
 		  scylinder = scylinder + 4 * Math.PI* Math.pow(Cell.rcyl,  2);// add a cylinder without caps (the caps were considered in the mincyl
 		  vcylinder = vcylinder + 2 * Math.PI* Math.pow(Cell.rcyl,  3);// add a volume
@@ -341,7 +341,10 @@ public class Endosome {
 	  /*CONTENT DISTRIBUTION
 	   * Rab in the tubule is sustracted  */
 	  double rabLeft = this.rabContent.get(rabInTube) - scylinder;
-	  if (rabLeft < 0) System.out.println(rabInTube +"surfaceCy"+ scylinder +  "surfaceVes                                " + sVesicle);
+	  if (rabLeft < 0) {
+		  System.out.println(rabInTube + this.rabContent.get(rabInTube)+ "surfaceCy"+ scylinder);
+		  System.out.println(rabContent);
+	  }
 	  this.rabContent.put(rabInTube, rabLeft);
 	  // MEMBRANE CONTENT IS DISTRIBUTED according to three possibilities
 	  // 1-even distribution, 2-tubule tropism, 3-sphere tropism 
@@ -476,6 +479,10 @@ public class Endosome {
 	}
 	public double getHeading() {
 		return heading;
+	}
+	
+	public String getRabContent() {
+		return rabContent.toString();
 	}
 }
 
