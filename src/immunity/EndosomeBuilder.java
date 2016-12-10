@@ -74,7 +74,12 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			solubleContent.put("dextran", 0.0d);
 			context.add(new Endosome(space, grid, rabContent, membraneContent, solubleContent));
 		}
-
+		for (int i = 0; i < 50; i++) {
+			for (int j = 0; j < 50; j++){
+			HashMap<String, Double> cytoContent = new HashMap<String, Double>();
+			context.add(new Cytosol(space, grid, cytoContent, i, j));
+		}
+		}
 		for (int i = 0 ; i<5 ; i++){
 			context.add(new MT(space, grid));
 		}

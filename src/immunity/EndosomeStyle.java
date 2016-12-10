@@ -61,7 +61,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	@Override
 	public String getLabel(Endosome object) {
-		return "radius " + Math.abs((int)object.size());
+		return "" + object.getMvb();
 	}
 	@Override
 	public Font getLabelFont(Endosome object) {
