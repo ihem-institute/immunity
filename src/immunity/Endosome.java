@@ -594,11 +594,39 @@ public class Endosome {
 		else return "";
 
 	}
-	public int Green(){
+	public int getRed(){
+		int red = 0;
+		String memPlot = "Tf";
+		if (membraneContent.containsKey(memPlot)){
+		double rd = membraneContent.get(memPlot)/area;
+		red = (int)(255 * Math.pow(rd, (1/1)));
+		System.out.println("red " + red);
+		return red;
+		}
+		else return red;
+	}
+	public int getGreen(){
+		int green = 0;
 		String rabPlot = "RabA";
+		if (rabContent.containsKey(rabPlot)){
 		double gr = rabContent.get(rabPlot)/area;
-		int green = (int)(255 * Math.pow(gr, (1/3)));
+		green = (int)(255 * Math.pow(gr, (1/1)));
+		System.out.println("green " + green);
 		return green;
+		}
+		else return green;
+	}
+
+	public int getBlue(){
+		int blue = 0;
+		String solPlot = "dextran";
+		if (solubleContent.containsKey(solPlot)){
+		double bl = solubleContent.get(solPlot)/volume;
+		blue = (int)(255 * Math.pow(bl, (1/1)));
+		System.out.println("blue " + blue);
+		return blue;
+		}
+		else return blue;
 	}
 	/*
 	 enum RabCont {

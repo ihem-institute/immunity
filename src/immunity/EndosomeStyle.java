@@ -37,13 +37,16 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	@Override
 	public Color getColor(Endosome object) {
-		int f = Math.abs( (int)object.getArea() % 256 );
-		return new Color(f, 0, 0);
+		int red = object.getRed();
+		int green = object.getGreen();
+		int blue = object.getBlue();
+		
+		return new Color(red, green, blue);
 	}
 
 	@Override
 	public int getBorderSize(Endosome object) {
-		return 0;
+		return 2;
 	}
 
 	@Override

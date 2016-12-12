@@ -3,7 +3,7 @@ package immunity;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import immunity.Element;
+//import immunity.Element;
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
 import repast.simphony.context.space.continuous.ContinuousSpaceFactory;
