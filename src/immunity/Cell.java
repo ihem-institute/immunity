@@ -10,11 +10,10 @@ import repast.simphony.engine.schedule.ScheduledMethod;
 	// mincyl surface = 1884.95 volume = 6283.18
 	private static Cell instance;
 	public double tMembrane;
-	public HashMap<String, Double> rabCell = new HashMap<String, Double>();
-
-	static {
+	public HashMap<String, Double> rabCell = new HashMap();
+    static {
         instance = new Cell();
-   }
+    }
 
     public Cell() { 
     double tMembrane = 0;    // hidden constructor
@@ -30,8 +29,8 @@ import repast.simphony.engine.schedule.ScheduledMethod;
 	public HashMap<String, Double> getRabCell() {
 		return rabCell;
 	}
-	public double getTMembrane() {
-		return tMembrane;
-	}
+//	public double getTMembrane() {
+	//	return tembrane;
+	//}
 }
 

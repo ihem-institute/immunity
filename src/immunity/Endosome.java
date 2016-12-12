@@ -1,5 +1,9 @@
 package immunity;
 
+//import immunity.EndosomeStyle.MemCont;
+//import immunity.EndosomeStyle.RabCont;
+//import immunity.EndosomeStyle.SolCont;
+
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -568,17 +572,51 @@ public class Endosome {
 	public double getHeading() {
 		return heading;
 	}
-	
-	public String getRabContent() {
-		return rabContent.toString();
+	/*
+	public HashMap<String, Double> getRabContent() {
+		return rabContent;
 	}
+	/*public HashMap<String, Double> getMembraneContent() {
+		return membraneContent;
+	}
+	public HashMap<String, Double> getSolubleContent() {
+		return solubleContent;
+	}
+	*/
 	public String getMvb() {
 		if (solubleContent.containsKey("mvb")){
-			return solubleContent.get("mvb").toString();			
+				if (solubleContent.get("mvb")>0 ){
+			int i = solubleContent.get("mvb").intValue();
+			return String.valueOf(i);
+				}
+				else return "";
 		}
-		else return null;
+		else return "";
 
 	}
+	public int Green(){
+		String rabPlot = "RabA";
+		double gr = rabContent.get(rabPlot)/area;
+		int green = (int)(255 * Math.pow(gr, (1/3)));
+		return green;
+	}
+	/*
+	 enum RabCont {
+		RABA, RABB, RABC, RABD, RABE
+	}
+	public RabCont rabCont;
+	
+		 enum MemCont {
+		TF, EGF, MHCI, PROT1, PROT2
+	}
+	public MemCont memCont;
+	
+		 enum SolCont {
+		OVA, DEXTRAN
+	}
+	public SolCont solCont;
+	*/
+	
 }
 
 
