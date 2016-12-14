@@ -10,33 +10,38 @@ public class Cytosol {
 
 		private ContinuousSpace<Object> space;
 		private Grid<Object> grid;
-		double area = 4d * Math.PI * 30d * 30d; // initial value, but should change
-		int xcoor;
-		int ycoor;
+		//double area = 4d * Math.PI * 30d * 30d; // initial value, but should change
+		public int xcoor;
+		public int ycoor;
 		HashMap<String, Double> cytoContent = new HashMap<String, Double>();
 		//constructor
 		public	Cytosol (ContinuousSpace<Object> sp, Grid<Object> gr, HashMap<String, Double> 
 		cytoContent, int xcoor, int ycoor) {
 		this.space = sp;
 		this.grid = gr;
-		position(xcoor, ycoor);
+		this.xcoor = xcoor;
+		this.ycoor = ycoor;
 		this.cytoContent = cytoContent;
 		}
-		
-		@ScheduledMethod(start = 1, interval = 1)
+
+
+		@ScheduledMethod(start = 1, interval = 0)
 		public void step() {
-	
-		}
+			position(xcoor, ycoor);
+			}
+		
 	
 		public void position(int xcoor, int ycoor){
-		for (Object obj : grid.getObjects()) {
-			if (obj instanceof Cytosol) {
-			space.moveTo(obj, xcoor, ycoor);
-			grid.moveTo(obj, xcoor, ycoor);	
+			space.moveTo(this, xcoor, ycoor);
+			grid.moveTo(this, xcoor, ycoor);	
 			}
-	
+		
+		public double getXcoor() {
+				return xcoor;
+			}
+		public double getYcoor() {
+			return ycoor;
 		}
-		}
-	}
+}
 
 
