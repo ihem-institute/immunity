@@ -3,7 +3,7 @@ package immunity;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import immunity.Element;
+//import immunity.Element;
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
 import repast.simphony.context.space.continuous.ContinuousSpaceFactory;
@@ -58,8 +58,8 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			HashMap<String, Double> rabContent = new HashMap<String, Double>();
 			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
-			rabContent.put("RabA", 1.0d);
-			membraneContent.put("Tf",4d * Math.PI * 30d * 30d );
+			rabContent.put("RabA", 4d * Math.PI * 30d * 30d);
+			membraneContent.put("Tf",4d * Math.PI * 30d * 30d);
 			solubleContent.put("dextran",4d / 3d * Math.PI * 30d * 30d * 30d );
 			context.add(new Endosome(space, grid, rabContent, membraneContent, solubleContent));
 			 System.out.println(membraneContent+" "+solubleContent + rabContent);
@@ -69,12 +69,17 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			HashMap<String, Double> rabContent = new HashMap<String, Double>();
 			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
-			rabContent.put("RabB", 1.0d);
+			rabContent.put("RabB", 4d * Math.PI * 30d * 30d);
 			membraneContent.put("Tf", 0.0d);
 			solubleContent.put("dextran", 0.0d);
 			context.add(new Endosome(space, grid, rabContent, membraneContent, solubleContent));
 		}
-
+		for (int i = 0; i < 50; i++) {
+			for (int j = 0; j < 50; j++){
+			HashMap<String, Double> cytoContent = new HashMap<String, Double>();
+			context.add(new Cytosol(space, grid, cytoContent, i, j));
+		}
+		}
 		for (int i = 0 ; i<5 ; i++){
 			context.add(new MT(space, grid));
 		}

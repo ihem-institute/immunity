@@ -10,6 +10,10 @@
       <string>immunity.MT</string>
       <string>immunity.MTStyle</string>
     </entry>
+     <entry>
+      <string>immunity.Cytosol</string>
+      <string>immunity.CytosolStyle</string>
+    </entry>
   </styles>
   <editedStyles>
     <entry>
@@ -18,6 +22,10 @@
     </entry>
         <entry>
       <string>immunity.MT</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>immunity.Cytosol</string>
       <null/>
     </entry>
   </editedStyles>

@@ -23,12 +23,12 @@ import repast.simphony.space.grid.Grid;
 		this.grid = gr;
 		}
 	
-	@ScheduledMethod(start = 1, interval = 1000)
+	@ScheduledMethod(start = 1, interval = 100)
 	public void step() {
-		changePosition();	
+		if (Math.random() < 0.1) changePosition();	
 	}
 	public void changePosition() {
-		if (Math.random() < 0.5) return;
+	//	if (Math.random() < 0.1) return;
 		// move the origin and the end of the MT
 		xorigin = RandomHelper.nextDoubleFromTo(10, 40);
 		xend = RandomHelper.nextDoubleFromTo(10, 40);
