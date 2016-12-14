@@ -70,8 +70,8 @@ public class Endosome {
 		tubuleTropism.put("dextran",0.0d);
 		tubuleTropism.put("mvb", 0.0d);
 		/* TODO: agregar todas las combinaciones.  
-		No sé por qué tienen que estar
-		aquí. Me da error si las saco fuera del constructur y en realidad serían
+		No sï¿½ por quï¿½ tienen que estar
+		aquï¿½. Me da error si las saco fuera del constructur y en realidad serï¿½an
 		propiedades de la cellula y no de los endosomas*/
 		this.heading = Math.random() * 360d;
 
@@ -105,6 +105,7 @@ public class Endosome {
 		//printEndosomes();
 		split();
 		internalVesicle();
+		rabConversion();
 
 	}
 	
@@ -118,10 +119,20 @@ public class Endosome {
 			for (Endosome endosome1: endosomes){
 				 //System.out.println(endosome1.rabContent+" " + endosome1.membraneContent+" " + endosome1.solubleContent);		
 			}
+	}
+	
+	private void rabConversion() {
+		RabConversion rabConversion = RabConversion.getInstance();
 		
-			
-			}
-		
+		rabConversion.setInitialConcentration("RabA", 1);
+    	
+    	// run time course
+    	rabConversion.runTimeCourse();
+    	
+    	double rabA = rabConversion.getConcentration("RabA");
+    	double rabB = rabConversion.getConcentration("RabB");
+	}
+
 	public List<MT> associateMt(){
 		List<MT> mts = new ArrayList<MT>();
 		for (Object obj : grid.getObjects()) {
@@ -202,7 +213,7 @@ public class Endosome {
 		//System.out.println(sum + " "+ endosome1.rabContent + "  " + endosome2.rabContent);
 		return Math.random() < sum;
 	}
-	// HASTA ACÁ
+	// HASTA ACï¿½
 
 	public void fusion() {
 		GridPoint pt = grid.getLocation(this);
