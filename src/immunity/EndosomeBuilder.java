@@ -51,8 +51,13 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 		Grid<Object> grid = gridFactory.createGrid("grid", context,
 				new GridBuilderParameters<Object>(new WrapAroundBorders(),
 						new SimpleGridAdder<Object>(), true, 50, 50));
-
+		
 		Parameters params = RunEnvironment.getInstance().getParameters();
+		// Microtubules
+		for (int i = 0 ; i<5 ; i++){
+			context.add(new MT(space, grid));
+		}
+		//Endosomes
 		int endosome_rabA_count = (Integer) params.getValue("endosome_rabA_count");
 		for (int i = 0; i < endosome_rabA_count; i++) {
 			HashMap<String, Double> rabContent = new HashMap<String, Double>();
@@ -74,15 +79,14 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			solubleContent.put("dextran", 0.0d);
 			context.add(new Endosome(space, grid, rabContent, membraneContent, solubleContent));
 		}
+		//Cytosol
 		for (int i = 0; i < 50; i++) {
 			for (int j = 0; j < 50; j++){
 			HashMap<String, Double> cytoContent = new HashMap<String, Double>();
 			context.add(new Cytosol(space, grid, cytoContent, i, j));
 		}
 		}
-		for (int i = 0 ; i<5 ; i++){
-			context.add(new MT(space, grid));
-		}
+
 		//context.add(new Cell(space, grid));
 		for (Object obj : context) {
 			NdPoint pt = space.getLocation(obj);

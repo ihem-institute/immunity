@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import repast.simphony.context.Context;
+import repast.simphony.engine.schedule.ISchedulableAction;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.grid.Grid;
@@ -19,9 +20,10 @@ import repast.simphony.util.ContextUtils;
 		private ContinuousSpace<Object> space;
 		private Grid<Object> grid;
   	public static double rcyl = 10.0;
-  	public static double rEndo = 10.0;
+  	public static double rEndo = 20.0;
   	public static double mincyl = 6 * Math.PI * rcyl * rcyl;
- 	public static double sEndo = 4d/3d*Math.PI*Math.pow(rEndo, 3);
+ 	public static double vEndo = 4d/3d*Math.PI*Math.pow(rEndo, 3);
+ 	public static double sEndo = 4d*Math.PI*Math.pow(rEndo, 2);
   	// mincyl surface = 1884.95 volume = 6283.18
  	private static Cell instance;
  	public double tMembrane;

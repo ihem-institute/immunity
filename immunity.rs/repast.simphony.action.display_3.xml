@@ -3,29 +3,29 @@
   <type>2D</type>
   <styles>
     <entry>
+      <string>immunity.Cytosol</string>
+      <string>immunity.CytosolStyle</string>
+    </entry>
+    <entry>
       <string>immunity.Endosome</string>
       <string>immunity.EndosomeStyle</string>
     </entry>
-     <entry>
+    <entry>
       <string>immunity.MT</string>
       <string>immunity.MTStyle</string>
-    </entry>
-     <entry>
-      <string>immunity.Cytosol</string>
-      <string>immunity.CytosolStyle</string>
     </entry>
   </styles>
   <editedStyles>
     <entry>
-      <string>immunity.Endosome</string>
-      <null/>
-    </entry>
-        <entry>
-      <string>immunity.MT</string>
+      <string>immunity.Cytosol</string>
       <null/>
     </entry>
     <entry>
-      <string>immunity.Cytosol</string>
+      <string>immunity.Endosome</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>immunity.MT</string>
       <null/>
     </entry>
   </editedStyles>
@@ -56,7 +56,7 @@
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>immunity.Endosome</string>
+      <string>immunity.Cytosol</string>
       <int>0</int>
     </entry>
   </layerOrder>
@@ -77,6 +77,13 @@
   </visualizationProperties>
   <projectionDescriptors>
     <entry>
+      <string>infection network</string>
+      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[2]"/>
+        <props/>
+      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+    </entry>
+    <entry>
       <string>space</string>
       <repast.simphony.visualization.continuous.ContinuousProjectionDescriptor>
         <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData"/>
@@ -85,6 +92,10 @@
             <string>repast.simphony.visualization.continuous.ContinuousDecorator</string>
             <map>
               <entry>
+                <string>COLOR</string>
+                <int>-16777216</int>
+              </entry>
+              <entry>
                 <string>UNIT_SIZE</string>
                 <float>15.0</float>
               </entry>
@@ -92,21 +103,10 @@
                 <string>SHOW</string>
                 <boolean>true</boolean>
               </entry>
-              <entry>
-                <string>COLOR</string>
-                <int>-16777216</int>
-              </entry>
             </map>
           </entry>
         </props>
       </repast.simphony.visualization.continuous.ContinuousProjectionDescriptor>
-    </entry>
-    <entry>
-      <string>infection network</string>
-      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
-        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[2]"/>
-        <props/>
-      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
     </entry>
   </projectionDescriptors>
   <props/>

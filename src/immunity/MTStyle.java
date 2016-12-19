@@ -33,7 +33,7 @@ public class MTStyle implements StyleOGL2D<MT> {
 		  //System.out.println(vsphere);
 		int length = (int)(- 750 / (Math.sin(hh)));
 		//System.out.println(length);
-		VSpatial createRectangle = this.factory.createRectangle(1, length);
+		VSpatial createRectangle = this.factory.createRectangle(3, length);
 		return createRectangle;
 
 	}
@@ -41,7 +41,7 @@ public class MTStyle implements StyleOGL2D<MT> {
 	@Override
 	public Color getColor(MT object) {
 		//int f = Math.abs( (int)object.getArea() % 256 );
-		return new Color(0, 0, 0);
+		return new Color(0, 0, 200, 80);
 	}
 
 	@Override

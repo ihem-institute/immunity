@@ -33,7 +33,7 @@ public class CytosolStyle implements StyleOGL2D<Cytosol> {
 		  //System.out.println(vsphere);
 		//int length = (int)(- 750 / (Math.sin(hh)));
 		//System.out.println(length)
-		VSpatial createRectangle = this.factory.createRectangle(5, 5);
+		VSpatial createRectangle = this.factory.createRectangle(15, 15);
 		return createRectangle;
 
 	}
@@ -41,7 +41,7 @@ public class CytosolStyle implements StyleOGL2D<Cytosol> {
 	@Override
 	public Color getColor(Cytosol object) {
 		//int f = Math.abs( (int)object.getArea() % 256 );
-		return new Color(0, 0, 0);
+		return new Color(220, 220, 220);
 	}
 
 	@Override

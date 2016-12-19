@@ -98,7 +98,8 @@ public class Endosome {
 		}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-		Recycle();
+		recycle();
+		uptake();
 		size();
 		changeDirection();
 		moveTowards();
@@ -595,7 +596,7 @@ public class Endosome {
 		System.out.println("total cell membrane" + Cell.getInstance().gettMembrane());
 
 	}
-	public void Recycle(){
+	public void recycle(){
 		  NdPoint myPoint = space.getLocation(this);
 			//double x = myPoint.getX();
 			double y = myPoint.getY();
@@ -640,6 +641,49 @@ public class Endosome {
 				System.out.println("soluble Recycled" + Cell.getInstance().getSolubleRecycle());
 			}
 	}
+	
+ 	public void uptake(){
+ 		double tMembrane = Cell.getInstance().gettMembrane();
+ 		HashMap<String, Double> cellRab = Cell.getInstance().getRabCell();
+ 		double cellRabA = cellRab.get("RabA");
+ 		if (tMembrane < Cell.sEndo || cellRabA < Cell.sEndo){
+ 			return;
+ 		}
+		 /*Endosome budEnd = new Endosome(this.space, this.grid, null, null, null);
+ 		  Context<Object> context = ContextUtils.getContext(this);
+ 		  context.add(budEnd); 
+ 			*/	
+			HashMap<String, Double> rabContent = new HashMap<String, Double>();
+			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
+			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
+			rabContent.put("RabA", Cell.sEndo);
+			membraneContent.put("Tf", Cell.sEndo);
+			solubleContent.put("dextran", Cell.vEndo);
+	 		Context<Object> context = ContextUtils.getContext(this);
+	 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent, solubleContent);
+	 		context.add(bud);
+			//context.add(new Endosome(space, grid, rabContent, membraneContent, solubleContent));
+			System.out.println(membraneContent+"NEW ENDOSOME UPTAKE"+solubleContent + rabContent);
+			tMembrane = tMembrane - Cell.sEndo;
+			cellRabA = cellRabA - Cell.sEndo;
+			cellRab.put("RabA", cellRabA); 
+			Cell.getInstance().settMembrane(tMembrane);
+			Cell.getInstance().setRabCell(cellRab);
+			
+			bud.area = Cell.sEndo;
+	  		bud.volume = Cell.vEndo;
+	  		bud.size =100* Cell.rEndo;// radius of a sphere with the volume of the cylinder 
+	  		bud.speed = 5/bud.size;
+	  		bud.heading = 0;// contrary to the vesicle heading
+//	  		NdPoint myPoint = space.getLocation(bud);
+
+	  		space.moveTo(bud, Math.random()*50, 0);
+	  		grid.moveTo(bud, (int)Math.random()*50, 0);
+	  		
+	  		moveTowards();
+//	moveTowards();
+
+ 	}
 		
 	public double getArea() {
 		return area;
