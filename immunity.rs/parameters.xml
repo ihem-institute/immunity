@@ -13,4 +13,10 @@
 			isReadOnly="false"
 			converter="repast.simphony.parameter.StringConverterFactory$IntConverter"									
 		/>
+		
+	<parameter name="soluble" displayName="Soluble" type="String" 
+			defaultValue="dextran" 
+			isReadOnly="false"
+		/>
+		
 </parameters>
