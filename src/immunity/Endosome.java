@@ -149,6 +149,7 @@ public class Endosome {
 
 	public double changeDirection(){
 		if (Math.random()< 0.60) {
+			//this.heading = -90;
 		return this.heading;
 		}
 		if (Math.random()< 0.60) {
@@ -672,13 +673,13 @@ public class Endosome {
 			
 			bud.area = Cell.sEndo;
 	  		bud.volume = Cell.vEndo;
-	  		bud.size =100* Cell.rEndo;// radius of a sphere with the volume of the cylinder 
+	  		bud.size =Cell.rEndo;// radius of a sphere with the volume of the cylinder 
 	  		bud.speed = 5/bud.size;
-	  		bud.heading = 0;// contrary to the vesicle heading
+	  		bud.heading = -90;// contrary to the vesicle heading
 //	  		NdPoint myPoint = space.getLocation(bud);
 
-	  		space.moveTo(bud, Math.random()*50, 0);
-	  		grid.moveTo(bud, (int)Math.random()*50, 0);
+	  		space.moveTo(bud, Math.random()*50, 48.0);
+	  		grid.moveTo(bud, (int)Math.random()*50, 48);
 	  		
 	  		moveTowards();
 //	moveTowards();
@@ -778,6 +779,16 @@ public class Endosome {
 	}
 	public SolCont solCont;
 	*/
+	public double getSolContRab(){ //(String solCont, String rab){
+	String solCont = "dextran";
+	String rab = "RabB";
+	double solContRab = solubleContent.get(solCont)*rabContent.get(rab)/this.volume;
+	return solContRab;
+	}
+	public double getMemContRab(String memCont, String rab){
+	double memContRab = membraneContent.get(memCont)*rabContent.get(rab)/this.volume;
+	return memContRab;
+	}
 	
 }
 

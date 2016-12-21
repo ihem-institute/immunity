@@ -90,7 +90,8 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 		//context.add(new Cell(space, grid));
 		for (Object obj : context) {
 			NdPoint pt = space.getLocation(obj);
-			grid.moveTo(obj, (int) pt.getX(), (int) pt.getY());
+			space.moveTo(obj, pt.getX(), pt.getY());
+			grid.moveTo(obj,(int) pt.getX(),(int) pt.getY());
 		}
 		for (Object obj : context) {
 			if (obj instanceof MT){
