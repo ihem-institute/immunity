@@ -120,7 +120,8 @@ public class Endosome {
 		// printEndosomes();
 		split();
 		internalVesicle();
-		if (Math.random()<0.001) rabConversion();
+		if (Math.random() < 0.001)
+			rabConversion();
 
 	}
 
@@ -139,33 +140,67 @@ public class Endosome {
 
 	private void rabConversion() {
 		RabConversion rabConversion = RabConversion.getInstance();
-		if (rabContent.containsKey("RabA")){
-		rabConversion.setInitialConcentration("RabA", rabContent.get("RabA"));
-		System.out.println("COPASI INITIAL RABA  " + rabContent.get("RabA"));
-		//System.out.println("COPASI INITIAL RABB  " + rabContent.get("RabB"));
+		if (rabContent.containsKey("RabA")) {
+			rabConversion.setInitialConcentration("RabAm",
+					Math.abs(Math.round(rabContent.get("RabA"))));
+			System.out.println("COPASI INITIAL RABAm  "
+					+ rabContent.get("RabA"));
+			// System.out.println("COPASI INITIAL RABB  " +
+			// rabContent.get("RabB"));
+		} else {
+			rabConversion.setInitialConcentration("RabAm", 0.0);
+			System.out.println("COPASI INITIAL RABAm  " + 0.0);
 		}
-		else{
-		rabConversion.setInitialConcentration("RabA",0.0);
-		System.out.println("COPASI INITIAL RABA  " + 0.0);
-		}
-		if (rabContent.containsKey("RabB")){
-		rabConversion.setInitialConcentration("RabB", rabContent.get("RabB"));
-		System.out.println("COPASI INITIAL RABB  " + rabContent.get("RabB"));
-		}
-		else{
-		rabConversion.setInitialConcentration("RabB", 0.0);
-		System.out.println("COPASI INITIAL RABB  " + 0.0);
+		if (Cell.getInstance().rabCell.containsKey("RabA")) {
+			rabConversion.setInitialConcentration("RabAc",
+					Math.abs(Math.round(Cell.getInstance().rabCell.get("RabA"))));
+			System.out.println("COPASI INITIAL RabAc  "
+					+ Cell.getInstance().rabCell.get("RabA"));
+		} else {
+			rabConversion.setInitialConcentration("RabAc", 0.0);
+			System.out.println("COPASI INITIAL RabAc  " + 0.0);
 
+			// System.out.println("COPASI INITIAL RABA  " + 0.0);
 		}
+		if (rabContent.containsKey("RabB")) {
+			rabConversion.setInitialConcentration("RabBm",
+					Math.abs(Math.round(rabContent.get("RabB"))));
+			System.out.println("COPASI INITIAL RABBm  "
+					+ rabContent.get("RabB"));
+		} else {
+			rabConversion.setInitialConcentration("RabBm", 0.0);
+			System.out.println("COPASI INITIAL RABBm  " + 0.0);
+		}
+
+		if (Cell.getInstance().rabCell.containsKey("RabB")) {
+			rabConversion.setInitialConcentration("RabBc",
+					Math.abs(Math.round(Cell.getInstance().rabCell.get("RabB"))));
+			System.out.println("COPASI INITIAL RabBc  "
+					+ Cell.getInstance().rabCell.get("RabB"));
+
+			// System.out.println("COPASI INITIAL RABB  " +
+			// rabContent.get("RabB"));
+		} else {
+			rabConversion.setInitialConcentration("RabBc", 0.0);
+			System.out.println("COPASI INITIAL RabBc  " + 0.0);
+
+			// System.out.println("COPASI INITIAL RABA  " + 0.0);
+		}
+
 		// run time course
 		rabConversion.runTimeCourse();
 
-		double rabA = rabConversion.getConcentration("RabA");
-		rabContent.put("RabA", rabA);
-		double rabB = rabConversion.getConcentration("RabB");
-		rabContent.put("RabB", rabB);
-		System.out.println("COPASI FINAL RABA  " + rabA);
-		System.out.println("COPASI FINAL RABB  " + rabB);
+		double rabAm = rabConversion.getConcentration("RabAm");
+		rabContent.put("RabA", rabAm);
+		double rabBm = rabConversion.getConcentration("RabBm");
+		rabContent.put("RabB", rabBm);
+		double rabAc = rabConversion.getConcentration("RabAc");
+		Cell.getInstance().rabCell.put("RabA", rabAc);
+		double rabBc = rabConversion.getConcentration("RabBc");
+		Cell.getInstance().rabCell.put("RabB", rabBc);
+
+		// System.out.println("COPASI FINAL RABA  " + rabAm);
+		// System.out.println("COPASI FINAL RABB  " + rabBm);
 
 	}
 
@@ -885,18 +920,19 @@ public class Endosome {
 	public String getRabContent() {
 		return rabContent.toString();
 	}
+
 	public Double getRabContent(String rab) {
 		return rabContent.get(rab);
 	}
+
 	public Endosome getEndosome() {
 		return this;
 	}
+
 	/*
-	 *	public static Cell getInstance() {
-		return instance;
-	} 
-	 *
-	 *
+	 * public static Cell getInstance() { return instance; }
+	 * 
+	 * 
 	 * public HashMap<String, Double> getRabContent() { return rabContent; }
 	 * /*public HashMap<String, Double> getMembraneContent() { return
 	 * membraneContent; } public HashMap<String, Double> getSolubleContent() {
@@ -963,18 +999,20 @@ public class Endosome {
 		String solCont = (String) params.getValue("soluble");
 		Double sc = null;
 		Double rc = null;
-		if(solCont != null && rab != null) {
-			if(solubleContent.containsKey(solCont)) {
+		if (solCont != null && rab != null) {
+			if (solubleContent.containsKey(solCont)) {
 				sc = solubleContent.get(solCont);
-			} else return 0;
-			if (rabContent.containsKey(rab)){
+			} else
+				return 0;
+			if (rabContent.containsKey(rab)) {
 				rc = rabContent.get(rab);
-			} else return 0;
-			if(sc != null && rc != null) {
-				double solContRab = sc * rc	/ this.volume;
-				return solContRab;			
+			} else
+				return 0;
+			if (sc != null && rc != null) {
+				double solContRab = sc * rc / this.volume;
+				return solContRab;
 			}
-		} 
+		}
 		return 0;
 	}
 
