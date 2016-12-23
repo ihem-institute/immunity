@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <parameters>
+					<parameter name="randomSeed" displayName="Default Random Seed" type="int" 
+						defaultValue="__NULL__"
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+				<parameter name="Rab" displayName="Rab" type="java.lang.String" 
+						defaultValue="RabA" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+									
+		/>
+				<parameter name="endosome_rabB_count" displayName="Endosome RabB Count" type="int" 
+						defaultValue="10" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+				<parameter name="soluble" displayName="Soluble" type="java.lang.String" 
+						defaultValue="dextran" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+									
+		/>
+				<parameter name="endosome_rabA_count" displayName="Endosome RabA Count" type="int" 
+						defaultValue="10" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+		</parameters>
 
-	<parameter name="randomSeed" displayName="Default Random Seed" type="int" defaultValue="__NULL__" />
 
-	<parameter name="endosome_rabA_count" displayName="Endosome RabA Count" type="int" 
-			defaultValue="10" 
-			isReadOnly="false" 
-			converter="repast.simphony.parameter.StringConverterFactory$IntConverter"									
-		/>
-	<parameter name="endosome_rabB_count" displayName="Endosome RabB Count" type="int" 
-			defaultValue="10" 
-			isReadOnly="false"
-			converter="repast.simphony.parameter.StringConverterFactory$IntConverter"									
-		/>
-		
-	<parameter name="soluble" displayName="Soluble" type="String" 
-			defaultValue="dextran" 
-			isReadOnly="false"
-		/>
-		
-</parameters>

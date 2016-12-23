@@ -20,7 +20,16 @@
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
         <id>volume</id>
         <className>immunity.Endosome</className>
-        <methodName>getVolume</methodName>
+        <methodName>getSolContRab</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>volume2</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>volume2</id>
+        <className>immunity.Endosome</className>
+        <methodName>getSolContRab2</methodName>
         <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>

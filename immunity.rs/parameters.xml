@@ -24,6 +24,12 @@
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
 									
 		/>
+				<parameter name="Rab2" displayName="Rab2" type="java.lang.String" 
+						defaultValue="RabB" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+									
+		/>
 				<parameter name="endosome_rabA_count" displayName="Endosome RabA Count" type="int" 
 						defaultValue="10" 
 						isReadOnly="false" 

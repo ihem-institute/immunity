@@ -727,3 +727,47 @@ java.lang.IllegalArgumentException: Color parameter outside of expected range: G
 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
 	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
 	at java.lang.Thread.run(Thread.java:745)
+FATAL [Thread-8] 2016-12-23 17:02:56,485 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+repast.simphony.data2.DataException: Error invoking method on object
+	at repast.simphony.data2.MethodDataSource.get(MethodDataSource.java:99)
+	at repast.simphony.data2.AggregateDSCreator$NumberCalculator.calcStats(AggregateDSCreator.java:32)
+	at repast.simphony.data2.AggregateDSCreator$ADS.get(AggregateDSCreator.java:111)
+	at repast.simphony.data2.AggregateDataSet.record(AggregateDataSet.java:80)
+	at repast.simphony.data2.AbstractDataSetManager$ScheduledDataSet.execute(AbstractDataSetManager.java:119)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:238)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.data2.MethodDataSource.get(MethodDataSource.java:97)
+	... 10 more
+Caused by: repast.simphony.parameter.IllegalParameterException: Parameter 'Rab1' not found in the schema.
+	at repast.simphony.parameter.DefaultParameters.getValue(DefaultParameters.java:213)
+	at immunity.Endosome.getSolContRab2(Endosome.java:1021)
+	... 13 more
+FATAL [Thread-7] 2016-12-23 18:23:50,580 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (77.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.ClassCastException: java.util.HashMap$KeySet cannot be cast to java.util.ArrayList
+	at immunity.RabConversion.getMetabolites(RabConversion.java:332)
+	at immunity.Endosome.rabConversion(Endosome.java:146)
+	at immunity.Endosome.step(Endosome.java:124)
+	... 10 more

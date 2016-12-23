@@ -1,6 +1,8 @@
 package immunity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 import org.COPASI.CCompartment;
 import org.COPASI.CCopasiDataModel;
@@ -94,8 +96,8 @@ public class RabConversion {
         // SET INITIAL CONCENTRATIONS
         // SET INITIAL CONCENTRATIONS
         //Endosome endosome = Endosome.getEndosome();
-        setInitialConcentration("RabA", 0);//
-        setInitialConcentration("RabB", 0);
+        //setInitialConcentration("RabA", 0);//
+        //setInitialConcentration("RabB", 0);
         
         for (String s : nameMetabs.keySet()) {
         	CMetab metab = nameMetabs.get(s);
@@ -327,5 +329,10 @@ public class RabConversion {
 		System.out.println("COPASI       "+ name + d);
 		return d;
 	}
+	public Set<String> getMetabolites(){
+		Set<String> metabolites =  nameMetabs.keySet();
+		return metabolites;
+	}
+		
 
 }

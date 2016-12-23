@@ -139,54 +139,84 @@ public class Endosome {
 	}
 
 	private void rabConversion() {
+
 		RabConversion rabConversion = RabConversion.getInstance();
-		if (rabContent.containsKey("RabA")) {
-			rabConversion.setInitialConcentration("RabAm",
-					Math.abs(Math.round(rabContent.get("RabA"))));
-			System.out.println("COPASI INITIAL RABAm  "
-					+ rabContent.get("RabA"));
-			// System.out.println("COPASI INITIAL RABB  " +
-			// rabContent.get("RabB"));
-		} else {
-			rabConversion.setInitialConcentration("RabAm", 0.0);
-			System.out.println("COPASI INITIAL RABAm  " + 0.0);
+
+		Set<String> metabolites = RabConversion.getInstance().getMetabolites();
+		//metabolites.add("RabAm");
+		//metabolites.add("RabAc");
+		//metabolites.add("RabBm");
+		//metabolites.add("RabBc");
+		for (String met : metabolites) {
+			if (met.endsWith("m")) {
+				String Rab = met.substring(0, 4);
+				if (rabContent.containsKey(Rab)) {
+					rabConversion.setInitialConcentration(met,
+							Math.abs(Math.round(rabContent.get(Rab))));
+					System.out.println("COPASI INITIAl " + met
+							+ rabContent.get(Rab));
+					// System.out.println("COPASI INITIAL RABB  " +
+					// rabContent.get("RabB"));
+				} else {
+					rabConversion.setInitialConcentration(met, 0.0);
+					System.out.println("COPASI INITIAL " + met + 0.0);
+				}
+			}
+			if (met.endsWith("c")) {
+				String Rab = met.substring(0, 4);
+				if (Cell.getInstance().rabCell.containsKey(Rab)) {
+					rabConversion.setInitialConcentration(met, Math.abs(Math
+							.round(Cell.getInstance().rabCell.get(Rab))));
+					System.out.println("COPASI INITIAL " + met
+							+ Cell.getInstance().rabCell.get(Rab));
+				} else {
+					rabConversion.setInitialConcentration(met, 0.0);
+					System.out.println("COPASI INITIAL " + met + 0.0);
+
+					// System.out.println("COPASI INITIAL RABA  " + 0.0);
+				}
+			}
 		}
-		if (Cell.getInstance().rabCell.containsKey("RabA")) {
-			rabConversion.setInitialConcentration("RabAc",
-					Math.abs(Math.round(Cell.getInstance().rabCell.get("RabA"))));
-			System.out.println("COPASI INITIAL RabAc  "
-					+ Cell.getInstance().rabCell.get("RabA"));
-		} else {
-			rabConversion.setInitialConcentration("RabAc", 0.0);
-			System.out.println("COPASI INITIAL RabAc  " + 0.0);
-
-			// System.out.println("COPASI INITIAL RABA  " + 0.0);
-		}
-		if (rabContent.containsKey("RabB")) {
-			rabConversion.setInitialConcentration("RabBm",
-					Math.abs(Math.round(rabContent.get("RabB"))));
-			System.out.println("COPASI INITIAL RABBm  "
-					+ rabContent.get("RabB"));
-		} else {
-			rabConversion.setInitialConcentration("RabBm", 0.0);
-			System.out.println("COPASI INITIAL RABBm  " + 0.0);
-		}
-
-		if (Cell.getInstance().rabCell.containsKey("RabB")) {
-			rabConversion.setInitialConcentration("RabBc",
-					Math.abs(Math.round(Cell.getInstance().rabCell.get("RabB"))));
-			System.out.println("COPASI INITIAL RabBc  "
-					+ Cell.getInstance().rabCell.get("RabB"));
-
-			// System.out.println("COPASI INITIAL RABB  " +
-			// rabContent.get("RabB"));
-		} else {
-			rabConversion.setInitialConcentration("RabBc", 0.0);
-			System.out.println("COPASI INITIAL RabBc  " + 0.0);
-
-			// System.out.println("COPASI INITIAL RABA  " + 0.0);
-		}
-
+		/*
+		 * if (rabContent.containsKey("RabA")) {
+		 * rabConversion.setInitialConcentration("RabAm",
+		 * Math.abs(Math.round(rabContent.get("RabA"))));
+		 * System.out.println("COPASI INITIAL RABAm  " +
+		 * rabContent.get("RabA")); //
+		 * System.out.println("COPASI INITIAL RABB  " + //
+		 * rabContent.get("RabB")); } else {
+		 * rabConversion.setInitialConcentration("RabAm", 0.0);
+		 * System.out.println("COPASI INITIAL RABAm  " + 0.0); } if
+		 * (Cell.getInstance().rabCell.containsKey("RabA")) {
+		 * rabConversion.setInitialConcentration("RabAc", Math.abs(Math
+		 * .round(Cell.getInstance().rabCell.get("RabA"))));
+		 * System.out.println("COPASI INITIAL RabAc  " +
+		 * Cell.getInstance().rabCell.get("RabA")); } else {
+		 * rabConversion.setInitialConcentration("RabAc", 0.0);
+		 * System.out.println("COPASI INITIAL RabAc  " + 0.0);
+		 * 
+		 * // System.out.println("COPASI INITIAL RABA  " + 0.0); } if
+		 * (rabContent.containsKey("RabB")) {
+		 * rabConversion.setInitialConcentration("RabBm",
+		 * Math.abs(Math.round(rabContent.get("RabB"))));
+		 * System.out.println("COPASI INITIAL RABBm  " +
+		 * rabContent.get("RabB")); } else {
+		 * rabConversion.setInitialConcentration("RabBm", 0.0);
+		 * System.out.println("COPASI INITIAL RABBm  " + 0.0); }
+		 * 
+		 * if (Cell.getInstance().rabCell.containsKey("RabB")) {
+		 * rabConversion.setInitialConcentration("RabBc", Math.abs(Math
+		 * .round(Cell.getInstance().rabCell.get("RabB"))));
+		 * System.out.println("COPASI INITIAL RabBc  " +
+		 * Cell.getInstance().rabCell.get("RabB"));
+		 * 
+		 * // System.out.println("COPASI INITIAL RABB  " + //
+		 * rabContent.get("RabB")); } else {
+		 * rabConversion.setInitialConcentration("RabBc", 0.0);
+		 * System.out.println("COPASI INITIAL RabBc  " + 0.0);
+		 * 
+		 * // System.out.println("COPASI INITIAL RABA  " + 0.0); }
+		 */
 		// run time course
 		rabConversion.runTimeCourse();
 
@@ -996,6 +1026,29 @@ public class Endosome {
 	public double getSolContRab() { // (String solCont, String rab){
 		Parameters params = RunEnvironment.getInstance().getParameters();
 		String rab = (String) params.getValue("Rab");
+		String solCont = (String) params.getValue("soluble");
+		Double sc = null;
+		Double rc = null;
+		if (solCont != null && rab != null) {
+			if (solubleContent.containsKey(solCont)) {
+				sc = solubleContent.get(solCont);
+			} else
+				return 0;
+			if (rabContent.containsKey(rab)) {
+				rc = rabContent.get(rab);
+			} else
+				return 0;
+			if (sc != null && rc != null) {
+				double solContRab = sc * rc / this.volume;
+				return solContRab;
+			}
+		}
+		return 0;
+	}
+
+	public double getSolContRab2() { // (String solCont, String rab){
+		Parameters params = RunEnvironment.getInstance().getParameters();
+		String rab = (String) params.getValue("Rab2");
 		String solCont = (String) params.getValue("soluble");
 		Double sc = null;
 		Double rc = null;
