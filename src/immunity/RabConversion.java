@@ -31,6 +31,7 @@ public class RabConversion {
     private CReportDefinition report;
     private CTrajectoryTask trajectoryTask;
 	private HashMap<String, CMetab> nameMetabs = new HashMap<String, CMetab>();
+	//private Endosome Endosome;
 	
 	public static RabConversion getInstance () {
 		if (instance == null) {
@@ -88,8 +89,13 @@ public class RabConversion {
             nameMetabs.put(metab.getObjectName(), metab);
             System.out.println(metab.getObjectName());
         }
-        
-   //     setInitialConcentration("IL6", 4.0);
+        // SET INITIAL CONCENTRATIONS
+        // SET INITIAL CONCENTRATIONS
+        // SET INITIAL CONCENTRATIONS
+        // SET INITIAL CONCENTRATIONS
+        //Endosome endosome = Endosome.getEndosome();
+        setInitialConcentration("RabA", 0);//
+        setInitialConcentration("RabB", 0);
         
         for (String s : nameMetabs.keySet()) {
         	CMetab metab = nameMetabs.get(s);
@@ -199,11 +205,11 @@ public class RabConversion {
         CTrajectoryProblem problem = (CTrajectoryProblem)trajectoryTask.getProblem();
 
         // simulate 600 steps
-        problem.setStepNumber(4000);
+        problem.setStepNumber(400);
         // start at time 0
         dataModel.getModel().setInitialTime(0.0);
         // simulate a duration of 60 time units
-        problem.setDuration(4000);
+        problem.setDuration(400);
         // tell the problem to actually generate time series data
         problem.setTimeSeriesRequested(true);
 
@@ -318,7 +324,7 @@ public class RabConversion {
 			CMetab m = nameMetabs.get(name);
 			d = m.getConcentration();
 		}
-		
+		System.out.println("COPASI       "+ d);
 		return d;
 	}
 

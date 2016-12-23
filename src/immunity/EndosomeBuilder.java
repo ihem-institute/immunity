@@ -67,7 +67,7 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			membraneContent.put("Tf",4d * Math.PI * 30d * 30d);
 			solubleContent.put("dextran",4d / 3d * Math.PI * 30d * 30d * 30d );
 			context.add(new Endosome(space, grid, rabContent, membraneContent, solubleContent));
-			 System.out.println(membraneContent+" "+solubleContent + rabContent);
+			System.out.println(membraneContent+" "+solubleContent + rabContent);
 		}
 		int endosome_rabB_count = (Integer) params.getValue("endosome_rabB_count");
 		for (int i = 0; i < endosome_rabB_count; i++) {
@@ -86,7 +86,7 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			context.add(new Cytosol(space, grid, cytoContent, i, j));
 		}
 		}
-
+		// Cell
 		context.add(Cell.getInstance());
 		
 		for (Object obj : context) {

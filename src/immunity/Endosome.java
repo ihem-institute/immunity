@@ -120,7 +120,7 @@ public class Endosome {
 		// printEndosomes();
 		split();
 		internalVesicle();
-		rabConversion();
+		if (Math.random()<0.001) rabConversion();
 
 	}
 
@@ -139,14 +139,34 @@ public class Endosome {
 
 	private void rabConversion() {
 		RabConversion rabConversion = RabConversion.getInstance();
+		if (rabContent.containsKey("RabA")){
+		rabConversion.setInitialConcentration("RabA", rabContent.get("RabA"));
+		System.out.println("COPASI INITIAL RABA  " + rabContent.get("RabA"));
+		//System.out.println("COPASI INITIAL RABB  " + rabContent.get("RabB"));
+		}
+		else{
+		rabConversion.setInitialConcentration("RabA",0.0);
+		System.out.println("COPASI INITIAL RABA  " + 0.0);
+		}
+		if (rabContent.containsKey("RabB")){
+		rabConversion.setInitialConcentration("RabB", rabContent.get("RabB"));
+		System.out.println("COPASI INITIAL RABB  " + rabContent.get("RabB"));
+		}
+		else{
+		rabConversion.setInitialConcentration("RabB", 0.0);
+		System.out.println("COPASI INITIAL RABB  " + 0.0);
 
-		rabConversion.setInitialConcentration("RabA", 1);
-
+		}
 		// run time course
 		rabConversion.runTimeCourse();
 
 		double rabA = rabConversion.getConcentration("RabA");
+		rabContent.put("RabA", rabA);
 		double rabB = rabConversion.getConcentration("RabB");
+		rabContent.put("RabB", rabB);
+		System.out.println("COPASI FINAL RABA  " + rabA);
+		System.out.println("COPASI FINAL RABB  " + rabB);
+
 	}
 
 	public List<MT> associateMt() {
@@ -865,8 +885,18 @@ public class Endosome {
 	public String getRabContent() {
 		return rabContent.toString();
 	}
-
+	public Double getRabContent(String rab) {
+		return rabContent.get(rab);
+	}
+	public Endosome getEndosome() {
+		return this;
+	}
 	/*
+	 *	public static Cell getInstance() {
+		return instance;
+	} 
+	 *
+	 *
 	 * public HashMap<String, Double> getRabContent() { return rabContent; }
 	 * /*public HashMap<String, Double> getMembraneContent() { return
 	 * membraneContent; } public HashMap<String, Double> getSolubleContent() {
@@ -929,12 +959,17 @@ public class Endosome {
 	 */
 	public double getSolContRab() { // (String solCont, String rab){
 		Parameters params = RunEnvironment.getInstance().getParameters();
-		
+		String rab = (String) params.getValue("Rab");
 		String solCont = (String) params.getValue("soluble");
-		if(solCont != null) {
-			Double sc = solubleContent.get(solCont);
-			String rab = "RabB";
-			Double rc = rabContent.get(rab);
+		Double sc = null;
+		Double rc = null;
+		if(solCont != null && rab != null) {
+			if(solubleContent.containsKey(solCont)) {
+				sc = solubleContent.get(solCont);
+			} else return 0;
+			if (rabContent.containsKey(rab)){
+				rc = rabContent.get(rab);
+			} else return 0;
 			if(sc != null && rc != null) {
 				double solContRab = sc * rc	/ this.volume;
 				return solContRab;			

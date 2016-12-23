@@ -46,18 +46,18 @@ public class Cell {
 
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-		System.out.println("TOTAL CELL MEMBRANE" + tMembrane);
-		uptake();
+		//System.out.println("TOTAL CELL MEMBRANE" + tMembrane);
+		//uptake();
 	}
 
-	public void uptake() {
+/*	public void uptake() {
 		if (tMembrane < sEndo || rabCell.get("RabA") < sEndo)
 			return;
 		/*
 		 * Endosome budEnd = new Endosome(this.space, this.grid, null, null,
 		 * null); Context<Object> context = ContextUtils.getContext(this);
 		 * context.add(budEnd);
-		 */
+		 
 		HashMap<String, Double> rabContent = new HashMap<String, Double>();
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>();
@@ -73,7 +73,7 @@ public class Cell {
 		System.out.println(membraneContent + "NEW ENDOSOME UPTAKE"
 				+ solubleContent + rabContent);
 	}
-
+*/
 	public static Cell getInstance() {
 		return instance;
 	}
