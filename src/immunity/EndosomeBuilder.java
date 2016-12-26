@@ -51,25 +51,30 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 		Grid<Object> grid = gridFactory.createGrid("grid", context,
 				new GridBuilderParameters<Object>(new WrapAroundBorders(),
 						new SimpleGridAdder<Object>(), true, 50, 50));
-		
+
 		Parameters params = RunEnvironment.getInstance().getParameters();
 		// Microtubules
-		for (int i = 0 ; i<5 ; i++){
+		for (int i = 0; i < 5; i++) {
 			context.add(new MT(space, grid));
 		}
-		//Endosomes
-		int endosome_rabA_count = (Integer) params.getValue("endosome_rabA_count");
+
+		// Endosomes
+		int endosome_rabA_count = (Integer) params
+				.getValue("endosome_rabA_count");
 		for (int i = 0; i < endosome_rabA_count; i++) {
 			HashMap<String, Double> rabContent = new HashMap<String, Double>();
 			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 			rabContent.put("RabA", 4d * Math.PI * 30d * 30d);
-			membraneContent.put("Tf",4d * Math.PI * 30d * 30d);
-			solubleContent.put("dextran",4d / 3d * Math.PI * 30d * 30d * 30d );
-			context.add(new Endosome(space, grid, rabContent, membraneContent, solubleContent));
-			System.out.println(membraneContent+" "+solubleContent + rabContent);
+			membraneContent.put("Tf", 4d * Math.PI * 30d * 30d);
+			solubleContent.put("dextran", 4d / 3d * Math.PI * 30d * 30d * 30d);
+			context.add(new Endosome(space, grid, rabContent, membraneContent,
+					solubleContent));
+			System.out.println(membraneContent + " " + solubleContent
+					+ rabContent);
 		}
-		int endosome_rabB_count = (Integer) params.getValue("endosome_rabB_count");
+		int endosome_rabB_count = (Integer) params
+				.getValue("endosome_rabB_count");
 		for (int i = 0; i < endosome_rabB_count; i++) {
 			HashMap<String, Double> rabContent = new HashMap<String, Double>();
 			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
@@ -77,31 +82,41 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			rabContent.put("RabB", 4d * Math.PI * 30d * 30d);
 			membraneContent.put("Tf", 0.0d);
 			solubleContent.put("dextran", 0.0d);
-			context.add(new Endosome(space, grid, rabContent, membraneContent, solubleContent));
+			context.add(new Endosome(space, grid, rabContent, membraneContent,
+					solubleContent));
 		}
-		//Cytosol
+		// Cytosol
 		for (int i = 0; i < 50; i++) {
-			for (int j = 0; j < 50; j++){
-			HashMap<String, Double> cytoContent = new HashMap<String, Double>();
-			context.add(new Cytosol(space, grid, cytoContent, i, j));
-		}
+			for (int j = 0; j < 50; j++) {
+				HashMap<String, Double> cytoContent = new HashMap<String, Double>();
+				context.add(new Cytosol(space, grid, cytoContent, i, j));
+			}
 		}
 		// Cell
 		context.add(Cell.getInstance());
-		
+
 		for (Object obj : context) {
 			NdPoint pt = space.getLocation(obj);
 			space.moveTo(obj, pt.getX(), pt.getY());
-			grid.moveTo(obj,(int) pt.getX(),(int) pt.getY());
+			grid.moveTo(obj, (int) pt.getX(), (int) pt.getY());
 		}
 		for (Object obj : context) {
-			if (obj instanceof MT){
-			space.moveTo(obj, 25, 25);
-			grid.moveTo(obj, 25, 25);	
+			if (obj instanceof Cytosol) {
+				double xcoor = ((Cytosol) obj).getXcoor();
+				double ycoor = ((Cytosol) obj).getYcoor();
+				space.moveTo(obj, xcoor, ycoor);
+				grid.moveTo(obj, (int) xcoor, (int) ycoor);
+			}
+		}
+		for (Object obj : context) {
+			if (obj instanceof MT) {
+				space.moveTo(obj, 25, 25);
+				grid.moveTo(obj, 25, 25);
+				((MT) obj).changePosition();
 			}
 
 		}
-		
+
 		if (RunEnvironment.getInstance().isBatch()) {
 			RunEnvironment.getInstance().endAt(20);
 		}

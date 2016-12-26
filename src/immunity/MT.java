@@ -30,8 +30,8 @@ import repast.simphony.space.grid.Grid;
 	public void changePosition() {
 	//	if (Math.random() < 0.1) return;
 		// move the origin and the end of the MT
-		xorigin = RandomHelper.nextDoubleFromTo(10, 40);
-		xend = RandomHelper.nextDoubleFromTo(10, 40);
+		xorigin = RandomHelper.nextDoubleFromTo(1, 49);
+		xend =(RandomHelper.nextDoubleFromTo(xorigin - 10 , xorigin + 10));
 		double mth = Math.atan((50)/(xend - xorigin));
 		System.out.println("a-tang");  
 		System.out.println(mth * 180 / Math.PI);

@@ -49,7 +49,7 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>234111100</hashCode>
+    <hashCode>1517778402</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>space</layoutProjection>
@@ -58,6 +58,14 @@
     <entry>
       <string>immunity.Cytosol</string>
       <int>0</int>
+    </entry>
+    <entry>
+      <string>immunity.Endosome</string>
+      <int>2</int>
+    </entry>
+    <entry>
+      <string>immunity.MT</string>
+      <int>1</int>
     </entry>
   </layerOrder>
   <projections>
@@ -101,7 +109,7 @@
               </entry>
               <entry>
                 <string>SHOW</string>
-                <boolean>true</boolean>
+                <boolean>false</boolean>
               </entry>
             </map>
           </entry>
