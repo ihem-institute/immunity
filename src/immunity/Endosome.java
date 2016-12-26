@@ -66,14 +66,26 @@ public class Endosome {
 		this.rabContent = rabContent;
 		this.membraneContent = membraneContent;
 		this.solubleContent = solubleContent;
-		rabCompatibility.put("RabARabA", 1.0d);
-		rabCompatibility.put("RabARabB", 0.1d);
-		// rabCompatibility.put("RabBRabA", 0.1d);
+		// A=Rab5, B=Rab22, C=Rab11, D=Rab7, E=secretoryPathway Rab
+		rabCompatibility.put("RabARabA", 1.0d);// self compatibility = 1
 		rabCompatibility.put("RabBRabB", 1.0d);
+		rabCompatibility.put("RabCRabC", 1.0d);
+		rabCompatibility.put("RabDRabD", 1.0d);
+		rabCompatibility.put("RabERabE", 1.0d);
+		rabCompatibility.put("RabARabB", 0.1d);// Rab5/Rab22 0.1
+		rabCompatibility.put("RabARabC", 0.0d);// Rab5/Rab7 0.0
+		rabCompatibility.put("RabCRabE", 0.1d);// Rab11/Rabsecretory7 0.1
+		// Rabs are selected to form the tubule according to this parameter
+		// 1-tubule tropism, 0-low tubule tropism
 		tubuleTropism.put("RabA", 0.5d);
-		tubuleTropism.put("RabB", 0.1d);
+		tubuleTropism.put("RabB", 0.5d);
+		tubuleTropism.put("RabC", 0.5d);
+		tubuleTropism.put("RabD", 0.1d);
+		tubuleTropism.put("RabE", 0.5d);
+		// CONTENT IS DISTRIBUTED according to three possibilities
+		// 0.5-even distribution, 1-tubule tropism, 0-sphere tropism
 		tubuleTropism.put("Tf", 1.0d);
-		tubuleTropism.put("dextran", 0.0d);
+		tubuleTropism.put("dextran", 0.5d);
 		tubuleTropism.put("mvb", 0.0d);
 		/*
 		 * TODO: agregar todas las combinaciones. No s� por qu� tienen que
@@ -143,10 +155,10 @@ public class Endosome {
 		RabConversion rabConversion = RabConversion.getInstance();
 
 		Set<String> metabolites = RabConversion.getInstance().getMetabolites();
-		//metabolites.add("RabAm");
-		//metabolites.add("RabAc");
-		//metabolites.add("RabBm");
-		//metabolites.add("RabBc");
+		// metabolites.add("RabAm");
+		// metabolites.add("RabAc");
+		// metabolites.add("RabBm");
+		// metabolites.add("RabBc");
 		for (String met : metabolites) {
 			if (met.endsWith("m")) {
 				String Rab = met.substring(0, 4);
@@ -833,13 +845,20 @@ public class Endosome {
 		NdPoint myPoint = space.getLocation(this);
 		// double x = myPoint.getX();
 		double y = myPoint.getY();
-		if (y < 49 || !rabContent.containsKey("RabA"))
-			return;
-		double RabA = rabContent.get("RabA") / area;
-		if (RabA < 0.99)
+		if (y < 49)	return;
+		double recyRabA = 0.0;
+		double recyRabC = 0.0;		
+		if(rabContent.containsKey("RabA")){
+			recyRabA = rabContent.get("RabA") / area;
+		}
+		if(rabContent.containsKey("RabC")){
+			recyRabC = rabContent.get("RabC") / area;
+		}
+		double recyProb = recyRabA + recyRabC;
+		if (Math.random()>= recyProb)
 			return; // if not near the PM
-					// or without a recycling Rab
-					// return
+					// or without a recycling Rab return
+					// recycling Rabs are RabA (Rab5) and RabC (Rab11)
 		else {
 			// RECYCLE
 			// Recycle membrane content

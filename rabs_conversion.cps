@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2016-12-23 17:04:24 UTC -->
+<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2016-12-26 18:52:52 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="15" versionDevel="95" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -48,12 +48,10 @@ Reaction scheme where the products are created from the reactants and the change
       </Compartment>
     </ListOfCompartments>
     <ListOfMetabolites>
-      <Metabolite key="Metabolite_5" name="RabAc" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_1" name="RabAc" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_5">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Metabolite_1">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-12-23T14:03:03Z</dcterms:W3CDTF>
@@ -61,15 +59,12 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_7" name="RabAm" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_3" name="RabAm" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_7">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Metabolite_3">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-12-23T14:03:32Z</dcterms:W3CDTF>
@@ -77,15 +72,12 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_9" name="RabBc" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_5" name="RabBc" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_9">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Metabolite_5">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-12-23T14:03:07Z</dcterms:W3CDTF>
@@ -93,15 +85,12 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_11" name="RabBm" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_7" name="RabBm" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_11">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Metabolite_7">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-12-23T14:03:42Z</dcterms:W3CDTF>
@@ -109,12 +98,19 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
+      </Metabolite>
+      <Metabolite key="Metabolite_9" name="RabDc" simulationType="reactions" compartment="Compartment_1">
+      </Metabolite>
+      <Metabolite key="Metabolite_11" name="RabDm" simulationType="reactions" compartment="Compartment_1">
+      </Metabolite>
+      <Metabolite key="Metabolite_13" name="RabCc" simulationType="reactions" compartment="Compartment_1">
+      </Metabolite>
+      <Metabolite key="Metabolite_15" name="RabCm" simulationType="reactions" compartment="Compartment_1">
       </Metabolite>
     </ListOfMetabolites>
     <ListOfReactions>
-      <Reaction key="Reaction_0" name="RabConversion" reversible="false" fast="false">
+      <Reaction key="Reaction_0" name="Rab5-7Conversion" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF
    xmlns:dcterms="http://purl.org/dc/terms/"
@@ -130,12 +126,12 @@ Reaction scheme where the products are created from the reactants and the change
 
         </MiriamAnnotation>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_7" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
           <Substrate metabolite="Metabolite_9" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
           <Product metabolite="Metabolite_11" stoichiometry="1"/>
-          <Product metabolite="Metabolite_5" stoichiometry="1"/>
+          <Product metabolite="Metabolite_1" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
           <Constant key="Parameter_4392" name="k1" value="0.001"/>
@@ -146,8 +142,46 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Parameter_4392"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
-              <SourceParameter reference="Metabolite_7"/>
+              <SourceParameter reference="Metabolite_3"/>
               <SourceParameter reference="Metabolite_9"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_1" name="Rab22-11Conversion" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_1">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2016-12-26T15:31:52Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_7" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_13" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_15" stoichiometry="1"/>
+          <Product metabolite="Metabolite_5" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfConstants>
+          <Constant key="Parameter_4405" name="k1" value="0.001"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_13">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="Parameter_4405"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_79">
+              <SourceParameter reference="Metabolite_7"/>
+              <SourceParameter reference="Metabolite_13"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
@@ -166,26 +200,37 @@ Reaction scheme where the products are created from the reactants and the change
           <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabAm]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabBc]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabBm]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabDc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabDm]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabCc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabCm]" value="0" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RabConversion]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RabConversion],ParameterGroup=Parameters,Parameter=k1" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[Rab5-7Conversion]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab5-7Conversion],ParameterGroup=Parameters,Parameter=k1" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[Rab22-11Conversion]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab22-11Conversion],ParameterGroup=Parameters,Parameter=k1" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
     </ListOfModelParameterSets>
     <StateTemplate>
       <StateTemplateVariable objectReference="Model_3"/>
+      <StateTemplateVariable objectReference="Metabolite_1"/>
       <StateTemplateVariable objectReference="Metabolite_5"/>
+      <StateTemplateVariable objectReference="Metabolite_3"/>
       <StateTemplateVariable objectReference="Metabolite_7"/>
       <StateTemplateVariable objectReference="Metabolite_9"/>
       <StateTemplateVariable objectReference="Metabolite_11"/>
+      <StateTemplateVariable objectReference="Metabolite_13"/>
+      <StateTemplateVariable objectReference="Metabolite_15"/>
       <StateTemplateVariable objectReference="Compartment_1"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 0 0 0 0 1 
+      0 0 0 0 0 0 0 0 0 1 
     </InitialState>
   </Model>
   <ListOfTasks>
