@@ -28,15 +28,18 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	
 	@Override
 	public VSpatial getVSpatial(Endosome object, VSpatial spatial) {
-		double s = object.getArea();
+/*shape is generated as a relationship between area and volume. For a sphere
+ * the s^3/v^2 is 113.  For a cylinder is larger than this. For the minimum cylinder is 169.6
+*/		double s = object.getArea();
 		double v = object.getVolume();
-		int svr =(int) ((s * s * s) / (v * v)/ (113d));
+		int svr =(int) ((s * s * s) / (v * v)/ (113d)); // should be 1 for a sphere
 		VSpatial createRectangle = this.factory.createRectangle(5* svr, 5);
 		return createRectangle;
 	}
 
 	@Override
 	public Color getColor(Endosome object) {
+		// color code for contents
 		int red = object.getRed();
 		int green = object.getGreen();
 		int blue = object.getBlue();
@@ -51,22 +54,27 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	@Override
 	public Color getBorderColor(Endosome object) {
+		//implement color code for Rabs
 		return new Color(100);
 	}
 
 	@Override
 	public float getRotation(Endosome object) {
+		//set in a way that object move along its large axis
 		return (float) -object.getHeading();
 	}
 
 	@Override
 	public float getScale(Endosome object) {
-		
+		// the size is the radius of a sphere with the volume of the object
+		// hence, the newly form endosome with a size 30, has a scale of 3
 		return (float) object.size() / 10f;
 	}
 
 	@Override
 	public String getLabel(Endosome object) {
+		//the label is the number of internal vesicles (Multi Vesicular Body) 
+		//in the endosome
 		return object.getMvb();
 	}
 	@Override

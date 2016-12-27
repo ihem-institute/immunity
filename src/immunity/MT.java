@@ -41,7 +41,7 @@ public class MT {
 		} else
 			mth = mth * 180 / Math.PI;
 		mtheading = -mth;
-		double y = 25;
+		double y = 24.5;
 		double x = xorigin + 25 * Math.cos(mtheading * Math.PI / 180);
 		space.moveTo(this, x, y);
 		grid.moveTo(this, (int) x, (int) y);
