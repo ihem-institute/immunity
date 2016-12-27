@@ -25,14 +25,9 @@ public class MTStyle implements StyleOGL2D<MT> {
 
 	@Override
 	public VSpatial getVSpatial(MT object, VSpatial spatial) {
-		////double s = object.getArea();
-		//double v = object.getVolume();
-		//int svr =(int) ((s * s * s) / (v * v)/ (113d));
 		double h =  object.getMtheading();
 		double hh = h * Math.PI /180;
-		  //System.out.println(vsphere);
 		int length = (int)(- 750 / (Math.sin(hh)));
-		//System.out.println(length);
 		VSpatial createRectangle = this.factory.createRectangle(3, length);
 		return createRectangle;
 
@@ -63,7 +58,7 @@ public class MTStyle implements StyleOGL2D<MT> {
 	@Override
 	public float getScale(MT object) {
 		
-		return (float) 1; //object.size() / 10f;
+		return (float) 1;
 	}
 
 	@Override

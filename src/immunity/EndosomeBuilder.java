@@ -59,6 +59,7 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 		}
 
 		// Endosomes
+		// RabA is Rab5
 		int endosome_rabA_count = (Integer) params
 				.getValue("endosome_rabA_count");
 		for (int i = 0; i < endosome_rabA_count; i++) {
@@ -73,6 +74,7 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			System.out.println(membraneContent + " " + solubleContent
 					+ rabContent);
 		}
+		// RabB is Rab22
 		int endosome_rabB_count = (Integer) params
 				.getValue("endosome_rabB_count");
 		for (int i = 0; i < endosome_rabB_count; i++) {
@@ -85,6 +87,7 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			context.add(new Endosome(space, grid, rabContent, membraneContent,
 					solubleContent));
 		}
+		// RabC is Rab11
 		int endosome_rabC_count = (Integer) params
 				.getValue("endosome_rabC_count");
 		for (int i = 0; i < endosome_rabC_count; i++) {
@@ -99,6 +102,7 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			System.out.println(membraneContent + " " + solubleContent
 					+ rabContent);
 		}
+		// RabD is Rab7
 		int endosome_rabD_count = (Integer) params
 				.getValue("endosome_rabD_count");
 		for (int i = 0; i < endosome_rabD_count; i++) {
@@ -113,6 +117,7 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			System.out.println(membraneContent + " " + solubleContent
 					+ rabContent);
 		}
+		// RabE is Rab of secretory pathway
 		int endosome_rabE_count = (Integer) params
 				.getValue("endosome_rabE_count");
 		for (int i = 0; i < endosome_rabE_count; i++) {
@@ -136,12 +141,8 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 		}
 		// Cell
 		context.add(Cell.getInstance());
-
-		for (Object obj : context) {
-			NdPoint pt = space.getLocation(obj);
-			space.moveTo(obj, pt.getX(), pt.getY());
-			grid.moveTo(obj, (int) pt.getX(), (int) pt.getY());
-		}
+		
+		// Locate the object in the space and grid
 		for (Object obj : context) {
 			if (obj instanceof Cytosol) {
 				double xcoor = ((Cytosol) obj).getXcoor();
@@ -149,14 +150,13 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 				space.moveTo(obj, xcoor, ycoor);
 				grid.moveTo(obj, (int) xcoor, (int) ycoor);
 			}
-		}
-		for (Object obj : context) {
 			if (obj instanceof MT) {
-				space.moveTo(obj, 25, 25);
-				grid.moveTo(obj, 25, 25);
 				((MT) obj).changePosition();
+			} else {
+				NdPoint pt = space.getLocation(obj);
+				space.moveTo(obj, pt.getX(), pt.getY());
+				grid.moveTo(obj, (int) pt.getX(), (int) pt.getY());
 			}
-
 		}
 
 		if (RunEnvironment.getInstance().isBatch()) {

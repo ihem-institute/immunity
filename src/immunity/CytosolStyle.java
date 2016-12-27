@@ -25,14 +25,7 @@ public class CytosolStyle implements StyleOGL2D<Cytosol> {
 
 	@Override
 	public VSpatial getVSpatial(Cytosol object, VSpatial spatial) {
-		////double s = object.getArea();
-		//double v = object.getVolume();
-		//int svr =(int) ((s * s * s) / (v * v)/ (113d));
-		//double h =  object.getMtheading();
-		//double hh = h * Math.PI /180;
-		  //System.out.println(vsphere);
-		//int length = (int)(- 750 / (Math.sin(hh)));
-		//System.out.println(length)
+		// 15 measure the size of the grid.  Each point is 50*15X50*15
 		VSpatial createRectangle = this.factory.createRectangle(15, 15);
 		return createRectangle;
 
@@ -40,12 +33,13 @@ public class CytosolStyle implements StyleOGL2D<Cytosol> {
 
 	@Override
 	public Color getColor(Cytosol object) {
-		//int f = Math.abs( (int)object.getArea() % 256 );
+		// eventually the color will reflect some local cytosol characteristics
 		return new Color(220, 220, 220);
 	}
 
 	@Override
 	public int getBorderSize(Cytosol object) {
+		//if larger than 0, form a nice grid
 		return 0;
 	}
 
@@ -56,14 +50,12 @@ public class CytosolStyle implements StyleOGL2D<Cytosol> {
 
 	@Override
 	public float getRotation(Cytosol object) {
-		//float h = (float) object.getMtheading()+ 90f;
 		return 0;
 	}
 
 	@Override
-	public float getScale(Cytosol object) {
-		
-		return (float) 1; //object.size() / 10f;
+	public float getScale(Cytosol object) {	
+		return (float) 1;
 	}
 
 	@Override

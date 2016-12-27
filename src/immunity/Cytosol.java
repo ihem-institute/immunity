@@ -24,10 +24,11 @@ public class Cytosol {
 		this.cytoContent = cytoContent;
 		}
 
-
+		// In the future, the cytosol will have a more active role.
+		//solute diffusion etc.
 		@ScheduledMethod(start = 1, interval = 0)
 		public void step() {
-			position(xcoor, ycoor);
+			//position(xcoor, ycoor);
 			}
 		
 	
@@ -35,7 +36,7 @@ public class Cytosol {
 			space.moveTo(this, xcoor, ycoor);
 			grid.moveTo(this, xcoor, ycoor);	
 			}
-		
+		//GETTERS AND SETTERS
 		public double getXcoor() {
 				return xcoor;
 			}
