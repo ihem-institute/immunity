@@ -73,19 +73,19 @@ public class Endosome {
 		rabCompatibility.put("RabDRabD", 1.0d);
 		rabCompatibility.put("RabERabE", 1.0d);
 		rabCompatibility.put("RabARabB", 0.1d);// Rab5/Rab22 0.1
-		rabCompatibility.put("RabARabC", 0.0d);// Rab5/Rab7 0.0
+		rabCompatibility.put("RabARabD", 0.0d);// Rab5/Rab7 0.0
 		rabCompatibility.put("RabCRabE", 0.1d);// Rab11/Rabsecretory7 0.1
 		// Rabs are selected to form the tubule according to this parameter
 		// 1-tubule tropism, 0-low tubule tropism
 		tubuleTropism.put("RabA", 0.5d);
 		tubuleTropism.put("RabB", 0.5d);
 		tubuleTropism.put("RabC", 0.5d);
-		tubuleTropism.put("RabD", 0.1d);
+		tubuleTropism.put("RabD", 0.0d);
 		tubuleTropism.put("RabE", 0.5d);
 		// CONTENT IS DISTRIBUTED according to three possibilities
 		// 0.5-even distribution, 1-tubule tropism, 0-sphere tropism
 		tubuleTropism.put("Tf", 1.0d);
-		tubuleTropism.put("dextran", 0.5d);
+		tubuleTropism.put("dextran", 0.d);
 		tubuleTropism.put("mvb", 0.0d);
 		/*
 		 * TODO: agregar todas las combinaciones. No s� por qu� tienen que
@@ -155,6 +155,8 @@ public class Endosome {
 		RabConversion rabConversion = RabConversion.getInstance();
 
 		Set<String> metabolites = RabConversion.getInstance().getMetabolites();
+		System.out.println("METABOLITES INITIAL " + metabolites);
+
 		// metabolites.add("RabAm");
 		// metabolites.add("RabAc");
 		// metabolites.add("RabBm");
@@ -189,61 +191,25 @@ public class Endosome {
 				}
 			}
 		}
-		/*
-		 * if (rabContent.containsKey("RabA")) {
-		 * rabConversion.setInitialConcentration("RabAm",
-		 * Math.abs(Math.round(rabContent.get("RabA"))));
-		 * System.out.println("COPASI INITIAL RABAm  " +
-		 * rabContent.get("RabA")); //
-		 * System.out.println("COPASI INITIAL RABB  " + //
-		 * rabContent.get("RabB")); } else {
-		 * rabConversion.setInitialConcentration("RabAm", 0.0);
-		 * System.out.println("COPASI INITIAL RABAm  " + 0.0); } if
-		 * (Cell.getInstance().rabCell.containsKey("RabA")) {
-		 * rabConversion.setInitialConcentration("RabAc", Math.abs(Math
-		 * .round(Cell.getInstance().rabCell.get("RabA"))));
-		 * System.out.println("COPASI INITIAL RabAc  " +
-		 * Cell.getInstance().rabCell.get("RabA")); } else {
-		 * rabConversion.setInitialConcentration("RabAc", 0.0);
-		 * System.out.println("COPASI INITIAL RabAc  " + 0.0);
-		 * 
-		 * // System.out.println("COPASI INITIAL RABA  " + 0.0); } if
-		 * (rabContent.containsKey("RabB")) {
-		 * rabConversion.setInitialConcentration("RabBm",
-		 * Math.abs(Math.round(rabContent.get("RabB"))));
-		 * System.out.println("COPASI INITIAL RABBm  " +
-		 * rabContent.get("RabB")); } else {
-		 * rabConversion.setInitialConcentration("RabBm", 0.0);
-		 * System.out.println("COPASI INITIAL RABBm  " + 0.0); }
-		 * 
-		 * if (Cell.getInstance().rabCell.containsKey("RabB")) {
-		 * rabConversion.setInitialConcentration("RabBc", Math.abs(Math
-		 * .round(Cell.getInstance().rabCell.get("RabB"))));
-		 * System.out.println("COPASI INITIAL RabBc  " +
-		 * Cell.getInstance().rabCell.get("RabB"));
-		 * 
-		 * // System.out.println("COPASI INITIAL RABB  " + //
-		 * rabContent.get("RabB")); } else {
-		 * rabConversion.setInitialConcentration("RabBc", 0.0);
-		 * System.out.println("COPASI INITIAL RabBc  " + 0.0);
-		 * 
-		 * // System.out.println("COPASI INITIAL RABA  " + 0.0); }
-		 */
-		// run time course
+
 		rabConversion.runTimeCourse();
+		for (String met : metabolites) {
+			if (met.endsWith("m")) {
+				String Rab = met.substring(0, 4);
+				rabContent.put(Rab, (double) Math.abs(Math.round(rabConversion
+						.getConcentration(met))));
+				System.out.println("COPASI FINAL " + met + rabContent.get(Rab));
+			}
+			if (met.endsWith("c")) {
+				String Rab = met.substring(0, 4);
+				Cell.getInstance().rabCell.put(Rab, (double) Math.abs(Math
+						.round(rabConversion.getConcentration(met))));
+				System.out.println("COPASI FINAL " + met
+						+ Cell.getInstance().rabCell.get(Rab));
+			}
+		}
 
-		double rabAm = rabConversion.getConcentration("RabAm");
-		rabContent.put("RabA", rabAm);
-		double rabBm = rabConversion.getConcentration("RabBm");
-		rabContent.put("RabB", rabBm);
-		double rabAc = rabConversion.getConcentration("RabAc");
-		Cell.getInstance().rabCell.put("RabA", rabAc);
-		double rabBc = rabConversion.getConcentration("RabBc");
-		Cell.getInstance().rabCell.put("RabB", rabBc);
-
-		// System.out.println("COPASI FINAL RABA  " + rabAm);
-		// System.out.println("COPASI FINAL RABB  " + rabBm);
-
+		System.out.println("METABOLITES FINAL " + metabolites);
 	}
 
 	public List<MT> associateMt() {
@@ -845,17 +811,18 @@ public class Endosome {
 		NdPoint myPoint = space.getLocation(this);
 		// double x = myPoint.getX();
 		double y = myPoint.getY();
-		if (y < 49)	return;
+		if (y < 49)
+			return;
 		double recyRabA = 0.0;
-		double recyRabC = 0.0;		
-		if(rabContent.containsKey("RabA")){
+		double recyRabC = 0.0;
+		if (rabContent.containsKey("RabA")) {
 			recyRabA = rabContent.get("RabA") / area;
 		}
-		if(rabContent.containsKey("RabC")){
+		if (rabContent.containsKey("RabC")) {
 			recyRabC = rabContent.get("RabC") / area;
 		}
-		double recyProb = recyRabA + recyRabC;
-		if (Math.random()>= recyProb)
+		double recyProb = 0.1 * recyRabA + recyRabC;
+		if (Math.random() >= recyProb)
 			return; // if not near the PM
 					// or without a recycling Rab return
 					// recycling Rabs are RabA (Rab5) and RabC (Rab11)
@@ -902,6 +869,7 @@ public class Endosome {
 		Cell cell = Cell.getInstance();
 		double tMembrane = cell.gettMembrane();
 		HashMap<String, Double> cellRab = cell.getRabCell();
+		if (!cellRab.containsKey("RabA")) return;
 		double cellRabA = cellRab.get("RabA");
 		if (tMembrane < Cell.sEndo || cellRabA < Cell.sEndo) {
 			return;

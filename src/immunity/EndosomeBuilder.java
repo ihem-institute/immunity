@@ -85,6 +85,48 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			context.add(new Endosome(space, grid, rabContent, membraneContent,
 					solubleContent));
 		}
+		int endosome_rabC_count = (Integer) params
+				.getValue("endosome_rabC_count");
+		for (int i = 0; i < endosome_rabC_count; i++) {
+			HashMap<String, Double> rabContent = new HashMap<String, Double>();
+			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
+			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
+			rabContent.put("RabC", 4d * Math.PI * 30d * 30d);
+			membraneContent.put("Tf", 0.0d);
+			solubleContent.put("dextran", 0.0d);
+			context.add(new Endosome(space, grid, rabContent, membraneContent,
+					solubleContent));
+			System.out.println(membraneContent + " " + solubleContent
+					+ rabContent);
+		}
+		int endosome_rabD_count = (Integer) params
+				.getValue("endosome_rabD_count");
+		for (int i = 0; i < endosome_rabD_count; i++) {
+			HashMap<String, Double> rabContent = new HashMap<String, Double>();
+			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
+			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
+			rabContent.put("RabD", 4d * Math.PI * 30d * 30d);
+			membraneContent.put("Tf", 0.0d);
+			solubleContent.put("dextran", 0.0d);
+			context.add(new Endosome(space, grid, rabContent, membraneContent,
+					solubleContent));
+			System.out.println(membraneContent + " " + solubleContent
+					+ rabContent);
+		}
+		int endosome_rabE_count = (Integer) params
+				.getValue("endosome_rabE_count");
+		for (int i = 0; i < endosome_rabE_count; i++) {
+			HashMap<String, Double> rabContent = new HashMap<String, Double>();
+			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
+			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
+			rabContent.put("RabE", 4d * Math.PI * 30d * 30d);
+			membraneContent.put("Tf", 0.0d);
+			solubleContent.put("dextran", 0.0d);
+			context.add(new Endosome(space, grid, rabContent, membraneContent,
+					solubleContent));
+			System.out.println(membraneContent + " " + solubleContent
+					+ rabContent);
+		}
 		// Cytosol
 		for (int i = 0; i < 50; i++) {
 			for (int j = 0; j < 50; j++) {

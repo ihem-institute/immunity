@@ -15,65 +15,33 @@ import repast.simphony.util.ContextUtils;
 public class Cell {
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
-	public static double rcyl = 10.0;
-	public static double rEndo = 20.0;
-	public static double mincyl = 6 * Math.PI * rcyl * rcyl;
-	public static double vEndo = 4d / 3d * Math.PI * Math.pow(rEndo, 3);
-	public static double sEndo = 4d * Math.PI * Math.pow(rEndo, 2);
+	public static double rcyl = 10.0; // radius tubule
+	public static double rEndo = 20.0; // radius new endosome formed by uptake
+	public static double mincyl = 6 * Math.PI * rcyl * rcyl; // surface minimum cylinder
+	// two radius large (almost a sphere)
+	public static double vEndo = 4d / 3d * Math.PI * Math.pow(rEndo, 3); //volume new endosome
+	public static double sEndo = 4d * Math.PI * Math.pow(rEndo, 2); // surface new endosome
 	// mincyl surface = 1884.95 volume = 6283.18
 	private static Cell instance;
-	public double tMembrane;
-	public HashMap<String, Double> rabCell = new HashMap();
-	public HashMap<String, Double> membraneRecycle = new HashMap();
-	public HashMap<String, Double> solubleRecycle = new HashMap();
+	public double tMembrane;// membrane that is not used in endosomes
+	public HashMap<String, Double> rabCell = new HashMap();// contains rabs free in cytosol
+	public HashMap<String, Double> membraneRecycle = new HashMap(); // contains membrane recycled 
+	public HashMap<String, Double> solubleRecycle = new HashMap();// contains soluble recycled
+	// a single Cell is created
 	static {
 		instance = new Cell();
 	}
 
-	/*
-	 * public List<Endosome> pickEndosome(){ List<Endosome> endosome = new
-	 * ArrayList<Endosome>(); for (Object obj : grid.getObjects()) { if (obj
-	 * instanceof Endosome) { endosome.add((Endosome) obj); return endosome; } }
-	 * return endosome; }
-	 */
+	// Constructor
 	public Cell() {
 		double tMembrane = 0; // hidden constructor
-		rabCell.put("RabA", 0.0d);
-		rabCell.put("RabB", 0.0d);
+		rabCell.put(null, null);
 		membraneRecycle.put(null, null);
 		solubleRecycle.put(null, null);
 	}
 
-	@ScheduledMethod(start = 1, interval = 1)
-	public void step() {
-		//System.out.println("TOTAL CELL MEMBRANE" + tMembrane);
-		//uptake();
-	}
-
-/*	public void uptake() {
-		if (tMembrane < sEndo || rabCell.get("RabA") < sEndo)
-			return;
-		/*
-		 * Endosome budEnd = new Endosome(this.space, this.grid, null, null,
-		 * null); Context<Object> context = ContextUtils.getContext(this);
-		 * context.add(budEnd);
-		 
-		HashMap<String, Double> rabContent = new HashMap<String, Double>();
-		HashMap<String, Double> membraneContent = new HashMap<String, Double>();
-		HashMap<String, Double> solubleContent = new HashMap<String, Double>();
-		rabContent.put("RabA", 4d * Math.PI * 30d * 30d);
-		membraneContent.put("Tf", 4d * Math.PI * 30d * 30d);
-		solubleContent.put("dextran", 4d / 3d * Math.PI * 30d * 30d * 30d);
-		Context<Object> context = ContextUtils.getContext(this);
-		// Endosome budEndo = new Endosome(this.space, this.grid, null, null,
-		// null);
-		// context.add(budEndo);
-		context.add(new Endosome(space, grid, rabContent, membraneContent,
-				solubleContent));
-		System.out.println(membraneContent + "NEW ENDOSOME UPTAKE"
-				+ solubleContent + rabContent);
-	}
-*/
+	
+	// GETTERS AND SETTERS (to get and set Cell contents)
 	public static Cell getInstance() {
 		return instance;
 	}
@@ -110,7 +78,5 @@ public class Cell {
 		this.solubleRecycle = solubleRecycle;
 	}
 
-	// public double getTMembrane() {
-	// return tembrane;
-	// }
+
 }
