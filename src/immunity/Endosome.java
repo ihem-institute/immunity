@@ -6,6 +6,7 @@ package immunity;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -50,6 +51,7 @@ public class Endosome {
 	private List<MT> mts;
 	HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
 	HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
+	HashMap<String, List<String>> rabTropism = new HashMap<String, List<String>>();
 	HashMap<String, Double> rabContent = new HashMap<String, Double>();
 	HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 	HashMap<String, Double> solubleContent = new HashMap<String, Double>();
@@ -77,16 +79,19 @@ public class Endosome {
 		rabCompatibility.put("RabCRabE", 0.1d);// Rab11/Rabsecretory7 0.1
 		// Rabs are selected to form the tubule according to this parameter
 		// 1-tubule tropism, 0-low tubule tropism
+		// List<String> strings = List.of("foo", "bar", "baz");
 		tubuleTropism.put("RabA", 0.5d);
 		tubuleTropism.put("RabB", 0.5d);
 		tubuleTropism.put("RabC", 0.5d);
 		tubuleTropism.put("RabD", 0.0d);
 		tubuleTropism.put("RabE", 0.5d);
 		// CONTENT IS DISTRIBUTED according to three possibilities
-		// 0.5-even distribution, 1-tubule tropism, 0-sphere tropism
-		tubuleTropism.put("Tf", 1.0d);
-		tubuleTropism.put("dextran", 0.d);
-		tubuleTropism.put("mvb", 0.0d);
+		//  1-always in tubule , 0-sphere tropism, Rabs goes to tubule when
+		// the tubule is formed for that Rab.
+		// List<String> strings = Arrays.asList("foo", "bar", "baz");
+		rabTropism.put("Tf", Arrays.asList("RabB", "RabC"));
+		rabTropism.put("mvb", Arrays.asList("0"));
+		//rabTropism.put("dextran", Arrays.asList("1"));
 		/*
 		 * TODO: agregar todas las combinaciones. No s� por qu� tienen que
 		 * estar aqu�. Me da error si las saco fuera del constructur y en
@@ -123,7 +128,7 @@ public class Endosome {
 
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-		recycle();
+		// recycle();
 		uptake();
 		size();
 		changeDirection();
@@ -442,15 +447,7 @@ public class Endosome {
 		// calculate surface of smallest sphere
 
 		double rsphere = Math.pow((vo * 3) / (4 * Math.PI), (1 / 3d));// calculate
-																		// the
-																		// radius
-																		// of
-																		// the
-																		// sphere
-																		// with
-																		// a
-																		// given
-																		// volume
+		// the radius of the sphere with a given volume
 		// System.out.println("vsphere");
 		// System.out.println(vsphere);
 		// System.out.println("rsphere");
@@ -470,42 +467,24 @@ public class Endosome {
 		double scylinder = Cell.mincyl; // surface minimum cylinder 2*radius
 										// cylinder high
 		double vcylinder = 2 * Math.PI * Math.pow(Cell.rcyl, 3); // volume
-																	// minimum
-																	// cylinder
+											// minimum cylinder
 
-		while ((so - ssphere - scylinder > 4 * Math.PI * Math.pow(Cell.rcyl, 2)) // organelle
-																					// area
-																					// should
-																					// be
-																					// enough
-																					// to
-																					// cover
-																					// the
-																					// volume
-																					// (ssphere
+		while ((so - ssphere - scylinder > 4 * Math.PI * Math.pow(Cell.rcyl, 2)) 
+				// organelle area should be enough to cover the volume (ssphere)
 				// to cover the cylinder already formed (scylinder) and to
 				// elongate a two r cylinder (without caps)
 				&& (rabContent.get(rabInTube) - scylinder > 4 * Math.PI
 						* Math.pow(Cell.rcyl, 2))// the Rab area should b enough
-													// to cover
-				// the minimum cylinder and to elongate a two r cylider
+				// to cover the minimum cylinder and to elongate a two r cylider
 				&& (scylinder < 0.5 * so) // the area of the cylinder must not
 											// be larger than 50% of the total
 											// area
 				&& ((vo - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))
 						/ ((so - scylinder - 4 * Math.PI
 								* Math.pow(Cell.rcyl, 2)) - 2 * Math.PI
-								* Cell.rcyl * Cell.rcyl) > Cell.rcyl / 2)) { // volume
-																				// left
-																				// cannot
-																				// be
-																				// smaller
-																				// than
-																				// the
-																				// volume
-																				// of
-																				// the
-																				// mincyl
+								* Cell.rcyl * Cell.rcyl) > Cell.rcyl / 2)) { 
+								// volume left cannot be smaller than the volume
+								// of the mincyl
 			/*
 			 * while there is enough membrane and enough rab surface, the tubule
 			 * grows
@@ -513,21 +492,11 @@ public class Endosome {
 			// System.out.println("in while" + (vo-vcylinder-2 * Math.PI*
 			// Math.pow(Cell.rcyl, 3))/((so - scylinder-4 * Math.PI*
 			// Math.pow(Cell.rcyl, 2)) - 2 * Math.PI * Cell.rcyl * Cell.rcyl));
-			scylinder = scylinder + 4 * Math.PI * Math.pow(Cell.rcyl, 2);// add
-																			// a
-																			// cylinder
-																			// without
-																			// caps
-																			// (the
-																			// caps
-																			// were
-																			// considered
-																			// in
-																			// the
-																			// mincyl
-			vcylinder = vcylinder + 2 * Math.PI * Math.pow(Cell.rcyl, 3);// add
-																			// a
-																			// volume
+			scylinder = scylinder + 4 * Math.PI * Math.pow(Cell.rcyl, 2);
+			// add a cylinder without caps (the caps were considered in
+			// the mincyl
+			vcylinder = vcylinder + 2 * Math.PI * Math.pow(Cell.rcyl, 3);
+			// add a volume
 			// System.out.println(scylinder +"surface and volume"+ vcylinder);
 		}
 		// System.out.println("after while" + (vo-vcylinder)/((so - scylinder) -
@@ -536,10 +505,7 @@ public class Endosome {
 		/*
 		 * the volume of the vesicle is formed subtracting the volume of the
 		 * formed cylinder from the total volume idem for the area
-		 */
-		// SUBRUTINE SHOULD SEND BACK VCYLINDER AND SCYLINDER
-
-		/*
+		 
 		 * From the information of vcylinder and scylinder, the organelle is
 		 * splitted in two, a sphere and tubule (case 2) or in two almost
 		 * tubules (a pice of the lateral surface must be used to close the
@@ -547,13 +513,6 @@ public class Endosome {
 		 */
 		double vVesicle = vo - vcylinder;
 		double sVesicle = so - scylinder;
-		if (vVesicle / (sVesicle - 2 * Math.PI * Cell.rcyl * Cell.rcyl) < 0.9999 * Cell.rcyl / 2) {
-			System.out
-					.println("voluem 0000000000000000000000000000000000000000000000"
-							+ (vVesicle / (sVesicle - 2 * Math.PI * Cell.rcyl
-									* Cell.rcyl)));
-		}
-
 		/*
 		 * the final volume and surface of the vesicle are tested. If too small,
 		 * the split aborts
@@ -579,64 +538,81 @@ public class Endosome {
 			System.out.println(rabContent);
 		}
 		this.rabContent.put(rabInTube, rabLeft);
-		// MEMBRANE CONTENT IS DISTRIBUTED according to three possibilities
-		// 0.5-even distribution, 1-tubule tropism, 0-sphere tropism
+		// MEMBRANE CONTENT IS DISTRIBUTED according rabTropism
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>();
 		copyMembrane.putAll(this.membraneContent);
 		for (String content : copyMembrane.keySet()) {
-			if (tubuleTropism.get(content) == 0.5) {
+			if (!rabTropism.containsKey(content)
+					|| !rabTropism.get(content).contains(rabInTube)) {// not a
+					// specified tropism or no  tropism for the rabInTube
+				   // hence, distribute according to
+				  // the surface ratio
 				this.membraneContent.put(content, copyMembrane.get(content)
 						* (sVesicle) / so);
-			}
-			if (tubuleTropism.get(content) == 1) {
-				if (copyMembrane.get(content) > scylinder) {
-					this.membraneContent.put(content, copyMembrane.get(content)
-							- scylinder);
-				} else
-					this.membraneContent.put(content, 0.0d);
-				// if (this.membraneContent.get(content)>this.area){
-				// System.out.println("this-redddddddddddddddddddddddddddd"+this.membraneContent.get(content)/this.area);
-				// }
-			}
-			if (tubuleTropism.get(content) == 0) {
-				if (copyMembrane.get(content) > sVesicle) {
-					this.membraneContent.put(content, sVesicle);
-				} else
-					this.membraneContent
-							.put(content, copyMembrane.get(content));
-			}
+			} else {
+				if (rabTropism.get(content).contains(rabInTube)
+						|| rabTropism.get(content).contains("1")) {// a tropism
+					// is specified.
+					// If it is "1" always goes to the tubule.
+					// if it is not "1" but is the Rab forming the tubule, goes
+					// to the tubule
 
+					if (copyMembrane.get(content) > scylinder) {
+						this.membraneContent.put(content,
+								copyMembrane.get(content) - scylinder);
+					} else
+						this.membraneContent.put(content, 0.0d);
+				}
+				if (rabTropism.get(content).contains("0")) {// if the tropism
+					// is "0" goes to the sphere
+					if (copyMembrane.get(content) > sVesicle) {
+						this.membraneContent.put(content, sVesicle);
+					} else
+						this.membraneContent.put(content,
+								copyMembrane.get(content));
+				}
+			}
 		}
-		// SOLUBLE CONTENT IS DISTRIBUTED according to three possibilities
-		// 0.5-even distribution, 1-tubule tropism, 0-sphere tropism
+		// SOLUBLE CONTENT IS DISTRIBUTED according rabTropism
 		HashMap<String, Double> copySoluble = new HashMap<String, Double>();
 		copySoluble.putAll(this.solubleContent);
 		for (String content : copySoluble.keySet()) {
-			if (tubuleTropism.get(content) == 0.5) {
+			if (!rabTropism.containsKey(content)
+					|| !rabTropism.get(content).contains(rabInTube)) {// not a
+				// specified tropism or no tropism for the rabInTube,
+				// hence, distribute according to
+				// the volume ratio
 				this.solubleContent.put(content, copySoluble.get(content)
 						* (vVesicle) / vo);
-			}
-			if (tubuleTropism.get(content) == 1) {
-				if (copySoluble.get(content) > vcylinder) {
-					this.solubleContent.put(content, copySoluble.get(content)
-							- vcylinder);
-				} else
-					this.solubleContent.put(content, 0.0d);
-			}
-			if (tubuleTropism.get(content) == 0) {
-				if (copySoluble.get(content) > vVesicle) {
-					this.solubleContent.put(content, vVesicle);
-				} else
-					this.solubleContent.put(content, copySoluble.get(content));
+			} else { // a tropism is specified. If it is "1" always goes to the
+						// tubule.
+				// if it is not "1" but is the Rab forming the tubule, goes to
+				// the tubule
+				if (rabTropism.get(content).contains(rabInTube)
+						|| rabTropism.get(content).contains("1")) {
+
+					if (copySoluble.get(content) > vcylinder) {
+						this.solubleContent.put(content,
+								copySoluble.get(content) - vcylinder);
+					} else
+						this.solubleContent.put(content, 0.0d);
+				}
+				if (rabTropism.get(content).contains("0")) { // if the tropism
+																// is "0" goes
+																// to the sphere
+
+					if (copySoluble.get(content) > vVesicle) {
+						this.solubleContent.put(content, vVesicle);
+					} else
+						this.solubleContent.put(content,
+								copySoluble.get(content));
+				}
 			}
 
 		}
 
-		// System.out.println("vesicula1");
-		// System.out.println(this.area+ "ddd"+ this.rabContent);
 		this.speed = 5 / size();
 		moveTowards();
-		// moveTowards();
 
 		/* the tubule is created as an independent endosome */
 		Endosome b = new Endosome(this.space, this.grid, null, null, null);
@@ -644,9 +620,6 @@ public class Endosome {
 		context.add(b);
 		b.area = scylinder;
 		b.volume = vcylinder;
-		// if (vcylinder < 1){
-		// System.out.println("voluem 0000000000000000000000000000000000000000000000");
-		// }
 		HashMap<String, Double> map = new HashMap<String, Double>();
 		b.rabContent = map;
 		// b.membraneContent = map;
@@ -869,7 +842,8 @@ public class Endosome {
 		Cell cell = Cell.getInstance();
 		double tMembrane = cell.gettMembrane();
 		HashMap<String, Double> cellRab = cell.getRabCell();
-		if (!cellRab.containsKey("RabA")) return;
+		if (!cellRab.containsKey("RabA"))
+			return;
 		double cellRabA = cellRab.get("RabA");
 		if (tMembrane < Cell.sEndo || cellRabA < Cell.sEndo) {
 			return;
@@ -884,7 +858,7 @@ public class Endosome {
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 		rabContent.put("RabA", Cell.sEndo);
 		membraneContent.put("Tf", Cell.sEndo);
-		solubleContent.put("dextran", Cell.vEndo);
+		solubleContent.put("dextran", 0.0d);
 		Context<Object> context = ContextUtils.getContext(this);
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
 				solubleContent);
@@ -1026,7 +1000,7 @@ public class Endosome {
 			} else
 				return 0;
 			if (sc != null && rc != null) {
-				double solContRab = sc * rc / this.volume;
+				double solContRab = sc * rc / this.area;
 				return solContRab;
 			}
 		}
@@ -1049,7 +1023,7 @@ public class Endosome {
 			} else
 				return 0;
 			if (sc != null && rc != null) {
-				double solContRab = sc * rc / this.volume;
+				double solContRab = sc * rc / this.area;
 				return solContRab;
 			}
 		}
@@ -1058,7 +1032,7 @@ public class Endosome {
 
 	public double getMemContRab(String memCont, String rab) {
 		double memContRab = membraneContent.get(memCont) * rabContent.get(rab)
-				/ this.volume;
+				/ this.area;
 		return memContRab;
 	}
 
