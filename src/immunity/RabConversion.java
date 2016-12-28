@@ -326,7 +326,7 @@ public class RabConversion {
 			CMetab m = nameMetabs.get(name);
 			d = m.getConcentration();
 		}
-		System.out.println("COPASI       "+ name + d);
+		//System.out.println("COPASI       "+ name + d);
 		return d;
 	}
 	public Set<String> getMetabolites(){

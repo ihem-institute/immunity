@@ -307,9 +307,8 @@ public class Endosome {
 				sum = sum + comp;
 			}
 		}
-		// System.out.println("probabFusion");
-		// System.out.println(sum + " "+ endosome1.rabContent + "  " +
-		// endosome2.rabContent);
+		// compatibility is a value between 0 and 1.  Fusion
+		// occurs with a probability proportional to th compatibility
 		return Math.random() < sum;
 	}
 
@@ -320,9 +319,11 @@ public class Endosome {
 		List<Endosome> endosomes_to_delete = new ArrayList<Endosome>();
 		Iterable<Object> objectsAt = grid.getObjectsAt(pt.getX(), pt.getY());
 		for (Object obj : objectsAt) {
-			if (obj instanceof Endosome && obj != this) {
-				if (compatibles(this, (Endosome) obj)) { // COMO SE HACE, NO ME
-															// FUNCIONA
+			// include if object is an endosome smaller than "this"
+			// and is compatible
+			if (obj instanceof Endosome && obj != this
+					&& ((Endosome) obj).volume <= this.volume) {
+				if (compatibles(this, (Endosome) obj)) {
 					endosomes_to_delete.add((Endosome) obj);
 				}
 				// System.out.println(endosomes_to_delete);
