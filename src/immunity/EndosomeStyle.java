@@ -43,19 +43,26 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		int red = object.getRed();
 		int green = object.getGreen();
 		int blue = object.getBlue();
-		
+		if (red == 0 && green == 0 && blue == 0){
+			red =255;
+			green = 255;
+			blue = 255;
+		}
 		return new Color(red, green, blue);
 	}
 
 	@Override
 	public int getBorderSize(Endosome object) {
-		return 2;
+		return 4;
 	}
 
 	@Override
 	public Color getBorderColor(Endosome object) {
-		//implement color code for Rabs
-		return new Color(100);
+		// color code for rab contents
+		int red = object.getEdgeRed();
+		int green = object.getEdgeGreen();
+		int blue = object.getEdgeBlue();
+		return new Color(red, green, blue);
 	}
 
 	@Override

@@ -32,6 +32,10 @@ import repast.simphony.space.grid.GridPoint;
 import repast.simphony.util.ContextUtils;
 import repast.simphony.valueLayer.GridValueLayer;
 
+/**
+ * @author lmayorga
+ *
+ */
 public class Endosome {
 	// space
 	private ContinuousSpace<Object> space;
@@ -86,12 +90,12 @@ public class Endosome {
 		tubuleTropism.put("RabD", 0.0d);
 		tubuleTropism.put("RabE", 0.5d);
 		// CONTENT IS DISTRIBUTED according to three possibilities
-		//  1-always in tubule , 0-sphere tropism, Rabs goes to tubule when
+		// 1-always in tubule , 0-sphere tropism, Rabs goes to tubule when
 		// the tubule is formed for that Rab.
 		// List<String> strings = Arrays.asList("foo", "bar", "baz");
 		rabTropism.put("Tf", Arrays.asList("RabB", "RabC"));
 		rabTropism.put("mvb", Arrays.asList("0"));
-		//rabTropism.put("dextran", Arrays.asList("1"));
+		// rabTropism.put("dextran", Arrays.asList("1"));
 		/*
 		 * TODO: agregar todas las combinaciones. No s� por qu� tienen que
 		 * estar aqu�. Me da error si las saco fuera del constructur y en
@@ -128,7 +132,7 @@ public class Endosome {
 
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-		// recycle();
+		recycle();
 		uptake();
 		size();
 		changeDirection();
@@ -137,7 +141,7 @@ public class Endosome {
 		// printEndosomes();
 		split();
 		internalVesicle();
-		if (Math.random() < 0.001)
+		if (Math.random() < 0.01)
 			rabConversion();
 
 	}
@@ -467,9 +471,9 @@ public class Endosome {
 		double scylinder = Cell.mincyl; // surface minimum cylinder 2*radius
 										// cylinder high
 		double vcylinder = 2 * Math.PI * Math.pow(Cell.rcyl, 3); // volume
-											// minimum cylinder
+		// minimum cylinder
 
-		while ((so - ssphere - scylinder > 4 * Math.PI * Math.pow(Cell.rcyl, 2)) 
+		while ((so - ssphere - scylinder > 4 * Math.PI * Math.pow(Cell.rcyl, 2))
 				// organelle area should be enough to cover the volume (ssphere)
 				// to cover the cylinder already formed (scylinder) and to
 				// elongate a two r cylinder (without caps)
@@ -482,9 +486,9 @@ public class Endosome {
 				&& ((vo - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))
 						/ ((so - scylinder - 4 * Math.PI
 								* Math.pow(Cell.rcyl, 2)) - 2 * Math.PI
-								* Cell.rcyl * Cell.rcyl) > Cell.rcyl / 2)) { 
-								// volume left cannot be smaller than the volume
-								// of the mincyl
+								* Cell.rcyl * Cell.rcyl) > Cell.rcyl / 2)) {
+			// volume left cannot be smaller than the volume
+			// of the mincyl
 			/*
 			 * while there is enough membrane and enough rab surface, the tubule
 			 * grows
@@ -505,7 +509,7 @@ public class Endosome {
 		/*
 		 * the volume of the vesicle is formed subtracting the volume of the
 		 * formed cylinder from the total volume idem for the area
-		 
+		 * 
 		 * From the information of vcylinder and scylinder, the organelle is
 		 * splitted in two, a sphere and tubule (case 2) or in two almost
 		 * tubules (a pice of the lateral surface must be used to close the
@@ -544,9 +548,9 @@ public class Endosome {
 		for (String content : copyMembrane.keySet()) {
 			if (!rabTropism.containsKey(content)
 					|| !rabTropism.get(content).contains(rabInTube)) {// not a
-					// specified tropism or no  tropism for the rabInTube
-				   // hence, distribute according to
-				  // the surface ratio
+				// specified tropism or no tropism for the rabInTube
+				// hence, distribute according to
+				// the surface ratio
 				this.membraneContent.put(content, copyMembrane.get(content)
 						* (sVesicle) / so);
 			} else {
@@ -953,28 +957,85 @@ public class Endosome {
 			return 0;
 	}
 
-	public int getGreen() {
-		int green = 0;
-		String rabPlot = "RabA";
+	public int getBlue() {
+		int blue = 0;
+		/*String rabPlot = "RabA";
 		if (rabContent.containsKey(rabPlot)) {
 			double gr = rabContent.get(rabPlot) / area;
 			green = (int) (255 * Math.pow(gr, (1 / 1)));
 			// System.out.println("green " + green);
 			return green;
-		} else
-			return green;
+		} else*/
+			return blue;
 	}
 
-	public int getBlue() {
-		int blue = 0;
+	public int getGreen() {
+		int green = 0;
 		String solPlot = "dextran";
 		if (solubleContent.containsKey(solPlot)) {
 			double bl = solubleContent.get(solPlot) / volume;
-			blue = (int) (255 * Math.pow(bl, (1 / 1)));
+			green = (int) (255 * Math.pow(bl, (1 / 1)));
 			// System.out.println("blue " + blue);
-			return blue;
+			return green;
 		} else
-			return blue;
+			return green;
+	}
+// Edge color coded by  Rabs
+	// RabA (5) Green (0,255,0)
+	// RabB (22) Red  (255,0,0)
+	// RabC (7) Olive (128,128,0)
+	// RabD (11) Blue (0,0,255)
+	// RabE (5) Purple (128,0,128)
+	//
+	public int getEdgeRed() {
+		int red = 0;
+		double r1 = 0;
+		double r2 = 0;
+		double r3 = 0;
+		if (rabContent.containsKey("RabB")) {
+			r1 = 255 * rabContent.get("RabB") / area;
+		}
+		if (rabContent.containsKey("RabC")) {
+			r2 = 128 * rabContent.get("RabC") / area;
+		}
+		if (rabContent.containsKey("RabE")) {
+			r3 = 128 * rabContent.get("RabE") / area;
+		}
+		red = (int) (r1 + r2 + r3);
+		// System.out.println("green " + green);
+		return red;
+	}
+
+	public int getEdgeGreen() {
+		int green = 0;
+		double g1 = 0;
+		double g2 = 0;
+
+		if (rabContent.containsKey("RabA")) {
+			g1 = 255 * rabContent.get("RabA") / area;
+		}
+		if (rabContent.containsKey("RabC")) {
+			g2 = 128 * rabContent.get("RabC") / area;
+		}
+		green = (int) (g1 + g2);
+		// System.out.println("green " + green);
+		return green;
+	}
+
+	public int getEdgeBlue() {
+		int blue = 0;
+		double b1 = 0;
+		double b2 = 0;
+
+		if (rabContent.containsKey("RabD")) {
+			b1 = 255 * rabContent.get("RabD") / area;
+		}
+		if (rabContent.containsKey("RabE")) {
+			b2 = 128 * rabContent.get("RabE") / area;
+		}
+		blue = (int) (b1 + b2);
+		// System.out.println("green " + green);
+		return blue;
 	}
 
 	/*
