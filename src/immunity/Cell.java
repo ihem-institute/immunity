@@ -35,7 +35,8 @@ public class Cell {
 	// Constructor
 	public Cell() {
 		double tMembrane = 0; // hidden constructor
-		rabCell.put(null, null);
+		rabCell.put("RabD", 2000d);
+		rabCell.put("RabC", 2000d);
 		membraneRecycle.put(null, null);
 		solubleRecycle.put(null, null);
 	}

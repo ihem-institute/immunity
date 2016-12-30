@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2016-12-27 16:06:30 UTC -->
+<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2016-12-29 18:38:58 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="15" versionDevel="95" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -101,12 +101,56 @@ Reaction scheme where the products are created from the reactants and the change
         </MiriamAnnotation>
       </Metabolite>
       <Metabolite key="Metabolite_9" name="RabDc" simulationType="reactions" compartment="Compartment_1">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Metabolite_9">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2016-12-29T13:07:26Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
       </Metabolite>
       <Metabolite key="Metabolite_11" name="RabDm" simulationType="reactions" compartment="Compartment_1">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Metabolite_11">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2016-12-29T13:07:34Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
       </Metabolite>
       <Metabolite key="Metabolite_13" name="RabCc" simulationType="reactions" compartment="Compartment_1">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Metabolite_13">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2016-12-29T13:07:21Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
       </Metabolite>
       <Metabolite key="Metabolite_15" name="RabCm" simulationType="reactions" compartment="Compartment_1">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Metabolite_15">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2016-12-29T13:07:24Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
       </Metabolite>
     </ListOfMetabolites>
     <ListOfReactions>
@@ -131,12 +175,12 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_1" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4392" name="k1" value="0.1"/>
+          <Constant key="Parameter_4395" name="k1" value="1e-007"/>
         </ListOfConstants>
         <KineticLaw function="Function_13">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="Parameter_4392"/>
+              <SourceParameter reference="Parameter_4395"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_3"/>
@@ -166,12 +210,12 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4391" name="k1" value="0.001"/>
+          <Constant key="Parameter_4394" name="k1" value="1e-007"/>
         </ListOfConstants>
         <KineticLaw function="Function_13">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="Parameter_4391"/>
+              <SourceParameter reference="Parameter_4394"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_7"/>
@@ -203,10 +247,10 @@ Reaction scheme where the products are created from the reactants and the change
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
           <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[Rab5-7Conversion]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab5-7Conversion],ParameterGroup=Parameters,Parameter=k1" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab5-7Conversion],ParameterGroup=Parameters,Parameter=k1" value="1e-007" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[Rab22-11Conversion]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab22-11Conversion],ParameterGroup=Parameters,Parameter=k1" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab22-11Conversion],ParameterGroup=Parameters,Parameter=k1" value="1e-007" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
@@ -593,4 +637,17 @@ Reaction scheme where the products are created from the reactants and the change
   </ListOfPlots>
   <GUI>
   </GUI>
+  <SBMLReference file="rabs_conversion.xml">
+    <SBMLMap SBMLid="Rab22_11Conversion" COPASIkey="Reaction_1"/>
+    <SBMLMap SBMLid="Rab5_7Conversion" COPASIkey="Reaction_0"/>
+    <SBMLMap SBMLid="RabAc" COPASIkey="Metabolite_1"/>
+    <SBMLMap SBMLid="RabAm" COPASIkey="Metabolite_3"/>
+    <SBMLMap SBMLid="RabBc" COPASIkey="Metabolite_5"/>
+    <SBMLMap SBMLid="RabBm" COPASIkey="Metabolite_7"/>
+    <SBMLMap SBMLid="RabCc" COPASIkey="Metabolite_13"/>
+    <SBMLMap SBMLid="RabCm" COPASIkey="Metabolite_15"/>
+    <SBMLMap SBMLid="RabDc" COPASIkey="Metabolite_9"/>
+    <SBMLMap SBMLid="RabDm" COPASIkey="Metabolite_11"/>
+    <SBMLMap SBMLid="compartment" COPASIkey="Compartment_1"/>
+  </SBMLReference>
 </COPASI>

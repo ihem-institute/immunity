@@ -83,7 +83,6 @@ public class Endosome {
 		rabCompatibility.put("RabCRabE", 0.1d);// Rab11/Rabsecretory7 0.1
 		// Rabs are selected to form the tubule according to this parameter
 		// 1-tubule tropism, 0-low tubule tropism
-		// List<String> strings = List.of("foo", "bar", "baz");
 		tubuleTropism.put("RabA", 0.5d);
 		tubuleTropism.put("RabB", 0.5d);
 		tubuleTropism.put("RabC", 0.5d);
@@ -92,21 +91,29 @@ public class Endosome {
 		// CONTENT IS DISTRIBUTED according to three possibilities
 		// 1-always in tubule , 0-sphere tropism, Rabs goes to tubule when
 		// the tubule is formed for that Rab.
-		// List<String> strings = Arrays.asList("foo", "bar", "baz");
 		rabTropism.put("Tf", Arrays.asList("RabB", "RabC"));
 		rabTropism.put("mvb", Arrays.asList("0"));
 		// rabTropism.put("dextran", Arrays.asList("1"));
-		/*
-		 * TODO: agregar todas las combinaciones. No s� por qu� tienen que
-		 * estar aqu�. Me da error si las saco fuera del constructur y en
-		 * realidad ser�an propiedades de la cellula y no de los endosomas
-		 */
 		this.heading = Math.random() * 360d;
-
 		cellMembrane = 0;
 		cellRab.put("RabA", 0d);
 	}
 
+	@ScheduledMethod(start = 1, interval = 1)
+	public void step() {
+		recycle();
+		uptake();
+		size();
+		changeDirection();
+		moveTowards();
+		fusion();
+		// printEndosomes();
+		split();
+		internalVesicle();
+		if (Math.random() < 0.001)
+			rabConversion();
+
+	}
 	private double distance(Endosome endosome, MT obj) {
 
 		// If the line passes through two points P1=(x1,y1) and P2=(x2,y2) then
@@ -130,22 +137,6 @@ public class Endosome {
 		return distance;
 	}
 
-	@ScheduledMethod(start = 1, interval = 1)
-	public void step() {
-		recycle();
-		uptake();
-		size();
-		changeDirection();
-		moveTowards();
-		fusion();
-		// printEndosomes();
-		split();
-		internalVesicle();
-		if (Math.random() < 0.01)
-			rabConversion();
-
-	}
-
 	public void printEndosomes() {
 		List<Endosome> endosomes = new ArrayList<Endosome>();
 		for (Object obj : grid.getObjects()) {
@@ -164,13 +155,15 @@ public class Endosome {
 		RabConversion rabConversion = RabConversion.getInstance();
 
 		Set<String> metabolites = RabConversion.getInstance().getMetabolites();
-		System.out.println("METABOLITES INITIAL " + metabolites);
+		//System.out.println("METABOLITES INITIAL " + metabolites);
 
 		// metabolites.add("RabAm");
 		// metabolites.add("RabAc");
 		// metabolites.add("RabBm");
 		// metabolites.add("RabBc");
+
 		for (String met : metabolites) {
+
 			if (met.endsWith("m")) {
 				String Rab = met.substring(0, 4);
 				if (rabContent.containsKey(Rab)) {
@@ -178,8 +171,6 @@ public class Endosome {
 							Math.abs(Math.round(rabContent.get(Rab))));
 					System.out.println("COPASI INITIAl " + met
 							+ rabContent.get(Rab));
-					// System.out.println("COPASI INITIAL RABB  " +
-					// rabContent.get("RabB"));
 				} else {
 					rabConversion.setInitialConcentration(met, 0.0);
 					System.out.println("COPASI INITIAL " + met + 0.0);
@@ -188,15 +179,15 @@ public class Endosome {
 			if (met.endsWith("c")) {
 				String Rab = met.substring(0, 4);
 				if (Cell.getInstance().rabCell.containsKey(Rab)) {
-					rabConversion.setInitialConcentration(met, Math.abs(Math
-							.round(Cell.getInstance().rabCell.get(Rab))));
+					rabConversion.setInitialConcentration(met, 
+							Math.abs(Math.round(Cell.getInstance().rabCell.get(Rab))));
 					System.out.println("COPASI INITIAL " + met
 							+ Cell.getInstance().rabCell.get(Rab));
 				} else {
 					rabConversion.setInitialConcentration(met, 0.0);
 					System.out.println("COPASI INITIAL " + met + 0.0);
 
-					// System.out.println("COPASI INITIAL RABA  " + 0.0);
+
 				}
 			}
 		}

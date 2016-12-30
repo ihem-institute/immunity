@@ -724,3 +724,7 @@ java.lang.IllegalArgumentException: Color parameter outside of expected range: R
 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
 	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
 	at java.lang.Thread.run(Thread.java:745)
+INFO  [AWT-EventQueue-0] 2016-12-29 15:45:53,923 repast.simphony.ui.widget.MovieMaker - Movie capture has started metaData=[STATUS]
+INFO  [AWT-EventQueue-0] 2016-12-29 15:45:54,239 repast.simphony.ui.widget.MovieMaker - Movie capture has finished metaData=[STATUS]
+INFO  [AWT-EventQueue-0] 2016-12-29 15:46:22,378 repast.simphony.ui.widget.MovieMaker - Movie capture has started metaData=[STATUS]
+INFO  [AWT-EventQueue-0] 2016-12-29 15:46:48,440 repast.simphony.ui.widget.MovieMaker - Movie capture has finished metaData=[STATUS]

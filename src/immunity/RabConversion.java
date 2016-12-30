@@ -233,9 +233,7 @@ public class RabConversion {
 			m.refreshInitialValue();
 		}
 	}
-	
-	
-	
+		
 	public void runTimeCourse() {
 		// reapply the initial values
 		model.applyInitialValues();
@@ -333,6 +331,5 @@ public class RabConversion {
 		Set<String> metabolites =  nameMetabs.keySet();
 		return metabolites;
 	}
-		
-
+	
 }
