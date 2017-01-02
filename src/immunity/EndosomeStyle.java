@@ -2,6 +2,9 @@ package immunity;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 import javax.media.opengl.GL2;
 
@@ -40,15 +43,16 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	@Override
 	public Color getColor(Endosome object) {
 		// color code for contents
-		int red = object.getRed();
-		int green = object.getGreen();
-		int blue = object.getBlue();
-		if (red == 0 && green == 0 && blue == 0){
-			red =255;
-			green = 255;
-			blue = 255;
-		}
-		return new Color(red, green, blue);
+		double red = object.getRed();
+		double green = object.getGreen();
+		double blue = object.getBlue();
+		ArrayList<Double> colors = new ArrayList<Double>();
+		colors.add(red);
+		colors.add(green);
+		colors.add(blue);
+		//(1 - max (list g r b)) ;
+		Double corr = 1-Collections.max(colors);
+		return new Color ((int)((red + corr) * 255), (int)((green + corr) * 255), (int)((blue + corr) * 255));
 	}
 
 	@Override
@@ -59,10 +63,17 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	@Override
 	public Color getBorderColor(Endosome object) {
 		// color code for rab contents
-		int red = object.getEdgeRed();
-		int green = object.getEdgeGreen();
-		int blue = object.getEdgeBlue();
-		return new Color(red, green, blue);
+		double red = object.getEdgeRed();
+		double green = object.getEdgeGreen();
+		double blue = object.getEdgeBlue();
+		ArrayList<Double> colors = new ArrayList<Double>();
+		colors.add(red);
+		colors.add(green);
+		colors.add(blue);
+
+		//(1 - max (list g r b)) ;
+		Double corr = 1-Collections.max(colors);
+		return new Color ((int)((red + corr) * 255), (int)((green + corr) * 255), (int)((blue + corr) * 255));
 	}
 
 	@Override

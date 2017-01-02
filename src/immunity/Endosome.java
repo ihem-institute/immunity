@@ -937,20 +937,19 @@ public class Endosome {
 
 	}
 
-	public int getRed() {
-		int red = 0;
+	public double getRed() {
+		//double red = 0.0;
 		String memPlot = "Tf";
 		if (membraneContent.containsKey(memPlot)) {
-			double rd = membraneContent.get(memPlot) / area;
-			red = (int) (255 * Math.pow(rd, (1 / 1)));
+			double red = membraneContent.get(memPlot) / area;
 			// System.out.println("red " + red);
 			return red;
 		} else
 			return 0;
 	}
 
-	public int getBlue() {
-		int blue = 0;
+	public double getBlue() {
+		double blue = 0;
 		/*String rabPlot = "RabA";
 		if (rabContent.containsKey(rabPlot)) {
 			double gr = rabContent.get(rabPlot) / area;
@@ -961,16 +960,16 @@ public class Endosome {
 			return blue;
 	}
 
-	public int getGreen() {
-		int green = 0;
+	public double getGreen() {
+		//double green = 0;
 		String solPlot = "dextran";
 		if (solubleContent.containsKey(solPlot)) {
-			double bl = solubleContent.get(solPlot) / volume;
-			green = (int) (255 * Math.pow(bl, (1 / 1)));
+			double green = solubleContent.get(solPlot) / volume;
+			//green = (int) (255 * Math.pow(bl, (1 / 1)));
 			// System.out.println("blue " + blue);
 			return green;
 		} else
-			return green;
+			return 0;
 	}
 // Edge color coded by  Rabs
 	// RabA (5) Green (0,255,0)
@@ -979,53 +978,53 @@ public class Endosome {
 	// RabD (11) Blue (0,0,255)
 	// RabE (5) Purple (128,0,128)
 	//
-	public int getEdgeRed() {
-		int red = 0;
+	public double getEdgeRed() {
+		double red = 0;
 		double r1 = 0;
 		double r2 = 0;
 		double r3 = 0;
 		if (rabContent.containsKey("RabB")) {
-			r1 = 255 * rabContent.get("RabB") / area;
+			r1 = rabContent.get("RabB") / area;
 		}
 		if (rabContent.containsKey("RabC")) {
-			r2 = 128 * rabContent.get("RabC") / area;
+			r2 = 0.5 * rabContent.get("RabC") / area;
 		}
 		if (rabContent.containsKey("RabE")) {
-			r3 = 128 * rabContent.get("RabE") / area;
+			r3 = 0.5 * rabContent.get("RabE") / area;
 		}
-		red = (int) (r1 + r2 + r3);
+		red = r1 + r2 + r3;
 		// System.out.println("green " + green);
 		return red;
 	}
 
-	public int getEdgeGreen() {
-		int green = 0;
+	public double getEdgeGreen() {
+		double green = 0;
 		double g1 = 0;
 		double g2 = 0;
 
 		if (rabContent.containsKey("RabA")) {
-			g1 = 255 * rabContent.get("RabA") / area;
+			g1 = rabContent.get("RabA") / area;
 		}
 		if (rabContent.containsKey("RabC")) {
-			g2 = 128 * rabContent.get("RabC") / area;
+			g2 = 0.5 * rabContent.get("RabC") / area;
 		}
-		green = (int) (g1 + g2);
+		green = g1 + g2;
 		// System.out.println("green " + green);
 		return green;
 	}
 
-	public int getEdgeBlue() {
-		int blue = 0;
+	public double getEdgeBlue() {
+		double blue = 0;
 		double b1 = 0;
 		double b2 = 0;
 
 		if (rabContent.containsKey("RabD")) {
-			b1 = 255 * rabContent.get("RabD") / area;
+			b1 = rabContent.get("RabD") / area;
 		}
 		if (rabContent.containsKey("RabE")) {
-			b2 = 128 * rabContent.get("RabE") / area;
+			b2 = 0.5 * rabContent.get("RabE") / area;
 		}
-		blue = (int) (b1 + b2);
+		blue = b1 + b2;
 		// System.out.println("green " + green);
 		return blue;
 	}
