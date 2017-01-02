@@ -114,6 +114,7 @@ public class Endosome {
 			rabConversion();
 
 	}
+
 	private double distance(Endosome endosome, MT obj) {
 
 		// If the line passes through two points P1=(x1,y1) and P2=(x2,y2) then
@@ -155,61 +156,77 @@ public class Endosome {
 		RabConversion rabConversion = RabConversion.getInstance();
 
 		Set<String> metabolites = RabConversion.getInstance().getMetabolites();
-		//System.out.println("METABOLITES INITIAL " + metabolites);
+		// System.out.println("METABOLITES INITIAL " + metabolites);
 
 		// metabolites.add("RabAm");
 		// metabolites.add("RabAc");
 		// metabolites.add("RabBm");
 		// metabolites.add("RabBc");
-
+		HashMap<String, Double> localM = new HashMap<String, Double>();
+		for (String met : metabolites) {
+			localM.put(met, 0.0);
+		}
 		for (String met : metabolites) {
 
 			if (met.endsWith("m")) {
 				String Rab = met.substring(0, 4);
 				if (rabContent.containsKey(Rab)) {
-					rabConversion.setInitialConcentration(met,
-							Math.abs(Math.round(rabContent.get(Rab))));
-					System.out.println("COPASI INITIAl " + met
-							+ rabContent.get(Rab));
+					double metValue = Math.abs(Math.round(rabContent.get(Rab)));
+					rabConversion.setInitialConcentration(met, metValue);
+					localM.put(met, metValue);
+					// System.out.println("COPASI INITIAl " + met
+					// + rabContent.get(Rab));
 				} else {
 					rabConversion.setInitialConcentration(met, 0.0);
-					System.out.println("COPASI INITIAL " + met + 0.0);
+					// System.out.println("COPASI INITIAL " + met + 0.0);
 				}
 			}
 			if (met.endsWith("c")) {
 				String Rab = met.substring(0, 4);
 				if (Cell.getInstance().rabCell.containsKey(Rab)) {
-					rabConversion.setInitialConcentration(met, 
-							Math.abs(Math.round(Cell.getInstance().rabCell.get(Rab))));
-					System.out.println("COPASI INITIAL " + met
-							+ Cell.getInstance().rabCell.get(Rab));
+					double metValue = Math
+							.abs(Math.round(Cell.getInstance().rabCell.get(Rab)));
+					rabConversion.setInitialConcentration(met, metValue);
+					localM.put(met, metValue);
+					// System.out.println("COPASI INITIAL " + met
+					// + Cell.getInstance().rabCell.get(Rab));
 				} else {
 					rabConversion.setInitialConcentration(met, 0.0);
-					System.out.println("COPASI INITIAL " + met + 0.0);
-
+					// System.out.println("COPASI INITIAL " + met + 0.0);
 
 				}
 			}
 		}
-
+		double sm1 = localM.get("RabAm");
+		double sc1 = localM.get("RabDc");
+		double sm2 = localM.get("RabBm");
+		double sc2 = localM.get("RabCc");
+		if ((sm1 == 0 || sc1 == 0) && (sm2 == 0 || sc2 == 0))
+			return;
+		System.out.println("COPASI INITIAL " + localM);
 		rabConversion.runTimeCourse();
 		for (String met : metabolites) {
 			if (met.endsWith("m")) {
 				String Rab = met.substring(0, 4);
-				rabContent.put(Rab, (double) Math.abs(Math.round(rabConversion
-						.getConcentration(met))));
-				System.out.println("COPASI FINAL " + met + rabContent.get(Rab));
+				double metValue = (double) Math.abs(Math.round(rabConversion
+						.getConcentration(met)));
+				rabContent.put(Rab, metValue);
+				localM.put(met, metValue);
+				// System.out.println("COPASI FINAL " + met +
+				// rabContent.get(Rab));
 			}
 			if (met.endsWith("c")) {
 				String Rab = met.substring(0, 4);
-				Cell.getInstance().rabCell.put(Rab, (double) Math.abs(Math
-						.round(rabConversion.getConcentration(met))));
-				System.out.println("COPASI FINAL " + met
-						+ Cell.getInstance().rabCell.get(Rab));
+				double metValue = (double) Math.abs(Math.round(rabConversion
+						.getConcentration(met)));
+				Cell.getInstance().rabCell.put(Rab, metValue);
+				localM.put(met, metValue);
+				// System.out.println("COPASI FINAL " + met
+				// + Cell.getInstance().rabCell.get(Rab));
 			}
 		}
 
-		System.out.println("METABOLITES FINAL " + metabolites);
+		System.out.println("COPASI FINAL " + localM);
 	}
 
 	public List<MT> associateMt() {
@@ -298,7 +315,7 @@ public class Endosome {
 				sum = sum + comp;
 			}
 		}
-		// compatibility is a value between 0 and 1.  Fusion
+		// compatibility is a value between 0 and 1. Fusion
 		// occurs with a probability proportional to th compatibility
 		return Math.random() < sum;
 	}
@@ -927,18 +944,18 @@ public class Endosome {
 	 */
 	public String getMvb() {
 		if (solubleContent.containsKey("mvb")) {
-			if (solubleContent.get("mvb") > 0) {
+			if (solubleContent.get("mvb") > 0.9) {
 				int i = solubleContent.get("mvb").intValue();
 				return String.valueOf(i);
 			} else
-				return "";
+				return null;
 		} else
-			return "";
+			return null;
 
 	}
 
 	public double getRed() {
-		//double red = 0.0;
+		// double red = 0.0;
 		String memPlot = "Tf";
 		if (membraneContent.containsKey(memPlot)) {
 			double red = membraneContent.get(memPlot) / area;
@@ -950,30 +967,30 @@ public class Endosome {
 
 	public double getBlue() {
 		double blue = 0;
-		/*String rabPlot = "RabA";
-		if (rabContent.containsKey(rabPlot)) {
-			double gr = rabContent.get(rabPlot) / area;
-			green = (int) (255 * Math.pow(gr, (1 / 1)));
-			// System.out.println("green " + green);
-			return green;
-		} else*/
-			return blue;
+		/*
+		 * String rabPlot = "RabA"; if (rabContent.containsKey(rabPlot)) {
+		 * double gr = rabContent.get(rabPlot) / area; green = (int) (255 *
+		 * Math.pow(gr, (1 / 1))); // System.out.println("green " + green);
+		 * return green; } else
+		 */
+		return blue;
 	}
 
 	public double getGreen() {
-		//double green = 0;
+		// double green = 0;
 		String solPlot = "dextran";
 		if (solubleContent.containsKey(solPlot)) {
 			double green = solubleContent.get(solPlot) / volume;
-			//green = (int) (255 * Math.pow(bl, (1 / 1)));
+			// green = (int) (255 * Math.pow(bl, (1 / 1)));
 			// System.out.println("blue " + blue);
 			return green;
 		} else
 			return 0;
 	}
-// Edge color coded by  Rabs
+
+	// Edge color coded by Rabs
 	// RabA (5) Green (0,255,0)
-	// RabB (22) Red  (255,0,0)
+	// RabB (22) Red (255,0,0)
 	// RabC (7) Olive (128,128,0)
 	// RabD (11) Blue (0,0,255)
 	// RabE (5) Purple (128,0,128)

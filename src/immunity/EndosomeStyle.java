@@ -16,6 +16,7 @@ import saf.v3d.render.RenderState;
 import saf.v3d.scene.Position;
 import saf.v3d.scene.VShape;
 import saf.v3d.scene.VSpatial;
+
 //import smodel.Bacteria.State;
 
 public class EndosomeStyle implements StyleOGL2D<Endosome> {
@@ -28,15 +29,18 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		this.factory = factory;
 
 	}
-	
+
 	@Override
 	public VSpatial getVSpatial(Endosome object, VSpatial spatial) {
-/*shape is generated as a relationship between area and volume. For a sphere
- * the s^3/v^2 is 113.  For a cylinder is larger than this. For the minimum cylinder is 169.6
-*/		double s = object.getArea();
+		/*
+		 * shape is generated as a relationship between area and volume. For a
+		 * sphere the s^3/v^2 is 113. For a cylinder is larger than this. For
+		 * the minimum cylinder is 169.6
+		 */double s = object.getArea();
 		double v = object.getVolume();
-		int svr =(int) ((s * s * s) / (v * v)/ (113d)); // should be 1 for a sphere
-		VSpatial createRectangle = this.factory.createRectangle(5* svr, 5);
+		int svr = (int) ((s * s * s) / (v * v) / (113d)); // should be 1 for a
+															// sphere
+		VSpatial createRectangle = this.factory.createRectangle(5 * svr, 5);
 		return createRectangle;
 	}
 
@@ -50,9 +54,10 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		colors.add(red);
 		colors.add(green);
 		colors.add(blue);
-		//(1 - max (list g r b)) ;
-		Double corr = 1-Collections.max(colors);
-		return new Color ((int)((red + corr) * 255), (int)((green + corr) * 255), (int)((blue + corr) * 255));
+		// (1 - max (list g r b)) ;
+		Double corr = 1 - Collections.max(colors);
+		return new Color((int) ((red + corr) * 255),
+				(int) ((green + corr) * 255), (int) ((blue + corr) * 255));
 	}
 
 	@Override
@@ -71,14 +76,15 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		colors.add(green);
 		colors.add(blue);
 
-		//(1 - max (list g r b)) ;
-		Double corr = 1-Collections.max(colors);
-		return new Color ((int)((red + corr) * 255), (int)((green + corr) * 255), (int)((blue + corr) * 255));
+		// (1 - max (list g r b)) ;
+		Double corr = 1 - Collections.max(colors);
+		return new Color((int) ((red + corr) * 255),
+				(int) ((green + corr) * 255), (int) ((blue + corr) * 255));
 	}
 
 	@Override
 	public float getRotation(Endosome object) {
-		//set in a way that object move along its large axis
+		// set in a way that object move along its large axis
 		return (float) -object.getHeading();
 	}
 
@@ -91,10 +97,11 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	@Override
 	public String getLabel(Endosome object) {
-		//the label is the number of internal vesicles (Multi Vesicular Body) 
-		//in the endosome
+		// the label is the number of internal vesicles (Multi Vesicular Body)
+		// in the endosome
 		return object.getMvb();
 	}
+
 	@Override
 	public Font getLabelFont(Endosome object) {
 		return new Font("sansserif", Font.PLAIN, 14);
