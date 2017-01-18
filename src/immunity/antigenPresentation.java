@@ -26,8 +26,8 @@ import org.COPASI.CTrajectoryProblem;
 import org.COPASI.CTrajectoryTask;
 import org.COPASI.ReportItemVector;
 
-public class RabConversion {
-	private static RabConversion instance = null;
+public class antigenPresentation {
+	private static antigenPresentation instance = null;
 	private CCopasiDataModel dataModel;
 	private CModel model;
     private CReportDefinition report;
@@ -35,15 +35,15 @@ public class RabConversion {
 	private HashMap<String, CMetab> nameMetabs = new HashMap<String, CMetab>();
 	//private Endosome Endosome;
 	
-	public static RabConversion getInstance () {
+	public static antigenPresentation getInstance () {
 		if (instance == null) {
-			instance = new RabConversion();
+			instance = new antigenPresentation();
 		}
 		
 		return instance;
 	}
 	
-	protected RabConversion() {
+	protected antigenPresentation() {
 		System.out.println("Instantiation Once");
 		
 		// to defeat instantiation
@@ -52,7 +52,7 @@ public class RabConversion {
 		dataModel = CCopasiRootContainer.addDatamodel();
         assert CCopasiRootContainer.getDatamodelList().size() == 1;
         
-        String modelFileName = "rabs_conversion.cps";
+        String modelFileName = "antigenPresentation.cps";
         
         try
         {
@@ -207,11 +207,11 @@ public class RabConversion {
         CTrajectoryProblem problem = (CTrajectoryProblem)trajectoryTask.getProblem();
 
         // simulate 600 steps
-        problem.setStepNumber(400);
+        problem.setStepNumber(50);
         // start at time 0
         dataModel.getModel().setInitialTime(0.0);
         // simulate a duration of 60 time units
-        problem.setDuration(400);
+        problem.setDuration(50);
         // tell the problem to actually generate time series data
         problem.setTimeSeriesRequested(true);
 

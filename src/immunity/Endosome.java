@@ -93,7 +93,7 @@ public class Endosome {
 		// the tubule is formed for that Rab.
 		rabTropism.put("Tf", Arrays.asList("RabB", "RabC"));
 		rabTropism.put("mvb", Arrays.asList("0"));
-		// rabTropism.put("dextran", Arrays.asList("1"));
+		// rabTropism.put("ova", Arrays.asList("1"));
 		this.heading = Math.random() * 360d;
 		cellMembrane = 0;
 		cellRab.put("RabA", 0d);
@@ -871,7 +871,7 @@ public class Endosome {
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 		rabContent.put("RabA", Cell.sEndo);
 		membraneContent.put("Tf", Cell.sEndo);
-		solubleContent.put("dextran", 0.0d);
+		solubleContent.put("ova",Cell.vEndo);
 		Context<Object> context = ContextUtils.getContext(this);
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
 				solubleContent);
@@ -978,7 +978,7 @@ public class Endosome {
 
 	public double getGreen() {
 		// double green = 0;
-		String solPlot = "dextran";
+		String solPlot = "ova";
 		if (solubleContent.containsKey(solPlot)) {
 			double green = solubleContent.get(solPlot) / volume;
 			// green = (int) (255 * Math.pow(bl, (1 / 1)));
