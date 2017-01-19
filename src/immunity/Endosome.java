@@ -49,6 +49,8 @@ public class Endosome {
 	double heading = Math.random() * 360d; // initial value, but should change
 	double mvb = 0; // number of internal vesices
 	double cellMembrane = 0;
+	List<String> membraneMet = Arrays.asList("mHCI", "mHCI-pept", "p2");
+	List<String> solubleMet = Arrays.asList("ova", "preP", "pept", "p1");
 	HashMap<String, Double> cellRab = new HashMap<String, Double>();
 	// ArrayList<Element> areaElement = new ArrayList<Element>();
 	// ArrayList<Element> volumeElement = new ArrayList<Element>();
@@ -93,6 +95,10 @@ public class Endosome {
 		// the tubule is formed for that Rab.
 		rabTropism.put("Tf", Arrays.asList("RabB", "RabC"));
 		rabTropism.put("mvb", Arrays.asList("0"));
+		rabTropism.put("mHCI", Arrays.asList("RabA", "RabB", "RabC"));
+		rabTropism.put("mHCI-pept", Arrays.asList("RabA", "RabB", "RabC"));
+		rabTropism.put("p2", Arrays.asList("RabC", "RabE"));
+		
 		// rabTropism.put("ova", Arrays.asList("1"));
 		this.heading = Math.random() * 360d;
 		cellMembrane = 0;
@@ -112,6 +118,8 @@ public class Endosome {
 		internalVesicle();
 		if (Math.random() < 0.001)
 			rabConversion();
+		if (Math.random() < 0.001)
+			antigenPresentation();
 
 	}
 
@@ -149,6 +157,81 @@ public class Endosome {
 			// System.out.println(endosome1.rabContent+" " +
 			// endosome1.membraneContent+" " + endosome1.solubleContent);
 		}
+	}
+
+	private void antigenPresentation() {
+
+		AntigenPresentation antigenPresentation = AntigenPresentation
+				.getInstance();
+
+		Set<String> metabolites = antigenPresentation.getInstance()
+				.getMetabolites();
+		// System.out.println("METABOLITES INITIAL " + metabolites);
+
+		// metabolites.add("RabAm");
+		// metabolites.add("RabAc");
+		// metabolites.add("RabBm");
+		// metabolites.add("RabBc");
+		HashMap<String, Double> localM = new HashMap<String, Double>();
+		for (String met : metabolites) {
+			localM.put(met, 0.0);
+		}
+		for (String met : metabolites) {
+
+			if (membraneContent.containsKey(met)) {
+				double metValue = Math
+						.abs(Math.round(membraneContent.get(met)));
+				localM.put(met, metValue);
+				antigenPresentation.setInitialConcentration(met, metValue);
+			} else if (solubleContent.containsKey(met)) {
+				double metValue = Math.abs(Math.round(solubleContent.get(met)));
+				localM.put(met, metValue);
+				antigenPresentation.setInitialConcentration(met, metValue);
+			} else {
+				antigenPresentation.setInitialConcentration(met, 0.0);
+				// System.out.println("COPASI INITIAL " + met + 0.0);
+			}
+		}
+
+/*		double sm1 = localM.get("ova");
+		double sc1 = localM.get("p1");
+		double sm2 = localM.get("preP");
+		double sc2 = localM.get("p2");
+		if ((sm1 == 0 || sc1 == 0) && (sm2 == 0 || sc2 == 0))
+			return;*/
+		System.out.println("AntigenPresentation initial " + localM);
+		antigenPresentation.runTimeCourse();
+		for (String met : metabolites) {
+/*			if (membraneContent.containsKey(met)) {
+				double metValue = (double) Math.abs(Math
+						.round(antigenPresentation.getConcentration(met)));
+				localM.put(met, metValue);
+				membraneContent.put(met, metValue);
+			} else if (solubleContent.containsKey(met)) {
+				double metValue = (double) Math.abs(Math
+						.round(antigenPresentation.getConcentration(met)));
+				localM.put(met, metValue);
+				solubleContent.put(met, metValue);
+			}
+			else {*/
+				if (membraneMet.contains(met)) {
+					double metValue = (double) Math.abs(Math
+							.round(antigenPresentation.getConcentration(met)));
+					localM.put(met, metValue);
+					membraneContent.put(met, metValue);
+				}
+				else if (solubleMet.contains(met)){
+					double metValue = (double) Math.abs(Math
+							.round(antigenPresentation.getConcentration(met)));
+					localM.put(met, metValue);
+					solubleContent.put(met, metValue);
+				}
+				else 	System.out.println("Met not found in " + membraneMet + " "+solubleMet +" " +met);
+			}
+
+
+		
+		System.out.println("AntigenPresentation final " + localM);
 	}
 
 	private void rabConversion() {
@@ -871,7 +954,7 @@ public class Endosome {
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 		rabContent.put("RabA", Cell.sEndo);
 		membraneContent.put("Tf", Cell.sEndo);
-		solubleContent.put("ova",Cell.vEndo);
+		solubleContent.put("ova", Cell.vEndo);
 		Context<Object> context = ContextUtils.getContext(this);
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
 				solubleContent);

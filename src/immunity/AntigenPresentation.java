@@ -26,8 +26,8 @@ import org.COPASI.CTrajectoryProblem;
 import org.COPASI.CTrajectoryTask;
 import org.COPASI.ReportItemVector;
 
-public class antigenPresentation {
-	private static antigenPresentation instance = null;
+public class AntigenPresentation {
+	private static AntigenPresentation instance = null;
 	private CCopasiDataModel dataModel;
 	private CModel model;
     private CReportDefinition report;
@@ -35,15 +35,15 @@ public class antigenPresentation {
 	private HashMap<String, CMetab> nameMetabs = new HashMap<String, CMetab>();
 	//private Endosome Endosome;
 	
-	public static antigenPresentation getInstance () {
+	public static AntigenPresentation getInstance () {
 		if (instance == null) {
-			instance = new antigenPresentation();
+			instance = new AntigenPresentation();
 		}
 		
 		return instance;
 	}
 	
-	protected antigenPresentation() {
+	protected AntigenPresentation() {
 		System.out.println("Instantiation Once");
 		
 		// to defeat instantiation
@@ -324,7 +324,7 @@ public class antigenPresentation {
 			CMetab m = nameMetabs.get(name);
 			d = m.getConcentration();
 		}
-		//System.out.println("COPASI       "+ name + d);
+		//System.out.println("FINAL ANTPR       "+ name + d);
 		return d;
 	}
 	public Set<String> getMetabolites(){

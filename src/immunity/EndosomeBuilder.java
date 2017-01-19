@@ -112,6 +112,7 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			rabContent.put("RabD", 4d * Math.PI * 30d * 30d);
 			membraneContent.put("Tf", 0.0d);
 			solubleContent.put("ova", 0.0d);
+			solubleContent.put("p1", 4d / 3d * Math.PI * 30d * 30d * 30d);
 			context.add(new Endosome(space, grid, rabContent, membraneContent,
 					solubleContent));
 			System.out.println(membraneContent + " " + solubleContent
@@ -126,6 +127,8 @@ public class EndosomeBuilder implements ContextBuilder<Object> {
 			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 			rabContent.put("RabE", 4d * Math.PI * 30d * 30d);
 			membraneContent.put("Tf", 0.0d);
+			membraneContent.put("mHCI", 4d * Math.PI * 30d * 30d);
+			membraneContent.put("p2", 4d * Math.PI * 30d * 30d);
 			solubleContent.put("ova", 0.0d);
 			context.add(new Endosome(space, grid, rabContent, membraneContent,
 					solubleContent));
