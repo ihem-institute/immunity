@@ -23,6 +23,8 @@ import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.parameter.Parameters;
 import repast.simphony.query.space.continuous.ContinuousWithin;
+import repast.simphony.query.space.grid.GridCell;
+import repast.simphony.query.space.grid.GridCellNgh;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.space.SpatialMath;
 import repast.simphony.space.continuous.ContinuousSpace;
@@ -62,6 +64,7 @@ public class Endosome {
 	HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 	HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 	HashMap<String, Double> mtTropism = new HashMap<String, Double>();
+
 	// constructor of endosomes with grid, space and a set of Rabs, membrane
 	// contents,
 	// and volume contents.
@@ -116,7 +119,8 @@ public class Endosome {
 		size();
 		changeDirection();
 		moveTowards();
-		fusion();
+		tether();
+		if (Math.random() < 0.01) fusion();
 		// printEndosomes();
 		split();
 		internalVesicle();
@@ -338,16 +342,21 @@ public class Endosome {
 			mts = associateMt();
 		}
 		int mtDir = 0;
-				mtDir = mtDirection();
+		/*
+		 * mtDirection decides if the endosome is going to muve to the (-) end
+		 * of the MT (dyneine like or to the plus end (kinesine like). -1 goes
+		 * to the nucleus, 1 to the PM
+		 */
+		mtDir = mtDirection();
 		for (MT mt : mts) {
 			double dist = distance(this, mt);
 			if (dist < this.size / 30d) {
 				this.heading = -mt.getMtheading() + 180f;
 				NdPoint myPoint = space.getLocation(this);
-				double x = myPoint.getX()
-						-mtDir * Math.cos((heading - 90) * 2d * Math.PI / 360d) * dist;
-				double y = myPoint.getY()
-						-mtDir * Math.sin((heading - 90) * 2d * Math.PI / 360d) * dist;
+				double x = myPoint.getX() - mtDir
+						* Math.cos((heading - 90) * 2d * Math.PI / 360d) * dist;
+				double y = myPoint.getY() - mtDir
+						* Math.sin((heading - 90) * 2d * Math.PI / 360d) * dist;
 				if (y > 50 || y < 0) {
 					heading = -heading;
 					y = 0;
@@ -405,7 +414,38 @@ public class Endosome {
 		return Math.random() < sum;
 	}
 
-	// HASTA AC�
+	public void tether() {
+		GridPoint pt = grid.getLocation(this);
+		GridCellNgh<Endosome> nghCreator = new GridCellNgh<Endosome>(grid, pt,
+				Endosome.class, 1, 1);
+
+		List<Endosome> allEndosomes = new ArrayList<Endosome>();
+		List<GridCell<Endosome>> cellList = nghCreator.getNeighborhood(true);
+		for (GridCell<Endosome> gr : cellList) {
+			// include if object is an endosome smaller than "this"
+			// and is compatible
+			for (Endosome end : gr.items()) {
+				allEndosomes.add(end);
+			}
+		}
+		List<Endosome> endosomesToTether = new ArrayList<Endosome>();
+		for (Endosome end : allEndosomes) {
+			if (compatibles(this, (Endosome) end)) {
+				endosomesToTether.add(end);
+			}
+		}
+		Endosome largest = this;
+		for (Endosome end : endosomesToTether) {
+			if (end.size > largest.size) {
+				largest = end;
+			}
+		}
+		for (Endosome end : endosomesToTether) {
+			end.heading = largest.heading;
+			end.speed = largest.speed;
+			// System.out.println(endosomes_to_delete);
+		}
+	}
 
 	public void fusion() {
 		GridPoint pt = grid.getLocation(this);
@@ -987,6 +1027,11 @@ public class Endosome {
 
 	}
 
+	/*
+	 * mtDirection decides if the endosome is going to muve to the (-) end of
+	 * the MT (dyneine like or to the plus end (kinesine like). -1 goes to the
+	 * nucleus, 1 to the PM
+	 */
 	public int mtDirection() {
 		double mtd = 0d;
 		int mtDirection = 0;
