@@ -61,10 +61,10 @@ public class Endosome {
 	HashMap<String, Double> rabContent = new HashMap<String, Double>();
 	HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 	HashMap<String, Double> solubleContent = new HashMap<String, Double>();
-
-	// constructor of endosomes with grid, space and a set of area elements
-	// (contents)
-	// I need to add a set of volume contents.
+	HashMap<String, Double> mtTropism = new HashMap<String, Double>();
+	// constructor of endosomes with grid, space and a set of Rabs, membrane
+	// contents,
+	// and volume contents.
 	public Endosome(ContinuousSpace<Object> sp, Grid<Object> gr,
 			HashMap<String, Double> rabContent,
 			HashMap<String, Double> membraneContent,
@@ -98,7 +98,11 @@ public class Endosome {
 		rabTropism.put("mHCI", Arrays.asList("RabA", "RabB", "RabC"));
 		rabTropism.put("mHCI-pept", Arrays.asList("RabA", "RabB", "RabC"));
 		rabTropism.put("p2", Arrays.asList("RabC", "RabE"));
-		
+		mtTropism.put("RabA", 0d);
+		mtTropism.put("RabB", 0d);
+		mtTropism.put("RabC", -1d);
+		mtTropism.put("RabD", -1d);
+		mtTropism.put("RabE", -1d);
 		// rabTropism.put("ova", Arrays.asList("1"));
 		this.heading = Math.random() * 360d;
 		cellMembrane = 0;
@@ -193,44 +197,40 @@ public class Endosome {
 			}
 		}
 
-/*		double sm1 = localM.get("ova");
-		double sc1 = localM.get("p1");
-		double sm2 = localM.get("preP");
-		double sc2 = localM.get("p2");
-		if ((sm1 == 0 || sc1 == 0) && (sm2 == 0 || sc2 == 0))
-			return;*/
+		/*
+		 * double sm1 = localM.get("ova"); double sc1 = localM.get("p1"); double
+		 * sm2 = localM.get("preP"); double sc2 = localM.get("p2"); if ((sm1 ==
+		 * 0 || sc1 == 0) && (sm2 == 0 || sc2 == 0)) return;
+		 */
 		System.out.println("AntigenPresentation initial " + localM);
 		antigenPresentation.runTimeCourse();
 		for (String met : metabolites) {
-/*			if (membraneContent.containsKey(met)) {
+			/*
+			 * if (membraneContent.containsKey(met)) { double metValue =
+			 * (double) Math.abs(Math
+			 * .round(antigenPresentation.getConcentration(met)));
+			 * localM.put(met, metValue); membraneContent.put(met, metValue); }
+			 * else if (solubleContent.containsKey(met)) { double metValue =
+			 * (double) Math.abs(Math
+			 * .round(antigenPresentation.getConcentration(met)));
+			 * localM.put(met, metValue); solubleContent.put(met, metValue); }
+			 * else {
+			 */
+			if (membraneMet.contains(met)) {
 				double metValue = (double) Math.abs(Math
 						.round(antigenPresentation.getConcentration(met)));
 				localM.put(met, metValue);
 				membraneContent.put(met, metValue);
-			} else if (solubleContent.containsKey(met)) {
+			} else if (solubleMet.contains(met)) {
 				double metValue = (double) Math.abs(Math
 						.round(antigenPresentation.getConcentration(met)));
 				localM.put(met, metValue);
 				solubleContent.put(met, metValue);
-			}
-			else {*/
-				if (membraneMet.contains(met)) {
-					double metValue = (double) Math.abs(Math
-							.round(antigenPresentation.getConcentration(met)));
-					localM.put(met, metValue);
-					membraneContent.put(met, metValue);
-				}
-				else if (solubleMet.contains(met)){
-					double metValue = (double) Math.abs(Math
-							.round(antigenPresentation.getConcentration(met)));
-					localM.put(met, metValue);
-					solubleContent.put(met, metValue);
-				}
-				else 	System.out.println("Met not found in " + membraneMet + " "+solubleMet +" " +met);
-			}
+			} else
+				System.out.println("Met not found in " + membraneMet + " "
+						+ solubleMet + " " + met);
+		}
 
-
-		
 		System.out.println("AntigenPresentation final " + localM);
 	}
 
@@ -337,15 +337,17 @@ public class Endosome {
 		if (mts == null) {
 			mts = associateMt();
 		}
+		int mtDir = 0;
+				mtDir = mtDirection();
 		for (MT mt : mts) {
 			double dist = distance(this, mt);
 			if (dist < this.size / 30d) {
 				this.heading = -mt.getMtheading() + 180f;
 				NdPoint myPoint = space.getLocation(this);
 				double x = myPoint.getX()
-						+ Math.cos((heading - 90) * 2d * Math.PI / 360d) * dist;
+						-mtDir * Math.cos((heading - 90) * 2d * Math.PI / 360d) * dist;
 				double y = myPoint.getY()
-						+ Math.sin((heading - 90) * 2d * Math.PI / 360d) * dist;
+						-mtDir * Math.sin((heading - 90) * 2d * Math.PI / 360d) * dist;
 				if (y > 50 || y < 0) {
 					heading = -heading;
 					y = 0;
@@ -983,6 +985,18 @@ public class Endosome {
 		moveTowards();
 		// moveTowards();
 
+	}
+
+	public int mtDirection() {
+		double mtd = 0d;
+		int mtDirection = 0;
+		for (String rab : rabContent.keySet()) {
+			mtd = mtd + mtTropism.get(rab) * rabContent.get(rab) / area;
+		}
+		if (mtd > Math.random() * 2 - 1)
+			return mtDirection = -1;
+		else
+			return mtDirection = 1;
 	}
 
 	public double getArea() {

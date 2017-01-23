@@ -2,7 +2,6 @@ package immunity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import java.util.List;
 
 import repast.simphony.context.Context;
@@ -24,9 +23,9 @@ public class Cell {
 	// mincyl surface = 1884.95 volume = 6283.18
 	private static Cell instance;
 	public double tMembrane;// membrane that is not used in endosomes
-	public HashMap<String, Double> rabCell = new HashMap();// contains rabs free in cytosol
-	public HashMap<String, Double> membraneRecycle = new HashMap(); // contains membrane recycled 
-	public HashMap<String, Double> solubleRecycle = new HashMap();// contains soluble recycled
+	public HashMap<String, Double> rabCell = new HashMap<String, Double>();// contains rabs free in cytosol
+	public HashMap<String, Double> membraneRecycle = new HashMap<String, Double>(); // contains membrane recycled 
+	public HashMap<String, Double> solubleRecycle = new HashMap<String, Double>();// contains soluble recycled
 	// a single Cell is created
 	static {
 		instance = new Cell();
