@@ -23,7 +23,7 @@ import repast.simphony.space.grid.GridBuilderParameters;
 import repast.simphony.space.grid.SimpleGridAdder;
 import repast.simphony.space.grid.WrapAroundBorders;
 
-public class EndosomeBuilder implements ContextBuilder<Object> {
+public class CellBuilder implements ContextBuilder<Object> {
 
 	/*
 	 * (non-Javadoc)
