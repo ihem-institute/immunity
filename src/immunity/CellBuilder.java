@@ -1,8 +1,21 @@
 package immunity;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import au.com.bytecode.opencsv.CSVReader;
 //import immunity.Element;
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
@@ -32,6 +45,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 	 * repast.simphony.dataLoader.ContextBuilder#build(repast.simphony.context
 	 * .Context)
 	 */
+
 	@Override
 	public Context build(Context<Object> context) {
 		context.setId("immunity");
@@ -53,7 +67,20 @@ public class CellBuilder implements ContextBuilder<Object> {
 						new SimpleGridAdder<Object>(), true, 50, 50));
 
 		Parameters params = RunEnvironment.getInstance().getParameters();
+		try {
+			loadFromCsv();
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			loadFromExcel();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// Microtubules
+
 		for (int i = 0; i < 10; i++) {
 			context.add(new MT(space, grid));
 		}
@@ -144,7 +171,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 		}
 		// Cell
 		context.add(Cell.getInstance());
-		
+
 		// Locate the object in the space and grid
 		for (Object obj : context) {
 			if (obj instanceof Cytosol) {
@@ -167,5 +194,59 @@ public class CellBuilder implements ContextBuilder<Object> {
 		}
 
 		return context;
+	}
+
+	public static void loadFromCsv() throws FileNotFoundException {
+		Scanner scanner = new Scanner(new File(
+				"C:/users/lmayorga/desktop/inputIntrTransp.csv"));
+		scanner.useDelimiter(";");
+		while (scanner.hasNext()) {
+			System.out.print(scanner.next() + "anda");
+		}
+		scanner.close();
+	}
+
+	private static void loadFromExcel() throws IOException {
+		// open the excel file
+		HashMap<String, Double> cellK = new HashMap<String, Double>();
+		HashMap<String, Double> initRabCell = new HashMap<String, Double>();
+		//HashMap<String, HashMap<String, Double>> dataCell = new HashMap<String, HashMap<String, Double>>();
+		Workbook book = new XSSFWorkbook(new FileInputStream(
+				"C:/users/lmayorga/desktop/inputIntrTransp.xlsx"));
+		// get the first worksheet
+		Sheet sheet = book.getSheetAt(0);
+		int ID_COL = 0;
+		for (Row row : sheet) {
+
+			if (row.getRowNum() >= 0 && row.getRowNum() < 8) {
+				String a = row.getCell(0).getStringCellValue();
+				String b = row.getCell(1).getStringCellValue();
+				Double c = row.getCell(2).getNumericCellValue();
+				System.out.println(a+b+c);
+
+				
+				if (a.equals("cellK")) {
+					cellK.put(b, c);
+				}
+				if (a.equals("initRabCell")) {
+					initRabCell.put(b, c);
+				}
+
+				/*
+				 * int age = (int) row.getCell(AGE_COL).getNumericCellValue();
+				 * double energy =
+				 * row.getCell(ENERGY_COL).getNumericCellValue();
+				 * 
+				 * //Person person = new Person(id, age, energy);
+				 * //context.add(person); double x =
+				 * row.getCell(X_COL).getNumericCellValue(); double y =
+				 * row.getCell(Y_COL).getNumericCellValue();
+				 * //space.moveTo(person, x, y);
+				 */
+				System.out.println(a + b + c);
+				System.out.println(a + cellK.toString() + initRabCell.toString());
+			}
+		}
+
 	}
 }
