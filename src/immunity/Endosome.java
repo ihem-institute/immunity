@@ -43,6 +43,7 @@ public class Endosome {
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
 	// Endosomal
+	CellProperties cellProperties = CellProperties.getInstance();
 	double area = 4d * Math.PI * 30d * 30d; // initial value, but should change
 	double volume = 4d / 3d * Math.PI * 30d * 30d * 30d; // initial value, but
 															// should change
@@ -52,12 +53,11 @@ public class Endosome {
 	double mvb = 0; // number of internal vesices
 	double cellMembrane = 0;
 	List<String> membraneMet = Arrays.asList("mHCI", "mHCI-pept", "p2");
-	List<String> solubleMet = Arrays.asList("ova", "preP", "pept", "p1");
+	List<String> solubleMet = Arrays.asList("ova", "preP", "pept", "p1", "mvb");
+	List<String> rabSet = Arrays.asList("RabA", "RabB", "RabC", "RabD", "RabE");
 	HashMap<String, Double> cellRab = new HashMap<String, Double>();
-	// ArrayList<Element> areaElement = new ArrayList<Element>();
-	// ArrayList<Element> volumeElement = new ArrayList<Element>();
 	private List<MT> mts;
-	HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
+	HashMap<String, Double> rabCompatibility = cellProperties.getRabCompatibility();
 	HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
 	HashMap<String, List<String>> rabTropism = new HashMap<String, List<String>>();
 	HashMap<String, Double> rabContent = new HashMap<String, Double>();
@@ -78,15 +78,15 @@ public class Endosome {
 		this.membraneContent = membraneContent;
 		this.solubleContent = solubleContent;
 		// A=Rab5, B=Rab22, C=Rab11, D=Rab7, E=secretoryPathway Rab
-		rabCompatibility.put("RabARabA", 1.0d);// self compatibility = 1
-		rabCompatibility.put("RabBRabB", 1.0d);
-		rabCompatibility.put("RabCRabC", 1.0d);
-		rabCompatibility.put("RabDRabD", 1.0d);
-		rabCompatibility.put("RabERabE", 1.0d);
-		rabCompatibility.put("RabARabB", 0.1d);// Rab5/Rab22 0.1
-		rabCompatibility.put("RabARabD", 0.0d);// Rab5/Rab7 0.0
-		rabCompatibility.put("RabCRabE", 0.1d);// Rab11/Rabsecretory7 0.1
-		// Rabs are selected to form the tubule according to this parameter
+//		rabCompatibility.put("RabARabA", 1.0d);// self compatibility = 1
+//		rabCompatibility.put("RabBRabB", 1.0d);
+//		rabCompatibility.put("RabCRabC", 1.0d);
+//		rabCompatibility.put("RabDRabD", 1.0d);
+//		rabCompatibility.put("RabERabE", 1.0d);
+//		rabCompatibility.put("RabARabB", 0.1d);// Rab5/Rab22 0.1
+//		rabCompatibility.put("RabARabD", 0.0d);// Rab5/Rab7 0.0
+//		rabCompatibility.put("RabCRabE", 0.1d);// Rab11/Rabsecretory7 0.1
+//		// Rabs are selected to form the tubule according to this parameter
 		// 1-tubule tropism, 0-low tubule tropism
 		tubuleTropism.put("RabA", 0.5d);
 		tubuleTropism.put("RabB", 0.5d);
@@ -121,7 +121,6 @@ public class Endosome {
 		moveTowards();
 		tether();
 		if (Math.random() < 0.01) fusion();
-		// printEndosomes();
 		split();
 		internalVesicle();
 		if (Math.random() < 0.001)
@@ -383,7 +382,7 @@ public class Endosome {
 		return size;
 	}
 
-	// TRAIDO DE RABS. NO SE LLAMA. NO FUNCIONA
+
 	private double getCompatibility(String rabX, String rabY) {
 		if (!rabCompatibility.containsKey(rabX + rabY)
 				&& !rabCompatibility.containsKey(rabY + rabX))
@@ -410,10 +409,11 @@ public class Endosome {
 			}
 		}
 		// compatibility is a value between 0 and 1. Fusion
-		// occurs with a probability proportional to th compatibility
+		// occurs with a probability proportional to the compatibility
 		return Math.random() < sum;
 	}
-
+// This method list all endosomes that are in the neighborhood of an endosome
+	//
 	public void tether() {
 		GridPoint pt = grid.getLocation(this);
 		GridCellNgh<Endosome> nghCreator = new GridCellNgh<Endosome>(grid, pt,
@@ -428,18 +428,21 @@ public class Endosome {
 				allEndosomes.add(end);
 			}
 		}
+		// new list with just the compatible endosomes (same or compatible rabs)
 		List<Endosome> endosomesToTether = new ArrayList<Endosome>();
 		for (Endosome end : allEndosomes) {
 			if (compatibles(this, (Endosome) end)) {
 				endosomesToTether.add(end);
 			}
 		}
+		// select the largest endosome
 		Endosome largest = this;
 		for (Endosome end : endosomesToTether) {
 			if (end.size > largest.size) {
 				largest = end;
 			}
 		}
+		// assign the speed and heading of the largest endosome to the gropu
 		for (Endosome end : endosomesToTether) {
 			end.heading = largest.heading;
 			end.speed = largest.speed;
@@ -995,7 +998,7 @@ public class Endosome {
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 		rabContent.put("RabA", Cell.sEndo);
-		membraneContent.put("Tf", Cell.sEndo);
+		//membraneContent.put("Tf", Cell.sEndo);
 		solubleContent.put("ova", Cell.vEndo);
 		Context<Object> context = ContextUtils.getContext(this);
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
@@ -1063,12 +1066,17 @@ public class Endosome {
 		return heading;
 	}
 
-	public String getRabContent() {
-		return rabContent.toString();
+	
+	public HashMap<String, Double> getRabContent() {
+		return rabContent;
 	}
 
-	public Double getRabContent(String rab) {
-		return rabContent.get(rab);
+	public HashMap<String, Double> getMembraneContent() {
+		return membraneContent;
+	}
+
+	public HashMap<String, Double> getSolubleContent() {
+		return solubleContent;
 	}
 
 	public Endosome getEndosome() {
@@ -1246,5 +1254,6 @@ public class Endosome {
 				/ this.area;
 		return memContRab;
 	}
+
 
 }

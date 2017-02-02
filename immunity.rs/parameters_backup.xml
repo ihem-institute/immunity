@@ -12,12 +12,6 @@
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
 									
 		/>
-				<parameter name="endosome_rabB_count" displayName="Endosome RabB Count" type="int" 
-						defaultValue="10" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
-									
-		/>
 				<parameter name="soluble" displayName="Soluble" type="java.lang.String" 
 						defaultValue="dextran" 
 						isReadOnly="false" 
@@ -28,12 +22,6 @@
 						defaultValue="RabB" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
-									
-		/>
-				<parameter name="endosome_rabA_count" displayName="Endosome RabA Count" type="int" 
-						defaultValue="10" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
 		</parameters>
