@@ -44,6 +44,8 @@ public class Endosome {
 	private Grid<Object> grid;
 	// Endosomal
 	CellProperties cellProperties = CellProperties.getInstance();
+	HashMap<String, Double> cellK = cellProperties.getCellK();
+	
 	double area = 4d * Math.PI * 30d * 30d; // initial value, but should change
 	double volume = 4d / 3d * Math.PI * 30d * 30d * 30d; // initial value, but
 															// should change
@@ -58,12 +60,13 @@ public class Endosome {
 	HashMap<String, Double> cellRab = new HashMap<String, Double>();
 	private List<MT> mts;
 	HashMap<String, Double> rabCompatibility = cellProperties.getRabCompatibility();
-	HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
-	HashMap<String, List<String>> rabTropism = new HashMap<String, List<String>>();
+	HashMap<String, Double> tubuleTropism = cellProperties.getTubuleTropism();
+	HashMap<String, List<String>> rabTropism = cellProperties.getRabTropism();
+	HashMap<String, Double> mtTropism = cellProperties.getMtTropism();
 	HashMap<String, Double> rabContent = new HashMap<String, Double>();
 	HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 	HashMap<String, Double> solubleContent = new HashMap<String, Double>();
-	HashMap<String, Double> mtTropism = new HashMap<String, Double>();
+
 
 	// constructor of endosomes with grid, space and a set of Rabs, membrane
 	// contents,
@@ -88,24 +91,24 @@ public class Endosome {
 //		rabCompatibility.put("RabCRabE", 0.1d);// Rab11/Rabsecretory7 0.1
 //		// Rabs are selected to form the tubule according to this parameter
 		// 1-tubule tropism, 0-low tubule tropism
-		tubuleTropism.put("RabA", 0.5d);
-		tubuleTropism.put("RabB", 0.5d);
-		tubuleTropism.put("RabC", 0.5d);
-		tubuleTropism.put("RabD", 0.0d);
-		tubuleTropism.put("RabE", 0.5d);
+//		tubuleTropism.put("RabA", 0.5d);
+//		tubuleTropism.put("RabB", 0.5d);
+//		tubuleTropism.put("RabC", 0.5d);
+//		tubuleTropism.put("RabD", 0.0d);
+//		tubuleTropism.put("RabE", 0.5d);
 		// CONTENT IS DISTRIBUTED according to three possibilities
 		// 1-always in tubule , 0-sphere tropism, Rabs goes to tubule when
 		// the tubule is formed for that Rab.
-		rabTropism.put("Tf", Arrays.asList("RabB", "RabC"));
-		rabTropism.put("mvb", Arrays.asList("0"));
-		rabTropism.put("mHCI", Arrays.asList("RabA", "RabB", "RabC"));
-		rabTropism.put("mHCI-pept", Arrays.asList("RabA", "RabB", "RabC"));
-		rabTropism.put("p2", Arrays.asList("RabC", "RabE"));
-		mtTropism.put("RabA", 0d);
-		mtTropism.put("RabB", 0d);
-		mtTropism.put("RabC", -1d);
-		mtTropism.put("RabD", -1d);
-		mtTropism.put("RabE", -1d);
+//		rabTropism.put("Tf", Arrays.asList("RabB", "RabC"));
+//		rabTropism.put("mvb", Arrays.asList("0"));
+//		rabTropism.put("mHCI", Arrays.asList("RabA", "RabB", "RabC"));
+//		rabTropism.put("mHCI-pept", Arrays.asList("RabA", "RabB", "RabC"));
+//		rabTropism.put("p2", Arrays.asList("RabC", "RabE"));
+//		mtTropism.put("RabA", 0d);
+//		mtTropism.put("RabB", 0d);
+//		mtTropism.put("RabC", -1d);
+//		mtTropism.put("RabD", -1d);
+//		mtTropism.put("RabE", -1d);
 		// rabTropism.put("ova", Arrays.asList("1"));
 		this.heading = Math.random() * 360d;
 		cellMembrane = 0;
@@ -829,6 +832,7 @@ public class Endosome {
 		else {
 			while (rab == null) {
 				for (String rab1 : copyMap.keySet()) {
+					System.out.println(rab1+tubuleTropism);
 					if (Math.random() < tubuleTropism.get(rab1)) {
 						// System.out.println(copyMap + "RabInTubeSelected" +
 						// rab1);

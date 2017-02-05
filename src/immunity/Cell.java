@@ -34,10 +34,14 @@ public class Cell {
 	// Constructor
 	public Cell() {
 		double tMembrane = 0; // hidden constructor
-		rabCell.put("RabD", 2000d);
-		rabCell.put("RabC", 2000d);
-		membraneRecycle.put(null, null);
-		solubleRecycle.put(null, null);
+		CellProperties cellProperties = CellProperties.getInstance();
+		for (String sol : cellProperties.solubleMet) {
+			solubleRecycle.put(sol, 0d);
+		}
+		for (String sol : cellProperties.membraneMet) {
+			membraneRecycle.put(sol, 0d);
+		}	
+		rabCell.putAll(cellProperties.initRabCell);
 	}
 
 	

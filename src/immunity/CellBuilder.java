@@ -81,16 +81,20 @@ public class CellBuilder implements ContextBuilder<Object> {
 			System.out.println(cellProperties.rabTropism);
 			System.out.println(cellProperties.mtTropism);
 			
+			InitialOrganelles inOr = InitialOrganelles.getInstance();
+			System.out.println(InitialOrganelles.getInstance().getInitOrgProp());
+			System.out.println(InitialOrganelles.getInstance().getInitRabContent());
+			System.out.println(InitialOrganelles.getInstance().getInitMembraneContent());
+			System.out.println(InitialOrganelles.getInstance().getInitSolubleContent());
+			
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-/*		try {
-			loadFromExcel();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+		/*
+		 * try { loadFromExcel(); } catch (IOException e) { // TODO
+		 * Auto-generated catch block e.printStackTrace(); }
+		 */
 		// Microtubules
 
 		for (int i = 0; i < 10; i++) {
@@ -106,7 +110,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 			rabContent.put("RabA", 4d * Math.PI * 30d * 30d);
-			//membraneContent.put("Tf", 4d * Math.PI * 30d * 30d);
+			// membraneContent.put("Tf", 4d * Math.PI * 30d * 30d);
 			solubleContent.put("ova", 4d / 3d * Math.PI * 30d * 30d * 30d);
 			context.add(new Endosome(space, grid, rabContent, membraneContent,
 					solubleContent));
@@ -121,7 +125,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 			rabContent.put("RabB", 4d * Math.PI * 30d * 30d);
-			//membraneContent.put("Tf", 0.0d);
+			// membraneContent.put("Tf", 0.0d);
 			solubleContent.put("ova", 0.0d);
 			context.add(new Endosome(space, grid, rabContent, membraneContent,
 					solubleContent));
@@ -134,7 +138,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 			rabContent.put("RabC", 4d * Math.PI * 30d * 30d);
-			//membraneContent.put("Tf", 0.0d);
+			// membraneContent.put("Tf", 0.0d);
 			solubleContent.put("ova", 0.0d);
 			context.add(new Endosome(space, grid, rabContent, membraneContent,
 					solubleContent));
@@ -149,7 +153,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 			rabContent.put("RabD", 4d * Math.PI * 30d * 30d);
-			//membraneContent.put("Tf", 0.0d);
+			// membraneContent.put("Tf", 0.0d);
 			solubleContent.put("ova", 0.0d);
 			solubleContent.put("p1", 4d / 3d * Math.PI * 30d * 30d * 30d);
 			context.add(new Endosome(space, grid, rabContent, membraneContent,
@@ -165,7 +169,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 			rabContent.put("RabE", 4d * Math.PI * 30d * 30d);
-			//membraneContent.put("Tf", 0.0d);
+			// membraneContent.put("Tf", 0.0d);
 			membraneContent.put("mHCI", 4d * Math.PI * 30d * 30d);
 			membraneContent.put("p2", 4d * Math.PI * 30d * 30d);
 			solubleContent.put("ova", 0.0d);
@@ -210,18 +214,27 @@ public class CellBuilder implements ContextBuilder<Object> {
 	}
 
 	public void loadFromCsv() throws FileNotFoundException {
+//		InitialOrganelles InOr = InitialOrganelles.getInstance();
+//		for (int i = 1; i < 6; i++) {
+//			InOr.getInitOrgProp().put("kind" + i, null);
+//			InOr.getInitRabContent().put("kind" + i, null);
+//			InOr.getInitSolubleContent().put("kind" + i, null);
+//			InOr.getInitMembraneContent().put("kind" + i, null);
+//		}
+
 		Scanner scanner = new Scanner(new File(
 				"C:/users/lmayorga/desktop/inputIntrTransp3.csv"));
-		scanner.useDelimiter(";");
+		scanner.useDelimiter(",");
 		// HashMap<String, Double> rabContent = new HashMap<String, Double>();
 		// HashMap<String, Double> membraneContent = new HashMap<String,
 		// Double>();
 		// HashMap<String, Double> solubleContent = new HashMap<String,
 		// Double>();
 		CellProperties cellProperties = CellProperties.getInstance();
+		//InitialOrganelles InOr = InitialOrganelles.getInstance();
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
-			String[] b = line.split(";");
+			String[] b = line.split(",");
 
 			if (b[0].equals("cellK")) {
 				cellProperties.getCellK().put(b[1], Double.parseDouble(b[2]));
@@ -268,14 +281,185 @@ public class CellBuilder implements ContextBuilder<Object> {
 				}
 			}
 
+			if (b[0].equals("kind1")) {
+				InitialOrganelles inOr = InitialOrganelles.getInstance();
+				inOr.getDiffOrganelles().add(b[0]);
+
+					if (b[1].equals("initOrgProp")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitOrgProp().put(b[0], value);
+					}
+					if (b[1].equals("initRabContent")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitRabContent().put(b[0], value);
+					}
+					if (b[1].equals("initSolubleContent")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitSolubleContent().put(b[0], value);
+					}
+					if (b[1].equals("initMembraneContent")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitMembraneContent().put(b[0], value);
+					}
+
+				}
+						
+			
+			if (b[0].equals("kind2")) {
+				InitialOrganelles inOr = InitialOrganelles.getInstance();
+				inOr.getDiffOrganelles().add(b[0]);
+
+					if (b[1].equals("initOrgProp")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitOrgProp().put(b[0], value);
+					}
+					if (b[1].equals("initRabContent")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitRabContent().put(b[0], value);
+					}
+					if (b[1].equals("initSolubleContent")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitSolubleContent().put(b[0], value);
+					}
+					if (b[1].equals("initMembraneContent")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitMembraneContent().put(b[0], value);
+					}
+
+				}
+			if (b[0].equals("kind3")) {
+				InitialOrganelles inOr = InitialOrganelles.getInstance();
+				inOr.getDiffOrganelles().add(b[0]);
+
+					if (b[1].equals("initOrgProp")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitOrgProp().put(b[0], value);
+					}
+					if (b[1].equals("initRabContent")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitRabContent().put(b[0], value);
+					}
+					if (b[1].equals("initSolubleContent")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitSolubleContent().put(b[0], value);
+					}
+					if (b[1].equals("initMembraneContent")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitMembraneContent().put(b[0], value);
+					}
+
+				}
+			if (b[0].equals("kind4")) {
+				InitialOrganelles inOr = InitialOrganelles.getInstance();
+				inOr.getDiffOrganelles().add(b[0]);
+
+					if (b[1].equals("initOrgProp")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitOrgProp().put(b[0], value);
+					}
+					if (b[1].equals("initRabContent")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitRabContent().put(b[0], value);
+					}
+					if (b[1].equals("initSolubleContent")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitSolubleContent().put(b[0], value);
+					}
+					if (b[1].equals("initMembraneContent")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitMembraneContent().put(b[0], value);
+					}
+;
+				}
+			if (b[0].equals("kind5")) {
+				InitialOrganelles inOr = InitialOrganelles.getInstance();
+				inOr.getDiffOrganelles().add(b[0]);
+
+					if (b[1].equals("initOrgProp")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitOrgProp().put(b[0], value);
+					}
+					if (b[1].equals("initRabContent")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitRabContent().put(b[0], value);
+					}
+					if (b[1].equals("initSolubleContent")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitSolubleContent().put(b[0], value);
+					}
+					if (b[1].equals("initMembraneContent")) {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitMembraneContent().put(b[0], value);
+					}
+
+				}
+
 		}
 
-		/*
-		 * System.out.println(cellK); System.out.println(initRabCell);
-		 * System.out.println(rabCompatibility);
-		 * System.out.println(tubuleTropism); System.out.println(rabTropism);
-		 * System.out.println(mtTropism);
-		 */
+		System.out.println(InitialOrganelles.getInstance().getInitOrgProp());
+		System.out.println(InitialOrganelles.getInstance().getInitRabContent());
+		System.out.println(InitialOrganelles.getInstance().getInitMembraneContent());
+		System.out.println(InitialOrganelles.getInstance().getInitSolubleContent());
 
 		scanner.close();
 	}
