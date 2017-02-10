@@ -6,6 +6,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -92,7 +95,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 			System.out.println(InitialOrganelles.getInstance()
 					.getInitSolubleContent());
 
-		} catch (FileNotFoundException e1) {
+		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
@@ -133,6 +136,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 		// Cell
 		context.add(Cell.getInstance());
 		context.add(new Results(space, grid));
+		context.add(new UpdateParameters(grid, space));
 
 		// Locate the object in the space and grid
 		for (Object obj : context) {
@@ -158,7 +162,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 		return context;
 	}
 
-	public void loadFromCsv() throws FileNotFoundException {
+	public void loadFromCsv() throws IOException {
 		// InitialOrganelles InOr = InitialOrganelles.getInstance();
 		// for (int i = 1; i < 6; i++) {
 		// InOr.getInitOrgProp().put("kind" + i, null);
@@ -170,6 +174,10 @@ public class CellBuilder implements ContextBuilder<Object> {
 		Scanner scanner = new Scanner(new File(
 				"C:/users/lmayorga/desktop/inputIntrTransp3.csv"));
 		scanner.useDelimiter(",");
+//		File file = new File("C:/users/lmayorga/desktop/ResultsIntrTransp3.csv");
+//		Path filePath = file.toPath();		
+//		BasicFileAttributes attr = Files.readAttributes(filePath, BasicFileAttributes.class);
+		//UpdateParameters.getInstance().setOldFile(attr.lastModifiedTime().toString());
 		// HashMap<String, Double> rabContent = new HashMap<String, Double>();
 		// HashMap<String, Double> membraneContent = new HashMap<String,
 		// Double>();

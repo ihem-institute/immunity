@@ -1,9 +1,13 @@
 package immunity;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -86,6 +90,7 @@ public class Results {
 	}
 	// to generate the file and add the headers in the first row
 	private void writeToCsvHeader(TreeMap<String, Double> orderContDist) throws IOException {
+		
 		String line = "";
 		for (String key : orderContDist.keySet()) {
             line = line+ key + ";";
