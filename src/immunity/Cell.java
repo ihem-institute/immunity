@@ -14,8 +14,8 @@ import repast.simphony.util.ContextUtils;
 public class Cell {
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
-	public static double rcyl = 10.0; // radius tubule
-	public static double rEndo = 20.0; // radius new endosome formed by uptake
+	public static double rcyl = CellProperties.getInstance().getCellK().get("rcyl");//10.0; // radius tubule
+	public static double rEndo = CellProperties.getInstance().getCellK().get("rEndo");//20.0; // radius new endosome formed by uptake
 	public static double mincyl = 6 * Math.PI * rcyl * rcyl; // surface minimum cylinder
 	// two radius large (almost a sphere)
 	public static double vEndo = 4d / 3d * Math.PI * Math.pow(rEndo, 3); //volume new endosome
@@ -33,7 +33,7 @@ public class Cell {
 
 	// Constructor
 	public Cell() {
-		double tMembrane = 0; // hidden constructor
+		//double tMembrane = 0; // hidden constructor
 		CellProperties cellProperties = CellProperties.getInstance();
 		for (String sol : cellProperties.solubleMet) {
 			solubleRecycle.put(sol, 0d);
@@ -43,7 +43,11 @@ public class Cell {
 		}	
 		rabCell.putAll(cellProperties.initRabCell);
 	}
-
+//	@ScheduledMethod(start = 1, interval = 1)
+//	public void step() {
+//		getRabCell();
+//		
+//	}
 	
 	// GETTERS AND SETTERS (to get and set Cell contents)
 	public static Cell getInstance() {

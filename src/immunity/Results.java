@@ -121,7 +121,10 @@ public class Results {
 			}
 		}
 
-
+		HashMap<String, Double> totalRabs = new HashMap<String, Double>();
+		for (String rab: rabSet){
+			totalRabs.put(rab,  0.0);
+		}
 		for (Endosome endosome : allEndosomes) {
 			Double area = endosome.area;
 			HashMap<String, Double> rabContent = endosome.getRabContent();
@@ -149,7 +152,20 @@ public class Results {
 				}
 
 			}
+			// CONTROL OF RAB LOST
+			// sum Rabs in all endosomes and in the cytosol
+		for (String rab : rabContent.keySet()){
+			double sum = totalRabs.get(rab)+ rabContent.get(rab);
+			totalRabs.put(rab, sum);
 		}
+			
+		}
+		for (String rab : rabSet){
+			double sum = totalRabs.get(rab)+ Cell.getInstance().getRabCell().get(rab);
+			totalRabs.put(rab, sum);
+		}
+		System.out.println(" TOTAL RABS      "+totalRabs);
+		System.out.println("TOTAL CYTO       "+ Cell.getInstance().getRabCell());
 		
 		
 		

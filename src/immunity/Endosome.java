@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import repast.simphony.context.Context;
 import repast.simphony.context.Context;
@@ -46,19 +48,20 @@ public class Endosome {
 	CellProperties cellProperties = CellProperties.getInstance();
 	HashMap<String, Double> cellK = cellProperties.getCellK();
 	
-	double area = 4d * Math.PI * 30d * 30d; // initial value, but should change
+	double area= 4d * Math.PI * 30d * 30d; // initial value, but should change
 	double volume = 4d / 3d * Math.PI * 30d * 30d * 30d; // initial value, but
 															// should change
-	double size = Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
-	double speed = 5d / size; // initial value, but should change
-	double heading = Math.random() * 360d; // initial value, but should change
-	double mvb = 0; // number of internal vesices
-	double cellMembrane = 0;
-	List<String> membraneMet = Arrays.asList("mHCI", "mHCI-pept", "p2");
-	List<String> solubleMet = Arrays.asList("ova", "preP", "pept", "p1", "mvb");
-	List<String> rabSet = Arrays.asList("RabA", "RabB", "RabC", "RabD", "RabE");
-	HashMap<String, Double> cellRab = new HashMap<String, Double>();
+	double size;//= Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
+	double speed;// = 5d / size; // initial value, but should change
+	double heading;//= Math.random() * 360d; // initial value, but should change
+	double mvb;// = 0; // number of internal vesices
+	double cellMembrane;// = 0;
+	List<String> membraneMet = cellProperties.getMembraneMet();
+	List<String> solubleMet = cellProperties.getSolubleMet();
+	List<String> rabSet = cellProperties.getRabSet();
+	HashMap<String, Double> rabCell = new HashMap<String, Double>();
 	private List<MT> mts;
+	//HashMap<String, Double> membraneMet = cellProperties.membraneMet();
 	HashMap<String, Double> rabCompatibility = cellProperties.getRabCompatibility();
 	HashMap<String, Double> tubuleTropism = cellProperties.getTubuleTropism();
 	HashMap<String, List<String>> rabTropism = cellProperties.getRabTropism();
@@ -66,6 +69,7 @@ public class Endosome {
 	HashMap<String, Double> rabContent = new HashMap<String, Double>();
 	HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 	HashMap<String, Double> solubleContent = new HashMap<String, Double>();
+	HashMap<String, Double> initOrgProp = new HashMap<String, Double>();
 
 
 	// constructor of endosomes with grid, space and a set of Rabs, membrane
@@ -74,45 +78,20 @@ public class Endosome {
 	public Endosome(ContinuousSpace<Object> sp, Grid<Object> gr,
 			HashMap<String, Double> rabContent,
 			HashMap<String, Double> membraneContent,
-			HashMap<String, Double> solubleContent) {
+			HashMap<String, Double> solubleContent,
+			HashMap<String, Double> initOrgProp){
 		this.space = sp;
 		this.grid = gr;
 		this.rabContent = rabContent;
 		this.membraneContent = membraneContent;
 		this.solubleContent = solubleContent;
-		// A=Rab5, B=Rab22, C=Rab11, D=Rab7, E=secretoryPathway Rab
-//		rabCompatibility.put("RabARabA", 1.0d);// self compatibility = 1
-//		rabCompatibility.put("RabBRabB", 1.0d);
-//		rabCompatibility.put("RabCRabC", 1.0d);
-//		rabCompatibility.put("RabDRabD", 1.0d);
-//		rabCompatibility.put("RabERabE", 1.0d);
-//		rabCompatibility.put("RabARabB", 0.1d);// Rab5/Rab22 0.1
-//		rabCompatibility.put("RabARabD", 0.0d);// Rab5/Rab7 0.0
-//		rabCompatibility.put("RabCRabE", 0.1d);// Rab11/Rabsecretory7 0.1
-//		// Rabs are selected to form the tubule according to this parameter
-		// 1-tubule tropism, 0-low tubule tropism
-//		tubuleTropism.put("RabA", 0.5d);
-//		tubuleTropism.put("RabB", 0.5d);
-//		tubuleTropism.put("RabC", 0.5d);
-//		tubuleTropism.put("RabD", 0.0d);
-//		tubuleTropism.put("RabE", 0.5d);
-		// CONTENT IS DISTRIBUTED according to three possibilities
-		// 1-always in tubule , 0-sphere tropism, Rabs goes to tubule when
-		// the tubule is formed for that Rab.
-//		rabTropism.put("Tf", Arrays.asList("RabB", "RabC"));
-//		rabTropism.put("mvb", Arrays.asList("0"));
-//		rabTropism.put("mHCI", Arrays.asList("RabA", "RabB", "RabC"));
-//		rabTropism.put("mHCI-pept", Arrays.asList("RabA", "RabB", "RabC"));
-//		rabTropism.put("p2", Arrays.asList("RabC", "RabE"));
-//		mtTropism.put("RabA", 0d);
-//		mtTropism.put("RabB", 0d);
-//		mtTropism.put("RabC", -1d);
-//		mtTropism.put("RabD", -1d);
-//		mtTropism.put("RabE", -1d);
-		// rabTropism.put("ova", Arrays.asList("1"));
-		this.heading = Math.random() * 360d;
-		cellMembrane = 0;
-		cellRab.put("RabA", 0d);
+		this.initOrgProp = initOrgProp;
+		area = initOrgProp.get("area");//4d * Math.PI * 30d * 30d; // initial value, but should change
+		volume = initOrgProp.get("volume");//4d / 3d * Math.PI * 30d * 30d * 30d; // initial value, but
+		size= Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
+		speed = 5d / size; // initial value, but should change
+		heading= Math.random() * 360d; // initial value, but should change
+		double mvb= 0; // number of internal vesicles
 	}
 
 	@ScheduledMethod(start = 1, interval = 1)
@@ -123,14 +102,47 @@ public class Endosome {
 		changeDirection();
 		moveTowards();
 		tether();
-		if (Math.random() < 0.01) fusion();
+		if (Math.random() < 0.1) fusion();
 		split();
-		internalVesicle();
-		if (Math.random() < 0.001)
-			rabConversion();
-		if (Math.random() < 0.001)
-			antigenPresentation();
+//		internalVesicle();
+//		if (Math.random() < 0.001) rabConversion();
+//		rabConversionN();
+		if (Math.random() < 0.001) antigenPresentation();
+	}
 
+	private void rabConversionN() {
+		double iRabAm=0.0; 
+		double iRabDm=0.0;
+		double iRabAc=0.0;
+		double iRabDc=0.0;
+		if (rabContent.containsKey("RabA")) {
+			iRabAm = rabContent.get("RabA");
+		} else iRabAm = 0.0;
+		if (rabContent.containsKey("RabD")){
+			iRabDm = rabContent.get("RabD");
+		} else iRabDm = 0.0;	
+		
+		if (Cell.getInstance().getRabCell().containsKey("RabA")){
+			iRabAc = Cell.getInstance().getRabCell().get("RabA");
+		} else iRabAc = 0.0;
+		if (Cell.getInstance().getRabCell().containsKey("RabD")){
+			iRabDc = Cell.getInstance().getRabCell().get("RabD");
+		} else iRabDc = 0.0;
+		if (iRabAm <= 0 || iRabDc <= 0) return;
+		
+		double delta = iRabAm * 0.001;
+		double fRabAm = iRabAm - delta;
+		double fRabDm = iRabDm + delta;
+		double fRabAc = iRabAc + delta;
+		double fRabDc = iRabDc - delta;
+		rabContent.put("RabA", fRabAm);
+		rabContent.put("RabD", fRabDm);
+		Cell.getInstance().getRabCell().put("RabA", fRabAc);
+		Cell.getInstance().getRabCell().put("RabD", fRabDc);
+		// TODO Auto-generated method stub
+		System.out.println("RAB CONVERTION iRabAm "+ iRabAm+ " iRabAc "+iRabAc+" iRabDm "+iRabDm+" iRabDc "+ iRabDc);
+		System.out.println("RAB CONVERTION fRabAm "+ fRabAm+ " fRabAc "+fRabAc+" fRabDm "+fRabDm+" fRabDc "+ fRabDc);
+		
 	}
 
 	private double distance(Endosome endosome, MT obj) {
@@ -241,7 +253,6 @@ public class Endosome {
 	}
 
 	private void rabConversion() {
-
 		RabConversion rabConversion = RabConversion.getInstance();
 
 		Set<String> metabolites = RabConversion.getInstance().getMetabolites();
@@ -251,6 +262,18 @@ public class Endosome {
 		// metabolites.add("RabAc");
 		// metabolites.add("RabBm");
 		// metabolites.add("RabBc");
+//		
+//		double iRabAm = 0;
+//		double iRabDm = 0;
+//		if(rabContent.containsKey("RabA")){
+//			iRabAm = rabContent.get("RabA");
+//		} else iRabAm = 0d;
+//		if(rabContent.containsKey("RabD")){
+//			iRabDm = rabContent.get("RabD");
+//		} else iRabDm = 0d;
+//		double iRabAc = Cell.getInstance().getRabCell().get("RabA");
+//		double iRabDc = Cell.getInstance().getRabCell().get("RabD");
+		
 		HashMap<String, Double> localM = new HashMap<String, Double>();
 		for (String met : metabolites) {
 			localM.put(met, 0.0);
@@ -259,8 +282,8 @@ public class Endosome {
 
 			if (met.endsWith("m")) {
 				String Rab = met.substring(0, 4);
-				if (rabContent.containsKey(Rab)) {
-					double metValue = Math.abs(Math.round(rabContent.get(Rab)));
+				if (this.rabContent.containsKey(Rab)) {
+					double metValue = Math.round(this.rabContent.get(Rab)*1000)/1000;
 					rabConversion.setInitialConcentration(met, metValue);
 					localM.put(met, metValue);
 					// System.out.println("COPASI INITIAl " + met
@@ -270,11 +293,11 @@ public class Endosome {
 					// System.out.println("COPASI INITIAL " + met + 0.0);
 				}
 			}
+
 			if (met.endsWith("c")) {
 				String Rab = met.substring(0, 4);
-				if (Cell.getInstance().rabCell.containsKey(Rab)) {
-					double metValue = Math
-							.abs(Math.round(Cell.getInstance().rabCell.get(Rab)));
+				if (Cell.getInstance().getRabCell().containsKey(Rab)) {
+					double metValue = Math.round(Cell.getInstance().getRabCell().get(Rab)*1000)/1000;
 					rabConversion.setInitialConcentration(met, metValue);
 					localM.put(met, metValue);
 					// System.out.println("COPASI INITIAL " + met
@@ -285,37 +308,71 @@ public class Endosome {
 
 				}
 			}
+//			double iRabAc = Cell.getInstance().getRabCell().get("RabA");
+
 		}
+		
 		double sm1 = localM.get("RabAm");
 		double sc1 = localM.get("RabDc");
 		double sm2 = localM.get("RabBm");
 		double sc2 = localM.get("RabCc");
 		if ((sm1 == 0 || sc1 == 0) && (sm2 == 0 || sc2 == 0))
 			return;
-		System.out.println("COPASI INITIAL " + localM);
+		System.out.println("COPASI INITIAL  Cell" + Cell.getInstance().getRabCell()+"Membrane "+rabContent);
 		rabConversion.runTimeCourse();
 		for (String met : metabolites) {
 			if (met.endsWith("m")) {
 				String Rab = met.substring(0, 4);
-				double metValue = (double) Math.abs(Math.round(rabConversion
-						.getConcentration(met)));
-				rabContent.put(Rab, metValue);
+				double metValue = rabConversion.getConcentration(met);
+				this.rabContent.put(Rab, metValue);
 				localM.put(met, metValue);
-				// System.out.println("COPASI FINAL " + met +
-				// rabContent.get(Rab));
+				//System.out.println("COPASI FINAL " + met +
+				//rabContent.get(Rab));
 			}
 			if (met.endsWith("c")) {
 				String Rab = met.substring(0, 4);
-				double metValue = (double) Math.abs(Math.round(rabConversion
-						.getConcentration(met)));
-				Cell.getInstance().rabCell.put(Rab, metValue);
+				double metValue = rabConversion.getConcentration(met);
+				Cell.getInstance().getRabCell().put(Rab, metValue);
 				localM.put(met, metValue);
-				// System.out.println("COPASI FINAL " + met
-				// + Cell.getInstance().rabCell.get(Rab));
+//				System.out.println("COPASI FINAL " + met
+//				+ Cell.getInstance().getRabCell().get(Rab));
 			}
-		}
 
-		System.out.println("COPASI FINAL " + localM);
+		}
+		
+		System.out.println("COPASI FINAL Cell" + Cell.getInstance().getRabCell()+ "Membrane" +rabContent);
+// From here was to assess the problem of lack of constant Rabs along the process.
+// Conclusion: the value of rab that is put in rabContent affect all the endosomes!
+//		double fRabAm = 0;
+//		double fRabAc = 0;
+//		double fRabDc = 0;
+//		double fRabDm = 0;
+//		//if(rabContent.containsKey("RabA")){
+//			//fRabAm = rabConversion.getConcentration("RabAm");
+//			double delta = 0.01 * iRabAm;// iRabAm - fRabAm;
+//			fRabAm = iRabAm - delta;
+//			fRabAc = iRabAc + delta;
+//			fRabDc = iRabDc - delta;
+//			fRabDm = iRabDm + delta;
+//			rabContent.put("RabA", fRabAm);
+//			rabContent.put("RabD", fRabDm);
+//			Cell.getInstance().getRabCell().put("RabA", fRabAc);
+//			Cell.getInstance().getRabCell().put("RabD", fRabDc);
+//			
+//		
+//		
+//		double rAc = Cell.getInstance().getRabCell().get("RabA");
+//		double rDc = Cell.getInstance().getRabCell().get("RabD");
+//		double rAm = rabContent.get("RabA");
+//		double rDm = rabContent.get("RabD");
+//		
+////		if (Math.abs(iRabAm+iRabAc - fRabAm - fRabAc) > 0.01 ){
+//			System.out.println(" RABCONVERTION    "+ ((iRabAm+iRabAc)-(fRabAm + fRabAc)));
+//			System.out.println(" RABCONVERTION    "+ ((iRabDm+iRabDc)-(fRabDm + fRabDc)));
+//			System.out.println(" RABCONVERTION    "+ ((iRabAm+iRabAc)-(rAm + rAc)));
+//			System.out.println(" RABCONVERTION    "+ ((iRabDm+iRabDc)-(rDm + rDc)));
+//			
+////			}
 	}
 
 	public List<MT> associateMt() {
@@ -469,8 +526,11 @@ public class Endosome {
 			}
 		}
 		for (Endosome endosome : endosomes_to_delete) {
+			//System.out.println(this.area+"  AREAS A SUMAR AREAS A SUMAR"+ endosome.area);
 			this.volume = this.volume + endosome.volume;
 			this.area = this.area + endosome.area;
+			initOrgProp.put("area", area);
+			//System.out.println(this.area+"  AREAS FINAL");
 			this.rabContent = sumRabContent(this, endosome);
 			this.membraneContent = sumMembraneContent(this, endosome);
 			this.solubleContent = sumSolubleContent(this, endosome);
@@ -484,64 +544,69 @@ public class Endosome {
 
 	private HashMap<String, Double> sumRabContent(Endosome endosome1,
 			Endosome endosome2) {
-		// HashMap<String, Double> mapSum1 = new HashMap<String, Double>();
+//		HashMap<String, Double> map3 = new HashMap<String, Double>();
+//		map3.putAll(endosome1.rabContent);
+//		map3.forEach((k, v) -> endosome2.rabContent.merge(k, v, (v1, v2) -> v1 + v2));
+//		return map3;
+		
+		HashMap<String, Double> rabSum = new HashMap<String, Double>();
 		for (String key1 : endosome1.rabContent.keySet()) {
 			if (endosome2.rabContent.containsKey(key1)) {
 				double sum = endosome1.rabContent.get(key1)
 						+ endosome2.rabContent.get(key1);
-				endosome1.rabContent.put(key1, sum);
-			}
+				rabSum.put(key1, sum);
+			} else rabSum.put(key1,  endosome1.rabContent.get(key1));
 		}
 		for (String key2 : endosome2.rabContent.keySet()) {
 			if (!endosome1.rabContent.containsKey(key2)) {
-				endosome1.rabContent.put(key2, endosome2.rabContent.get(key2));
+				rabSum.put(key2, endosome2.rabContent.get(key2));
 			}
 		}
-		// endosome1.rabContent = mapSum1;
+
 		// System.out.println("rabContentSum" + endosome1.rabContent);
-		return endosome1.rabContent;
+		return rabSum;
 	}
 
 	private HashMap<String, Double> sumMembraneContent(Endosome endosome1,
 			Endosome endosome2) {
-		// HashMap<String, Double> mapSum2 = new HashMap<String, Double>();
+		HashMap<String, Double> memSum = new HashMap<String, Double>();
 		for (String key1 : endosome1.membraneContent.keySet()) {
 			if (endosome2.membraneContent.containsKey(key1)) {
 				double sum = endosome1.membraneContent.get(key1)
 						+ endosome2.membraneContent.get(key1);
-				endosome1.membraneContent.put(key1, sum);
-			}
-		}
+				memSum.put(key1, sum);
+			}else memSum.put(key1,  endosome1.membraneContent.get(key1));
+		} 
 		for (String key2 : endosome2.membraneContent.keySet()) {
 			if (!endosome1.membraneContent.containsKey(key2)) {
 				double sum = endosome2.membraneContent.get(key2);
-				endosome1.membraneContent.put(key2, sum);
+				memSum.put(key2, sum);
 			}
 		}
-		// endosome1.membraneContent = mapSum2;
+		//endosome1.membraneContent = memSum;
 		// System.out.println("rabMembraneSum" + endosome1.membraneContent);
-		return endosome1.membraneContent;
+		return memSum;
 	}
 
 	private HashMap<String, Double> sumSolubleContent(Endosome endosome1,
 			Endosome endosome2) {
-		// HashMap<String, Double> mapSum3 = new HashMap<String, Double>();
+		HashMap<String, Double> solSum = new HashMap<String, Double>();
 		for (String key1 : endosome1.solubleContent.keySet()) {
 			if (endosome2.solubleContent.containsKey(key1)) {
 				double sum = endosome1.solubleContent.get(key1)
 						+ endosome2.solubleContent.get(key1);
-				endosome1.solubleContent.put(key1, sum);
-			}
+				solSum.put(key1, sum);
+			}else solSum.put(key1,  endosome1.solubleContent.get(key1));
 		}
 		for (String key2 : endosome2.solubleContent.keySet()) {
 			if (!endosome1.solubleContent.containsKey(key2)) {
 				double sum = endosome2.solubleContent.get(key2);
-				endosome1.solubleContent.put(key2, sum);
+				solSum.put(key2, sum);
 			}
 		}
-		// endosome1.solubleContent = mapSum3;
+		//endosome1.solubleContent = solSum;
 		// System.out.println("solubleContentSum" + endosome1.solubleContent);
-		return endosome1.solubleContent;
+		return solSum;
 	}
 
 	public void moveTowards() {
@@ -571,12 +636,12 @@ public class Endosome {
 		if (so < 2 * Cell.mincyl)
 			return; // if the surface is less than two minimus tubules, abort
 					// splitting
-		if (so * so * so / (vo * vo) <= 36.001 * Math.PI)
+		if (so * so * so / (vo * vo) <= 36.01 * Math.PI)
 			return; // organelle is an sphere
 		// if s^3 / v^2 is equal to 36*PI then it is an sphere and cannot form a
 		// tubule
-		if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) <= Cell.rcyl / 2)
-			return;
+		//if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) <= Cell.rcyl / 2)
+		//	return;
 		// too small volume for the surface for a tubule. Cannot form a tubule
 		if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) == Cell.rcyl / 2) {
 			System.out.println("tubule");
@@ -599,8 +664,7 @@ public class Endosome {
 		double ssphere = (4 * Math.PI * rsphere * rsphere);// area of a sphere
 															// containing the
 															// volume
-		if (so - ssphere < Cell.mincyl)
-			return; // if not enough surface to contain the volume plus a
+		if ((so - ssphere) < Cell.mincyl*1.9) return; // if not enough surface to contain the volume plus a
 					// mininal tubuel, no split
 		rabInTube = rabInTube(); // select a rab for the tubule
 		if (rabInTube == null)
@@ -683,8 +747,8 @@ public class Endosome {
 		}
 		this.rabContent.put(rabInTube, rabLeft);
 		// MEMBRANE CONTENT IS DISTRIBUTED according rabTropism
-		HashMap<String, Double> copyMembrane = new HashMap<String, Double>();
-		copyMembrane.putAll(this.membraneContent);
+		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(this.membraneContent);
+		//copyMembrane.putAll(this.membraneContent);
 		for (String content : copyMembrane.keySet()) {
 			if (!rabTropism.containsKey(content)
 					|| !rabTropism.get(content).contains(rabInTube)) {// not a
@@ -718,8 +782,8 @@ public class Endosome {
 			}
 		}
 		// SOLUBLE CONTENT IS DISTRIBUTED according rabTropism
-		HashMap<String, Double> copySoluble = new HashMap<String, Double>();
-		copySoluble.putAll(this.solubleContent);
+		HashMap<String, Double> copySoluble = new HashMap<String, Double>(this.solubleContent);
+		//copySoluble.putAll(this.solubleContent);
 		for (String content : copySoluble.keySet()) {
 			if (!rabTropism.containsKey(content)
 					|| !rabTropism.get(content).contains(rabInTube)) {// not a
@@ -759,43 +823,36 @@ public class Endosome {
 		moveTowards();
 
 		/* the tubule is created as an independent endosome */
-		Endosome b = new Endosome(this.space, this.grid, null, null, null);
+		HashMap<String, Double> newRabContent = new HashMap<String, Double>();
+		newRabContent.put(rabInTube, scylinder);
+		HashMap<String, Double> newInitOrgProp = new HashMap<String, Double>();
+		newInitOrgProp.put("area", scylinder);
+		newInitOrgProp.put("volume", vcylinder);
+		HashMap<String, Double> newMembraneContent = new HashMap<String, Double>();
+		for (String content : copyMembrane.keySet()) {
+			newMembraneContent.put(content, copyMembrane.get(content)
+					- this.membraneContent.get(content));
+//			if (b.membraneContent.get(content) > b.area) {
+//				// System.out.println("redddddddddddddddddddddddddddd"+b.membraneContent.get(content)/b.area);
+//
+//			}
+		}
+		HashMap<String, Double> newSolubleContent = new HashMap<String, Double>();
+		for (String content : copySoluble.keySet()) {
+			newSolubleContent.put(content, copySoluble.get(content)
+					- this.solubleContent.get(content));
+		}
+		Endosome b = new Endosome(this.space, this.grid, newRabContent, newMembraneContent, newSolubleContent, newInitOrgProp);
 		Context<Object> context = ContextUtils.getContext(this);
 		context.add(b);
 		b.area = scylinder;
-		b.volume = vcylinder;
-		HashMap<String, Double> map = new HashMap<String, Double>();
-		b.rabContent = map;
-		// b.membraneContent = map;
-		// b.solubleContent = map;
-		b.rabContent.put(rabInTube, scylinder);
-		HashMap<String, Double> map1 = new HashMap<String, Double>();
-		b.membraneContent = map1;
-		for (String content : copyMembrane.keySet()) {
-			b.membraneContent.put(content, copyMembrane.get(content)
-					- this.membraneContent.get(content));
-			if (b.membraneContent.get(content) > b.area) {
-				// System.out.println("redddddddddddddddddddddddddddd"+b.membraneContent.get(content)/b.area);
-
-			}
-		}
-		HashMap<String, Double> map2 = new HashMap<String, Double>();
-		b.solubleContent = map2;
-		for (String content : copySoluble.keySet()) {
-			b.solubleContent.put(content, copySoluble.get(content)
-					- this.solubleContent.get(content));
-		}
-		b.size = Math.pow(b.volume * 3d / 4d / Math.PI, (1d / 3d));// radius of
-																	// a sphere
-																	// with the
-																	// volume of
-																	// the
-																	// cylinder
+		b.volume= vcylinder;
+		b.size = Math.pow(b.volume * 3d / 4d / Math.PI, (1d / 3d));
 		b.speed = 5 / b.size;
 		b.heading = this.heading + 180;// contrary to the vesicle heading
-		// System.out.println("VESICLE B");
-		// System.out.println(b.area +" "+ b.rabContent +" "+ b.membraneContent
-		// +" "+ b.solubleContent);
+		System.out.println("                                                 VESICLE B");
+		System.out.println(b.area +" "+ b.rabContent +" "+ b.membraneContent
+		+" "+ b.solubleContent +" "+ b.initOrgProp);
 		NdPoint myPoint = space.getLocation(this);
 		double x = myPoint.getX();
 		double y = myPoint.getY();
@@ -807,8 +864,8 @@ public class Endosome {
 	}
 
 	public String rabInTube() {
-		HashMap<String, Double> copyMap = new HashMap<String, Double>();
-		copyMap.putAll(this.rabContent);
+		HashMap<String, Double> copyMap = new HashMap<String, Double>(this.rabContent);
+		//copyMap.putAll(this.rabContent);
 		String rab = null;
 		// System.out.println("CopyMap "+copyMap);
 		for (String rab1 : this.rabContent.keySet()) {
@@ -816,7 +873,7 @@ public class Endosome {
 				copyMap.remove(rab1);
 			}
 		}
-		if (copyMap.size() == 0) {
+		if (copyMap.isEmpty()) {
 			System.out.println("NINGUN RAB" + copyMap);
 			return null;
 		}
@@ -824,7 +881,7 @@ public class Endosome {
 		if (copyMap.size() < 2) {
 
 			for (String rab1 : copyMap.keySet()) {
-				// System.out.println("UNICO RAB "+copyMap);
+				System.out.println("UNICO RAB "+copyMap);
 				return rab1;
 			}
 		}
@@ -849,7 +906,7 @@ public class Endosome {
 
 		// System.out.println("original endosome"+area+ " " + volume +
 		// "original endosome rabs" + this.rabContent);
-		// System.out.println("original Rab Cellular Content" + cellRab);
+		// System.out.println("original Rab Cellular Content" + rabCell);
 		double vo = this.volume;
 		double so = this.area;
 		// if (vo < 2 * Math.PI * Cell.rcyl * Cell.rcyl * Cell.rcyl)return; //if
@@ -893,19 +950,19 @@ public class Endosome {
 		} else {
 			this.solubleContent.put("mvb", 1d);
 		}
-		cellRab = Cell.getInstance().getRabCell();
+		rabCell = Cell.getInstance().getRabCell();
 		for (String key1 : this.rabContent.keySet()) {
-			if (cellRab.containsKey(key1)) {
+			if (rabCell.containsKey(key1)) {
 				double sum = this.rabContent.get(key1) * sIV / so
-						+ cellRab.get(key1);
-				cellRab.put(key1, sum);
+						+ rabCell.get(key1);
+				rabCell.put(key1, sum);
 			} else {
 				double sum = this.rabContent.get(key1) * sIV / so;
-				cellRab.put(key1, sum);
+				rabCell.put(key1, sum);
 			}
 		}
 
-		Cell.getInstance().setRabCell(cellRab);
+		//Cell.getInstance().setRabCell(rabCell);
 		System.out.println("Rab Cellular Content"
 				+ Cell.getInstance().getRabCell());
 		for (String rab : this.rabContent.keySet()) {
@@ -986,11 +1043,12 @@ public class Endosome {
 	public void uptake() {
 		Cell cell = Cell.getInstance();
 		double tMembrane = cell.gettMembrane();
-		HashMap<String, Double> cellRab = cell.getRabCell();
-		if (!cellRab.containsKey("RabA"))
+		rabCell = cell.getRabCell();
+		//System.out.println("CELL RAB "+ rabCell+ "TMEMBRANE "+ tMembrane);
+		if (!rabCell.containsKey("RabA"))
 			return;
-		double cellRabA = cellRab.get("RabA");
-		if (tMembrane < Cell.sEndo || cellRabA < Cell.sEndo) {
+		double rabCellA = rabCell.get("RabA");
+		if (tMembrane < Cell.sEndo || rabCellA < Cell.sEndo) {
 			return;
 		}
 		/*
@@ -998,25 +1056,26 @@ public class Endosome {
 		 * null); Context<Object> context = ContextUtils.getContext(this);
 		 * context.add(budEnd);
 		 */
-		HashMap<String, Double> rabContent = new HashMap<String, Double>();
-		HashMap<String, Double> membraneContent = new HashMap<String, Double>();
-		HashMap<String, Double> solubleContent = new HashMap<String, Double>();
-		rabContent.put("RabA", Cell.sEndo);
-		//membraneContent.put("Tf", Cell.sEndo);
-		solubleContent.put("ova", Cell.vEndo);
+		HashMap<String, Double> rabContent = InitialOrganelles.getInstance().getInitRabContent().get("kind1");
+		HashMap<String, Double> membraneContent = InitialOrganelles.getInstance().getInitMembraneContent().get("kind1");
+		HashMap<String, Double> solubleContent = InitialOrganelles.getInstance().getInitSolubleContent().get("kind1");
+		HashMap<String, Double> initOrgProp = InitialOrganelles.getInstance().getInitOrgProp().get("kind1");
+
 		Context<Object> context = ContextUtils.getContext(this);
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
-				solubleContent);
+				solubleContent, initOrgProp);
 		context.add(bud);
 		// context.add(new Endosome(space, grid, rabContent, membraneContent,
 		// solubleContent));
 		System.out.println(membraneContent + "NEW ENDOSOME UPTAKE"
 				+ solubleContent + rabContent);
+		//tMembrane = Cell.getInstance().gettMembrane();
 		tMembrane = tMembrane - Cell.sEndo;
-		cellRabA = cellRabA - Cell.sEndo;
-		cellRab.put("RabA", cellRabA);
+		rabCellA = rabCellA - Cell.sEndo;
+		rabCell.put("RabA", rabCellA);
 		Cell.getInstance().settMembrane(tMembrane);
-		Cell.getInstance().setRabCell(cellRab);
+		
+		//Cell.getInstance().setRabCell(rabCell);
 
 		bud.area = Cell.sEndo;
 		bud.volume = Cell.vEndo;
@@ -1025,9 +1084,9 @@ public class Endosome {
 		bud.speed = 5 / bud.size;
 		bud.heading = -90;// contrary to the vesicle heading
 		// NdPoint myPoint = space.getLocation(bud);
-
-		space.moveTo(bud, Math.random() * 50, 48.0);
-		grid.moveTo(bud, (int) Math.random() * 50, 48);
+		double rnd = Math.random();
+		space.moveTo(bud, rnd * 50, 48.0);
+		grid.moveTo(bud, (int) rnd * 50, 48);
 
 		moveTowards();
 		// moveTowards();
@@ -1110,38 +1169,54 @@ public class Endosome {
 
 	public double getRed() {
 		// double red = 0.0;
-		String memPlot = "Tf";
-		if (membraneContent.containsKey(memPlot)) {
-			double red = membraneContent.get(memPlot) / area;
-			// System.out.println("red " + red);
+		String contentPlot = CellProperties.getInstance().getColorContent().get("red");
+		
+		if (membraneContent.containsKey(contentPlot)) {
+			double red = membraneContent.get(contentPlot) / area;
+			//System.out.println("mHCI content" + red);
+			return red;
+		}
+		if (solubleContent.containsKey(contentPlot)) {
+			double red = solubleContent.get(contentPlot) / volume;
+			//System.out.println("mHCI content" + red);
 			return red;
 		} else
 			return 0;
 	}
 
-	public double getBlue() {
-		double blue = 0;
-		/*
-		 * String rabPlot = "RabA"; if (rabContent.containsKey(rabPlot)) {
-		 * double gr = rabContent.get(rabPlot) / area; green = (int) (255 *
-		 * Math.pow(gr, (1 / 1))); // System.out.println("green " + green);
-		 * return green; } else
-		 */
-		return blue;
-	}
-
 	public double getGreen() {
-		// double green = 0;
-		String solPlot = "ova";
-		if (solubleContent.containsKey(solPlot)) {
-			double green = solubleContent.get(solPlot) / volume;
-			// green = (int) (255 * Math.pow(bl, (1 / 1)));
-			// System.out.println("blue " + blue);
+		// double red = 0.0;
+		String contentPlot = CellProperties.getInstance().getColorContent().get("green");
+		
+		if (membraneContent.containsKey(contentPlot)) {
+			double green = membraneContent.get(contentPlot) / area;
+			//System.out.println("mHCI content" + red);
+			return green;
+		}
+		if (solubleContent.containsKey(contentPlot)) {
+			double green = solubleContent.get(contentPlot) / volume;
+			//System.out.println("mHCI content" + red);
 			return green;
 		} else
 			return 0;
 	}
 
+	public double getBlue() {
+		// double red = 0.0;
+		String contentPlot = CellProperties.getInstance().getColorContent().get("blue");
+		
+		if (membraneContent.containsKey(contentPlot)) {
+			double blue = membraneContent.get(contentPlot) / area;
+			//System.out.println("mHCI content" + red);
+			return blue;
+		}
+		if (solubleContent.containsKey(contentPlot)) {
+			double blue = solubleContent.get(contentPlot) / volume;
+			//System.out.println("mHCI content" + red);
+			return blue;
+		} else
+			return 0;
+	}
 	// Edge color coded by Rabs
 	// RabA (5) Green (0,255,0)
 	// RabB (22) Red (255,0,0)
@@ -1150,56 +1225,40 @@ public class Endosome {
 	// RabE (5) Purple (128,0,128)
 	//
 	public double getEdgeRed() {
-		double red = 0;
-		double r1 = 0;
-		double r2 = 0;
-		double r3 = 0;
-		if (rabContent.containsKey("RabB")) {
-			r1 = rabContent.get("RabB") / area;
-		}
-		if (rabContent.containsKey("RabC")) {
-			r2 = 0.5 * rabContent.get("RabC") / area;
-		}
-		if (rabContent.containsKey("RabE")) {
-			r3 = 0.5 * rabContent.get("RabE") / area;
-		}
-		red = r1 + r2 + r3;
-		// System.out.println("green " + green);
-		return red;
+		// double red = 0.0;
+		String edgePlot = CellProperties.getInstance().getColorRab().get("red");
+		
+		if (rabContent.containsKey(edgePlot)) {
+			double red = rabContent.get(edgePlot) / area;
+			//System.out.println("mHCI content" + red);
+			return red;
+		} else
+			return 0;
 	}
 
 	public double getEdgeGreen() {
-		double green = 0;
-		double g1 = 0;
-		double g2 = 0;
-
-		if (rabContent.containsKey("RabA")) {
-			g1 = rabContent.get("RabA") / area;
-		}
-		if (rabContent.containsKey("RabC")) {
-			g2 = 0.5 * rabContent.get("RabC") / area;
-		}
-		green = g1 + g2;
-		// System.out.println("green " + green);
-		return green;
+		// double red = 0.0;
+		String edgePlot = CellProperties.getInstance().getColorRab().get("green");
+		
+		if (rabContent.containsKey(edgePlot)) {
+			double green = rabContent.get(edgePlot) / area;
+			//System.out.println("mHCI content" + red);
+			return green;
+		} else
+			return 0;
 	}
 
 	public double getEdgeBlue() {
-		double blue = 0;
-		double b1 = 0;
-		double b2 = 0;
-
-		if (rabContent.containsKey("RabD")) {
-			b1 = rabContent.get("RabD") / area;
-		}
-		if (rabContent.containsKey("RabE")) {
-			b2 = 0.5 * rabContent.get("RabE") / area;
-		}
-		blue = b1 + b2;
-		// System.out.println("green " + green);
-		return blue;
+		// double red = 0.0;
+		String edgePlot = CellProperties.getInstance().getColorRab().get("blue");
+		
+		if (rabContent.containsKey(edgePlot)) {
+			double blue = rabContent.get(edgePlot) / area;
+			//System.out.println("mHCI content" + red);
+			return blue;
+		} else
+			return 0;
 	}
-
 	/*
 	 * enum RabCont { RABA, RABB, RABC, RABD, RABE } public RabCont rabCont;
 	 * 

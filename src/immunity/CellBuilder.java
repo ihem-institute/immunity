@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -107,80 +108,20 @@ public class CellBuilder implements ContextBuilder<Object> {
 
 		// Endosomes
 		// RabA is Rab5
-		int endosome_rabA_count = 10;// (Integer)
-										// params.getValue("endosome_rabA_count");
-		for (int i = 0; i < endosome_rabA_count; i++) {
-			HashMap<String, Double> rabContent = new HashMap<String, Double>();
-			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
-			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
-			rabContent.put("RabA", 4d * Math.PI * 30d * 30d);
-			// membraneContent.put("Tf", 4d * Math.PI * 30d * 30d);
-			solubleContent.put("ova", 4d / 3d * Math.PI * 30d * 30d * 30d);
-			context.add(new Endosome(space, grid, rabContent, membraneContent,
-					solubleContent));
-			System.out.println(membraneContent + " " + solubleContent
-					+ rabContent);
+
+		Set<String> diffOrganelles = InitialOrganelles.getInstance().getDiffOrganelles();
+		System.out.println(diffOrganelles);
+		for (String kind : diffOrganelles){
+			HashMap<String, Double> rabContent = InitialOrganelles.getInstance().getInitRabContent().get(kind);
+			HashMap<String, Double> membraneContent = InitialOrganelles.getInstance().getInitMembraneContent().get(kind);
+			HashMap<String, Double> solubleContent = InitialOrganelles.getInstance().getInitSolubleContent().get(kind);
+			HashMap<String, Double> initOrgProp = InitialOrganelles.getInstance().getInitOrgProp().get(kind);
+	
+			for (int i = 0; i < initOrgProp.get("number"); i++) {
+				context.add(new Endosome(space, grid, rabContent, membraneContent,
+						solubleContent, initOrgProp));
+				System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
 		}
-		// RabB is Rab22
-		int endosome_rabB_count = 10;// (Integer)
-										// params.getValue("endosome_rabB_count");
-		for (int i = 0; i < endosome_rabB_count; i++) {
-			HashMap<String, Double> rabContent = new HashMap<String, Double>();
-			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
-			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
-			rabContent.put("RabB", 4d * Math.PI * 30d * 30d);
-			// membraneContent.put("Tf", 0.0d);
-			solubleContent.put("ova", 0.0d);
-			context.add(new Endosome(space, grid, rabContent, membraneContent,
-					solubleContent));
-		}
-		// RabC is Rab11
-		int endosome_rabC_count = 10;// (Integer)
-										// params.getValue("endosome_rabC_count");
-		for (int i = 0; i < endosome_rabC_count; i++) {
-			HashMap<String, Double> rabContent = new HashMap<String, Double>();
-			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
-			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
-			rabContent.put("RabC", 4d * Math.PI * 30d * 30d);
-			// membraneContent.put("Tf", 0.0d);
-			solubleContent.put("ova", 0.0d);
-			context.add(new Endosome(space, grid, rabContent, membraneContent,
-					solubleContent));
-			System.out.println(membraneContent + " " + solubleContent
-					+ rabContent);
-		}
-		// RabD is Rab7
-		int endosome_rabD_count = 10;// (Integer)
-										// params.getValue("endosome_rabD_count");
-		for (int i = 0; i < endosome_rabD_count; i++) {
-			HashMap<String, Double> rabContent = new HashMap<String, Double>();
-			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
-			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
-			rabContent.put("RabD", 4d * Math.PI * 30d * 30d);
-			// membraneContent.put("Tf", 0.0d);
-			solubleContent.put("ova", 0.0d);
-			solubleContent.put("p1", 4d / 3d * Math.PI * 30d * 30d * 30d);
-			context.add(new Endosome(space, grid, rabContent, membraneContent,
-					solubleContent));
-			System.out.println(membraneContent + " " + solubleContent
-					+ rabContent);
-		}
-		// RabE is Rab of secretory pathway
-		int endosome_rabE_count = 10;// (Integer)
-										// params.getValue("endosome_rabE_count");
-		for (int i = 0; i < endosome_rabE_count; i++) {
-			HashMap<String, Double> rabContent = new HashMap<String, Double>();
-			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
-			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
-			rabContent.put("RabE", 4d * Math.PI * 30d * 30d);
-			// membraneContent.put("Tf", 0.0d);
-			membraneContent.put("mHCI", 4d * Math.PI * 30d * 30d);
-			membraneContent.put("p2", 4d * Math.PI * 30d * 30d);
-			solubleContent.put("ova", 0.0d);
-			context.add(new Endosome(space, grid, rabContent, membraneContent,
-					solubleContent));
-			System.out.println(membraneContent + " " + solubleContent
-					+ rabContent);
 		}
 		// Cytosol
 		for (int i = 0; i < 50; i++) {
@@ -235,7 +176,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 		// HashMap<String, Double> solubleContent = new HashMap<String,
 		// Double>();
 		CellProperties cellProperties = CellProperties.getInstance();
-		// InitialOrganelles InOr = InitialOrganelles.getInstance();
+// INITIAL CELL PROPERTIES
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
 			String[] b = line.split(",");
@@ -293,6 +234,21 @@ public class CellBuilder implements ContextBuilder<Object> {
 				}
 				break;
 			}
+			
+			case "colorRab": {
+				for (int i = 1; i < b.length; i = i + 2) {
+					cellProperties.getColorRab().put(b[i], b[i + 1]);
+				}
+				break;
+			}
+			case "colorContent": {
+				for (int i = 1; i < b.length; i = i + 2) {
+					cellProperties.getColorContent().put(b[i], b[i + 1]);
+				}
+				break;
+			}
+			
+			// INITIAL ORGANELLES
 			case "kind1": {
 				InitialOrganelles inOr = InitialOrganelles.getInstance();
 				inOr.getDiffOrganelles().add(b[0]);

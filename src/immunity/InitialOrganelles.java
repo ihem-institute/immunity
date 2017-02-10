@@ -2,7 +2,9 @@ package immunity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class InitialOrganelles {
 
@@ -16,7 +18,7 @@ public class InitialOrganelles {
 		return instance;
 	}
 
-	public ArrayList<String> diffOrganelles = new ArrayList<String>();
+	public HashSet<String> diffOrganelles= new HashSet<String>();
 	public HashMap<String, HashMap<String, Double>> initOrgProp = new HashMap<String, HashMap<String, Double>>();
 	public HashMap<String, HashMap<String, Double>> initRabContent = new HashMap<String, HashMap<String, Double>>();
 	public HashMap<String, HashMap<String, Double>> initSolubleContent = new HashMap<String, HashMap<String, Double>>();
@@ -32,7 +34,7 @@ public class InitialOrganelles {
 
 	}
 
-	public ArrayList<String> getDiffOrganelles() {
+	public HashSet<String> getDiffOrganelles() {
 		return diffOrganelles;
 	}
 
