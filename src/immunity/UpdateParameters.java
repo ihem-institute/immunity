@@ -22,6 +22,11 @@ public class UpdateParameters {
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
 	private String oldFile = "";
+//	File file = new File("C:/users/lmayorga/desktop/inputIntrTransp3.csv");
+//	Path filePath = file.toPath();		
+//	BasicFileAttributes attr = Files.readAttributes(filePath, BasicFileAttributes.class);
+//	oldFile = attr.lastModifiedTime().toString();
+	
 	public String getOldFile() {
 		return oldFile;
 	}
@@ -57,6 +62,10 @@ public class UpdateParameters {
 		BasicFileAttributes attr = Files.readAttributes(filePath, BasicFileAttributes.class);
 		String newFile = attr.lastModifiedTime().toString();
 		if (newFile != oldFile){
+			System.out.println("newFile " + newFile+ "ondFile "+ oldFile);
+			System.out.println("creationTime: " + attr.creationTime());
+			System.out.println("lastAccessTime: " + attr.lastAccessTime());
+			System.out.println("lastModifiedTime: " + attr.lastModifiedTime());
 			try {
 				loadFromCsv();
 				CellProperties cellProperties = CellProperties.getInstance();
@@ -85,9 +94,7 @@ public class UpdateParameters {
 			}
 			oldFile = newFile;
 		}
-		System.out.println("creationTime: " + attr.creationTime());
-		System.out.println("lastAccessTime: " + attr.lastAccessTime());
-		System.out.println("lastModifiedTime: " + attr.lastModifiedTime());
+
 		
 		
 	}
@@ -102,7 +109,7 @@ public class UpdateParameters {
 		// InOr.getInitSolubleContent().put("kind" + i, null);
 		// InOr.getInitMembraneContent().put("kind" + i, null);
 		// }
-
+//if (2<3) return;
 		Scanner scanner = new Scanner(new File(
 				"C:/users/lmayorga/desktop/inputIntrTransp3.csv"));
 		scanner.useDelimiter(",");
@@ -121,11 +128,11 @@ public class UpdateParameters {
 				cellProperties.getCellK().put(b[1], Double.parseDouble(b[2]));
 				break;
 			}
-			case "initRabCell": {
-				cellProperties.getInitRabCell().put(b[1],
-						Double.parseDouble(b[2]));
-				break;
-			}
+//			case "initRabCell": {
+//				cellProperties.getInitRabCell().put(b[1],
+//						Double.parseDouble(b[2]));
+//				break;
+//			}
 			case "rabCompatibility": {
 				cellProperties.getRabCompatibility().put(b[1],
 						Double.parseDouble(b[2]));
@@ -164,12 +171,13 @@ public class UpdateParameters {
 				}
 				break;
 			}
-			case "rabSet": {
-				for (int i = 1; i < b.length; i++) {
-					cellProperties.getRabSet().add(b[i]);
-				}
-				break;
-			}
+//			case "rabSet": {
+//				for (int i = 1; i < b.length; i++) {
+//					cellProperties.getRabSet().add(b[i]);
+//			System.out.println("RABSET  "+cellProperties.getRabSet());
+//				}
+//				break;
+//			}
 			
 			case "colorRab": {
 				for (int i = 1; i < b.length; i = i + 2) {
@@ -183,7 +191,7 @@ public class UpdateParameters {
 				}
 				break;
 			}
-			
+//			
 //			// INITIAL ORGANELLES
 //			case "kind1": {
 //				InitialOrganelles inOr = InitialOrganelles.getInstance();
@@ -397,7 +405,7 @@ public class UpdateParameters {
 //				break;
 //			}
 			default: {
-				//System.out.println("no a valid entry");
+				System.out.println("no SE POR QUE LEE a valid entry");
 			}
 			}
 		}

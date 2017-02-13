@@ -3,7 +3,9 @@ package immunity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CellProperties {
 	private static CellProperties instance;
@@ -23,9 +25,8 @@ public class CellProperties {
 	public HashMap<String, String> colorRab = new HashMap<String, String>();
 	public HashMap<String, String> colorContent = new HashMap<String, String>();
 	List<String> membraneMet = new ArrayList<String>();
-
 	List<String> solubleMet = new ArrayList<String>();
-	List<String> rabSet = new ArrayList<String>();
+	Set<String> rabSet = new HashSet<String>();
 	
 	//HashMap<String, Double> cellRab = new HashMap<String, Double>();
 	
@@ -61,7 +62,7 @@ public class CellProperties {
 	public List<String> getSolubleMet() {
 		return solubleMet;
 	}
-	public List<String> getRabSet() {
+	public Set<String> getRabSet() {
 		return rabSet;
 	}
 }

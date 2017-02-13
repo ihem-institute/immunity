@@ -25,11 +25,12 @@ public class MT {
 
 	@ScheduledMethod(start = 1, interval = 100)
 	public void step() {
-		if (Math.random() < 0.1)
+		if (Math.random() <0.1)
 			changePosition();
 	}
 
 	public void changePosition() {
+		//if (Math.random() < 0.1) return;
 		// move the origin and the end of the MT
 		xorigin = RandomHelper.nextDoubleFromTo(1, 49);
 		xend = (RandomHelper.nextDoubleFromTo(xorigin - 10, xorigin + 10));

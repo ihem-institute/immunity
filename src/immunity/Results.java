@@ -14,6 +14,7 @@ import java.util.List;
 
 
 
+import java.util.Set;
 import java.util.TreeMap;
 
 import repast.simphony.engine.schedule.ScheduledMethod;
@@ -31,7 +32,7 @@ public class Results {
 	public HashMap<String, Double> cellK = cellProperties.getCellK();
 	public List<String> solubleMet = cellProperties.getSolubleMet();
 	public List<String> membraneMet = cellProperties.getMembraneMet();
-	public List<String> rabSet = cellProperties.getRabSet();
+	public Set<String> rabSet = cellProperties.getRabSet();
 	public List<String> allMet = new ArrayList<String>();
 	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
 	public HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();

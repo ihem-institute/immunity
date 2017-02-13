@@ -58,7 +58,7 @@ public class Endosome {
 	double cellMembrane;// = 0;
 	List<String> membraneMet = cellProperties.getMembraneMet();
 	List<String> solubleMet = cellProperties.getSolubleMet();
-	List<String> rabSet = cellProperties.getRabSet();
+	Set<String> rabSet = cellProperties.getRabSet();
 	HashMap<String, Double> rabCell = new HashMap<String, Double>();
 	private List<MT> mts;
 	//HashMap<String, Double> membraneMet = cellProperties.membraneMet();
@@ -104,7 +104,7 @@ public class Endosome {
 		tether();
 		if (Math.random() < 0.1) fusion();
 		split();
-//		internalVesicle();
+		internalVesicle();
 //		if (Math.random() < 0.001) rabConversion();
 //		rabConversionN();
 		if (Math.random() < 0.001) antigenPresentation();
@@ -140,7 +140,7 @@ public class Endosome {
 		Cell.getInstance().getRabCell().put("RabA", fRabAc);
 		Cell.getInstance().getRabCell().put("RabD", fRabDc);
 		// TODO Auto-generated method stub
-		System.out.println("RAB CONVERTION iRabAm "+ iRabAm+ " iRabAc "+iRabAc+" iRabDm "+iRabDm+" iRabDc "+ iRabDc);
+		System.out.println(this.hashCode()+  "  RAB CONVERTION iRabAm "+ iRabAm+ " iRabAc "+iRabAc+" iRabDm "+iRabDm+" iRabDc "+ iRabDc);
 		System.out.println("RAB CONVERTION fRabAm "+ fRabAm+ " fRabAc "+fRabAc+" fRabDm "+fRabDm+" fRabDc "+ fRabDc);
 		
 	}
