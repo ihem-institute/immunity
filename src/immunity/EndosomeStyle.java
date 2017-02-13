@@ -101,7 +101,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		// in the endosome
 		if (object.getSolubleContent().containsKey("solubleMarker")
 				&& object.getSolubleContent().get("solubleMarker")> 0){
-		String marker = object.getSolubleContent().get("solubleMarker").toString();
+		//String marker = object.getSolubleContent().get("solubleMarker").toString();
 		return "M "+object.getMvb();
 		}
 		return object.getMvb();

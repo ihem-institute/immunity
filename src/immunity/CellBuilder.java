@@ -116,12 +116,15 @@ public class CellBuilder implements ContextBuilder<Object> {
 		Set<String> diffOrganelles = InitialOrganelles.getInstance().getDiffOrganelles();
 		System.out.println(diffOrganelles);
 		for (String kind : diffOrganelles){
-			HashMap<String, Double> rabContent = InitialOrganelles.getInstance().getInitRabContent().get(kind);
-			HashMap<String, Double> membraneContent = InitialOrganelles.getInstance().getInitMembraneContent().get(kind);
-			HashMap<String, Double> solubleContent = InitialOrganelles.getInstance().getInitSolubleContent().get(kind);
-			HashMap<String, Double> initOrgProp = InitialOrganelles.getInstance().getInitOrgProp().get(kind);
-	
+//			HashMap<String, Double> rabContent = InitialOrganelles.getInstance().getInitRabContent().get(kind);
+//			HashMap<String, Double> membraneContent = InitialOrganelles.getInstance().getInitMembraneContent().get(kind);
+//			HashMap<String, Double> solubleContent = InitialOrganelles.getInstance().getInitSolubleContent().get(kind);
+			HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 			for (int i = 0; i < initOrgProp.get("number"); i++) {
+				HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
+				HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
+				HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
+//				HashMap<String, Double> initOrgProp = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind);
 				context.add(new Endosome(space, grid, rabContent, membraneContent,
 						solubleContent, initOrgProp));
 				System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
@@ -516,6 +519,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 			}
 			}
 		}
+		System.out.println("INITIAL "+ InitialOrganelles.getInstance().initRabContent.toString());
 		scanner.close();
 	}
 

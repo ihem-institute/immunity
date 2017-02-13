@@ -113,7 +113,7 @@ public class Endosome {
 		split();
 		internalVesicle();
 		// if (Math.random() < 0.001) rabConversion();
-		// rabConversionN();
+		 rabConversionN();
 		if (Math.random() < 0.001)
 			antigenPresentation();
 	}
@@ -838,7 +838,7 @@ public class Endosome {
 				// the volume ratio
 				if (content.equals("solubleMarker")) {
 					if (Math.random() < vVesicle / vo)
-						this.membraneContent.put(content, 1.d);
+						this.solubleContent.put(content, 1.d);
 				} 
 				else {
 				this.solubleContent.put(content, copySoluble.get(content)

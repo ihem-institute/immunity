@@ -49,15 +49,15 @@ public class UpdateParameters {
 	}
 
 
-	@ScheduledMethod(start = 1, interval = 100)
-	public void step(){
-			try {
-		testNewFile();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-}
+//	@ScheduledMethod(start = 1, interval = 100)
+//	public void step(){
+//			try {
+//		testNewFile();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//}
 	public void testNewFile() throws IOException {
 		File file = new File("C:/users/lmayorga/desktop/inputIntrTransp3.csv");
 		Path filePath = file.toPath();		
@@ -173,13 +173,13 @@ public class UpdateParameters {
 				}
 				break;
 			}
-//			case "rabSet": {
-//				for (int i = 1; i < b.length; i++) {
-//					cellProperties.getRabSet().add(b[i]);
-//			System.out.println("RABSET  "+cellProperties.getRabSet());
-//				}
-//				break;
-//			}
+			case "rabSet": {
+				for (int i = 1; i < b.length; i++) {
+					cellProperties.getRabSet().add(b[i]);
+			System.out.println("RABSET  "+cellProperties.getRabSet());
+				}
+				break;
+			}
 			
 			case "colorRab": {
 				for (int i = 1; i < b.length; i = i + 2) {
