@@ -99,12 +99,17 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	public String getLabel(Endosome object) {
 		// the label is the number of internal vesicles (Multi Vesicular Body)
 		// in the endosome
+		if (object.getSolubleContent().containsKey("solubleMarker")
+				&& object.getSolubleContent().get("solubleMarker")> 0){
+		String marker = object.getSolubleContent().get("solubleMarker").toString();
+		return "M "+object.getMvb();
+		}
 		return object.getMvb();
 	}
 
 	@Override
 	public Font getLabelFont(Endosome object) {
-		return new Font("sansserif", Font.PLAIN, 14);
+		return new Font("sansserif", Font.BOLD, 14);
 	}
 
 	@Override

@@ -30,8 +30,8 @@ public class Results {
 	CellProperties cellProperties = CellProperties.getInstance();
 
 	public HashMap<String, Double> cellK = cellProperties.getCellK();
-	public List<String> solubleMet = cellProperties.getSolubleMet();
-	public List<String> membraneMet = cellProperties.getMembraneMet();
+	public Set<String> solubleMet = cellProperties.getSolubleMet();
+	public Set<String> membraneMet = cellProperties.getMembraneMet();
 	public Set<String> rabSet = cellProperties.getRabSet();
 	public List<String> allMet = new ArrayList<String>();
 	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();

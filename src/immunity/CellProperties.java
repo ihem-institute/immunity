@@ -20,12 +20,12 @@ public class CellProperties {
 	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
 	public HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
 	public HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
-	public HashMap<String, List<String>> rabTropism = new HashMap<String, List<String>>();
+	public HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>();
 	public HashMap<String, Double> mtTropism = new HashMap<String, Double>();
 	public HashMap<String, String> colorRab = new HashMap<String, String>();
 	public HashMap<String, String> colorContent = new HashMap<String, String>();
-	List<String> membraneMet = new ArrayList<String>();
-	List<String> solubleMet = new ArrayList<String>();
+	Set<String> membraneMet = new HashSet<String>();
+	Set<String> solubleMet = new HashSet<String>();
 	Set<String> rabSet = new HashSet<String>();
 	
 	//HashMap<String, Double> cellRab = new HashMap<String, Double>();
@@ -44,7 +44,7 @@ public class CellProperties {
 	public HashMap<String, Double> getTubuleTropism() {
 		return tubuleTropism;
 	}
-	public HashMap<String, List<String>> getRabTropism() {
+	public HashMap<String, Set<String>> getRabTropism() {
 		return rabTropism;
 	}
 	public HashMap<String, Double> getMtTropism() {
@@ -56,10 +56,10 @@ public class CellProperties {
 	public HashMap<String, String> getColorContent() {
 		return colorContent;
 	}
-	public List<String> getMembraneMet() {
+	public Set<String> getMembraneMet() {
 		return membraneMet;
 	}
-	public List<String> getSolubleMet() {
+	public Set<String> getSolubleMet() {
 		return solubleMet;
 	}
 	public Set<String> getRabSet() {

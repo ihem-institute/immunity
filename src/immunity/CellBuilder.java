@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
@@ -209,7 +210,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 				break;
 			}
 			case "rabTropism": {
-				List<String> rabT = new ArrayList<String>();
+				Set<String> rabT = new HashSet<String>();
 				for (int i = 2; i < b.length; i++) {
 					System.out.println(b[i]);
 					if (b[i].contains("Rab")) {
@@ -427,6 +428,48 @@ public class CellBuilder implements ContextBuilder<Object> {
 				break;
 			}
 			case "kind5": {
+				InitialOrganelles inOr = InitialOrganelles.getInstance();
+				inOr.getDiffOrganelles().add(b[0]);
+				switch (b[1]) {
+				case "initOrgProp": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitOrgProp().put(b[0], value);
+					break;
+				}
+				case "initRabContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitRabContent().put(b[0], value);
+					break;
+				}
+				case "initSolubleContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitSolubleContent().put(b[0], value);
+					break;
+				}
+				case "initMembraneContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitMembraneContent().put(b[0], value);
+					break;
+				}
+				default: {
+					System.out.println("no a valid entry");
+				}
+				}
+				break;
+			}
+			case "kind6": {
 				InitialOrganelles inOr = InitialOrganelles.getInstance();
 				inOr.getDiffOrganelles().add(b[0]);
 				switch (b[1]) {

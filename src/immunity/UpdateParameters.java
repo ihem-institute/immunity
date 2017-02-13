@@ -8,8 +8,10 @@ import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.TreeMap;
 
 import repast.simphony.engine.schedule.ScheduledMethod;
@@ -144,7 +146,7 @@ public class UpdateParameters {
 				break;
 			}
 			case "rabTropism": {
-				List<String> rabT = new ArrayList<String>();
+				Set<String> rabT = new HashSet<String>();
 				for (int i = 2; i < b.length; i++) {
 					System.out.println(b[i]);
 					if (b[i].contains("Rab")) {
