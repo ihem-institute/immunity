@@ -49,22 +49,23 @@ public class UpdateParameters {
 	}
 
 
-//	@ScheduledMethod(start = 1, interval = 100)
-//	public void step(){
-//			try {
-//		testNewFile();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//}
+	@ScheduledMethod(start = 1, interval = 100)
+	public void step(){
+			try {
+		testNewFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+}
 	public void testNewFile() throws IOException {
 		File file = new File("C:/users/lmayorga/desktop/inputIntrTransp3.csv");
 		Path filePath = file.toPath();		
 		BasicFileAttributes attr = Files.readAttributes(filePath, BasicFileAttributes.class);
 		String newFile = attr.lastModifiedTime().toString();
-		if (newFile != oldFile){
-			System.out.println("newFile " + newFile+ "ondFile "+ oldFile);
+		if (newFile.equals(oldFile)){return;}
+		else{
+			System.out.println("newFile " + newFile+ "oldFile "+ oldFile);
 			System.out.println("creationTime: " + attr.creationTime());
 			System.out.println("lastAccessTime: " + attr.lastAccessTime());
 			System.out.println("lastModifiedTime: " + attr.lastModifiedTime());
