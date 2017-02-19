@@ -25,7 +25,7 @@ public class MT {
 
 	@ScheduledMethod(start = 1, interval = 100)
 	public void step() {
-		if (Math.random() <0.1)
+		if (Math.random() <0.01)
 			changePosition();
 	}
 
