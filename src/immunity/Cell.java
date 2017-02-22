@@ -18,6 +18,7 @@ public class Cell {
 	public static double rEndo = CellProperties.getInstance().getCellK().get("rEndo");//20.0; // radius new endosome formed by uptake
 	public static double mincyl = 6 * Math.PI * rcyl * rcyl; // surface minimum cylinder
 	// two radius large (almost a sphere)
+	public static double rIV = 15; // Internal vesicle radius
 	public static double vEndo = 4d / 3d * Math.PI * Math.pow(rEndo, 3); //volume new endosome
 	public static double sEndo = 4d * Math.PI * Math.pow(rEndo, 2); // surface new endosome
 	// mincyl surface = 1884.95 volume = 6283.18
