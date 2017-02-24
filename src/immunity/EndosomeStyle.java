@@ -2,11 +2,16 @@ package immunity;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
 import javax.media.opengl.GL2;
+
+import org.apache.commons.math3.geometry.euclidean.twod.Line;
 
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.grid.Grid;
@@ -36,10 +41,10 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		 * shape is generated as a relationship between area and volume. For a
 		 * sphere the s^3/v^2 is 113. For a cylinder is larger than this. For
 		 * the minimum cylinder is 169.6
-		 */double s = object.getArea();
+		 */
+		double s = object.getArea();
 		double v = object.getVolume();
-		int svr = (int) ((s * s * s) / (v * v) / (113d)); // should be 1 for a
-															// sphere
+		int svr = (int) ((s * s * s) / (v * v) / (113d)); // should be 1 for a												// sphere
 		VSpatial createRectangle = this.factory.createRectangle(5 * svr, 5);
 		return createRectangle;
 	}
@@ -133,3 +138,18 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

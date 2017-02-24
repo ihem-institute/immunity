@@ -105,48 +105,48 @@ public class Endosome {
 		recycle();
 		uptake();
 		newFromEr();
-		//size();
+		// size();
 		changeDirection();
 		moveTowards();
 		tether();
 		fusion();
 		split();
-//		if (Math.random() < 0.01) lysosomalDigestion();
+		// if (Math.random() < 0.01) lysosomalDigestion();
 		internalVesicle();
-		if (Math.random() < 0.001) 
-		rabConversion();
-		//rabConversionN();
+		if (Math.random() < 0.001)
+			rabConversion();
+		// rabConversionN();
 		if (Math.random() < 0.001)
 			antigenPresentation();
 	}
 
 	private void lysosomalDigestion() {
-//		if low percentage of the membrane is RabD return
-		if (!rabContent.containsKey("RabD")|| 
-			Math.random()> rabContent.get("RabD")/this.area)return;
-//		soluble and membrane content is digested in a low percentage 
-//		(0.0001* proportion of RabD in the membrane)
-//		volume is decreased proportional to the initial volume and also
-//		considering the mvb that are digested
-		double rabDratio=rabContent.get("RabD")/this.area;
-		double volIV =4 / 3 * Math.PI * Math.pow(Cell.rIV, 3.d);
+		// if low percentage of the membrane is RabD return
+		if (!rabContent.containsKey("RabD")
+				|| Math.random() > rabContent.get("RabD") / this.area)
+			return;
+		// soluble and membrane content is digested in a low percentage
+		// (0.0001* proportion of RabD in the membrane)
+		// volume is decreased proportional to the initial volume and also
+		// considering the mvb that are digested
+		double rabDratio = rabContent.get("RabD") / this.area;
+		double volIV = 4 / 3 * Math.PI * Math.pow(Cell.rIV, 3.d);
 		double deltaV = 0d;
-		for (String sol : solubleContent.keySet()){
-			double solValue = solubleContent.get(sol)* 0.0001* rabDratio;
+		for (String sol : solubleContent.keySet()) {
+			double solValue = solubleContent.get(sol) * 0.0001 * rabDratio;
 			solubleContent.put(sol, solValue);
 		}
-		for (String mem : membraneContent.keySet()){
-			double memValue = membraneContent.get(mem)* 0.0001* rabDratio;
+		for (String mem : membraneContent.keySet()) {
+			double memValue = membraneContent.get(mem) * 0.0001 * rabDratio;
 			membraneContent.put(mem, memValue);
 		}
-//		volume is decreased
+		// volume is decreased
 
-		if (solubleContent.containsKey("mvb")){
-		deltaV = solubleContent.get("mvb")* 0.0001d * rabDratio * volIV +
-				 this.volume * 0.0001* rabDratio;
-		}
-		else {
-		deltaV =  this.volume * 0.0001* rabDratio;	
+		if (solubleContent.containsKey("mvb")) {
+			deltaV = solubleContent.get("mvb") * 0.0001d * rabDratio * volIV
+					+ this.volume * 0.0001 * rabDratio;
+		} else {
+			deltaV = this.volume * 0.0001 * rabDratio;
 		}
 		this.volume = this.volume - deltaV;
 	}
@@ -342,12 +342,14 @@ public class Endosome {
 
 				}
 			}
-			if (met.equals("area"))rabConversion.setInitialConcentration(met, this.area);
-			if (met.equals("Rab0"))rabConversion.setInitialConcentration(met, Rab0());
+			if (met.equals("area"))
+				rabConversion.setInitialConcentration(met, this.area);
+			if (met.equals("Rab0"))
+				rabConversion.setInitialConcentration(met, Rab0());
 		}
 
-		System.out.println("COPASI INITIAL  membrane "
-				+ rabContent +" soluble "+ Cell.getInstance().getRabCell());
+		System.out.println("COPASI INITIAL  membrane " + rabContent
+				+ " soluble " + Cell.getInstance().getRabCell());
 		rabConversion.runTimeCourse();
 		for (String met : metabolites) {
 			if (met.endsWith("m")) {
@@ -369,17 +371,17 @@ public class Endosome {
 
 		}
 
-		System.out.println("COPASI FINAL membrane "
-				+ rabContent +" soluble "+ Cell.getInstance().getRabCell());
-		
+		System.out.println("COPASI FINAL membrane " + rabContent + " soluble "
+				+ Cell.getInstance().getRabCell());
+
 	}
 
 	private double Rab0() {
 		double sum = 0;
-		for (String rab : rabContent.keySet()){
+		for (String rab : rabContent.keySet()) {
 			sum = sum + rabContent.get(rab);
 		}
-		double Rab0 = this.area-sum;
+		double Rab0 = this.area - sum;
 		return Rab0;
 	}
 
@@ -659,32 +661,20 @@ public class Endosome {
 		// too small volume for the surface for a tubule. Cannot form a tubule
 		if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) == Cell.rcyl / 2) {
 			System.out.println("tubule");
-			// return; // NEED TO GENERATE A SUBRUTINE TO SPLIT TUBULE-TUBULE
-			// SUBRUTINE SHOULD SEND BACK VCYLINDER AND SCYLINDER-DONE. The same
-			// procedures is used for both
 		}
-
-		// TRANSFORM IN A SUBRUTINE TO SPLIT VESICLE-TUBULE
-		// procedure to split an organelle which is between a sphere (that
-		// cannot be splitted) and a cylinder, that follow other rules.
-		// calculate surface of smallest sphere
 
 		double rsphere = Math.pow((vo * 3) / (4 * Math.PI), (1 / 3d));// calculate
 		// the radius of the sphere with a given volume
-		// System.out.println("vsphere");
-		// System.out.println(vsphere);
-		// System.out.println("rsphere");
-		// System.out.println(rsphere);
+
 		double ssphere = (4 * Math.PI * rsphere * rsphere);// area of a sphere
 															// containing the
 															// volume
 		if ((so - ssphere) < Cell.mincyl * 1.9)
 			return; // if not enough surface to contain the volume plus a
-		// mininal tubuel, no split
+		// minimum tubule, no split
 		rabInTube = rabInTube(); // select a rab for the tubule
 		if (rabInTube == null)
 			return; // if non is selected, no fission
-		// System.out.println("rabInTube" + rabInTube);
 
 		/* initial minimum tubule to be formed */
 		double scylinder = Cell.mincyl; // surface minimum cylinder 2*radius
@@ -712,9 +702,7 @@ public class Endosome {
 			 * while there is enough membrane and enough rab surface, the tubule
 			 * grows
 			 */
-			// System.out.println("in while" + (vo-vcylinder-2 * Math.PI*
-			// Math.pow(Cell.rcyl, 3))/((so - scylinder-4 * Math.PI*
-			// Math.pow(Cell.rcyl, 2)) - 2 * Math.PI * Cell.rcyl * Cell.rcyl));
+
 			scylinder = scylinder + 4 * Math.PI * Math.pow(Cell.rcyl, 2);
 			// add a cylinder without caps (the caps were considered in
 			// the mincyl
@@ -722,8 +710,6 @@ public class Endosome {
 			// add a volume
 			// System.out.println(scylinder +"surface and volume"+ vcylinder);
 		}
-		// System.out.println("after while" + (vo-vcylinder)/((so - scylinder) -
-		// 2 * Math.PI * Cell.rcyl * Cell.rcyl));
 
 		/*
 		 * the volume of the vesicle is formed subtracting the volume of the
@@ -736,13 +722,6 @@ public class Endosome {
 		 */
 		double vVesicle = vo - vcylinder;
 		double sVesicle = so - scylinder;
-		/*
-		 * the final volume and surface of the vesicle are tested. If too small,
-		 * the split aborts
-		 */
-		// if ((vVesicle < 2 * Math.PI * Cell.rcyl * Cell.rcyl *
-		// Cell.rcyl)||(sVesicle < Cell.mincyl)) return;
-
 		/*
 		 * FORMATION 1ST ORGANELLE (referred as sphere) the rab-in-tubule of the
 		 * tubule is substracted from the original rab-in-tube content of the
@@ -775,12 +754,11 @@ public class Endosome {
 				// For a membrane marker with no tropism for this split process,
 				// the marker is at random located in one or
 				// the other endosome, according to the sVesicle/so ratio
-				if (content.equals("membraneMarker") &&
-						(membraneContent.get("membreneMarker")> 0.9)) {
+				if (content.equals("membraneMarker")
+						&& (membraneContent.get("membreneMarker") > 0.9)) {
 					if (Math.random() < sVesicle / so)
 						this.membraneContent.put(content, 1.d);
-				} 
-				else {
+				} else {
 					this.membraneContent.put(content, copyMembrane.get(content)
 							* (sVesicle) / so);
 				}
@@ -790,7 +768,8 @@ public class Endosome {
 						|| rabTropism.get(content).contains("1")) {// a tropism
 					// is specified.
 					// If it is "1" always goes to the tubule.
-					// if it is not "1" but is the Rab forming the tubule, goes
+					// if it is not "1" but has tropism the Rab forming the
+					// tubule, goes
 					// to the tubule
 
 					if (copyMembrane.get(content) > scylinder) {
@@ -819,14 +798,13 @@ public class Endosome {
 				// specified tropism or no tropism for the rabInTube,
 				// hence, distribute according to
 				// the volume ratio
-				if (content.equals("solubleMarker")&&
-						(solubleContent.get("solubleMarker")> 0.9)) {
+				if (content.equals("solubleMarker")
+						&& (solubleContent.get("solubleMarker") > 0.9)) {
 					if (Math.random() < vVesicle / vo)
 						this.solubleContent.put(content, 1.d);
-				} 
-				else {
-				this.solubleContent.put(content, copySoluble.get(content)
-						* (vVesicle) / vo);
+				} else {
+					this.solubleContent.put(content, copySoluble.get(content)
+							* (vVesicle) / vo);
 				}
 			} else { // a tropism is specified. If it is "1" always goes to the
 						// tubule.
@@ -868,11 +846,6 @@ public class Endosome {
 		for (String content : copyMembrane.keySet()) {
 			newMembraneContent.put(content, copyMembrane.get(content)
 					- this.membraneContent.get(content));
-			// if (b.membraneContent.get(content) > b.area) {
-			// //
-			// System.out.println("redddddddddddddddddddddddddddd"+b.membraneContent.get(content)/b.area);
-			//
-			// }
 		}
 		HashMap<String, Double> newSolubleContent = new HashMap<String, Double>();
 		for (String content : copySoluble.keySet()) {
@@ -945,9 +918,6 @@ public class Endosome {
 
 	public void internalVesicle() {
 
-		// System.out.println("original endosome"+area+ " " + volume +
-		// "original endosome rabs" + this.rabContent);
-		// System.out.println("original Rab Cellular Content" + rabCell);
 		double vo = this.volume;
 		double so = this.area;
 		// if (vo < 2 * Math.PI * Cell.rcyl * Cell.rcyl * Cell.rcyl)return; //if
@@ -991,7 +961,8 @@ public class Endosome {
 		} else {
 			this.solubleContent.put("mvb", 1d);
 		}
-//		Rabs proportinal to the sIV versus the surface of the organelle (so) are released into the cytosol 
+		// Rabs proportinal to the sIV versus the surface of the organelle (so)
+		// are released into the cytosol
 		rabCell = Cell.getInstance().getRabCell();
 		for (String key1 : this.rabContent.keySet()) {
 			if (rabCell.containsKey(key1)) {
@@ -1007,24 +978,23 @@ public class Endosome {
 		// Cell.getInstance().setRabCell(rabCell);
 		System.out.println("Rab Cellular Content"
 				+ Cell.getInstance().getRabCell());
-//		Rabs released to the cytosol are substracted from the rabContent of the organelle
+		// Rabs released to the cytosol are substracted from the rabContent of
+		// the organelle
 		for (String rab : this.rabContent.keySet()) {
 			double content1 = this.rabContent.get(rab) * (so - sIV) / so;
 			this.rabContent.put(rab, content1);
 		}
-//		Membrane content is degraded
+		// Membrane content with mvb tropism is degraded
 		for (String content : this.membraneContent.keySet()) {
-			double mem = this.membraneContent.get(content) * (so - sIV) / so;
-			this.membraneContent.put(content, mem);
+			if (rabTropism.get(content).contains("mvb")) {
+				double mem = this.membraneContent.get(content) - sIV;
+				if (mem <= 0)mem = 0d;
+				this.membraneContent.put(content, mem);
+			}
 		}
-		// System.out.println("Left in endosome" +area+ "  " +volume+
-		// "Rab left in endosome" + rabContent);
-//		Free membrane is added to the cell
+		// Free membrane is added to the cell
 		cellMembrane = Cell.getInstance().gettMembrane() + sIV;
 		Cell.getInstance().settMembrane(cellMembrane);
-		System.out.println("total cell membrane"
-				+ Cell.getInstance().gettMembrane());
-
 	}
 
 	public void recycle() {
@@ -1061,7 +1031,7 @@ public class Endosome {
 				}
 			}
 
-			//Cell.getInstance().setMembraneRecycle(membraneRecycle);
+			// Cell.getInstance().setMembraneRecycle(membraneRecycle);
 			this.membraneContent.clear();
 			System.out.println("membrane Recycled"
 					+ Cell.getInstance().getMembraneRecycle());
@@ -1078,7 +1048,7 @@ public class Endosome {
 					solubleRecycle.put(key1, solubleContent.get(key1));
 				}
 			}
-			//Cell.getInstance().setSolubleRecycle(solubleRecycle);
+			// Cell.getInstance().setSolubleRecycle(solubleRecycle);
 			this.solubleContent.clear();
 			System.out.println("soluble Recycled"
 					+ Cell.getInstance().getSolubleRecycle());
@@ -1101,19 +1071,23 @@ public class Endosome {
 		 * null); Context<Object> context = ContextUtils.getContext(this);
 		 * context.add(budEnd);
 		 */
-		HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance()
-				.getInitRabContent().get("kind1"));
-		HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles
-				.getInstance().getInitMembraneContent().get("kind1"));
+		HashMap<String, Double> rabContent = new HashMap<String, Double>(
+				InitialOrganelles.getInstance().getInitRabContent()
+						.get("kind1"));
+		HashMap<String, Double> membraneContent = new HashMap<String, Double>(
+				InitialOrganelles.getInstance().getInitMembraneContent()
+						.get("kind1"));
 		// new endosome incorporate 10% of the recycled mHCI
-		if (Cell.getInstance().membraneRecycle.containsKey("mHCI")){
-		double value = Cell.getInstance().membraneRecycle.get("mHCI");
-		membraneContent.put("mHCI", 0.1 * value);
-		} else membraneContent.put("mHCI", 0d);
-		HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles
-				.getInstance().getInitSolubleContent().get("kind1"));
-		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(InitialOrganelles.getInstance()
-				.getInitOrgProp().get("kind1"));
+		if (Cell.getInstance().membraneRecycle.containsKey("mHCI")) {
+			double value = Cell.getInstance().membraneRecycle.get("mHCI");
+			membraneContent.put("mHCI", 0.1 * value);
+		} else
+			membraneContent.put("mHCI", 0d);
+		HashMap<String, Double> solubleContent = new HashMap<String, Double>(
+				InitialOrganelles.getInstance().getInitSolubleContent()
+						.get("kind1"));
+		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
+				InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
 
 		Context<Object> context = ContextUtils.getContext(this);
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
@@ -1155,19 +1129,22 @@ public class Endosome {
 		if (!rabCell.containsKey("RabE"))
 			return;
 		double rabCellE = rabCell.get("RabE");
-//		same area than an newly formed endosome but with half the volume
+		// same area than an newly formed endosome but with half the volume
 		if (tMembrane < Cell.sEndo || rabCellE < Cell.sEndo) {
 			return;
 		}
 
-		HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance()
-				.getInitRabContent().get("kind5"));
-		HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles
-				.getInstance().getInitMembraneContent().get("kind5"));
-		HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles
-				.getInstance().getInitSolubleContent().get("kind5"));
-		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(InitialOrganelles.getInstance()
-				.getInitOrgProp().get("kind5"));
+		HashMap<String, Double> rabContent = new HashMap<String, Double>(
+				InitialOrganelles.getInstance().getInitRabContent()
+						.get("kind5"));
+		HashMap<String, Double> membraneContent = new HashMap<String, Double>(
+				InitialOrganelles.getInstance().getInitMembraneContent()
+						.get("kind5"));
+		HashMap<String, Double> solubleContent = new HashMap<String, Double>(
+				InitialOrganelles.getInstance().getInitSolubleContent()
+						.get("kind5"));
+		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
+				InitialOrganelles.getInstance().getInitOrgProp().get("kind5"));
 
 		Context<Object> context = ContextUtils.getContext(this);
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
@@ -1188,7 +1165,7 @@ public class Endosome {
 		bud.area = bud.initOrgProp.get("area");
 		bud.volume = bud.initOrgProp.get("volume");
 		bud.size = size();// radius of a sphere with the volume of the
-								// cylinder
+							// cylinder
 		bud.speed = 5 / bud.size;
 		bud.heading = -90;// contrary to the vesicle heading
 		// NdPoint myPoint = space.getLocation(bud);
@@ -1200,7 +1177,7 @@ public class Endosome {
 		// moveTowards();
 
 	}
-	
+
 	/*
 	 * mtDirection decides if the endosome is going to muve to the (-) end of
 	 * the MT (dyneine like or to the plus end (kinesine like). -1 goes to the
