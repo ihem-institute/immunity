@@ -488,7 +488,8 @@ public class Endosome {
 	public void tether() {
 		GridPoint pt = grid.getLocation(this);
 		GridCellNgh<Endosome> nghCreator = new GridCellNgh<Endosome>(grid, pt,
-				Endosome.class, 1, 1);
+				Endosome.class, (int)this.size, (int)this.size);
+		System.out.println("SIZE           "+size);
 
 		List<Endosome> allEndosomes = new ArrayList<Endosome>();
 		List<GridCell<Endosome>> cellList = nghCreator.getNeighborhood(true);

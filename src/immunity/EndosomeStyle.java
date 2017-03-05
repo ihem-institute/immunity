@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Shape;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,9 +45,36 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		 */
 		double s = object.getArea();
 		double v = object.getVolume();
-		int svr = (int) ((s * s * s) / (v * v) / (113d)); // should be 1 for a												// sphere
-		VSpatial createRectangle = this.factory.createRectangle(5 * svr, 5);
-		return createRectangle;
+		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
+//		PLOT as ellipses with a length/wide ratio depending on the area/volume
+//		ratio of the endosome.  It is 1 (sphere) when the area is what you need to
+//		cover a sphere with the volume of the endosome
+		int svr = (int) ((s * s * s) / (v * v) / (113d)); 
+//		 svr should be 1 for a sphere
+        Shape ellypse = new Ellipse2D.Double(0, 0, rsphere*svr, rsphere);
+        VSpatial ellyp = this.factory.createShape(ellypse);
+
+
+/*//       PLOT as a sphere plus a tubule
+		Shape sphere = new Ellipse2D.Double(0, 0, rsphere, rsphere);
+		double areaTubule = s - 4*Math.PI*rsphere*rsphere;
+		//		length of a one-cap cylinder with the extra membrane.
+//		h = (area-PI*r2)/2*PI*r.  Where r is the radius of a tubule (10 nm)
+		
+		double tubLength = (areaTubule-Math.PI*100d)/(2*Math.PI*10);
+        Shape tubule = new Rectangle.Double(rsphere-2,rsphere/2-5,tubLength,10);
+		System.out.println("SPHERE"+rsphere+"TUBULE"+tubLength);
+	    Area area = new Area(sphere);
+	    Area a2 = new Area(tubule);
+	    area.add(a2);
+	    VSpatial spPlusTub = this.factory.createShape(area);*/
+
+//		VSpatial createRectangle = this.factory.createRectangle(5 * svr, 5);
+
+//       Stroke stroke = new BasicStroke((float) 0.2);
+
+
+		return ellyp;//createRectangle;
 	}
 
 	@Override
@@ -97,7 +125,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	public float getScale(Endosome object) {
 		// the size is the radius of a sphere with the volume of the object
 		// hence, the newly form endosome with a size 30, has a scale of 3
-		return (float) object.size() / 10f;
+		return 1;// (float) object.size() / 10f;
 	}
 
 	@Override
