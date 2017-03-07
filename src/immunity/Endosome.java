@@ -3,7 +3,7 @@ package immunity;
 //import immunity.EndosomeStyle.MemCont;
 //import immunity.EndosomeStyle.RabCont;
 //import immunity.EndosomeStyle.SolCont;
-
+import java.util.Random;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -425,6 +425,7 @@ public class Endosome {
 		if (Math.random() < 0.60) {
 			this.heading = (this.heading + (0.5d - Math.random()) * 90d
 					/ momentum) % 360;
+
 			return this.heading;
 		}
 		if (mts == null) {
@@ -536,8 +537,11 @@ public class Endosome {
 		}
 		// assign the speed and heading of the largest endosome to the gropu
 		for (Endosome end : endosomesToTether) {
-			end.heading = largest.heading;
-			end.speed = largest.speed;
+			Random r = new Random();
+			double rr = r.nextGaussian();
+			end.heading = rr*20+largest.heading;
+			rr = r.nextGaussian();
+			end.speed = rr*2+largest.speed;
 			// System.out.println(endosomes_to_delete);
 		}
 	}
@@ -577,8 +581,7 @@ public class Endosome {
 			Context<Object> context = ContextUtils.getContext(endosome);
 			context.remove(endosome);
 		}
-		double size = size();
-		this.speed = 5 / size;
+		this.speed = 5 / size();
 
 	}
 
