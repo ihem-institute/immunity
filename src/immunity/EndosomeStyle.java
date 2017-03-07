@@ -46,15 +46,34 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		double s = object.getArea();
 		double v = object.getVolume();
 		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
+		double svratio = s/v; // ratio surface volume
+		double a = rsphere; //initial a from the radius of a sphere of volume v
+		double c = a;// initially, c=a
+		// calculation from s/v for a cilinder that it is the same than for an ellypsoid
+		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c  hence s/v =(1/c)+(2/a)
+		for (int i=1; i<3; i++){// just two iterations yield an acceptable a-c ratio for ploting
+		a=2/(svratio-1/c);//from s/v ratio
+		c= v*3/(4*Math.PI*a*a);//from v ellypsoid
+		}
+//		System.out.println("area  "+ s+" volume   " + v);
+//		System.out.println("a "+a+ " c "+c+" areaE  "+ (2*Math.PI*a*a+2*a*Math.PI*2*c)*.666+" volumeE   " + 4d/3d*Math.PI*a*a*c);
 //		PLOT as ellipses with a length/wide ratio depending on the area/volume
 //		ratio of the endosome.  It is 1 (sphere) when the area is what you need to
 //		cover a sphere with the volume of the endosome
-		int svr = (int) ((s * s * s) / (v * v) / (113d)); 
+//		double svr = ((s * s * s) / (v * v) / (113.0973355d)); 
 //		 svr should be 1 for a sphere
-        Shape ellypse = new Ellipse2D.Double(0, 0, rsphere*svr, rsphere);
-        VSpatial ellyp = this.factory.createShape(ellypse);
-
-
+//		SCALE: I MEASURE THAT THE 50 GRID CORRESPOND TO A RECTANGLE OF 750 OF LENGTH
+//		IF THE ORGANELLES ARE IN nm, HENCE THE AREA REPRESENT A 750 nm X 750 nm
+        VSpatial shape = null;
+//		double a1 = 2*rsphere/(1+svr);
+		//if (a>10){
+        Shape ellypse = new Ellipse2D.Double(0, 0,c, a);
+        shape = this.factory.createShape(ellypse);
+//		}
+//		else{
+//		shape = this.factory.createRectangle((int) (v/Math.PI/100),5);	
+//		}
+//		System.out.println("a  "+a1+"svr  "+svr);
 /*//       PLOT as a sphere plus a tubule
 		Shape sphere = new Ellipse2D.Double(0, 0, rsphere, rsphere);
 		double areaTubule = s - 4*Math.PI*rsphere*rsphere;
@@ -74,7 +93,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 //       Stroke stroke = new BasicStroke((float) 0.2);
 
 
-		return ellyp;//createRectangle;
+		return shape;//createRectangle;
 	}
 
 	@Override

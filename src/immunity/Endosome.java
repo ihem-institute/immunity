@@ -54,6 +54,8 @@ public class Endosome {
 	double area = 4d * Math.PI * 30d * 30d; // initial value, but should change
 	double volume = 4d / 3d * Math.PI * 30d * 30d * 30d; // initial value, but
 															// should change
+	double a = 0; //width of the ellipsoid representing the endosome
+	double c = 0; //length;
 	double size;// = Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
 	double speed;// = 5d / size; // initial value, but should change
 	double heading;// = Math.random() * 360d; // initial value, but should
@@ -396,15 +398,33 @@ public class Endosome {
 		return mts;
 
 	}
-
+	public void endosomeShape(){
+		double s = this.area;
+		double v = this.volume;
+		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
+		double svratio = s/v; // ratio surface volume
+		a = rsphere; //initial a from the radius of a sphere of volume v
+		c = a;// initially, c=a
+		// calculation from s/v for a cilinder that it is the same than for an ellypsoid
+		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c  hence s/v =(1/c)+(2/a)
+		for (int i=1; i<3; i++){// just two iterations yield an acceptable a-c ratio for ploting
+		a=2/(svratio-1/c);//from s/v ratio
+		c= v*3/(4*Math.PI*a*a);//from v ellipsoid
+		}
+	}
 	public double changeDirection() {
 		if (Math.random() < 0.60) {
 			// this.heading = -90;
 			return this.heading;
 		}
+		endosomeShape();
+		double momentum = volume*(a*a+c*c)/5/3E7;
+		System.out.println("momentum  " + momentum);
+		//momentum = size();
+		
 		if (Math.random() < 0.60) {
-			this.heading = (this.heading + (0.5d - Math.random()) * 90d * 30d
-					/ size()) % 360;
+			this.heading = (this.heading + (0.5d - Math.random()) * 90d
+					/ momentum) % 360;
 			return this.heading;
 		}
 		if (mts == null) {
@@ -487,26 +507,26 @@ public class Endosome {
 	//
 	public void tether() {
 		GridPoint pt = grid.getLocation(this);
+		// I calculated that the 50 x 50 grid is equivalent to a 750 x 750 nm
+		// square
+		// Hence, size/15 is in grid units
+		int gridSize = (int) Math.round(this.size / 15);
 		GridCellNgh<Endosome> nghCreator = new GridCellNgh<Endosome>(grid, pt,
-				Endosome.class, (int)this.size, (int)this.size);
-		System.out.println("SIZE           "+size);
+				Endosome.class, gridSize, gridSize);
+		// System.out.println("SIZE           "+gridSize);
 
-		List<Endosome> allEndosomes = new ArrayList<Endosome>();
 		List<GridCell<Endosome>> cellList = nghCreator.getNeighborhood(true);
+		List<Endosome> endosomesToTether = new ArrayList<Endosome>();
 		for (GridCell<Endosome> gr : cellList) {
-			// include if object is an endosome smaller than "this"
-			// and is compatible
+			// include all endosomes
 			for (Endosome end : gr.items()) {
-				allEndosomes.add(end);
+				if (compatibles(this, (Endosome) end)) {
+					endosomesToTether.add(end);
+				}
 			}
 		}
 		// new list with just the compatible endosomes (same or compatible rabs)
-		List<Endosome> endosomesToTether = new ArrayList<Endosome>();
-		for (Endosome end : allEndosomes) {
-			if (compatibles(this, (Endosome) end)) {
-				endosomesToTether.add(end);
-			}
-		}
+
 		// select the largest endosome
 		Endosome largest = this;
 		for (Endosome end : endosomesToTether) {
@@ -524,15 +544,22 @@ public class Endosome {
 
 	public void fusion() {
 		GridPoint pt = grid.getLocation(this);
+		// I calculated that the 50 x 50 grid is equivalent to a 750 x 750 nm
+		// square
+		// Hence, size/15 is in grid units
+		int gridSize = (int) Math.round(this.size / 15);
+		GridCellNgh<Endosome> nghCreator = new GridCellNgh<Endosome>(grid, pt,
+				Endosome.class, gridSize, gridSize);
+		// System.out.println("SIZE           "+gridSize);
+
+		List<GridCell<Endosome>> cellList = nghCreator.getNeighborhood(true);
 		List<Endosome> endosomes_to_delete = new ArrayList<Endosome>();
-		Iterable<Object> objectsAt = grid.getObjectsAt(pt.getX(), pt.getY());
-		for (Object obj : objectsAt) {
-			// include if object is an endosome smaller than "this"
-			// and is compatible
-			if (obj instanceof Endosome && obj != this
-					&& ((Endosome) obj).volume <= this.volume) {
-				if (compatibles(this, (Endosome) obj)) {
-					endosomes_to_delete.add((Endosome) obj);
+		for (GridCell<Endosome> gr : cellList) {
+			// include all endosomes
+			for (Endosome end : gr.items()) {
+				if (end != this && (end.volume <= this.volume)
+						&& (compatibles(this, end))) {
+					endosomes_to_delete.add(end);
 				}
 				// System.out.println(endosomes_to_delete);
 			}
@@ -989,7 +1016,8 @@ public class Endosome {
 		for (String content : this.membraneContent.keySet()) {
 			if (rabTropism.get(content).contains("mvb")) {
 				double mem = this.membraneContent.get(content) - sIV;
-				if (mem <= 0)mem = 0d;
+				if (mem <= 0)
+					mem = 0d;
 				this.membraneContent.put(content, mem);
 			}
 		}
@@ -1408,6 +1436,14 @@ public class Endosome {
 		double memContRab = membraneContent.get(memCont) * rabContent.get(rab)
 				/ this.area;
 		return memContRab;
+	}
+
+	public double getA() {
+		return a;
+	}
+
+	public double getC() {
+		return c;
 	}
 
 }
