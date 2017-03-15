@@ -36,6 +36,7 @@ import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 import repast.simphony.util.ContextUtils;
+import java.util.Random;
 import repast.simphony.valueLayer.GridValueLayer;
 
 /**
@@ -58,7 +59,7 @@ public class Endosome {
 	double c = 0; //length;
 	double size;// = Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
 	double speed;// = 5d / size; // initial value, but should change
-	double heading;// = Math.random() * 360d; // initial value, but should
+	double heading = 0;// = Math.random() * 360d; // initial value, but should
 					// change
 	double mvb;// = 0; // number of internal vesices
 	double cellMembrane;// = 0;
@@ -97,7 +98,7 @@ public class Endosome {
 		volume = initOrgProp.get("volume");// 4d / 3d * Math.PI * 30d * 30d *
 											// 30d; // initial value, but
 		size = Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
-		speed = 5d / size; // initial value, but should change
+		speed = 1d / size; // initial value, but should change
 		heading = Math.random() * 360d; // initial value, but should change
 		double mvb = 0; // number of internal vesicles
 	}
@@ -413,27 +414,12 @@ public class Endosome {
 		}
 	}
 	public double changeDirection() {
-		if (Math.random() < 0.60) {
-			// this.heading = -90;
-			return this.heading;
-		}
-		endosomeShape();
-		double momentum = volume*(a*a+c*c)/5/3E7;
-		System.out.println("momentum  " + momentum);
-		//momentum = size();
-		
-		if (Math.random() < 0.60) {
-			this.heading = (this.heading + (0.5d - Math.random()) * 90d
-					/ momentum) % 360;
-
-			return this.heading;
-		}
 		if (mts == null) {
 			mts = associateMt();
 		}
 		int mtDir = 0;
 		/*
-		 * mtDirection decides if the endosome is going to muve to the (-) end
+		 * mtDirection decides if the endosome is going to move to the (-) end
 		 * of the MT (dyneine like or to the plus end (kinesine like). -1 goes
 		 * to the nucleus, 1 to the PM
 		 */
@@ -442,20 +428,22 @@ public class Endosome {
 			double dist = distance(this, mt);
 			if (dist < this.size / 30d) {
 				this.heading = -mt.getMtheading() + 180f;
+				this.speed = this.speed *5;
 				NdPoint myPoint = space.getLocation(this);
 				double x = myPoint.getX() - mtDir
 						* Math.cos((heading - 90) * 2d * Math.PI / 360d) * dist;
 				double y = myPoint.getY() - mtDir
 						* Math.sin((heading - 90) * 2d * Math.PI / 360d) * dist;
 				if (y > 50 || y < 0) {
-					heading = -heading;
-					y = 0;
-					x = 0;
+					this.speed = -2.0;
+//					heading = -heading;
+//					y = 0;
+//					x = 0;
 
-				}
+				} else{
 				space.moveTo(this, x, y);
 				grid.moveTo(this, (int) x, (int) y);
-
+				}
 				// this.heading = -mt.getMtheading()+ 180f;
 
 				// System.out.println("headingMT");
@@ -463,7 +451,19 @@ public class Endosome {
 				return this.heading;
 			}
 		}
-		return this.heading;
+//			when no mt is near the endosome, it rotate randomly 
+//			according with its momentum
+		endosomeShape();
+		double momentum = volume*(a*a+c*c)/5/3E7;
+		System.out.println("momentum  " + momentum);
+		//momentum = size();
+		
+			Random fRandom = new Random();
+			this.heading = (this.heading + fRandom.nextGaussian()* 10d
+					/ momentum) % 360;
+
+			return this.heading;
+		
 	}
 
 	public double size() {
@@ -539,7 +539,7 @@ public class Endosome {
 		for (Endosome end : endosomesToTether) {
 			Random r = new Random();
 			double rr = r.nextGaussian();
-			end.heading = rr*20+largest.heading;
+			end.heading = rr*5+largest.heading;
 			rr = r.nextGaussian();
 			end.speed = rr*2+largest.speed;
 			// System.out.println(endosomes_to_delete);
@@ -581,7 +581,7 @@ public class Endosome {
 			Context<Object> context = ContextUtils.getContext(endosome);
 			context.remove(endosome);
 		}
-		this.speed = 5 / size();
+		this.speed = 1 / size();
 
 	}
 
@@ -665,7 +665,8 @@ public class Endosome {
 		double y = myPoint.getY() + Math.sin(heading * 2d * Math.PI / 360d)
 				* this.speed;
 		if (y > 50 || y < 0) {
-			heading = -heading;
+			//heading = -heading;
+			this.speed = -2.0;
 			return;
 		}
 		space.moveTo(this, x, y);
