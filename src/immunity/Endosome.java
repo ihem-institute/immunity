@@ -36,7 +36,9 @@ import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 import repast.simphony.util.ContextUtils;
+
 import java.util.Random;
+
 import repast.simphony.valueLayer.GridValueLayer;
 
 /**
@@ -55,12 +57,12 @@ public class Endosome {
 	double area = 4d * Math.PI * 30d * 30d; // initial value, but should change
 	double volume = 4d / 3d * Math.PI * 30d * 30d * 30d; // initial value, but
 															// should change
-	double a = 0; //width of the ellipsoid representing the endosome
-	double c = 0; //length;
+	double a = 0; // width of the ellipsoid representing the endosome
+	double c = 0; // length;
 	double size;// = Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
 	double speed;// = 5d / size; // initial value, but should change
 	double heading = 0;// = Math.random() * 360d; // initial value, but should
-					// change
+						// change
 	double mvb;// = 0; // number of internal vesices
 	double cellMembrane;// = 0;
 	Set<String> membraneMet = cellProperties.getMembraneMet();
@@ -105,10 +107,10 @@ public class Endosome {
 
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
+		endosomeShape(this);
 		recycle();
 		uptake();
 		newFromEr();
-		// size();
 		changeDirection();
 		moveTowards();
 		tether();
@@ -399,21 +401,42 @@ public class Endosome {
 		return mts;
 
 	}
-	public void endosomeShape(){
-		double s = this.area;
-		double v = this.volume;
+
+	public void endosomeShape(Endosome end) {
+		double s = end.area;
+		double v = end.volume;
 		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
-		double svratio = s/v; // ratio surface volume
-		a = rsphere; //initial a from the radius of a sphere of volume v
-		c = a;// initially, c=a
-		// calculation from s/v for a cilinder that it is the same than for an ellypsoid
-		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c  hence s/v =(1/c)+(2/a)
-		for (int i=1; i<3; i++){// just two iterations yield an acceptable a-c ratio for ploting
-		a=2/(svratio-1/c);//from s/v ratio
-		c= v*3/(4*Math.PI*a*a);//from v ellipsoid
+		double svratio = s / v; // ratio surface volume
+		double aa = rsphere; // initial a from the radius of a sphere of volume v
+		double cc = aa;// initially, c=a
+		// calculation from s/v for a cilinder that it is the same than for an
+		// ellypsoid
+		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c hence s/v =(1/c)+(2/a)
+		for (int i = 1; i < 5; i++) {// just two iterations yield an acceptable
+										// a-c ratio for ploting
+			aa = 2 / (svratio - 1 / cc);// from s/v ratio
+			cc = v * 3 / (4 * Math.PI * aa * aa);// from v ellipsoid
 		}
+		end.a = aa;
+		end.c = cc;
 	}
+
 	public double changeDirection() {
+		double initial = heading;
+//		When near the bottom, the movement is random and depends on the momentum
+		NdPoint myPoint = space.getLocation(this);
+		if (myPoint.getY() < 5) {
+			endosomeShape(this);
+			double momentum = volume * (a * a + c * c) / 5 / 3E7;
+			Random fRandom = new Random();
+			this.heading = (this.heading + fRandom.nextGaussian() * 10d
+					/ momentum) % 360;
+			this.speed = 1d/this.size;
+			if (initial - heading > 90)System.out.println("GIRO BOTTOM "+"  "+initial+"  "+heading+"  "+momentum);
+			return this.heading;
+		}
+//		when not in the bottom and near a MT takes the direction of the MT and
+//		increases the speed to 1
 		if (mts == null) {
 			mts = associateMt();
 		}
@@ -428,42 +451,42 @@ public class Endosome {
 			double dist = distance(this, mt);
 			if (dist < this.size / 30d) {
 				this.heading = -mt.getMtheading() + 180f;
-				this.speed = this.speed *5;
-				NdPoint myPoint = space.getLocation(this);
-				double x = myPoint.getX() - mtDir
-						* Math.cos((heading - 90) * 2d * Math.PI / 360d) * dist;
-				double y = myPoint.getY() - mtDir
-						* Math.sin((heading - 90) * 2d * Math.PI / 360d) * dist;
-				if (y > 50 || y < 0) {
-					this.speed = -2.0;
-//					heading = -heading;
-//					y = 0;
-//					x = 0;
-
-				} else{
-				space.moveTo(this, x, y);
-				grid.moveTo(this, (int) x, (int) y);
-				}
+				this.speed = 1d;
+				// NdPoint myPoint = space.getLocation(this);
+				// double x = myPoint.getX() - mtDir
+				// * Math.cos((heading - 90) * 2d * Math.PI / 360d) * dist;
+				// double y = myPoint.getY() - mtDir
+				// * Math.sin((heading - 90) * 2d * Math.PI / 360d) * dist;
+				// if (y > 50 || y < 0) {
+				// //this.speed = -1d/size;
+				// heading = -heading;
+				// // y = 0;
+				// // x = 0;
+				//
+				// } else{
+				// space.moveTo(this, x, y);
+				// grid.moveTo(this, (int) x, (int) y);
+				// }
 				// this.heading = -mt.getMtheading()+ 180f;
 
 				// System.out.println("headingMT");
 				// System.out.println(this.heading);
+				if (initial - heading > 90)System.out.println("GIRO MT " +initial+"  "+heading);
 				return this.heading;
 			}
 		}
-//			when no mt is near the endosome, it rotate randomly 
-//			according with its momentum
-		endosomeShape();
-		double momentum = volume*(a*a+c*c)/5/3E7;
-		System.out.println("momentum  " + momentum);
-		//momentum = size();
-		
-			Random fRandom = new Random();
-			this.heading = (this.heading + fRandom.nextGaussian()* 10d
-					/ momentum) % 360;
+		// when no MT is near the endosome, it rotate randomly
+		// according with its momentum
+		endosomeShape(this);
+		double momentum = volume * (a * a + c * c) / 5 / 3E7;
+		if (momentum < 0.5 && c>21) System.out.println("momentum  " + momentum+" "+a+"  "+c);
 
-			return this.heading;
-		
+
+		Random fRandom = new Random();
+		this.heading = (this.heading + fRandom.nextGaussian() * 10d / momentum) % 360;
+		if (initial - heading > 90)System.out.println("GIRO sin MT "+initial+"  "+heading+"  "+momentum);
+		return this.heading;
+
 	}
 
 	public double size() {
@@ -537,12 +560,18 @@ public class Endosome {
 		}
 		// assign the speed and heading of the largest endosome to the gropu
 		for (Endosome end : endosomesToTether) {
+			// end.heading = (end.heading * end.size + largest.heading *
+			// largest.size)/
+			// (end.size + largest.size);
+			// end.speed = (end.speed * end.size + largest.speed *
+			// largest.size)/
+			// (end.size + largest.size);
 			Random r = new Random();
 			double rr = r.nextGaussian();
-			end.heading = rr*5+largest.heading;
-			rr = r.nextGaussian();
-			end.speed = rr*2+largest.speed;
-			// System.out.println(endosomes_to_delete);
+			end.heading = rr * 5d + largest.heading;
+			moveTowards();
+			
+
 		}
 	}
 
@@ -582,6 +611,7 @@ public class Endosome {
 			context.remove(endosome);
 		}
 		this.speed = 1 / size();
+		endosomeShape(this);
 
 	}
 
@@ -657,18 +687,29 @@ public class Endosome {
 	}
 
 	public void moveTowards() {
-		// only move if we are not already in this grid location
-
-		NdPoint myPoint = space.getLocation(this);
+/*
+ * Direction in Repast 	0 to the right
+ * 						180 to the left
+ * 						-90 down
+ * 						+90 up
+*/		NdPoint myPoint = space.getLocation(this);
 		double x = myPoint.getX() + Math.cos(heading * 2d * Math.PI / 360d)
 				* this.speed;
 		double y = myPoint.getY() + Math.sin(heading * 2d * Math.PI / 360d)
 				* this.speed;
+//		if reaches the bottom, changes the direction to horizontal.  If the original heading
+//		was between 0 and -90 goes to the right, else to the left
 		if (y > 50 || y < 0) {
-			//heading = -heading;
-			this.speed = -2.0;
+			
+			heading = (Math.signum(-heading-90) ==1)? 180:0; 
+
 			return;
 		}
+		if (myPoint.getY() - y > this.speed)
+			System.out.println(" SALTO     " + myPoint.getY() + " " + y + " "
+					+ (myPoint.getY() - y) + " "
+					+ (Math.sin(heading * 2d * Math.PI / 360d)) + "  "
+					+ this.speed);
 		space.moveTo(this, x, y);
 		grid.moveTo(this, (int) x, (int) y);
 	}
@@ -762,6 +803,8 @@ public class Endosome {
 		 */
 		this.area = sVesicle;
 		this.volume = vVesicle;
+		endosomeShape(this);
+		
 		/*
 		 * CONTENT DISTRIBUTION Rab in the tubule is sustracted
 		 */
@@ -865,8 +908,9 @@ public class Endosome {
 
 		}
 
-		this.speed = 5 / size();
-		moveTowards();
+		this.speed = 1 / size();
+		
+		// moveTowards();
 
 		/* the tubule is created as an independent endosome */
 		HashMap<String, Double> newRabContent = new HashMap<String, Double>();
@@ -890,9 +934,12 @@ public class Endosome {
 		context.add(b);
 		b.area = scylinder;
 		b.volume = vcylinder;
+		endosomeShape(b);
 		b.size = Math.pow(b.volume * 3d / 4d / Math.PI, (1d / 3d));
-		b.speed = 5 / b.size;
-		b.heading = this.heading + 180;// contrary to the vesicle heading
+		b.speed = 1 / b.size;
+		Random rd = new Random();
+		b.heading = this.heading + rd.nextGaussian()*10d;// change between -90 to +90 the heading
+//		of the old vesicle heading with a normal distribution
 		System.out
 				.println("                                                 VESICLE B");
 		System.out.println(b.area + " " + b.rabContent + " "
@@ -904,7 +951,7 @@ public class Endosome {
 		space.moveTo(b, x, y);
 		grid.moveTo(b, (int) x, (int) y);
 		moveTowards();
-		// moveTowards();
+
 
 	}
 
@@ -987,6 +1034,7 @@ public class Endosome {
 		// because the increase in volume
 		this.area = this.area - sIV;
 		this.volume = this.volume + vIV;
+		endosomeShape(this);
 		if (solubleContent.containsKey("mvb")) {
 			double content = this.solubleContent.get("mvb") + 1;
 			this.solubleContent.put("mvb", content);
@@ -1142,14 +1190,14 @@ public class Endosome {
 		bud.volume = Cell.vEndo;
 		bud.size = Cell.rEndo;// radius of a sphere with the volume of the
 								// cylinder
-		bud.speed = 5 / bud.size;
-		bud.heading = -90;// contrary to the vesicle heading
+		bud.speed = 1 / bud.size;
+		bud.heading = -90;// heading down
 		// NdPoint myPoint = space.getLocation(bud);
 		double rnd = Math.random();
 		space.moveTo(bud, rnd * 50, 48.0);
 		grid.moveTo(bud, (int) rnd * 50, 48);
 
-		moveTowards();
+		// moveTowards();
 		// moveTowards();
 
 	}
@@ -1199,14 +1247,14 @@ public class Endosome {
 		bud.volume = bud.initOrgProp.get("volume");
 		bud.size = size();// radius of a sphere with the volume of the
 							// cylinder
-		bud.speed = 5 / bud.size;
-		bud.heading = -90;// contrary to the vesicle heading
+		bud.speed = 1 / bud.size;
+		bud.heading = Math.random()*360;
 		// NdPoint myPoint = space.getLocation(bud);
 		double rnd = Math.random();
 		space.moveTo(bud, rnd * 50, 25.0);
 		grid.moveTo(bud, (int) rnd * 50, 25);
 
-		moveTowards();
+		// moveTowards();
 		// moveTowards();
 
 	}
