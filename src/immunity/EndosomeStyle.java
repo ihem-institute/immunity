@@ -67,7 +67,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
         VSpatial shape = null;
 //		double a1 = 2*rsphere/(1+svr);
 		//if (a>10){
-        Shape ellypse = new Ellipse2D.Double(0, 0,c, a);
+        Shape ellypse = new Ellipse2D.Double(-c/2, -a/2, c, a);
         shape = this.factory.createShape(ellypse);
 //		}
 //		else{
