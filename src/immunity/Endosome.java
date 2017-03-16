@@ -7,6 +7,7 @@ import java.util.Random;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -1071,6 +1072,10 @@ public class Endosome {
 				if (mem <= 0)
 					mem = 0d;
 				this.membraneContent.put(content, mem);
+			}else
+			{
+			double mem = this.membraneContent.get(content)* (so- sIV) / so;
+				this.membraneContent.put(content, mem);	
 			}
 		}
 		// Free membrane is added to the cell
@@ -1375,7 +1380,9 @@ public class Endosome {
 
 		if (membraneContent.containsKey(contentPlot)) {
 			double blue = membraneContent.get(contentPlot) / area;
-			// System.out.println("mHCI content" + red);
+			if (blue>1) System.out.println("BLUE FUERA ESCALA "+" "+blue+" "+membraneContent.get(contentPlot)+"  "+ area);
+			if (blue>1) System.out.println("BLUE FUERA ESCALA "+" "+contentPlot);
+
 			return blue;
 		}
 		if (solubleContent.containsKey(contentPlot)) {
