@@ -108,7 +108,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		colors.add(blue);
 		// (1 - max (list g r b)) ;
 		Double corr = 1 - Collections.max(colors);
-		if (Collections.max(colors)>1) System.out.println("COLOR FUERA ESCALA "+Collections.max(colors));
+		if (Collections.max(colors)>1) System.out.println("COLOR FUERA ESCALA "+red+"  "+green+"  "+blue);
 		return new Color((int) ((red + corr) * 255),
 				(int) ((green + corr) * 255), (int) ((blue + corr) * 255));
 

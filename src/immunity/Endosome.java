@@ -122,8 +122,8 @@ public class Endosome {
 		if (Math.random() < 0.001)
 			rabConversion();
 		// rabConversionN();
-		if (Math.random() < 0.001)
-			antigenPresentation();
+//		if (Math.random() < 0.001)
+//			antigenPresentation();
 	}
 
 	private void lysosomalDigestion() {
@@ -451,27 +451,11 @@ public class Endosome {
 		for (MT mt : mts) {
 			double dist = distance(this, mt);
 			if (dist < this.size / 30d) {
-				this.heading = -mt.getMtheading() + 180f;
+				endosomeShape(this);
+				if (this.a < 9.99) mtDir = -1;
+				else mtDir = 1;
+				this.heading = - mtDir * mt.getMtheading() + 180f;
 				this.speed = 1d;
-				// NdPoint myPoint = space.getLocation(this);
-				// double x = myPoint.getX() - mtDir
-				// * Math.cos((heading - 90) * 2d * Math.PI / 360d) * dist;
-				// double y = myPoint.getY() - mtDir
-				// * Math.sin((heading - 90) * 2d * Math.PI / 360d) * dist;
-				// if (y > 50 || y < 0) {
-				// //this.speed = -1d/size;
-				// heading = -heading;
-				// // y = 0;
-				// // x = 0;
-				//
-				// } else{
-				// space.moveTo(this, x, y);
-				// grid.moveTo(this, (int) x, (int) y);
-				// }
-				// this.heading = -mt.getMtheading()+ 180f;
-
-				// System.out.println("headingMT");
-				// System.out.println(this.heading);
 				if (initial - heading > 90)System.out.println("GIRO MT " +initial+"  "+heading);
 				return this.heading;
 			}
@@ -1344,6 +1328,8 @@ public class Endosome {
 
 		if (membraneContent.containsKey(contentPlot)) {
 			double red = membraneContent.get(contentPlot) / area;
+			if (red>1) System.out.println("RED FUERA ESCALA "+" "+red+" "+membraneContent.get(contentPlot)+"  "+ area);
+			if (red>1) System.out.println("RED FUERA ESCALA "+" "+contentPlot);
 			// System.out.println("mHCI content" + red);
 			return red;
 		}
@@ -1387,6 +1373,8 @@ public class Endosome {
 		}
 		if (solubleContent.containsKey(contentPlot)) {
 			double blue = solubleContent.get(contentPlot) / volume;
+			if (blue>1) System.out.println("BLUE FUERA ESCALA "+" "+blue+" "+solubleContent.get(contentPlot)+"  "+ area);
+			if (blue>1) System.out.println("BLUE FUERA ESCALA "+" "+contentPlot);
 			// System.out.println("mHCI content" + red);
 			return blue;
 		} else
