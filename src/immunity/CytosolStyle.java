@@ -34,7 +34,7 @@ public class CytosolStyle implements StyleOGL2D<Cytosol> {
 	@Override
 	public Color getColor(Cytosol object) {
 		// eventually the color will reflect some local cytosol characteristics
-		return new Color(220, 220, 220);
+		return new Color(240, 240, 240);
 	}
 
 	@Override

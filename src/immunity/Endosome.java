@@ -117,13 +117,14 @@ public class Endosome {
 		tether();
 		fusion();
 		split();
-		// if (Math.random() < 0.01) lysosomalDigestion();
+		if (Math.random() < 1)
+			lysosomalDigestion();
 		internalVesicle();
 		if (Math.random() < 0.001)
 			rabConversion();
 		// rabConversionN();
-//		if (Math.random() < 0.001)
-//			antigenPresentation();
+		// if (Math.random() < 0.001)
+		// antigenPresentation();
 	}
 
 	private void lysosomalDigestion() {
@@ -138,22 +139,49 @@ public class Endosome {
 		double rabDratio = rabContent.get("RabD") / this.area;
 		double volIV = 4 / 3 * Math.PI * Math.pow(Cell.rIV, 3.d);
 		double deltaV = 0d;
-		for (String sol : solubleContent.keySet()) {
-			double solValue = solubleContent.get(sol) * 0.0001 * rabDratio;
-			solubleContent.put(sol, solValue);
-		}
-		for (String mem : membraneContent.keySet()) {
-			double memValue = membraneContent.get(mem) * 0.0001 * rabDratio;
-			membraneContent.put(mem, memValue);
-		}
-		// volume is decreased
-
+		double initialMvb = 0d;
+		double finalMvb = 0d;
+		double finalSolMark = 0d;
+		double finalMemMark = 0d;
 		if (solubleContent.containsKey("mvb")) {
-			deltaV = solubleContent.get("mvb") * 0.0001d * rabDratio * volIV
-					+ this.volume * 0.0001 * rabDratio;
-		} else {
-			deltaV = this.volume * 0.0001 * rabDratio;
+			initialMvb = solubleContent.get("mvb");
+			if (Math.random() < 0.001 * rabDratio * initialMvb) {
+				finalMvb = initialMvb - 1;
+			} else {
+				finalMvb = initialMvb;
+			}
 		}
+		if (solubleContent.containsKey("solubleMarker")) {
+				finalSolMark = solubleContent.get("solubleMarker");
+			}
+		if (membraneContent.containsKey("membraneMarker")) {
+			finalMemMark = membraneContent.get("membraneMarker");
+		}
+		for (String sol : solubleContent.keySet()) {
+				double solDigested = solubleContent.get(sol) * 0.001
+						* rabDratio;
+				solubleContent.put(sol, solubleContent.get(sol) - solDigested);
+			}
+		if (solubleContent.containsKey("mvb"))
+				solubleContent.put("mvb", finalMvb);
+		if (solubleContent.containsKey("solubleMarker"))
+				solubleContent.put("solubleMarker", finalSolMark);
+
+		for (String mem : membraneContent.keySet()) {
+				double memDigested = membraneContent.get(mem) * 0.001
+						* rabDratio;
+				membraneContent
+						.put(mem, membraneContent.get(mem) - memDigested);
+			}
+		if (membraneContent.containsKey("membraneMarker"))
+				membraneContent.put("membraneMarker", finalMemMark);
+			// volume is decreased
+		if (solubleContent.containsKey("mvb")) {
+				deltaV = (initialMvb - finalMvb) * volIV + this.volume * 0.001
+						* rabDratio;
+			} else {
+				deltaV = this.volume * 0.001 * rabDratio;
+			}
 		this.volume = this.volume - deltaV;
 	}
 
@@ -408,7 +436,8 @@ public class Endosome {
 		double v = end.volume;
 		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
 		double svratio = s / v; // ratio surface volume
-		double aa = rsphere; // initial a from the radius of a sphere of volume v
+		double aa = rsphere; // initial a from the radius of a sphere of volume
+								// v
 		double cc = aa;// initially, c=a
 		// calculation from s/v for a cilinder that it is the same than for an
 		// ellypsoid
@@ -424,7 +453,8 @@ public class Endosome {
 
 	public double changeDirection() {
 		double initial = heading;
-//		When near the bottom, the movement is random and depends on the momentum
+		// When near the bottom, the movement is random and depends on the
+		// momentum
 		NdPoint myPoint = space.getLocation(this);
 		if (myPoint.getY() < 5) {
 			endosomeShape(this);
@@ -432,12 +462,15 @@ public class Endosome {
 			Random fRandom = new Random();
 			this.heading = (this.heading + fRandom.nextGaussian() * 10d
 					/ momentum) % 360;
-			this.speed = 1d/this.size;
-			if (initial - heading > 90)System.out.println("GIRO BOTTOM "+"  "+initial+"  "+heading+"  "+momentum);
+			this.speed = 1d / this.size;
+			if (initial - heading > 90)
+				System.out.println("GIRO BOTTOM " + "  " + initial + "  "
+						+ heading + "  " + momentum);
 			return this.heading;
 		}
-//		when not in the bottom and near a MT takes the direction of the MT and
-//		increases the speed to 1
+		// when not in the bottom and near a MT takes the direction of the MT
+		// and
+		// increases the speed to 1
 		if (mts == null) {
 			mts = associateMt();
 		}
@@ -452,11 +485,14 @@ public class Endosome {
 			double dist = distance(this, mt);
 			if (dist < this.size / 30d) {
 				endosomeShape(this);
-				if (this.a < 9.99) mtDir = -1;
-				else mtDir = 1;
-				this.heading = - mtDir * mt.getMtheading() + 180f;
+				if (this.a < 9.99)
+					mtDir = -1;
+				else
+					mtDir = 1;
+				this.heading = -mtDir * mt.getMtheading() + 180f;
 				this.speed = 1d;
-				if (initial - heading > 90)System.out.println("GIRO MT " +initial+"  "+heading);
+				// if (initial - heading > 90)System.out.println("GIRO MT "
+				// +initial+"  "+heading);
 				return this.heading;
 			}
 		}
@@ -464,12 +500,13 @@ public class Endosome {
 		// according with its momentum
 		endosomeShape(this);
 		double momentum = volume * (a * a + c * c) / 5 / 3E7;
-		if (momentum < 0.5 && c>21) System.out.println("momentum  " + momentum+" "+a+"  "+c);
-
+		// if (momentum < 0.5 && c>21) System.out.println("momentum  " +
+		// momentum+" "+a+"  "+c);
 
 		Random fRandom = new Random();
 		this.heading = (this.heading + fRandom.nextGaussian() * 10d / momentum) % 360;
-		if (initial - heading > 90)System.out.println("GIRO sin MT "+initial+"  "+heading+"  "+momentum);
+		// if (initial - heading >
+		// 90)System.out.println("GIRO sin MT "+initial+"  "+heading+"  "+momentum);
 		return this.heading;
 
 	}
@@ -555,7 +592,6 @@ public class Endosome {
 			double rr = r.nextGaussian();
 			end.heading = rr * 5d + largest.heading;
 			moveTowards();
-			
 
 		}
 	}
@@ -672,21 +708,19 @@ public class Endosome {
 	}
 
 	public void moveTowards() {
-/*
- * Direction in Repast 	0 to the right
- * 						180 to the left
- * 						-90 down
- * 						+90 up
-*/		NdPoint myPoint = space.getLocation(this);
+		/*
+		 * Direction in Repast 0 to the right 180 to the left -90 down +90 up
+		 */NdPoint myPoint = space.getLocation(this);
 		double x = myPoint.getX() + Math.cos(heading * 2d * Math.PI / 360d)
 				* this.speed;
 		double y = myPoint.getY() + Math.sin(heading * 2d * Math.PI / 360d)
 				* this.speed;
-//		if reaches the bottom, changes the direction to horizontal.  If the original heading
-//		was between 0 and -90 goes to the right, else to the left
+		// if reaches the bottom, changes the direction to horizontal. If the
+		// original heading
+		// was between 0 and -90 goes to the right, else to the left
 		if (y > 50 || y < 0) {
-			
-			heading = (Math.signum(-heading-90) ==1)? 180:0; 
+
+			heading = (Math.signum(-heading - 90) == 1) ? 180 : 0;
 
 			return;
 		}
@@ -789,7 +823,7 @@ public class Endosome {
 		this.area = sVesicle;
 		this.volume = vVesicle;
 		endosomeShape(this);
-		
+
 		/*
 		 * CONTENT DISTRIBUTION Rab in the tubule is sustracted
 		 */
@@ -894,7 +928,7 @@ public class Endosome {
 		}
 
 		this.speed = 1 / size();
-		
+
 		// moveTowards();
 
 		/* the tubule is created as an independent endosome */
@@ -923,20 +957,21 @@ public class Endosome {
 		b.size = Math.pow(b.volume * 3d / 4d / Math.PI, (1d / 3d));
 		b.speed = 1 / b.size;
 		Random rd = new Random();
-		b.heading = this.heading + rd.nextGaussian()*10d;// change between -90 to +90 the heading
-//		of the old vesicle heading with a normal distribution
-		System.out
-				.println("                                                 VESICLE B");
-		System.out.println(b.area + " " + b.rabContent + " "
-				+ b.membraneContent + " " + b.solubleContent + " "
-				+ b.initOrgProp);
+		b.heading = this.heading + rd.nextGaussian() * 10d;// change between -90
+															// to +90 the
+															// heading
+		// of the old vesicle heading with a normal distribution
+		// System.out
+		// .println("                                                 VESICLE B");
+		// System.out.println(b.area + " " + b.rabContent + " "
+		// + b.membraneContent + " " + b.solubleContent + " "
+		// + b.initOrgProp);
 		NdPoint myPoint = space.getLocation(this);
 		double x = myPoint.getX();
 		double y = myPoint.getY();
 		space.moveTo(b, x, y);
 		grid.moveTo(b, (int) x, (int) y);
 		moveTowards();
-
 
 	}
 
@@ -1056,10 +1091,10 @@ public class Endosome {
 				if (mem <= 0)
 					mem = 0d;
 				this.membraneContent.put(content, mem);
-			}else
-			{
-			double mem = this.membraneContent.get(content)* (so- sIV) / so;
-				this.membraneContent.put(content, mem);	
+			} else {
+				double mem = this.membraneContent.get(content) * (so - sIV)
+						/ so;
+				this.membraneContent.put(content, mem);
 			}
 		}
 		// Free membrane is added to the cell
@@ -1237,7 +1272,7 @@ public class Endosome {
 		bud.size = size();// radius of a sphere with the volume of the
 							// cylinder
 		bud.speed = 1 / bud.size;
-		bud.heading = Math.random()*360;
+		bud.heading = Math.random() * 360;
 		// NdPoint myPoint = space.getLocation(bud);
 		double rnd = Math.random();
 		space.moveTo(bud, rnd * 50, 25.0);
@@ -1328,8 +1363,11 @@ public class Endosome {
 
 		if (membraneContent.containsKey(contentPlot)) {
 			double red = membraneContent.get(contentPlot) / area;
-			if (red>1) System.out.println("RED FUERA ESCALA "+" "+red+" "+membraneContent.get(contentPlot)+"  "+ area);
-			if (red>1) System.out.println("RED FUERA ESCALA "+" "+contentPlot);
+			if (red > 1)
+				System.out.println("RED FUERA ESCALA " + " " + red + " "
+						+ membraneContent.get(contentPlot) + "  " + area);
+			if (red > 1)
+				System.out.println("RED FUERA ESCALA " + " " + contentPlot);
 			// System.out.println("mHCI content" + red);
 			return red;
 		}
@@ -1366,15 +1404,21 @@ public class Endosome {
 
 		if (membraneContent.containsKey(contentPlot)) {
 			double blue = membraneContent.get(contentPlot) / area;
-			if (blue>1) System.out.println("BLUE FUERA ESCALA "+" "+blue+" "+membraneContent.get(contentPlot)+"  "+ area);
-			if (blue>1) System.out.println("BLUE FUERA ESCALA "+" "+contentPlot);
+			if (blue > 1)
+				System.out.println("BLUE FUERA ESCALA " + " " + blue + " "
+						+ membraneContent.get(contentPlot) + "  " + area);
+			if (blue > 1)
+				System.out.println("BLUE FUERA ESCALA " + " " + contentPlot);
 
 			return blue;
 		}
 		if (solubleContent.containsKey(contentPlot)) {
 			double blue = solubleContent.get(contentPlot) / volume;
-			if (blue>1) System.out.println("BLUE FUERA ESCALA "+" "+blue+" "+solubleContent.get(contentPlot)+"  "+ area);
-			if (blue>1) System.out.println("BLUE FUERA ESCALA "+" "+contentPlot);
+			if (blue > 1)
+				System.out.println("BLUE FUERA ESCALA " + " " + blue + " "
+						+ solubleContent.get(contentPlot) + "  " + area);
+			if (blue > 1)
+				System.out.println("BLUE FUERA ESCALA " + " " + contentPlot);
 			// System.out.println("mHCI content" + red);
 			return blue;
 		} else

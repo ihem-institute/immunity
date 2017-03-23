@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+// This class contains the properties of the cell.  It is loaded by the CellBuilder with the same
+// CSV file  used for the inital organelles.  It is updated by the UpdateParameters class.
 public class CellProperties {
 	private static CellProperties instance;
 	

@@ -104,6 +104,17 @@ public class CellBuilder implements ContextBuilder<Object> {
 		 * try { loadFromExcel(); } catch (IOException e) { // TODO
 		 * Auto-generated catch block e.printStackTrace(); }
 		 */
+		
+//		Cell and recycled contents.  Total initial free membrane 
+		CellProperties cellProperties = CellProperties.getInstance();
+		for (String sol : cellProperties.solubleMet) {
+			Cell.getInstance().getSolubleRecycle().put(sol, 0d);
+		}
+		for (String sol : cellProperties.membraneMet) {
+			Cell.getInstance().getMembraneRecycle().put(sol, 0d);
+		}	
+		Cell.getInstance().getRabCell().putAll(cellProperties.initRabCell);
+		Cell.getInstance().settMembrane(0d);
 		// Microtubules
 
 		for (int i = 0; i < 10; i++) {

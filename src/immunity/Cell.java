@@ -34,7 +34,8 @@ public class Cell {
 
 	// Constructor
 	public Cell() {
-		//double tMembrane = 0; // hidden constructor
+// Contains the contents that are in the cell.  It is modified by Endosome that uses and changes the cell
+// contents.	tMembranes, membrane and soluble content recycling, cytosolic Rabs	
 		CellProperties cellProperties = CellProperties.getInstance();
 		for (String sol : cellProperties.solubleMet) {
 			solubleRecycle.put(sol, 0d);
@@ -44,11 +45,7 @@ public class Cell {
 		}	
 		rabCell.putAll(cellProperties.initRabCell);
 	}
-//	@ScheduledMethod(start = 1, interval = 1)
-//	public void step() {
-//		getRabCell();
-//		
-//	}
+
 	
 	// GETTERS AND SETTERS (to get and set Cell contents)
 	public static Cell getInstance() {

@@ -196,48 +196,48 @@ public class UpdateParameters {
 			}
 //			
 //			// INITIAL ORGANELLES
-//			case "kind1": {
-//				InitialOrganelles inOr = InitialOrganelles.getInstance();
-//				inOr.getDiffOrganelles().add(b[0]);
-//				switch (b[1]) {
-//				case "initOrgProp": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitOrgProp().put(b[0], value);
-//					break;
-//				}
-//				case "initRabContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitRabContent().put(b[0], value);
-//					break;
-//				}
-//				case "initSolubleContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitSolubleContent().put(b[0], value);
-//					break;
-//				}
-//				case "initMembraneContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitMembraneContent().put(b[0], value);
-//					break;
-//				}
-//				default: {
-//					System.out.println("no a valid entry");
-//				}
-//				}
-//				break;
-//			}
+			case "kind1": {
+				InitialOrganelles inOr = InitialOrganelles.getInstance();
+				inOr.getDiffOrganelles().add(b[0]);
+				switch (b[1]) {
+				case "initOrgProp": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitOrgProp().put(b[0], value);
+					break;
+				}
+				case "initRabContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitRabContent().put(b[0], value);
+					break;
+				}
+				case "initSolubleContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitSolubleContent().put(b[0], value);
+					break;
+				}
+				case "initMembraneContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitMembraneContent().put(b[0], value);
+					break;
+				}
+				default: {
+					System.out.println("no a valid entry");
+				}
+				}
+				break;
+			}
 //
 //			case "kind2": {
 //				InitialOrganelles inOr = InitialOrganelles.getInstance();
