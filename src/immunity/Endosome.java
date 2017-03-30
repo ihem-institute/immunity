@@ -957,8 +957,7 @@ public class Endosome {
 		b.size = Math.pow(b.volume * 3d / 4d / Math.PI, (1d / 3d));
 		b.speed = 1 / b.size;
 		Random rd = new Random();
-		b.heading = this.heading + rd.nextGaussian() * 10d;// change between -90
-															// to +90 the
+		b.heading = this.heading + rd.nextGaussian() * 10d;// change the
 															// heading
 		// of the old vesicle heading with a normal distribution
 		// System.out
@@ -966,12 +965,20 @@ public class Endosome {
 		// System.out.println(b.area + " " + b.rabContent + " "
 		// + b.membraneContent + " " + b.solubleContent + " "
 		// + b.initOrgProp);
+//		scale 750 nm is the 50 size space. Size in nm/15 is the size in the space scale
+		double deltax = Math.cos(heading * 2d * Math.PI / 360d)
+				* (this.size + b.size)/15;
+		double deltay = Math.sin(heading * 2d * Math.PI / 360d)
+				* (this.size+ b.size)/15;
+		
 		NdPoint myPoint = space.getLocation(this);
-		double x = myPoint.getX();
-		double y = myPoint.getY();
+		double x = myPoint.getX()+ deltax;
+		if (x<1)x=0;
+		if (x>49)x=50;
+		double y = myPoint.getY()+ deltay;
 		space.moveTo(b, x, y);
 		grid.moveTo(b, (int) x, (int) y);
-		moveTowards();
+		//moveTowards();
 
 	}
 
@@ -1002,10 +1009,10 @@ public class Endosome {
 		else {
 			while (rab == null) {
 				for (String rab1 : copyMap.keySet()) {
-					System.out.println(rab1 + tubuleTropism);
+//					System.out.println(rab1 + " "+ tubuleTropism);
 					if (Math.random() < tubuleTropism.get(rab1)) {
-						// System.out.println(copyMap + "RabInTubeSelected" +
-						// rab1);
+						System.out.println(copyMap + "RabInTubeSelected" +
+						rab1);
 						return rab1;
 					}
 				}
