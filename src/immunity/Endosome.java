@@ -158,7 +158,7 @@ public class Endosome {
 			finalMemMark = membraneContent.get("membraneMarker");
 		}
 		for (String sol : solubleContent.keySet()) {
-				double solDigested = solubleContent.get(sol) * 0.001
+				double solDigested = solubleContent.get(sol) * 0.0001
 						* rabDratio;
 				solubleContent.put(sol, solubleContent.get(sol) - solDigested);
 			}
@@ -168,7 +168,7 @@ public class Endosome {
 				solubleContent.put("solubleMarker", finalSolMark);
 
 		for (String mem : membraneContent.keySet()) {
-				double memDigested = membraneContent.get(mem) * 0.001
+				double memDigested = membraneContent.get(mem) * 0.0001
 						* rabDratio;
 				membraneContent
 						.put(mem, membraneContent.get(mem) - memDigested);
@@ -177,10 +177,10 @@ public class Endosome {
 				membraneContent.put("membraneMarker", finalMemMark);
 			// volume is decreased
 		if (solubleContent.containsKey("mvb")) {
-				deltaV = (initialMvb - finalMvb) * volIV + this.volume * 0.001
+				deltaV = (initialMvb - finalMvb) * volIV + this.volume * 0.0001
 						* rabDratio;
 			} else {
-				deltaV = this.volume * 0.001 * rabDratio;
+				deltaV = this.volume * 0.0001 * rabDratio;
 			}
 		this.volume = this.volume - deltaV;
 	}
