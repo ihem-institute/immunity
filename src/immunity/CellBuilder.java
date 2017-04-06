@@ -178,26 +178,10 @@ public class CellBuilder implements ContextBuilder<Object> {
 	}
 
 	public void loadFromCsv() throws IOException {
-		// InitialOrganelles InOr = InitialOrganelles.getInstance();
-		// for (int i = 1; i < 6; i++) {
-		// InOr.getInitOrgProp().put("kind" + i, null);
-		// InOr.getInitRabContent().put("kind" + i, null);
-		// InOr.getInitSolubleContent().put("kind" + i, null);
-		// InOr.getInitMembraneContent().put("kind" + i, null);
-		// }
 
 		Scanner scanner = new Scanner(new File(
-				"C:/users/lmayorga/desktop/inputIntrTransp3.csv"));
+				"C:/Users/lmayorga/workspace/immunity/inputIntrTransp3.csv"));
 		scanner.useDelimiter(",");
-//		File file = new File("C:/users/lmayorga/desktop/ResultsIntrTransp3.csv");
-//		Path filePath = file.toPath();		
-//		BasicFileAttributes attr = Files.readAttributes(filePath, BasicFileAttributes.class);
-		//UpdateParameters.getInstance().setOldFile(attr.lastModifiedTime().toString());
-		// HashMap<String, Double> rabContent = new HashMap<String, Double>();
-		// HashMap<String, Double> membraneContent = new HashMap<String,
-		// Double>();
-		// HashMap<String, Double> solubleContent = new HashMap<String,
-		// Double>();
 		CellProperties cellProperties = CellProperties.getInstance();
 // INITIAL CELL PROPERTIES
 		while (scanner.hasNextLine()) {
@@ -532,50 +516,5 @@ public class CellBuilder implements ContextBuilder<Object> {
 		}
 		System.out.println("INITIAL "+ InitialOrganelles.getInstance().initRabContent.toString());
 		scanner.close();
-	}
-
-	private static void loadFromExcel() throws IOException {
-		// open the excel file
-		HashMap<String, Double> cellK = new HashMap<String, Double>();
-		HashMap<String, Double> initRabCell = new HashMap<String, Double>();
-		// HashMap<String, HashMap<String, Double>> dataCell = new
-		// HashMap<String, HashMap<String, Double>>();
-		Workbook book = new XSSFWorkbook(new FileInputStream(
-				"C:/users/lmayorga/desktop/inputIntrTransp.xlsx"));
-		// get the first worksheet
-		Sheet sheet = book.getSheetAt(0);
-		int ID_COL = 0;
-		for (Row row : sheet) {
-
-			if (row.getRowNum() > 0 && row.getRowNum() < 7) {
-				String a = row.getCell(0).getStringCellValue();
-				String b = row.getCell(1).getStringCellValue();
-				Double c = row.getCell(2).getNumericCellValue();
-				System.out.println(a + b + c);
-
-				if (a.equals("cellK")) {
-					cellK.put(b, c);
-				}
-				if (a.equals("initRabCell")) {
-					initRabCell.put(b, c);
-				}
-
-				/*
-				 * int age = (int) row.getCell(AGE_COL).getNumericCellValue();
-				 * double energy =
-				 * row.getCell(ENERGY_COL).getNumericCellValue();
-				 * 
-				 * //Person person = new Person(id, age, energy);
-				 * //context.add(person); double x =
-				 * row.getCell(X_COL).getNumericCellValue(); double y =
-				 * row.getCell(Y_COL).getNumericCellValue();
-				 * //space.moveTo(person, x, y);
-				 */
-				System.out.println(a + b + c);
-				System.out.println(a + cellK.toString()
-						+ initRabCell.toString());
-			}
-		}
-
 	}
 }

@@ -24,10 +24,7 @@ public class UpdateParameters {
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
 	private String oldFile = "";
-//	File file = new File("C:/users/lmayorga/desktop/inputIntrTransp3.csv");
-//	Path filePath = file.toPath();		
-//	BasicFileAttributes attr = Files.readAttributes(filePath, BasicFileAttributes.class);
-//	oldFile = attr.lastModifiedTime().toString();
+
 	
 	public String getOldFile() {
 		return oldFile;
@@ -59,7 +56,7 @@ public class UpdateParameters {
 		}
 }
 	public void testNewFile() throws IOException {
-		File file = new File("C:/users/lmayorga/desktop/inputIntrTransp3.csv");
+		File file = new File("C:/Users/lmayorga/workspace/immunity/inputIntrTransp3.csv");
 		Path filePath = file.toPath();		
 		BasicFileAttributes attr = Files.readAttributes(filePath, BasicFileAttributes.class);
 		String newFile = attr.lastModifiedTime().toString();
@@ -105,22 +102,11 @@ public class UpdateParameters {
 
 	
 	public void loadFromCsv() throws FileNotFoundException {
-		// InitialOrganelles InOr = InitialOrganelles.getInstance();
-		// for (int i = 1; i < 6; i++) {
-		// InOr.getInitOrgProp().put("kind" + i, null);
-		// InOr.getInitRabContent().put("kind" + i, null);
-		// InOr.getInitSolubleContent().put("kind" + i, null);
-		// InOr.getInitMembraneContent().put("kind" + i, null);
-		// }
-//if (2<3) return;
+
 		Scanner scanner = new Scanner(new File(
-				"C:/users/lmayorga/desktop/inputIntrTransp3.csv"));
+				"C:/Users/lmayorga/workspace/immunity/inputIntrTransp3.csv"));
 		scanner.useDelimiter(",");
-		// HashMap<String, Double> rabContent = new HashMap<String, Double>();
-		// HashMap<String, Double> membraneContent = new HashMap<String,
-		// Double>();
-		// HashMap<String, Double> solubleContent = new HashMap<String,
-		// Double>();
+
 		CellProperties cellProperties = CellProperties.getInstance();
 // INITIAL CELL PROPERTIES
 		while (scanner.hasNextLine()) {
@@ -131,11 +117,7 @@ public class UpdateParameters {
 				cellProperties.getCellK().put(b[1], Double.parseDouble(b[2]));
 				break;
 			}
-//			case "initRabCell": {
-//				cellProperties.getInitRabCell().put(b[1],
-//						Double.parseDouble(b[2]));
-//				break;
-//			}
+
 			case "rabCompatibility": {
 				cellProperties.getRabCompatibility().put(b[1],
 						Double.parseDouble(b[2]));
