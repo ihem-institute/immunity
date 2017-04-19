@@ -189,22 +189,32 @@ public class CellBuilder implements ContextBuilder<Object> {
 			String[] b = line.split(",");
 			switch (b[0]) {
 			case "cellK": {
-				cellProperties.getCellK().put(b[1], Double.parseDouble(b[2]));
+				for (int i = 1; i < b.length; i = i + 2) {
+				cellProperties.getCellK().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(cellProperties.getCellK());
+				}
+				
 				break;
 			}
 			case "initRabCell": {
-				cellProperties.getInitRabCell().put(b[1],
-						Double.parseDouble(b[2]));
+				for (int i = 1; i < b.length; i = i + 2) {
+				cellProperties.getInitRabCell().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(cellProperties.getInitRabCell());
+				}
 				break;
 			}
 			case "rabCompatibility": {
-				cellProperties.getRabCompatibility().put(b[1],
-						Double.parseDouble(b[2]));
+				for (int i = 1; i < b.length; i = i + 2) {
+					cellProperties.getRabCompatibility().put(b[i], Double.parseDouble(b[i+1]));
+					//System.out.println(cellProperties.getRabCompatibility());
+					}
 				break;
 			}
 			case "tubuleTropism": {
-				cellProperties.getTubuleTropism().put(b[1],
-						Double.parseDouble(b[2]));
+				for (int i = 1; i < b.length; i = i + 2) {
+					cellProperties.getTubuleTropism().put(b[i], Double.parseDouble(b[i+1]));
+					//System.out.println(cellProperties.getTubuleTropism());
+					}
 				break;
 			}
 			case "rabTropism": {
@@ -219,8 +229,10 @@ public class CellBuilder implements ContextBuilder<Object> {
 				break;
 			}
 			case "mtTropism": {
-				cellProperties.getMtTropism().put(b[1],
-						Double.parseDouble(b[2]));
+				for (int i = 1; i < b.length; i = i + 2) {
+					cellProperties.getMtTropism().put(b[i], Double.parseDouble(b[i+1]));
+					//System.out.println(cellProperties.getMtTropism());
+					}
 				break;
 			}
 			case "membraneMet": {
