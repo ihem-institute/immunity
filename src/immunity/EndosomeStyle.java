@@ -150,7 +150,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	public float getScale(Endosome object) {
 		// the size is the radius of a sphere with the volume of the object
 		// hence, the newly form endosome with a size 30, has a scale of 3
-		return 1;// (float) object.size() / 10f;
+		return (float) Cell.orgScale;// (float) object.size() / 10f;
 	}
 
 	@Override

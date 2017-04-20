@@ -23,6 +23,8 @@ public class Cell {
 	public static double sEndo = 4d * Math.PI * Math.pow(rEndo, 2); // surface new endosome
 	// mincyl surface = 1884.95 volume = 6283.18
 	private static Cell instance;
+	public static double orgScale = CellProperties.getInstance().getCellK().get("orgScale");
+//  When orgScale=1 zoom =0, when > 1 zoom in , when <1 zoom out
 	public double tMembrane;// membrane that is not used in endosomes
 	public HashMap<String, Double> rabCell = new HashMap<String, Double>();// contains rabs free in cytosol
 	public HashMap<String, Double> membraneRecycle = new HashMap<String, Double>(); // contains membrane recycled 

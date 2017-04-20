@@ -101,7 +101,7 @@ public class Endosome {
 		volume = initOrgProp.get("volume");// 4d / 3d * Math.PI * 30d * 30d *
 											// 30d; // initial value, but
 		size = Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
-		speed = 1d / size; // initial value, but should change
+		speed = 1d / (size* Cell.orgScale); // initial value, but should change
 		heading = Math.random() * 360d; // initial value, but should change
 		double mvb = 0; // number of internal vesicles
 	}
@@ -462,7 +462,7 @@ public class Endosome {
 			Random fRandom = new Random();
 			this.heading = (this.heading + fRandom.nextGaussian() * 10d
 					/ momentum) % 360;
-			this.speed = 1d / this.size;
+			this.speed = 1d / (this.size* Cell.orgScale);
 			if (initial - heading > 90)
 				System.out.println("GIRO BOTTOM " + "  " + initial + "  "
 						+ heading + "  " + momentum);
@@ -483,7 +483,7 @@ public class Endosome {
 		mtDir = mtDirection();
 		for (MT mt : mts) {
 			double dist = distance(this, mt);
-			if (dist < this.size / 30d) {
+			if (dist < (this.size* Cell.orgScale) / 30d) {
 				endosomeShape(this);
 				if (this.a < 9.99)
 					mtDir = -1;
@@ -631,7 +631,7 @@ public class Endosome {
 			Context<Object> context = ContextUtils.getContext(endosome);
 			context.remove(endosome);
 		}
-		this.speed = 1 / size();
+		this.speed = 1 / (size()* Cell.orgScale);
 		endosomeShape(this);
 
 	}
@@ -927,7 +927,7 @@ public class Endosome {
 
 		}
 
-		this.speed = 1 / size();
+		this.speed = 1 / (size()* Cell.orgScale);
 
 		// moveTowards();
 
@@ -955,7 +955,7 @@ public class Endosome {
 		b.volume = vcylinder;
 		endosomeShape(b);
 		b.size = Math.pow(b.volume * 3d / 4d / Math.PI, (1d / 3d));
-		b.speed = 1 / b.size;
+		b.speed = 1 / (b.size* Cell.orgScale);
 		Random rd = new Random();
 		b.heading = this.heading + rd.nextGaussian() * 10d;// change the
 															// heading
@@ -967,9 +967,9 @@ public class Endosome {
 		// + b.initOrgProp);
 //		scale 750 nm is the 50 size space. Size in nm/15 is the size in the space scale
 		double deltax = Math.cos(heading * 2d * Math.PI / 360d)
-				* (this.size + b.size)/15;
+				* (this.size + b.size) * Cell.orgScale/15;
 		double deltay = Math.sin(heading * 2d * Math.PI / 360d)
-				* (this.size+ b.size)/15;
+				* (this.size+ b.size)* Cell.orgScale/15;
 		
 		NdPoint myPoint = space.getLocation(this);
 		double x = myPoint.getX()+ deltax;
@@ -1221,7 +1221,7 @@ public class Endosome {
 		bud.volume = Cell.vEndo;
 		bud.size = Cell.rEndo;// radius of a sphere with the volume of the
 								// cylinder
-		bud.speed = 1 / bud.size;
+		bud.speed = 1 / (bud.size* Cell.orgScale);
 		bud.heading = -90;// heading down
 		// NdPoint myPoint = space.getLocation(bud);
 		double rnd = Math.random();
@@ -1278,7 +1278,7 @@ public class Endosome {
 		bud.volume = bud.initOrgProp.get("volume");
 		bud.size = size();// radius of a sphere with the volume of the
 							// cylinder
-		bud.speed = 1 / bud.size;
+		bud.speed = 1 / (bud.size* Cell.orgScale);
 		bud.heading = Math.random() * 360;
 		// NdPoint myPoint = space.getLocation(bud);
 		double rnd = Math.random();
