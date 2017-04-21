@@ -1,5 +1,5 @@
 CELL,,,,,,,,,,,,,,,,,,,,,,,,,
-cellK,rcyl,10,rEndo,20,tMembrane,10000,orgScale,.5,,,,,,,,,,,,,,,,,
+cellK,rcyl,10,rEndo,20,tMembrane,10000,orgScale,1,,,,,,,,,,,,,,,,,
 null,,,,,,,,,,,,,,,,,,,,,,,,,
 null,,,,,,,,,,,,,,,,,,,,,,,,,
 initRabCell,RabA,0,RabB,0,RabC,2000,RabD,2000,RabE,0,,,,,,,,,,,,,,,

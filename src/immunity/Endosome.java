@@ -64,6 +64,7 @@ public class Endosome {
 	double speed;// = 5d / size; // initial value, but should change
 	double heading = 0;// = Math.random() * 360d; // initial value, but should
 						// change
+	double cellLimit = 3 * Cell.orgScale;
 	double mvb;// = 0; // number of internal vesices
 	double cellMembrane;// = 0;
 	Set<String> membraneMet = cellProperties.getMembraneMet();
@@ -101,7 +102,7 @@ public class Endosome {
 		volume = initOrgProp.get("volume");// 4d / 3d * Math.PI * 30d * 30d *
 											// 30d; // initial value, but
 		size = Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
-		speed = 1d / (size* Cell.orgScale); // initial value, but should change
+		speed = Cell.orgScale / size; // initial value, but should change
 		heading = Math.random() * 360d; // initial value, but should change
 		double mvb = 0; // number of internal vesicles
 	}
@@ -456,13 +457,13 @@ public class Endosome {
 		// When near the bottom, the movement is random and depends on the
 		// momentum
 		NdPoint myPoint = space.getLocation(this);
-		if (myPoint.getY() < 5) {
+		if (myPoint.getY() < 5*Cell.orgScale) {
 			endosomeShape(this);
 			double momentum = volume * (a * a + c * c) / 5 / 3E7;
 			Random fRandom = new Random();
 			this.heading = (this.heading + fRandom.nextGaussian() * 10d
 					/ momentum) % 360;
-			this.speed = 1d / (this.size* Cell.orgScale);
+			this.speed = Cell.orgScale/ this.size;
 			if (initial - heading > 90)
 				System.out.println("GIRO BOTTOM " + "  " + initial + "  "
 						+ heading + "  " + momentum);
@@ -490,7 +491,7 @@ public class Endosome {
 				else
 					mtDir = 1;
 				this.heading = -mtDir * mt.getMtheading() + 180f;
-				this.speed = 1d;
+				this.speed = 1d*Cell.orgScale;
 				// if (initial - heading > 90)System.out.println("GIRO MT "
 				// +initial+"  "+heading);
 				return this.heading;
@@ -556,7 +557,7 @@ public class Endosome {
 		// I calculated that the 50 x 50 grid is equivalent to a 750 x 750 nm
 		// square
 		// Hence, size/15 is in grid units
-		int gridSize = (int) Math.round(this.size / 15);
+		int gridSize = (int) Math.round(this.size*Cell.orgScale / 15);
 		GridCellNgh<Endosome> nghCreator = new GridCellNgh<Endosome>(grid, pt,
 				Endosome.class, gridSize, gridSize);
 		// System.out.println("SIZE           "+gridSize);
@@ -601,7 +602,7 @@ public class Endosome {
 		// I calculated that the 50 x 50 grid is equivalent to a 750 x 750 nm
 		// square
 		// Hence, size/15 is in grid units
-		int gridSize = (int) Math.round(this.size / 15);
+		int gridSize = (int) Math.round(this.size*Cell.orgScale / 15);
 		GridCellNgh<Endosome> nghCreator = new GridCellNgh<Endosome>(grid, pt,
 				Endosome.class, gridSize, gridSize);
 		// System.out.println("SIZE           "+gridSize);
@@ -631,7 +632,7 @@ public class Endosome {
 			Context<Object> context = ContextUtils.getContext(endosome);
 			context.remove(endosome);
 		}
-		this.speed = 1 / (size()* Cell.orgScale);
+		this.speed = Cell.orgScale/ size();
 		endosomeShape(this);
 
 	}
@@ -718,17 +719,16 @@ public class Endosome {
 		// if reaches the bottom, changes the direction to horizontal. If the
 		// original heading
 		// was between 0 and -90 goes to the right, else to the left
-		if (y > 50 || y < 0) {
+		if (y > 50-cellLimit || y < cellLimit) {
+			changeDirection();
+			y = myPoint.getY();
 
-			heading = (Math.signum(-heading - 90) == 1) ? 180 : 0;
-
-			return;
 		}
-		if (myPoint.getY() - y > this.speed)
-			System.out.println(" SALTO     " + myPoint.getY() + " " + y + " "
-					+ (myPoint.getY() - y) + " "
-					+ (Math.sin(heading * 2d * Math.PI / 360d)) + "  "
-					+ this.speed);
+//		if (myPoint.getY() - y > this.speed)
+//			System.out.println(" SALTO     " + myPoint.getY() + " " + y + " "
+//					+ (myPoint.getY() - y) + " "
+//					+ (Math.sin(heading * 2d * Math.PI / 360d)) + "  "
+//					+ this.speed);
 		space.moveTo(this, x, y);
 		grid.moveTo(this, (int) x, (int) y);
 	}
@@ -927,7 +927,7 @@ public class Endosome {
 
 		}
 
-		this.speed = 1 / (size()* Cell.orgScale);
+		this.speed = Cell.orgScale / size();
 
 		// moveTowards();
 
@@ -955,7 +955,7 @@ public class Endosome {
 		b.volume = vcylinder;
 		endosomeShape(b);
 		b.size = Math.pow(b.volume * 3d / 4d / Math.PI, (1d / 3d));
-		b.speed = 1 / (b.size* Cell.orgScale);
+		b.speed = Cell.orgScale / b.size;
 		Random rd = new Random();
 		b.heading = this.heading + rd.nextGaussian() * 10d;// change the
 															// heading
@@ -973,9 +973,10 @@ public class Endosome {
 		
 		NdPoint myPoint = space.getLocation(this);
 		double x = myPoint.getX()+ deltax;
-		if (x<1)x=0;
-		if (x>49)x=50;
+
 		double y = myPoint.getY()+ deltay;
+		if (y < cellLimit)y= cellLimit;
+		if (y > 50 - cellLimit)y = 50-cellLimit;
 		space.moveTo(b, x, y);
 		grid.moveTo(b, (int) x, (int) y);
 		//moveTowards();
@@ -1113,7 +1114,7 @@ public class Endosome {
 		NdPoint myPoint = space.getLocation(this);
 		// double x = myPoint.getX();
 		double y = myPoint.getY();
-		if (y < 49)
+		if (y < 50-cellLimit)
 			return;
 		double recyRabA = 0.0;
 		double recyRabC = 0.0;
@@ -1221,12 +1222,12 @@ public class Endosome {
 		bud.volume = Cell.vEndo;
 		bud.size = Cell.rEndo;// radius of a sphere with the volume of the
 								// cylinder
-		bud.speed = 1 / (bud.size* Cell.orgScale);
+		bud.speed = Cell.orgScale/ bud.size;
 		bud.heading = -90;// heading down
 		// NdPoint myPoint = space.getLocation(bud);
 		double rnd = Math.random();
-		space.moveTo(bud, rnd * 50, 48.0);
-		grid.moveTo(bud, (int) rnd * 50, 48);
+		space.moveTo(bud, rnd * 50, 50-cellLimit);
+		grid.moveTo(bud, (int) rnd * 50, (int) (50-cellLimit));
 
 		// moveTowards();
 		// moveTowards();
@@ -1278,7 +1279,7 @@ public class Endosome {
 		bud.volume = bud.initOrgProp.get("volume");
 		bud.size = size();// radius of a sphere with the volume of the
 							// cylinder
-		bud.speed = 1 / (bud.size* Cell.orgScale);
+		bud.speed = Cell.orgScale/ bud.size;
 		bud.heading = Math.random() * 360;
 		// NdPoint myPoint = space.getLocation(bud);
 		double rnd = Math.random();
@@ -1411,17 +1412,17 @@ public class Endosome {
 
 		if (membraneContent.containsKey(contentPlot)) {
 			double blue = membraneContent.get(contentPlot) / area;
-			if (blue > 1)
+			if (blue > 1.1)
 				System.out.println("BLUE FUERA ESCALA " + " " + blue + " "
 						+ membraneContent.get(contentPlot) + "  " + area);
-			if (blue > 1)
+			if (blue > 1.1)
 				System.out.println("BLUE FUERA ESCALA " + " " + contentPlot);
 
 			return blue;
 		}
 		if (solubleContent.containsKey(contentPlot)) {
 			double blue = solubleContent.get(contentPlot) / volume;
-			if (blue > 1)
+			if (blue > 1.1)
 				System.out.println("BLUE FUERA ESCALA " + " " + blue + " "
 						+ solubleContent.get(contentPlot) + "  " + area);
 			if (blue > 1)
