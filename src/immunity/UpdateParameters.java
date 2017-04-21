@@ -114,18 +114,32 @@ public class UpdateParameters {
 			String[] b = line.split(",");
 			switch (b[0]) {
 			case "cellK": {
-				cellProperties.getCellK().put(b[1], Double.parseDouble(b[2]));
+				for (int i = 1; i < b.length; i = i + 2) {
+				cellProperties.getCellK().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(cellProperties.getCellK());
+				}
+				
 				break;
 			}
-
+			case "initRabCell": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				cellProperties.getInitRabCell().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(cellProperties.getInitRabCell());
+				}
+				break;
+			}
 			case "rabCompatibility": {
-				cellProperties.getRabCompatibility().put(b[1],
-						Double.parseDouble(b[2]));
+				for (int i = 1; i < b.length; i = i + 2) {
+					cellProperties.getRabCompatibility().put(b[i], Double.parseDouble(b[i+1]));
+					//System.out.println(cellProperties.getRabCompatibility());
+					}
 				break;
 			}
 			case "tubuleTropism": {
-				cellProperties.getTubuleTropism().put(b[1],
-						Double.parseDouble(b[2]));
+				for (int i = 1; i < b.length; i = i + 2) {
+					cellProperties.getTubuleTropism().put(b[i], Double.parseDouble(b[i+1]));
+					//System.out.println(cellProperties.getTubuleTropism());
+					}
 				break;
 			}
 			case "rabTropism": {
@@ -140,8 +154,10 @@ public class UpdateParameters {
 				break;
 			}
 			case "mtTropism": {
-				cellProperties.getMtTropism().put(b[1],
-						Double.parseDouble(b[2]));
+				for (int i = 1; i < b.length; i = i + 2) {
+					cellProperties.getMtTropism().put(b[i], Double.parseDouble(b[i+1]));
+					//System.out.println(cellProperties.getMtTropism());
+					}
 				break;
 			}
 			case "membraneMet": {
@@ -159,7 +175,6 @@ public class UpdateParameters {
 			case "rabSet": {
 				for (int i = 1; i < b.length; i++) {
 					cellProperties.getRabSet().add(b[i]);
-			System.out.println("RABSET  "+cellProperties.getRabSet());
 				}
 				break;
 			}
@@ -176,7 +191,7 @@ public class UpdateParameters {
 				}
 				break;
 			}
-//			
+			//			
 //			// INITIAL ORGANELLES
 			case "kind1": {
 				InitialOrganelles inOr = InitialOrganelles.getInstance();

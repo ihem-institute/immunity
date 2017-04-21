@@ -440,11 +440,11 @@ public class Endosome {
 		double aa = rsphere; // initial a from the radius of a sphere of volume
 								// v
 		double cc = aa;// initially, c=a
-		// calculation from s/v for a cilinder that it is the same than for an
-		// ellypsoid
+		// calculation from s/v for a cylinder that it is the same than for an
+		// ellipsoid
 		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c hence s/v =(1/c)+(2/a)
 		for (int i = 1; i < 5; i++) {// just two iterations yield an acceptable
-										// a-c ratio for ploting
+										// a-c ratio for plotting
 			aa = 2 / (svratio - 1 / cc);// from s/v ratio
 			cc = v * 3 / (4 * Math.PI * aa * aa);// from v ellipsoid
 		}
@@ -457,21 +457,23 @@ public class Endosome {
 		// When near the bottom, the movement is random and depends on the
 		// momentum
 		NdPoint myPoint = space.getLocation(this);
-		if (myPoint.getY() < 5*Cell.orgScale) {
+		if (myPoint.getY() < 5*Cell.orgScale || 
+				myPoint.getY() >50 - 2*Cell.orgScale
+				|| Math.random()<0.01) {
 			endosomeShape(this);
 			double momentum = volume * (a * a + c * c) / 5 / 3E7;
 			Random fRandom = new Random();
 			this.heading = (this.heading + fRandom.nextGaussian() * 10d
-					/ momentum) % 360;
+					/ momentum)% 360;
 			this.speed = Cell.orgScale/ this.size;
 			if (initial - heading > 90)
 				System.out.println("GIRO BOTTOM " + "  " + initial + "  "
 						+ heading + "  " + momentum);
 			return this.heading;
 		}
-		// when not in the bottom and near a MT takes the direction of the MT
+		// when (not in the bottom or the top or a rnd probability)  and near a MT takes the direction of the MT
 		// and
-		// increases the speed to 1
+		// increases the speed to 1* Cell.orgScale
 		if (mts == null) {
 			mts = associateMt();
 		}
@@ -485,8 +487,11 @@ public class Endosome {
 		for (MT mt : mts) {
 			double dist = distance(this, mt);
 			if (dist < (this.size* Cell.orgScale) / 30d) {
-				endosomeShape(this);
-				if (this.a < 9.99)
+//				endosomeShape(this);
+//				volume cylinder = PI*rcyl^2*h; area = PI*2*rcyl*h + 2* PI*rcyl^2
+//				hence for a cylinder of diameter = rcyl, volume / (area-2* PI*rcyl^2) = rcyl/2 
+//				direction is fixed to to the surface for tubules and to the center for the rest
+				if (this.volume/(this.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2)
 					mtDir = -1;
 				else
 					mtDir = 1;
@@ -721,7 +726,9 @@ public class Endosome {
 		// was between 0 and -90 goes to the right, else to the left
 		if (y > 50-cellLimit || y < cellLimit) {
 			changeDirection();
-			y = myPoint.getY();
+			if (y > 50-cellLimit) y = 50 -cellLimit;
+			if (y < cellLimit) y = cellLimit;
+
 
 		}
 //		if (myPoint.getY() - y > this.speed)
