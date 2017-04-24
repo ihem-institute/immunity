@@ -745,8 +745,8 @@ public class Endosome {
 		String rabInTube = null;
 		double vo = this.volume;
 		double so = this.area;
-		if (vo < 3 * 2 * Math.PI * Cell.rcyl * Cell.rcyl * Cell.rcyl)
-			return; // if too small do not split. Volume of a cylinder of 2
+		if (vo < 2*2 * Math.PI * Cell.rcyl * Cell.rcyl * Cell.rcyl)
+			return; // if too small to form two mincyl do not split. Volume of a cylinder of 2
 					// cylinder radius long (almost a sphere)
 		if (so < 2 * Cell.mincyl)
 			return; // if the surface is less than two minimus tubules, abort
@@ -768,7 +768,7 @@ public class Endosome {
 		double ssphere = (4 * Math.PI * rsphere * rsphere);// area of a sphere
 															// containing the
 															// volume
-		if ((so - ssphere) < Cell.mincyl * 1.9)
+		if ((so - ssphere) < Cell.mincyl)
 			return; // if not enough surface to contain the volume plus a
 		// minimum tubule, no split
 		rabInTube = rabInTube(); // select a rab for the tubule
