@@ -745,7 +745,7 @@ public class Endosome {
 		String rabInTube = null;
 		double vo = this.volume;
 		double so = this.area;
-		if (vo < 2*2 * Math.PI * Cell.rcyl * Cell.rcyl * Cell.rcyl)
+		if (vo < 2 * 2 * Math.PI * Cell.rcyl * Cell.rcyl * Cell.rcyl)
 			return; // if too small to form two mincyl do not split. Volume of a cylinder of 2
 					// cylinder radius long (almost a sphere)
 		if (so < 2 * Cell.mincyl)
