@@ -1034,11 +1034,7 @@ public class Endosome {
 
 		double vo = this.volume;
 		double so = this.area;
-		// if (vo < 2 * Math.PI * Cell.rcyl * Cell.rcyl * Cell.rcyl)return; //if
-		// too small do not split. Volume of a cylinder of 2 cylinder radius
-		// long (almost a sphere)
-		// if (so < 2 * Cell.mincyl) return; // if the surface is less than two
-		// minimus tubules, abort splitting
+		// if it a sphere, cannot form an internal vesicle
 		if (so * so * so / (vo * vo) <= 36.001 * Math.PI)
 			return;
 		// System.out.println("ESFERA" + so * so * so / (vo * vo));
