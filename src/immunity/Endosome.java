@@ -1095,13 +1095,15 @@ public class Endosome {
 			double content1 = this.rabContent.get(rab) * (so - sIV) / so;
 			this.rabContent.put(rab, content1);
 		}
-		// Membrane content with mvb tropism is degraded
+		// Membrane content with mvb tropism is degraded (e.g. EGF)
 		for (String content : this.membraneContent.keySet()) {
 			if (rabTropism.get(content).contains("mvb")) {
 				double mem = this.membraneContent.get(content) - sIV;
 				if (mem <= 0)
 					mem = 0d;
 				this.membraneContent.put(content, mem);
+//				If not special tropism, the membrane content is incorporated 
+//				into the internal vesicle proportional to the surface and degraded
 			} else {
 				double mem = this.membraneContent.get(content) * (so - sIV)
 						/ so;
