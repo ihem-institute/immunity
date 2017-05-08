@@ -78,7 +78,7 @@ public class UpdateParameters {
 				System.out.println(cellProperties.rabTropism);
 				System.out.println(cellProperties.mtTropism);
 
-				InitialOrganelles inOr = InitialOrganelles.getInstance();
+//				InitialOrganelles inOr = InitialOrganelles.getInstance();
 				System.out
 						.println(InitialOrganelles.getInstance().getInitOrgProp());
 				System.out.println(InitialOrganelles.getInstance()

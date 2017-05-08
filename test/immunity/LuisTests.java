@@ -28,6 +28,7 @@ public class LuisTests {
 
 	@Test
 	public void test() {
+		Endosome endosome = new Endosome(null, null, null, null, null, null);
 		fail("Not yet implemented");
 	}
 

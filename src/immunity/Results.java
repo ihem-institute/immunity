@@ -56,6 +56,11 @@ public class Results {
 		this.grid = gr;
 		// Generate a file with the header of the variables that are going to be followed
 		//along the simulation.  Up to now= content distribution according to rabs contents.
+
+	}
+	
+	@ScheduledMethod(start = 1)
+	public void header(){
 		TreeMap<String, Double> header = new TreeMap<String, Double>(content());
 		try {
 			writeToCsvHeader(header);
