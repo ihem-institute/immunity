@@ -16,6 +16,7 @@ import repast.simphony.context.space.grid.GridFactory;
 import repast.simphony.context.space.grid.GridFactoryFinder;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.environment.RunState;
+import repast.simphony.engine.schedule.ISchedule;
 import repast.simphony.engine.schedule.Schedule;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.RandomCartesianAdder;
@@ -37,9 +38,10 @@ public class EndosomeRecycleStepTests {
 		
 		CellBuilder cellBuilder = new CellBuilder();
 		context = cellBuilder.build(context);
-		RunState.init().setMasterContext( context );
+		RunState.init().setMasterContext(context);
 		IndexedIterable objects = context.getObjects(Endosome.class);
 		this.endosome = (Endosome) objects.get(0);
+		System.out.println("TEST   TEST  "+endosome.area);
 	}
 
 	@After
@@ -48,17 +50,27 @@ public class EndosomeRecycleStepTests {
 
 	@Test
 	public void testRecyclerEnSuperficie() {
+//		ISchedule schedule = RunEnvironment.getInstance().getCurrentSchedule ();
+//		System.out.println("TEST  ADENTRO test 1 TEST  "+endosome.area);
 		// this.endosome....
-		EndosomeRecycleStep.process(this.endosome);
-		assertEquals("uno deberia ser 1", this.endosome.area, this.endosome.size);
+		this.endosome.rabContent.clear();
+		this.endosome.rabContent.put("RabA", 5026.548);
+		this.endosome.solubleContent.put("ova", 1000d);
+		System.out.println("TEST   antes TEST  "+this.endosome.rabContent
+				+this.endosome.membraneContent+this.endosome.solubleContent);
+		EndosomeRecycleStep.recycle(this.endosome);
+		System.out.println("TEST   despues TEST  "+this.endosome.rabContent
+				+this.endosome.membraneContent+this.endosome.solubleContent);
+		
+//		assertEquals("uno deberia ser 1", this.endosome.area, this.endosome.size);
 		
 	}
-	@Test
-	public void testRecyclerEnNoSuperficie() {
-		// this.endosome....
-		EndosomeRecycleStep.process(this.endosome);
-		assertEquals("uno deberia ser 1", this.endosome.area, this.endosome.size);
-		
-	}
+//	@Test
+//	public void testRecyclerEnNoSuperficie() {
+//		// this.endosome....
+//		EndosomeRecycleStep.recycle(this.endosome);
+////		assertEquals("uno deberia ser 1", this.endosome.area, this.endosome.size);
+//		
+//	}
 
 }

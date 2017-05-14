@@ -1,10 +1,77 @@
 package immunity;
 
-public class EndosomeRecycleStep {
+import java.util.HashMap;
 
-	public static void process(Endosome endosome) {
-		// TODO Auto-generated method stub
-		
+import repast.simphony.space.continuous.ContinuousSpace;
+import repast.simphony.space.continuous.NdPoint;
+import repast.simphony.space.grid.Grid;
+
+public class EndosomeRecycleStep {
+	private static ContinuousSpace<Object> space;
+	
+	public static void recycle(Endosome endosome) {
+
+		HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
+		HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
+		HashMap<String, Double> solubleContent = new HashMap<String, Double>(endosome.getSolubleContent());
+		double cellLimit = 3 * Cell.orgScale;
+		System.out.println("TEST  ADENTRO RECYCLE TEST  "+endosome.area +rabContent );
+//		NdPoint myPoint = space.getLocation(endosome);
+//		System.out.println("TEST  ADENTRO RECYCLE TEST  "+endosome.area +rabContent );
+//			double y = myPoint.getY();
+//			if (y < 50-cellLimit)
+//				return;
+			double recyRabA = 0.0;
+			double recyRabC = 0.0;
+			if (endosome.rabContent.containsKey("RabA")) {
+				recyRabA = endosome.rabContent.get("RabA") / endosome.area;
+			}
+			if (endosome.rabContent.containsKey("RabC")) {
+				recyRabC = rabContent.get("RabC") / endosome.area;
+			}
+			double recyProb = 1 * recyRabA + recyRabC;
+			if (Math.random() >= recyProb)
+				return; // if not near the PM
+						// or without a recycling Rab return
+						// recycling Rabs are RabA (Rab5) and RabC (Rab11)
+			else {
+				// RECYCLE
+				// Recycle membrane content
+				HashMap<String, Double> membraneRecycle = Cell.getInstance()
+						.getMembraneRecycle();
+				for (String key1 : endosome.membraneContent.keySet()) {
+					if (membraneRecycle.containsKey(key1)) {
+						double sum = membraneRecycle.get(key1)
+								+ membraneContent.get(key1);
+						membraneRecycle.put(key1, sum);
+					} else {
+						membraneRecycle.put(key1, membraneContent.get(key1));
+					}
+				}
+
+				// Cell.getInstance().setMembraneRecycle(membraneRecycle);
+				endosome.membraneContent.clear();
+				System.out.println("membrane Recycled"
+						+ Cell.getInstance().getMembraneRecycle());
+
+				// Recycle soluble content
+				HashMap<String, Double> solubleRecycle = Cell.getInstance()
+						.getSolubleRecycle();
+				for (String key1 : endosome.solubleContent.keySet()) {
+					if (solubleRecycle.containsKey(key1)) {
+						double sum = solubleRecycle.get(key1)
+								+ solubleContent.get(key1);
+						solubleRecycle.put(key1, sum);
+					} else {
+						solubleRecycle.put(key1, solubleContent.get(key1));
+					}
+				}
+				// Cell.getInstance().setSolubleRecycle(solubleRecycle);
+				endosome.solubleContent.clear();
+				System.out.println("soluble Recycled"
+						+ Cell.getInstance().getSolubleRecycle());
+			}
+		}
+
 	}
 
-}
