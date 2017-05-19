@@ -17,7 +17,7 @@ public class EndosomeRecycleStep {
 //		System.out.println("TEST  ADENTRO RECYCLE TEST  "+endosome.area +rabContent );
 		NdPoint myPoint = endosome.getSpace().getLocation(endosome);
 //		NdPoint myPoint = space.getLocation(endosome);
-		System.out.println("TEST  ADENTRO coor  "+myPoint.toString()+ (50 -cellLimit));
+//		System.out.println("TEST  ADENTRO coor  "+myPoint.toString()+ (50 -cellLimit));
 			double y = myPoint.getY();
 			if (y < 50-cellLimit)
 				return;
@@ -29,7 +29,7 @@ public class EndosomeRecycleStep {
 			if (endosome.rabContent.containsKey("RabC")) {
 				recyRabC = rabContent.get("RabC") / endosome.area;
 			}
-			double recyProb = 1 * recyRabA + recyRabC;
+			double recyProb =0.1 * recyRabA + recyRabC;
 			if (Math.random() >= recyProb)
 				return; // if not near the PM
 						// or without a recycling Rab return

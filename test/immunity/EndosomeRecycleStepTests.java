@@ -61,7 +61,7 @@ public class EndosomeRecycleStepTests {
 			this.endosome.rabContent.clear();
 			this.endosome.rabContent.put("RabA", 5026.548);
 			this.endosome.solubleContent.put("ova", 1000d);
-			HashMap<String,Double> initial = new HashMap<String,Double>(this.endosome.solubleContent);
+//			HashMap<String,Double> initial = new HashMap<String,Double>(this.endosome.solubleContent);
 			double yPosition = 49.999-i;
 			this.endosome.getSpace().moveTo(this.endosome, 25, yPosition);
 			NdPoint myPoint = this.endosome.getSpace().getLocation(this.endosome);
@@ -69,7 +69,7 @@ public class EndosomeRecycleStepTests {
 					+this.endosome.membraneContent+this.endosome.solubleContent);
 			EndosomeRecycleStep.recycle(this.endosome);
 			System.out.println("TEST   despues "+this.endosome.rabContent
-					+this.endosome.membraneContent+this.endosome.solubleContent+" "+initial);
+					+this.endosome.membraneContent+this.endosome.solubleContent);
 			assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
 	//		assertNotSame(initial, this.endosome.solubleContent);
 	}

@@ -21,8 +21,14 @@ import repast.simphony.space.grid.Grid;
 public class UpdateParameters {
 
 	private static UpdateParameters instance;
-	private ContinuousSpace<Object> space;
-	private Grid<Object> grid;
+	
+	public static UpdateParameters getInstance() {
+		if( instance == null ) {
+			instance = new  UpdateParameters();
+		}
+		return instance;
+	}
+
 	private String oldFile = "";
 
 	
@@ -33,16 +39,11 @@ public class UpdateParameters {
 		this.oldFile = oldFile;
 	}
 
-	public static UpdateParameters getInstance() {
-		return instance;
-	}
 
-//	{
-//		UpdateParameters instance = new UpdateParameters(grid, space);
-//	}
-	public UpdateParameters(Grid<Object> gr, ContinuousSpace<Object> sp) {
-		this.space = sp;
-		this.grid = gr;				
+
+	public UpdateParameters() {
+//		this.space = sp;
+//		this.grid = gr;				
 	}
 
 

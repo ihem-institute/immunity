@@ -114,7 +114,7 @@ public class Endosome {
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
 		endosomeShape(this);
-		recycle();
+		EndosomeRecycleStep.recycle(this);
 		uptake();
 		newFromEr();
 		changeDirection();
@@ -1119,63 +1119,63 @@ public class Endosome {
 		Cell.getInstance().settMembrane(cellMembrane);
 	}
 
-	public void recycle() {
-		NdPoint myPoint = space.getLocation(this);
-		// double x = myPoint.getX();
-		double y = myPoint.getY();
-		if (y < 50-cellLimit)
-			return;
-		double recyRabA = 0.0;
-		double recyRabC = 0.0;
-		if (rabContent.containsKey("RabA")) {
-			recyRabA = rabContent.get("RabA") / area;
-		}
-		if (rabContent.containsKey("RabC")) {
-			recyRabC = rabContent.get("RabC") / area;
-		}
-		double recyProb = 0.1 * recyRabA + recyRabC;
-		if (Math.random() >= recyProb)
-			return; // if not near the PM
-					// or without a recycling Rab return
-					// recycling Rabs are RabA (Rab5) and RabC (Rab11)
-		else {
-			// RECYCLE
-			// Recycle membrane content
-			HashMap<String, Double> membraneRecycle = Cell.getInstance()
-					.getMembraneRecycle();
-			for (String key1 : this.membraneContent.keySet()) {
-				if (membraneRecycle.containsKey(key1)) {
-					double sum = membraneRecycle.get(key1)
-							+ membraneContent.get(key1);
-					membraneRecycle.put(key1, sum);
-				} else {
-					membraneRecycle.put(key1, membraneContent.get(key1));
-				}
-			}
-
-			// Cell.getInstance().setMembraneRecycle(membraneRecycle);
-			this.membraneContent.clear();
-			System.out.println("membrane Recycled"
-					+ Cell.getInstance().getMembraneRecycle());
-
-			// Recycle soluble content
-			HashMap<String, Double> solubleRecycle = Cell.getInstance()
-					.getSolubleRecycle();
-			for (String key1 : this.solubleContent.keySet()) {
-				if (solubleRecycle.containsKey(key1)) {
-					double sum = solubleRecycle.get(key1)
-							+ solubleContent.get(key1);
-					solubleRecycle.put(key1, sum);
-				} else {
-					solubleRecycle.put(key1, solubleContent.get(key1));
-				}
-			}
-			// Cell.getInstance().setSolubleRecycle(solubleRecycle);
-			this.solubleContent.clear();
-			System.out.println("soluble Recycled"
-					+ Cell.getInstance().getSolubleRecycle());
-		}
-	}
+//	public void recycle() {
+//		NdPoint myPoint = space.getLocation(this);
+//		// double x = myPoint.getX();
+//		double y = myPoint.getY();
+//		if (y < 50-cellLimit)
+//			return;
+//		double recyRabA = 0.0;
+//		double recyRabC = 0.0;
+//		if (rabContent.containsKey("RabA")) {
+//			recyRabA = rabContent.get("RabA") / area;
+//		}
+//		if (rabContent.containsKey("RabC")) {
+//			recyRabC = rabContent.get("RabC") / area;
+//		}
+//		double recyProb = 0.1 * recyRabA + recyRabC;
+//		if (Math.random() >= recyProb)
+//			return; // if not near the PM
+//					// or without a recycling Rab return
+//					// recycling Rabs are RabA (Rab5) and RabC (Rab11)
+//		else {
+//			// RECYCLE
+//			// Recycle membrane content
+//			HashMap<String, Double> membraneRecycle = Cell.getInstance()
+//					.getMembraneRecycle();
+//			for (String key1 : this.membraneContent.keySet()) {
+//				if (membraneRecycle.containsKey(key1)) {
+//					double sum = membraneRecycle.get(key1)
+//							+ membraneContent.get(key1);
+//					membraneRecycle.put(key1, sum);
+//				} else {
+//					membraneRecycle.put(key1, membraneContent.get(key1));
+//				}
+//			}
+//
+//			// Cell.getInstance().setMembraneRecycle(membraneRecycle);
+//			this.membraneContent.clear();
+//			System.out.println("membrane Recycled"
+//					+ Cell.getInstance().getMembraneRecycle());
+//
+//			// Recycle soluble content
+//			HashMap<String, Double> solubleRecycle = Cell.getInstance()
+//					.getSolubleRecycle();
+//			for (String key1 : this.solubleContent.keySet()) {
+//				if (solubleRecycle.containsKey(key1)) {
+//					double sum = solubleRecycle.get(key1)
+//							+ solubleContent.get(key1);
+//					solubleRecycle.put(key1, sum);
+//				} else {
+//					solubleRecycle.put(key1, solubleContent.get(key1));
+//				}
+//			}
+//			// Cell.getInstance().setSolubleRecycle(solubleRecycle);
+//			this.solubleContent.clear();
+//			System.out.println("soluble Recycled"
+//					+ Cell.getInstance().getSolubleRecycle());
+//		}
+//	}
 
 	public void uptake() {
 		Cell cell = Cell.getInstance();

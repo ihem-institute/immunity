@@ -12,8 +12,13 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.util.ContextUtils;
 
 public class Cell {
-	private ContinuousSpace<Object> space;
-	private Grid<Object> grid;
+	// a single Cell is created
+	private static Cell instance;
+	static {
+		instance = new Cell();
+	}
+	
+//	Cell characteristics
 	public static double rcyl = CellProperties.getInstance().getCellK().get("rcyl");//10.0; // radius tubule
 	public static double rEndo = CellProperties.getInstance().getCellK().get("rEndo");//20.0; // radius new endosome formed by uptake
 	public static double mincyl = 6 * Math.PI * rcyl * rcyl; // surface minimum cylinder
@@ -22,17 +27,16 @@ public class Cell {
 	public static double vEndo = 4d / 3d * Math.PI * Math.pow(rEndo, 3); //volume new endosome
 	public static double sEndo = 4d * Math.PI * Math.pow(rEndo, 2); // surface new endosome
 	// mincyl surface = 1884.95 volume = 6283.18
-	private static Cell instance;
 	public static double orgScale = CellProperties.getInstance().getCellK().get("orgScale");
 //  When orgScale=1 zoom =0, when > 1 zoom in , when <1 zoom out
+	
+//	global cell and non-cell quantities
 	public double tMembrane;// membrane that is not used in endosomes
 	public HashMap<String, Double> rabCell = new HashMap<String, Double>();// contains rabs free in cytosol
 	public HashMap<String, Double> membraneRecycle = new HashMap<String, Double>(); // contains membrane recycled 
 	public HashMap<String, Double> solubleRecycle = new HashMap<String, Double>();// contains soluble recycled
-	// a single Cell is created
-	static {
-		instance = new Cell();
-	}
+
+
 
 	// Constructor
 	public Cell() {
@@ -54,10 +58,6 @@ public class Cell {
 		return instance;
 	}
 
-	public HashMap<String, Double> getRabCell() {
-		return rabCell;
-	}
-
 	public double gettMembrane() {
 		return tMembrane;
 	}
@@ -65,26 +65,30 @@ public class Cell {
 	public void settMembrane(double tMembrane) {
 		this.tMembrane = tMembrane;
 	}
-
-	public void setRabCell(HashMap<String, Double> rabCell) {
-		this.rabCell = rabCell;
+	
+	public HashMap<String, Double> getRabCell() {
+		return rabCell;
 	}
+	
+//	public void setRabCell(HashMap<String, Double> rabCell) {
+//	this.rabCell = rabCell;
+//}
 
 	public HashMap<String, Double> getMembraneRecycle() {
 		return membraneRecycle;
 	}
 
-	public void setMembraneRecycle(HashMap<String, Double> membraneRecycle) {
-		this.membraneRecycle = membraneRecycle;
-	}
+//	public void setMembraneRecycle(HashMap<String, Double> membraneRecycle) {
+//		this.membraneRecycle = membraneRecycle;
+//	}
 
 	public HashMap<String, Double> getSolubleRecycle() {
 		return solubleRecycle;
 	}
 
-	public void setSolubleRecycle(HashMap<String, Double> solubleRecycle) {
-		this.solubleRecycle = solubleRecycle;
-	}
+//	public void setSolubleRecycle(HashMap<String, Double> solubleRecycle) {
+//		this.solubleRecycle = solubleRecycle;
+//	}
 
 
 }

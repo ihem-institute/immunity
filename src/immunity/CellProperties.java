@@ -17,6 +17,7 @@ public class CellProperties {
 		}
 		return instance;
 	}
+//	Cell proterties that are loaded from a csv file by the CellBuilder class
 	public HashMap<String, Double> cellK = new HashMap<String, Double>();
 	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
 	public HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
@@ -29,9 +30,8 @@ public class CellProperties {
 	Set<String> solubleMet = new HashSet<String>();
 	Set<String> rabSet = new HashSet<String>();
 	
-	//HashMap<String, Double> cellRab = new HashMap<String, Double>();
-	
 
+//	GETTERS
 	
 	public HashMap<String, Double> getCellK() {
 		return cellK;

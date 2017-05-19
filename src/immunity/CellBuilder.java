@@ -152,7 +152,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 		context.add(Cell.getInstance());
 		context.add(CellProperties.getInstance());
 		context.add(new Results(space, grid));
-		context.add(new UpdateParameters(grid, space));
+		context.add(new UpdateParameters());
 
 		// Locate the object in the space and grid
 		for (Object obj : context) {

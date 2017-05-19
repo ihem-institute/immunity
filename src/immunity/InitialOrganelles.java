@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-//	This class contains the properties of the initial properties of the organelles.  It is modified
+//	This class contains the properties of the initial organelles.  It is modified
 // by the Cell Builder that gets the values from a CSV file 
 
 public class InitialOrganelles {
@@ -15,7 +15,6 @@ public class InitialOrganelles {
 	public static InitialOrganelles getInstance() {
 		if (instance == null) {
 			instance = new InitialOrganelles();
-
 		}
 		return instance;
 	}
@@ -26,15 +25,6 @@ public class InitialOrganelles {
 	public HashMap<String, HashMap<String, Double>> initSolubleContent = new HashMap<String, HashMap<String, Double>>();
 	public HashMap<String, HashMap<String, Double>> initMembraneContent = new HashMap<String, HashMap<String, Double>>();
 	
-//	public void loadMaps() {
-//		for (int i = 1; i < 7; i++) {
-//			initOrgProp.put("kind" + i, null);
-//			initRabContent.put("kind" + i, null);
-//			initSolubleContent.put("kind" + i, null);
-//			initMembraneContent.put("kind" + i, null);
-//		}
-//
-//	}
 
 	public HashSet<String> getDiffOrganelles() {
 		return diffOrganelles;

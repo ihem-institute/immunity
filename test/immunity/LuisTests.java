@@ -29,7 +29,7 @@ public class LuisTests {
 	@Test
 	public void test() {
 //		Endosome endosome = new Endosome();
-		fail("Not yet implemented");
+
 	}
 
 }
