@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.HashMap;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,6 +20,7 @@ import repast.simphony.engine.environment.RunState;
 import repast.simphony.engine.schedule.ISchedule;
 import repast.simphony.engine.schedule.Schedule;
 import repast.simphony.space.continuous.ContinuousSpace;
+import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.continuous.RandomCartesianAdder;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridBuilderParameters;
@@ -40,8 +42,9 @@ public class EndosomeRecycleStepTests {
 		context = cellBuilder.build(context);
 		RunState.init().setMasterContext(context);
 		IndexedIterable objects = context.getObjects(Endosome.class);
+
 		this.endosome = (Endosome) objects.get(0);
-		System.out.println("TEST   TEST  "+endosome.area);
+
 	}
 
 	@After
@@ -53,18 +56,42 @@ public class EndosomeRecycleStepTests {
 //		ISchedule schedule = RunEnvironment.getInstance().getCurrentSchedule ();
 //		System.out.println("TEST  ADENTRO test 1 TEST  "+endosome.area);
 		// this.endosome....
-		this.endosome.rabContent.clear();
-		this.endosome.rabContent.put("RabA", 5026.548);
-		this.endosome.solubleContent.put("ova", 1000d);
-		System.out.println("TEST   antes TEST  "+this.endosome.rabContent
-				+this.endosome.membraneContent+this.endosome.solubleContent);
-		EndosomeRecycleStep.recycle(this.endosome);
-		System.out.println("TEST   despues TEST  "+this.endosome.rabContent
-				+this.endosome.membraneContent+this.endosome.solubleContent);
-		
+
+		for (int i = 0; i<5; i++){
+			this.endosome.rabContent.clear();
+			this.endosome.rabContent.put("RabA", 5026.548);
+			this.endosome.solubleContent.put("ova", 1000d);
+			HashMap<String,Double> initial = new HashMap<String,Double>(this.endosome.solubleContent);
+			double yPosition = 49.999-i;
+			this.endosome.getSpace().moveTo(this.endosome, 25, yPosition);
+			NdPoint myPoint = this.endosome.getSpace().getLocation(this.endosome);
+			System.out.println("\nTEST   antes  "+this.endosome.rabContent
+					+this.endosome.membraneContent+this.endosome.solubleContent);
+			EndosomeRecycleStep.recycle(this.endosome);
+			System.out.println("TEST   despues "+this.endosome.rabContent
+					+this.endosome.membraneContent+this.endosome.solubleContent+" "+initial);
+			assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
+	//		assertNotSame(initial, this.endosome.solubleContent);
+	}
+	}
+}
+//	@Test
+//	public void testRecyclerFueraSuperficie() {		
+//		for (int i = 0; i<3; i++){
+//			double yPosition = 49.999-i;
+//			this.endosome.getSpace().moveTo(this.endosome, 25, yPosition);
+//			NdPoint myPoint = this.endosome.getSpace().getLocation(this.endosome);
+//			System.out.println("\nTEST   antes  "+this.endosome.rabContent
+//					+this.endosome.membraneContent+this.endosome.solubleContent);
+//			EndosomeRecycleStep.recycle(this.endosome);
+//			System.out.println("TEST   despues "+this.endosome.rabContent
+//					+this.endosome.membraneContent+this.endosome.solubleContent);
+//			 assertNull("el soluble deberia cambiar", this.endosome.solubleContent.get("ova"));
+//		}
+//		
 //		assertEquals("uno deberia ser 1", this.endosome.area, this.endosome.size);
 		
-	}
+	
 //	@Test
 //	public void testRecyclerEnNoSuperficie() {
 //		// this.endosome....
@@ -73,4 +100,4 @@ public class EndosomeRecycleStepTests {
 //		
 //	}
 
-}
+

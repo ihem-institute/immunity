@@ -10,17 +10,17 @@ public class EndosomeRecycleStep {
 	private static ContinuousSpace<Object> space;
 	
 	public static void recycle(Endosome endosome) {
-
 		HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>(endosome.getSolubleContent());
 		double cellLimit = 3 * Cell.orgScale;
-		System.out.println("TEST  ADENTRO RECYCLE TEST  "+endosome.area +rabContent );
-//		NdPoint myPoint = space.getLocation(endosome);
 //		System.out.println("TEST  ADENTRO RECYCLE TEST  "+endosome.area +rabContent );
-//			double y = myPoint.getY();
-//			if (y < 50-cellLimit)
-//				return;
+		NdPoint myPoint = endosome.getSpace().getLocation(endosome);
+//		NdPoint myPoint = space.getLocation(endosome);
+		System.out.println("TEST  ADENTRO coor  "+myPoint.toString()+ (50 -cellLimit));
+			double y = myPoint.getY();
+			if (y < 50-cellLimit)
+				return;
 			double recyRabA = 0.0;
 			double recyRabC = 0.0;
 			if (endosome.rabContent.containsKey("RabA")) {

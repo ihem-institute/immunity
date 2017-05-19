@@ -107,6 +107,10 @@ public class Endosome {
 		double mvb = 0; // number of internal vesicles
 	}
 
+	public ContinuousSpace<Object> getSpace() {
+		return space;
+	}
+
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
 		endosomeShape(this);
