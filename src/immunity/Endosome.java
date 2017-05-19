@@ -1235,8 +1235,8 @@ public class Endosome {
 		bud.heading = -90;// heading down
 		// NdPoint myPoint = space.getLocation(bud);
 		double rnd = Math.random();
-		space.moveTo(bud, rnd * 50, 50-cellLimit);
-		grid.moveTo(bud, (int) rnd * 50, (int) (50-cellLimit));
+		space.moveTo(bud, rnd * 50, 50 - 2 * cellLimit);
+		grid.moveTo(bud, (int) rnd * 50, (int) (50 - 2 * cellLimit));
 
 		// moveTowards();
 		// moveTowards();

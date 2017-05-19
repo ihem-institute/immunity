@@ -21,15 +21,11 @@ public class EndosomeRecycleStep {
 			double y = myPoint.getY();
 			if (y < 50-cellLimit)
 				return;
-			double recyRabA = 0.0;
-			double recyRabC = 0.0;
-			if (endosome.rabContent.containsKey("RabA")) {
-				recyRabA = endosome.rabContent.get("RabA") / endosome.area;
+			double recyProb = 0.0;
+			for (String rab: endosome.rabContent.keySet()){
+				recyProb = recyProb + endosome.rabContent.get(rab) / endosome.area 
+				* CellProperties.getInstance().rabRecyProb.get(rab);
 			}
-			if (endosome.rabContent.containsKey("RabC")) {
-				recyRabC = rabContent.get("RabC") / endosome.area;
-			}
-			double recyProb =0.1 * recyRabA + recyRabC;
 			if (Math.random() >= recyProb)
 				return; // if not near the PM
 						// or without a recycling Rab return

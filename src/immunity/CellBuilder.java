@@ -236,6 +236,13 @@ public class CellBuilder implements ContextBuilder<Object> {
 					}
 				break;
 			}
+			
+			case "rabRecyProb": {
+				for (int i = 1; i < b.length; i = i + 2) {
+					cellProperties.getRabRecyProb().put(b[i], Double.parseDouble(b[i+1]));
+					}
+				break;
+			}
 			case "membraneMet": {
 				for (int i = 1; i < b.length; i++) {
 					cellProperties.getMembraneMet().add(b[i]);

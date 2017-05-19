@@ -24,6 +24,7 @@ public class CellProperties {
 	public HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
 	public HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>();
 	public HashMap<String, Double> mtTropism = new HashMap<String, Double>();
+	public HashMap<String, Double> rabRecyProb = new HashMap<String, Double>();
 	public HashMap<String, String> colorRab = new HashMap<String, String>();
 	public HashMap<String, String> colorContent = new HashMap<String, String>();
 	Set<String> membraneMet = new HashSet<String>();
@@ -50,6 +51,9 @@ public class CellProperties {
 	}
 	public HashMap<String, Double> getMtTropism() {
 		return mtTropism;
+	}
+	public HashMap<String, Double> getRabRecyProb() {
+		return rabRecyProb;
 	}
 	public HashMap<String, String> getColorRab() {
 		return colorRab;
