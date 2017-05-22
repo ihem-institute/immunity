@@ -1554,4 +1554,8 @@ public class Endosome {
 		return c;
 	}
 
+	public Grid<Object> getGrid() {
+		return grid;
+	}
+
 }
