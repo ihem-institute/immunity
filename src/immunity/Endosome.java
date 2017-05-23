@@ -116,14 +116,15 @@ public class Endosome {
 		endosomeShape(this);
 
 //		uptake();
-		EndosomeUptaleStep.uptake(this);
-		newFromEr();
+		EndosomeRecycleStep.recycle(this);
+		EndosomeUptakeStep.uptake(this);
+		EndosomeNewFromERStep.newFromEr(this);
 		changeDirection();
 		moveTowards();
 		tether();
 		fusion();
 		split();
-		EndosomeRecycleStep.recycle(this);
+
 		if (Math.random() < 1)
 			lysosomalDigestion();
 		internalVesicle();

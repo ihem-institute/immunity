@@ -404,3 +404,86 @@ Caused by: java.lang.NullPointerException
 	at immunity.Endosome.changeDirection(Endosome.java:465)
 	at immunity.Endosome.step(Endosome.java:121)
 	... 10 more
+FATAL [Thread-7] 2017-05-23 15:11:38,367 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.Results.contentDistribution(Results.java:190)
+	at immunity.Results.step(Results.java:86)
+	... 10 more
+FATAL [Thread-7] 2017-05-23 15:15:23,760 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.Results.contentDistribution(Results.java:190)
+	at immunity.Results.step(Results.java:86)
+	... 10 more
+FATAL [Thread-7] 2017-05-23 15:17:32,590 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.Results.contentDistribution(Results.java:190)
+	at immunity.Results.step(Results.java:86)
+	... 10 more
+FATAL [Thread-9] 2017-05-23 15:28:32,843 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (2443.0)
+java.lang.ArrayIndexOutOfBoundsException: 752
+	at saf.v3d.util.GLUErrors.getTessErrorString(GLUErrors.java:53)
+	at saf.v3d.util.Tessellator$Callback.getError(Tessellator.java:85)
+	at saf.v3d.util.Tessellator.createRenderer(Tessellator.java:183)
+	at saf.v3d.ShapeFactory2D.createRenderer(ShapeFactory2D.java:383)
+	at saf.v3d.ShapeFactory2D.createShape(ShapeFactory2D.java:371)
+	at saf.v3d.ShapeFactory2D.createShape(ShapeFactory2D.java:356)
+	at immunity.EndosomeStyle.getVSpatial(EndosomeStyle.java:71)
+	at immunity.EndosomeStyle.getVSpatial(EndosomeStyle.java:1)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.updateSpatial(StyledDisplayLayerOGL2D.java:119)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.updateSpatial(StyledDisplayLayerOGL2D.java:212)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.updateExistingSpatials(StyledDisplayLayerOGL2D.java:176)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.update(StyledDisplayLayerOGL2D.java:249)
+	at repast.simphony.visualizationOGL2D.DisplayOGL2D.update(DisplayOGL2D.java:404)
+	at repast.simphony.visualization.engine.DisplayComponentControllerAction$DisplayUpdater.execute(DisplayComponentControllerAction.java:44)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:238)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Thread.java:745)

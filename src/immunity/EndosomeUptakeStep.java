@@ -8,7 +8,7 @@ import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.util.ContextUtils;
 
-public class EndosomeUptaleStep {
+public class EndosomeUptakeStep {
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 	

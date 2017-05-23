@@ -39,13 +39,10 @@ public class UpdateParameters {
 		this.oldFile = oldFile;
 	}
 
-
-
 	public UpdateParameters() {
 //		this.space = sp;
 //		this.grid = gr;				
 	}
-
 
 	@ScheduledMethod(start = 1, interval = 100)
 	public void step(){
@@ -161,6 +158,13 @@ public class UpdateParameters {
 					}
 				break;
 			}
+			
+			case "rabRecyProb": {
+				for (int i = 1; i < b.length; i = i + 2) {
+					cellProperties.getRabRecyProb().put(b[i], Double.parseDouble(b[i+1]));
+					}
+				break;
+			}
 			case "membraneMet": {
 				for (int i = 1; i < b.length; i++) {
 					cellProperties.getMembraneMet().add(b[i]);
@@ -192,8 +196,8 @@ public class UpdateParameters {
 				}
 				break;
 			}
-			//			
-//			// INITIAL ORGANELLES
+			
+			// INITIAL ORGANELLES
 			case "kind1": {
 				InitialOrganelles inOr = InitialOrganelles.getInstance();
 				inOr.getDiffOrganelles().add(b[0]);
@@ -236,6 +240,7 @@ public class UpdateParameters {
 				}
 				break;
 			}
+
 //
 //			case "kind2": {
 //				InitialOrganelles inOr = InitialOrganelles.getInstance();

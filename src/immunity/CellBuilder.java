@@ -149,9 +149,9 @@ public class CellBuilder implements ContextBuilder<Object> {
 			}
 		}
 		// Cell
-		context.add(Cell.getInstance());
-		context.add(CellProperties.getInstance());
-		context.add(new Results(space, grid));
+		//context.add(Cell.getInstance());
+		//context.add(CellProperties.getInstance());
+		context.add(new Results(space, grid));// 
 		context.add(new UpdateParameters());
 
 		// Locate the object in the space and grid
