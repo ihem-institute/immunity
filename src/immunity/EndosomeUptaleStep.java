@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import repast.simphony.context.Context;
 import repast.simphony.space.continuous.ContinuousSpace;
+import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.util.ContextUtils;
 
@@ -12,6 +13,8 @@ public class EndosomeUptaleStep {
 	private static Grid<Object> grid;
 	
 	public static void uptake(Endosome endosome) {
+		space = endosome.getSpace();
+		grid = endosome.getGrid();
 		double cellLimit = 3 * Cell.orgScale;
 		Cell cell = Cell.getInstance();
 		double tMembrane = cell.gettMembrane();
@@ -23,11 +26,7 @@ public class EndosomeUptaleStep {
 		if (tMembrane < Cell.sEndo || rabCellA < Cell.sEndo) {
 			return;
 		}
-		/*
-		 * Endosome budEnd = new Endosome(this.space, this.grid, null, null,
-		 * null); Context<Object> context = ContextUtils.getContext(this);
-		 * context.add(budEnd);
-		 */
+
 		HashMap<String, Double> rabContent = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitRabContent()
 						.get("kind1"));
@@ -45,7 +44,6 @@ public class EndosomeUptaleStep {
 						.get("kind1"));
 		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
-
 		Context<Object> context = ContextUtils.getContext(endosome);
 
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
@@ -73,10 +71,6 @@ public class EndosomeUptaleStep {
 		double rnd = Math.random();
 		endosome.getSpace().moveTo(bud, rnd * 50, 50 - 2 * cellLimit);
 		endosome.getGrid().moveTo(bud, (int) rnd * 50, (int) (50 - 2 * cellLimit));
-
-		// moveTowards();
-		// moveTowards();
-
 	}
 
 

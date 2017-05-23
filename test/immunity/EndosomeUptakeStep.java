@@ -50,7 +50,8 @@ public class EndosomeUptakeStep {
 			System.out.println("\nTEST   antes t "+ Cell.getInstance().tMembrane + " cellrabs "+Cell.getInstance().rabCell);
 			EndosomeUptaleStep.uptake(this.endosome);
 			System.out.println("TEST   despues "+ Cell.getInstance().tMembrane + " cellrabs "+Cell.getInstance().rabCell);
-	//		assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
+			
+			//		assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
 	//		assertNotSame(initial, this.endosome.solubleContent);
 	}
 	}
