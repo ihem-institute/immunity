@@ -119,9 +119,9 @@ public class Endosome {
 		EndosomeRecycleStep.recycle(this);
 		EndosomeUptakeStep.uptake(this);
 		EndosomeNewFromERStep.newFromEr(this);
-		changeDirection();
-		moveTowards();
-		tether();
+		EndosomeMove.changeDirection(this);
+		EndosomeMove.moveTowards(this);//moveTowards(); // leave it in this class?
+		EndosomeTetherStep.tether(this);
 		fusion();
 		split();
 
@@ -461,7 +461,7 @@ public class Endosome {
 
 	public double changeDirection() {
 		double initial = heading;
-		// When near the bottom, the movement is random and depends on the
+		// When near the bottom or the top, the movement is random and depends on the
 		// momentum
 		NdPoint myPoint = space.getLocation(this);
 		if (myPoint.getY() < 5*Cell.orgScale || 
@@ -546,7 +546,7 @@ public class Endosome {
 		}
 	}
 
-	private boolean compatibles(Endosome endosome1, Endosome endosome2) {
+	public boolean compatibles(Endosome endosome1, Endosome endosome2) {
 		double sum = 0;
 		for (String key1 : endosome1.rabContent.keySet()) {
 			for (String key2 : endosome2.rabContent.keySet()) {
