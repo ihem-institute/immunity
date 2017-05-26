@@ -34,6 +34,7 @@ public class EndosomeTetherStep {
 		// System.out.println("SIZE           "+gridSize);
 
 		List<GridCell<Endosome>> cellList = nghCreator.getNeighborhood(true);
+		if (cellList.size()<2)return;//if only one return
 		List<Endosome> endosomesToTether = new ArrayList<Endosome>();
 		for (GridCell<Endosome> gr : cellList) {
 			// include all endosomes
@@ -43,16 +44,20 @@ public class EndosomeTetherStep {
 				}
 			}
 		}
+		
 		// new list with just the compatible endosomes (same or compatible rabs)
-
+		if (endosomesToTether.size()<2)return; //if only one, return
 		// select the largest endosome
 		Endosome largest = endosome;
 		for (Endosome end : endosomesToTether) {
+//			System.out.println(endosome.size+" "+end.size);
 			if (end.size > largest.size) {
 				largest = end;
 			}
 		}
 		// assign the speed and heading of the largest endosome to the gropu
+		System.out.println(endosomesToTether);
+		System.out.println(largest.heading);
 		for (Endosome end : endosomesToTether) {
 			// end.heading = (end.heading * end.size + largest.heading *
 			// largest.size)/
@@ -63,7 +68,7 @@ public class EndosomeTetherStep {
 			Random r = new Random();
 			double rr = r.nextGaussian();
 			end.heading = rr * 5d + largest.heading;
-			EndosomeMove.moveTowards(end);
+	//		EndosomeMove.moveTowards(end);
 		}
 	}
 	
