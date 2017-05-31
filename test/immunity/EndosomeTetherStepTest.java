@@ -45,9 +45,6 @@ public class EndosomeTetherStepTest {
 		// this.endosome....
 
 		for (int i = 0; i<10; i++){
-			this.endosome.rabContent.clear();
-			this.endosome.rabContent.put("RabA", 5026.548);
-//			this.endosome2.rabContent.put("RabA", 2*5026.548);
 			this.endosome.size = 5*(i+1);
 //			this.endosome2.size = 110;
 			this.endosome.heading = -90+5*i;
@@ -57,14 +54,13 @@ public class EndosomeTetherStepTest {
 //			this.endosome.getSpace().moveTo(this.endosome, 25, 25);
 			this.endosome.getSpace().moveTo(this.endosome, (int)Math.random()*50, (int)Math.random()*50);
 
-			System.out.println("\nTEST   antes  "+this.endosome.heading+"  "
-					+this.endosome.area);
+			System.out.println("\nTEST   antes  "+this.endosome.heading+"  ");
 			EndosomeTetherStep.tether(endosome);
 //			EndosomeTetherStep.tether(endosome2);
-			System.out.println("TEST   despues "+this.endosome.heading+"  "
-					+this.endosome.area);
+			System.out.println("TEST   despues "+this.endosome.heading+"  ");
 //			assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
 	//		assertNotSame(initial, this.endosome.solubleContent);
+
 	}
 	}
 

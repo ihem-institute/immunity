@@ -56,8 +56,7 @@ public class EndosomeTetherStep {
 			}
 		}
 		// assign the speed and heading of the largest endosome to the gropu
-		System.out.println(endosomesToTether);
-		System.out.println(largest.heading);
+
 		for (Endosome end : endosomesToTether) {
 			// end.heading = (end.heading * end.size + largest.heading *
 			// largest.size)/

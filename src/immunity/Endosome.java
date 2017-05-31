@@ -114,8 +114,6 @@ public class Endosome {
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
 		endosomeShape(this);
-
-//		uptake();
 		EndosomeRecycleStep.recycle(this);
 		EndosomeUptakeStep.uptake(this);
 		EndosomeNewFromERStep.newFromEr(this);
@@ -124,10 +122,10 @@ public class Endosome {
 		EndosomeTetherStep.tether(this);
 		fusion();
 		split();
-
+		internalVesicle();
 		if (Math.random() < 1)
 			lysosomalDigestion();
-		internalVesicle();
+
 		if (Math.random() < 0.001)
 			rabConversion();
 		// rabConversionN();
