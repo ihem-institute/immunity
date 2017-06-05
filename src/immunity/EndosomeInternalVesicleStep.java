@@ -18,9 +18,10 @@ public class EndosomeInternalVesicleStep {
 	double vo = endosome.volume;
 	double so = endosome.area;
 	// if it a sphere, cannot form an internal vesicle
+	//System.out.println("ESFERA" + so * so * so / (vo * vo));
 	if (so * so * so / (vo * vo) <= 36.001 * Math.PI)
 		return;
-	// System.out.println("ESFERA" + so * so * so / (vo * vo));
+	//System.out.println("s/v ratio total" + so * so * so / (vo * vo));
 	// if s^3 / v^2 is equal to 36*PI then it is an sphere and cannot form a
 	// tubule
 
@@ -34,9 +35,11 @@ public class EndosomeInternalVesicleStep {
 		return;
 	double vp = vo + vIV;
 	double sp = so - sIV;
-	if (sp * sp * sp / (vp * vp) <= 36 * Math.PI)
+	if (sp * sp * sp / (vp * vp) <= 36 * Math.PI){ 
+	//	System.out.println("s/v ratio available " + sp * sp * sp / (vp * vp));
 		return;// if the resulting surface cannot embrance the resulting
 				// volume
+	}
 	double rsphere = Math.pow((0.75 * vp / Math.PI), (1 / 3));
 	double ssphere = 4 * Math.PI * Math.pow(rsphere, 2);
 	if (ssphere >= sp)
