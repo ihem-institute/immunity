@@ -121,7 +121,7 @@ public class Endosome {
 		EndosomeMove.moveTowards(this);//moveTowards(); // leave it in this class?
 		EndosomeTetherStep.tether(this);
 		EndosomeInternalVesicleStep.internalVesicle(this);
-		fusion();
+		EndosomeFusionStep.fusion(this);
 		split();
 
 		if (Math.random() < 1)

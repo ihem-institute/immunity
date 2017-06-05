@@ -56,7 +56,7 @@ public class EndosomeFusionStep {
 			endosome.membraneContent = sumMembraneContent(endosome, endosome2);
 			endosome.solubleContent = sumSolubleContent(endosome, endosome2);
 			Context<Object> context = ContextUtils.getContext(endosome);
-			context.remove(endosome);
+			context.remove(endosome2);
 		}
 		double rsphere = Math.pow(endosome.volume * 3d / 4d / Math.PI, (1d / 3d));
 		double size = rsphere;
