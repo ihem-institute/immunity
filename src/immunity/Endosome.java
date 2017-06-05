@@ -120,9 +120,10 @@ public class Endosome {
 		EndosomeMove.changeDirection(this);
 		EndosomeMove.moveTowards(this);//moveTowards(); // leave it in this class?
 		EndosomeTetherStep.tether(this);
+		EndosomeInternalVesicleStep.internalVesicle(this);
 		fusion();
 		split();
-		internalVesicle();
+
 		if (Math.random() < 1)
 			lysosomalDigestion();
 
