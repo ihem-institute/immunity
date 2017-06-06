@@ -122,10 +122,8 @@ public class Endosome {
 		EndosomeTetherStep.tether(this);
 		EndosomeInternalVesicleStep.internalVesicle(this);
 		EndosomeFusionStep.fusion(this);
-		split();
-
-		if (Math.random() < 1)
-			lysosomalDigestion();
+		EndosomeSplitStep.split(this);
+		lysosomalDigestion();
 
 		if (Math.random() < 0.001)
 			rabConversion();
@@ -438,7 +436,7 @@ public class Endosome {
 
 	}
 
-	public void endosomeShape(Endosome end) {
+	public static void endosomeShape(Endosome end) {
 		double s = end.area;
 		double v = end.volume;
 		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
