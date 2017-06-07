@@ -45,11 +45,11 @@ public class EndosomeLysosomalDigestionStepTest {
 			
 			for (int i = 0; i<5; i++){
 				this.endosome.rabContent.put("RabD", 3000d*i);
-				this.endosome.solubleContent.put("mvb", (double) i);
+				this.endosome.solubleContent.put("mvb", (double)1000* i);
 				System.out.println("\nTEST   antes    \n "+ this.endosome.volume + this.endosome.getSolubleContent()
 						+ " membrane content "+this.endosome.getMembraneContent());
 				EndosomeLysosomalDigestionStep.lysosomalDigestion(this.endosome);
-				System.out.println("\nTEST   antes    \n " + this.endosome.volume + this.endosome.getSolubleContent()
+				System.out.println("\nTEST   DESPUES    \n " + this.endosome.volume + this.endosome.getSolubleContent()
 						+ " membrane content "+this.endosome.getMembraneContent());	
 		//assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
 		//		assertNotSame(initial, this.endosome.solubleContent);
