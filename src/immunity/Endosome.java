@@ -123,7 +123,7 @@ public class Endosome {
 		EndosomeInternalVesicleStep.internalVesicle(this);
 		EndosomeFusionStep.fusion(this);
 		EndosomeSplitStep.split(this);
-		lysosomalDigestion();
+		EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 
 		if (Math.random() < 0.001)
 			rabConversion();

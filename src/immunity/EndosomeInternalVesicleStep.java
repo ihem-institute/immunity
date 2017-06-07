@@ -6,14 +6,11 @@ import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.grid.Grid;
 
 public class EndosomeInternalVesicleStep {
-	
-	private static ContinuousSpace<Object> space;
-	private static Grid<Object> grid;
+
 	
 
 	public static void internalVesicle(Endosome endosome) {	
-		space = endosome.getSpace();
-		grid = endosome.getGrid();
+
 	
 	double vo = endosome.volume;
 	double so = endosome.area;

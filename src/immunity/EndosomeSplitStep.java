@@ -69,10 +69,11 @@ public class EndosomeSplitStep {
 				&& (scylinder < 0.5 * so) // the area of the cylinder must not
 											// be larger than 50% of the total
 											// area
-				&& ((vo - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))
-						/ ((so - scylinder - 4 * Math.PI
-								* Math.pow(Cell.rcyl, 2)) - 2 * Math.PI
-								* Cell.rcyl * Cell.rcyl) > Cell.rcyl / 2)) {
+				&& ((vo - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))>2 * Math.PI * Math.pow(Cell.rcyl, 3))
+				) {
+//			/ ((so - scylinder - 4 * Math.PI
+//					* Math.pow(Cell.rcyl, 2)) - 2 * Math.PI
+//					* Cell.rcyl * Cell.rcyl) > Cell.rcyl / 2
 			// volume left cannot be smaller than the volume
 			// of the mincyl
 			/*
@@ -98,6 +99,9 @@ public class EndosomeSplitStep {
 		 * tubules
 		 */
 		double vVesicle = vo - vcylinder;
+		if(vVesicle < 0 || vcylinder < 0){
+			System.out.println(vVesicle +"surface and volume"+ vcylinder);	
+		}
 		double sVesicle = so - scylinder;
 		/*
 		 * FORMATION 1ST ORGANELLE (referred as sphere) the rab-in-tubule of the

@@ -14,7 +14,7 @@ import repast.simphony.engine.schedule.Schedule;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.util.collections.IndexedIterable;
 
-public class EndosomeTetherStepTest {
+public class EndosomeSplitStepTest {
 
 	private Endosome endosome;
 	private Endosome endosome2;
@@ -39,29 +39,26 @@ public class EndosomeTetherStepTest {
 	}
 
 	@Test
-	public void testTether() {
-//		ISchedule schedule = RunEnvironment.getInstance().getCurrentSchedule ();
-//		System.out.println("TEST  ADENTRO test 1 TEST  "+endosome.area);
-		// this.endosome....
-
-		for (int i = 0; i<10; i++){
-			this.endosome.size = 5*(i+1);
-//			this.endosome2.size = 110;
-			this.endosome.heading = -90+5*i;
-//			this.endosome2.heading = -45;
+	public void testSplit() {
+		this.endosome.area = 20000;
+		this.endosome.volume = 80000;
+		this.endosome.rabContent.clear();
+		this.endosome.rabContent.put("RabA", 15000d);
+		this.endosome.rabContent.put("RabD", 5000d);
+		this.endosome.membraneContent.put("Tf", 10000d);
 			
-//			HashMap<String,Double> initial = new HashMap<String,Double>(this.endosome.solubleContent);
-//			this.endosome.getSpace().moveTo(this.endosome, 25, 25);
-			this.endosome.getSpace().moveTo(this.endosome, (int)Math.random()*50, (int)Math.random()*50);
-
-			System.out.println("\nTEST   antes  "+this.endosome.heading+"  ");
-			EndosomeTetherStep.tether(endosome);
-//			EndosomeTetherStep.tether(endosome2);
-			System.out.println("TEST   despues "+this.endosome.heading+"  ");
-//			assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
-	//		assertNotSame(initial, this.endosome.solubleContent);
-
+			for (int i = 0; i<10; i++){
+				System.out.println("\nTEST   antes   area "+ endosome.area+ "volume "+endosome.volume +
+				"\n "+this.endosome.getSolubleContent()+ " membrane content "+this.endosome.getMembraneContent()
+				+"\n "+this.endosome.getRabContent());
+				EndosomeSplitStep.split(endosome);
+				System.out.println("\nTEST   despues  area "+ endosome.area+ "volume "+endosome.volume +
+				"\n "+this.endosome.getSolubleContent()+ " membrane content "+this.endosome.getMembraneContent()
+				+"\n "+this.endosome.getRabContent());
+				//		assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
+		//		assertNotSame(initial, this.endosome.solubleContent);
+		}
+		}
 	}
-	}
 
-}
+

@@ -39,25 +39,30 @@ public class EndosomeFusionStepTest {
 	}
 
 	@Test
-	public void tether() {
+	public void testFusion() {
 //		ISchedule schedule = RunEnvironment.getInstance().getCurrentSchedule ();
 //		System.out.println("TEST  ADENTRO test 1 TEST  "+endosome.area);
 		// this.endosome....
-
-		for (int i = 0; i<10; i++){
+		this.endosome.rabContent.clear();
+		this.endosome.rabContent.put("RabA", 5026.548);
+		this.endosome.solubleContent.put("soluble", 1000d);
+		this.endosome.membraneContent.put("membrane", 5d);
+		this.endosome2.rabContent.clear();
+		this.endosome2.rabContent.put("RabA", 5026.548);
+		this.endosome2.solubleContent.put("soluble", 1000d);
+		this.endosome2.membraneContent.put("membrane", 5d);
+		this.endosome2.size = 30;
+		this.endosome2.getGrid().moveTo(this.endosome2, 25, 25);
+		for (int i = 0; i<20; i++){
 			this.endosome.size = 5*(i+1);
-//			this.endosome2.size = 110;
 			this.endosome.heading = -90+5*i;
-//			this.endosome2.heading = -45;
-			
-//			HashMap<String,Double> initial = new HashMap<String,Double>(this.endosome.solubleContent);
-//			this.endosome.getSpace().moveTo(this.endosome, 25, 25);
-			this.endosome.getSpace().moveTo(this.endosome, (int)Math.random()*50, (int)Math.random()*50);
-
-			System.out.println("\nTEST   antes  "+this.endosome.heading+"  ");
-			EndosomeTetherStep.tether(endosome);
-//			EndosomeTetherStep.tether(endosome2);
-			System.out.println("TEST   despues "+this.endosome.heading+"  ");
+			double yPosition = 49.999-i;
+			this.endosome.getGrid().moveTo(this.endosome, 25, (int)yPosition);
+			System.out.println("\nTEST   antes  "+this.endosome.solubleContent+"  "
+			+this.endosome.membraneContent+"  ");
+			EndosomeFusionStep.fusion(endosome);
+			System.out.println("TEST   despues "+this.endosome.solubleContent+"  "
+					+this.endosome.membraneContent+"  ");
 //			assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
 	//		assertNotSame(initial, this.endosome.solubleContent);
 
