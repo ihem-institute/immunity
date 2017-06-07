@@ -1,5 +1,8 @@
 package immunity;
 
+
+
+
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -12,6 +15,8 @@ import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.environment.RunState;
 import repast.simphony.engine.schedule.Schedule;
 import repast.simphony.util.collections.IndexedIterable;
+
+import org.COPASI.*;
 
 public class EndosomeRabConversionStepTest {
 	private Endosome endosome;
@@ -40,21 +45,21 @@ public class EndosomeRabConversionStepTest {
 		this.endosome.volume = 40000;
 		this.endosome.rabContent.clear();
 		this.endosome.rabContent.put("RabA", 5000d);
+		this.endosome.rabContent.put("RabB", 5000d);
+		Cell.getInstance().rabCell.put("RabD", 0d);
+		Cell.getInstance().rabCell.put("RabC", 10000d);
 
-		this.endosome.membraneContent.put("Tf", 10000d);
-			
-			for (int i = 0; i<5; i++){
-				this.endosome.rabContent.put("RabD", 3000d*i);
-				this.endosome.solubleContent.put("mvb", (double)1000* i);
-				System.out.println("\nTEST   antes    \n "+ this.endosome.volume + this.endosome.getSolubleContent()
-						+ " membrane content "+this.endosome.getMembraneContent());
-				EndosomeLysosomalDigestionStep.lysosomalDigestion(this.endosome);
-				System.out.println("\nTEST   DESPUES    \n " + this.endosome.volume + this.endosome.getSolubleContent()
-						+ " membrane content "+this.endosome.getMembraneContent());	
+		for (int i = 0; i<5; i++){
+			Cell.getInstance().rabCell.put("RabD", i*2000d);
+			System.out.println("\nTEST   antes    \n "+this.endosome.rabContent);
+			EndosomeLysosomalDigestionStep.lysosomalDigestion(this.endosome);
+			System.out.println("\nTEST   DESPUES    \n " + this.endosome.rabContent);
 		//assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
 		//		assertNotSame(initial, this.endosome.solubleContent);
 		}
 		}	
 	
 	}
-
+//Fails
+//MESSAGE Native code library failed to load. 
+//java.lang.UnsatisfiedLinkError: no CopasiJava in java.library.path
