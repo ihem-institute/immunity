@@ -126,7 +126,7 @@ public class Endosome {
 		EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 
 		if (Math.random() < 0.001)
-			rabConversion();
+			EndosomeRabConversionStep.rabConversion(this);
 		// rabConversionN();
 		// if (Math.random() < 0.001)
 		// antigenPresentation();
@@ -263,10 +263,7 @@ public class Endosome {
 				endosomes.add((Endosome) obj);
 			}
 		}
-		for (Endosome endosome1 : endosomes) {
-			// System.out.println(endosome1.rabContent+" " + object
-			// endosome1.membraneContent+" " + endosome1.solubleContent);
-		}
+		
 	}
 
 	private void antigenPresentation() {
