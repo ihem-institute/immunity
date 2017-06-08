@@ -51,18 +51,18 @@ public class EndosomeMove {
 		// When near the bottom or the top, the movement is random and depends on the
 		// momentum
 		NdPoint myPoint = space.getLocation(endosome);
-		if (myPoint.getY() < 5*Cell.orgScale || 
-				myPoint.getY() >50 - 2*Cell.orgScale
-				|| Math.random()<0.01) {
+		if (myPoint.getY() < 5*Cell.orgScale 
+			|| myPoint.getY() >50 - 2*Cell.orgScale
+			|| Math.random()<0.01) {
 
 			double momentum = endosome.volume * (endosome.a * endosome.a + endosome.c * endosome.c) / 5 / 3E7;
 			Random fRandom = new Random();
 			endosome.heading = (endosome.heading + fRandom.nextGaussian() * 10d
 					/ momentum)% 360;
 			//endosome.speed = Cell.orgScale/ endosome.size;
-			if (initial - endosome.heading > 90)
-				System.out.println("GIRO BOTTOM " + "  " + initial + "  "
-						+ endosome.heading + "  " + momentum);
+//			if (initial - endosome.heading > 90)
+//				System.out.println("GIRO BOTTOM " + "  " + initial + "  "
+//						+ endosome.heading + "  " + momentum);
 			return endosome.heading;
 		}
 		// when (not in the bottom or the top or a rnd probability)  and near a MT takes the direction of the MT
@@ -82,14 +82,25 @@ public class EndosomeMove {
 			double dist = distance(endosome, mt);
 			if (dist < (endosome.c* Cell.orgScale) / 30d) {
 
-//				The volume of a cylinder is = PI*rcyl^2*h; area = PI*2*rcyl*h + 2* PI*rcyl^2
-//				hence for a cylinder of diameter = rcyl, volume / (area-2* PI*rcyl^2) = rcyl/2 
-//				direction is fixed to to the surface for tubules and to the center for the rest
+		//The volume of a cylinder is = PI*rcyl^2*h; area = PI*2*rcyl*h + 2* PI*rcyl^2
+		//hence for a cylinder of diameter = rcyl, volume / (area-2* PI*rcyl^2) = rcyl/2 
+		//direction is fixed to to the surface for tubules and to the center for the rest
 				if (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2)
-					mtDir = -1; // if no a tubule, goes to the nucleus
+					{
+					mtDir = -1;
+					} // if no a tubule, goes to the nucleus
 				else
+					{
 					mtDir = 1;
+					}
 				endosome.heading = -mtDir * mt.getMtheading() + 180f;
+				double yy = dist * Math.sin(endosome.heading + 90);
+				double xx = dist * Math.cos(endosome.heading + 90);
+				NdPoint pt = space.getLocation(endosome);
+				double xpt = pt.getX()+xx;
+				double ypt = pt.getY()+yy;
+				space.moveTo(endosome, xpt, ypt);
+				grid.moveTo(endosome, (int) xpt, (int) ypt);
 				endosome.speed = 1d*Cell.orgScale;
 				// if (initial - heading > 90)System.out.println("GIRO MT "
 				// +initial+"  "+heading);

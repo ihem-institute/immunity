@@ -128,8 +128,8 @@ public class Endosome {
 		if (Math.random() < 0.001)
 			EndosomeRabConversionStep.rabConversion(this);
 		// rabConversionN();
-		// if (Math.random() < 0.001)
-		// antigenPresentation();
+		if (Math.random() < 0.001)
+		EndosomeAntigenPresentationStep.antigenPresentation(this);
 	}
 
 	private void lysosomalDigestion() {
@@ -273,30 +273,20 @@ public class Endosome {
 
 		Set<String> metabolites = antigenPresentation.getInstance()
 				.getMetabolites();
-		// System.out.println("METABOLITES INITIAL " + metabolites);
-
-		// metabolites.add("RabAm");
-		// metabolites.add("RabAc");
-		// metabolites.add("RabBm");
-		// metabolites.add("RabBc");
 		HashMap<String, Double> localM = new HashMap<String, Double>();
 		for (String met : metabolites) {
-			localM.put(met, 0.0);
-		}
-		for (String met : metabolites) {
-
 			if (membraneContent.containsKey(met)) {
 				double metValue = Math
 						.abs(Math.round(membraneContent.get(met)));
-				localM.put(met, metValue);
 				antigenPresentation.setInitialConcentration(met, metValue);
+				localM.put(met, metValue);
 			} else if (solubleContent.containsKey(met)) {
 				double metValue = Math.abs(Math.round(solubleContent.get(met)));
-				localM.put(met, metValue);
 				antigenPresentation.setInitialConcentration(met, metValue);
+				localM.put(met, metValue);
 			} else {
 				antigenPresentation.setInitialConcentration(met, 0.0);
-				// System.out.println("COPASI INITIAL " + met + 0.0);
+				localM.put(met, 0.0);
 			}
 		}
 
@@ -305,8 +295,9 @@ public class Endosome {
 		 * sm2 = localM.get("preP"); double sc2 = localM.get("p2"); if ((sm1 ==
 		 * 0 || sc1 == 0) && (sm2 == 0 || sc2 == 0)) return;
 		 */
-		System.out.println("AntigenPresentation initial " + localM);
+
 		antigenPresentation.runTimeCourse();
+		
 		for (String met : metabolites) {
 			/*
 			 * if (membraneContent.containsKey(met)) { double metValue =
@@ -322,19 +313,21 @@ public class Endosome {
 			if (membraneMet.contains(met)) {
 				double metValue = (double) Math.abs(Math
 						.round(antigenPresentation.getConcentration(met)));
-				localM.put(met, metValue);
 				membraneContent.put(met, metValue);
 			} else if (solubleMet.contains(met)) {
 				double metValue = (double) Math.abs(Math
 						.round(antigenPresentation.getConcentration(met)));
-				localM.put(met, metValue);
 				solubleContent.put(met, metValue);
 			} else
 				System.out.println("Met not found in " + membraneMet + " "
 						+ solubleMet + " " + met);
 		}
+		System.out.println("AntigenPresentation INITIAL FINAL ");
+		for (String met :metabolites){
+		System.out.println(met+ " "+localM.get(met)+" "+
+		((double) Math.abs(Math.round(antigenPresentation.getConcentration(met)))));
+		}
 
-		System.out.println("AntigenPresentation final " + localM);
 	}
 
 	private void rabConversion() {
