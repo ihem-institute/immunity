@@ -48,26 +48,22 @@ public class EndosomeMove {
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
 		endosomeShape(endosome);
-		// When near the bottom or the top, the movement is random and depends on the
-		// momentum
+// When near the bottom or the top, the movement is random and depends on the
+// momentum.  Even if not in the edges, it has a probability (0.01) of changing the
+// direction randomly
 		NdPoint myPoint = space.getLocation(endosome);
 		if (myPoint.getY() < 5*Cell.orgScale 
-			|| myPoint.getY() >50 - 2*Cell.orgScale
+			|| myPoint.getY() >50 - 2.5*Cell.orgScale
 			|| Math.random()<0.01) {
 
 			double momentum = endosome.volume * (endosome.a * endosome.a + endosome.c * endosome.c) / 5 / 3E7;
 			Random fRandom = new Random();
 			endosome.heading = (endosome.heading + fRandom.nextGaussian() * 10d
 					/ momentum)% 360;
-			//endosome.speed = Cell.orgScale/ endosome.size;
-//			if (initial - endosome.heading > 90)
-//				System.out.println("GIRO BOTTOM " + "  " + initial + "  "
-//						+ endosome.heading + "  " + momentum);
 			return endosome.heading;
 		}
-		// when (not in the bottom or the top or a rnd probability)  and near a MT takes the direction of the MT
-		// and
-		// increases the speed to 1* Cell.orgScale
+// when (not in the bottom or the top or a rnd probability)  and near a MT takes the direction of the MT
+// and increases the speed to 1* Cell.orgScale
 		if (mts == null) {
 			mts = associateMt();
 		}
@@ -93,7 +89,9 @@ public class EndosomeMove {
 					{
 					mtDir = 1;
 					}
+//				Changes the heading to the heading of the MT
 				endosome.heading = -mtDir * mt.getMtheading() + 180f;
+//				Moves the endosome to the MT position
 				double yy = dist * Math.sin(endosome.heading + 90);
 				double xx = dist * Math.cos(endosome.heading + 90);
 				NdPoint pt = space.getLocation(endosome);
@@ -101,6 +99,7 @@ public class EndosomeMove {
 				double ypt = pt.getY()+yy;
 				space.moveTo(endosome, xpt, ypt);
 				grid.moveTo(endosome, (int) xpt, (int) ypt);
+//				Changes the speed to a standard speed in MT independet of size
 				endosome.speed = 1d*Cell.orgScale;
 				// if (initial - heading > 90)System.out.println("GIRO MT "
 				// +initial+"  "+heading);

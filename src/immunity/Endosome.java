@@ -118,8 +118,8 @@ public class Endosome {
 		EndosomeUptakeStep.uptake(this);
 		EndosomeNewFromERStep.newFromEr(this);
 		EndosomeMove.changeDirection(this);
-		EndosomeMove.moveTowards(this);//moveTowards(); // leave it in this class?
-		EndosomeTetherStep.tether(this);
+		EndosomeMove.moveTowards(this);
+		//EndosomeTetherStep.tether(this);
 		EndosomeInternalVesicleStep.internalVesicle(this);
 		EndosomeFusionStep.fusion(this);
 		EndosomeSplitStep.split(this);
