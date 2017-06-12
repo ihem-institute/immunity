@@ -48,7 +48,7 @@ KIND,Content,1st Content,value,2nd Content,value,3rd Content,value,4th Content,v
 kind1,initOrgProp,area,5026.54824574367,volume,33510.3216382911,radius,20,number,10,,,,,,,,,,,,,,,,
 kind1,initRabContent,RabA,5026.54824574367,,,,,,,,,,,,,,,,,,,,,,
 kind1,initSolubleContent,ova,0,,,,,,,,,,,,,,,,,,,,,,
-kind1,initMembraneContent,mHCI,50.2654824574367,Tf,0,,,,,,,,,,,,,,,,,,,,
+kind1,initMembraneContent,mHCI,50.2654824574367,Tf,5000,,,,,,,,,,,,,,,,,,,,
 kind2,initOrgProp,area,5026.54824574367,volume,25132.7412287183,radius,18.1712059283214,number,10,,,,,,,,,,,,,,,,
 kind2,initRabContent,RabB,5026.54824574367,,,,,,,,,,,,,,,,,,,,,,
 kind2,initSolubleContent,ova,0,,,,,,,,,,,,,,,,,,,,,,

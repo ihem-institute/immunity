@@ -26,10 +26,10 @@ public class MT {
 	@ScheduledMethod(start = 1, interval = 100)
 	public void step() {
 		if (Math.random() <0.01)
-			changePosition();
+			changePosition(this);
 	}
 
-	public void changePosition() {
+	public void changePosition(MT mt) {
 		//if (Math.random() < 0.1) return;
 		// move the origin and the end of the MT
 		xorigin = RandomHelper.nextDoubleFromTo(1, 49);
@@ -44,8 +44,8 @@ public class MT {
 		mtheading = -mth;
 		double y = 24.5;
 		double x = xorigin + 25 * Math.cos(mtheading * Math.PI / 180);
-		space.moveTo(this, x, y);
-		grid.moveTo(this, (int) x, (int) y);
+		space.moveTo(mt, x, y);
+		grid.moveTo(mt, (int) x, (int) y);
 	}
 	// GETTERS AND SETTERS
 	public double getXorigin() {

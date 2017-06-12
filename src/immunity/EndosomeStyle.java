@@ -43,18 +43,18 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		 * sphere the s^3/v^2 is 113. For a cylinder is larger than this. For
 		 * the minimum cylinder is 169.6
 		 */
-		double s = object.getArea();
-		double v = object.getVolume();
-		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
-		double svratio = s/v; // ratio surface volume
-		double a = rsphere; //initial a from the radius of a sphere of volume v
-		double c = a;// initially, c=a
+//		double s = object.getArea();
+//		double v = object.getVolume();
+//		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
+//		double svratio = s/v; // ratio surface volume
+//		double a = rsphere; //initial a from the radius of a sphere of volume v
+//		double c = a;// initially, c=a
 		// calculation from s/v for a cilinder that it is the same than for an ellypsoid
 		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c  hence s/v =(1/c)+(2/a)
-		for (int i=1; i<3; i++){// just two iterations yield an acceptable a-c ratio for ploting
-		a=2/(svratio-1/c);//from s/v ratio
-		c= v*3/(4*Math.PI*a*a);//from v ellypsoid
-		}
+//		for (int i=1; i<3; i++){// just two iterations yield an acceptable a-c ratio for ploting
+//		a=2/(svratio-1/c);//from s/v ratio
+//		c= v*3/(4*Math.PI*a*a);//from v ellypsoid
+//		}
 //		System.out.println("area  "+ s+" volume   " + v);
 //		System.out.println("a "+a+ " c "+c+" areaE  "+ (2*Math.PI*a*a+2*a*Math.PI*2*c)*.666+" volumeE   " + 4d/3d*Math.PI*a*a*c);
 //		PLOT as ellipses with a length/wide ratio depending on the area/volume
@@ -67,6 +67,8 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
         VSpatial shape = null;
 //		double a1 = 2*rsphere/(1+svr);
 		//if (a>10){
+        double a=object.a;
+        double c=object.c;
         Shape ellypse = new Ellipse2D.Double(-c/2, -a/2, c, a);
         shape = this.factory.createShape(ellypse);
 //		}
@@ -143,7 +145,8 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	@Override
 	public float getRotation(Endosome endosome) {
 		// set in a way that object move along its large axis
-		return (float) -endosome.heading;
+		if(endosome.heading%360 > 0 && endosome.heading%360<180) return (float) endosome.heading;
+		else return (float) -endosome.heading;
 	}
 
 	@Override

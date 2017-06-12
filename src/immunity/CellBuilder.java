@@ -136,8 +136,10 @@ public class CellBuilder implements ContextBuilder<Object> {
 				HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
 				HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
 //				HashMap<String, Double> initOrgProp = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind);
-				context.add(new Endosome(space, grid, rabContent, membraneContent,
-						solubleContent, initOrgProp));
+				Endosome end = new Endosome(space, grid, rabContent, membraneContent,
+						solubleContent, initOrgProp);
+				context.add(end);
+				Endosome.endosomeShape(end);
 				System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
 		}
 		}
@@ -163,7 +165,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 				grid.moveTo(obj, (int) xcoor, (int) ycoor);
 			}
 			if (obj instanceof MT) {
-				((MT) obj).changePosition();
+				((MT) obj).changePosition((MT)obj);
 			} else {
 				NdPoint pt = space.getLocation(obj);
 				space.moveTo(obj, pt.getX(), pt.getY());

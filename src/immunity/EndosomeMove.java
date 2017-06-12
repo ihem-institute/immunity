@@ -34,11 +34,6 @@ public class EndosomeMove {
 			if (y > 50-cellLimit) y = 50 -cellLimit;
 			if (y < cellLimit) y = cellLimit;
 		}
-//		if (myPoint.getY() - y > this.speed)
-//			System.out.println(" SALTO     " + myPoint.getY() + " " + y + " "
-//					+ (myPoint.getY() - y) + " "
-//					+ (Math.sin(heading * 2d * Math.PI / 360d)) + "  "
-//					+ this.speed);
 		space.moveTo(endosome, x, y);
 		grid.moveTo(endosome, (int) x, (int) y);
 	}
