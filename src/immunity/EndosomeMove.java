@@ -48,7 +48,7 @@ public class EndosomeMove {
 // direction randomly
 		NdPoint myPoint = space.getLocation(endosome);
 		if (myPoint.getY() < 5*Cell.orgScale 
-			|| myPoint.getY() >50 - 2.5*Cell.orgScale
+			|| myPoint.getY() >50 - 4*Cell.orgScale
 			|| Math.random()<0.01) {
 
 			double momentum = endosome.volume * (endosome.a * endosome.a + endosome.c * endosome.c) / 5 / 3E7;

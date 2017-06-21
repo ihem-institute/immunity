@@ -25,7 +25,9 @@ public class EndosomeNewFromERStep {
 			return;
 		double rabCellE = rabCell.get("RabE");
 		// same area than an newly formed endosome but with half the volume
-		if (tMembrane < Cell.sEndo || rabCellE < Cell.sEndo) {
+		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
+				InitialOrganelles.getInstance().getInitOrgProp().get("kind5"));
+		if (tMembrane < initOrgProp.get("area") || rabCellE < initOrgProp.get("area")) {
 			return;
 		}
 
@@ -38,9 +40,6 @@ public class EndosomeNewFromERStep {
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitSolubleContent()
 						.get("kind5"));
-		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
-				InitialOrganelles.getInstance().getInitOrgProp().get("kind5"));
-
 		Context<Object> context = ContextUtils.getContext(endosome);
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
 				solubleContent, initOrgProp);
@@ -50,8 +49,8 @@ public class EndosomeNewFromERStep {
 		System.out.println(membraneContent + "NEW ENDOSOME FROM ER"
 				+ solubleContent + rabContent);
 		// tMembrane = Cell.getInstance().gettMembrane();
-		tMembrane = tMembrane - Cell.sEndo;
-		rabCellE = rabCellE - Cell.sEndo;
+		tMembrane = tMembrane - initOrgProp.get("area");
+		rabCellE = rabCellE - initOrgProp.get("area");
 		rabCell.put("RabE", rabCellE);
 		Cell.getInstance().settMembrane(tMembrane);
 
@@ -59,7 +58,7 @@ public class EndosomeNewFromERStep {
 
 		bud.area = bud.initOrgProp.get("area");
 		bud.volume = bud.initOrgProp.get("volume");
-		bud.size = Cell.rEndo;// radius of a sphere with the volume of the new organelle
+		bud.size = bud.initOrgProp.get("radius");// radius of a sphere with the volume of the new organelle
 		bud.speed = Cell.orgScale/ bud.size;
 		bud.heading = Math.random() * 360;
 		// NdPoint myPoint = space.getLocation(bud);

@@ -17,13 +17,15 @@ public class EndosomeUptakeStep {
 		grid = endosome.getGrid();
 		double cellLimit = 3 * Cell.orgScale;
 		Cell cell = Cell.getInstance();
+		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
+				InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
 		double tMembrane = cell.gettMembrane();
 		HashMap<String, Double> rabCell = cell.getRabCell();
 		// System.out.println("CELL RAB "+ rabCell+ "TMEMBRANE "+ tMembrane);
 		if (!rabCell.containsKey("RabA"))
 			return;
 		double rabCellA = rabCell.get("RabA");
-		if (tMembrane < Cell.sEndo || rabCellA < Cell.sEndo) {
+		if (tMembrane < initOrgProp.get("area") || rabCellA < initOrgProp.get("area")) {
 			return;
 		}
 
@@ -42,8 +44,6 @@ public class EndosomeUptakeStep {
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitSolubleContent()
 						.get("kind1"));
-		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
-				InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
 		Context<Object> context = ContextUtils.getContext(endosome);
 
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
@@ -54,16 +54,16 @@ public class EndosomeUptakeStep {
 		System.out.println(membraneContent + "NEW ENDOSOME UPTAKE"
 				+ solubleContent + rabContent);
 		// tMembrane = Cell.getInstance().gettMembrane();
-		tMembrane = tMembrane - Cell.sEndo;
-		rabCellA = rabCellA - Cell.sEndo;
+		tMembrane = tMembrane - bud.initOrgProp.get("area");
+		rabCellA = rabCellA - bud.initOrgProp.get("area");
 		rabCell.put("RabA", rabCellA);
 		Cell.getInstance().settMembrane(tMembrane);
 
 		// Cell.getInstance().setRabCell(rabCell);
 
-		bud.area = Cell.sEndo;
-		bud.volume = Cell.vEndo;
-		bud.size = Cell.rEndo;// radius of a sphere with the volume of the
+		bud.area = initOrgProp.get("area");
+		bud.volume = initOrgProp.get("volume");
+		bud.size = initOrgProp.get("radius");// radius of a sphere with the volume of the
 								// cylinder
 		bud.speed = Cell.orgScale/ bud.size;
 		bud.heading = -90;// heading down
