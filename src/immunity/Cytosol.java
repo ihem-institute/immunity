@@ -13,6 +13,7 @@ public class Cytosol {
 		//double area = 4d * Math.PI * 30d * 30d; // initial value, but should change
 		public int xcoor;
 		public int ycoor;
+		public int blue;
 		HashMap<String, Double> cytoContent = new HashMap<String, Double>();
 		//constructor
 		public	Cytosol (ContinuousSpace<Object> sp, Grid<Object> gr, HashMap<String, Double> 
@@ -21,25 +22,34 @@ public class Cytosol {
 		this.grid = gr;
 		this.xcoor = xcoor;
 		this.ycoor = ycoor;
+		this.blue = 240;
 		this.cytoContent = cytoContent;
 		}
 
+
+
 		// In the future, the cytosol will have a more active role.
 		//solute diffusion etc.
-		@ScheduledMethod(start = 1, interval = 0)
+		@ScheduledMethod(start = 1, interval = 1)
 		public void step() {
-			//position(xcoor, ycoor);
+	//		this.changeColor();
+
 			}
 		
-	
 		public void position(int xcoor, int ycoor){
 			space.moveTo(this, xcoor, ycoor);
 			grid.moveTo(this, xcoor, ycoor);	
+			}
+		public void changeColor() {
+			this.blue = (int) (Math.random()*255);
 			}
 		//GETTERS AND SETTERS
 		public double getXcoor() {
 				return xcoor;
 			}
+		public int getBlue() {
+			return blue;
+		}
 		public double getYcoor() {
 			return ycoor;
 		}

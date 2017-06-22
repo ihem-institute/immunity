@@ -28,7 +28,10 @@ public class EndosomeAntigenPresentationStep {
 				localM.put(met, 0.0);
 			}
 		}
-
+		System.out.println("AntigenPresentation INICIAL ");
+		for (String met :metabolites){
+		System.out.println(met+ " "+localM.get(met));
+		}
 		/*
 		 * double sm1 = localM.get("ova"); double sc1 = localM.get("p1"); double
 		 * sm2 = localM.get("preP"); double sc2 = localM.get("p2"); if ((sm1 ==
@@ -61,7 +64,7 @@ public class EndosomeAntigenPresentationStep {
 				System.out.println("Met not found in " + endosome.membraneMet + " "
 						+ endosome.solubleMet + " " + met);
 		}
-		System.out.println("AntigenPresentation INITIAL FINAL ");
+		System.out.println("AntigenPresentation FINAL ");
 		for (String met :metabolites){
 		System.out.println(met+ " "+localM.get(met)+" "+
 		((double) Math.abs(Math.round(antigenPresentation.getConcentration(met)))));

@@ -130,6 +130,12 @@ public class Endosome {
 		// rabConversionN();
 		if (Math.random() < 0.001)
 		EndosomeAntigenPresentationStep.antigenPresentation(this);
+		
+		if (Math.random() < 0.001){
+			System.out.println("llamo LANCL2");
+			EndosomeLANCL2metabolismStep.LANCL2metabolism(this);			
+		}
+
 	}
 
 

@@ -127,15 +127,12 @@ public class CellBuilder implements ContextBuilder<Object> {
 		Set<String> diffOrganelles = InitialOrganelles.getInstance().getDiffOrganelles();
 		System.out.println(diffOrganelles);
 		for (String kind : diffOrganelles){
-//			HashMap<String, Double> rabContent = InitialOrganelles.getInstance().getInitRabContent().get(kind);
-//			HashMap<String, Double> membraneContent = InitialOrganelles.getInstance().getInitMembraneContent().get(kind);
-//			HashMap<String, Double> solubleContent = InitialOrganelles.getInstance().getInitSolubleContent().get(kind);
+
 			HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
-			for (int i = 0; i < initOrgProp.get("number"); i++) {
+			for (int i = 0; i < initOrgProp.get("number")/Cell.orgScale; i++) {
 				HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
 				HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
 				HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
-//				HashMap<String, Double> initOrgProp = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind);
 				Endosome end = new Endosome(space, grid, rabContent, membraneContent,
 						solubleContent, initOrgProp);
 				context.add(end);

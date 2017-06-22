@@ -254,7 +254,7 @@ public class AntigenPresentation {
 		try
         {
             // now we run the actual trajectory
-        	System.out.println("trajectoryTask.process");
+        	System.out.println("trajectoryTask.process ANTIGEN");
             result=trajectoryTask.process(true);
             processError = trajectoryTask.getProcessError();
             processWarning = trajectoryTask.getProcessWarning();
