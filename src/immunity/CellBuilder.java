@@ -108,10 +108,10 @@ public class CellBuilder implements ContextBuilder<Object> {
 //		Cell and recycled contents.  Total initial free membrane 
 		CellProperties cellProperties = CellProperties.getInstance();
 		for (String sol : cellProperties.solubleMet) {
-			Cell.getInstance().getSolubleRecycle().put(sol, 0d);
+			PlasmaMembrane.getInstance().getSolubleRecycle().put(sol, 0d);
 		}
 		for (String sol : cellProperties.membraneMet) {
-			Cell.getInstance().getMembraneRecycle().put(sol, 0d);
+			PlasmaMembrane.getInstance().getMembraneRecycle().put(sol, 0d);
 		}	
 		Cell.getInstance().getRabCell().putAll(cellProperties.initRabCell);
 		Cell.getInstance().settMembrane(0d);

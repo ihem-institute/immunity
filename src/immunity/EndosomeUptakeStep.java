@@ -36,8 +36,8 @@ public class EndosomeUptakeStep {
 				InitialOrganelles.getInstance().getInitMembraneContent()
 						.get("kind1"));
 		// new endosome incorporate 10% of the recycled mHCI
-		if (Cell.getInstance().membraneRecycle.containsKey("mHCI")) {
-			double value = Cell.getInstance().membraneRecycle.get("mHCI");
+		if (PlasmaMembrane.getInstance().membraneRecycle.containsKey("mHCI")) {
+			double value = PlasmaMembrane.getInstance().membraneRecycle.get("mHCI");
 			membraneContent.put("mHCI", 0.1 * value);
 		} else
 			membraneContent.put("mHCI", 0d);

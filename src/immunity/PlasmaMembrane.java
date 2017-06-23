@@ -11,14 +11,14 @@ import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.util.ContextUtils;
 
-public class Cell {
+public class PlasmaMembrane {
 	// a single Cell is created
-	private static Cell instance;
+	private static PlasmaMembrane instance;
 	static {
-		instance = new Cell();
+		instance = new PlasmaMembrane();
 	}
 	
-//	Cell characteristics
+/*//	Cell characteristics
 	public static double rcyl = CellProperties.getInstance().getCellK().get("rcyl");//10.0; // radius tubule
 //	public radius new endosome formed by uptake = radius Kind1, generally 20.0; // 
 	public static double mincyl = 6 * Math.PI * rcyl * rcyl; // surface minimum cylinder
@@ -30,55 +30,48 @@ public class Cell {
 	public static double orgScale = CellProperties.getInstance().getCellK().get("orgScale");
 //  When orgScale=1 zoom =0, when > 1 zoom in , when <1 zoom out
 //	global cell and non-cell quantities
-	public double tMembrane = 0;// membrane that is not used in endosomes
+	public double tMembrane;// membrane that is not used in endosomes
 	public HashMap<String, Double> rabCell = new HashMap<String, Double>();// contains rabs free in cytosol
-	public HashMap<String, Double> membraneCell = new HashMap<String, Double>(); // contains membrane factors within the cell 
-	public HashMap<String, Double> solubleCell = new HashMap<String, Double>();// contains soluble factors within the cell
+*/	
+	public HashMap<String, Double> membraneRecycle = new HashMap<String, Double>(); // contains membrane recycled 
+	public HashMap<String, Double> solubleRecycle = new HashMap<String, Double>();// contains soluble recycled
+
+
 
 	// Constructor
-	public Cell() {
-// Contains factors that are in the cell without specifying organelle or position.
-// It is modified by Endosome that uses and changes cytosolic Rabs
-// contents.	tMembranes, membrane and soluble content recycling, 	
-		rabCell.putAll(CellProperties.getInstance().initRabCell);
-		tMembrane = CellProperties.getInstance().cellK.get("tMembrane");
+	public PlasmaMembrane() {
+// Contains the contents that are in the cell.  It is modified by Endosome that uses and changes the cell
+// contents.	tMembranes, membrane and soluble content recycling, cytosolic Rabs	
+		CellProperties cellProperties = CellProperties.getInstance();
+		for (String sol : cellProperties.solubleMet) {
+			solubleRecycle.put(sol, 0d);
+		}
+		for (String sol : cellProperties.membraneMet) {
+			membraneRecycle.put(sol, 0d);
+		}	
 	}
-
 	
 	// GETTERS AND SETTERS (to get and set Cell contents)
-	public static Cell getInstance() {
+	public static PlasmaMembrane getInstance() {
 		return instance;
 	}
 
-	public double gettMembrane() {
-		return tMembrane;
-	}
-
-	public void settMembrane(double tMembrane) {
-		this.tMembrane = tMembrane;
-	}
 	
-	public HashMap<String, Double> getRabCell() {
-		return rabCell;
-	}
-	
-	public HashMap<String, Double> getMembraneCell() {
-		return membraneCell;
-	}
-	public HashMap<String, Double> getSolubleCell() {
-		return solubleCell;
-	}
 //	public void setRabCell(HashMap<String, Double> rabCell) {
 //	this.rabCell = rabCell;
 //}
 
-
+	public HashMap<String, Double> getMembraneRecycle() {
+		return membraneRecycle;
+	}
 
 //	public void setMembraneRecycle(HashMap<String, Double> membraneRecycle) {
 //		this.membraneRecycle = membraneRecycle;
 //	}
 
-
+	public HashMap<String, Double> getSolubleRecycle() {
+		return solubleRecycle;
+	}
 
 //	public void setSolubleRecycle(HashMap<String, Double> solubleRecycle) {
 //		this.solubleRecycle = solubleRecycle;

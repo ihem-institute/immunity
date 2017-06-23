@@ -24,9 +24,9 @@ public class EndosomeLANCL2metabolismStep {
 			}
 		
 	for (String met : metabolites) {
-		if (Cell.getInstance().getMembraneRecycle().containsKey(met)) {
+		if (Cell.getInstance().getMembraneCell().containsKey(met)) {
 			double metValue = Math.round
-					(Cell.getInstance().membraneRecycle.get(met) * 1000) / 1000;
+					(Cell.getInstance().getMembraneCell().get(met) * 1000) / 1000;
 			lANCL2metabolism.setInitialConcentration(met, metValue);
 			System.out.println("COPASI INITIAL  LANCL2 " + met + " " + metValue);
 		}
@@ -37,20 +37,21 @@ public class EndosomeLANCL2metabolismStep {
 			if (CellProperties.getInstance().membraneMet.contains(met)){
 				double metValue = lANCL2metabolism.getConcentration(met);
 				endosome.membraneContent.put(met, metValue);
-				System.out.println("COPASI LANCL2 FINAL " + met + " " + metValue);
+				System.out.println("COPASI LANCL2  ENDO FINAL " + met + " " + metValue);
 				// rabContent.get(Rab));
 			}
 			else{
 				double metValue = lANCL2metabolism.getConcentration(met);
-				Cell.getInstance().getMembraneRecycle().put(met, metValue);
-				System.out.println("COPASI soluble FINAL " + met + " " + metValue);
+				double value = metValue;
+				if (Cell.getInstance().getSolubleCell().containsKey(met)){
+					value = value + Cell.getInstance().getSolubleCell().get(met);
+				}
+				Cell.getInstance().getMembraneCell().put(met, value);
+				System.out.println("COPASI soluble Cell FINAL " + met + " " + value);
 
 			}
 
 		}
-
-		System.out.println("COPASI FINAL membrane " + endosome.membraneContent + " soluble "
-				+ Cell.getInstance().getMembraneRecycle());
 
 	}
 	

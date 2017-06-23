@@ -33,7 +33,7 @@ public class EndosomeRecycleStep {
 			else {
 				// RECYCLE
 				// Recycle membrane content
-				HashMap<String, Double> membraneRecycle = Cell.getInstance()
+				HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance()
 						.getMembraneRecycle();
 				for (String key1 : endosome.membraneContent.keySet()) {
 					if (membraneRecycle.containsKey(key1)) {
@@ -45,13 +45,13 @@ public class EndosomeRecycleStep {
 					}
 				}
 
-				// Cell.getInstance().setMembraneRecycle(membraneRecycle);
+				// PlasmaMembrane.getInstance().setMembraneRecycle(membraneRecycle);
 				endosome.membraneContent.clear();
 				System.out.println("membrane Recycled"
-						+ Cell.getInstance().getMembraneRecycle());
+						+ PlasmaMembrane.getInstance().getMembraneRecycle());
 
 				// Recycle soluble content
-				HashMap<String, Double> solubleRecycle = Cell.getInstance()
+				HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance()
 						.getSolubleRecycle();
 				for (String key1 : endosome.solubleContent.keySet()) {
 					if (solubleRecycle.containsKey(key1)) {
@@ -62,10 +62,10 @@ public class EndosomeRecycleStep {
 						solubleRecycle.put(key1, solubleContent.get(key1));
 					}
 				}
-				// Cell.getInstance().setSolubleRecycle(solubleRecycle);
+				// PlasmaMembrane.getInstance().setSolubleRecycle(solubleRecycle);
 				endosome.solubleContent.clear();
 				System.out.println("soluble Recycled"
-						+ Cell.getInstance().getSolubleRecycle());
+						+ PlasmaMembrane.getInstance().getSolubleRecycle());
 			}
 		}
 

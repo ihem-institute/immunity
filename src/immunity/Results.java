@@ -137,9 +137,9 @@ public class Results {
 	// sum the content in all endosomes weighted by the rab content of each endosome
 	public void contentDistribution() {
 		content();// initialize all contents to zero
-		HashMap<String, Double> solubleRecycle = Cell.getInstance().getSolubleRecycle();
+		HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
 		// include in the contentDistribution all the recycled components, soluble and membrane
-		HashMap<String, Double> membraneRecycle = Cell.getInstance().getMembraneRecycle();
+		HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
 		for (String sol : solubleRecycle.keySet()) {
 			System.out.println(" soluble "+ sol);
 			double value = solubleRecycle.get(sol);
