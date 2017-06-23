@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2017-06-22 00:35:03 UTC -->
+<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2017-06-23 15:47:54 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="15" versionDevel="95" copasiSourcesModified="0">
   <ListOfFunctions>
-    <Function key="Function_50" name="1 S, 1A (revmod)" type="UserDefined" reversible="unspecified">
+    <Function key="Function_40" name="1 S, 1A (revmod)" type="UserDefined" reversible="unspecified">
       <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Function_50">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Function_40">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-17T17:10:31Z</dcterms:W3CDTF>
@@ -16,24 +14,23 @@
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
       </MiriamAnnotation>
       <Expression>
         Vf*S*(B+max(0,A1)^exp1/(max(0,A1)^exp1+K1^exp1))-Vr*P
       </Expression>
       <ListOfParameterDescriptions>
-        <ParameterDescription key="FunctionParameter_351" name="Vf" order="0" role="constant"/>
-        <ParameterDescription key="FunctionParameter_347" name="S" order="1" role="substrate"/>
-        <ParameterDescription key="FunctionParameter_323" name="B" order="2" role="constant"/>
-        <ParameterDescription key="FunctionParameter_352" name="A1" order="3" role="modifier"/>
-        <ParameterDescription key="FunctionParameter_354" name="exp1" order="4" role="constant"/>
-        <ParameterDescription key="FunctionParameter_356" name="K1" order="5" role="constant"/>
-        <ParameterDescription key="FunctionParameter_358" name="Vr" order="6" role="constant"/>
-        <ParameterDescription key="FunctionParameter_360" name="P" order="7" role="product"/>
+        <ParameterDescription key="FunctionParameter_264" name="Vf" order="0" role="constant"/>
+        <ParameterDescription key="FunctionParameter_254" name="S" order="1" role="substrate"/>
+        <ParameterDescription key="FunctionParameter_258" name="B" order="2" role="constant"/>
+        <ParameterDescription key="FunctionParameter_266" name="A1" order="3" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_268" name="exp1" order="4" role="constant"/>
+        <ParameterDescription key="FunctionParameter_270" name="K1" order="5" role="constant"/>
+        <ParameterDescription key="FunctionParameter_272" name="Vr" order="6" role="constant"/>
+        <ParameterDescription key="FunctionParameter_274" name="P" order="7" role="product"/>
       </ListOfParameterDescriptions>
     </Function>
   </ListOfFunctions>
-  <Model key="Model_3" name="NoName" simulationType="time" timeUnit="s" volumeUnit="l" areaUnit="m²" lengthUnit="m" quantityUnit="mol" type="deterministic" avogadroConstant="6.02214179e+023">
+  <Model key="Model_3" name="LANCL2Activation" simulationType="time" timeUnit="s" volumeUnit="l" areaUnit="m²" lengthUnit="m" quantityUnit="mol" type="deterministic" avogadroConstant="6.02214179e+023">
     <MiriamAnnotation>
 <rdf:RDF
    xmlns:dcterms="http://purl.org/dc/terms/"
@@ -871,12 +868,10 @@
       </Compartment>
     </ListOfCompartments>
     <ListOfMetabolites>
-      <Metabolite key="Metabolite_31" name="LANCL2" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_1" name="LANCL2" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_31">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Metabolite_1">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-17T15:47:30Z</dcterms:W3CDTF>
@@ -884,7 +879,6 @@
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfUnsupportedAnnotations>
           <UnsupportedAnnotation name="http://www.sbml.org/2001/ns/celldesigner">
@@ -904,12 +898,10 @@
           </UnsupportedAnnotation>
         </ListOfUnsupportedAnnotations>
       </Metabolite>
-      <Metabolite key="Metabolite_47" name="ABA" simulationType="fixed" compartment="Compartment_1">
+      <Metabolite key="Metabolite_3" name="ABA" simulationType="fixed" compartment="Compartment_1">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_47">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Metabolite_3">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:56:02Z</dcterms:W3CDTF>
@@ -917,7 +909,6 @@
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfUnsupportedAnnotations>
           <UnsupportedAnnotation name="http://www.sbml.org/2001/ns/celldesigner">
@@ -934,10 +925,10 @@
           </UnsupportedAnnotation>
         </ListOfUnsupportedAnnotations>
       </Metabolite>
-      <Metabolite key="Metabolite_67" name="pLANCL2" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_5" name="pLANCL2" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_67">
+  <rdf:Description rdf:about="#Metabolite_5">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:53:15Z</dcterms:W3CDTF>
@@ -949,12 +940,10 @@
       </Metabolite>
     </ListOfMetabolites>
     <ListOfReactions>
-      <Reaction key="Reaction_12" name="LANCL2 activation" reversible="true" fast="false">
+      <Reaction key="Reaction_0" name="LANCL2 activation" reversible="true" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_12">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_0">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:33:26Z</dcterms:W3CDTF>
@@ -962,7 +951,6 @@
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfUnsupportedAnnotations>
           <UnsupportedAnnotation name="http://www.sbml.org/2001/ns/celldesigner">
@@ -999,46 +987,46 @@
           </UnsupportedAnnotation>
         </ListOfUnsupportedAnnotations>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_67" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
-          <Product metabolite="Metabolite_31" stoichiometry="1"/>
+          <Product metabolite="Metabolite_1" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfModifiers>
-          <Modifier metabolite="Metabolite_47" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4935" name="Vf" value="0.1328"/>
-          <Constant key="Parameter_4934" name="exp1" value="1.643"/>
-          <Constant key="Parameter_4933" name="K1" value="0.06395"/>
-          <Constant key="Parameter_4932" name="Vr" value="0.1835"/>
-          <Constant key="Parameter_4931" name="B" value="0.1"/>
+          <Constant key="Parameter_4992" name="Vf" value="0.1328"/>
+          <Constant key="Parameter_4991" name="exp1" value="1.643"/>
+          <Constant key="Parameter_4990" name="K1" value="0.06395"/>
+          <Constant key="Parameter_4989" name="Vr" value="0.1835"/>
+          <Constant key="Parameter_4988" name="B" value="0.1"/>
         </ListOfConstants>
-        <KineticLaw function="Function_50">
+        <KineticLaw function="Function_40">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_351">
-              <SourceParameter reference="Parameter_4935"/>
+            <CallParameter functionParameter="FunctionParameter_264">
+              <SourceParameter reference="Parameter_4992"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_347">
-              <SourceParameter reference="Metabolite_67"/>
+            <CallParameter functionParameter="FunctionParameter_254">
+              <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_323">
-              <SourceParameter reference="Parameter_4931"/>
+            <CallParameter functionParameter="FunctionParameter_258">
+              <SourceParameter reference="Parameter_4988"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_352">
-              <SourceParameter reference="Metabolite_47"/>
+            <CallParameter functionParameter="FunctionParameter_266">
+              <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_354">
-              <SourceParameter reference="Parameter_4934"/>
+            <CallParameter functionParameter="FunctionParameter_268">
+              <SourceParameter reference="Parameter_4991"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_356">
-              <SourceParameter reference="Parameter_4933"/>
+            <CallParameter functionParameter="FunctionParameter_270">
+              <SourceParameter reference="Parameter_4990"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_358">
-              <SourceParameter reference="Parameter_4932"/>
+            <CallParameter functionParameter="FunctionParameter_272">
+              <SourceParameter reference="Parameter_4989"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_360">
-              <SourceParameter reference="Metabolite_31"/>
+            <CallParameter functionParameter="FunctionParameter_274">
+              <SourceParameter reference="Metabolite_1"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
@@ -1047,34 +1035,34 @@
     <ListOfModelParameterSets activeSet="ModelParameterSet_1">
       <ModelParameterSet key="ModelParameterSet_1" name="Initial State">
         <ModelParameterGroup cn="String=Initial Time" type="Group">
-          <ModelParameter cn="CN=Root,Model=NoName" value="0" type="Model" simulationType="time"/>
+          <ModelParameter cn="CN=Root,Model=LANCL2Activation" value="0" type="Model" simulationType="time"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Compartment Sizes" type="Group">
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default]" value="1" type="Compartment" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Compartments[default]" value="1" type="Compartment" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[LANCL2]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[ABA]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pLANCL2]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Compartments[default],Vector=Metabolites[LANCL2]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Compartments[default],Vector=Metabolites[ABA]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Compartments[default],Vector=Metabolites[pLANCL2]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.1328" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.643" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=K1" value="0.06395000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.1835" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.1328" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.643" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=K1" value="0.06395000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.1835" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
     </ListOfModelParameterSets>
     <StateTemplate>
       <StateTemplateVariable objectReference="Model_3"/>
-      <StateTemplateVariable objectReference="Metabolite_31"/>
-      <StateTemplateVariable objectReference="Metabolite_67"/>
-      <StateTemplateVariable objectReference="Metabolite_47"/>
+      <StateTemplateVariable objectReference="Metabolite_1"/>
+      <StateTemplateVariable objectReference="Metabolite_5"/>
+      <StateTemplateVariable objectReference="Metabolite_3"/>
       <StateTemplateVariable objectReference="Compartment_1"/>
     </StateTemplate>
     <InitialState type="initialState">
@@ -1125,7 +1113,7 @@
             <Parameter name="Maximum" type="float" value="10"/>
             <Parameter name="Minimum" type="float" value="0"/>
             <Parameter name="Number of steps" type="unsignedInteger" value="10"/>
-            <Parameter name="Object" type="cn" value="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[IL10],Reference=InitialConcentration"/>
+            <Parameter name="Object" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Compartments[default],Vector=Metabolites[IL10],Reference=InitialConcentration"/>
             <Parameter name="Type" type="unsignedInteger" value="1"/>
             <Parameter name="log" type="bool" value="0"/>
           </ParameterGroup>
@@ -1133,7 +1121,7 @@
             <Parameter name="Maximum" type="float" value="10"/>
             <Parameter name="Minimum" type="float" value="0"/>
             <Parameter name="Number of steps" type="unsignedInteger" value="10"/>
-            <Parameter name="Object" type="cn" value="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[IFNg],Reference=InitialConcentration"/>
+            <Parameter name="Object" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Compartments[default],Vector=Metabolites[IFNg],Reference=InitialConcentration"/>
             <Parameter name="Type" type="unsignedInteger" value="1"/>
             <Parameter name="log" type="bool" value="0"/>
           </ParameterGroup>
@@ -1164,697 +1152,697 @@
         <ParameterGroup name="OptimizationItemList">
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.001"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.01779"/>
             <Parameter name="UpperBound" type="cn" value="0.1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.11105"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K3,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K3,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1328"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1115"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1922"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.136"/>
             <Parameter name="UpperBound" type="cn" value="1.5"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0635"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0728"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1493"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.19685"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.508"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.36647"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0551"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.185"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.2"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.907"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0678"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.126"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CX3CL1 degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.19115"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.05"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.13385"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1715"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.6325"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Ca2+ transport],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Ca2+ transport],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.3076"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Ca2+ transport],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Ca2+ transport],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1292"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.001"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[DAP12 activation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[DAP12 activation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0384359"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[DAP12 degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[DAP12 degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1043"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0851"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0487012"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1607"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.0115"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.08359999999999999"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.10955"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.31685"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.193"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1536"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1235"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.19115"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.349"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10 degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IL10 degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0536"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.001"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0593"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.09815"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.001"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K3,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K3,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.01589"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.1"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.66808"/>
             <Parameter name="UpperBound" type="cn" value="10"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.193"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.463615"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.169469"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.188"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.042"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IFNg degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IFNg degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.06035"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.06755"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0785"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K3,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K3,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0692"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.467575"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.151"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.07430000000000001"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.114"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.1"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.06395000000000001"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1328"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1835"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.643"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[M-CSF degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[M-CSF degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.13325"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.03888"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.049"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.49275"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.08075"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1589"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.001"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="2.428"/>
             <Parameter name="UpperBound" type="cn" value="4"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp3,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp3,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.001"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.05315"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.124465"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.59075"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.8185"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1307"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1586"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.11105"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.18755"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.5755"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.316437"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.001"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.015346"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.139789"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.1"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.481511"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.73699"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0515"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1199"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.18635"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.301"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.09544999999999999"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.001"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.06815"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.001"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.01646"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.984949"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.1"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.262"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.493"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.05"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[cAMP degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[cAMP degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="0.5"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.185"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.029"/>
             <Parameter name="UpperBound" type="cn" value="0.1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.0895"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
@@ -1941,7 +1929,7 @@
       <Problem>
         <Parameter name="SubtaskType" type="unsignedInteger" value="2"/>
         <ParameterGroup name="TargetFunctions">
-          <Parameter name="SingleObject" type="cn" value="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[Mreg],Reference=Concentration"/>
+          <Parameter name="SingleObject" type="cn" value="CN=Root,Model=LANCL2Activation,Vector=Compartments[default],Vector=Metabolites[Mreg],Reference=Concentration"/>
           <Parameter name="ObjectListType" type="unsignedInteger" value="1"/>
         </ParameterGroup>
         <ParameterGroup name="ListOfVariables">
@@ -2142,8 +2130,8 @@
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[LANCL2],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=LANCL2Activation,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=LANCL2Activation,Vector=Compartments[default],Vector=Metabolites[LANCL2],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pLANCL2]" type="Curve2D">
@@ -2154,8 +2142,8 @@
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pLANCL2],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=LANCL2Activation,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=LANCL2Activation,Vector=Compartments[default],Vector=Metabolites[pLANCL2],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
       </ListOfPlotItems>
@@ -2171,8 +2159,8 @@
   </GUI>
   <SBMLReference file="hplancl2.xml">
     <SBMLMap SBMLid="default" COPASIkey="Compartment_1"/>
-    <SBMLMap SBMLid="re18" COPASIkey="Reaction_12"/>
-    <SBMLMap SBMLid="s16" COPASIkey="Metabolite_31"/>
-    <SBMLMap SBMLid="s25" COPASIkey="Metabolite_47"/>
+    <SBMLMap SBMLid="re18" COPASIkey="Reaction_0"/>
+    <SBMLMap SBMLid="s16" COPASIkey="Metabolite_1"/>
+    <SBMLMap SBMLid="s25" COPASIkey="Metabolite_3"/>
   </SBMLReference>
 </COPASI>
