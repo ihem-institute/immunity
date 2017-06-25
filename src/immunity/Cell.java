@@ -43,8 +43,11 @@ public class Cell {
 		rabCell.putAll(CellProperties.getInstance().initRabCell);
 		tMembrane = CellProperties.getInstance().cellK.get("tMembrane");
 	}
+	@ScheduledMethod(start = 1, interval = 1)
+	public void step() {
+//		this.changeColor();
 
-	
+		}
 	// GETTERS AND SETTERS (to get and set Cell contents)
 	public static Cell getInstance() {
 		return instance;
