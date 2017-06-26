@@ -32,7 +32,7 @@ public class Cytosol {
 		//solute diffusion etc.
 		@ScheduledMethod(start = 1, interval = 1)
 		public void step() {
-	//		this.changeColor();
+			this.changeColor();
 
 			}
 		
@@ -41,7 +41,12 @@ public class Cytosol {
 			grid.moveTo(this, xcoor, ycoor);	
 			}
 		public void changeColor() {
-			this.blue = (int) (Math.random()*255);
+			double c1 = 0;
+			if (Cell.getInstance().getSolubleCell().containsKey("LANCL2")){
+			c1 = Cell.getInstance().getSolubleCell().get("LANCL2");
+			}
+			double c2 = CellProperties.getInstance().getMembraneRecycle().get("pLANCL2");
+			this.blue = (int) (c1/c2*255);
 			}
 		//GETTERS AND SETTERS
 		public double getXcoor() {

@@ -31,9 +31,7 @@ public class CellProperties {
 	public HashMap<String, String> colorRab = new HashMap<String, String>();
 	public HashMap<String, String> colorContent = new HashMap<String, String>();
 	Set<String> membraneMet = new HashSet<String>();
-	public HashMap<String, Double> getMembraneRecycle() {
-		return membraneRecycle;
-	}
+
 	Set<String> solubleMet = new HashSet<String>();
 	Set<String> rabSet = new HashSet<String>();
 	
@@ -78,5 +76,8 @@ public class CellProperties {
 	}
 	public HashMap<String, Double> getSolubleCell() {
 		return solubleCell;
+	}
+	public HashMap<String, Double> getMembraneRecycle() {
+		return membraneRecycle;
 	}
 }
