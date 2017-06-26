@@ -126,6 +126,22 @@ public class UpdateParameters {
 				}
 				break;
 			}
+			case "solubleCell": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				cellProperties.getSolubleCell().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(cellProperties.getSolubleCell());
+				}
+				double value = 	cellProperties.getSolubleCell().get("ABA");
+				Cell.getInstance().getSolubleCell().put("ABA", value);
+				break;
+			}
+			case "initPMmembraneRecycle": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				cellProperties.getMembraneRecycle().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(cellProperties.getMembraneRecycle());
+				}
+				break;
+			}
 			case "rabCompatibility": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					cellProperties.getRabCompatibility().put(b[i], Double.parseDouble(b[i+1]));

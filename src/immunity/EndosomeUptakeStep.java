@@ -35,15 +35,32 @@ public class EndosomeUptakeStep {
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitMembraneContent()
 						.get("kind1"));
-		// new endosome incorporate 10% of the recycled mHCI
-		if (PlasmaMembrane.getInstance().membraneRecycle.containsKey("mHCI")) {
-			double value = PlasmaMembrane.getInstance().membraneRecycle.get("mHCI");
-			membraneContent.put("mHCI", 0.1 * value);
-		} else
-			membraneContent.put("mHCI", 0d);
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitSolubleContent()
 						.get("kind1"));
+		
+		// new endosome incorporate 10% of the recycled mHCI
+		if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey("mHCI")) {
+			double valueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get("mHCI");
+			double value = valueIn*0.1;
+			if (value >  initOrgProp.get("area")) {value = initOrgProp.get("area");}
+			membraneContent.put("mHCI", value);
+			PlasmaMembrane.getInstance().getMembraneRecycle().put("mHCI", valueIn - value);
+		} else
+			{membraneContent.put("mHCI", 0d);}
+
+		
+		// new endosome incorporate 10% of the plasma membrane pLANCL2
+		System.out.println("PLASMA MEMBRANE "+PlasmaMembrane.getInstance().getMembraneRecycle());
+		if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey("pLANCL2")) {
+			double valueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get("pLANCL2");
+			double value = valueIn * 0.1;
+			if (value >  initOrgProp.get("area")) {value = initOrgProp.get("area");}
+			membraneContent.put("pLANCL2", value);
+			PlasmaMembrane.getInstance().getMembraneRecycle().put("pLANCL2", valueIn-value);
+		} else
+			{membraneContent.put("pLANCL2", 0d);}
+		
 		Context<Object> context = ContextUtils.getContext(endosome);
 
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,

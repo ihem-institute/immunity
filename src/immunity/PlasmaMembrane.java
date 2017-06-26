@@ -33,7 +33,7 @@ public class PlasmaMembrane {
 	public double tMembrane;// membrane that is not used in endosomes
 	public HashMap<String, Double> rabCell = new HashMap<String, Double>();// contains rabs free in cytosol
 */	
-	public HashMap<String, Double> membraneRecycle = new HashMap<String, Double>(); // contains membrane recycled 
+	public HashMap<String, Double> membraneRecycle = new HashMap<String, Double>(CellProperties.getInstance().getMembraneRecycle()); // contains membrane recycled 
 	public HashMap<String, Double> solubleRecycle = new HashMap<String, Double>();// contains soluble recycled
 
 
@@ -43,12 +43,12 @@ public class PlasmaMembrane {
 // Contains the contents that are in the cell.  It is modified by Endosome that uses and changes the cell
 // contents.	tMembranes, membrane and soluble content recycling, cytosolic Rabs	
 		CellProperties cellProperties = CellProperties.getInstance();
-		for (String sol : cellProperties.solubleMet) {
-			solubleRecycle.put(sol, 0d);
+		membraneRecycle.putAll(cellProperties.membraneRecycle);
+		System.out.println("membraneRecycle "+ membraneRecycle);
+		for (String met : cellProperties.solubleMet ){
+		solubleRecycle.put(met,  0.0);
 		}
-		for (String sol : cellProperties.membraneMet) {
-			membraneRecycle.put(sol, 0d);
-		}	
+			
 	}
 	
 	// GETTERS AND SETTERS (to get and set Cell contents)

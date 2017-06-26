@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 // This class contains the properties of the cell.  It is loaded by the CellBuilder with the same
 // CSV file  used for the inital organelles.  It is updated by the UpdateParameters class.
@@ -20,6 +21,8 @@ public class CellProperties {
 //	Cell proterties that are loaded from a csv file by the CellBuilder class
 	public HashMap<String, Double> cellK = new HashMap<String, Double>();
 	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
+	public HashMap<String, Double> solubleCell = new HashMap<String, Double>();
+	public HashMap<String, Double> membraneRecycle = new HashMap<String, Double>();
 	public HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
 	public HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
 	public HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>();
@@ -28,6 +31,9 @@ public class CellProperties {
 	public HashMap<String, String> colorRab = new HashMap<String, String>();
 	public HashMap<String, String> colorContent = new HashMap<String, String>();
 	Set<String> membraneMet = new HashSet<String>();
+	public HashMap<String, Double> getMembraneRecycle() {
+		return membraneRecycle;
+	}
 	Set<String> solubleMet = new HashSet<String>();
 	Set<String> rabSet = new HashSet<String>();
 	
@@ -69,5 +75,8 @@ public class CellProperties {
 	}
 	public Set<String> getRabSet() {
 		return rabSet;
+	}
+	public HashMap<String, Double> getSolubleCell() {
+		return solubleCell;
 	}
 }

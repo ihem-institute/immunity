@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2017-06-26 20:34:24 UTC -->
+<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2017-06-23 15:47:54 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="15" versionDevel="95" copasiSourcesModified="0">
   <ListOfFunctions>
-    <Function key="Function_13" name="Mass action (irreversible)" type="MassAction" reversible="false">
+    <Function key="Function_40" name="1 S, 1A (revmod)" type="UserDefined" reversible="unspecified">
       <MiriamAnnotation>
-<rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-   <rdf:Description rdf:about="#Function_13">
-   <CopasiMT:is rdf:resource="urn:miriam:obo.sbo:SBO:0000041" />
-   </rdf:Description>
-   </rdf:RDF>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Function_40">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2016-02-17T17:10:31Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
       </MiriamAnnotation>
-      <Comment>
-        <body xmlns="http://www.w3.org/1999/xhtml">
-<b>Mass action rate law for first order irreversible reactions</b>
-<p>
-Reaction scheme where the products are created from the reactants and the change of a product quantity is proportional to the product of reactant activities. The reaction scheme does not include any reverse process that creates the reactants from the products. The change of a product quantity is proportional to the quantity of one reactant.
-</p>
-</body>
-      </Comment>
       <Expression>
-        k1*PRODUCT&lt;substrate_i&gt;
+        Vf*S*(B+max(0,A1)^exp1/(max(0,A1)^exp1+K1^exp1))-Vr*P
       </Expression>
       <ListOfParameterDescriptions>
-        <ParameterDescription key="FunctionParameter_81" name="k1" order="0" role="constant"/>
-        <ParameterDescription key="FunctionParameter_79" name="substrate" order="1" role="substrate"/>
+        <ParameterDescription key="FunctionParameter_264" name="Vf" order="0" role="constant"/>
+        <ParameterDescription key="FunctionParameter_254" name="S" order="1" role="substrate"/>
+        <ParameterDescription key="FunctionParameter_258" name="B" order="2" role="constant"/>
+        <ParameterDescription key="FunctionParameter_266" name="A1" order="3" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_268" name="exp1" order="4" role="constant"/>
+        <ParameterDescription key="FunctionParameter_270" name="K1" order="5" role="constant"/>
+        <ParameterDescription key="FunctionParameter_272" name="Vr" order="6" role="constant"/>
+        <ParameterDescription key="FunctionParameter_274" name="P" order="7" role="product"/>
       </ListOfParameterDescriptions>
     </Function>
   </ListOfFunctions>
@@ -938,7 +940,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Metabolite>
     </ListOfMetabolites>
     <ListOfReactions>
-      <Reaction key="Reaction_0" name="LANCL2 activation" reversible="false" fast="false">
+      <Reaction key="Reaction_0" name="LANCL2 activation" reversible="true" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_0">
@@ -986,54 +988,44 @@ Reaction scheme where the products are created from the reactants and the change
         </ListOfUnsupportedAnnotations>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_5" stoichiometry="1"/>
-          <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
           <Product metabolite="Metabolite_1" stoichiometry="1"/>
-          <Product metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfProducts>
+        <ListOfModifiers>
+          <Modifier metabolite="Metabolite_3" stoichiometry="1"/>
+        </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4992" name="k1" value="1"/>
+          <Constant key="Parameter_4992" name="Vf" value="0.1328"/>
+          <Constant key="Parameter_4991" name="exp1" value="1.643"/>
+          <Constant key="Parameter_4990" name="K1" value="0.06395"/>
+          <Constant key="Parameter_4989" name="Vr" value="0.1835"/>
+          <Constant key="Parameter_4988" name="B" value="0.1"/>
         </ListOfConstants>
-        <KineticLaw function="Function_13">
+        <KineticLaw function="Function_40">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_81">
+            <CallParameter functionParameter="FunctionParameter_264">
               <SourceParameter reference="Parameter_4992"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_79">
+            <CallParameter functionParameter="FunctionParameter_254">
               <SourceParameter reference="Metabolite_5"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_258">
+              <SourceParameter reference="Parameter_4988"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_266">
               <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
-          </ListOfCallParameters>
-        </KineticLaw>
-      </Reaction>
-      <Reaction key="Reaction_1" name="LANCL2inactivation" reversible="false" fast="false">
-        <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_1">
-    <dcterms:created>
-      <rdf:Description>
-        <dcterms:W3CDTF>2017-06-26T16:17:23Z</dcterms:W3CDTF>
-      </rdf:Description>
-    </dcterms:created>
-  </rdf:Description>
-</rdf:RDF>
-        </MiriamAnnotation>
-        <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_1" stoichiometry="1"/>
-        </ListOfSubstrates>
-        <ListOfProducts>
-          <Product metabolite="Metabolite_5" stoichiometry="1"/>
-        </ListOfProducts>
-        <ListOfConstants>
-          <Constant key="Parameter_4991" name="k1" value="0.1"/>
-        </ListOfConstants>
-        <KineticLaw function="Function_13">
-          <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_81">
+            <CallParameter functionParameter="FunctionParameter_268">
               <SourceParameter reference="Parameter_4991"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_79">
+            <CallParameter functionParameter="FunctionParameter_270">
+              <SourceParameter reference="Parameter_4990"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_272">
+              <SourceParameter reference="Parameter_4989"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_274">
               <SourceParameter reference="Metabolite_1"/>
             </CallParameter>
           </ListOfCallParameters>
@@ -1049,18 +1041,19 @@ Reaction scheme where the products are created from the reactants and the change
           <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Compartments[default]" value="1" type="Compartment" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
-          <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Compartments[default],Vector=Metabolites[LANCL2]" value="6.02214179e+026" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Compartments[default],Vector=Metabolites[ABA]" value="6.02214179e+024" type="Species" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Compartments[default],Vector=Metabolites[pLANCL2]" value="6.02214179e+025" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Compartments[default],Vector=Metabolites[LANCL2]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Compartments[default],Vector=Metabolites[ABA]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Compartments[default],Vector=Metabolites[pLANCL2]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
           <ModelParameterGroup cn="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=k1" value="1" type="ReactionParameter" simulationType="fixed"/>
-          </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2inactivation],ParameterGroup=Parameters,Parameter=k1" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.1328" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.643" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=K1" value="0.06395000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.1835" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LANCL2Activation,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
@@ -1073,7 +1066,7 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="Compartment_1"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 6.02214179e+026 6.02214179e+025 6.02214179e+024 1 
+      0 0 6.02214179e+023 6.02214179e+023 1 
     </InitialState>
   </Model>
   <ListOfTasks>

@@ -79,6 +79,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 			CellProperties cellProperties = CellProperties.getInstance();
 			System.out.println(cellProperties.cellK);
 			System.out.println(cellProperties.initRabCell);
+			System.out.println(cellProperties.membraneRecycle);
 			System.out.println(cellProperties.rabCompatibility);
 			System.out.println(cellProperties.membraneMet);
 			System.out.println(cellProperties.solubleMet);
@@ -106,15 +107,9 @@ public class CellBuilder implements ContextBuilder<Object> {
 		 */
 		
 //		Cell and recycled contents.  Total initial free membrane 
-		CellProperties cellProperties = CellProperties.getInstance();
-		for (String sol : cellProperties.solubleMet) {
-			PlasmaMembrane.getInstance().getSolubleRecycle().put(sol, 0d);
-		}
-		for (String sol : cellProperties.membraneMet) {
-			PlasmaMembrane.getInstance().getMembraneRecycle().put(sol, 0d);
-		}	
-		Cell.getInstance().getRabCell().putAll(cellProperties.initRabCell);
-		Cell.getInstance().settMembrane(0d);
+		Cell cell = Cell.getInstance();
+		PlasmaMembrane plasmamembrane = PlasmaMembrane.getInstance();
+
 		// Microtubules
 
 		for (int i = 0; i < (int) 10/Cell.orgScale; i++) {
@@ -200,6 +195,20 @@ public class CellBuilder implements ContextBuilder<Object> {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getInitRabCell().put(b[i], Double.parseDouble(b[i+1]));
 //				System.out.println(cellProperties.getInitRabCell());
+				}
+				break;
+			}
+			case "initPMmembraneRecycle": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				cellProperties.getMembraneRecycle().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(cellProperties.getMembraneRecycle());
+				}
+				break;
+			}
+			case "solubleCell": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				cellProperties.getSolubleCell().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(cellProperties.getSolubleCell());
 				}
 				break;
 			}

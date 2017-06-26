@@ -39,8 +39,9 @@ public class Cell {
 	public Cell() {
 // Contains factors that are in the cell without specifying organelle or position.
 // It is modified by Endosome that uses and changes cytosolic Rabs
-// contents.	tMembranes, membrane and soluble content recycling, 	
-		rabCell.putAll(CellProperties.getInstance().initRabCell);
+// contents.	tMembranes, membrane and soluble content recycling,
+		solubleCell.putAll(CellProperties.getInstance().getSolubleCell());
+		rabCell.putAll(CellProperties.getInstance().getInitRabCell());
 		tMembrane = CellProperties.getInstance().cellK.get("tMembrane");
 	}
 	@ScheduledMethod(start = 1, interval = 1)
