@@ -45,6 +45,10 @@ public class PlasmaMembrane {
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
+		if (Math.random() < 0.001){
+			System.out.println("llamo PM LANCL2");
+			PlasmaMembraneLANCL2metabolismStep.LANCL2metabolism(PlasmaMembrane.getInstance());			
+		}
 		this.changeColor();
 
 		}
