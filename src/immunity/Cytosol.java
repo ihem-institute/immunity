@@ -22,7 +22,7 @@ public class Cytosol {
 		this.grid = gr;
 		this.xcoor = xcoor;
 		this.ycoor = ycoor;
-		this.blue = 240;
+		this.blue = 0;
 		this.cytoContent = cytoContent;
 		}
 

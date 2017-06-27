@@ -12,34 +12,27 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.util.ContextUtils;
 
 public class PlasmaMembrane {
+	private static ContinuousSpace<Object> space;
+	private static Grid<Object> grid;
+
 	// a single Cell is created
 	private static PlasmaMembrane instance;
 	static {
-		instance = new PlasmaMembrane();
+		instance = new PlasmaMembrane(space, grid);
 	}
 	
-/*//	Cell characteristics
-	public static double rcyl = CellProperties.getInstance().getCellK().get("rcyl");//10.0; // radius tubule
-//	public radius new endosome formed by uptake = radius Kind1, generally 20.0; // 
-	public static double mincyl = 6 * Math.PI * rcyl * rcyl; // surface minimum cylinder
-	// two radius large (almost a sphere)
-	public static double rIV = 15; // Internal vesicle radius
-//	public static double vEndo = 4d / 3d * Math.PI * Math.pow(rEndo, 3); //volume new endosome
-//	public static double sEndo = 4d * Math.PI * Math.pow(rEndo, 2); // surface new endosome
-	// mincyl surface = 1884.95 volume = 6283.18
-	public static double orgScale = CellProperties.getInstance().getCellK().get("orgScale");
-//  When orgScale=1 zoom =0, when > 1 zoom in , when <1 zoom out
-//	global cell and non-cell quantities
-	public double tMembrane;// membrane that is not used in endosomes
-	public HashMap<String, Double> rabCell = new HashMap<String, Double>();// contains rabs free in cytosol
-*/	
+
 	public HashMap<String, Double> membraneRecycle = new HashMap<String, Double>(CellProperties.getInstance().getMembraneRecycle()); // contains membrane recycled 
 	public HashMap<String, Double> solubleRecycle = new HashMap<String, Double>();// contains soluble recycled
-
+	public int pmcolor = 0;
+	public int red = 0;
+	public int green = 0;	
+	public int blue = 0;
+	public double c2 = CellProperties.getInstance().getMembraneRecycle().get("pLANCL2");
 
 
 	// Constructor
-	public PlasmaMembrane() {
+	public PlasmaMembrane(ContinuousSpace<Object> space, Grid<Object> grid) {
 // Contains the contents that are in the cell.  It is modified by Endosome that uses and changes the cell
 // contents.	tMembranes, membrane and soluble content recycling, cytosolic Rabs	
 		CellProperties cellProperties = CellProperties.getInstance();
@@ -50,7 +43,58 @@ public class PlasmaMembrane {
 		}
 			
 	}
+	@ScheduledMethod(start = 1, interval = 1)
+	public void step() {
+		this.changeColor();
+
+		}
 	
+	public void changeColor() {
+		double c1 = 0;
+		if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey("pLANCL2")){
+		c1 = PlasmaMembrane.getInstance().getMembraneRecycle().get("pLANCL2");
+		}
+		this.pmcolor = (int) (c1/c2*240);
+		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + pmcolor+" " + c1 +" " + c2);
+		}
+	
+/*	I will consider only red for pLANCL2.  PROBLEM, what could be the area of the PM?
+ * public double getRed() {
+		// double red = 0.0;
+		String contentPlot = CellProperties.getInstance().getColorContent()
+				.get("red");
+
+		if (membraneRecycle.containsKey(contentPlot)) {
+			double red = membraneRecycle.get(contentPlot) / area;
+			return red;
+		} else {return 0;}
+	}
+
+	public double getGreen() {
+		// double red = 0.0;
+		String contentPlot = CellProperties.getInstance().getColorContent()
+				.get("green");
+
+		if (membraneRecycle.containsKey(contentPlot)) {
+			double green = membraneRecycle.get(contentPlot) / area;
+			// System.out.println("mHCI content" + red);
+			return green;
+
+		} else  {return 0;}
+	}
+
+	public double getBlue() {
+		// double red = 0.0;
+		String contentPlot = CellProperties.getInstance().getColorContent()
+				.get("blue");
+
+		if (membraneRecycle.containsKey(contentPlot)) {
+			double blue = membraneRecycle.get(contentPlot) / area;
+			return blue;
+			} else {return 0;}
+	}
+
+*/	
 	// GETTERS AND SETTERS (to get and set Cell contents)
 	public static PlasmaMembrane getInstance() {
 		return instance;
@@ -71,6 +115,10 @@ public class PlasmaMembrane {
 
 	public HashMap<String, Double> getSolubleRecycle() {
 		return solubleRecycle;
+	}
+
+	public int getPmcolor() {
+		return pmcolor;
 	}
 
 //	public void setSolubleRecycle(HashMap<String, Double> solubleRecycle) {

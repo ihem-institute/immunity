@@ -109,6 +109,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 //		Cell and recycled contents.  Total initial free membrane 
 		Cell cell = Cell.getInstance();
 		PlasmaMembrane plasmamembrane = PlasmaMembrane.getInstance();
+		context.add(new PlasmaMembrane(space, grid));
 
 		// Microtubules
 
@@ -155,6 +156,10 @@ public class CellBuilder implements ContextBuilder<Object> {
 				double ycoor = ((Cytosol) obj).getYcoor();
 				space.moveTo(obj, xcoor, ycoor);
 				grid.moveTo(obj, (int) xcoor, (int) ycoor);
+			}
+			if (obj instanceof PlasmaMembrane) {
+				space.moveTo(obj, 24.5, 49.5);
+				grid.moveTo(obj, (int) 24, (int) 49);
 			}
 			if (obj instanceof MT) {
 				((MT) obj).changePosition((MT)obj);
