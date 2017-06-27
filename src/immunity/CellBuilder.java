@@ -108,6 +108,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 		
 //		Cell and recycled contents.  Total initial free membrane 
 		Cell cell = Cell.getInstance();
+		context.add(new Cell());
 		PlasmaMembrane plasmamembrane = PlasmaMembrane.getInstance();
 		context.add(new PlasmaMembrane(space, grid));
 

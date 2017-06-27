@@ -46,9 +46,12 @@ public class Cell {
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-//		this.changeColor();
-
+		if (Math.random() < 1){
+			System.out.println("llamo CELL MREGDIFF");
+			CellMregDiffStep.mregDiff(Cell.getInstance());			
 		}
+
+	}
 	// GETTERS AND SETTERS (to get and set Cell contents)
 	public static Cell getInstance() {
 		return instance;

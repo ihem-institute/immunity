@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2017-06-27 19:34:29 UTC -->
+<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2017-06-27 21:12:53 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="15" versionDevel="95" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -1268,20 +1268,6 @@ Reaction scheme where the products are created from the reactants and the change
         </ListOfUnsupportedAnnotations>
       </Metabolite>
       <Metabolite key="Metabolite_3" name="DAP12" simulationType="reactions" compartment="Compartment_1">
-        <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_3">
-    <dcterms:created>
-      <rdf:Description>
-        <dcterms:W3CDTF>2017-06-27T15:26:26Z</dcterms:W3CDTF>
-      </rdf:Description>
-    </dcterms:created>
-  </rdf:Description>
-</rdf:RDF>
-
-        </MiriamAnnotation>
         <ListOfUnsupportedAnnotations>
           <UnsupportedAnnotation name="http://www.sbml.org/2001/ns/celldesigner">
 <celldesigner:extension xmlns:celldesigner="http://www.sbml.org/2001/ns/celldesigner">
@@ -1344,9 +1330,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Metabolite>
       <Metabolite key="Metabolite_9" name="AC" simulationType="fixed" compartment="Compartment_1">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_9">
     <dcterms:created>
       <rdf:Description>
@@ -1355,7 +1339,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfUnsupportedAnnotations>
           <UnsupportedAnnotation name="http://www.sbml.org/2001/ns/celldesigner">
@@ -1371,9 +1354,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Metabolite>
       <Metabolite key="Metabolite_11" name="cAMP" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_11">
     <dcterms:created>
       <rdf:Description>
@@ -1382,7 +1363,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfUnsupportedAnnotations>
           <UnsupportedAnnotation name="http://www.sbml.org/2001/ns/celldesigner">
@@ -1484,9 +1464,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Metabolite>
       <Metabolite key="Metabolite_21" name="Akt" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_21">
     <dcterms:created>
       <rdf:Description>
@@ -1495,7 +1473,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfUnsupportedAnnotations>
           <UnsupportedAnnotation name="http://www.sbml.org/2001/ns/celldesigner">
@@ -1755,9 +1732,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Metabolite>
       <Metabolite key="Metabolite_47" name="ABA" simulationType="fixed" compartment="Compartment_1">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_47">
     <dcterms:created>
       <rdf:Description>
@@ -1766,7 +1741,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfUnsupportedAnnotations>
           <UnsupportedAnnotation name="http://www.sbml.org/2001/ns/celldesigner">
@@ -1894,6 +1868,19 @@ Reaction scheme where the products are created from the reactants and the change
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:53:09Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+      </Metabolite>
+      <Metabolite key="Metabolite_67" name="pLANCL2" simulationType="reactions" compartment="Compartment_1">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Metabolite_67">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2016-02-16T14:53:15Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
@@ -3227,6 +3214,97 @@ Reaction scheme where the products are created from the reactants and the change
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
+      <Reaction key="Reaction_12" name="LANCL2 activation" reversible="true" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_12">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2016-02-16T14:33:26Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfUnsupportedAnnotations>
+          <UnsupportedAnnotation name="http://www.sbml.org/2001/ns/celldesigner">
+<celldesigner:extension xmlns:celldesigner="http://www.sbml.org/2001/ns/celldesigner">
+  <celldesigner:reactionType>STATE_TRANSITION</celldesigner:reactionType>
+  <celldesigner:baseReactants>
+    <celldesigner:baseReactant species="s16" alias="sa22" />
+  </celldesigner:baseReactants>
+  <celldesigner:baseProducts>
+    <celldesigner:baseProduct species="s16" alias="sa21" />
+  </celldesigner:baseProducts>
+  <celldesigner:connectScheme connectPolicy="square" rectangleIndex="1">
+    <celldesigner:listOfLineDirection>
+      <celldesigner:lineDirection index="0" value="vertical" />
+      <celldesigner:lineDirection index="1" value="horizontal" />
+      <celldesigner:lineDirection index="2" value="vertical" />
+    </celldesigner:listOfLineDirection>
+  </celldesigner:connectScheme>
+  <celldesigner:editPoints>0.48076923076923084,-8.881784197001252E-16 0.48076923076923084,-8.881784197001252E-16</celldesigner:editPoints>
+  <celldesigner:line width="1.0" color="ff000000" />
+  <celldesigner:listOfModification>
+    <celldesigner:modification type="CATALYSIS" modifiers="s25" aliases="sa42" targetLineIndex="-1,6" editPoints="0.061148998003409005,0.3276275560600519 0.8474551325475321,0.1808699608518678">
+      <celldesigner:connectScheme connectPolicy="direct">
+        <celldesigner:listOfLineDirection>
+          <celldesigner:lineDirection index="0" value="horizontal" />
+          <celldesigner:lineDirection index="1" value="vertical" />
+          <celldesigner:lineDirection index="2" value="horizontal" />
+        </celldesigner:listOfLineDirection>
+      </celldesigner:connectScheme>
+      <celldesigner:line width="1.0" color="ff33cc00" />
+    </celldesigner:modification>
+  </celldesigner:listOfModification>
+</celldesigner:extension>
+          </UnsupportedAnnotation>
+        </ListOfUnsupportedAnnotations>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_67" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_31" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfModifiers>
+          <Modifier metabolite="Metabolite_47" stoichiometry="1"/>
+        </ListOfModifiers>
+        <ListOfConstants>
+          <Constant key="Parameter_4935" name="Vf" value="0.1328"/>
+          <Constant key="Parameter_4934" name="exp1" value="1.643"/>
+          <Constant key="Parameter_4933" name="K1" value="0.06395"/>
+          <Constant key="Parameter_4932" name="Vr" value="0.1835"/>
+          <Constant key="Parameter_4931" name="B" value="0.1"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_50">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_351">
+              <SourceParameter reference="Parameter_4935"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_347">
+              <SourceParameter reference="Metabolite_67"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_323">
+              <SourceParameter reference="Parameter_4931"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_352">
+              <SourceParameter reference="Metabolite_47"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_354">
+              <SourceParameter reference="Parameter_4934"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_356">
+              <SourceParameter reference="Parameter_4933"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_358">
+              <SourceParameter reference="Parameter_4932"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_360">
+              <SourceParameter reference="Metabolite_31"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
       <Reaction key="Reaction_13" name="M-CSF production" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -4366,6 +4444,7 @@ Reaction scheme where the products are created from the reactants and the change
           <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pFbxo7]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pFOXP1]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pIL10]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pLANCL2]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pM-CSF]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pNCOR2]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pNFAT]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
@@ -4474,6 +4553,13 @@ Reaction scheme where the products are created from the reactants and the change
             <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=exp1" value="1.136" type="ReactionParameter" simulationType="fixed"/>
             <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=Vr" value="0.1922" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.1328" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.643" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=K1" value="0.06395000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.1835" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+          </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[M-CSF production]" type="Reaction">
             <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=Vf" value="0.03888000000000001" type="ReactionParameter" simulationType="fixed"/>
             <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=exp1" value="1.049" type="ReactionParameter" simulationType="fixed"/>
@@ -4580,6 +4666,7 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="Metabolite_1"/>
       <StateTemplateVariable objectReference="Metabolite_25"/>
       <StateTemplateVariable objectReference="Metabolite_29"/>
+      <StateTemplateVariable objectReference="Metabolite_31"/>
       <StateTemplateVariable objectReference="Metabolite_33"/>
       <StateTemplateVariable objectReference="Metabolite_37"/>
       <StateTemplateVariable objectReference="Metabolite_39"/>
@@ -4594,6 +4681,7 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="Metabolite_15"/>
       <StateTemplateVariable objectReference="Metabolite_53"/>
       <StateTemplateVariable objectReference="Metabolite_73"/>
+      <StateTemplateVariable objectReference="Metabolite_67"/>
       <StateTemplateVariable objectReference="Metabolite_71"/>
       <StateTemplateVariable objectReference="Metabolite_63"/>
       <StateTemplateVariable objectReference="Metabolite_75"/>
@@ -4614,12 +4702,11 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="Metabolite_93"/>
       <StateTemplateVariable objectReference="Metabolite_97"/>
       <StateTemplateVariable objectReference="Metabolite_7"/>
-      <StateTemplateVariable objectReference="Metabolite_31"/>
       <StateTemplateVariable objectReference="Metabolite_35"/>
       <StateTemplateVariable objectReference="Compartment_1"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 6.02214179e+023 6.02214179e+023 6.02214179e+023 0 0 0 3.011070895e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 0 0 1.5055354475e+025 1 
+      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 6.02214179e+023 6.02214179e+023 6.02214179e+023 0 0 0 3.011070895e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 6.02214179e+023 0 1.5055354475e+025 1 
     </InitialState>
   </Model>
   <ListOfTasks>
@@ -6233,6 +6320,7 @@ Reaction scheme where the products are created from the reactants and the change
     <SBMLMap SBMLid="re11" COPASIkey="Reaction_9"/>
     <SBMLMap SBMLid="re12" COPASIkey="Reaction_10"/>
     <SBMLMap SBMLid="re16" COPASIkey="Reaction_11"/>
+    <SBMLMap SBMLid="re18" COPASIkey="Reaction_12"/>
     <SBMLMap SBMLid="re19" COPASIkey="Reaction_13"/>
     <SBMLMap SBMLid="re2" COPASIkey="Reaction_1"/>
     <SBMLMap SBMLid="re20" COPASIkey="Reaction_14"/>
