@@ -46,7 +46,7 @@ public class Cell {
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-		if (Math.random() < 1){
+		if (Math.random() < 0.01){
 			System.out.println("llamo CELL MREGDIFF");
 			CellMregDiffStep.mregDiff(Cell.getInstance());			
 		}
