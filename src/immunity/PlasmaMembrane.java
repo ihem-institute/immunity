@@ -47,7 +47,7 @@ public class PlasmaMembrane {
 	public void step() {
 		if (Math.random() < 0.001){
 			System.out.println("llamo PM LANCL2");
-			PlasmaMembraneLANCL2metabolismStep.LANCL2metabolism(PlasmaMembrane.getInstance());			
+		//	PlasmaMembraneLANCL2metabolismStep.LANCL2metabolism(PlasmaMembrane.getInstance());			
 		}
 		this.changeColor();
 
