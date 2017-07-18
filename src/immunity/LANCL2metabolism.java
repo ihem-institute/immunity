@@ -21,6 +21,7 @@ import org.COPASI.CReaction;
 import org.COPASI.CRegisteredObjectName;
 import org.COPASI.CReportDefinition;
 import org.COPASI.CReportDefinitionVector;
+import org.COPASI.CTimeSeries;
 import org.COPASI.CTrajectoryMethod;
 import org.COPASI.CTrajectoryProblem;
 import org.COPASI.CTrajectoryTask;
@@ -206,12 +207,12 @@ public class LANCL2metabolism {
         // get the problem for the task to set some parameters
         CTrajectoryProblem problem = (CTrajectoryProblem)trajectoryTask.getProblem();
 
-        // simulate 600 steps
-        problem.setStepNumber(400);
+        // simulate 20 steps
+        problem.setStepNumber(20);
         // start at time 0
         dataModel.getModel().setInitialTime(0.0);
-        // simulate a duration of 60 time units
-        problem.setDuration(400);
+        // simulate a duration of 10 time units
+        problem.setDuration(10);
         // tell the problem to actually generate time series data
         problem.setTimeSeriesRequested(true);
 
@@ -286,7 +287,7 @@ public class LANCL2metabolism {
             System.exit(1);
         }
 
-  /*      // look at the timeseries
+       // look at the timeseries
         CTimeSeries timeSeries = trajectoryTask.getTimeSeries();
         // we simulated 100 steps, including the initial state, this should be
         // 101 step in the timeseries
@@ -301,7 +302,12 @@ public class LANCL2metabolism {
             // here we get the particle number (at least for the species)
             // the unit of the other variables may not be particle numbers
             // the concentration data can be acquired with getConcentrationData
-            System.out.println(timeSeries.getTitle(i) + ": " + (new Double(timeSeries.getData(lastIndex, i))).toString() );
+        	for (int j =0; j < lastIndex; j = j +1 ){
+        		
+
+            System.out.println(timeSeries.getConcentrationData(j, i));
+        	}
+            System.out.println(timeSeries.getTitle(i) + ": " + (new Double(timeSeries.getConcentrationData(lastIndex, i))).toString() );
         }
         
         System.out.println("Ending ...");
@@ -312,7 +318,7 @@ public class LANCL2metabolism {
             assert metab != null;
             
             System.out.println(metab.getObjectName() + " : " + metab.getValue());
-        }*/
+        }
 	}
 	
 	public double getConcentration(String name) {
