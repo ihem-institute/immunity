@@ -52,9 +52,11 @@ public class EndosomeNewFromERStep {
 				+ solubleContent + rabContent);
 		// tMembrane = Cell.getInstance().gettMembrane();
 		tMembrane = tMembrane - initOrgProp.get("area");
-//		No substraction of RabE incorporated from cyto because it is constantly supplied
+//		I decrease cytoRabE by 90%.   It will be recovered during RabConversion where
+//		it is constantly supplied		
+		rabCellE = rabCellE * 0.1; //bud.initOrgProp.get("area");
 //		rabCellE = rabCellE - initOrgProp.get("area");
-//		rabCell.put("RabE", rabCellE);
+		rabCell.put("RabE", rabCellE);
 		Cell.getInstance().settMembrane(tMembrane);
 
 		// Cell.getInstance().setRabCell(rabCell);

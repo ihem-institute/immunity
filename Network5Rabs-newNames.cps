@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2017-07-18 13:58:04 UTC -->
+<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2017-07-19 18:58:25 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="15" versionDevel="95" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -93,7 +93,7 @@ Reaction scheme where the products are created from the reactants and the change
       </ListOfParameterDescriptions>
     </Function>
   </ListOfFunctions>
-  <Model key="Model_3" name="New Model" simulationType="time" timeUnit="s" volumeUnit="ml" areaUnit="m²" lengthUnit="m" quantityUnit="mmol" type="deterministic" avogadroConstant="6.02214179e+023">
+  <Model key="Model_3" name="Network5Rabs" simulationType="time" timeUnit="s" volumeUnit="ml" areaUnit="m²" lengthUnit="m" quantityUnit="mmol" type="deterministic" avogadroConstant="6.02214179e+023">
     <MiriamAnnotation>
 <rdf:RDF
    xmlns:dcterms="http://purl.org/dc/terms/"
@@ -139,7 +139,7 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
         <InitialExpression>
-          1-&lt;CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabBm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabCm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabEm],Reference=InitialConcentration&gt;
+          1-&lt;CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabBm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabCm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabEm],Reference=InitialConcentration&gt;
         </InitialExpression>
       </Metabolite>
       <Metabolite key="Metabolite_5" name="RabDc" simulationType="reactions" compartment="Compartment_1">
@@ -348,11 +348,11 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4992" name="kS1" value="2.40815"/>
-          <Constant key="Parameter_4991" name="kS2" value="0.801"/>
-          <Constant key="Parameter_4990" name="kS3" value="4.015"/>
-          <Constant key="Parameter_4989" name="kS4" value="0.214"/>
-          <Constant key="Parameter_4988" name="kS5" value="8.185"/>
+          <Constant key="Parameter_4992" name="kS1" value="10"/>
+          <Constant key="Parameter_4991" name="kS2" value="0.8"/>
+          <Constant key="Parameter_4990" name="kS3" value="4"/>
+          <Constant key="Parameter_4989" name="kS4" value="0.2"/>
+          <Constant key="Parameter_4988" name="kS5" value="8"/>
         </ListOfConstants>
         <KineticLaw function="Function_41">
           <ListOfCallParameters>
@@ -394,9 +394,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_1" name="Rab5Inactivation" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_1">
     <dcterms:created>
       <rdf:Description>
@@ -405,7 +403,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_7" stoichiometry="1"/>
@@ -420,11 +417,11 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_7" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4987" name="kS1" value="2.40815"/>
-          <Constant key="Parameter_4986" name="kS2" value="0.801"/>
-          <Constant key="Parameter_4985" name="kS3" value="4.015"/>
-          <Constant key="Parameter_4984" name="kS4" value="0.214"/>
-          <Constant key="Parameter_4983" name="kS5" value="8.185"/>
+          <Constant key="Parameter_4987" name="kS1" value="10"/>
+          <Constant key="Parameter_4986" name="kS2" value="0.8"/>
+          <Constant key="Parameter_4985" name="kS3" value="4"/>
+          <Constant key="Parameter_4984" name="kS4" value="0.2"/>
+          <Constant key="Parameter_4983" name="kS5" value="8"/>
         </ListOfConstants>
         <KineticLaw function="Function_40">
           <ListOfCallParameters>
@@ -463,9 +460,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_2" name="Rab5Activation" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_2">
     <dcterms:created>
       <rdf:Description>
@@ -474,7 +469,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_9" stoichiometry="1"/>
@@ -488,11 +482,11 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4982" name="kS1" value="2.40815"/>
-          <Constant key="Parameter_4981" name="kS2" value="0.801"/>
-          <Constant key="Parameter_4980" name="kS3" value="4.015"/>
-          <Constant key="Parameter_4979" name="kS4" value="0.214"/>
-          <Constant key="Parameter_4978" name="kS5" value="8.185"/>
+          <Constant key="Parameter_4982" name="kS1" value="10"/>
+          <Constant key="Parameter_4981" name="kS2" value="0.8"/>
+          <Constant key="Parameter_4980" name="kS3" value="4"/>
+          <Constant key="Parameter_4979" name="kS4" value="0.2"/>
+          <Constant key="Parameter_4978" name="kS5" value="8"/>
         </ListOfConstants>
         <KineticLaw function="Function_41">
           <ListOfCallParameters>
@@ -556,11 +550,11 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_1" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4977" name="kS1" value="2.40815"/>
-          <Constant key="Parameter_4976" name="kS2" value="0.801"/>
-          <Constant key="Parameter_4975" name="kS3" value="4.015"/>
-          <Constant key="Parameter_4974" name="kS4" value="0.214"/>
-          <Constant key="Parameter_4973" name="kS5" value="8.185"/>
+          <Constant key="Parameter_4977" name="kS1" value="10"/>
+          <Constant key="Parameter_4976" name="kS2" value="0.8"/>
+          <Constant key="Parameter_4975" name="kS3" value="4"/>
+          <Constant key="Parameter_4974" name="kS4" value="0.2"/>
+          <Constant key="Parameter_4973" name="kS5" value="8"/>
         </ListOfConstants>
         <KineticLaw function="Function_40">
           <ListOfCallParameters>
@@ -599,9 +593,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_4" name="r5Influx" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_4">
     <dcterms:created>
       <rdf:Description>
@@ -610,13 +602,12 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfProducts>
           <Product metabolite="Metabolite_9" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4972" name="v" value="1"/>
+          <Constant key="Parameter_4972" name="v" value="0.3"/>
         </ListOfConstants>
         <KineticLaw function="Function_6">
           <ListOfCallParameters>
@@ -628,9 +619,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_5" name="r5Outflux" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_5">
     <dcterms:created>
       <rdf:Description>
@@ -639,13 +628,12 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_9" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfConstants>
-          <Constant key="Parameter_4971" name="k1" value="1"/>
+          <Constant key="Parameter_4971" name="k1" value="0.3"/>
         </ListOfConstants>
         <KineticLaw function="Function_13">
           <ListOfCallParameters>
@@ -660,9 +648,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_6" name="r7Influx" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_6">
     <dcterms:created>
       <rdf:Description>
@@ -671,13 +657,12 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfProducts>
           <Product metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4970" name="v" value="1"/>
+          <Constant key="Parameter_4970" name="v" value="0.3"/>
         </ListOfConstants>
         <KineticLaw function="Function_6">
           <ListOfCallParameters>
@@ -689,9 +674,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_7" name="r7Outflux" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_7">
     <dcterms:created>
       <rdf:Description>
@@ -700,13 +683,12 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfConstants>
-          <Constant key="Parameter_4969" name="k1" value="1"/>
+          <Constant key="Parameter_4969" name="k1" value="0.3"/>
         </ListOfConstants>
         <KineticLaw function="Function_13">
           <ListOfCallParameters>
@@ -721,9 +703,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_8" name="r22Influx" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_8">
     <dcterms:created>
       <rdf:Description>
@@ -732,13 +712,12 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfProducts>
           <Product metabolite="Metabolite_13" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4968" name="v" value="1"/>
+          <Constant key="Parameter_4968" name="v" value="0.3"/>
         </ListOfConstants>
         <KineticLaw function="Function_6">
           <ListOfCallParameters>
@@ -750,9 +729,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_9" name="r22Outflux" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_9">
     <dcterms:created>
       <rdf:Description>
@@ -761,13 +738,12 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_13" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfConstants>
-          <Constant key="Parameter_4967" name="k1" value="1"/>
+          <Constant key="Parameter_4967" name="k1" value="0.3"/>
         </ListOfConstants>
         <KineticLaw function="Function_13">
           <ListOfCallParameters>
@@ -782,9 +758,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_10" name="r11Influx" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_10">
     <dcterms:created>
       <rdf:Description>
@@ -793,13 +767,12 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfProducts>
           <Product metabolite="Metabolite_15" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4966" name="v" value="1"/>
+          <Constant key="Parameter_4966" name="v" value="0.3"/>
         </ListOfConstants>
         <KineticLaw function="Function_6">
           <ListOfCallParameters>
@@ -811,9 +784,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_11" name="r11Outflux" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_11">
     <dcterms:created>
       <rdf:Description>
@@ -822,13 +793,12 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_15" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfConstants>
-          <Constant key="Parameter_4965" name="k1" value="1"/>
+          <Constant key="Parameter_4965" name="k1" value="0.3"/>
         </ListOfConstants>
         <KineticLaw function="Function_13">
           <ListOfCallParameters>
@@ -843,9 +813,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_12" name="rSinflux" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_12">
     <dcterms:created>
       <rdf:Description>
@@ -854,13 +822,12 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfProducts>
           <Product metabolite="Metabolite_17" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4964" name="v" value="1"/>
+          <Constant key="Parameter_4964" name="v" value="0.3"/>
         </ListOfConstants>
         <KineticLaw function="Function_6">
           <ListOfCallParameters>
@@ -872,9 +839,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_13" name="rSOutflux" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_13">
     <dcterms:created>
       <rdf:Description>
@@ -883,13 +848,12 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_17" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfConstants>
-          <Constant key="Parameter_4963" name="k1" value="1"/>
+          <Constant key="Parameter_4963" name="k1" value="0.3"/>
         </ListOfConstants>
         <KineticLaw function="Function_13">
           <ListOfCallParameters>
@@ -926,11 +890,11 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4962" name="kS1" value="2.40815"/>
-          <Constant key="Parameter_4961" name="kS2" value="0.801"/>
-          <Constant key="Parameter_4960" name="kS3" value="4.015"/>
-          <Constant key="Parameter_4959" name="kS4" value="0.214"/>
-          <Constant key="Parameter_4958" name="kS5" value="8.185"/>
+          <Constant key="Parameter_4962" name="kS1" value="10"/>
+          <Constant key="Parameter_4961" name="kS2" value="0.8"/>
+          <Constant key="Parameter_4960" name="kS3" value="4"/>
+          <Constant key="Parameter_4959" name="kS4" value="0.2"/>
+          <Constant key="Parameter_4958" name="kS5" value="8"/>
         </ListOfConstants>
         <KineticLaw function="Function_41">
           <ListOfCallParameters>
@@ -994,11 +958,11 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_19" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4957" name="kS1" value="2.40815"/>
-          <Constant key="Parameter_4956" name="kS2" value="0.801"/>
-          <Constant key="Parameter_4955" name="kS3" value="4.015"/>
-          <Constant key="Parameter_4954" name="kS4" value="0.214"/>
-          <Constant key="Parameter_4953" name="kS5" value="8.185"/>
+          <Constant key="Parameter_4957" name="kS1" value="10"/>
+          <Constant key="Parameter_4956" name="kS2" value="0.8"/>
+          <Constant key="Parameter_4955" name="kS3" value="4"/>
+          <Constant key="Parameter_4954" name="kS4" value="0.2"/>
+          <Constant key="Parameter_4953" name="kS5" value="8"/>
         </ListOfConstants>
         <KineticLaw function="Function_40">
           <ListOfCallParameters>
@@ -1059,11 +1023,11 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4952" name="kS1" value="2.40815"/>
-          <Constant key="Parameter_4951" name="kS2" value="0.801"/>
-          <Constant key="Parameter_4950" name="kS3" value="4.015"/>
-          <Constant key="Parameter_4949" name="kS4" value="0.214"/>
-          <Constant key="Parameter_4948" name="kS5" value="8.185"/>
+          <Constant key="Parameter_4952" name="kS1" value="10"/>
+          <Constant key="Parameter_4951" name="kS2" value="0.8"/>
+          <Constant key="Parameter_4950" name="kS3" value="4"/>
+          <Constant key="Parameter_4949" name="kS4" value="0.2"/>
+          <Constant key="Parameter_4948" name="kS5" value="8"/>
         </ListOfConstants>
         <KineticLaw function="Function_41">
           <ListOfCallParameters>
@@ -1127,11 +1091,11 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_21" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4947" name="kS1" value="2.40815"/>
-          <Constant key="Parameter_4946" name="kS2" value="0.801"/>
-          <Constant key="Parameter_4945" name="kS3" value="4.015"/>
-          <Constant key="Parameter_4944" name="kS4" value="0.214"/>
-          <Constant key="Parameter_4943" name="kS5" value="8.185"/>
+          <Constant key="Parameter_4947" name="kS1" value="10"/>
+          <Constant key="Parameter_4946" name="kS2" value="0.8"/>
+          <Constant key="Parameter_4945" name="kS3" value="4"/>
+          <Constant key="Parameter_4944" name="kS4" value="0.2"/>
+          <Constant key="Parameter_4943" name="kS5" value="8"/>
         </ListOfConstants>
         <KineticLaw function="Function_40">
           <ListOfCallParameters>
@@ -1170,9 +1134,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_18" name="RabSActivation" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_18">
     <dcterms:created>
       <rdf:Description>
@@ -1181,7 +1143,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_17" stoichiometry="1"/>
@@ -1195,11 +1156,11 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4942" name="kS1" value="2.40815"/>
-          <Constant key="Parameter_4941" name="kS2" value="0.801"/>
-          <Constant key="Parameter_4940" name="kS3" value="4.015"/>
-          <Constant key="Parameter_4939" name="kS4" value="0.214"/>
-          <Constant key="Parameter_4938" name="kS5" value="8.185"/>
+          <Constant key="Parameter_4942" name="kS1" value="10"/>
+          <Constant key="Parameter_4941" name="kS2" value="0.8"/>
+          <Constant key="Parameter_4940" name="kS3" value="4"/>
+          <Constant key="Parameter_4939" name="kS4" value="0.2"/>
+          <Constant key="Parameter_4938" name="kS5" value="8"/>
         </ListOfConstants>
         <KineticLaw function="Function_41">
           <ListOfCallParameters>
@@ -1241,9 +1202,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_19" name="RabSInactivation" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_19">
     <dcterms:created>
       <rdf:Description>
@@ -1252,7 +1211,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_23" stoichiometry="1"/>
@@ -1266,11 +1224,11 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_23" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4937" name="kS1" value="2.40815"/>
-          <Constant key="Parameter_4936" name="kS2" value="0.801"/>
-          <Constant key="Parameter_4935" name="kS3" value="4.015"/>
-          <Constant key="Parameter_4934" name="kS4" value="0.214"/>
-          <Constant key="Parameter_4933" name="kS5" value="8.185"/>
+          <Constant key="Parameter_4937" name="kS1" value="10"/>
+          <Constant key="Parameter_4936" name="kS2" value="0.8"/>
+          <Constant key="Parameter_4935" name="kS3" value="4"/>
+          <Constant key="Parameter_4934" name="kS4" value="0.2"/>
+          <Constant key="Parameter_4933" name="kS5" value="8"/>
         </ListOfConstants>
         <KineticLaw function="Function_40">
           <ListOfCallParameters>
@@ -1311,376 +1269,376 @@ Reaction scheme where the products are created from the reactants and the change
     <ListOfModelParameterSets activeSet="ModelParameterSet_1">
       <ModelParameterSet key="ModelParameterSet_1" name="Initial State">
         <ModelParameterGroup cn="String=Initial Time" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model" value="0" type="Model" simulationType="time"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs" value="0" type="Model" simulationType="time"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Compartment Sizes" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment]" value="1" type="Compartment" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment]" value="1" type="Compartment" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabDm]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[Rab0]" value="5.185064081189988e+019" type="Species" simulationType="reactions">
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabDm]" value="8.430998506000001e+018" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[Rab0]" value="1.138184798309995e+019" type="Species" simulationType="reactions">
             <InitialExpression>
               1-&lt;CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabBm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabCm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabEm],Reference=InitialConcentration&gt;
             </InitialExpression>
           </ModelParameter>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabDc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabAm]" value="2.504608770461002e+020" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[zero]" value="0" type="Species" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabBc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabCc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabEc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabBm]" value="2.99902661142e+020" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabCm]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabEm]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabDc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabAm]" value="2.656366743569e+020" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[zero]" value="0" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabBc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabCc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabEc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabBm]" value="3.16764658154e+020" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabCm]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabEm]" value="0" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Values[kS1]" value="2.40815" type="ModelValue" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Values[kS2]" value="0.8010000000000001" type="ModelValue" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Values[kS3]" value="4.015" type="ModelValue" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Values[kS4]" value="0.214" type="ModelValue" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Values[kS5]" value="8.184999999999999" type="ModelValue" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Values[kInflux]" value="1" type="ModelValue" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Values[kOutflux]" value="1" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Values[kS1]" value="10" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Values[kS2]" value="0.8" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Values[kS3]" value="4" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Values[kS4]" value="0.2" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Values[kS5]" value="8" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Values[kInflux]" value="0.3" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Values[kOutflux]" value="0.3" type="ModelValue" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[Rab7Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab7Activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS1" value="10" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS1],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS1],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS2" value="0.8" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS2],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS2],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS3" value="4" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS3],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS3],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS4" value="0.2" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS4],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS4],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS5" value="8" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS5],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-          </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[Rab5Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS1],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS2],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS3],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS4],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS5],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS5],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[Rab5Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab5Inactivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="10" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS1],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS1],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS2],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS2],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS3" value="4" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS3],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS3],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS4" value="0.2" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS4],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS4],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS5" value="8" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS5],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-          </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[Rab7Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS1],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS2],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS3],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS4],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS5],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS5],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[r5Influx]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[r5Influx],ParameterGroup=Parameters,Parameter=v" value="1" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab5Activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS1" value="10" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kInflux],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS1],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS2" value="0.8" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS2],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS3" value="4" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS3],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS4" value="0.2" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS4],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS5" value="8" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS5],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[r5Outflux]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[r5Outflux],ParameterGroup=Parameters,Parameter=k1" value="1" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab7Inactivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="10" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kOutflux],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS1],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS2],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS3" value="4" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS3],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS4" value="0.2" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS4],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS5" value="8" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS5],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[r7Influx]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[r7Influx],ParameterGroup=Parameters,Parameter=v" value="1" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r5Influx]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r5Influx],ParameterGroup=Parameters,Parameter=v" value="0.3" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kInflux],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kInflux],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[r7Outflux]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[r7Outflux],ParameterGroup=Parameters,Parameter=k1" value="1" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r5Outflux]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r5Outflux],ParameterGroup=Parameters,Parameter=k1" value="0.3" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kOutflux],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kOutflux],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[r22Influx]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[r22Influx],ParameterGroup=Parameters,Parameter=v" value="1" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r7Influx]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r7Influx],ParameterGroup=Parameters,Parameter=v" value="0.3" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kInflux],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kInflux],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[r22Outflux]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[r22Outflux],ParameterGroup=Parameters,Parameter=k1" value="1" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r7Outflux]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r7Outflux],ParameterGroup=Parameters,Parameter=k1" value="0.3" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kOutflux],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kOutflux],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[r11Influx]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[r11Influx],ParameterGroup=Parameters,Parameter=v" value="1" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r22Influx]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r22Influx],ParameterGroup=Parameters,Parameter=v" value="0.3" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kInflux],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kInflux],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[r11Outflux]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[r11Outflux],ParameterGroup=Parameters,Parameter=k1" value="1" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r22Outflux]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r22Outflux],ParameterGroup=Parameters,Parameter=k1" value="0.3" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kOutflux],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kOutflux],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[rSinflux]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[rSinflux],ParameterGroup=Parameters,Parameter=v" value="1" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r11Influx]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r11Influx],ParameterGroup=Parameters,Parameter=v" value="0.3" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kInflux],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kInflux],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[rSOutflux]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[rSOutflux],ParameterGroup=Parameters,Parameter=k1" value="1" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r11Outflux]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[r11Outflux],ParameterGroup=Parameters,Parameter=k1" value="0.3" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kOutflux],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kOutflux],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[Rab22Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[rSinflux]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[rSinflux],ParameterGroup=Parameters,Parameter=v" value="0.3" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS1],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS2],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS3],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS4],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS5],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kInflux],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[Rab22Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[rSOutflux]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[rSOutflux],ParameterGroup=Parameters,Parameter=k1" value="0.3" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS1],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS2],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS3],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS4],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS5],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kOutflux],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[Rab11Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab22Activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS1" value="10" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS1],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS1],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS2" value="0.8" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS2],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS2],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS3" value="4" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS3],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS3],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS4" value="0.2" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS4],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS4],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS5" value="8" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS5],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-          </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[Rab11Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS1],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS2],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS3],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS4],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS5],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS5],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RabSActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab22Inactivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="10" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS1],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS1],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS2],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS2],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS3" value="4" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS3],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS3],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS4" value="0.2" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS4],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS4],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS5" value="8" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS5],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS5],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RabSInactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab11Activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS1" value="10" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS1],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS1],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS2" value="0.8" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS2],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS2],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS3" value="4" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS3],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS3],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS4" value="0.2" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS4],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS4],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS5" value="8" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[kS5],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS5],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab11Inactivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="10" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS1],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS2],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS3" value="4" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS3],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS4" value="0.2" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS4],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS5" value="8" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS5],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[RabSActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS1" value="10" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS1],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS2],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS3" value="4" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS3],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS4" value="0.2" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS4],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS5" value="8" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS5],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=Network5Rabs,Vector=Reactions[RabSInactivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS1" value="10" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS1],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS2],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS3" value="4" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS3],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS4" value="0.2" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS4],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=Network5Rabs,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS5" value="8" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=Network5Rabs,Vector=Values[kS5],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
@@ -1711,7 +1669,7 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="ModelValue_6"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 5.185064081189988e+019 0 0 0 0 0 2.504608770461002e+020 0 0 0 2.99902661142e+020 0 1 2.40815 0.8010000000000001 4.015 0.214 8.184999999999999 1 1 
+      0 1.138184798309995e+019 0 0 0 0 0 2.656366743569e+020 8.430998506000001e+018 0 0 3.16764658154e+020 0 1 10 0.8 4 0.2 8 0.3 0.3 
     </InitialState>
   </Model>
   <ListOfTasks>
@@ -1736,8 +1694,8 @@ Reaction scheme where the products are created from the reactants and the change
     <Task key="Task_15" name="Time-Course" type="timeCourse" scheduled="false" updateModel="false">
       <Problem>
         <Parameter name="StepNumber" type="unsignedInteger" value="5000"/>
-        <Parameter name="StepSize" type="float" value="0.2"/>
-        <Parameter name="Duration" type="float" value="1000"/>
+        <Parameter name="StepSize" type="float" value="0.02"/>
+        <Parameter name="Duration" type="float" value="100"/>
         <Parameter name="TimeSeriesRequested" type="bool" value="1"/>
         <Parameter name="OutputStartTime" type="float" value="0"/>
         <Parameter name="Output Event" type="bool" value="0"/>
@@ -1758,7 +1716,7 @@ Reaction scheme where the products are created from the reactants and the change
             <Parameter name="Maximum" type="float" value="0.1"/>
             <Parameter name="Minimum" type="float" value="0"/>
             <Parameter name="Number of steps" type="unsignedInteger" value="10"/>
-            <Parameter name="Object" type="cn" value="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=InitialConcentration"/>
+            <Parameter name="Object" type="cn" value="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=InitialConcentration"/>
             <Parameter name="Type" type="unsignedInteger" value="1"/>
             <Parameter name="log" type="bool" value="0"/>
           </ParameterGroup>
@@ -1766,7 +1724,7 @@ Reaction scheme where the products are created from the reactants and the change
             <Parameter name="Maximum" type="float" value="1"/>
             <Parameter name="Minimum" type="float" value="0.9"/>
             <Parameter name="Number of steps" type="unsignedInteger" value="10"/>
-            <Parameter name="Object" type="cn" value="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=InitialConcentration"/>
+            <Parameter name="Object" type="cn" value="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=InitialConcentration"/>
             <Parameter name="Type" type="unsignedInteger" value="1"/>
             <Parameter name="log" type="bool" value="0"/>
           </ParameterGroup>
@@ -2075,8 +2033,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[R0]" type="Curve2D">
@@ -2087,8 +2045,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[Rab0],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[Rab0],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[r7]" type="Curve2D">
@@ -2099,8 +2057,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabDc],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabDc],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[R5]" type="Curve2D">
@@ -2111,8 +2069,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[r5]" type="Curve2D">
@@ -2123,8 +2081,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabAc],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabAc],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[r22]" type="Curve2D">
@@ -2135,8 +2093,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabBc],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabBc],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[r11]" type="Curve2D">
@@ -2147,8 +2105,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabCc],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabCc],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[rS]" type="Curve2D">
@@ -2159,8 +2117,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabEc],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabEc],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[R22]" type="Curve2D">
@@ -2171,8 +2129,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabBm],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabBm],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[R11]" type="Curve2D">
@@ -2183,8 +2141,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabCm],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabCm],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[RS]" type="Curve2D">
@@ -2195,8 +2153,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabEm],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabEm],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
       </ListOfPlotItems>
@@ -2204,14 +2162,14 @@ Reaction scheme where the products are created from the reactants and the change
   </ListOfPlots>
   <GUI>
     <ListOfSliders>
-      <Slider key="Slider_0" associatedEntityKey="Task_15" objectCN="CN=Root,Model=New Model,Vector=Values[kS2],Reference=InitialValue" objectType="float" objectValue="0.801" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=New Model,Vector=Values[kS4],Reference=InitialValue" objectType="float" objectValue="0.214" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=New Model,Vector=Values[kS3],Reference=InitialValue" objectType="float" objectValue="4.015" minValue="2.5" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=New Model,Vector=Values[kS5],Reference=InitialValue" objectType="float" objectValue="8.185" minValue="2.5" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_4" associatedEntityKey="Task_15" objectCN="CN=Root,Model=New Model,Vector=Values[kS1],Reference=InitialValue" objectType="float" objectValue="2.40815" minValue="0.05" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_5" associatedEntityKey="Task_15" objectCN="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=InitialConcentration" objectType="float" objectValue="0.4159" minValue="0.1" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_6" associatedEntityKey="Task_15" objectCN="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_7" associatedEntityKey="Task_15" objectCN="CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabBm],Reference=InitialConcentration" objectType="float" objectValue="0.498" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_0" associatedEntityKey="Task_15" objectCN="CN=Root,Model=Network5Rabs,Vector=Values[kS2],Reference=InitialValue" objectType="float" objectValue="0.8" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=Network5Rabs,Vector=Values[kS4],Reference=InitialValue" objectType="float" objectValue="0.2" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=Network5Rabs,Vector=Values[kS3],Reference=InitialValue" objectType="float" objectValue="4" minValue="2.5" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=Network5Rabs,Vector=Values[kS5],Reference=InitialValue" objectType="float" objectValue="8" minValue="0.8" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_4" associatedEntityKey="Task_15" objectCN="CN=Root,Model=Network5Rabs,Vector=Values[kS1],Reference=InitialValue" objectType="float" objectValue="10" minValue="0.05" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_5" associatedEntityKey="Task_15" objectCN="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=InitialConcentration" objectType="float" objectValue="0.4411" minValue="0.1" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_6" associatedEntityKey="Task_15" objectCN="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=InitialConcentration" objectType="float" objectValue="0.014" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_7" associatedEntityKey="Task_15" objectCN="CN=Root,Model=Network5Rabs,Vector=Compartments[compartment],Vector=Metabolites[RabBm],Reference=InitialConcentration" objectType="float" objectValue="0.526" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
     </ListOfSliders>
   </GUI>
 </COPASI>

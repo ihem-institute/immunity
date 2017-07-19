@@ -119,7 +119,7 @@ public class Endosome {
 		EndosomeNewFromERStep.newFromEr(this);
 		EndosomeMove.changeDirection(this);
 		EndosomeMove.moveTowards(this);
-		//EndosomeTetherStep.tether(this);
+		EndosomeTetherStep.tether(this);
 		EndosomeInternalVesicleStep.internalVesicle(this);
 		EndosomeFusionStep.fusion(this);
 		EndosomeSplitStep.split(this);

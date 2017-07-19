@@ -82,6 +82,7 @@ public class EndosomeRabConversionStep {
 			sum = sum + endosome.rabContent.get(rab);
 		}
 		double Rab0 = (endosome.area - sum)/endosome.area;
+		if (Rab0>0) Rab0=0;
 		return Rab0;
 	}
 

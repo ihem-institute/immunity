@@ -73,9 +73,10 @@ public class EndosomeUptakeStep {
 				+ solubleContent + rabContent);
 		// tMembrane = Cell.getInstance().gettMembrane();
 		tMembrane = tMembrane - bud.initOrgProp.get("area");
-//		I will not decrease cytoRabA because the uptake since it is constantly supply		
-//		rabCellA = rabCellA - bud.initOrgProp.get("area");
-//		rabCell.put("RabA", rabCellA);
+//		I decrease cytoRabA by 90%.   It will be recovered during RabConversion where
+//		it is constantly supplied		
+		rabCellA = rabCellA * 0.1; //bud.initOrgProp.get("area");
+		rabCell.put("RabA", rabCellA);
 		Cell.getInstance().settMembrane(tMembrane);
 
 		// Cell.getInstance().setRabCell(rabCell);
