@@ -10,14 +10,16 @@ public class EndosomeRabConversionStep {
 		RabConversion rabConversion = RabConversion.getInstance();
 
 		Set<String> metabolites = RabConversion.getInstance().getMetabolites();
-
+// New strategy for Rab conversion.  The Rabs in endosomes are passed divided by the area 
+//(about 1 mM as calculated elsewhere). The Rabs in cytosol are in mM and are not transformed
 		for (String met : metabolites) {
 			if (met.endsWith("m")) {
 				String Rab = met.substring(0, 4);
 				if (endosome.rabContent.containsKey(Rab)) {
-					double metValue = Math.round
-							(endosome.rabContent.get(Rab) * 1000) / 1000;
+					double metValue = (Math.round
+							(endosome.rabContent.get(Rab))) / endosome.area;
 					rabConversion.setInitialConcentration(met, metValue);
+					System.out.println("COPASI INITIAL MEMBRANE " + met + " " + metValue);
 
 				} else {
 					rabConversion.setInitialConcentration(met, 0.0);
@@ -28,10 +30,10 @@ public class EndosomeRabConversionStep {
 			if (met.endsWith("c")) {
 				String Rab = met.substring(0, 4);
 				if (Cell.getInstance().getRabCell().containsKey(Rab)) {
-					double metValue = Math.round(Cell.getInstance()
-							.getRabCell().get(Rab) * 1000) / 1000;
+					double metValue = (Math.round(Cell.getInstance()
+							.getRabCell().get(Rab) * 1000)) / 1000;
 					rabConversion.setInitialConcentration(met, metValue);
-					// System.out.println("COPASI INITIAL " + met
+					System.out.println("COPASI INITIAL CYTOSOL " + met + " " + metValue);
 					// + Cell.getInstance().rabCell.get(Rab));
 				} else {
 					rabConversion.setInitialConcentration(met, 0.0);
@@ -39,19 +41,21 @@ public class EndosomeRabConversionStep {
 
 				}
 			}
-			if (met.equals("area"))
-				rabConversion.setInitialConcentration(met, endosome.area);
+			if (met.equals("zero"))
+				rabConversion.setInitialConcentration(met, 0);
 			if (met.equals("Rab0"))
 				rabConversion.setInitialConcentration(met, Rab0(endosome));
 		}
 
 		System.out.println("COPASI INITIAL  membrane " + endosome.rabContent
 				+ " soluble " + Cell.getInstance().getRabCell());
+		
 		rabConversion.runTimeCourse();
+		
 		for (String met : metabolites) {
 			if (met.endsWith("m")) {
 				String Rab = met.substring(0, 4);
-				double metValue = rabConversion.getConcentration(met);
+				double metValue = rabConversion.getConcentration(met)*endosome.area;
 				endosome.rabContent.put(Rab, metValue);
 				// System.out.println("COPASI FINAL " + met +
 				// rabContent.get(Rab));
@@ -77,7 +81,7 @@ public class EndosomeRabConversionStep {
 		for (String rab : endosome.rabContent.keySet()) {
 			sum = sum + endosome.rabContent.get(rab);
 		}
-		double Rab0 = endosome.area - sum;
+		double Rab0 = (endosome.area - sum)/endosome.area;
 		return Rab0;
 	}
 

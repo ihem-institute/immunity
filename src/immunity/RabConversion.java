@@ -43,7 +43,7 @@ public class RabConversion {
 		return instance;
 	}
 	
-	protected RabConversion() {
+	protected RabConversion(){
 		System.out.println("Instantiation Once");
 		
 		// to defeat instantiation
@@ -207,11 +207,11 @@ public class RabConversion {
         CTrajectoryProblem problem = (CTrajectoryProblem)trajectoryTask.getProblem();
 
         // simulate 600 steps
-        problem.setStepNumber(400);
+        problem.setStepNumber(50);
         // start at time 0
         dataModel.getModel().setInitialTime(0.0);
         // simulate a duration of 60 time units
-        problem.setDuration(400);
+        problem.setDuration(50);
         // tell the problem to actually generate time series data
         problem.setTimeSeriesRequested(true);
 
@@ -254,7 +254,7 @@ public class RabConversion {
 		try
         {
             // now we run the actual trajectory
-        	System.out.println("trajectoryTask.process RabConversion");
+        	System.out.println("trajectoryTask.process RABS_CONVERSION"+ dataModel.getObjectDisplayName());
             result=trajectoryTask.process(true);
             processError = trajectoryTask.getProcessError();
             processWarning = trajectoryTask.getProcessWarning();
@@ -324,7 +324,7 @@ public class RabConversion {
 			CMetab m = nameMetabs.get(name);
 			d = m.getConcentration();
 		}
-		//System.out.println("COPASI       "+ name + d);
+		//System.out.println("FINAL ANTPR       "+ name + d);
 		return d;
 	}
 	public Set<String> getMetabolites(){

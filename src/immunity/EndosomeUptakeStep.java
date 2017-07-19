@@ -25,7 +25,8 @@ public class EndosomeUptakeStep {
 		if (!rabCell.containsKey("RabA"))
 			return;
 		double rabCellA = rabCell.get("RabA");
-		if (tMembrane < initOrgProp.get("area") || rabCellA < initOrgProp.get("area")) {
+// cytosolic RabA is always provided by the -> RabAc reaction.  Only in a KD will go down
+		if (tMembrane < initOrgProp.get("area") || rabCellA < 0.1) {
 			return;
 		}
 
@@ -72,8 +73,9 @@ public class EndosomeUptakeStep {
 				+ solubleContent + rabContent);
 		// tMembrane = Cell.getInstance().gettMembrane();
 		tMembrane = tMembrane - bud.initOrgProp.get("area");
-		rabCellA = rabCellA - bud.initOrgProp.get("area");
-		rabCell.put("RabA", rabCellA);
+//		I will not decrease cytoRabA because the uptake since it is constantly supply		
+//		rabCellA = rabCellA - bud.initOrgProp.get("area");
+//		rabCell.put("RabA", rabCellA);
 		Cell.getInstance().settMembrane(tMembrane);
 
 		// Cell.getInstance().setRabCell(rabCell);

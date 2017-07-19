@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2017-06-27 19:34:29 UTC -->
+<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2017-07-19 00:29:22 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="15" versionDevel="95" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -401,7 +401,7 @@ Reaction scheme where the products are created from the reactants and the change
       </ListOfParameterDescriptions>
     </Function>
   </ListOfFunctions>
-  <Model key="Model_3" name="NoName" simulationType="time" timeUnit="s" volumeUnit="l" areaUnit="m²" lengthUnit="m" quantityUnit="mol" type="deterministic" avogadroConstant="6.02214179e+023">
+  <Model key="Model_3" name="MregDiff" simulationType="time" timeUnit="s" volumeUnit="l" areaUnit="m²" lengthUnit="m" quantityUnit="mol" type="deterministic" avogadroConstant="6.02214179e+023">
     <MiriamAnnotation>
 <rdf:RDF
    xmlns:dcterms="http://purl.org/dc/terms/"
@@ -1269,9 +1269,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Metabolite>
       <Metabolite key="Metabolite_3" name="DAP12" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_3">
     <dcterms:created>
       <rdf:Description>
@@ -1280,7 +1278,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfUnsupportedAnnotations>
           <UnsupportedAnnotation name="http://www.sbml.org/2001/ns/celldesigner">
@@ -1344,9 +1341,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Metabolite>
       <Metabolite key="Metabolite_9" name="AC" simulationType="fixed" compartment="Compartment_1">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_9">
     <dcterms:created>
       <rdf:Description>
@@ -1355,7 +1350,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfUnsupportedAnnotations>
           <UnsupportedAnnotation name="http://www.sbml.org/2001/ns/celldesigner">
@@ -1371,9 +1365,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Metabolite>
       <Metabolite key="Metabolite_11" name="cAMP" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_11">
     <dcterms:created>
       <rdf:Description>
@@ -1382,7 +1374,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfUnsupportedAnnotations>
           <UnsupportedAnnotation name="http://www.sbml.org/2001/ns/celldesigner">
@@ -1484,9 +1475,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Metabolite>
       <Metabolite key="Metabolite_21" name="Akt" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_21">
     <dcterms:created>
       <rdf:Description>
@@ -1495,7 +1484,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfUnsupportedAnnotations>
           <UnsupportedAnnotation name="http://www.sbml.org/2001/ns/celldesigner">
@@ -1755,9 +1743,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Metabolite>
       <Metabolite key="Metabolite_47" name="ABA" simulationType="fixed" compartment="Compartment_1">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_47">
     <dcterms:created>
       <rdf:Description>
@@ -1766,7 +1752,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfUnsupportedAnnotations>
           <UnsupportedAnnotation name="http://www.sbml.org/2001/ns/celldesigner">
@@ -1900,10 +1885,10 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_69" name="pM-CSF" simulationType="fixed" compartment="Compartment_1">
+      <Metabolite key="Metabolite_67" name="pM-CSF" simulationType="fixed" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_69">
+  <rdf:Description rdf:about="#Metabolite_67">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:53:18Z</dcterms:W3CDTF>
@@ -1913,10 +1898,10 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_71" name="pNCOR2" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_69" name="pNCOR2" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_71">
+  <rdf:Description rdf:about="#Metabolite_69">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:53:21Z</dcterms:W3CDTF>
@@ -1926,10 +1911,10 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_73" name="pNFAT" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_71" name="pNFAT" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_73">
+  <rdf:Description rdf:about="#Metabolite_71">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:53:23Z</dcterms:W3CDTF>
@@ -1939,10 +1924,10 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_75" name="pNFkB" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_73" name="pNFkB" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_75">
+  <rdf:Description rdf:about="#Metabolite_73">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:53:26Z</dcterms:W3CDTF>
@@ -1952,10 +1937,10 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_77" name="pPKA" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_75" name="pPKA" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_77">
+  <rdf:Description rdf:about="#Metabolite_75">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:53:30Z</dcterms:W3CDTF>
@@ -1965,10 +1950,10 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_79" name="pTraf2" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_77" name="pTraf2" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_79">
+  <rdf:Description rdf:about="#Metabolite_77">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:53:33Z</dcterms:W3CDTF>
@@ -1978,10 +1963,10 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_81" name="pIL10R" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_79" name="pIL10R" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_81">
+  <rdf:Description rdf:about="#Metabolite_79">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T16:17:40Z</dcterms:W3CDTF>
@@ -1991,10 +1976,10 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_83" name="pCSF1R" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_81" name="pCSF1R" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_83">
+  <rdf:Description rdf:about="#Metabolite_81">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T16:17:36Z</dcterms:W3CDTF>
@@ -2004,12 +1989,12 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_85" name="Mono" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_83" name="Mono" simulationType="reactions" compartment="Compartment_1">
       </Metabolite>
-      <Metabolite key="Metabolite_87" name="KLF4" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_85" name="KLF4" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_87">
+  <rdf:Description rdf:about="#Metabolite_85">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-17T17:39:01Z</dcterms:W3CDTF>
@@ -2019,10 +2004,10 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_89" name="pKLF4" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_87" name="pKLF4" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_89">
+  <rdf:Description rdf:about="#Metabolite_87">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-17T17:38:59Z</dcterms:W3CDTF>
@@ -2032,10 +2017,10 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_91" name="CX3CL1" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_89" name="CX3CL1" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_91">
+  <rdf:Description rdf:about="#Metabolite_89">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-17T17:39:10Z</dcterms:W3CDTF>
@@ -2045,10 +2030,10 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_93" name="pCX3CL1" simulationType="fixed" compartment="Compartment_1">
+      <Metabolite key="Metabolite_91" name="pCX3CL1" simulationType="fixed" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_93">
+  <rdf:Description rdf:about="#Metabolite_91">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-17T17:38:47Z</dcterms:W3CDTF>
@@ -2058,10 +2043,10 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_95" name="IFNg" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_93" name="IFNg" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_95">
+  <rdf:Description rdf:about="#Metabolite_93">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-04-04T16:57:14Z</dcterms:W3CDTF>
@@ -2071,10 +2056,10 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_97" name="pIFNg" simulationType="fixed" compartment="Compartment_1">
+      <Metabolite key="Metabolite_95" name="pIFNg" simulationType="fixed" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_97">
+  <rdf:Description rdf:about="#Metabolite_95">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-04-04T16:56:54Z</dcterms:W3CDTF>
@@ -2394,7 +2379,7 @@ Reaction scheme where the products are created from the reactants and the change
           </UnsupportedAnnotation>
         </ListOfUnsupportedAnnotations>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_77" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_75" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
           <Product metabolite="Metabolite_13" stoichiometry="1"/>
@@ -2415,7 +2400,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Parameter_4982"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_347">
-              <SourceParameter reference="Metabolite_77"/>
+              <SourceParameter reference="Metabolite_75"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_323">
               <SourceParameter reference="Parameter_4978"/>
@@ -2616,7 +2601,7 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_17" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfModifiers>
-          <Modifier metabolite="Metabolite_95" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_93" stoichiometry="1"/>
           <Modifier metabolite="Metabolite_15" stoichiometry="1"/>
           <Modifier metabolite="Metabolite_43" stoichiometry="1"/>
           <Modifier metabolite="Metabolite_33" stoichiometry="1"/>
@@ -2644,7 +2629,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Parameter_4969"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_288">
-              <SourceParameter reference="Metabolite_95"/>
+              <SourceParameter reference="Metabolite_93"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_296">
               <SourceParameter reference="Metabolite_15"/>
@@ -2702,13 +2687,13 @@ Reaction scheme where the products are created from the reactants and the change
           </UnsupportedAnnotation>
         </ListOfUnsupportedAnnotations>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_81" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_79" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
           <Product metabolite="Metabolite_19" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfModifiers>
-          <Modifier metabolite="Metabolite_95" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_93" stoichiometry="1"/>
           <Modifier metabolite="Metabolite_17" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
@@ -2733,7 +2718,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Parameter_4965"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_367">
-              <SourceParameter reference="Metabolite_95"/>
+              <SourceParameter reference="Metabolite_93"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_380">
               <SourceParameter reference="Parameter_4960"/>
@@ -2810,7 +2795,7 @@ Reaction scheme where the products are created from the reactants and the change
           </UnsupportedAnnotation>
         </ListOfUnsupportedAnnotations>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_73" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_71" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
           <Product metabolite="Metabolite_29" stoichiometry="1"/>
@@ -2833,7 +2818,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Parameter_4958"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_357">
-              <SourceParameter reference="Metabolite_73"/>
+              <SourceParameter reference="Metabolite_71"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_353">
               <SourceParameter reference="Parameter_4954"/>
@@ -2909,7 +2894,7 @@ Reaction scheme where the products are created from the reactants and the change
           </UnsupportedAnnotation>
         </ListOfUnsupportedAnnotations>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_83" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_81" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
           <Product metabolite="Metabolite_25" stoichiometry="1"/>
@@ -2931,7 +2916,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Parameter_4952"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_262">
-              <SourceParameter reference="Metabolite_83"/>
+              <SourceParameter reference="Metabolite_81"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_267">
               <SourceParameter reference="Metabolite_43"/>
@@ -3012,7 +2997,7 @@ Reaction scheme where the products are created from the reactants and the change
         </ListOfProducts>
         <ListOfModifiers>
           <Modifier metabolite="Metabolite_29" stoichiometry="1"/>
-          <Modifier metabolite="Metabolite_91" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_89" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
           <Constant key="Parameter_4947" name="K1" value="0.19115"/>
@@ -3036,7 +3021,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Parameter_4947"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_355">
-              <SourceParameter reference="Metabolite_91"/>
+              <SourceParameter reference="Metabolite_89"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_374">
               <SourceParameter reference="Parameter_4943"/>
@@ -3227,10 +3212,10 @@ Reaction scheme where the products are created from the reactants and the change
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_13" name="M-CSF production" reversible="false" fast="false">
+      <Reaction key="Reaction_12" name="M-CSF production" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_13">
+  <rdf:Description rdf:about="#Reaction_12">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:33:39Z</dcterms:W3CDTF>
@@ -3275,7 +3260,7 @@ Reaction scheme where the products are created from the reactants and the change
           </UnsupportedAnnotation>
         </ListOfUnsupportedAnnotations>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_69" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_67" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
           <Product metabolite="Metabolite_23" stoichiometry="1"/>
@@ -3284,38 +3269,38 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_29" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4930" name="Vf" value="0.03888"/>
-          <Constant key="Parameter_4929" name="exp1" value="1.049"/>
-          <Constant key="Parameter_4928" name="K" value="0.13325"/>
-          <Constant key="Parameter_4927" name="B" value="0.1"/>
+          <Constant key="Parameter_4935" name="Vf" value="0.03888"/>
+          <Constant key="Parameter_4934" name="exp1" value="1.049"/>
+          <Constant key="Parameter_4933" name="K" value="0.13325"/>
+          <Constant key="Parameter_4932" name="B" value="0.1"/>
         </ListOfConstants>
         <KineticLaw function="Function_49">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_346">
-              <SourceParameter reference="Parameter_4930"/>
+              <SourceParameter reference="Parameter_4935"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_331">
-              <SourceParameter reference="Metabolite_69"/>
+              <SourceParameter reference="Metabolite_67"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_316">
-              <SourceParameter reference="Parameter_4927"/>
+              <SourceParameter reference="Parameter_4932"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_340">
               <SourceParameter reference="Metabolite_29"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_348">
-              <SourceParameter reference="Parameter_4929"/>
+              <SourceParameter reference="Parameter_4934"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_350">
-              <SourceParameter reference="Parameter_4928"/>
+              <SourceParameter reference="Parameter_4933"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_14" name="IFNg production" reversible="false" fast="false">
+      <Reaction key="Reaction_13" name="IFNg production" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_14">
+  <rdf:Description rdf:about="#Reaction_13">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:34:23Z</dcterms:W3CDTF>
@@ -3379,10 +3364,10 @@ Reaction scheme where the products are created from the reactants and the change
           </UnsupportedAnnotation>
         </ListOfUnsupportedAnnotations>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_97" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_95" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
-          <Product metabolite="Metabolite_95" stoichiometry="1"/>
+          <Product metabolite="Metabolite_93" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfModifiers>
           <Modifier metabolite="Metabolite_19" stoichiometry="1"/>
@@ -3391,32 +3376,32 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_29" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4926" name="Vf" value="0.467575"/>
-          <Constant key="Parameter_4925" name="K1" value="0.06755"/>
-          <Constant key="Parameter_4924" name="K2" value="0.0785"/>
-          <Constant key="Parameter_4923" name="exp1" value="1.151"/>
-          <Constant key="Parameter_4922" name="K" value="0.06035"/>
-          <Constant key="Parameter_4921" name="K3" value="0.0692"/>
+          <Constant key="Parameter_4931" name="Vf" value="0.467575"/>
+          <Constant key="Parameter_4930" name="K1" value="0.06755"/>
+          <Constant key="Parameter_4929" name="K2" value="0.0785"/>
+          <Constant key="Parameter_4928" name="exp1" value="1.151"/>
+          <Constant key="Parameter_4927" name="K" value="0.06035"/>
+          <Constant key="Parameter_4926" name="K3" value="0.0692"/>
         </ListOfConstants>
         <KineticLaw function="Function_46">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_322">
-              <SourceParameter reference="Parameter_4926"/>
+              <SourceParameter reference="Parameter_4931"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_318">
-              <SourceParameter reference="Metabolite_97"/>
+              <SourceParameter reference="Metabolite_95"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_314">
-              <SourceParameter reference="Parameter_4922"/>
+              <SourceParameter reference="Parameter_4927"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_292">
-              <SourceParameter reference="Parameter_4923"/>
+              <SourceParameter reference="Parameter_4928"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_301">
               <SourceParameter reference="Metabolite_19"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_309">
-              <SourceParameter reference="Parameter_4921"/>
+              <SourceParameter reference="Parameter_4926"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_324">
               <SourceParameter reference="Metabolite_33"/>
@@ -3425,21 +3410,21 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Metabolite_45"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_328">
-              <SourceParameter reference="Parameter_4925"/>
+              <SourceParameter reference="Parameter_4930"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_330">
               <SourceParameter reference="Metabolite_29"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_332">
-              <SourceParameter reference="Parameter_4924"/>
+              <SourceParameter reference="Parameter_4929"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_15" name="Mreg differentiation" reversible="false" fast="false">
+      <Reaction key="Reaction_14" name="Mreg differentiation" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_15">
+  <rdf:Description rdf:about="#Reaction_14">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:34:32Z</dcterms:W3CDTF>
@@ -3507,7 +3492,7 @@ Reaction scheme where the products are created from the reactants and the change
           </UnsupportedAnnotation>
         </ListOfUnsupportedAnnotations>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_85" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_83" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
           <Product metabolite="Metabolite_33" stoichiometry="1"/>
@@ -3518,41 +3503,41 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_25" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4920" name="K" value="1.49275"/>
-          <Constant key="Parameter_4919" name="K1" value="0.08075"/>
-          <Constant key="Parameter_4918" name="K2" value="0.1589"/>
-          <Constant key="Parameter_4917" name="exp1" value="1.001"/>
-          <Constant key="Parameter_4916" name="exp2" value="2.428"/>
-          <Constant key="Parameter_4915" name="exp3" value="1.001"/>
+          <Constant key="Parameter_4925" name="K" value="1.49275"/>
+          <Constant key="Parameter_4924" name="K1" value="0.08075"/>
+          <Constant key="Parameter_4923" name="K2" value="0.1589"/>
+          <Constant key="Parameter_4922" name="exp1" value="1.001"/>
+          <Constant key="Parameter_4921" name="exp2" value="2.428"/>
+          <Constant key="Parameter_4920" name="exp3" value="1.001"/>
         </ListOfConstants>
         <KineticLaw function="Function_47">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_333">
-              <SourceParameter reference="Parameter_4920"/>
+              <SourceParameter reference="Parameter_4925"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_329">
               <SourceParameter reference="Metabolite_1"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_325">
-              <SourceParameter reference="Parameter_4917"/>
+              <SourceParameter reference="Parameter_4922"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_305">
               <SourceParameter reference="Metabolite_19"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_312">
-              <SourceParameter reference="Parameter_4916"/>
+              <SourceParameter reference="Parameter_4921"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_320">
               <SourceParameter reference="Metabolite_25"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_335">
-              <SourceParameter reference="Parameter_4915"/>
+              <SourceParameter reference="Parameter_4920"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_337">
-              <SourceParameter reference="Parameter_4919"/>
+              <SourceParameter reference="Parameter_4924"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_339">
-              <SourceParameter reference="Parameter_4918"/>
+              <SourceParameter reference="Parameter_4923"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_341">
               <SourceParameter reference="Metabolite_33"/>
@@ -3560,10 +3545,10 @@ Reaction scheme where the products are created from the reactants and the change
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_16" name="Fbxo7 activation" reversible="true" fast="false">
+      <Reaction key="Reaction_15" name="Fbxo7 activation" reversible="true" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_16">
+  <rdf:Description rdf:about="#Reaction_15">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:34:47Z</dcterms:W3CDTF>
@@ -3616,34 +3601,34 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_31" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4914" name="Vf" value="0.1235"/>
-          <Constant key="Parameter_4913" name="exp1" value="1.349"/>
-          <Constant key="Parameter_4912" name="K1" value="0.1536"/>
-          <Constant key="Parameter_4911" name="Vr" value="0.19115"/>
-          <Constant key="Parameter_4910" name="B" value="0.1"/>
+          <Constant key="Parameter_4919" name="Vf" value="0.1235"/>
+          <Constant key="Parameter_4918" name="exp1" value="1.349"/>
+          <Constant key="Parameter_4917" name="K1" value="0.1536"/>
+          <Constant key="Parameter_4916" name="Vr" value="0.19115"/>
+          <Constant key="Parameter_4915" name="B" value="0.1"/>
         </ListOfConstants>
         <KineticLaw function="Function_50">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_351">
-              <SourceParameter reference="Parameter_4914"/>
+              <SourceParameter reference="Parameter_4919"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_347">
               <SourceParameter reference="Metabolite_61"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_323">
-              <SourceParameter reference="Parameter_4910"/>
+              <SourceParameter reference="Parameter_4915"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_352">
               <SourceParameter reference="Metabolite_31"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_354">
-              <SourceParameter reference="Parameter_4913"/>
+              <SourceParameter reference="Parameter_4918"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_356">
-              <SourceParameter reference="Parameter_4912"/>
+              <SourceParameter reference="Parameter_4917"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_358">
-              <SourceParameter reference="Parameter_4911"/>
+              <SourceParameter reference="Parameter_4916"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_360">
               <SourceParameter reference="Metabolite_39"/>
@@ -3651,10 +3636,10 @@ Reaction scheme where the products are created from the reactants and the change
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_17" name="Traf2 activation" reversible="true" fast="false">
+      <Reaction key="Reaction_16" name="Traf2 activation" reversible="true" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_17">
+  <rdf:Description rdf:about="#Reaction_16">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:34:58Z</dcterms:W3CDTF>
@@ -3698,55 +3683,55 @@ Reaction scheme where the products are created from the reactants and the change
           </UnsupportedAnnotation>
         </ListOfUnsupportedAnnotations>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_79" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_77" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
           <Product metabolite="Metabolite_37" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfModifiers>
           <Modifier metabolite="Metabolite_39" stoichiometry="1"/>
-          <Modifier metabolite="Metabolite_95" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_93" stoichiometry="1"/>
           <Modifier metabolite="Metabolite_35" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4909" name="Vf" value="0.984949"/>
-          <Constant key="Parameter_4908" name="exp1" value="1.493"/>
-          <Constant key="Parameter_4907" name="K1" value="0.06815"/>
-          <Constant key="Parameter_4906" name="Vr" value="0.262"/>
-          <Constant key="Parameter_4905" name="K2" value="0.01646"/>
-          <Constant key="Parameter_4904" name="K" value="0.09545"/>
+          <Constant key="Parameter_4914" name="Vf" value="0.984949"/>
+          <Constant key="Parameter_4913" name="exp1" value="1.493"/>
+          <Constant key="Parameter_4912" name="K1" value="0.06815"/>
+          <Constant key="Parameter_4911" name="Vr" value="0.262"/>
+          <Constant key="Parameter_4910" name="K2" value="0.01646"/>
+          <Constant key="Parameter_4909" name="K" value="0.09545"/>
         </ListOfConstants>
         <KineticLaw function="Function_44">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_298">
-              <SourceParameter reference="Parameter_4909"/>
+              <SourceParameter reference="Parameter_4914"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_294">
-              <SourceParameter reference="Metabolite_79"/>
+              <SourceParameter reference="Metabolite_77"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_290">
-              <SourceParameter reference="Parameter_4904"/>
+              <SourceParameter reference="Parameter_4909"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_286">
-              <SourceParameter reference="Parameter_4908"/>
+              <SourceParameter reference="Parameter_4913"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_283">
               <SourceParameter reference="Metabolite_39"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_300">
-              <SourceParameter reference="Metabolite_95"/>
+              <SourceParameter reference="Metabolite_93"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_302">
-              <SourceParameter reference="Parameter_4907"/>
+              <SourceParameter reference="Parameter_4912"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_304">
               <SourceParameter reference="Metabolite_35"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_306">
-              <SourceParameter reference="Parameter_4905"/>
+              <SourceParameter reference="Parameter_4910"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_308">
-              <SourceParameter reference="Parameter_4906"/>
+              <SourceParameter reference="Parameter_4911"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_310">
               <SourceParameter reference="Metabolite_37"/>
@@ -3754,10 +3739,10 @@ Reaction scheme where the products are created from the reactants and the change
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_18" name="NCOR2 activation" reversible="true" fast="false">
+      <Reaction key="Reaction_17" name="NCOR2 activation" reversible="true" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_18">
+  <rdf:Description rdf:about="#Reaction_17">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:35:06Z</dcterms:W3CDTF>
@@ -3801,7 +3786,7 @@ Reaction scheme where the products are created from the reactants and the change
           </UnsupportedAnnotation>
         </ListOfUnsupportedAnnotations>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_71" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_69" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
           <Product metabolite="Metabolite_41" stoichiometry="1"/>
@@ -3810,34 +3795,34 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_31" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4903" name="Vf" value="0.124465"/>
-          <Constant key="Parameter_4902" name="exp1" value="1.8185"/>
-          <Constant key="Parameter_4901" name="K1" value="0.05315"/>
-          <Constant key="Parameter_4900" name="Vr" value="0.59075"/>
-          <Constant key="Parameter_4899" name="B" value="0.1"/>
+          <Constant key="Parameter_4908" name="Vf" value="0.124465"/>
+          <Constant key="Parameter_4907" name="exp1" value="1.8185"/>
+          <Constant key="Parameter_4906" name="K1" value="0.05315"/>
+          <Constant key="Parameter_4905" name="Vr" value="0.59075"/>
+          <Constant key="Parameter_4904" name="B" value="0.1"/>
         </ListOfConstants>
         <KineticLaw function="Function_50">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_351">
-              <SourceParameter reference="Parameter_4903"/>
+              <SourceParameter reference="Parameter_4908"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_347">
-              <SourceParameter reference="Metabolite_71"/>
+              <SourceParameter reference="Metabolite_69"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_323">
-              <SourceParameter reference="Parameter_4899"/>
+              <SourceParameter reference="Parameter_4904"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_352">
               <SourceParameter reference="Metabolite_31"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_354">
-              <SourceParameter reference="Parameter_4902"/>
+              <SourceParameter reference="Parameter_4907"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_356">
-              <SourceParameter reference="Parameter_4901"/>
+              <SourceParameter reference="Parameter_4906"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_358">
-              <SourceParameter reference="Parameter_4900"/>
+              <SourceParameter reference="Parameter_4905"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_360">
               <SourceParameter reference="Metabolite_41"/>
@@ -3845,10 +3830,10 @@ Reaction scheme where the products are created from the reactants and the change
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_19" name="FOXP1 activation" reversible="true" fast="false">
+      <Reaction key="Reaction_18" name="FOXP1 activation" reversible="true" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_19">
+  <rdf:Description rdf:about="#Reaction_18">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:35:16Z</dcterms:W3CDTF>
@@ -3900,15 +3885,15 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_41" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4898" name="Vf" value="0.10955"/>
-          <Constant key="Parameter_4897" name="exp1" value="1.193"/>
-          <Constant key="Parameter_4896" name="K1" value="0.0836"/>
-          <Constant key="Parameter_4895" name="Vr" value="0.31685"/>
+          <Constant key="Parameter_4903" name="Vf" value="0.10955"/>
+          <Constant key="Parameter_4902" name="exp1" value="1.193"/>
+          <Constant key="Parameter_4901" name="K1" value="0.0836"/>
+          <Constant key="Parameter_4900" name="Vr" value="0.31685"/>
         </ListOfConstants>
         <KineticLaw function="Function_48">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_342">
-              <SourceParameter reference="Parameter_4898"/>
+              <SourceParameter reference="Parameter_4903"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_338">
               <SourceParameter reference="Metabolite_63"/>
@@ -3917,13 +3902,13 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Metabolite_41"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_275">
-              <SourceParameter reference="Parameter_4897"/>
+              <SourceParameter reference="Parameter_4902"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_327">
-              <SourceParameter reference="Parameter_4896"/>
+              <SourceParameter reference="Parameter_4901"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_343">
-              <SourceParameter reference="Parameter_4895"/>
+              <SourceParameter reference="Parameter_4900"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_345">
               <SourceParameter reference="Metabolite_43"/>
@@ -3931,10 +3916,10 @@ Reaction scheme where the products are created from the reactants and the change
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_20" name="NFkB activation" reversible="true" fast="false">
+      <Reaction key="Reaction_19" name="NFkB activation" reversible="true" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_20">
+  <rdf:Description rdf:about="#Reaction_19">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:35:25Z</dcterms:W3CDTF>
@@ -3990,7 +3975,7 @@ Reaction scheme where the products are created from the reactants and the change
           </UnsupportedAnnotation>
         </ListOfUnsupportedAnnotations>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_75" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_73" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
           <Product metabolite="Metabolite_45" stoichiometry="1"/>
@@ -4000,41 +3985,41 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_37" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4894" name="Vf" value="0.139789"/>
-          <Constant key="Parameter_4893" name="K" value="0.316437"/>
-          <Constant key="Parameter_4892" name="K1" value="0.015346"/>
-          <Constant key="Parameter_4891" name="Vr" value="0.481511"/>
-          <Constant key="Parameter_4890" name="exp1" value="1.73699"/>
-          <Constant key="Parameter_4889" name="B" value="0.1"/>
+          <Constant key="Parameter_4899" name="Vf" value="0.139789"/>
+          <Constant key="Parameter_4898" name="K" value="0.316437"/>
+          <Constant key="Parameter_4897" name="K1" value="0.015346"/>
+          <Constant key="Parameter_4896" name="Vr" value="0.481511"/>
+          <Constant key="Parameter_4895" name="exp1" value="1.73699"/>
+          <Constant key="Parameter_4894" name="B" value="0.1"/>
         </ListOfConstants>
         <KineticLaw function="Function_51">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_361">
-              <SourceParameter reference="Parameter_4894"/>
+              <SourceParameter reference="Parameter_4899"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_357">
-              <SourceParameter reference="Metabolite_75"/>
+              <SourceParameter reference="Metabolite_73"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_353">
-              <SourceParameter reference="Parameter_4893"/>
+              <SourceParameter reference="Parameter_4898"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_336">
-              <SourceParameter reference="Parameter_4890"/>
+              <SourceParameter reference="Parameter_4895"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_362">
               <SourceParameter reference="Metabolite_41"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_364">
-              <SourceParameter reference="Parameter_4889"/>
+              <SourceParameter reference="Parameter_4894"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_366">
               <SourceParameter reference="Metabolite_37"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_368">
-              <SourceParameter reference="Parameter_4892"/>
+              <SourceParameter reference="Parameter_4897"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_370">
-              <SourceParameter reference="Parameter_4891"/>
+              <SourceParameter reference="Parameter_4896"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_372">
               <SourceParameter reference="Metabolite_45"/>
@@ -4042,10 +4027,10 @@ Reaction scheme where the products are created from the reactants and the change
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_21" name="cAMP degradation" reversible="false" fast="false">
+      <Reaction key="Reaction_20" name="cAMP degradation" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_21">
+  <rdf:Description rdf:about="#Reaction_20">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:38:12Z</dcterms:W3CDTF>
@@ -4058,12 +4043,12 @@ Reaction scheme where the products are created from the reactants and the change
           <Substrate metabolite="Metabolite_11" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfConstants>
-          <Constant key="Parameter_4888" name="k1" value="0.1"/>
+          <Constant key="Parameter_4893" name="k1" value="0.1"/>
         </ListOfConstants>
         <KineticLaw function="Function_13">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="Parameter_4888"/>
+              <SourceParameter reference="Parameter_4893"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_11"/>
@@ -4071,10 +4056,10 @@ Reaction scheme where the products are created from the reactants and the change
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_22" name="DAP12 degradation" reversible="false" fast="false">
+      <Reaction key="Reaction_21" name="DAP12 degradation" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_22">
+  <rdf:Description rdf:about="#Reaction_21">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T14:39:58Z</dcterms:W3CDTF>
@@ -4087,12 +4072,12 @@ Reaction scheme where the products are created from the reactants and the change
           <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfConstants>
-          <Constant key="Parameter_4887" name="k1" value="0.1"/>
+          <Constant key="Parameter_4892" name="k1" value="0.1"/>
         </ListOfConstants>
         <KineticLaw function="Function_13">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="Parameter_4887"/>
+              <SourceParameter reference="Parameter_4892"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_3"/>
@@ -4100,10 +4085,10 @@ Reaction scheme where the products are created from the reactants and the change
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_23" name="IL10 degradation" reversible="false" fast="false">
+      <Reaction key="Reaction_22" name="IL10 degradation" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_23">
+  <rdf:Description rdf:about="#Reaction_22">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T15:52:39Z</dcterms:W3CDTF>
@@ -4116,12 +4101,12 @@ Reaction scheme where the products are created from the reactants and the change
           <Substrate metabolite="Metabolite_17" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfConstants>
-          <Constant key="Parameter_4886" name="k1" value="0.1"/>
+          <Constant key="Parameter_4891" name="k1" value="0.1"/>
         </ListOfConstants>
         <KineticLaw function="Function_13">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="Parameter_4886"/>
+              <SourceParameter reference="Parameter_4891"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_17"/>
@@ -4129,10 +4114,10 @@ Reaction scheme where the products are created from the reactants and the change
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_24" name="IFNg degradation" reversible="false" fast="false">
+      <Reaction key="Reaction_23" name="IFNg degradation" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_24">
+  <rdf:Description rdf:about="#Reaction_23">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T15:52:59Z</dcterms:W3CDTF>
@@ -4142,26 +4127,26 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_95" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_93" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfConstants>
-          <Constant key="Parameter_4885" name="k1" value="0.1"/>
+          <Constant key="Parameter_4890" name="k1" value="0.1"/>
         </ListOfConstants>
         <KineticLaw function="Function_13">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="Parameter_4885"/>
+              <SourceParameter reference="Parameter_4890"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
-              <SourceParameter reference="Metabolite_95"/>
+              <SourceParameter reference="Metabolite_93"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_25" name="M-CSF degradation" reversible="false" fast="false">
+      <Reaction key="Reaction_24" name="M-CSF degradation" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_25">
+  <rdf:Description rdf:about="#Reaction_24">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-16T15:53:17Z</dcterms:W3CDTF>
@@ -4174,12 +4159,12 @@ Reaction scheme where the products are created from the reactants and the change
           <Substrate metabolite="Metabolite_23" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfConstants>
-          <Constant key="Parameter_4884" name="k1" value="0.1"/>
+          <Constant key="Parameter_4889" name="k1" value="0.1"/>
         </ListOfConstants>
         <KineticLaw function="Function_13">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="Parameter_4884"/>
+              <SourceParameter reference="Parameter_4889"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_23"/>
@@ -4187,10 +4172,10 @@ Reaction scheme where the products are created from the reactants and the change
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_26" name="KLF4 activation" reversible="true" fast="false">
+      <Reaction key="Reaction_25" name="KLF4 activation" reversible="true" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_26">
+  <rdf:Description rdf:about="#Reaction_25">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-17T17:36:23Z</dcterms:W3CDTF>
@@ -4200,54 +4185,54 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_89" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_87" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
-          <Product metabolite="Metabolite_87" stoichiometry="1"/>
+          <Product metabolite="Metabolite_85" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfModifiers>
           <Modifier metabolite="Metabolite_13" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4883" name="Vf" value="0.1"/>
-          <Constant key="Parameter_4882" name="B" value="0.1"/>
-          <Constant key="Parameter_4881" name="exp1" value="1.1"/>
-          <Constant key="Parameter_4880" name="K1" value="0.0743"/>
-          <Constant key="Parameter_4879" name="Vr" value="0.114"/>
+          <Constant key="Parameter_4888" name="Vf" value="0.1"/>
+          <Constant key="Parameter_4887" name="B" value="0.1"/>
+          <Constant key="Parameter_4886" name="exp1" value="1.1"/>
+          <Constant key="Parameter_4885" name="K1" value="0.0743"/>
+          <Constant key="Parameter_4884" name="Vr" value="0.114"/>
         </ListOfConstants>
         <KineticLaw function="Function_50">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_351">
-              <SourceParameter reference="Parameter_4883"/>
+              <SourceParameter reference="Parameter_4888"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_347">
-              <SourceParameter reference="Metabolite_89"/>
+              <SourceParameter reference="Metabolite_87"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_323">
-              <SourceParameter reference="Parameter_4882"/>
+              <SourceParameter reference="Parameter_4887"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_352">
               <SourceParameter reference="Metabolite_13"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_354">
-              <SourceParameter reference="Parameter_4881"/>
+              <SourceParameter reference="Parameter_4886"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_356">
-              <SourceParameter reference="Parameter_4880"/>
+              <SourceParameter reference="Parameter_4885"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_358">
-              <SourceParameter reference="Parameter_4879"/>
+              <SourceParameter reference="Parameter_4884"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_360">
-              <SourceParameter reference="Metabolite_87"/>
+              <SourceParameter reference="Metabolite_85"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_27" name="CX3CL1 activation" reversible="false" fast="false">
+      <Reaction key="Reaction_26" name="CX3CL1 activation" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_27">
+  <rdf:Description rdf:about="#Reaction_26">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-17T17:37:20Z</dcterms:W3CDTF>
@@ -4257,47 +4242,47 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_93" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_91" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
-          <Product metabolite="Metabolite_91" stoichiometry="1"/>
+          <Product metabolite="Metabolite_89" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfModifiers>
-          <Modifier metabolite="Metabolite_87" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_85" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4878" name="Vf" value="0.126"/>
-          <Constant key="Parameter_4877" name="B" value="0.1"/>
-          <Constant key="Parameter_4876" name="exp1" value="1"/>
-          <Constant key="Parameter_4875" name="K" value="0.0678"/>
+          <Constant key="Parameter_4883" name="Vf" value="0.126"/>
+          <Constant key="Parameter_4882" name="B" value="0.1"/>
+          <Constant key="Parameter_4881" name="exp1" value="1"/>
+          <Constant key="Parameter_4880" name="K" value="0.0678"/>
         </ListOfConstants>
         <KineticLaw function="Function_49">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_346">
-              <SourceParameter reference="Parameter_4878"/>
+              <SourceParameter reference="Parameter_4883"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_331">
-              <SourceParameter reference="Metabolite_93"/>
+              <SourceParameter reference="Metabolite_91"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_316">
-              <SourceParameter reference="Parameter_4877"/>
+              <SourceParameter reference="Parameter_4882"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_340">
-              <SourceParameter reference="Metabolite_87"/>
+              <SourceParameter reference="Metabolite_85"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_348">
-              <SourceParameter reference="Parameter_4876"/>
+              <SourceParameter reference="Parameter_4881"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_350">
-              <SourceParameter reference="Parameter_4875"/>
+              <SourceParameter reference="Parameter_4880"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_28" name="CX3CL1 degradation" reversible="false" fast="false">
+      <Reaction key="Reaction_27" name="CX3CL1 degradation" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_28">
+  <rdf:Description rdf:about="#Reaction_27">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2016-02-17T17:38:11Z</dcterms:W3CDTF>
@@ -4307,18 +4292,18 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_91" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_89" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfConstants>
-          <Constant key="Parameter_4874" name="k1" value="0.1"/>
+          <Constant key="Parameter_4879" name="k1" value="0.1"/>
         </ListOfConstants>
         <KineticLaw function="Function_13">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="Parameter_4874"/>
+              <SourceParameter reference="Parameter_4879"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
-              <SourceParameter reference="Metabolite_91"/>
+              <SourceParameter reference="Metabolite_89"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
@@ -4327,241 +4312,241 @@ Reaction scheme where the products are created from the reactants and the change
     <ListOfModelParameterSets activeSet="ModelParameterSet_1">
       <ModelParameterSet key="ModelParameterSet_1" name="Initial State">
         <ModelParameterGroup cn="String=Initial Time" type="Group">
-          <ModelParameter cn="CN=Root,Model=NoName" value="0" type="Model" simulationType="time"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff" value="0" type="Model" simulationType="time"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Compartment Sizes" type="Group">
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default]" value="1" type="Compartment" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default]" value="1" type="Compartment" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[CX3CR1]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[DAP12]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[ERK]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[Ca2+]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[AC]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[cAMP]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[PKA]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[CREB]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[IL10]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[IL10R]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[Akt]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[M-CSF]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[CSF1R]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[SIRPb1]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[NFAT]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[LANCL2]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[Mreg]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[HP]" value="1.5055354475e+025" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[Traf2]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[Fbxo7]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[NCOR2]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[FOXP1]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[NFkB]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[ABA]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pAkt]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[eCa2+]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[iCa2+]" value="3.011070895e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pCREB]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pCX3CR1]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pERK]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pFbxo7]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pFOXP1]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pIL10]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pM-CSF]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pNCOR2]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pNFAT]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pNFkB]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pPKA]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pTraf2]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pIL10R]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pCSF1R]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[Mono]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[KLF4]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pKLF4]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[CX3CL1]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pCX3CL1]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[IFNg]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pIFNg]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[CX3CR1]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[DAP12]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[ERK]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[Ca2+]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[AC]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[cAMP]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[PKA]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[CREB]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[IL10]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[IL10R]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[Akt]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[M-CSF]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[CSF1R]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[SIRPb1]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[NFAT]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[LANCL2]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[Mreg]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[HP]" value="1.5055354475e+025" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[Traf2]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[Fbxo7]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[NCOR2]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[FOXP1]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[NFkB]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[ABA]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pAkt]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[eCa2+]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[iCa2+]" value="3.011070895e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pCREB]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pCX3CR1]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pERK]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pFbxo7]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pFOXP1]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pIL10]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pM-CSF]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pNCOR2]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pNFAT]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pNFkB]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pPKA]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pTraf2]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pIL10R]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pCSF1R]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[Mono]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[KLF4]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pKLF4]" value="6.02214179e+023" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[CX3CL1]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pCX3CL1]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[IFNg]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pIFNg]" value="6.02214179e+023" type="Species" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[ERK activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vf" value="0.0487012" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=exp1" value="1.0115" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K1" value="0.1043" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K2" value="0.08510000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vr" value="0.1607" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vf" value="0.0487012" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=exp1" value="1.0115" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K1" value="0.1043" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K2" value="0.08510000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vr" value="0.1607" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[Ca2+ transport]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Ca2+ transport],ParameterGroup=Parameters,Parameter=K1" value="0.3076" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Ca2+ transport],ParameterGroup=Parameters,Parameter=K2" value="0.1292" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[Ca2+ transport]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Ca2+ transport],ParameterGroup=Parameters,Parameter=K1" value="0.3076" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Ca2+ transport],ParameterGroup=Parameters,Parameter=K2" value="0.1292" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[cAMP production]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=Vf" value="0.029" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=exp1" value="1.0895" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=K" value="0.185" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[cAMP production]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=Vf" value="0.029" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=exp1" value="1.0895" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=K" value="0.185" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[PKA activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=Vf" value="0.1199" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=exp1" value="1.301" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=K1" value="0.0515" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=Vr" value="0.18635" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[PKA activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=Vf" value="0.1199" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=exp1" value="1.301" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=K1" value="0.0515" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=Vr" value="0.18635" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[CREB activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=Vf" value="0.1493" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=exp1" value="1.508" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=K1" value="0.0635" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=K2" value="0.0728" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=Vr" value="0.19685" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[CREB activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=Vf" value="0.1493" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=exp1" value="1.508" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=K1" value="0.0635" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=K2" value="0.0728" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=Vr" value="0.19685" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[IL10 production]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=Vf" value="1.6680788" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K1" value="0.05930000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K2" value="0.09815000000000002" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=exp1" value="1.193" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K" value="0.0536" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K3" value="0.01589" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=Vf" value="1.6680788" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K1" value="0.05930000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K2" value="0.09815000000000002" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=exp1" value="1.193" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K" value="0.0536" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K3" value="0.01589" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[IL10R activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vf" value="0.169468775" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=exp1" value="1.042" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=K1" value="0.463615" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vr" value="0.188" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=A1" value="0" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vf" value="0.169468775" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=exp1" value="1.042" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=K1" value="0.463615" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vr" value="0.188" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=A1" value="0" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[IL10],Reference=InitialParticleNumber&gt;
+                &lt;CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[IL10],Reference=InitialParticleNumber&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=P" value="0" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=P" value="0" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[IL10R],Reference=InitialParticleNumber&gt;
+                &lt;CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[IL10R],Reference=InitialParticleNumber&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=B" value="0" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=K" value="40" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=B" value="0" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=K" value="40" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[NFAT activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=Vf" value="0.11105" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=exp1" value="1.5755" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=K1" value="0.1586" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=Vr" value="0.18755" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=K" value="0.1307" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[NFAT activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=Vf" value="0.11105" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=exp1" value="1.5755" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=K1" value="0.1586" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=Vr" value="0.18755" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=K" value="0.1307" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=Vf" value="0.185" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=exp1" value="1.907" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=K1" value="0.36647" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=Vr" value="0.2" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=K2" value="0.0551" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[CSF1R activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=Vf" value="0.185" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=exp1" value="1.907" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=K1" value="0.36647" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=Vr" value="0.2" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=K2" value="0.0551" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=K1" value="0.19115" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.13385" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.6325" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.1715" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=K2" value="0.05" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[CX3CR1 activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=K1" value="0.19115" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.13385" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.6325" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.1715" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=K2" value="0.05" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[DAP12 activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[DAP12 activation],ParameterGroup=Parameters,Parameter=k1" value="0.03843595" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[DAP12 activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[DAP12 activation],ParameterGroup=Parameters,Parameter=k1" value="0.03843595" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[Akt activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=Vf" value="0.1115" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K1" value="0.01779" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K2" value="0.11105" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K3" value="0.1328" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=exp1" value="1.136" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=Vr" value="0.1922" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[Akt activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=Vf" value="0.1115" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K1" value="0.01779" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K2" value="0.11105" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K3" value="0.1328" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=exp1" value="1.136" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=Vr" value="0.1922" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[M-CSF production]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=Vf" value="0.03888000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=exp1" value="1.049" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=K" value="0.13325" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[M-CSF production]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=Vf" value="0.03888000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=exp1" value="1.049" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=K" value="0.13325" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[IFNg production]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=Vf" value="0.4675751" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K1" value="0.06755" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K2" value="0.0785" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=exp1" value="1.151" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K" value="0.06035" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K3" value="0.06920000000000001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=Vf" value="0.4675751" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K1" value="0.06755" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K2" value="0.0785" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=exp1" value="1.151" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K" value="0.06035" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K3" value="0.06920000000000001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K" value="1.49275" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K1" value="0.08075" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K2" value="0.1589" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp1" value="1.001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp2" value="2.428" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp3" value="1.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K" value="1.49275" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K1" value="0.08075" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K2" value="0.1589" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp1" value="1.001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp2" value="2.428" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp3" value="1.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.1235" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.349" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=K1" value="0.1536" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.19115" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[Fbxo7 activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.1235" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.349" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=K1" value="0.1536" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.19115" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.9849486249999999" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.493" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K1" value="0.06815" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.262" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K2" value="0.01646" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K" value="0.09545000000000001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.9849486249999999" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.493" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K1" value="0.06815" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.262" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K2" value="0.01646" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K" value="0.09545000000000001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.124465" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.8185" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=K1" value="0.05315" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.5907500000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[NCOR2 activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.124465" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.8185" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=K1" value="0.05315" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.5907500000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[FOXP1 activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.10955" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.193" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=K1" value="0.08360000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.31685" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[FOXP1 activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.10955" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.193" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=K1" value="0.08360000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.31685" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[NFkB activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vf" value="0.13978945" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K" value="0.316436725" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K1" value="0.015346" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vr" value="0.4815114999999999" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=exp1" value="1.73699275" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vf" value="0.13978945" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K" value="0.316436725" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K1" value="0.015346" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vr" value="0.4815114999999999" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=exp1" value="1.73699275" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[cAMP degradation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[cAMP degradation],ParameterGroup=Parameters,Parameter=k1" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[cAMP degradation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[cAMP degradation],ParameterGroup=Parameters,Parameter=k1" value="0.1" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[DAP12 degradation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[DAP12 degradation],ParameterGroup=Parameters,Parameter=k1" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[DAP12 degradation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[DAP12 degradation],ParameterGroup=Parameters,Parameter=k1" value="0.1" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[IL10 degradation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IL10 degradation],ParameterGroup=Parameters,Parameter=k1" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10 degradation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IL10 degradation],ParameterGroup=Parameters,Parameter=k1" value="0.1" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[IFNg degradation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[IFNg degradation],ParameterGroup=Parameters,Parameter=k1" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[IFNg degradation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[IFNg degradation],ParameterGroup=Parameters,Parameter=k1" value="0.1" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[M-CSF degradation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[M-CSF degradation],ParameterGroup=Parameters,Parameter=k1" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[M-CSF degradation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[M-CSF degradation],ParameterGroup=Parameters,Parameter=k1" value="0.1" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.1" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.1" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=K1" value="0.07430000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.114" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[KLF4 activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=exp1" value="1.1" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=K1" value="0.07430000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=Vr" value="0.114" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.126" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=exp1" value="1" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=K" value="0.0678" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[CX3CL1 activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=Vf" value="0.126" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=B" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=exp1" value="1" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=K" value="0.0678" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 degradation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 degradation],ParameterGroup=Parameters,Parameter=k1" value="0.1" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=MregDiff,Vector=Reactions[CX3CL1 degradation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=MregDiff,Vector=Reactions[CX3CL1 degradation],ParameterGroup=Parameters,Parameter=k1" value="0.1" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
@@ -4572,8 +4557,8 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="Metabolite_11"/>
       <StateTemplateVariable objectReference="Metabolite_17"/>
       <StateTemplateVariable objectReference="Metabolite_23"/>
-      <StateTemplateVariable objectReference="Metabolite_91"/>
-      <StateTemplateVariable objectReference="Metabolite_95"/>
+      <StateTemplateVariable objectReference="Metabolite_89"/>
+      <StateTemplateVariable objectReference="Metabolite_93"/>
       <StateTemplateVariable objectReference="Metabolite_5"/>
       <StateTemplateVariable objectReference="Metabolite_19"/>
       <StateTemplateVariable objectReference="Metabolite_21"/>
@@ -4588,31 +4573,31 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="Metabolite_45"/>
       <StateTemplateVariable objectReference="Metabolite_51"/>
       <StateTemplateVariable objectReference="Metabolite_55"/>
-      <StateTemplateVariable objectReference="Metabolite_77"/>
-      <StateTemplateVariable objectReference="Metabolite_87"/>
+      <StateTemplateVariable objectReference="Metabolite_75"/>
+      <StateTemplateVariable objectReference="Metabolite_85"/>
       <StateTemplateVariable objectReference="Metabolite_13"/>
       <StateTemplateVariable objectReference="Metabolite_15"/>
       <StateTemplateVariable objectReference="Metabolite_53"/>
-      <StateTemplateVariable objectReference="Metabolite_73"/>
       <StateTemplateVariable objectReference="Metabolite_71"/>
+      <StateTemplateVariable objectReference="Metabolite_69"/>
       <StateTemplateVariable objectReference="Metabolite_63"/>
-      <StateTemplateVariable objectReference="Metabolite_75"/>
+      <StateTemplateVariable objectReference="Metabolite_73"/>
       <StateTemplateVariable objectReference="Metabolite_61"/>
+      <StateTemplateVariable objectReference="Metabolite_77"/>
       <StateTemplateVariable objectReference="Metabolite_79"/>
       <StateTemplateVariable objectReference="Metabolite_81"/>
       <StateTemplateVariable objectReference="Metabolite_83"/>
-      <StateTemplateVariable objectReference="Metabolite_85"/>
       <StateTemplateVariable objectReference="Metabolite_49"/>
-      <StateTemplateVariable objectReference="Metabolite_89"/>
+      <StateTemplateVariable objectReference="Metabolite_87"/>
       <StateTemplateVariable objectReference="Metabolite_57"/>
       <StateTemplateVariable objectReference="Metabolite_59"/>
       <StateTemplateVariable objectReference="Metabolite_9"/>
       <StateTemplateVariable objectReference="Metabolite_27"/>
       <StateTemplateVariable objectReference="Metabolite_47"/>
       <StateTemplateVariable objectReference="Metabolite_65"/>
-      <StateTemplateVariable objectReference="Metabolite_69"/>
-      <StateTemplateVariable objectReference="Metabolite_93"/>
-      <StateTemplateVariable objectReference="Metabolite_97"/>
+      <StateTemplateVariable objectReference="Metabolite_67"/>
+      <StateTemplateVariable objectReference="Metabolite_91"/>
+      <StateTemplateVariable objectReference="Metabolite_95"/>
       <StateTemplateVariable objectReference="Metabolite_7"/>
       <StateTemplateVariable objectReference="Metabolite_31"/>
       <StateTemplateVariable objectReference="Metabolite_35"/>
@@ -4666,7 +4651,7 @@ Reaction scheme where the products are created from the reactants and the change
             <Parameter name="Maximum" type="float" value="10"/>
             <Parameter name="Minimum" type="float" value="0"/>
             <Parameter name="Number of steps" type="unsignedInteger" value="10"/>
-            <Parameter name="Object" type="cn" value="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[IL10],Reference=InitialConcentration"/>
+            <Parameter name="Object" type="cn" value="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[IL10],Reference=InitialConcentration"/>
             <Parameter name="Type" type="unsignedInteger" value="1"/>
             <Parameter name="log" type="bool" value="0"/>
           </ParameterGroup>
@@ -4674,7 +4659,7 @@ Reaction scheme where the products are created from the reactants and the change
             <Parameter name="Maximum" type="float" value="10"/>
             <Parameter name="Minimum" type="float" value="0"/>
             <Parameter name="Number of steps" type="unsignedInteger" value="10"/>
-            <Parameter name="Object" type="cn" value="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[IFNg],Reference=InitialConcentration"/>
+            <Parameter name="Object" type="cn" value="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[IFNg],Reference=InitialConcentration"/>
             <Parameter name="Type" type="unsignedInteger" value="1"/>
             <Parameter name="log" type="bool" value="0"/>
           </ParameterGroup>
@@ -4705,697 +4690,697 @@ Reaction scheme where the products are created from the reactants and the change
         <ParameterGroup name="OptimizationItemList">
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.001"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.01779"/>
             <Parameter name="UpperBound" type="cn" value="0.1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.11105"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K3,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=K3,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1328"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1115"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1922"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Akt activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.136"/>
             <Parameter name="UpperBound" type="cn" value="1.5"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0635"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0728"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1493"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.19685"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CREB activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.508"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.36647"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0551"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.185"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.2"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CSF1R activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.907"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0678"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.126"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CX3CL1 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CL1 degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CX3CL1 degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.19115"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.05"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.13385"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1715"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[CX3CR1 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.6325"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Ca2+ transport],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Ca2+ transport],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.3076"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Ca2+ transport],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Ca2+ transport],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1292"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.001"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[DAP12 activation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[DAP12 activation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0384359"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[DAP12 degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[DAP12 degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1043"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0851"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0487012"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1607"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.0115"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.08359999999999999"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.10955"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.31685"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[FOXP1 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.193"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1536"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1235"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.19115"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Fbxo7 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.349"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10 degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IL10 degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0536"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.001"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0593"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.09815"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.001"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K3,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K3,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.01589"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.1"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.66808"/>
             <Parameter name="UpperBound" type="cn" value="10"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.193"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.463615"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.169469"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.188"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.042"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IFNg degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IFNg degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.06035"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.06755"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0785"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K3,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K3,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0692"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.467575"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.151"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.07430000000000001"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.114"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[KLF4 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.1"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.06395000000000001"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1328"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1835"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[LANCL2 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.643"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[M-CSF degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[M-CSF degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.13325"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.03888"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[M-CSF production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.049"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.49275"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.08075"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1589"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.001"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="2.428"/>
             <Parameter name="UpperBound" type="cn" value="4"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp3,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp3,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.001"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.05315"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.124465"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.59075"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NCOR2 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.8185"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1307"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1586"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.11105"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.18755"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NFAT activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.5755"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.316437"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.001"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.015346"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.139789"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.1"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.481511"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.73699"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=B,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.0515"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1199"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.18635"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[PKA activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.301"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.09544999999999999"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.001"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.06815"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.001"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.01646"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.984949"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.1"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.262"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.493"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.05"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[cAMP degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[cAMP degradation],ParameterGroup=Parameters,Parameter=k1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.1"/>
             <Parameter name="UpperBound" type="cn" value="0.5"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=K,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.185"/>
             <Parameter name="UpperBound" type="cn" value="1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.01"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="0.029"/>
             <Parameter name="UpperBound" type="cn" value="0.1"/>
           </ParameterGroup>
           <ParameterGroup name="OptimizationItem">
             <Parameter name="LowerBound" type="cn" value="0.5"/>
-            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=NoName,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
+            <Parameter name="ObjectCN" type="cn" value="CN=Root,Model=MregDiff,Vector=Reactions[cAMP production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value"/>
             <Parameter name="StartValue" type="float" value="1.0895"/>
             <Parameter name="UpperBound" type="cn" value="2"/>
           </ParameterGroup>
@@ -5482,7 +5467,7 @@ Reaction scheme where the products are created from the reactants and the change
       <Problem>
         <Parameter name="SubtaskType" type="unsignedInteger" value="2"/>
         <ParameterGroup name="TargetFunctions">
-          <Parameter name="SingleObject" type="cn" value="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[Mreg],Reference=Concentration"/>
+          <Parameter name="SingleObject" type="cn" value="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[Mreg],Reference=Concentration"/>
           <Parameter name="ObjectListType" type="unsignedInteger" value="1"/>
         </ParameterGroup>
         <ParameterGroup name="ListOfVariables">
@@ -5683,8 +5668,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[CX3CR1],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[CX3CR1],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[DAP12]" type="Curve2D">
@@ -5695,8 +5680,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[DAP12],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[DAP12],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[ERK]" type="Curve2D">
@@ -5707,8 +5692,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[ERK],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[ERK],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[Ca2+]" type="Curve2D">
@@ -5719,8 +5704,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[Ca2+],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[Ca2+],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[cAMP]" type="Curve2D">
@@ -5731,8 +5716,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[cAMP],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[cAMP],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[PKA]" type="Curve2D">
@@ -5743,8 +5728,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[PKA],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[PKA],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[CREB]" type="Curve2D">
@@ -5755,8 +5740,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[CREB],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[CREB],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[IL10]" type="Curve2D">
@@ -5767,8 +5752,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[IL10],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[IL10],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[IL10R]" type="Curve2D">
@@ -5779,8 +5764,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[IL10R],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[IL10R],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[Akt]" type="Curve2D">
@@ -5791,8 +5776,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[Akt],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[Akt],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[M-CSF]" type="Curve2D">
@@ -5803,8 +5788,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[M-CSF],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[M-CSF],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[CSF1R]" type="Curve2D">
@@ -5815,8 +5800,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[CSF1R],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[CSF1R],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[NFAT]" type="Curve2D">
@@ -5827,8 +5812,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[NFAT],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[NFAT],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[LANCL2]" type="Curve2D">
@@ -5839,8 +5824,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[LANCL2],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[LANCL2],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[Mreg]" type="Curve2D">
@@ -5851,8 +5836,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[Mreg],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[Mreg],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[HP]" type="Curve2D">
@@ -5863,8 +5848,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[HP],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[HP],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[Traf2]" type="Curve2D">
@@ -5875,8 +5860,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[Traf2],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[Traf2],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[Fbxo7]" type="Curve2D">
@@ -5887,8 +5872,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[Fbxo7],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[Fbxo7],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[NCOR2]" type="Curve2D">
@@ -5899,8 +5884,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[NCOR2],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[NCOR2],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[FOXP1]" type="Curve2D">
@@ -5911,8 +5896,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[FOXP1],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[FOXP1],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[NFkB]" type="Curve2D">
@@ -5923,8 +5908,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[NFkB],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[NFkB],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pAkt]" type="Curve2D">
@@ -5935,8 +5920,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pAkt],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pAkt],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[eCa2+]" type="Curve2D">
@@ -5947,8 +5932,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[eCa2+],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[eCa2+],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[iCa2+]" type="Curve2D">
@@ -5959,8 +5944,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[iCa2+],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[iCa2+],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pCREB]" type="Curve2D">
@@ -5971,8 +5956,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pCREB],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pCREB],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pCX3CR1]" type="Curve2D">
@@ -5983,8 +5968,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pCX3CR1],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pCX3CR1],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pERK]" type="Curve2D">
@@ -5995,8 +5980,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pERK],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pERK],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pFbxo7]" type="Curve2D">
@@ -6007,8 +5992,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pFbxo7],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pFbxo7],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pFOXP1]" type="Curve2D">
@@ -6019,8 +6004,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pFOXP1],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pFOXP1],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pLANCL2]" type="Curve2D">
@@ -6031,8 +6016,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pLANCL2],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pLANCL2],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pNCOR2]" type="Curve2D">
@@ -6043,8 +6028,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pNCOR2],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pNCOR2],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pNFAT]" type="Curve2D">
@@ -6055,8 +6040,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pNFAT],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pNFAT],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pNFkB]" type="Curve2D">
@@ -6067,8 +6052,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pNFkB],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pNFkB],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pPKA]" type="Curve2D">
@@ -6079,8 +6064,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pPKA],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pPKA],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pTraf2]" type="Curve2D">
@@ -6091,8 +6076,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pTraf2],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pTraf2],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pIL10R]" type="Curve2D">
@@ -6103,8 +6088,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pIL10R],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pIL10R],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pCSF1R]" type="Curve2D">
@@ -6115,8 +6100,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pCSF1R],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pCSF1R],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[Mono]" type="Curve2D">
@@ -6127,8 +6112,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[Mono],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[Mono],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[KLF4]" type="Curve2D">
@@ -6139,8 +6124,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[KLF4],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[KLF4],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pKLF4]" type="Curve2D">
@@ -6151,8 +6136,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[pKLF4],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[pKLF4],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[CX3CL1]" type="Curve2D">
@@ -6163,8 +6148,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[CX3CL1],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[CX3CL1],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[IFNg]" type="Curve2D">
@@ -6175,8 +6160,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=NoName,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[IFNg],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[IFNg],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
       </ListOfPlotItems>
@@ -6184,47 +6169,47 @@ Reaction scheme where the products are created from the reactants and the change
   </ListOfPlots>
   <GUI>
     <ListOfSliders>
-      <Slider key="Slider_0" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Compartments[default],Vector=Metabolites[HP],Reference=InitialConcentration" objectType="float" objectValue="25" minValue="0.5" maxValue="25" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K,Reference=Value" objectType="float" objectValue="1.49275" minValue="0.05" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K1,Reference=Value" objectType="float" objectValue="0.08075" minValue="0.05" maxValue="0.2" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K2,Reference=Value" objectType="float" objectValue="0.1589" minValue="0.05" maxValue="0.2" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_4" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[DAP12 activation],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.038436" minValue="0.033775" maxValue="0.1351" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_5" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value" objectType="float" objectValue="0.1043" minValue="0.05215" maxValue="0.2086" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_6" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value" objectType="float" objectValue="0.0851" minValue="0.04255" maxValue="0.1702" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_7" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value" objectType="float" objectValue="0.0487012" minValue="0.0436" maxValue="0.1744" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_8" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value" objectType="float" objectValue="0.1607" minValue="0.08035" maxValue="0.3214" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_9" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value" objectType="float" objectValue="1.0115" minValue="0.50575" maxValue="2.023" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_10" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value" objectType="float" objectValue="1.001" minValue="0.5" maxValue="2" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_11" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp2,Reference=Value" objectType="float" objectValue="2.428" minValue="1" maxValue="4" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_12" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp3,Reference=Value" objectType="float" objectValue="1.001" minValue="0.5" maxValue="2" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_13" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K,Reference=Value" objectType="float" objectValue="0.316437" minValue="0.164725" maxValue="0.6589" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_14" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value" objectType="float" objectValue="0.015346" minValue="0.01" maxValue="0.1072" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_15" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value" objectType="float" objectValue="0.139789" minValue="0.063025" maxValue="0.2521" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_16" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value" objectType="float" objectValue="0.481511" minValue="0.15325" maxValue="0.613" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_17" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value" objectType="float" objectValue="1.73699" minValue="0.73075" maxValue="2.923" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_18" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K,Reference=Value" objectType="float" objectValue="0.09545" minValue="0.047725" maxValue="0.1909" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_19" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value" objectType="float" objectValue="0.06815" minValue="0.034075" maxValue="0.1363" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_20" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value" objectType="float" objectValue="0.01646" minValue="0.00823" maxValue="0.03292" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_21" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value" objectType="float" objectValue="0.984949" minValue="0.114625" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_22" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value" objectType="float" objectValue="0.262" minValue="0.131" maxValue="0.524" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_23" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value" objectType="float" objectValue="1.493" minValue="0.7465" maxValue="2.986" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_24" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K,Reference=Value" objectType="float" objectValue="0.0536" minValue="0.0268" maxValue="0.1072" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_25" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K1,Reference=Value" objectType="float" objectValue="0.0593" minValue="0.02965" maxValue="0.1186" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_26" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K2,Reference=Value" objectType="float" objectValue="0.09815" minValue="0.049075" maxValue="0.1963" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_27" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K3,Reference=Value" objectType="float" objectValue="0.01589" minValue="0.007945" maxValue="0.03178" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_28" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value" objectType="float" objectValue="1.66808" minValue="0.0982" maxValue="6" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_29" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value" objectType="float" objectValue="1.193" minValue="0.5965" maxValue="2.386" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_30" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K,Reference=Value" objectType="float" objectValue="0.06035" minValue="0.030175" maxValue="0.1207" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_31" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K1,Reference=Value" objectType="float" objectValue="0.06755" minValue="0.033775" maxValue="0.1351" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_32" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K2,Reference=Value" objectType="float" objectValue="0.0785" minValue="0.03925" maxValue="0.157" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_33" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K3,Reference=Value" objectType="float" objectValue="0.0692" minValue="0.0346" maxValue="0.1384" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_34" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value" objectType="float" objectValue="0.467575" minValue="0.05035" maxValue="2" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_35" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value" objectType="float" objectValue="1.151" minValue="0.5755" maxValue="2.302" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_36" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value" objectType="float" objectValue="0.169469" minValue="0.159425" maxValue="0.6377" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_37" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value" objectType="float" objectValue="1.042" minValue="1" maxValue="4" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_38" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value" objectType="float" objectValue="0.188" minValue="0.05" maxValue="0.3" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_39" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=B,Reference=Value" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_40" associatedEntityKey="Task_15" objectCN="CN=Root,Model=NoName,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value" objectType="float" objectValue="0.463615" minValue="0.02125" maxValue="0.5" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_0" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Compartments[default],Vector=Metabolites[HP],Reference=InitialConcentration" objectType="float" objectValue="25" minValue="0.5" maxValue="25" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K,Reference=Value" objectType="float" objectValue="1.49275" minValue="0.05" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K1,Reference=Value" objectType="float" objectValue="0.08075" minValue="0.05" maxValue="0.2" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=K2,Reference=Value" objectType="float" objectValue="0.1589" minValue="0.05" maxValue="0.2" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_4" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[DAP12 activation],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.038436" minValue="0.033775" maxValue="0.1351" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_5" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value" objectType="float" objectValue="0.1043" minValue="0.05215" maxValue="0.2086" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_6" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value" objectType="float" objectValue="0.0851" minValue="0.04255" maxValue="0.1702" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_7" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value" objectType="float" objectValue="0.0487012" minValue="0.0436" maxValue="0.1744" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_8" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value" objectType="float" objectValue="0.1607" minValue="0.08035" maxValue="0.3214" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_9" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[ERK activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value" objectType="float" objectValue="1.0115" minValue="0.50575" maxValue="2.023" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_10" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value" objectType="float" objectValue="1.001" minValue="0.5" maxValue="2" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_11" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp2,Reference=Value" objectType="float" objectValue="2.428" minValue="1" maxValue="4" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_12" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[Mreg differentiation],ParameterGroup=Parameters,Parameter=exp3,Reference=Value" objectType="float" objectValue="1.001" minValue="0.5" maxValue="2" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_13" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K,Reference=Value" objectType="float" objectValue="0.316437" minValue="0.164725" maxValue="0.6589" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_14" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value" objectType="float" objectValue="0.015346" minValue="0.01" maxValue="0.1072" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_15" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value" objectType="float" objectValue="0.139789" minValue="0.063025" maxValue="0.2521" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_16" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value" objectType="float" objectValue="0.481511" minValue="0.15325" maxValue="0.613" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_17" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[NFkB activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value" objectType="float" objectValue="1.73699" minValue="0.73075" maxValue="2.923" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_18" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K,Reference=Value" objectType="float" objectValue="0.09545" minValue="0.047725" maxValue="0.1909" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_19" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value" objectType="float" objectValue="0.06815" minValue="0.034075" maxValue="0.1363" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_20" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=K2,Reference=Value" objectType="float" objectValue="0.01646" minValue="0.00823" maxValue="0.03292" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_21" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value" objectType="float" objectValue="0.984949" minValue="0.114625" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_22" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value" objectType="float" objectValue="0.262" minValue="0.131" maxValue="0.524" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_23" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[Traf2 activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value" objectType="float" objectValue="1.493" minValue="0.7465" maxValue="2.986" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_24" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K,Reference=Value" objectType="float" objectValue="0.0536" minValue="0.0268" maxValue="0.1072" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_25" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K1,Reference=Value" objectType="float" objectValue="0.0593" minValue="0.02965" maxValue="0.1186" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_26" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K2,Reference=Value" objectType="float" objectValue="0.09815" minValue="0.049075" maxValue="0.1963" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_27" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=K3,Reference=Value" objectType="float" objectValue="0.01589" minValue="0.007945" maxValue="0.03178" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_28" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value" objectType="float" objectValue="1.66808" minValue="0.0982" maxValue="6" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_29" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IL10 production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value" objectType="float" objectValue="1.193" minValue="0.5965" maxValue="2.386" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_30" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K,Reference=Value" objectType="float" objectValue="0.06035" minValue="0.030175" maxValue="0.1207" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_31" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K1,Reference=Value" objectType="float" objectValue="0.06755" minValue="0.033775" maxValue="0.1351" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_32" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K2,Reference=Value" objectType="float" objectValue="0.0785" minValue="0.03925" maxValue="0.157" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_33" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=K3,Reference=Value" objectType="float" objectValue="0.0692" minValue="0.0346" maxValue="0.1384" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_34" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=Vf,Reference=Value" objectType="float" objectValue="0.467575" minValue="0.05035" maxValue="2" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_35" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IFNg production],ParameterGroup=Parameters,Parameter=exp1,Reference=Value" objectType="float" objectValue="1.151" minValue="0.5755" maxValue="2.302" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_36" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vf,Reference=Value" objectType="float" objectValue="0.169469" minValue="0.159425" maxValue="0.6377" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_37" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=exp1,Reference=Value" objectType="float" objectValue="1.042" minValue="1" maxValue="4" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_38" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=Vr,Reference=Value" objectType="float" objectValue="0.188" minValue="0.05" maxValue="0.3" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_39" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=B,Reference=Value" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_40" associatedEntityKey="Task_15" objectCN="CN=Root,Model=MregDiff,Vector=Reactions[IL10R activation],ParameterGroup=Parameters,Parameter=K1,Reference=Value" objectType="float" objectValue="0.463615" minValue="0.02125" maxValue="0.5" tickNumber="1000" tickFactor="100" scaling="linear"/>
     </ListOfSliders>
   </GUI>
   <SBMLReference file="hplancl2.xml">
@@ -6233,15 +6218,15 @@ Reaction scheme where the products are created from the reactants and the change
     <SBMLMap SBMLid="re11" COPASIkey="Reaction_9"/>
     <SBMLMap SBMLid="re12" COPASIkey="Reaction_10"/>
     <SBMLMap SBMLid="re16" COPASIkey="Reaction_11"/>
-    <SBMLMap SBMLid="re19" COPASIkey="Reaction_13"/>
+    <SBMLMap SBMLid="re19" COPASIkey="Reaction_12"/>
     <SBMLMap SBMLid="re2" COPASIkey="Reaction_1"/>
-    <SBMLMap SBMLid="re20" COPASIkey="Reaction_14"/>
-    <SBMLMap SBMLid="re24" COPASIkey="Reaction_15"/>
-    <SBMLMap SBMLid="re25" COPASIkey="Reaction_16"/>
-    <SBMLMap SBMLid="re26" COPASIkey="Reaction_17"/>
-    <SBMLMap SBMLid="re27" COPASIkey="Reaction_18"/>
-    <SBMLMap SBMLid="re28" COPASIkey="Reaction_19"/>
-    <SBMLMap SBMLid="re29" COPASIkey="Reaction_20"/>
+    <SBMLMap SBMLid="re20" COPASIkey="Reaction_13"/>
+    <SBMLMap SBMLid="re24" COPASIkey="Reaction_14"/>
+    <SBMLMap SBMLid="re25" COPASIkey="Reaction_15"/>
+    <SBMLMap SBMLid="re26" COPASIkey="Reaction_16"/>
+    <SBMLMap SBMLid="re27" COPASIkey="Reaction_17"/>
+    <SBMLMap SBMLid="re28" COPASIkey="Reaction_18"/>
+    <SBMLMap SBMLid="re29" COPASIkey="Reaction_19"/>
     <SBMLMap SBMLid="re3" COPASIkey="Reaction_2"/>
     <SBMLMap SBMLid="re4" COPASIkey="Reaction_3"/>
     <SBMLMap SBMLid="re5" COPASIkey="Reaction_4"/>

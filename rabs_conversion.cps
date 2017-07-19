@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2017-06-23 15:46:23 UTC -->
+<!-- generated with COPASI 4.15 (Build 95) (http://www.copasi.org) at 2017-07-19 00:27:52 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="15" versionDevel="95" copasiSourcesModified="0">
   <ListOfFunctions>
+    <Function key="Function_6" name="Constant flux (irreversible)" type="PreDefined" reversible="false">
+      <Expression>
+        v
+      </Expression>
+      <ListOfParameterDescriptions>
+        <ParameterDescription key="FunctionParameter_49" name="v" order="0" role="constant"/>
+      </ListOfParameterDescriptions>
+    </Function>
     <Function key="Function_13" name="Mass action (irreversible)" type="MassAction" reversible="false">
       <MiriamAnnotation>
 <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Function_13">
-    <dcterms:created>
-      <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T15:40:56Z</dcterms:W3CDTF>
-      </rdf:Description>
-    </dcterms:created>
-    <CopasiMT:is rdf:resource="urn:miriam:obo.sbo:SBO:0000041" />
-  </rdf:Description>
-</rdf:RDF>
+   <rdf:Description rdf:about="#Function_13">
+   <CopasiMT:is rdf:resource="urn:miriam:obo.sbo:SBO:0000041" />
+   </rdf:Description>
+   </rdf:RDF>
       </MiriamAnnotation>
       <Comment>
         <body xmlns="http://www.w3.org/1999/xhtml">
@@ -32,48 +35,61 @@ Reaction scheme where the products are created from the reactants and the change
         <ParameterDescription key="FunctionParameter_79" name="substrate" order="1" role="substrate"/>
       </ListOfParameterDescriptions>
     </Function>
-    <Function key="Function_40" name="RabX dissociation" type="UserDefined" reversible="false">
+    <Function key="Function_40" name="SigmoidalAct-InhSingleSubst" type="UserDefined" reversible="unspecified">
       <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Function_40">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T15:28:23Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-14T15:21:17Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
       </MiriamAnnotation>
       <Expression>
-        kdis*RabXm*(1.5-RabXm/area)
+        kS1/(1+exp((kS2-A1-A2)*kS3)+exp(-(kS4-I1-I2)*kS5))*S
       </Expression>
       <ListOfParameterDescriptions>
-        <ParameterDescription key="FunctionParameter_254" name="RabXm" order="0" role="substrate"/>
-        <ParameterDescription key="FunctionParameter_258" name="area" order="1" role="constant"/>
-        <ParameterDescription key="FunctionParameter_264" name="kdis" order="2" role="constant"/>
+        <ParameterDescription key="FunctionParameter_264" name="kS1" order="0" role="constant"/>
+        <ParameterDescription key="FunctionParameter_254" name="kS2" order="1" role="constant"/>
+        <ParameterDescription key="FunctionParameter_258" name="A1" order="2" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_266" name="A2" order="3" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_268" name="kS3" order="4" role="constant"/>
+        <ParameterDescription key="FunctionParameter_270" name="kS4" order="5" role="constant"/>
+        <ParameterDescription key="FunctionParameter_272" name="I1" order="6" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_274" name="I2" order="7" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_276" name="kS5" order="8" role="constant"/>
+        <ParameterDescription key="FunctionParameter_278" name="S" order="9" role="substrate"/>
       </ListOfParameterDescriptions>
     </Function>
-    <Function key="Function_41" name="RabXRab0association" type="UserDefined" reversible="unspecified">
+    <Function key="Function_41" name="SigmoidalAct-InhTwoSubstrates" type="UserDefined" reversible="unspecified">
       <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Function_41">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T15:36:46Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-14T15:21:17Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
       </MiriamAnnotation>
       <Expression>
-        kass*RabXc*Rab0m*RabXm/area
+        kS1/(1+exp((kS2-A1-A2)*kS3)+exp(-(kS4-I1-I2)*kS5))*s1*s2
       </Expression>
       <ListOfParameterDescriptions>
-        <ParameterDescription key="FunctionParameter_265" name="kass" order="0" role="constant"/>
-        <ParameterDescription key="FunctionParameter_262" name="RabXc" order="1" role="substrate"/>
-        <ParameterDescription key="FunctionParameter_267" name="Rab0m" order="2" role="substrate"/>
-        <ParameterDescription key="FunctionParameter_269" name="RabXm" order="3" role="product"/>
-        <ParameterDescription key="FunctionParameter_271" name="area" order="4" role="constant"/>
+        <ParameterDescription key="FunctionParameter_279" name="kS1" order="0" role="constant"/>
+        <ParameterDescription key="FunctionParameter_275" name="kS2" order="1" role="constant"/>
+        <ParameterDescription key="FunctionParameter_271" name="A1" order="2" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_267" name="A2" order="3" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_246" name="kS3" order="4" role="constant"/>
+        <ParameterDescription key="FunctionParameter_280" name="kS4" order="5" role="constant"/>
+        <ParameterDescription key="FunctionParameter_282" name="I1" order="6" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_284" name="I2" order="7" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_286" name="kS5" order="8" role="constant"/>
+        <ParameterDescription key="FunctionParameter_288" name="s1" order="9" role="substrate"/>
+        <ParameterDescription key="FunctionParameter_290" name="s2" order="10" role="substrate"/>
       </ListOfParameterDescriptions>
     </Function>
   </ListOfFunctions>
@@ -85,7 +101,7 @@ Reaction scheme where the products are created from the reactants and the change
   <rdf:Description rdf:about="#Model_3">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2016-11-29T12:05:01Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-14T15:08:52Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
@@ -97,156 +113,159 @@ Reaction scheme where the products are created from the reactants and the change
       </Compartment>
     </ListOfCompartments>
     <ListOfMetabolites>
-      <Metabolite key="Metabolite_1" name="RabAc" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_1" name="RabDm" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_1">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2016-12-23T14:03:03Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T14:08:19Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_3" name="RabAm" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_3" name="Rab0" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_3">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2016-12-23T14:03:32Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T11:45:12Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
+        <InitialExpression>
+          1-&lt;CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabBm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabCm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabEm],Reference=InitialConcentration&gt;
+        </InitialExpression>
       </Metabolite>
-      <Metabolite key="Metabolite_5" name="RabBc" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_5" name="RabDc" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_5">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2016-12-23T14:03:07Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T14:19:37Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_7" name="RabBm" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_7" name="RabAm" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_7">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2016-12-23T14:03:42Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T15:00:32Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_9" name="RabDc" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_9" name="RabAc" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_9">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2016-12-29T13:07:26Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T14:19:05Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_11" name="RabDm" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_11" name="zero" simulationType="fixed" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_11">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2016-12-29T13:07:34Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T11:58:01Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_13" name="RabCc" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_13" name="RabBc" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_13">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2016-12-29T13:07:21Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T15:00:27Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_15" name="RabCm" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_15" name="RabCc" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_15">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2016-12-29T13:07:24Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T15:00:17Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_17" name="area" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_17" name="RabEc" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_17">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T17:16:44Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T15:02:12Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_19" name="RabEc" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_19" name="RabBm" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_19">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T17:17:37Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T15:00:30Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_21" name="RabEm" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_21" name="RabCm" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_21">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T17:16:35Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T15:00:24Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_23" name="Rab0" simulationType="reactions" compartment="Compartment_1">
+      <Metabolite key="Metabolite_23" name="RabEm" simulationType="reactions" compartment="Compartment_1">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_23">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-02-19T18:31:15Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T15:02:15Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
@@ -255,209 +274,62 @@ Reaction scheme where the products are created from the reactants and the change
       </Metabolite>
     </ListOfMetabolites>
     <ListOfModelValues>
-      <ModelValue key="ModelValue_0" name="area" simulationType="assignment">
+      <ModelValue key="ModelValue_0" name="kS1" simulationType="fixed">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#ModelValue_0">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T15:15:16Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T12:42:25Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
-        <Expression>
-          &lt;CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[area],Reference=InitialConcentration&gt;
-        </Expression>
       </ModelValue>
-      <ModelValue key="ModelValue_1" name="kass" simulationType="fixed">
+      <ModelValue key="ModelValue_1" name="kS2" simulationType="fixed">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#ModelValue_1">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T17:45:51Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T12:44:50Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
       </ModelValue>
-      <ModelValue key="ModelValue_2" name="kdis" simulationType="fixed">
-      </ModelValue>
-      <ModelValue key="ModelValue_3" name="kconvert" simulationType="fixed">
+      <ModelValue key="ModelValue_2" name="kS3" simulationType="fixed">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#ModelValue_3">
+  <rdf:Description rdf:about="#ModelValue_2">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-02-21T11:39:04Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T12:44:45Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
+      </ModelValue>
+      <ModelValue key="ModelValue_3" name="kS4" simulationType="fixed">
+      </ModelValue>
+      <ModelValue key="ModelValue_4" name="kS5" simulationType="fixed">
+      </ModelValue>
+      <ModelValue key="ModelValue_5" name="kInflux" simulationType="fixed">
+      </ModelValue>
+      <ModelValue key="ModelValue_6" name="kOutflux" simulationType="fixed">
       </ModelValue>
     </ListOfModelValues>
     <ListOfReactions>
-      <Reaction key="Reaction_0" name="Rab5-7Conversion" reversible="false" fast="false">
+      <Reaction key="Reaction_0" name="Rab7Activation" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_0">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2016-11-29T12:05:36Z</dcterms:W3CDTF>
-      </rdf:Description>
-    </dcterms:created>
-  </rdf:Description>
-</rdf:RDF>
-        </MiriamAnnotation>
-        <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
-          <Substrate metabolite="Metabolite_9" stoichiometry="1"/>
-        </ListOfSubstrates>
-        <ListOfProducts>
-          <Product metabolite="Metabolite_11" stoichiometry="1"/>
-          <Product metabolite="Metabolite_1" stoichiometry="1"/>
-        </ListOfProducts>
-        <ListOfConstants>
-          <Constant key="Parameter_4992" name="k1" value="3e-008"/>
-        </ListOfConstants>
-        <KineticLaw function="Function_13">
-          <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="ModelValue_3"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_79">
-              <SourceParameter reference="Metabolite_3"/>
-              <SourceParameter reference="Metabolite_9"/>
-            </CallParameter>
-          </ListOfCallParameters>
-        </KineticLaw>
-      </Reaction>
-      <Reaction key="Reaction_1" name="Rab22-11Conversion" reversible="false" fast="false">
-        <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_1">
-    <dcterms:created>
-      <rdf:Description>
-        <dcterms:W3CDTF>2016-12-26T15:31:52Z</dcterms:W3CDTF>
-      </rdf:Description>
-    </dcterms:created>
-  </rdf:Description>
-</rdf:RDF>
-        </MiriamAnnotation>
-        <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_7" stoichiometry="1"/>
-          <Substrate metabolite="Metabolite_13" stoichiometry="1"/>
-        </ListOfSubstrates>
-        <ListOfProducts>
-          <Product metabolite="Metabolite_15" stoichiometry="1"/>
-          <Product metabolite="Metabolite_5" stoichiometry="1"/>
-        </ListOfProducts>
-        <ListOfConstants>
-          <Constant key="Parameter_4991" name="k1" value="3e-008"/>
-        </ListOfConstants>
-        <KineticLaw function="Function_13">
-          <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="ModelValue_3"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_79">
-              <SourceParameter reference="Metabolite_7"/>
-              <SourceParameter reference="Metabolite_13"/>
-            </CallParameter>
-          </ListOfCallParameters>
-        </KineticLaw>
-      </Reaction>
-      <Reaction key="Reaction_2" name="Rab5ass" reversible="false" fast="false">
-        <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_2">
-    <dcterms:created>
-      <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T15:36:05Z</dcterms:W3CDTF>
-      </rdf:Description>
-    </dcterms:created>
-  </rdf:Description>
-</rdf:RDF>
-        </MiriamAnnotation>
-        <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_1" stoichiometry="1"/>
-          <Substrate metabolite="Metabolite_23" stoichiometry="1"/>
-        </ListOfSubstrates>
-        <ListOfProducts>
-          <Product metabolite="Metabolite_3" stoichiometry="1"/>
-        </ListOfProducts>
-        <ListOfConstants>
-          <Constant key="Parameter_4990" name="area" value="0"/>
-          <Constant key="Parameter_4989" name="kass" value="1e-007"/>
-        </ListOfConstants>
-        <KineticLaw function="Function_41">
-          <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_265">
-              <SourceParameter reference="ModelValue_1"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_262">
-              <SourceParameter reference="Metabolite_1"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_267">
-              <SourceParameter reference="Metabolite_23"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_269">
-              <SourceParameter reference="Metabolite_3"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_271">
-              <SourceParameter reference="ModelValue_0"/>
-            </CallParameter>
-          </ListOfCallParameters>
-        </KineticLaw>
-      </Reaction>
-      <Reaction key="Reaction_3" name="Rab5dis" reversible="false" fast="false">
-        <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_3">
-    <dcterms:created>
-      <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T15:46:52Z</dcterms:W3CDTF>
-      </rdf:Description>
-    </dcterms:created>
-  </rdf:Description>
-</rdf:RDF>
-        </MiriamAnnotation>
-        <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
-        </ListOfSubstrates>
-        <ListOfProducts>
-          <Product metabolite="Metabolite_1" stoichiometry="1"/>
-          <Product metabolite="Metabolite_23" stoichiometry="1"/>
-        </ListOfProducts>
-        <ListOfConstants>
-          <Constant key="Parameter_4988" name="area" value="0"/>
-          <Constant key="Parameter_4987" name="kdis" value="5e-005"/>
-        </ListOfConstants>
-        <KineticLaw function="Function_40">
-          <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_254">
-              <SourceParameter reference="Metabolite_3"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_258">
-              <SourceParameter reference="ModelValue_0"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_264">
-              <SourceParameter reference="ModelValue_2"/>
-            </CallParameter>
-          </ListOfCallParameters>
-        </KineticLaw>
-      </Reaction>
-      <Reaction key="Reaction_4" name="RabBass" reversible="false" fast="false">
-        <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_4">
-    <dcterms:created>
-      <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T15:48:04Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-14T15:39:17Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
@@ -465,42 +337,68 @@ Reaction scheme where the products are created from the reactants and the change
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_5" stoichiometry="1"/>
-          <Substrate metabolite="Metabolite_23" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
-          <Product metabolite="Metabolite_7" stoichiometry="1"/>
+          <Product metabolite="Metabolite_1" stoichiometry="1"/>
         </ListOfProducts>
+        <ListOfModifiers>
+          <Modifier metabolite="Metabolite_1" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_7" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
+        </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4986" name="area" value="0"/>
-          <Constant key="Parameter_4985" name="kass" value="1e-007"/>
+          <Constant key="Parameter_4992" name="kS1" value="2.40815"/>
+          <Constant key="Parameter_4991" name="kS2" value="0.801"/>
+          <Constant key="Parameter_4990" name="kS3" value="4.015"/>
+          <Constant key="Parameter_4989" name="kS4" value="0.214"/>
+          <Constant key="Parameter_4988" name="kS5" value="8.185"/>
         </ListOfConstants>
         <KineticLaw function="Function_41">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_265">
+            <CallParameter functionParameter="FunctionParameter_279">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_275">
               <SourceParameter reference="ModelValue_1"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_262">
-              <SourceParameter reference="Metabolite_5"/>
+            <CallParameter functionParameter="FunctionParameter_271">
+              <SourceParameter reference="Metabolite_1"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_267">
-              <SourceParameter reference="Metabolite_23"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_269">
               <SourceParameter reference="Metabolite_7"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_271">
-              <SourceParameter reference="ModelValue_0"/>
+            <CallParameter functionParameter="FunctionParameter_246">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_280">
+              <SourceParameter reference="ModelValue_3"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_282">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_284">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_286">
+              <SourceParameter reference="ModelValue_4"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_288">
+              <SourceParameter reference="Metabolite_5"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_290">
+              <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_5" name="RabBdis" reversible="false" fast="false">
+      <Reaction key="Reaction_1" name="Rab5Inactivation" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_5">
+  <rdf:Description rdf:about="#Reaction_1">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T15:49:01Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-14T15:39:51Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
@@ -510,34 +408,387 @@ Reaction scheme where the products are created from the reactants and the change
           <Substrate metabolite="Metabolite_7" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
-          <Product metabolite="Metabolite_5" stoichiometry="1"/>
-          <Product metabolite="Metabolite_23" stoichiometry="1"/>
+          <Product metabolite="Metabolite_9" stoichiometry="1"/>
+          <Product metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfProducts>
+        <ListOfModifiers>
+          <Modifier metabolite="Metabolite_1" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_7" stoichiometry="1"/>
+        </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4984" name="area" value="0"/>
-          <Constant key="Parameter_4983" name="kdis" value="5e-005"/>
+          <Constant key="Parameter_4987" name="kS1" value="2.40815"/>
+          <Constant key="Parameter_4986" name="kS2" value="0.801"/>
+          <Constant key="Parameter_4985" name="kS3" value="4.015"/>
+          <Constant key="Parameter_4984" name="kS4" value="0.214"/>
+          <Constant key="Parameter_4983" name="kS5" value="8.185"/>
         </ListOfConstants>
         <KineticLaw function="Function_40">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_254">
-              <SourceParameter reference="Metabolite_7"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_258">
+            <CallParameter functionParameter="FunctionParameter_264">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_264">
+            <CallParameter functionParameter="FunctionParameter_254">
+              <SourceParameter reference="ModelValue_1"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_258">
+              <SourceParameter reference="Metabolite_1"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_266">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_268">
               <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_270">
+              <SourceParameter reference="ModelValue_3"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_272">
+              <SourceParameter reference="Metabolite_7"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_274">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_276">
+              <SourceParameter reference="ModelValue_4"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_278">
+              <SourceParameter reference="Metabolite_7"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_6" name="RabCdis" reversible="false" fast="false">
+      <Reaction key="Reaction_2" name="Rab5Activation" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_2">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2017-07-17T12:05:59Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_9" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_7" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfModifiers>
+          <Modifier metabolite="Metabolite_7" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
+        </ListOfModifiers>
+        <ListOfConstants>
+          <Constant key="Parameter_4982" name="kS1" value="2.40815"/>
+          <Constant key="Parameter_4981" name="kS2" value="0.801"/>
+          <Constant key="Parameter_4980" name="kS3" value="4.015"/>
+          <Constant key="Parameter_4979" name="kS4" value="0.214"/>
+          <Constant key="Parameter_4978" name="kS5" value="8.185"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_41">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_279">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_275">
+              <SourceParameter reference="ModelValue_1"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_271">
+              <SourceParameter reference="Metabolite_7"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_267">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_246">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_280">
+              <SourceParameter reference="ModelValue_3"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_282">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_284">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_286">
+              <SourceParameter reference="ModelValue_4"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_288">
+              <SourceParameter reference="Metabolite_9"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_290">
+              <SourceParameter reference="Metabolite_3"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_3" name="Rab7Inactivation" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_3">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2017-07-17T12:08:42Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_1" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_5" stoichiometry="1"/>
+          <Product metabolite="Metabolite_3" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfModifiers>
+          <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_1" stoichiometry="1"/>
+        </ListOfModifiers>
+        <ListOfConstants>
+          <Constant key="Parameter_4977" name="kS1" value="2.40815"/>
+          <Constant key="Parameter_4976" name="kS2" value="0.801"/>
+          <Constant key="Parameter_4975" name="kS3" value="4.015"/>
+          <Constant key="Parameter_4974" name="kS4" value="0.214"/>
+          <Constant key="Parameter_4973" name="kS5" value="8.185"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_40">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_264">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_254">
+              <SourceParameter reference="ModelValue_1"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_258">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_266">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_268">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_270">
+              <SourceParameter reference="ModelValue_3"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_272">
+              <SourceParameter reference="Metabolite_1"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_274">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_276">
+              <SourceParameter reference="ModelValue_4"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_278">
+              <SourceParameter reference="Metabolite_1"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_4" name="r5Influx" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_4">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2017-07-17T14:54:54Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_9" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfConstants>
+          <Constant key="Parameter_4972" name="v" value="1"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_6">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_49">
+              <SourceParameter reference="ModelValue_5"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_5" name="r5Outflux" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_5">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2017-07-17T14:56:28Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_9" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfConstants>
+          <Constant key="Parameter_4971" name="k1" value="1"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_13">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="ModelValue_6"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_79">
+              <SourceParameter reference="Metabolite_9"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_6" name="r7Influx" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_6">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T15:49:01Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T14:55:04Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_5" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfConstants>
+          <Constant key="Parameter_4970" name="v" value="1"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_6">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_49">
+              <SourceParameter reference="ModelValue_5"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_7" name="r7Outflux" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_7">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2017-07-17T14:56:38Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_5" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfConstants>
+          <Constant key="Parameter_4969" name="k1" value="1"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_13">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="ModelValue_6"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_79">
+              <SourceParameter reference="Metabolite_5"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_8" name="r22Influx" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_8">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2017-07-17T14:54:44Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_13" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfConstants>
+          <Constant key="Parameter_4968" name="v" value="1"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_6">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_49">
+              <SourceParameter reference="ModelValue_5"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_9" name="r22Outflux" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_9">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2017-07-17T14:55:27Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_13" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfConstants>
+          <Constant key="Parameter_4967" name="k1" value="1"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_13">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="ModelValue_6"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_79">
+              <SourceParameter reference="Metabolite_13"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_10" name="r11Influx" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_10">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2017-07-17T14:53:31Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_15" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfConstants>
+          <Constant key="Parameter_4966" name="v" value="1"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_6">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_49">
+              <SourceParameter reference="ModelValue_5"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_11" name="r11Outflux" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_11">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2017-07-17T14:55:21Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
@@ -546,72 +797,283 @@ Reaction scheme where the products are created from the reactants and the change
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_15" stoichiometry="1"/>
         </ListOfSubstrates>
-        <ListOfProducts>
-          <Product metabolite="Metabolite_13" stoichiometry="1"/>
-          <Product metabolite="Metabolite_23" stoichiometry="1"/>
-        </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4982" name="area" value="0"/>
-          <Constant key="Parameter_4981" name="kdis" value="5e-005"/>
+          <Constant key="Parameter_4965" name="k1" value="1"/>
         </ListOfConstants>
-        <KineticLaw function="Function_40">
+        <KineticLaw function="Function_13">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_254">
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="ModelValue_6"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_15"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_258">
-              <SourceParameter reference="ModelValue_0"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_264">
-              <SourceParameter reference="ModelValue_2"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_7" name="RabDdis" reversible="false" fast="false">
+      <Reaction key="Reaction_12" name="rSinflux" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_7">
+  <rdf:Description rdf:about="#Reaction_12">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T15:49:01Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T14:56:52Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_17" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfConstants>
+          <Constant key="Parameter_4964" name="v" value="1"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_6">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_49">
+              <SourceParameter reference="ModelValue_5"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_13" name="rSOutflux" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_13">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2017-07-17T14:57:02Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_11" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_17" stoichiometry="1"/>
         </ListOfSubstrates>
-        <ListOfProducts>
-          <Product metabolite="Metabolite_9" stoichiometry="1"/>
-          <Product metabolite="Metabolite_23" stoichiometry="1"/>
-        </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4980" name="area" value="0"/>
-          <Constant key="Parameter_4979" name="kdis" value="5e-005"/>
+          <Constant key="Parameter_4963" name="k1" value="1"/>
         </ListOfConstants>
-        <KineticLaw function="Function_40">
+        <KineticLaw function="Function_13">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_254">
-              <SourceParameter reference="Metabolite_11"/>
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="ModelValue_6"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_258">
-              <SourceParameter reference="ModelValue_0"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_264">
-              <SourceParameter reference="ModelValue_2"/>
+            <CallParameter functionParameter="FunctionParameter_79">
+              <SourceParameter reference="Metabolite_17"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_8" name="RabEdis" reversible="false" fast="false">
+      <Reaction key="Reaction_14" name="Rab22Activation" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_8">
+  <rdf:Description rdf:about="#Reaction_14">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T15:49:01Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T14:44:04Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_13" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_19" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfModifiers>
+          <Modifier metabolite="Metabolite_19" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
+        </ListOfModifiers>
+        <ListOfConstants>
+          <Constant key="Parameter_4962" name="kS1" value="2.40815"/>
+          <Constant key="Parameter_4961" name="kS2" value="0.801"/>
+          <Constant key="Parameter_4960" name="kS3" value="4.015"/>
+          <Constant key="Parameter_4959" name="kS4" value="0.214"/>
+          <Constant key="Parameter_4958" name="kS5" value="8.185"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_41">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_279">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_275">
+              <SourceParameter reference="ModelValue_1"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_271">
+              <SourceParameter reference="Metabolite_19"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_267">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_246">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_280">
+              <SourceParameter reference="ModelValue_3"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_282">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_284">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_286">
+              <SourceParameter reference="ModelValue_4"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_288">
+              <SourceParameter reference="Metabolite_13"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_290">
+              <SourceParameter reference="Metabolite_3"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_15" name="Rab22Inactivation" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_15">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2017-07-17T14:46:58Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_19" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_13" stoichiometry="1"/>
+          <Product metabolite="Metabolite_3" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfModifiers>
+          <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_19" stoichiometry="1"/>
+        </ListOfModifiers>
+        <ListOfConstants>
+          <Constant key="Parameter_4957" name="kS1" value="2.40815"/>
+          <Constant key="Parameter_4956" name="kS2" value="0.801"/>
+          <Constant key="Parameter_4955" name="kS3" value="4.015"/>
+          <Constant key="Parameter_4954" name="kS4" value="0.214"/>
+          <Constant key="Parameter_4953" name="kS5" value="8.185"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_40">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_264">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_254">
+              <SourceParameter reference="ModelValue_1"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_258">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_266">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_268">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_270">
+              <SourceParameter reference="ModelValue_3"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_272">
+              <SourceParameter reference="Metabolite_19"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_274">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_276">
+              <SourceParameter reference="ModelValue_4"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_278">
+              <SourceParameter reference="Metabolite_19"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_16" name="Rab11Activation" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_16">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2017-07-17T14:48:36Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_15" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_21" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfModifiers>
+          <Modifier metabolite="Metabolite_21" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
+        </ListOfModifiers>
+        <ListOfConstants>
+          <Constant key="Parameter_4952" name="kS1" value="2.40815"/>
+          <Constant key="Parameter_4951" name="kS2" value="0.801"/>
+          <Constant key="Parameter_4950" name="kS3" value="4.015"/>
+          <Constant key="Parameter_4949" name="kS4" value="0.214"/>
+          <Constant key="Parameter_4948" name="kS5" value="8.185"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_41">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_279">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_275">
+              <SourceParameter reference="ModelValue_1"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_271">
+              <SourceParameter reference="Metabolite_21"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_267">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_246">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_280">
+              <SourceParameter reference="ModelValue_3"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_282">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_284">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_286">
+              <SourceParameter reference="ModelValue_4"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_288">
+              <SourceParameter reference="Metabolite_15"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_290">
+              <SourceParameter reference="Metabolite_3"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_17" name="Rab11Inactivation" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_17">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2017-07-17T14:49:43Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
@@ -621,187 +1083,184 @@ Reaction scheme where the products are created from the reactants and the change
           <Substrate metabolite="Metabolite_21" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
-          <Product metabolite="Metabolite_19" stoichiometry="1"/>
-          <Product metabolite="Metabolite_23" stoichiometry="1"/>
+          <Product metabolite="Metabolite_15" stoichiometry="1"/>
+          <Product metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfProducts>
+        <ListOfModifiers>
+          <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_21" stoichiometry="1"/>
+        </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4978" name="area" value="0"/>
-          <Constant key="Parameter_4977" name="kdis" value="5e-005"/>
+          <Constant key="Parameter_4947" name="kS1" value="2.40815"/>
+          <Constant key="Parameter_4946" name="kS2" value="0.801"/>
+          <Constant key="Parameter_4945" name="kS3" value="4.015"/>
+          <Constant key="Parameter_4944" name="kS4" value="0.214"/>
+          <Constant key="Parameter_4943" name="kS5" value="8.185"/>
         </ListOfConstants>
         <KineticLaw function="Function_40">
           <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_264">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
             <CallParameter functionParameter="FunctionParameter_254">
-              <SourceParameter reference="Metabolite_21"/>
+              <SourceParameter reference="ModelValue_1"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_258">
-              <SourceParameter reference="ModelValue_0"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_264">
-              <SourceParameter reference="ModelValue_2"/>
-            </CallParameter>
-          </ListOfCallParameters>
-        </KineticLaw>
-      </Reaction>
-      <Reaction key="Reaction_9" name="RabCass" reversible="false" fast="false">
-        <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_9">
-    <dcterms:created>
-      <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T15:48:04Z</dcterms:W3CDTF>
-      </rdf:Description>
-    </dcterms:created>
-  </rdf:Description>
-</rdf:RDF>
-        </MiriamAnnotation>
-        <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_13" stoichiometry="1"/>
-          <Substrate metabolite="Metabolite_23" stoichiometry="1"/>
-        </ListOfSubstrates>
-        <ListOfProducts>
-          <Product metabolite="Metabolite_15" stoichiometry="1"/>
-        </ListOfProducts>
-        <ListOfConstants>
-          <Constant key="Parameter_4976" name="area" value="0"/>
-          <Constant key="Parameter_4975" name="kass" value="1e-007"/>
-        </ListOfConstants>
-        <KineticLaw function="Function_41">
-          <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_265">
-              <SourceParameter reference="ModelValue_1"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_262">
-              <SourceParameter reference="Metabolite_13"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_267">
-              <SourceParameter reference="Metabolite_23"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_269">
-              <SourceParameter reference="Metabolite_15"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_271">
-              <SourceParameter reference="ModelValue_0"/>
-            </CallParameter>
-          </ListOfCallParameters>
-        </KineticLaw>
-      </Reaction>
-      <Reaction key="Reaction_10" name="RabDass" reversible="false" fast="false">
-        <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_10">
-    <dcterms:created>
-      <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T15:48:04Z</dcterms:W3CDTF>
-      </rdf:Description>
-    </dcterms:created>
-  </rdf:Description>
-</rdf:RDF>
-        </MiriamAnnotation>
-        <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_9" stoichiometry="1"/>
-          <Substrate metabolite="Metabolite_23" stoichiometry="1"/>
-        </ListOfSubstrates>
-        <ListOfProducts>
-          <Product metabolite="Metabolite_11" stoichiometry="1"/>
-        </ListOfProducts>
-        <ListOfConstants>
-          <Constant key="Parameter_4974" name="area" value="0"/>
-          <Constant key="Parameter_4973" name="kass" value="1e-007"/>
-        </ListOfConstants>
-        <KineticLaw function="Function_41">
-          <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_265">
-              <SourceParameter reference="ModelValue_1"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_262">
-              <SourceParameter reference="Metabolite_9"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_267">
-              <SourceParameter reference="Metabolite_23"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_269">
               <SourceParameter reference="Metabolite_11"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_271">
-              <SourceParameter reference="ModelValue_0"/>
+            <CallParameter functionParameter="FunctionParameter_266">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_268">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_270">
+              <SourceParameter reference="ModelValue_3"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_272">
+              <SourceParameter reference="Metabolite_21"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_274">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_276">
+              <SourceParameter reference="ModelValue_4"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_278">
+              <SourceParameter reference="Metabolite_21"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_11" name="RabEass" reversible="false" fast="false">
+      <Reaction key="Reaction_18" name="RabSActivation" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_11">
+  <rdf:Description rdf:about="#Reaction_18">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-02-17T15:48:04Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T14:50:46Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_19" stoichiometry="1"/>
-          <Substrate metabolite="Metabolite_23" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_17" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
-          <Product metabolite="Metabolite_21" stoichiometry="1"/>
+          <Product metabolite="Metabolite_23" stoichiometry="1"/>
         </ListOfProducts>
+        <ListOfModifiers>
+          <Modifier metabolite="Metabolite_23" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
+        </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4972" name="area" value="0"/>
-          <Constant key="Parameter_4971" name="kass" value="1e-007"/>
+          <Constant key="Parameter_4942" name="kS1" value="2.40815"/>
+          <Constant key="Parameter_4941" name="kS2" value="0.801"/>
+          <Constant key="Parameter_4940" name="kS3" value="4.015"/>
+          <Constant key="Parameter_4939" name="kS4" value="0.214"/>
+          <Constant key="Parameter_4938" name="kS5" value="8.185"/>
         </ListOfConstants>
         <KineticLaw function="Function_41">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_265">
+            <CallParameter functionParameter="FunctionParameter_279">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_275">
               <SourceParameter reference="ModelValue_1"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_262">
-              <SourceParameter reference="Metabolite_19"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_267">
+            <CallParameter functionParameter="FunctionParameter_271">
               <SourceParameter reference="Metabolite_23"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_269">
-              <SourceParameter reference="Metabolite_21"/>
+            <CallParameter functionParameter="FunctionParameter_267">
+              <SourceParameter reference="Metabolite_11"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_271">
-              <SourceParameter reference="ModelValue_0"/>
+            <CallParameter functionParameter="FunctionParameter_246">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_280">
+              <SourceParameter reference="ModelValue_3"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_282">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_284">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_286">
+              <SourceParameter reference="ModelValue_4"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_288">
+              <SourceParameter reference="Metabolite_17"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_290">
+              <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_12" name="Rab5-22Conversion" reversible="false" fast="false">
+      <Reaction key="Reaction_19" name="RabSInactivation" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_12">
+  <rdf:Description rdf:about="#Reaction_19">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2016-11-29T12:05:36Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-07-17T14:52:14Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
-          <Substrate metabolite="Metabolite_5" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_23" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
-          <Product metabolite="Metabolite_7" stoichiometry="1"/>
-          <Product metabolite="Metabolite_1" stoichiometry="1"/>
+          <Product metabolite="Metabolite_17" stoichiometry="1"/>
+          <Product metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfProducts>
+        <ListOfModifiers>
+          <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
+          <Modifier metabolite="Metabolite_23" stoichiometry="1"/>
+        </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4970" name="k1" value="3e-008"/>
+          <Constant key="Parameter_4937" name="kS1" value="2.40815"/>
+          <Constant key="Parameter_4936" name="kS2" value="0.801"/>
+          <Constant key="Parameter_4935" name="kS3" value="4.015"/>
+          <Constant key="Parameter_4934" name="kS4" value="0.214"/>
+          <Constant key="Parameter_4933" name="kS5" value="8.185"/>
         </ListOfConstants>
-        <KineticLaw function="Function_13">
+        <KineticLaw function="Function_40">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_81">
+            <CallParameter functionParameter="FunctionParameter_264">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_254">
+              <SourceParameter reference="ModelValue_1"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_258">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_266">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_268">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_270">
               <SourceParameter reference="ModelValue_3"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_79">
-              <SourceParameter reference="Metabolite_3"/>
-              <SourceParameter reference="Metabolite_5"/>
+            <CallParameter functionParameter="FunctionParameter_272">
+              <SourceParameter reference="Metabolite_23"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_274">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_276">
+              <SourceParameter reference="ModelValue_4"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_278">
+              <SourceParameter reference="Metabolite_23"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
@@ -816,164 +1275,370 @@ Reaction scheme where the products are created from the reactants and the change
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment]" value="1" type="Compartment" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAm]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabBc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabBm]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDc]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDm]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[Rab0]" value="5.185064081189981e+019" type="Species" simulationType="reactions">
+            <InitialExpression>
+              1-&lt;CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabBm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabCm],Reference=InitialConcentration&gt;-&lt;CN=Root,Model=New Model,Vector=Compartments[compartment],Vector=Metabolites[RabEm],Reference=InitialConcentration&gt;
+            </InitialExpression>
+          </ModelParameter>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAm]" value="2.504608770461003e+020" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[zero]" value="0" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabBc]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabCc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabCm]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[area]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabEc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabBm]" value="2.99902661142e+020" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabCm]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabEm]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[Rab0]" value="0" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[area]" value="0" type="ModelValue" simulationType="assignment"/>
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kass]" value="1e-007" type="ModelValue" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kdis]" value="5e-005" type="ModelValue" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kconvert]" value="3e-008" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS1]" value="2.40815" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS2]" value="0.8010000000000001" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS3]" value="4.015" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS4]" value="0.214" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS5]" value="8.184999999999999" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kInflux]" value="1" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kOutflux]" value="1" type="ModelValue" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
-          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5-7Conversion]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5-7Conversion],ParameterGroup=Parameters,Parameter=k1" value="3e-008" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[kconvert],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS2],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS3],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS4],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS5],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22-11Conversion]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22-11Conversion],ParameterGroup=Parameters,Parameter=k1" value="3e-008" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Inactivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[kconvert],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS2],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS3],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS4],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS5],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5ass]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5ass],ParameterGroup=Parameters,Parameter=area" value="0" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[area],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5ass],ParameterGroup=Parameters,Parameter=kass" value="1e-007" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[kass],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS2],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-          </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5dis]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5dis],ParameterGroup=Parameters,Parameter=area" value="0" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[area],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS3],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5dis],ParameterGroup=Parameters,Parameter=kdis" value="5e-005" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[kdis],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS4],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-          </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabBass]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabBass],ParameterGroup=Parameters,Parameter=area" value="0" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[area],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabBass],ParameterGroup=Parameters,Parameter=kass" value="1e-007" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[kass],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS5],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabBdis]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabBdis],ParameterGroup=Parameters,Parameter=area" value="0" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Inactivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[area],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabBdis],ParameterGroup=Parameters,Parameter=kdis" value="5e-005" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[kdis],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS2],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-          </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabCdis]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabCdis],ParameterGroup=Parameters,Parameter=area" value="0" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[area],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS3],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabCdis],ParameterGroup=Parameters,Parameter=kdis" value="5e-005" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[kdis],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS4],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
-          </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabDdis]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabDdis],ParameterGroup=Parameters,Parameter=area" value="0" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[area],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabDdis],ParameterGroup=Parameters,Parameter=kdis" value="5e-005" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[kdis],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS5],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabEdis]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabEdis],ParameterGroup=Parameters,Parameter=area" value="0" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[r5Influx]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[r5Influx],ParameterGroup=Parameters,Parameter=v" value="1" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[area],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabEdis],ParameterGroup=Parameters,Parameter=kdis" value="5e-005" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[kdis],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kInflux],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabCass]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabCass],ParameterGroup=Parameters,Parameter=area" value="0" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[r5Outflux]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[r5Outflux],ParameterGroup=Parameters,Parameter=k1" value="1" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[area],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabCass],ParameterGroup=Parameters,Parameter=kass" value="1e-007" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[kass],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kOutflux],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabDass]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabDass],ParameterGroup=Parameters,Parameter=area" value="0" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[r7Influx]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[r7Influx],ParameterGroup=Parameters,Parameter=v" value="1" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[area],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabDass],ParameterGroup=Parameters,Parameter=kass" value="1e-007" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[kass],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kInflux],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabEass]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabEass],ParameterGroup=Parameters,Parameter=area" value="0" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[r7Outflux]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[r7Outflux],ParameterGroup=Parameters,Parameter=k1" value="1" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[area],Reference=InitialValue&gt;
-              </InitialExpression>
-            </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabEass],ParameterGroup=Parameters,Parameter=kass" value="1e-007" type="ReactionParameter" simulationType="assignment">
-              <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[kass],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kOutflux],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5-22Conversion]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5-22Conversion],ParameterGroup=Parameters,Parameter=k1" value="3e-008" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[r22Influx]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[r22Influx],ParameterGroup=Parameters,Parameter=v" value="1" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=RabConversion,Vector=Values[kconvert],Reference=InitialValue&gt;
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kInflux],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[r22Outflux]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[r22Outflux],ParameterGroup=Parameters,Parameter=k1" value="1" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kOutflux],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[r11Influx]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[r11Influx],ParameterGroup=Parameters,Parameter=v" value="1" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kInflux],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[r11Outflux]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[r11Outflux],ParameterGroup=Parameters,Parameter=k1" value="1" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kOutflux],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[rSinflux]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[rSinflux],ParameterGroup=Parameters,Parameter=v" value="1" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kInflux],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[rSOutflux]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[rSOutflux],ParameterGroup=Parameters,Parameter=k1" value="1" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kOutflux],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS2],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS3],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS4],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS5],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Inactivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS2],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS3],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS4],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS5],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Activation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS2],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS3],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS4],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS5],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Inactivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS2],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS3],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS4],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS5],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS2],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS3],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS4],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS5],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSInactivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS1" value="2.40815" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS2" value="0.8010000000000001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS2],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS3" value="4.015" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS3],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS4" value="0.214" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS4],Reference=InitialValue&gt;
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS5" value="8.184999999999999" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=RabConversion,Vector=Values[kS5],Reference=InitialValue&gt;
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
@@ -982,26 +1647,29 @@ Reaction scheme where the products are created from the reactants and the change
     </ListOfModelParameterSets>
     <StateTemplate>
       <StateTemplateVariable objectReference="Model_3"/>
-      <StateTemplateVariable objectReference="Metabolite_23"/>
       <StateTemplateVariable objectReference="Metabolite_3"/>
       <StateTemplateVariable objectReference="Metabolite_5"/>
       <StateTemplateVariable objectReference="Metabolite_9"/>
-      <StateTemplateVariable objectReference="Metabolite_19"/>
       <StateTemplateVariable objectReference="Metabolite_13"/>
-      <StateTemplateVariable objectReference="Metabolite_21"/>
-      <StateTemplateVariable objectReference="Metabolite_1"/>
-      <StateTemplateVariable objectReference="Metabolite_7"/>
-      <StateTemplateVariable objectReference="Metabolite_11"/>
       <StateTemplateVariable objectReference="Metabolite_15"/>
-      <StateTemplateVariable objectReference="ModelValue_0"/>
       <StateTemplateVariable objectReference="Metabolite_17"/>
+      <StateTemplateVariable objectReference="Metabolite_7"/>
+      <StateTemplateVariable objectReference="Metabolite_1"/>
+      <StateTemplateVariable objectReference="Metabolite_23"/>
+      <StateTemplateVariable objectReference="Metabolite_21"/>
+      <StateTemplateVariable objectReference="Metabolite_19"/>
+      <StateTemplateVariable objectReference="Metabolite_11"/>
       <StateTemplateVariable objectReference="Compartment_1"/>
+      <StateTemplateVariable objectReference="ModelValue_0"/>
       <StateTemplateVariable objectReference="ModelValue_1"/>
       <StateTemplateVariable objectReference="ModelValue_2"/>
       <StateTemplateVariable objectReference="ModelValue_3"/>
+      <StateTemplateVariable objectReference="ModelValue_4"/>
+      <StateTemplateVariable objectReference="ModelValue_5"/>
+      <StateTemplateVariable objectReference="ModelValue_6"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1e-007 5e-005 3e-008 
+      0 5.185064081189981e+019 0 0 0 0 0 2.504608770461003e+020 0 0 0 2.99902661142e+020 0 1 2.40815 0.8010000000000001 4.015 0.214 8.184999999999999 1 1 
     </InitialState>
   </Model>
   <ListOfTasks>
@@ -1025,10 +1693,10 @@ Reaction scheme where the products are created from the reactants and the change
     </Task>
     <Task key="Task_15" name="Time-Course" type="timeCourse" scheduled="false" updateModel="false">
       <Problem>
-        <Parameter name="StepNumber" type="unsignedInteger" value="100"/>
-        <Parameter name="StepSize" type="float" value="40"/>
-        <Parameter name="Duration" type="float" value="4000"/>
-        <Parameter name="TimeSeriesRequested" type="bool" value="0"/>
+        <Parameter name="StepNumber" type="unsignedInteger" value="5000"/>
+        <Parameter name="StepSize" type="float" value="0.2"/>
+        <Parameter name="Duration" type="float" value="1000"/>
+        <Parameter name="TimeSeriesRequested" type="bool" value="1"/>
         <Parameter name="OutputStartTime" type="float" value="0"/>
         <Parameter name="Output Event" type="bool" value="0"/>
         <Parameter name="Continue on Simultaneous Events" type="bool" value="0"/>
@@ -1045,10 +1713,18 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="Subtask" type="unsignedInteger" value="1"/>
         <ParameterGroup name="ScanItems">
           <ParameterGroup name="ScanItem">
-            <Parameter name="Maximum" type="float" value="5000"/>
-            <Parameter name="Minimum" type="float" value="1"/>
+            <Parameter name="Maximum" type="float" value="0.1"/>
+            <Parameter name="Minimum" type="float" value="0"/>
             <Parameter name="Number of steps" type="unsignedInteger" value="10"/>
-            <Parameter name="Object" type="cn" value="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabEm],Reference=InitialConcentration"/>
+            <Parameter name="Object" type="cn" value="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=InitialConcentration"/>
+            <Parameter name="Type" type="unsignedInteger" value="1"/>
+            <Parameter name="log" type="bool" value="0"/>
+          </ParameterGroup>
+          <ParameterGroup name="ScanItem">
+            <Parameter name="Maximum" type="float" value="1"/>
+            <Parameter name="Minimum" type="float" value="0.9"/>
+            <Parameter name="Number of steps" type="unsignedInteger" value="10"/>
+            <Parameter name="Object" type="cn" value="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=InitialConcentration"/>
             <Parameter name="Type" type="unsignedInteger" value="1"/>
             <Parameter name="log" type="bool" value="0"/>
           </ParameterGroup>
@@ -1193,10 +1869,10 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="PositiveDirection" type="bool" value="1"/>
         <Parameter name="NumOutCrossingsLimit" type="unsignedInteger" value="0"/>
         <Parameter name="LimitUntilConvergence" type="bool" value="0"/>
-        <Parameter name="ConvergenceTolerance" type="float" value="0"/>
+        <Parameter name="ConvergenceTolerance" type="float" value="1e-006"/>
         <Parameter name="Threshold" type="float" value="0"/>
         <Parameter name="DelayOutputUntilConvergence" type="bool" value="0"/>
-        <Parameter name="OutputConvergenceTolerance" type="float" value="0"/>
+        <Parameter name="OutputConvergenceTolerance" type="float" value="1e-006"/>
         <ParameterText name="TriggerExpression" type="expression">
           
         </ParameterText>
@@ -1349,151 +2025,7 @@ Reaction scheme where the products are created from the reactants and the change
       <Parameter name="log X" type="bool" value="0"/>
       <Parameter name="log Y" type="bool" value="0"/>
       <ListOfPlotItems>
-        <PlotItem name="[RabAc]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAc],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[RabAm]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[RabBc]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabBc],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[RabBm]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabBm],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[RabDc]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDc],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[RabDm]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[RabCc]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabCc],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[RabCm]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabCm],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[area]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[area],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[RabEc]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabEc],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[RabEm]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabEm],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[species_1]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[species_1],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[Rab0]" type="Curve2D">
+        <PlotItem name="[R0]" type="Curve2D">
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line type" type="unsignedInteger" value="0"/>
@@ -1505,7 +2037,7 @@ Reaction scheme where the products are created from the reactants and the change
             <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[Rab0],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
-        <PlotItem name="Values[area]" type="Curve2D">
+        <PlotItem name="[R11]" type="Curve2D">
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line type" type="unsignedInteger" value="0"/>
@@ -1514,25 +2046,130 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Values[area],Reference=Value"/>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabCm],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="[R22]" type="Curve2D">
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabBm],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="[R5]" type="Curve2D">
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="[R7]" type="Curve2D">
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="[RS]" type="Curve2D">
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabEm],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="[r11]" type="Curve2D">
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabCc],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="[r22]" type="Curve2D">
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabBc],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="[r5]" type="Curve2D">
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAc],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="[r7]" type="Curve2D">
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDc],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="[rS]" type="Curve2D">
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabEc],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
       </ListOfPlotItems>
     </PlotSpecification>
   </ListOfPlots>
   <GUI>
+    <ListOfSliders>
+      <Slider key="Slider_0" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Values[kS2],Reference=InitialValue" objectType="float" objectValue="0.801" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Values[kS4],Reference=InitialValue" objectType="float" objectValue="0.214" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Values[kS3],Reference=InitialValue" objectType="float" objectValue="4.015" minValue="2.5" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Values[kS5],Reference=InitialValue" objectType="float" objectValue="8.185" minValue="2.5" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_4" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue" objectType="float" objectValue="2.40815" minValue="0.05" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_5" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=InitialConcentration" objectType="float" objectValue="0.4159" minValue="0.1" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_6" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_7" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabBm],Reference=InitialConcentration" objectType="float" objectValue="0.498" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+    </ListOfSliders>
   </GUI>
-  <SBMLReference file="rabs_conversion.xml">
-    <SBMLMap SBMLid="Rab22_11Conversion" COPASIkey="Reaction_1"/>
-    <SBMLMap SBMLid="Rab5_7Conversion" COPASIkey="Reaction_0"/>
-    <SBMLMap SBMLid="RabAc" COPASIkey="Metabolite_1"/>
-    <SBMLMap SBMLid="RabAm" COPASIkey="Metabolite_3"/>
-    <SBMLMap SBMLid="RabBc" COPASIkey="Metabolite_5"/>
-    <SBMLMap SBMLid="RabBm" COPASIkey="Metabolite_7"/>
-    <SBMLMap SBMLid="RabCc" COPASIkey="Metabolite_13"/>
-    <SBMLMap SBMLid="RabCm" COPASIkey="Metabolite_15"/>
-    <SBMLMap SBMLid="RabDc" COPASIkey="Metabolite_9"/>
-    <SBMLMap SBMLid="RabDm" COPASIkey="Metabolite_11"/>
-    <SBMLMap SBMLid="compartment" COPASIkey="Compartment_1"/>
-  </SBMLReference>
 </COPASI>

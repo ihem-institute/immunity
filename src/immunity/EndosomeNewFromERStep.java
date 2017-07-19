@@ -20,14 +20,16 @@ public class EndosomeNewFromERStep {
 		Cell cell = Cell.getInstance();
 		double tMembrane = cell.gettMembrane();
 		HashMap<String, Double> rabCell = cell.getRabCell();
+		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
+				InitialOrganelles.getInstance().getInitOrgProp().get("kind5"));
 		// System.out.println("CELL RAB "+ rabCell+ "TMEMBRANE "+ tMembrane);
 		if (!rabCell.containsKey("RabE"))
 			return;
 		double rabCellE = rabCell.get("RabE");
+//		NEW RAB NET. Since the rabs are supplied, RabEcyto only can decrease with a KO
 		// same area than an newly formed endosome but with half the volume
-		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
-				InitialOrganelles.getInstance().getInitOrgProp().get("kind5"));
-		if (tMembrane < initOrgProp.get("area") || rabCellE < initOrgProp.get("area")) {
+
+		if (tMembrane < initOrgProp.get("area") || rabCellE < .1) {
 			return;
 		}
 
@@ -50,8 +52,9 @@ public class EndosomeNewFromERStep {
 				+ solubleContent + rabContent);
 		// tMembrane = Cell.getInstance().gettMembrane();
 		tMembrane = tMembrane - initOrgProp.get("area");
-		rabCellE = rabCellE - initOrgProp.get("area");
-		rabCell.put("RabE", rabCellE);
+//		No substraction of RabE incorporated from cyto because it is constantly supplied
+//		rabCellE = rabCellE - initOrgProp.get("area");
+//		rabCell.put("RabE", rabCellE);
 		Cell.getInstance().settMembrane(tMembrane);
 
 		// Cell.getInstance().setRabCell(rabCell);
