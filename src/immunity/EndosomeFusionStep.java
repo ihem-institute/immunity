@@ -62,6 +62,8 @@ public class EndosomeFusionStep {
 		double size = rsphere;
 		endosome.speed = Cell.orgScale/ size;
 		endosomeShape(endosome);
+//		NEW CALL TO ACTUALIZE RAB CONVERSION AFTER THE FUSION
+//		EndosomeRabConversionStep.rabConversion(endosome);
 
 	}
 	public static void endosomeShape(Endosome end) {

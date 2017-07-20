@@ -216,6 +216,8 @@ public class EndosomeSplitStep {
 
 		}
 		endosome.size = Math.pow(endosome.volume * 3d / 4d / Math.PI, (1d / 3d));
+//		NEW CALL TO ACTUALIZE RAB CONVERSION IN THE NEW CONDITION
+//		EndosomeRabConversionStep.rabConversion(endosome);
 		endosome.speed = Cell.orgScale / endosome.size;
 
 		// moveTowards();

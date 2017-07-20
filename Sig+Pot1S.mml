@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE math PUBLIC "-//W3C//DTD MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/mathml2.dtd">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow>
+<mfrac>
+<mi>kS1</mi>
+<mrow>
+<mrow>
+<mn>1</mn>
+<mo>+</mo>
+<msup>
+<mrow>
+<msup>
+<mo> e  </mo>
+<mrow>
+<mrow>
+<mi>kS2</mi>
+<mo>-</mo>
+<mi>A1</mi>
+</mrow>
+<mo>-</mo>
+<mi>A2</mi>
+</mrow>
+</msup>
+</mrow>
+<mrow>
+<mi>kS3</mi>
+</mrow>
+</msup>
+</mrow>
+<mo>+</mo>
+<msup>
+<mrow>
+<msup>
+<mo> e  </mo>
+<mrow>
+<mo>-</mo>
+<mfenced>
+<mrow>
+<mrow>
+<mi>kS4</mi>
+<mo>-</mo>
+<mi>I1</mi>
+</mrow>
+<mo>-</mo>
+<mi>I2</mi>
+</mrow>
+</mfenced>
+</mrow>
+</msup>
+</mrow>
+<mrow>
+<mi>kS5</mi>
+</mrow>
+</msup>
+</mrow>
+</mfrac>
+<mo>&CenterDot;</mo>
+<mi>S</mi>
+</mrow>
+</math>

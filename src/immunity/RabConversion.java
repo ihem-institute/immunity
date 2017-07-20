@@ -21,6 +21,7 @@ import org.COPASI.CReaction;
 import org.COPASI.CRegisteredObjectName;
 import org.COPASI.CReportDefinition;
 import org.COPASI.CReportDefinitionVector;
+import org.COPASI.CTimeSeries;
 import org.COPASI.CTrajectoryMethod;
 import org.COPASI.CTrajectoryProblem;
 import org.COPASI.CTrajectoryTask;
@@ -115,7 +116,7 @@ public class RabConversion {
             System.out.println("\t" + reaction.getObjectName());
         }
         
-        setUpReport();
+       setUpReport();
         setUpTask();
 	}
 	
@@ -207,11 +208,11 @@ public class RabConversion {
         CTrajectoryProblem problem = (CTrajectoryProblem)trajectoryTask.getProblem();
 
         // simulate 600 steps
-        problem.setStepNumber(50);
+        problem.setStepNumber(10);
         // start at time 0
         dataModel.getModel().setInitialTime(0.0);
         // simulate a duration of 60 time units
-        problem.setDuration(50);
+        problem.setDuration(1.5);
         // tell the problem to actually generate time series data
         problem.setTimeSeriesRequested(true);
 
@@ -286,14 +287,14 @@ public class RabConversion {
             System.exit(1);
         }
 
-  /*      // look at the timeseries
+        // look at the timeseries
         CTimeSeries timeSeries = trajectoryTask.getTimeSeries();
         // we simulated 100 steps, including the initial state, this should be
         // 101 step in the timeseries
         assert timeSeries.getRecordedSteps() == 101;
-        System.out.println( "The time series consists of " + (new Long(timeSeries.getRecordedSteps())).toString() + "." );
-        System.out.println( "Each step contains " + (new Long(timeSeries.getNumVariables())).toString() + " variables." );
-        System.out.println( "The final state is: " );
+//        System.out.println( "The time series consists of " + (new Long(timeSeries.getRecordedSteps())).toString() + "." );
+//        System.out.println( "Each step contains " + (new Long(timeSeries.getNumVariables())).toString() + " variables." );
+//        System.out.println( "The final state is: " );
         int iMax = (int)timeSeries.getNumVariables();
         int lastIndex = (int)timeSeries.getRecordedSteps() - 1;
         for (int i = 0; i < iMax; ++i)
@@ -301,18 +302,24 @@ public class RabConversion {
             // here we get the particle number (at least for the species)
             // the unit of the other variables may not be particle numbers
             // the concentration data can be acquired with getConcentrationData
+            for (int j =0; j < lastIndex; j = j +1 ){
+        		
+
+            System.out.print(timeSeries.getConcentrationData(j, i)+ " ");
+        	}
+
             System.out.println(timeSeries.getTitle(i) + ": " + (new Double(timeSeries.getData(lastIndex, i))).toString() );
         }
         
-        System.out.println("Ending ...");
+//        System.out.println("Ending ...");
         
-        for (int i = 0; i < (int) model.getMetabolites().size(); ++i)
-        {
-            CMetab metab = model.getMetabolite(i);
-            assert metab != null;
-            
-            System.out.println(metab.getObjectName() + " : " + metab.getValue());
-        }*/
+//        for (int i = 0; i < (int) model.getMetabolites().size(); ++i)
+//        {
+//            CMetab metab = model.getMetabolite(i);
+//            assert metab != null;
+//            
+//            System.out.println(metab.getObjectName() + " : " + metab.getValue());
+//        }
 	}
 	
 	public double getConcentration(String name) {

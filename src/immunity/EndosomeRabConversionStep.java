@@ -30,8 +30,7 @@ public class EndosomeRabConversionStep {
 			if (met.endsWith("c")) {
 				String Rab = met.substring(0, 4);
 				if (Cell.getInstance().getRabCell().containsKey(Rab)) {
-					double metValue = (Math.round(Cell.getInstance()
-							.getRabCell().get(Rab) * 1000)) / 1000;
+					double metValue = Cell.getInstance().getRabCell().get(Rab);
 					rabConversion.setInitialConcentration(met, metValue);
 					System.out.println("COPASI INITIAL CYTOSOL " + met + " " + metValue);
 					// + Cell.getInstance().rabCell.get(Rab));
@@ -82,7 +81,7 @@ public class EndosomeRabConversionStep {
 			sum = sum + endosome.rabContent.get(rab);
 		}
 		double Rab0 = (endosome.area - sum)/endosome.area;
-		if (Rab0>0) Rab0=0;
+//		if (Rab0 > 0) Rab0=0;
 		return Rab0;
 	}
 

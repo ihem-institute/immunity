@@ -26,6 +26,7 @@ import repast.simphony.context.space.grid.GridFactory;
 import repast.simphony.context.space.grid.GridFactoryFinder;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ScheduledMethod;
+import repast.simphony.essentials.RepastEssentials;
 import repast.simphony.parameter.Parameters;
 import repast.simphony.query.space.continuous.ContinuousWithin;
 import repast.simphony.query.space.grid.GridCell;
@@ -83,6 +84,7 @@ public class Endosome {
 	HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 	HashMap<String, Double> initOrgProp = new HashMap<String, Double>();
 
+
 	// constructor of endosomes with grid, space and a set of Rabs, membrane
 	// contents,
 	// and volume contents.
@@ -94,6 +96,9 @@ public class Endosome {
 		this.space = sp;
 		this.grid = gr;
 		this.rabContent = rabContent;
+//		HashMap<Integer, HashMap<String, Double>> rabTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
+//		EndosomeRabConversionStep.rabConversion(this);
+
 		this.membraneContent = membraneContent;
 		this.solubleContent = solubleContent;
 		this.initOrgProp = initOrgProp;
@@ -121,15 +126,14 @@ public class Endosome {
 		EndosomeMove.moveTowards(this);
 		EndosomeTetherStep.tether(this);
 		EndosomeInternalVesicleStep.internalVesicle(this);
-		EndosomeFusionStep.fusion(this);
+		if (Math.random()<1) EndosomeFusionStep.fusion(this);
 		EndosomeSplitStep.split(this);
 		EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
-
-		if (Math.random() < 0.001)
-			EndosomeRabConversionStep.rabConversion(this);
+//		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+//		if (tick%100 ==0) 
+		if (Math.random() < 0.01)EndosomeRabConversionStep.rabConversion(this);
 		// rabConversionN();
-		if (Math.random() < 0.001)
-		EndosomeAntigenPresentationStep.antigenPresentation(this);
+		if (Math.random() < 0.001)EndosomeAntigenPresentationStep.antigenPresentation(this);
 		
 		if (Math.random() < 0.001){
 			System.out.println("llamo LANCL2");
