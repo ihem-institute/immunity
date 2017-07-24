@@ -19,7 +19,7 @@ public class EndosomeRabConversionStep {
 					double metValue = (Math.round
 							(endosome.rabContent.get(Rab))) / endosome.area;
 					rabConversion.setInitialConcentration(met, metValue);
-					System.out.println("COPASI INITIAL MEMBRANE " + met + " " + metValue);
+//					System.out.println("COPASI INITIAL MEMBRANE " + met + " " + metValue);
 
 				} else {
 					rabConversion.setInitialConcentration(met, 0.0);
@@ -32,7 +32,7 @@ public class EndosomeRabConversionStep {
 				if (Cell.getInstance().getRabCell().containsKey(Rab)) {
 					double metValue = Cell.getInstance().getRabCell().get(Rab);
 					rabConversion.setInitialConcentration(met, metValue);
-					System.out.println("COPASI INITIAL CYTOSOL " + met + " " + metValue);
+//					System.out.println("COPASI INITIAL CYTOSOL " + met + " " + metValue);
 					// + Cell.getInstance().rabCell.get(Rab));
 				} else {
 					rabConversion.setInitialConcentration(met, 0.0);

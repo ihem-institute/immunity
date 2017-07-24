@@ -83,6 +83,9 @@ public class Endosome {
 	HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 	HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 	HashMap<String, Double> initOrgProp = new HashMap<String, Double>();
+	
+	HashMap<Integer, HashMap<String, Double>> antigenTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
+
 
 
 	// constructor of endosomes with grid, space and a set of Rabs, membrane
@@ -96,9 +99,7 @@ public class Endosome {
 		this.space = sp;
 		this.grid = gr;
 		this.rabContent = rabContent;
-//		HashMap<Integer, HashMap<String, Double>> rabTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 //		EndosomeRabConversionStep.rabConversion(this);
-
 		this.membraneContent = membraneContent;
 		this.solubleContent = solubleContent;
 		this.initOrgProp = initOrgProp;
@@ -404,6 +405,10 @@ public class Endosome {
 
 	public Grid<Object> getGrid() {
 		return grid;
+	}
+
+	public HashMap<Integer, HashMap<String, Double>> getAntigenTimeSeries() {
+		return antigenTimeSeries;
 	}
 
 }

@@ -287,7 +287,7 @@ public class RabConversion {
             System.exit(1);
         }
 
-        // look at the timeseries
+/*        // look at the timeseries
         CTimeSeries timeSeries = trajectoryTask.getTimeSeries();
         // we simulated 100 steps, including the initial state, this should be
         // 101 step in the timeseries
@@ -320,6 +320,7 @@ public class RabConversion {
 //            
 //            System.out.println(metab.getObjectName() + " : " + metab.getValue());
 //        }
+ */
 	}
 	
 	public double getConcentration(String name) {

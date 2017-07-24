@@ -21,6 +21,7 @@ import org.COPASI.CReaction;
 import org.COPASI.CRegisteredObjectName;
 import org.COPASI.CReportDefinition;
 import org.COPASI.CReportDefinitionVector;
+import org.COPASI.CTimeSeries;
 import org.COPASI.CTrajectoryMethod;
 import org.COPASI.CTrajectoryProblem;
 import org.COPASI.CTrajectoryTask;
@@ -33,6 +34,7 @@ public class AntigenPresentation {
     private CReportDefinition report;
     private CTrajectoryTask trajectoryTask;
 	private HashMap<String, CMetab> nameMetabs = new HashMap<String, CMetab>();
+    private int stepNumber = 50;
 	//private Endosome Endosome;
 	
 	public static AntigenPresentation getInstance () {
@@ -44,6 +46,7 @@ public class AntigenPresentation {
 	}
 	
 	protected AntigenPresentation() {
+
 		System.out.println("Instantiation Once");
 		
 		// to defeat instantiation
@@ -207,7 +210,7 @@ public class AntigenPresentation {
         CTrajectoryProblem problem = (CTrajectoryProblem)trajectoryTask.getProblem();
 
         // simulate 600 steps
-        problem.setStepNumber(50);
+        problem.setStepNumber(stepNumber);
         // start at time 0
         dataModel.getModel().setInitialTime(0.0);
         // simulate a duration of 60 time units
@@ -285,15 +288,17 @@ public class AntigenPresentation {
             }
             System.exit(1);
         }
-
-  /*      // look at the timeseries
+ //       problem.setStepNumber(50)
+        // look at the timeseries
         CTimeSeries timeSeries = trajectoryTask.getTimeSeries();
         // we simulated 100 steps, including the initial state, this should be
         // 101 step in the timeseries
-        assert timeSeries.getRecordedSteps() == 101;
-        System.out.println( "The time series consists of " + (new Long(timeSeries.getRecordedSteps())).toString() + "." );
-        System.out.println( "Each step contains " + (new Long(timeSeries.getNumVariables())).toString() + " variables." );
-        System.out.println( "The final state is: " );
+        assert timeSeries.getRecordedSteps() == stepNumber + 1;
+//        System.out.println( "The time series consists of " + (new Long(timeSeries.getRecordedSteps())).toString() + "." );
+//        System.out.println( "Each step contains " + (new Long(timeSeries.getNumVariables())).toString() + " variables." );
+//        System.out.println( "The final state is: " );
+//        System.out.println( "time series"+ timeSeries.toString());
+        
         int iMax = (int)timeSeries.getNumVariables();
         int lastIndex = (int)timeSeries.getRecordedSteps() - 1;
         for (int i = 0; i < iMax; ++i)
@@ -301,20 +306,26 @@ public class AntigenPresentation {
             // here we get the particle number (at least for the species)
             // the unit of the other variables may not be particle numbers
             // the concentration data can be acquired with getConcentrationData
-            System.out.println(timeSeries.getTitle(i) + ": " + (new Double(timeSeries.getData(lastIndex, i))).toString() );
+            System.out.println("\n"+ timeSeries.getTitle(i) + ": ");
+        	for (int j =0; j <= lastIndex; j = j +1 ){
+        	
+            System.out.print(timeSeries.getConcentrationData(j, i)+ " ");
+        	}
         }
         
-        System.out.println("Ending ...");
+//        System.out.println("Ending ...");
         
         for (int i = 0; i < (int) model.getMetabolites().size(); ++i)
         {
             CMetab metab = model.getMetabolite(i);
-            assert metab != null;
-            
+            assert metab != null;            
             System.out.println(metab.getObjectName() + " : " + metab.getValue());
-        }*/
+        }
+
 	}
 	
+
+
 	public double getConcentration(String name) {
 		double d = 0.0;
 		
@@ -330,6 +341,21 @@ public class AntigenPresentation {
 	public Set<String> getMetabolites(){
 		Set<String> metabolites =  nameMetabs.keySet();
 		return metabolites;
+	}
+
+	public CTrajectoryTask getTrajectoryTask() {
+		return trajectoryTask;
+	}
+
+	public int getStepNumber() {
+		return stepNumber;
+	}
+	public CModel getModel() {
+		return model;
+	}
+
+	public HashMap<String, CMetab> getNameMetabs() {
+		return nameMetabs;
 	}
 	
 }
