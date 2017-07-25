@@ -306,11 +306,11 @@ public class AntigenPresentation {
             // here we get the particle number (at least for the species)
             // the unit of the other variables may not be particle numbers
             // the concentration data can be acquired with getConcentrationData
-            System.out.println("\n"+ timeSeries.getTitle(i) + ": ");
-        	for (int j =0; j <= lastIndex; j = j +1 ){
-        	
-            System.out.print(timeSeries.getConcentrationData(j, i)+ " ");
-        	}
+//            System.out.println("\n"+ timeSeries.getTitle(i) + ": ");
+//        	for (int j =0; j <= lastIndex; j = j +1 ){
+//        	
+//            System.out.print(timeSeries.getConcentrationData(j, i)+ " ");
+//        	}
         }
         
 //        System.out.println("Ending ...");

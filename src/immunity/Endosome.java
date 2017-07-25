@@ -111,6 +111,8 @@ public class Endosome {
 		speed = Cell.orgScale / size; // initial value, but should change
 		heading = Math.random() * 360d; // initial value, but should change
 		double mvb = 0; // number of internal vesicles
+
+		System.out.println("CONSTRUCTOR UPDATED");
 	}
 
 	public ContinuousSpace<Object> getSpace() {
@@ -120,21 +122,21 @@ public class Endosome {
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
 		endosomeShape(this);
-		EndosomeRecycleStep.recycle(this);
-		EndosomeUptakeStep.uptake(this);
-		EndosomeNewFromERStep.newFromEr(this);
+		if (Math.random()<0.1)EndosomeRecycleStep.recycle(this);
+		if (Math.random()<0.1)EndosomeUptakeStep.uptake(this);
+		if (Math.random()<0.1)EndosomeNewFromERStep.newFromEr(this);
 		EndosomeMove.changeDirection(this);
 		EndosomeMove.moveTowards(this);
 		EndosomeTetherStep.tether(this);
-		EndosomeInternalVesicleStep.internalVesicle(this);
-		if (Math.random()<1) EndosomeFusionStep.fusion(this);
-		EndosomeSplitStep.split(this);
-		EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
+		if (Math.random()<0.1)EndosomeInternalVesicleStep.internalVesicle(this);
+		if (Math.random()<.01) EndosomeFusionStep.fusion(this);
+		if (Math.random()<0.1)EndosomeSplitStep.split(this);
+		if (Math.random()<0.1)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%100 ==0) 
 		if (Math.random() < 0.01)EndosomeRabConversionStep.rabConversion(this);
 		// rabConversionN();
-		if (Math.random() < 0.001)EndosomeAntigenPresentationStep.antigenPresentation(this);
+		if (Math.random() < 1)EndosomeAntigenPresentationStep.antPresTimeSeriesLoad(this);
 		
 		if (Math.random() < 0.001){
 			System.out.println("llamo LANCL2");

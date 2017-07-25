@@ -62,6 +62,8 @@ public class EndosomeFusionStep {
 		double size = rsphere;
 		endosome.speed = Cell.orgScale/ size;
 		endosomeShape(endosome);
+//		EndosomeAntigenPresentationStep.antigenPresentation(endosome);
+		endosome.getAntigenTimeSeries().clear();
 //		NEW CALL TO ACTUALIZE RAB CONVERSION AFTER THE FUSION
 //		EndosomeRabConversionStep.rabConversion(endosome);
 

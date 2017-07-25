@@ -14,10 +14,34 @@ public class EndosomeAntigenPresentationStep {
 	
 	public static void antPresTimeSeriesLoad(Endosome endosome){
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-		if (!endosome.antigenTimeSeries.containsKey(tick)) return;
-		if (tick > Collections.max(endosome.antigenTimeSeries.keySet())) {
+
+		if (endosome.getAntigenTimeSeries().isEmpty()){			
 			antigenPresentation(endosome);
+			timeSeriesLoadintoEndosome(endosome);
+			System.out.println("AntigenPresentation first time");
+			return;
+		} 
+		if (tick > Collections.max(endosome.getAntigenTimeSeries().keySet())) {
+			System.out.println("COLLECTION" + tick + " " + endosome.getAntigenTimeSeries().keySet());
+			endosome.getAntigenTimeSeries().clear();
+			antigenPresentation(endosome);
+			timeSeriesLoadintoEndosome(endosome);
+			System.out.println("AntigenPresentation called after 50 time series");
+			System.out.println("COLLECTION" + tick + " " + endosome.getAntigenTimeSeries().keySet());
+			return;
 			}
+		if (!endosome.antigenTimeSeries.containsKey(tick)) {
+			System.out.println("Return without UPDATED");
+			return;
+		}else {
+			timeSeriesLoadintoEndosome(endosome);
+			System.out.println("ANTIGEN UPDATED FROM TIME SERIES");
+			return;
+
+		}
+	}
+	public static void timeSeriesLoadintoEndosome(Endosome endosome){
+		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		HashMap<String, Double> presentValues = new HashMap<String, Double>(endosome.antigenTimeSeries.get(tick));
 		
 		for (String met :presentValues.keySet()){
@@ -33,12 +57,13 @@ public class EndosomeAntigenPresentationStep {
 			System.out.println("Met not found in " + endosome.membraneMet + " "
 					+ endosome.solubleMet + " " + met);
 	}
-	System.out.println("AntigenPresentation FINAL ");
-	for (String met :presentValues.keySet()){
-	System.out.println(met+ " "+presentValues.get(met));
-		}
+//	System.out.println("AntigenPresentation UPDATED");
+//	for (String met :presentValues.keySet()){
+//	System.out.println(met+ " "+presentValues.get(met));
+//		}
 		
 	}
+	
 	public static void antigenPresentation(Endosome endosome) {
 
 		AntigenPresentation antigenPresentation = AntigenPresentation
@@ -64,9 +89,9 @@ public class EndosomeAntigenPresentationStep {
 			}
 		}
 		System.out.println("AntigenPresentation INICIAL ");
-		for (String met :metabolites){
-		System.out.println(met+ " "+localM.get(met));
-		}
+//		for (String met :metabolites){
+//		System.out.println(met+ " "+localM.get(met));
+//		}
 		/*
 		 * double sm1 = localM.get("ova"); double sc1 = localM.get("p1"); double
 		 * sm2 = localM.get("preP"); double sc2 = localM.get("p2"); if ((sm1 ==
@@ -80,15 +105,15 @@ public class EndosomeAntigenPresentationStep {
 		int stepNro = (int) timeSeries.getRecordedSteps();
 		int metNro = metabolites.size();
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-		for (int time = 1; time < stepNro; time = time + 1){
+		for (int time = 0; time < stepNro; time = time + 1){
 			HashMap<String, Double> value = new HashMap<String, Double>();
 			for (int met = 1; met < metNro +1; met = met +1){
 				value.put(timeSeries.getTitle(met), timeSeries.getConcentrationData(time, met));
-				endosome.getAntigenTimeSeries().put(tick+time*antPresTicksPerSec,value);
+				endosome.getAntigenTimeSeries().put(tick+time*67,value);
 			}
 		}
 		
-		System.out.println("AntigenPresentation time series "+ endosome.getAntigenTimeSeries());		
+		System.out.println("AntigenPresentation time series "+ tick +" " +endosome.getAntigenTimeSeries().keySet());		
 //				
 
 			

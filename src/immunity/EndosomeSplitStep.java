@@ -219,6 +219,8 @@ public class EndosomeSplitStep {
 //		NEW CALL TO ACTUALIZE RAB CONVERSION IN THE NEW CONDITION
 //		EndosomeRabConversionStep.rabConversion(endosome);
 		endosome.speed = Cell.orgScale / endosome.size;
+//		EndosomeAntigenPresentationStep.antigenPresentation(endosome);
+		endosome.getAntigenTimeSeries().clear();
 
 		// moveTowards();
 
@@ -248,6 +250,8 @@ public class EndosomeSplitStep {
 		b.size = Math.pow(b.volume * 3d / 4d / Math.PI, (1d / 3d));
 		b.speed = Cell.orgScale / b.size;
 		Random rd = new Random();
+//		EndosomeAntigenPresentationStep.antigenPresentation(b);
+		b.getAntigenTimeSeries().clear();
 		b.heading = endosome.heading + rd.nextGaussian() * 10d;// change the
 															// heading
 		// of the old vesicle heading with a normal distribution
