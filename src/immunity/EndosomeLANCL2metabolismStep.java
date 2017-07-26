@@ -18,7 +18,7 @@ public class EndosomeLANCL2metabolismStep {
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 	
-	public static void LANCL2PresTimeSeriesLoad(Endosome endosome){
+	public static void LANCL2TimeSeriesLoad(Endosome endosome){
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 
 		if (endosome.getLANCL2TimeSeries().isEmpty()){			
@@ -28,12 +28,12 @@ public class EndosomeLANCL2metabolismStep {
 			return;
 		} 
 		if (tick > Collections.max(endosome.getLANCL2TimeSeries().keySet())) {
-			System.out.println("COLLECTION" + tick + " " + endosome.getAntigenTimeSeries().keySet());
+			System.out.println("COLLECTION" + tick + " " + endosome.getLANCL2TimeSeries().keySet());
 			endosome.getLANCL2TimeSeries().clear();
 			LANCL2metabolism(endosome);
 			timeSeriesLoadintoEndosome(endosome);
 			System.out.println("LANCL2 called after 50 time series");
-			System.out.println("COLLECTION" + tick + " " + endosome.getAntigenTimeSeries().keySet());
+			System.out.println("COLLECTION" + tick + " " + endosome.getLANCL2TimeSeries().keySet());
 			return;
 			}
 		if (!endosome.LANCL2TimeSeries.containsKey(tick)) {
@@ -47,7 +47,7 @@ public class EndosomeLANCL2metabolismStep {
 		}
 	}
 	public static void timeSeriesLoadintoEndosome(Endosome endosome){
-//		values in antigenTimeSeries are in mM.  Transform back in area and volume units multiplying
+//		values in LANCL2TimeSeries are in mM.  Transform back in area and volume units multiplying
 //		by area the membrane metabolites and by volume the soluble metabolites
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		HashMap<String, Double> presentValues = new HashMap<String, Double>(endosome.LANCL2TimeSeries.get(tick));
@@ -120,7 +120,7 @@ public class EndosomeLANCL2metabolismStep {
 			}
 		}
 		
-		System.out.println("LANCL2 time series "+ tick +" " +endosome.getAntigenTimeSeries().keySet());		
+		System.out.println("LANCL2 time series "+ tick +" " +endosome.getLANCL2TimeSeries().keySet());		
 //				
 		if (Cell.getInstance().getSolubleCell().containsKey("LANCL2cyto")){
 		metValue = lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area/1E08

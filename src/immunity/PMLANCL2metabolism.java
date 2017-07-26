@@ -27,8 +27,8 @@ import org.COPASI.CTrajectoryProblem;
 import org.COPASI.CTrajectoryTask;
 import org.COPASI.ReportItemVector;
 
-public class LANCL2metabolism {
-	private static LANCL2metabolism instance = null;
+public class PMLANCL2metabolism {
+	private static PMLANCL2metabolism instance = null;
 	private CCopasiDataModel dataModel;
 	private CModel model;
     private CReportDefinition report;
@@ -36,15 +36,15 @@ public class LANCL2metabolism {
 	private HashMap<String, CMetab> nameMetabs = new HashMap<String, CMetab>();
 	//private Endosome Endosome;
 	
-	public static LANCL2metabolism getInstance () {
+	public static PMLANCL2metabolism getInstance () {
 		if (instance == null) {
-			instance = new LANCL2metabolism();
+			instance = new PMLANCL2metabolism();
 		}
 		
 		return instance;
 	}
 	
-	protected LANCL2metabolism() {
+	protected PMLANCL2metabolism() {
 		System.out.println("Instantiation Once");
 		
 		// to defeat instantiation
@@ -53,7 +53,7 @@ public class LANCL2metabolism {
 		dataModel = CCopasiRootContainer.addDatamodel();
         assert CCopasiRootContainer.getDatamodelList().size() == 1;
         
-        String modelFileName = "LANCL2act.cps";
+        String modelFileName = "PMLANCL2act.cps";
         
         try
         {
@@ -255,7 +255,7 @@ public class LANCL2metabolism {
 		try
         {
             // now we run the actual trajectory
-        	System.out.println("trajectoryTask.process LANCL2");
+        	System.out.println("trajectoryTask.process PMLANCL2");
             result=trajectoryTask.process(true);
             processError = trajectoryTask.getProcessError();
             processWarning = trajectoryTask.getProcessWarning();

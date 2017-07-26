@@ -29,13 +29,18 @@ public class PlasmaMembrane {
 	public int green = 0;	
 	public int blue = 0;
 	public double c2 = CellProperties.getInstance().getMembraneRecycle().get("pLANCL2");
+	public int area = 15000; // nm2 750nm x 200nm
+	HashMap<Integer, HashMap<String, Double>> PMLANCL2TimeSeries = new HashMap<Integer, HashMap<String, Double>>();
+
 
 
 	// Constructor
 	public PlasmaMembrane(ContinuousSpace<Object> space, Grid<Object> grid) {
 // Contains the contents that are in the cell.  It is modified by Endosome that uses and changes the cell
 // contents.	tMembranes, membrane and soluble content recycling, cytosolic Rabs	
+
 		CellProperties cellProperties = CellProperties.getInstance();
+		
 		membraneRecycle.putAll(cellProperties.membraneRecycle);
 		System.out.println("membraneRecycle "+ membraneRecycle);
 		for (String met : cellProperties.solubleMet ){
@@ -123,6 +128,9 @@ public class PlasmaMembrane {
 
 	public int getPmcolor() {
 		return pmcolor;
+	}
+	public HashMap<Integer, HashMap<String, Double>> getPMLANCL2TimeSeries() {
+		return PMLANCL2TimeSeries;
 	}
 
 //	public void setSolubleRecycle(HashMap<String, Double> solubleRecycle) {
