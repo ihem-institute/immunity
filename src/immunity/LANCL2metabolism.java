@@ -338,5 +338,13 @@ public class LANCL2metabolism {
 		Set<String> metabolites =  nameMetabs.keySet();
 		return metabolites;
 	}
+
+	public CTrajectoryTask getTrajectoryTask() {
+		return trajectoryTask;
+	}
+
+	public CModel getModel() {
+		return model;
+	}
 	
 }

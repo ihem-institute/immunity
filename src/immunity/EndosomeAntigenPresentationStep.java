@@ -31,7 +31,7 @@ public class EndosomeAntigenPresentationStep {
 			return;
 			}
 		if (!endosome.antigenTimeSeries.containsKey(tick)) {
-			System.out.println("Return without UPDATED");
+//			System.out.println("Return without UPDATED");
 			return;
 		}else {
 			timeSeriesLoadintoEndosome(endosome);
@@ -41,17 +41,17 @@ public class EndosomeAntigenPresentationStep {
 		}
 	}
 	public static void timeSeriesLoadintoEndosome(Endosome endosome){
+//		values in antigenTimeSeries are in mM.  Transform back in area and volume units multiplying
+//		by area the membrane metabolites and by volume the soluble metabolites
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		HashMap<String, Double> presentValues = new HashMap<String, Double>(endosome.antigenTimeSeries.get(tick));
 		
 		for (String met :presentValues.keySet()){
 		if (endosome.membraneMet.contains(met)) {
-			double metValue = (double) Math.abs(Math
-					.round(presentValues.get(met)));
+			double metValue = presentValues.get(met)* endosome.area;
 			endosome.membraneContent.put(met, metValue);
 		} else if (endosome.solubleMet.contains(met)) {
-			double metValue = (double) Math.abs(Math
-					.round(presentValues.get(met)));
+			double metValue = presentValues.get(met)* endosome.volume;
 			endosome.solubleContent.put(met, metValue);
 		} else
 			System.out.println("Met not found in " + endosome.membraneMet + " "
@@ -65,7 +65,10 @@ public class EndosomeAntigenPresentationStep {
 	}
 	
 	public static void antigenPresentation(Endosome endosome) {
-
+// Membrane and soluble metabolites are transformed from the area an volume units to mM.
+// From my calculations (see Calculos), dividing these units by the area or the volume of the endosome, transform the 
+//the values in mM.  Back from copasi, I recalculate the values to area and volume
+//
 		AntigenPresentation antigenPresentation = AntigenPresentation
 				.getInstance();
 
@@ -75,12 +78,11 @@ public class EndosomeAntigenPresentationStep {
 		HashMap<String, Double> localM = new HashMap<String, Double>();
 		for (String met : metabolites) {
 			if (endosome.membraneContent.containsKey(met)) {
-				double metValue = Math
-						.abs(Math.round(endosome.membraneContent.get(met)));
+				double metValue = endosome.membraneContent.get(met)/endosome.area;
 				antigenPresentation.setInitialConcentration(met, metValue);
 				localM.put(met, metValue);
 			} else if (endosome.solubleContent.containsKey(met)) {
-				double metValue = Math.abs(Math.round(endosome.solubleContent.get(met)));
+				double metValue = endosome.solubleContent.get(met)/endosome.volume;
 				antigenPresentation.setInitialConcentration(met, metValue);
 				localM.put(met, metValue);
 			} else {

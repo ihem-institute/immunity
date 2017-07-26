@@ -25,14 +25,13 @@ public class EndosomeMove {
 				* endosome.speed;
 		double y = myPoint.getY() + Math.sin(endosome.heading * 2d * Math.PI / 360d)
 				* endosome.speed;
-		// if reaches the bottom, changes the direction to horizontal. If the
-		// original heading
-		// was between 0 and -90 goes to the right, else to the left
+
 		double cellLimit = 3 * Cell.orgScale;
 		if (y > 50-cellLimit || y < cellLimit) {
 			changeDirection(endosome);
-			if (y > 50-cellLimit) y = 50 -cellLimit;
-			if (y < cellLimit) y = cellLimit;
+		    endosome.speed = endosome.speed/1.5;
+			if (y >= 50-cellLimit/2) y = 50 -cellLimit/2;
+			if (y <= 0+cellLimit/2) y = cellLimit/2;
 		}
 		space.moveTo(endosome, x, y);
 		grid.moveTo(endosome, (int) x, (int) y);
@@ -53,8 +52,8 @@ public class EndosomeMove {
 
 			double momentum = endosome.volume * (endosome.a * endosome.a + endosome.c * endosome.c) / 5 / 3E7;
 			Random fRandom = new Random();
-			endosome.heading = (endosome.heading + fRandom.nextGaussian() * 10d
-					/ momentum)% 360;
+			endosome.heading = endosome.heading + fRandom.nextGaussian() * 20d
+					/ momentum;
 			return endosome.heading;
 		}
 // when (not in the bottom or the top or a rnd probability)  and near a MT takes the direction of the MT

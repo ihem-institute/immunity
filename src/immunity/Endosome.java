@@ -85,6 +85,7 @@ public class Endosome {
 	HashMap<String, Double> initOrgProp = new HashMap<String, Double>();
 	
 	HashMap<Integer, HashMap<String, Double>> antigenTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
+	HashMap<Integer, HashMap<String, Double>> LANCL2TimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 
 
 
@@ -112,7 +113,6 @@ public class Endosome {
 		heading = Math.random() * 360d; // initial value, but should change
 		double mvb = 0; // number of internal vesicles
 
-		System.out.println("CONSTRUCTOR UPDATED");
 	}
 
 	public ContinuousSpace<Object> getSpace() {
@@ -411,6 +411,10 @@ public class Endosome {
 
 	public HashMap<Integer, HashMap<String, Double>> getAntigenTimeSeries() {
 		return antigenTimeSeries;
+	}
+
+	public HashMap<Integer, HashMap<String, Double>> getLANCL2TimeSeries() {
+		return LANCL2TimeSeries;
 	}
 
 }
