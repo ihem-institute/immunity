@@ -81,20 +81,22 @@ public class EndosomeLANCL2metabolismStep {
 		double metValue = 0.0;
 		if (endosome.membraneContent.containsKey("pLANCL2")) {
 			metValue = endosome.membraneContent.get("pLANCL2")/endosome.area;
-		}
+		
 		lANCL2metabolism.setInitialConcentration("pLANCL2", metValue);
 		System.out.println("COPASI INITIAL endo pLANCL2  " +metValue);
+		}
 		if (endosome.membraneContent.containsKey("LANCL2")) {
 			metValue = endosome.membraneContent.get("LANCL2")/endosome.area;
-		}
+		
 		lANCL2metabolism.setInitialConcentration("LANCL2", metValue);
 		System.out.println("COPASI INITIAL endo LANCL2  " +metValue);
+		}
 		if (Cell.getInstance().getSolubleCell().containsKey("ABA")) {
 			metValue = Cell.getInstance().getSolubleCell().get("ABA");
-		}
+		
 			lANCL2metabolism.setInitialConcentration("ABA", metValue);
 			System.out.println("COPASI INITIAL  Cell ABA " + metValue);
-//		
+		}
 
 //		if (cyto.getCytoContent().containsKey("LANCL2")) {
 //			metValue = cyto.getCytoContent().get("LANCL2");
@@ -103,7 +105,6 @@ public class EndosomeLANCL2metabolismStep {
 //			}
 //		lANCL2metabolism.setInitialConcentration("LANCL2", metValue);
 //		System.out.println("COPASI INITIAL  CYTO LANCL2 " + metValue);
-		metValue = 0.0;
 
 
 		lANCL2metabolism.runTimeCourse();
@@ -121,12 +122,13 @@ public class EndosomeLANCL2metabolismStep {
 		}
 		
 		System.out.println("LANCL2 time series "+ tick +" " +endosome.getLANCL2TimeSeries().keySet());		
-//				
+//		A protein released from a membrane increases the concentration in the cytosol in:
+//		copasi concentration in mM * area of the organelle * 3*10^(-8) (mM)
 		if (Cell.getInstance().getSolubleCell().containsKey("LANCL2cyto")){
-		metValue = lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area/1E08
+		metValue = lANCL2metabolism.getConcentration("LANCL2cyto")* endosome.area * 3 * 1E-8
 				+Cell.getInstance().getSolubleCell().get("LANCL2cyto");	
 		} else {
-			metValue =lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area/1E08;
+			metValue =lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area* 3 * 1E-8;
 		}
 		Cell.getInstance().getSolubleCell().put("LANCL2", metValue);
 		System.out.println("COPASI Cell FINAL LANCL2cyto " + metValue);
@@ -142,19 +144,13 @@ public class EndosomeLANCL2metabolismStep {
 ////			System.out.println(cyto.getCytoContent());
 		 }
 		}
-		
-		if (Cell.getInstance().getSolubleCell().containsKey("LANCL2cyto")){
-		metValue = lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area/1E08
-				+Cell.getInstance().getSolubleCell().get("LANCL2cyto");	
-		} else {
-			metValue =lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area/1E08;
-		}
-		
+// in this case, the volume of the unit of cytosol es 15*15*15 nm and the calculation is
+//	copasi values (mM) * area * 10^-3
 		if (cyto.getCytoContent().containsKey("LANCL2cyto")){
-		metValue = lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area
+		metValue = lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area * 1E-3
 				+ cyto.getCytoContent().get("LANCL2cyto");}
 		else {
-		metValue = lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area;
+		metValue = lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area * 1E-3;
 			}	
 		cyto.getCytoContent().put("LANCL2cyto", metValue);
 	}		

@@ -28,8 +28,9 @@ public class PlasmaMembrane {
 	public int red = 0;
 	public int green = 0;	
 	public int blue = 0;
+//	c2 is the initial content of pLANCL2 in the plasma membrane
 	public double c2 = CellProperties.getInstance().getMembraneRecycle().get("pLANCL2");
-	public int area = 15000; // nm2 750nm x 200nm
+	public int area = 150000; // nm2 750nm x 200nm
 	HashMap<Integer, HashMap<String, Double>> PMLANCL2TimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 
 
@@ -50,9 +51,9 @@ public class PlasmaMembrane {
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-		if (Math.random() < 0.001){
+		if (Math.random() < 1){
 			System.out.println("llamo PM LANCL2");
-		//	PlasmaMembraneLANCL2metabolismStep.LANCL2metabolism(PlasmaMembrane.getInstance());			
+		PlasmaMembraneLANCL2metabolismStep.PMLANCL2TimeSeriesLoad(this);		
 		}
 		this.changeColor();
 
@@ -63,7 +64,7 @@ public class PlasmaMembrane {
 		if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey("pLANCL2")){
 		c1 = PlasmaMembrane.getInstance().getMembraneRecycle().get("pLANCL2");
 		}
-		this.pmcolor = (int) (c1/c2*240);
+		this.pmcolor = (int) (c1/area*240);
 		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + pmcolor+" " + c1 +" " + c2);
 		}
 	

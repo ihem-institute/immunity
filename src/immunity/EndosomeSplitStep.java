@@ -221,6 +221,7 @@ public class EndosomeSplitStep {
 		endosome.speed = Cell.orgScale / endosome.size;
 //		EndosomeAntigenPresentationStep.antigenPresentation(endosome);
 		endosome.getAntigenTimeSeries().clear();
+		endosome.getLANCL2TimeSeries().clear();
 
 		// moveTowards();
 
@@ -252,6 +253,7 @@ public class EndosomeSplitStep {
 		Random rd = new Random();
 //		EndosomeAntigenPresentationStep.antigenPresentation(b);
 		b.getAntigenTimeSeries().clear();
+		b.getLANCL2TimeSeries().clear();
 		b.heading = endosome.heading + rd.nextGaussian() * 10d;// change the
 															// heading
 		// of the old vesicle heading with a normal distribution

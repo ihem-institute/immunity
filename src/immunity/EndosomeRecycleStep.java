@@ -65,6 +65,7 @@ public class EndosomeRecycleStep {
 				// PlasmaMembrane.getInstance().setSolubleRecycle(solubleRecycle);
 				endosome.solubleContent.clear();
 				endosome.getAntigenTimeSeries().clear();
+				endosome.getLANCL2TimeSeries().clear();
 				System.out.println("soluble Recycled"
 						+ PlasmaMembrane.getInstance().getSolubleRecycle());
 			}

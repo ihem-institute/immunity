@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Set;
 
+import org.COPASI.CTimeSeries;
+
 import repast.simphony.engine.environment.RunEnvironment;
 
 public class PlasmaMembraneLANCL2metabolismStep {
@@ -37,8 +39,8 @@ public class PlasmaMembraneLANCL2metabolismStep {
 		}
 	}
 	public static void timeSeriesLoadintoPM(PlasmaMembrane plasmaMembrane){
-//		values in antigenTimeSeries are in mM.  Transform back in area and volume units multiplying
-//		by area the membrane metabolites and by volume the soluble metabolites
+//		values in PMLANCL2TimeSeries are in mM.  Transform back in area  units multiplying
+//		by area the membrane metabolites 
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		HashMap<String, Double> presentValues = new HashMap<String, Double>(plasmaMembrane.PMLANCL2TimeSeries.get(tick));
 		
@@ -55,65 +57,69 @@ public class PlasmaMembraneLANCL2metabolismStep {
 		
 	}
 
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	public static void PMLANCL2metabolism(PlasmaMembrane plasmamembrane) {
 
-		LANCL2metabolism lANCL2metabolism = LANCL2metabolism.getInstance();
-		double metValue = 0.0;
+		PMLANCL2metabolism pmLANCL2metabolism = PMLANCL2metabolism.getInstance();
+		Set<String> metabolites = pmLANCL2metabolism.getMetabolites();
+		for (String met : metabolites){
+			pmLANCL2metabolism.setInitialConcentration(met, 0);
+		}
+
 		if (plasmamembrane.membraneRecycle.containsKey("pLANCL2")) {
-			metValue = Math.round
-						(plasmamembrane.membraneRecycle.get("pLANCL2") * 1000) / 1000;
-		}
-		lANCL2metabolism.setInitialConcentration("pLANCL2", metValue);
+		double metValue = plasmamembrane.membraneRecycle.get("pLANCL2");
+		pmLANCL2metabolism.setInitialConcentration("pLANCL2", metValue);
 		System.out.println("COPASI INITIAL PM pLANCL2  " +metValue);
-
-		metValue = 0.0;
-		if (Cell.getInstance().getSolubleCell().containsKey("LANCL2")) {
-			metValue = Math.round
-					(Cell.getInstance().getSolubleCell().get("LANCL2") * 1000) / 1000;
 		}
-		lANCL2metabolism.setInitialConcentration("LANCL2", metValue);
-		System.out.println("COPASI INITIAL  Cell LANCL2 " + metValue);
+
+		if (plasmamembrane.membraneRecycle.containsKey("LANCL2")) {
+		double	metValue = plasmamembrane.membraneRecycle.get("LANCL2");
 		
-		metValue = 0.0;
+		pmLANCL2metabolism.setInitialConcentration("LANCL2", metValue);
+		System.out.println("COPASI INITIAL PM pLANCL2  " +metValue);
+		}
+
 		if (Cell.getInstance().getSolubleCell().containsKey("ABA")) {
-			metValue = Math.round
-					(Cell.getInstance().getSolubleCell().get("ABA") * 1000) / 1000;
+		double metValue = Cell.getInstance().getSolubleCell().get("ABA");
+		
+		pmLANCL2metabolism.setInitialConcentration("ABA", metValue);
+		System.out.println("COPASI INITIAL  Cell ABA " + metValue);
 		}
-			lANCL2metabolism.setInitialConcentration("ABA", metValue);
-			System.out.println("COPASI INITIAL  Cell ABA " + metValue);
-
-
-		lANCL2metabolism.runTimeCourse();
-
-		metValue = lANCL2metabolism.getConcentration("pLANCL2");
-
-		plasmamembrane.membraneRecycle.put("pLANCL2", metValue);
-		System.out.println("COPASI PM FINAL pLANCL2 " + metValue);
 		
-		metValue = lANCL2metabolism.getConcentration("LANCL2");
+		if (Cell.getInstance().getSolubleCell().containsKey("LANCL2cyto")) {
+		double	metValue = Cell.getInstance().getSolubleCell().get("LANCL2cyto");
+		
+		pmLANCL2metabolism.setInitialConcentration("LANCL2cyto", metValue);
+		System.out.println("COPASI INITIAL  Cell LANCL2cyto " + metValue);
+		}	
+
+		pmLANCL2metabolism.runTimeCourse();
+
+		CTimeSeries timeSeries = pmLANCL2metabolism.getTrajectoryTask().getTimeSeries();
+		int stepNro = (int) timeSeries.getRecordedSteps();
+		int metNro = metabolites.size();
+		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+		for (int time = 0; time < stepNro; time = time + 1){
+			HashMap<String, Double> value = new HashMap<String, Double>();
+			for (int met = 1; met < metNro +1; met = met +1){
+				value.put(timeSeries.getTitle(met), timeSeries.getConcentrationData(time, met));
+				plasmamembrane.getPMLANCL2TimeSeries().put(tick+time*67,value);
+			}
+		}
+		
+		System.out.println("PMLANCL2 time series "+ tick +" " +plasmamembrane.getPMLANCL2TimeSeries().keySet());		
+//		A protein released from a membrane increases the concentration in the cytosol in:
+//		copasi concentration in mM * area of the organelle * 3*10^(-8) (mM)
+		double metValue = 0;
+		if (Cell.getInstance().getSolubleCell().containsKey("LANCL2cyto")){
+		metValue = pmLANCL2metabolism.getConcentration("LANCL2cyto")* plasmamembrane.area * 3 * 1E-8
+				+Cell.getInstance().getSolubleCell().get("LANCL2cyto");	
+		} else {
+		metValue =pmLANCL2metabolism.getConcentration("LANCL2cyto")*plasmamembrane.area* 3 * 1E-8;
+		}
 		Cell.getInstance().getSolubleCell().put("LANCL2", metValue);
-		System.out.println("COPASI Cell FINAL LANCL2 " + metValue);
-		
-		metValue = lANCL2metabolism.getConcentration("ABA");
-		Cell.getInstance().getSolubleCell().put("ABA", metValue);
-		System.out.println("COPASI Cell FINAL ABA " + metValue);
+		System.out.println("COPASI Cell FINAL LANCL2cyto " + metValue);
+
 		}
 
 }

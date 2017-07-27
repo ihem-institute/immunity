@@ -90,10 +90,13 @@ public class Cytosol {
 			}
 		public void changeColor() {
 			double c1 = 0;
-			if (this.cytoContent.containsKey("LANCL2")){
-			c1 = this.cytoContent.get("LANCL2");
+			if (this.cytoContent.containsKey("LANCL2cyto")){
+			c1 = this.cytoContent.get("LANCL2cyto");
 			}
-//			double c2 = CellProperties.getInstance().getMembraneRecycle().get("pLANCL2");
+			if (Cell.getInstance().getSolubleCell().containsKey("LANCL2cyto")){
+			c1 = c1 + Cell.getInstance().getSolubleCell().get("LANCL2cyto");
+			}
+			c1=c1*240;
 			if (c1 > 240){c1 = 240;}
 			this.blue = (int) c1;
 			}

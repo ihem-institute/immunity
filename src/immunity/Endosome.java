@@ -139,7 +139,6 @@ public class Endosome {
 		if (Math.random() < 1)EndosomeAntigenPresentationStep.antPresTimeSeriesLoad(this);
 		
 		if (Math.random() < 1){
-			System.out.println("llamo LANCL2");
 			EndosomeLANCL2metabolismStep.LANCL2TimeSeriesLoad(this);			
 		}
 

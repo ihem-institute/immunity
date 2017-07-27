@@ -291,25 +291,25 @@ public class LANCL2metabolism {
         CTimeSeries timeSeries = trajectoryTask.getTimeSeries();
         // we simulated 100 steps, including the initial state, this should be
         // 101 step in the timeseries
-        assert timeSeries.getRecordedSteps() == 101;
-        System.out.println( "The time series consists of " + (new Long(timeSeries.getRecordedSteps())).toString() + "." );
-        System.out.println( "Each step contains " + (new Long(timeSeries.getNumVariables())).toString() + " variables." );
-        System.out.println( "The final state is: " );
-        System.out.println( "time series"+ timeSeries.toString());
-        int iMax = (int)timeSeries.getNumVariables();
-        int lastIndex = (int)timeSeries.getRecordedSteps() - 1;
-        for (int i = 0; i < iMax; ++i)
-        {
-            // here we get the particle number (at least for the species)
-            // the unit of the other variables may not be particle numbers
-            // the concentration data can be acquired with getConcentrationData
-        	for (int j =0; j < lastIndex; j = j +1 ){
-        		
-
-            System.out.print(timeSeries.getConcentrationData(j, i));
-        	}
-            System.out.println(timeSeries.getTitle(i) + ": " + (new Double(timeSeries.getConcentrationData(lastIndex, i))).toString() );
-        }
+//        assert timeSeries.getRecordedSteps() == 101;
+//        System.out.println( "The time series consists of " + (new Long(timeSeries.getRecordedSteps())).toString() + "." );
+//        System.out.println( "Each step contains " + (new Long(timeSeries.getNumVariables())).toString() + " variables." );
+//        System.out.println( "The final state is: " );
+//        System.out.println( "time series"+ timeSeries.toString());
+//        int iMax = (int)timeSeries.getNumVariables();
+//        int lastIndex = (int)timeSeries.getRecordedSteps() - 1;
+//        for (int i = 0; i < iMax; ++i)
+//        {
+//            // here we get the particle number (at least for the species)
+//            // the unit of the other variables may not be particle numbers
+//            // the concentration data can be acquired with getConcentrationData
+//        	for (int j =0; j < lastIndex; j = j +1 ){
+//        		
+//
+//            System.out.print(timeSeries.getConcentrationData(j, i));
+//        	}
+//            System.out.println(timeSeries.getTitle(i) + ": " + (new Double(timeSeries.getConcentrationData(lastIndex, i))).toString() );
+//        }
         
         System.out.println("Ending ...");
         

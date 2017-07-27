@@ -40,10 +40,11 @@ public class EndosomeUptakeStep {
 				InitialOrganelles.getInstance().getInitSolubleContent()
 						.get("kind1"));
 		
-		// new endosome incorporate 10% of the recycled mHCI
+		// new endosome incorporate recycled mHCI in a proportion area new/area PM
+
 		if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey("mHCI")) {
 			double valueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get("mHCI");
-			double value = valueIn*0.1;
+			double value = valueIn * initOrgProp.get("area")/PlasmaMembrane.getInstance().area;
 			if (value >  initOrgProp.get("area")) {value = initOrgProp.get("area");}
 			membraneContent.put("mHCI", value);
 			PlasmaMembrane.getInstance().getMembraneRecycle().put("mHCI", valueIn - value);
@@ -51,22 +52,32 @@ public class EndosomeUptakeStep {
 			{membraneContent.put("mHCI", 0d);}
 
 		
-		// new endosome incorporate 10% of the plasma membrane pLANCL2
+		// new endosome incorporate  plasma membrane pLANCL2 and LANCL2 in a proportion area new/area PM
 		System.out.println("PLASMA MEMBRANE "+PlasmaMembrane.getInstance().getMembraneRecycle());
 		if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey("pLANCL2")) {
 			double valueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get("pLANCL2");
-			double value = valueIn * 0.1;
+			double value = valueIn * initOrgProp.get("area")/PlasmaMembrane.getInstance().area;
 			if (value >  initOrgProp.get("area")) {value = initOrgProp.get("area");}
 			membraneContent.put("pLANCL2", value);
 			PlasmaMembrane.getInstance().getMembraneRecycle().put("pLANCL2", valueIn-value);
 		} else
 			{membraneContent.put("pLANCL2", 0d);}
 		
+		if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey("LANCL2")) {
+			double valueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get("LANCL2");
+			double value = valueIn * initOrgProp.get("area")/PlasmaMembrane.getInstance().area;
+			if (value >  initOrgProp.get("area")) {value = initOrgProp.get("area");}
+			membraneContent.put("LANCL2", value);
+			PlasmaMembrane.getInstance().getMembraneRecycle().put("LANCL2", valueIn-value);
+		} else
+			{membraneContent.put("LANCL2", 0d);}
+		
 		Context<Object> context = ContextUtils.getContext(endosome);
 
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
 				solubleContent, initOrgProp);
 		context.add(bud);
+		
 		// context.add(new Endosome(space, grid, rabContent, membraneContent,
 		// solubleContent));
 		System.out.println(membraneContent + "NEW ENDOSOME UPTAKE"
