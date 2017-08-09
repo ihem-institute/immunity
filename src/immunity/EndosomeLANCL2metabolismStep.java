@@ -57,7 +57,15 @@ public class EndosomeLANCL2metabolismStep {
 		endosome.membraneContent.put("pLANCL2", pLANCL2);
 		double LANCL2 = presentValues.get("LANCL2")* endosome.area;
 		endosome.membraneContent.put("LANCL2", LANCL2);
-	
+		double LANCL2cyto = 0.0;
+		if (Cell.getInstance().getSolubleCell().containsKey("LANCL2cyto")){
+		LANCL2cyto = presentValues.get("LANCL2cyto")* endosome.area * 3 * 1E-8
+				+Cell.getInstance().getSolubleCell().get("LANCL2cyto");	
+		} else {
+		LANCL2cyto =presentValues.get("LANCL2cyto")*endosome.area* 3 * 1E-8;
+		}
+		Cell.getInstance().getSolubleCell().put("LANCL2cyto", LANCL2cyto);
+		
 	System.out.println("LANCL2 UPDATED");
 //	for (String met :presentValues.keySet()){
 //	System.out.println(met+ " "+presentValues.get(met));
@@ -122,16 +130,20 @@ public class EndosomeLANCL2metabolismStep {
 		}
 		
 		System.out.println("LANCL2 time series "+ tick +" " +endosome.getLANCL2TimeSeries().keySet());		
+//		RELEASE TO THE CYTOSOL IS NOW OCCURRING DURING THE UPDATE FROM THE SERIES
 //		A protein released from a membrane increases the concentration in the cytosol in:
-//		copasi concentration in mM * area of the organelle * 3*10^(-8) (mM)
-		if (Cell.getInstance().getSolubleCell().containsKey("LANCL2cyto")){
-		metValue = lANCL2metabolism.getConcentration("LANCL2cyto")* endosome.area * 3 * 1E-8
-				+Cell.getInstance().getSolubleCell().get("LANCL2cyto");	
-		} else {
-			metValue =lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area* 3 * 1E-8;
-		}
-		Cell.getInstance().getSolubleCell().put("LANCL2", metValue);
-		System.out.println("COPASI Cell FINAL LANCL2cyto " + metValue);
+//		copasi concentration in mM * area of the organelle * 3*10^(-8) (mM).  See file Calculos
+//		So, the release of LANCL2 goes to a pool of cytosol LANCL2, that can be incorporated back
+//		in the plasma membrane but not in endosomes.  In endosomes only is possible activation, 
+//		inactivation and release
+//		if (Cell.getInstance().getSolubleCell().containsKey("LANCL2cyto")){
+//		metValue = lANCL2metabolism.getConcentration("LANCL2cyto")* endosome.area * 3 * 1E-8
+//				+Cell.getInstance().getSolubleCell().get("LANCL2cyto");	
+//		} else {
+//			metValue =lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area* 3 * 1E-8;
+//		}
+//		Cell.getInstance().getSolubleCell().put("LANCL2cyto", metValue);
+//		System.out.println("COPASI Cell FINAL LANCL2cyto " + metValue);
 		
 		Cytosol cyto = null;
 		metValue = 0.0;
@@ -144,8 +156,12 @@ public class EndosomeLANCL2metabolismStep {
 ////			System.out.println(cyto.getCytoContent());
 		 }
 		}
-// in this case, the volume of the unit of cytosol es 15*15*15 nm and the calculation is
-//	copasi values (mM) * area * 10^-3
+
+// I will simulate the release to a unit of cytosol. At present, PM incorporates cytoLANCL2
+//		from a cellular pool, no the near by cytosol units.  So the release on local subunits is not
+//		used for PM and at present is only stetic.  I may use it for transport to the nucleus?????
+// in this case, the volume of the unit of cytosol is 15*15*15 nm  and the calculation is:
+//	copasi values (mM) * area * 10^-3.  See file Cálculos for details
 		if (cyto.getCytoContent().containsKey("LANCL2cyto")){
 		metValue = lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area * 1E-3
 				+ cyto.getCytoContent().get("LANCL2cyto");}

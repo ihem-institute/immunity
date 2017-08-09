@@ -114,7 +114,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 
 		// Microtubules
 
-		for (int i = 0; i < (int) 10/Cell.orgScale; i++) {
+		for (int i = 0; i < (int) 5/Cell.orgScale; i++) {
 			context.add(new MT(space, grid));
 		}
 
