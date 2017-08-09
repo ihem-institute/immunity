@@ -340,4 +340,8 @@ public class RabConversion {
 		return metabolites;
 	}
 	
+	public CTrajectoryTask getTrajectoryTask() {
+		return trajectoryTask;
+	}
+	
 }

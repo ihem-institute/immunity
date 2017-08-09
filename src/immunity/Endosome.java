@@ -86,6 +86,7 @@ public class Endosome {
 	
 	HashMap<Integer, HashMap<String, Double>> antigenTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 	HashMap<Integer, HashMap<String, Double>> LANCL2TimeSeries = new HashMap<Integer, HashMap<String, Double>>();
+	HashMap<Integer, HashMap<String, Double>> rabTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 
 
 
@@ -134,7 +135,7 @@ public class Endosome {
 		if (Math.random()<0.1)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%100 ==0) 
-		if (Math.random() < 0.01)EndosomeRabConversionStep.rabConversion(this);
+		if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
 		// rabConversionN();
 		if (Math.random() < 1)EndosomeAntigenPresentationStep.antPresTimeSeriesLoad(this);
 		
@@ -414,6 +415,10 @@ public class Endosome {
 
 	public HashMap<Integer, HashMap<String, Double>> getLANCL2TimeSeries() {
 		return LANCL2TimeSeries;
+	}
+
+	public HashMap<Integer, HashMap<String, Double>> getRabTimeSeries() {
+		return rabTimeSeries;
 	}
 
 }
