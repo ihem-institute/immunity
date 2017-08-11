@@ -22,18 +22,18 @@ public class EndosomeLANCL2metabolismStep {
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 
 		if (endosome.getLANCL2TimeSeries().isEmpty()){			
-			LANCL2metabolism(endosome);
+			callLANCL2metabolism(endosome);
 			timeSeriesLoadintoEndosome(endosome);
 			System.out.println("LANCL2 first time");
 			return;
 		} 
-		if (tick > Collections.max(endosome.getLANCL2TimeSeries().keySet())) {
-			System.out.println("COLLECTION" + tick + " " + endosome.getLANCL2TimeSeries().keySet());
-			endosome.getLANCL2TimeSeries().clear();
-			LANCL2metabolism(endosome);
+		if (tick >= Collections.max(endosome.getLANCL2TimeSeries().keySet())) {
+//			System.out.println("COLLECTION" + tick + " " + endosome.getLANCL2TimeSeries().keySet());
 			timeSeriesLoadintoEndosome(endosome);
+			endosome.getLANCL2TimeSeries().clear();
+			callLANCL2metabolism(endosome);
 			System.out.println("LANCL2 called after 50 time series");
-			System.out.println("COLLECTION" + tick + " " + endosome.getLANCL2TimeSeries().keySet());
+//			System.out.println("COLLECTION" + tick + " " + endosome.getLANCL2TimeSeries().keySet());
 			return;
 			}
 		if (!endosome.LANCL2TimeSeries.containsKey(tick)) {
@@ -75,7 +75,7 @@ public class EndosomeLANCL2metabolismStep {
 
 	
 	
-	public static void LANCL2metabolism(Endosome endosome) {
+	public static void callLANCL2metabolism(Endosome endosome) {
 // Membrane and soluble metabolites are transformed from the area an volume units to mM to send to COPASI
 // From my calculations (see Calculos), dividing these units by the area or the volume of the endosome, transform the 
 //the values in mM.  Time series is in mM. From timeSeries I recalculate the values to area and volume
@@ -91,19 +91,19 @@ public class EndosomeLANCL2metabolismStep {
 			metValue = endosome.membraneContent.get("pLANCL2")/endosome.area;
 		
 		lANCL2metabolism.setInitialConcentration("pLANCL2", metValue);
-		System.out.println("COPASI INITIAL endo pLANCL2  " +metValue);
+//		System.out.println("COPASI INITIAL endo pLANCL2  " +metValue);
 		}
 		if (endosome.membraneContent.containsKey("LANCL2")) {
 			metValue = endosome.membraneContent.get("LANCL2")/endosome.area;
 		
 		lANCL2metabolism.setInitialConcentration("LANCL2", metValue);
-		System.out.println("COPASI INITIAL endo LANCL2  " +metValue);
+//		System.out.println("COPASI INITIAL endo LANCL2  " +metValue);
 		}
 		if (Cell.getInstance().getSolubleCell().containsKey("ABA")) {
 			metValue = Cell.getInstance().getSolubleCell().get("ABA");
 		
 			lANCL2metabolism.setInitialConcentration("ABA", metValue);
-			System.out.println("COPASI INITIAL  Cell ABA " + metValue);
+//			System.out.println("COPASI INITIAL  Cell ABA " + metValue);
 		}
 
 //		if (cyto.getCytoContent().containsKey("LANCL2")) {
@@ -129,7 +129,7 @@ public class EndosomeLANCL2metabolismStep {
 			}
 		}
 		
-		System.out.println("LANCL2 time series "+ tick +" " +endosome.getLANCL2TimeSeries().keySet());		
+//		System.out.println("LANCL2 time series "+ tick +" " +endosome.getLANCL2TimeSeries());		
 //		RELEASE TO THE CYTOSOL IS NOW OCCURRING DURING THE UPDATE FROM THE SERIES
 //		A protein released from a membrane increases the concentration in the cytosol in:
 //		copasi concentration in mM * area of the organelle * 3*10^(-8) (mM).  See file Calculos

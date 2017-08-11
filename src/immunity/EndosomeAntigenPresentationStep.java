@@ -16,18 +16,18 @@ public class EndosomeAntigenPresentationStep {
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 
 		if (endosome.getAntigenTimeSeries().isEmpty()){			
-			antigenPresentation(endosome);
+			callAntigenPresentation(endosome);
 			timeSeriesLoadintoEndosome(endosome);
 			System.out.println("AntigenPresentation first time");
 			return;
 		} 
-		if (tick > Collections.max(endosome.getAntigenTimeSeries().keySet())) {
+		if (tick >= Collections.max(endosome.getAntigenTimeSeries().keySet())) {
 			System.out.println("COLLECTION" + tick + " " + endosome.getAntigenTimeSeries().keySet());
-			endosome.getAntigenTimeSeries().clear();
-			antigenPresentation(endosome);
 			timeSeriesLoadintoEndosome(endosome);
+			endosome.getAntigenTimeSeries().clear();
+			callAntigenPresentation(endosome);
 			System.out.println("AntigenPresentation called after 50 time series");
-			System.out.println("COLLECTION" + tick + " " + endosome.getAntigenTimeSeries().keySet());
+//			System.out.println("COLLECTION" + tick + " " + endosome.getAntigenTimeSeries().keySet());
 			return;
 			}
 		if (!endosome.antigenTimeSeries.containsKey(tick)) {
@@ -64,7 +64,7 @@ public class EndosomeAntigenPresentationStep {
 		
 	}
 	
-	public static void antigenPresentation(Endosome endosome) {
+	public static void callAntigenPresentation(Endosome endosome) {
 // Membrane and soluble metabolites are transformed from the area an volume units to mM.
 // From my calculations (see Calculos), dividing these units by the area or the volume of the endosome, transform the 
 //the values in mM.  Back from copasi, I recalculate the values to area and volume
@@ -115,7 +115,7 @@ public class EndosomeAntigenPresentationStep {
 			}
 		}
 		
-		System.out.println("AntigenPresentation time series "+ tick +" " +endosome.getAntigenTimeSeries().keySet());		
+//		System.out.println("AntigenPresentation time series "+ tick +" " +endosome.getAntigenTimeSeries());		
 //				
 
 			

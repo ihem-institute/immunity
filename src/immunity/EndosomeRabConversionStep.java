@@ -25,13 +25,12 @@ public class EndosomeRabConversionStep {
 			return;
 		} 
 		if (tick >= Collections.max(endosome.getRabTimeSeries().keySet())) {
-			System.out.println("COLLECTION" + tick + " " + endosome.getRabTimeSeries().keySet());
+//			System.out.println("COLLECTION" + tick + " " + endosome.getRabTimeSeries().keySet());
 			timeSeriesLoadintoEndosome(endosome);
 			endosome.getRabTimeSeries().clear();
 			callRabConversion(endosome);
-
 			System.out.println("RabConversion called after 50 time series");
-			System.out.println("COLLECTION" + tick + " " + endosome.getRabTimeSeries().keySet());
+//			System.out.println("COLLECTION" + tick + " " + endosome.getRabTimeSeries().keySet());
 			return;
 			}
 		if (!endosome.rabTimeSeries.containsKey(tick)) {
@@ -44,19 +43,6 @@ public class EndosomeRabConversionStep {
 
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -159,7 +145,7 @@ public class EndosomeRabConversionStep {
 			endosome.getRabTimeSeries().put(tick+time*67,value);
 		}
 		
-		System.out.println("RAB time series "+ tick +" " +endosome.getRabTimeSeries());
+//		System.out.println("RAB time series "+ tick +" " +endosome.getRabTimeSeries());
 		
 //		for (String met : metabolites) {
 //			if (met.endsWith("m")) {

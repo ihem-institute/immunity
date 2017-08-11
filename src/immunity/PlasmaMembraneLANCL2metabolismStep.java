@@ -14,18 +14,18 @@ public class PlasmaMembraneLANCL2metabolismStep {
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 
 		if (plasmaMembrane.getPMLANCL2TimeSeries().isEmpty()){			
-			PMLANCL2metabolism(plasmaMembrane);
+			callPMLANCL2metabolism(plasmaMembrane);
 			timeSeriesLoadintoPM(plasmaMembrane);
 			System.out.println("PMLANCL2 first time");
 			return;
 		} 
-		if (tick > Collections.max(plasmaMembrane.getPMLANCL2TimeSeries().keySet())) {
-			System.out.println("COLLECTION" + tick + " " + plasmaMembrane.getPMLANCL2TimeSeries().keySet());
-			plasmaMembrane.getPMLANCL2TimeSeries().clear();
-			PMLANCL2metabolism(plasmaMembrane);
+		if (tick >= Collections.max(plasmaMembrane.getPMLANCL2TimeSeries().keySet())) {
+//			System.out.println("COLLECTION" + tick + " " + plasmaMembrane.getPMLANCL2TimeSeries().keySet());
 			timeSeriesLoadintoPM(plasmaMembrane);
+			plasmaMembrane.getPMLANCL2TimeSeries().clear();
+			callPMLANCL2metabolism(plasmaMembrane);
 			System.out.println("PMLANCL2 called after 50 time series");
-			System.out.println("COLLECTION" + tick + " " + plasmaMembrane.getPMLANCL2TimeSeries().keySet());
+//			System.out.println("COLLECTION" + tick + " " + plasmaMembrane.getPMLANCL2TimeSeries().keySet());
 			return;
 			}
 		if (!plasmaMembrane.PMLANCL2TimeSeries.containsKey(tick)) {
@@ -58,7 +58,7 @@ public class PlasmaMembraneLANCL2metabolismStep {
 	}
 
 	
-	public static void PMLANCL2metabolism(PlasmaMembrane plasmamembrane) {
+	public static void callPMLANCL2metabolism(PlasmaMembrane plasmamembrane) {
 
 		PMLANCL2metabolism pmLANCL2metabolism = PMLANCL2metabolism.getInstance();
 		Set<String> metabolites = pmLANCL2metabolism.getMetabolites();
@@ -69,28 +69,28 @@ public class PlasmaMembraneLANCL2metabolismStep {
 		if (plasmamembrane.membraneRecycle.containsKey("pLANCL2")) {
 		double metValue = plasmamembrane.membraneRecycle.get("pLANCL2");
 		pmLANCL2metabolism.setInitialConcentration("pLANCL2", metValue);
-		System.out.println("COPASI INITIAL PM pLANCL2  " +metValue);
+//		System.out.println("COPASI INITIAL PM pLANCL2  " +metValue);
 		}
 
 		if (plasmamembrane.membraneRecycle.containsKey("LANCL2")) {
 		double	metValue = plasmamembrane.membraneRecycle.get("LANCL2");
 		
 		pmLANCL2metabolism.setInitialConcentration("LANCL2", metValue);
-		System.out.println("COPASI INITIAL PM pLANCL2  " +metValue);
+//		System.out.println("COPASI INITIAL PM pLANCL2  " +metValue);
 		}
 
 		if (Cell.getInstance().getSolubleCell().containsKey("ABA")) {
 		double metValue = Cell.getInstance().getSolubleCell().get("ABA");
 		
 		pmLANCL2metabolism.setInitialConcentration("ABA", metValue);
-		System.out.println("COPASI INITIAL  Cell ABA " + metValue);
+//		System.out.println("COPASI INITIAL  Cell ABA " + metValue);
 		}
 		
 		if (Cell.getInstance().getSolubleCell().containsKey("LANCL2cyto")) {
 		double	metValue = Cell.getInstance().getSolubleCell().get("LANCL2cyto");
 		
 		pmLANCL2metabolism.setInitialConcentration("LANCL2cyto", metValue);
-		System.out.println("COPASI INITIAL  Cell LANCL2cyto " + metValue);
+//		System.out.println("COPASI INITIAL  Cell LANCL2cyto " + metValue);
 		}	
 
 		pmLANCL2metabolism.runTimeCourse();
@@ -107,7 +107,7 @@ public class PlasmaMembraneLANCL2metabolismStep {
 			}
 		}
 		
-		System.out.println("PMLANCL2 time series "+ tick +" " +plasmamembrane.getPMLANCL2TimeSeries().keySet());		
+//		System.out.println("PMLANCL2 time series "+ tick +" " +plasmamembrane.getPMLANCL2TimeSeries());		
 //		A protein released from a membrane increases the concentration in the cytosol in:
 //		copasi concentration in mM * area of the organelle * 3*10^(-8) (mM)
 		double metValue = 0;
@@ -118,7 +118,7 @@ public class PlasmaMembraneLANCL2metabolismStep {
 		metValue =pmLANCL2metabolism.getConcentration("LANCL2cyto")*plasmamembrane.area* 3 * 1E-8;
 		}
 		Cell.getInstance().getSolubleCell().put("LANCL2", metValue);
-		System.out.println("COPASI Cell FINAL LANCL2cyto " + metValue);
+//		System.out.println("COPASI Cell FINAL LANCL2cyto " + metValue);
 
 		}
 
