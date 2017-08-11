@@ -109,7 +109,7 @@ public class EndosomeLANCL2metabolismStep {
 //		if (cyto.getCytoContent().containsKey("LANCL2")) {
 //			metValue = cyto.getCytoContent().get("LANCL2");
 ////				metValue = Math.round
-////								(cyto.getCytoContent().get("LANCL2") * 1000) / 1000;
+////								(cyto.getCytoContent().get("LANCL2") * 1000d) / 1000d;
 //			}
 //		lANCL2metabolism.setInitialConcentration("LANCL2", metValue);
 //		System.out.println("COPASI INITIAL  CYTO LANCL2 " + metValue);

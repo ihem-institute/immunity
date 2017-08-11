@@ -28,7 +28,7 @@ public class EndosomeFusionStep {
 		// I calculated that the 50 x 50 grid is equivalent to a 750 x 750 nm
 		// square
 		// Hence, size/15 is in grid units
-		int gridSize = (int) Math.round(endosome.size*Cell.orgScale / 15);
+		int gridSize = (int) Math.round(endosome.size*Cell.orgScale / 15d);
 		GridCellNgh<Endosome> nghCreator = new GridCellNgh<Endosome>(grid, pt,
 				Endosome.class, gridSize, gridSize);
 		// System.out.println("SIZE           "+gridSize);
@@ -64,8 +64,10 @@ public class EndosomeFusionStep {
 		endosomeShape(endosome);
 //		EndosomeAntigenPresentationStep.antigenPresentation(endosome);
 		endosome.getAntigenTimeSeries().clear();
-//		NEW CALL TO ACTUALIZE RAB CONVERSION AFTER THE FUSION
-//		EndosomeRabConversionStep.rabConversion(endosome);
+		endosome.getLANCL2TimeSeries().clear();
+		endosome.getRabTimeSeries().clear();
+//		The time series will be re-calculated by COPASI call in the next tick
+//		
 
 	}
 	public static void endosomeShape(Endosome end) {

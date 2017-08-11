@@ -216,13 +216,13 @@ public class EndosomeSplitStep {
 
 		}
 		endosome.size = Math.pow(endosome.volume * 3d / 4d / Math.PI, (1d / 3d));
-//		NEW CALL TO ACTUALIZE RAB CONVERSION IN THE NEW CONDITION
-//		EndosomeRabConversionStep.rabConversion(endosome);
+
 		endosome.speed = Cell.orgScale / endosome.size;
-//		EndosomeAntigenPresentationStep.antigenPresentation(endosome);
+//		Time series are re calculated in the next tick
+		endosome.getRabTimeSeries().clear();
 		endosome.getAntigenTimeSeries().clear();
 		endosome.getLANCL2TimeSeries().clear();
-
+		
 		// moveTowards();
 
 		/* the tubule is created as an independent endosome */
@@ -251,9 +251,11 @@ public class EndosomeSplitStep {
 		b.size = Math.pow(b.volume * 3d / 4d / Math.PI, (1d / 3d));
 		b.speed = Cell.orgScale / b.size;
 		Random rd = new Random();
-//		EndosomeAntigenPresentationStep.antigenPresentation(b);
+//		Time series will be recalculated in the next tick
 		b.getAntigenTimeSeries().clear();
 		b.getLANCL2TimeSeries().clear();
+		b.getRabTimeSeries().clear();
+		
 		b.heading = endosome.heading + rd.nextGaussian() * 10d;// change the
 															// heading
 		// of the old vesicle heading with a normal distribution

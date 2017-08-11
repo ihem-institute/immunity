@@ -14,10 +14,14 @@ import repast.simphony.util.ContextUtils;
 public class Cell {
 	// a single Cell is created
 	private static Cell instance;
-	static {
-		instance = new Cell();
+	public static Cell getInstance() {
+		if (instance == null) {
+			instance = new Cell();
+		}
+		return instance;
 	}
 	
+
 //	Cell characteristics
 	public static double rcyl = CellProperties.getInstance().getCellK().get("rcyl");//10.0; // radius tubule
 //	public radius new endosome formed by uptake = radius Kind1, generally 20.0; // 
@@ -53,9 +57,7 @@ public class Cell {
 
 	}
 	// GETTERS AND SETTERS (to get and set Cell contents)
-	public static Cell getInstance() {
-		return instance;
-	}
+
 
 	public double gettMembrane() {
 		return tMembrane;

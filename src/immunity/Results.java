@@ -99,7 +99,7 @@ public class Results {
 	private void writeToCsv(TreeMap<String, Double> orderContDist) throws IOException {
 		String line = "";
 		for (String key : orderContDist.keySet()) {
-            line = line+ Math.round(orderContDist.get(key)*100)/100 + ",";
+            line = line+ Math.round(orderContDist.get(key)*100d)/100d + ",";
 		}
 		line = line + "\n";
 		Writer output;
@@ -242,7 +242,7 @@ public class Results {
 		TreeMap<String, Double> orderSingleEndosome = new TreeMap<String, Double>(singleEndosomeContent);
 		String line = "";
 		for (String key : orderSingleEndosome.keySet()) {
-            line = line+ Math.round(orderSingleEndosome.get(key)*100)/100 + ",";
+            line = line+ Math.round(orderSingleEndosome.get(key)*100d)/100d + ",";
 		}
 		line = line + "\n";
 		Writer output;

@@ -210,7 +210,7 @@ public class AntigenPresentation {
         CTrajectoryProblem problem = (CTrajectoryProblem)trajectoryTask.getProblem();
 
         // simulate 600 steps
-        problem.setStepNumber(stepNumber);
+        problem.setStepNumber(50);
         // start at time 0
         dataModel.getModel().setInitialTime(0.0);
         // simulate a duration of 60 time units

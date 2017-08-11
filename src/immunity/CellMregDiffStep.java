@@ -12,7 +12,7 @@ public class CellMregDiffStep {
 		for (String met : metabolites) {
 		if (cell.getSolubleCell().containsKey(met)) {
 			double metValue = Math.round
-						(cell.getSolubleCell().get(met) * 1000) / 1000;
+						(cell.getSolubleCell().get(met) * 1000d) / 1000d;
 		
 			mregDiff.setInitialConcentration(met, metValue);
 		}

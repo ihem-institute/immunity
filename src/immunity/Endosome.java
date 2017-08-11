@@ -128,9 +128,9 @@ public class Endosome {
 		if (Math.random()<0.1)EndosomeNewFromERStep.newFromEr(this);
 		EndosomeMove.changeDirection(this);
 		EndosomeMove.moveTowards(this);
-		EndosomeTetherStep.tether(this);
+		//EndosomeTetherStep.tether(this);
 		if (Math.random()<0.1)EndosomeInternalVesicleStep.internalVesicle(this);
-		if (Math.random()<.01) EndosomeFusionStep.fusion(this);
+		if (Math.random()<0.01) EndosomeFusionStep.fusion(this);
 		if (Math.random()<0.1)EndosomeSplitStep.split(this);
 		if (Math.random()<0.1)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();

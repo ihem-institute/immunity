@@ -91,7 +91,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 			System.out
 					.println(InitialOrganelles.getInstance().getInitOrgProp());
 			System.out.println(InitialOrganelles.getInstance()
-					.getInitRabContent());
+					.getInitRabContent());		
 			System.out.println(InitialOrganelles.getInstance()
 					.getInitMembraneContent());
 			System.out.println(InitialOrganelles.getInstance()
@@ -108,8 +108,9 @@ public class CellBuilder implements ContextBuilder<Object> {
 		
 //		Cell and recycled contents.  Total initial free membrane 
 		Cell cell = Cell.getInstance();
-		context.add(new Cell());
-		PlasmaMembrane plasmamembrane = PlasmaMembrane.getInstance();
+		context.add(cell);
+		
+//		PlasmaMembrane plasmamembrane = PlasmaMembrane.getInstance();
 		context.add(new PlasmaMembrane(space, grid));
 
 		// Microtubules

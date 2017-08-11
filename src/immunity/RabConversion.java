@@ -208,11 +208,11 @@ public class RabConversion {
         CTrajectoryProblem problem = (CTrajectoryProblem)trajectoryTask.getProblem();
 
         // simulate 600 steps
-        problem.setStepNumber(10);
+        problem.setStepNumber(50);
         // start at time 0
         dataModel.getModel().setInitialTime(0.0);
         // simulate a duration of 60 time units
-        problem.setDuration(1.5);
+        problem.setDuration(50);
         // tell the problem to actually generate time series data
         problem.setTimeSeriesRequested(true);
 

@@ -28,7 +28,7 @@ public class EndosomeTetherStep {
 		// I calculated that the 50 x 50 grid is equivalent to a 750 x 750 nm
 		// square
 		// Hence, size/15 is in grid units
-		int gridSize = (int) Math.round(endosome.size*Cell.orgScale / 15);
+		int gridSize = (int) Math.round(endosome.size*Cell.orgScale / 15d);
 		GridCellNgh<Endosome> nghCreator = new GridCellNgh<Endosome>(grid, pt,
 				Endosome.class, gridSize, gridSize);
 		// System.out.println("SIZE           "+gridSize);
