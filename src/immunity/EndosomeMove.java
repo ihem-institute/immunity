@@ -22,14 +22,14 @@ public class EndosomeMove {
 		 */
 		NdPoint myPoint = space.getLocation(endosome);
 		double x = myPoint.getX() + Math.cos(endosome.heading * 2d * Math.PI / 360d)
-				* endosome.speed;
+				* endosome.speed*Cell.orgScale/Cell.timeScale;
 		double y = myPoint.getY() + Math.sin(endosome.heading * 2d * Math.PI / 360d)
-				* endosome.speed;
+				* endosome.speed * Cell.orgScale/Cell.timeScale;
 
 		double cellLimit = 3 * Cell.orgScale;
 		if (y > 50-cellLimit || y < cellLimit) {
 			changeDirection(endosome);
-		    endosome.speed = endosome.speed/1.5;
+		    endosome.speed = endosome.speed* Cell.orgScale/Cell.timeScale/1.5;
 			if (y >= 50-cellLimit/2) y = 50 -cellLimit/2;
 			if (y <= 0+cellLimit/2) y = cellLimit/2;
 		}
@@ -94,7 +94,7 @@ public class EndosomeMove {
 				space.moveTo(endosome, xpt, ypt);
 				grid.moveTo(endosome, (int) xpt, (int) ypt);
 //				Changes the speed to a standard speed in MT independet of size
-				endosome.speed = 1d*Cell.orgScale;
+				endosome.speed = 1d*Cell.orgScale/Cell.timeScale;
 				// if (initial - heading > 90)System.out.println("GIRO MT "
 				// +initial+"  "+heading);
 				return endosome.heading;

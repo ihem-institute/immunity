@@ -27,11 +27,13 @@ public class Cell {
 //	public radius new endosome formed by uptake = radius Kind1, generally 20.0; // 
 	public static double mincyl = 6 * Math.PI * rcyl * rcyl; // surface minimum cylinder
 	// two radius large (almost a sphere)
-	public static double rIV = 15; // Internal vesicle radius
+	public static double rIV = 25; // Internal vesicle radius
 //	public static double vEndo = 4d / 3d * Math.PI * Math.pow(rEndo, 3); //volume new endosome
 //	public static double sEndo = 4d * Math.PI * Math.pow(rEndo, 2); // surface new endosome
 	// mincyl surface = 1884.95 volume = 6283.18
 	public static double orgScale = CellProperties.getInstance().getCellK().get("orgScale");
+	public static double timeScale = CellProperties.getInstance().getCellK().get("timeScale");
+	
 //  When orgScale=1 zoom =0, when > 1 zoom in , when <1 zoom out
 //	global cell and non-cell quantities
 	public double tMembrane = 0;// membrane that is not used in endosomes

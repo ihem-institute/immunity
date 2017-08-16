@@ -96,7 +96,7 @@ public class EndosomeUptakeStep {
 		bud.volume = initOrgProp.get("volume");
 		bud.size = initOrgProp.get("radius");// radius of a sphere with the volume of the
 								// cylinder
-		bud.speed = Cell.orgScale/ bud.size;
+		bud.speed = 1d / bud.size;
 		bud.heading = -90;// heading down
 		// NdPoint myPoint = space.getLocation(bud);
 		double rnd = Math.random();

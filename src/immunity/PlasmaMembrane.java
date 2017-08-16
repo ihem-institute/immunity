@@ -30,7 +30,7 @@ public class PlasmaMembrane {
 	public int blue = 0;
 //	c2 is the initial content of pLANCL2 in the plasma membrane
 	public double c2 = CellProperties.getInstance().getMembraneRecycle().get("pLANCL2");
-	public int area = 150000; // nm2 750nm x 200nm
+	public int area = (int) (750*200*(1/Cell.orgScale)*(1/Cell.orgScale)); // nm2 750nm x 200nm
 	HashMap<Integer, HashMap<String, Double>> PMLANCL2TimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 
 

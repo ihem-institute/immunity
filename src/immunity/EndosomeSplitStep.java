@@ -217,7 +217,7 @@ public class EndosomeSplitStep {
 		}
 		endosome.size = Math.pow(endosome.volume * 3d / 4d / Math.PI, (1d / 3d));
 
-		endosome.speed = Cell.orgScale / endosome.size;
+		endosome.speed = 1d / endosome.size;
 //		Time series are re calculated in the next tick
 		endosome.getRabTimeSeries().clear();
 		endosome.getAntigenTimeSeries().clear();
@@ -249,7 +249,7 @@ public class EndosomeSplitStep {
 		b.volume = vcylinder;
 		Endosome.endosomeShape(b);
 		b.size = Math.pow(b.volume * 3d / 4d / Math.PI, (1d / 3d));
-		b.speed = Cell.orgScale / b.size;
+		b.speed = 1d / b.size;
 		Random rd = new Random();
 //		Time series will be recalculated in the next tick
 		b.getAntigenTimeSeries().clear();

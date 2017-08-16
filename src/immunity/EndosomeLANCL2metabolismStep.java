@@ -59,10 +59,10 @@ public class EndosomeLANCL2metabolismStep {
 		endosome.membraneContent.put("LANCL2", LANCL2);
 		double LANCL2cyto = 0.0;
 		if (Cell.getInstance().getSolubleCell().containsKey("LANCL2cyto")){
-		LANCL2cyto = presentValues.get("LANCL2cyto")* endosome.area * 3 * 1E-8
+		LANCL2cyto = presentValues.get("LANCL2cyto")* endosome.area * 3 * 1E-8 * Math.pow(Cell.orgScale, 3)
 				+Cell.getInstance().getSolubleCell().get("LANCL2cyto");	
 		} else {
-		LANCL2cyto =presentValues.get("LANCL2cyto")*endosome.area* 3 * 1E-8;
+		LANCL2cyto =presentValues.get("LANCL2cyto")*endosome.area* 3 * 1E-8 * Math.pow(Cell.orgScale, 3);
 		}
 		Cell.getInstance().getSolubleCell().put("LANCL2cyto", LANCL2cyto);
 		
@@ -163,10 +163,10 @@ public class EndosomeLANCL2metabolismStep {
 // in this case, the volume of the unit of cytosol is 15*15*15 nm  and the calculation is:
 //	copasi values (mM) * area * 10^-3.  See file Cálculos for details
 		if (cyto.getCytoContent().containsKey("LANCL2cyto")){
-		metValue = lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area * 1E-3
+		metValue = lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area * 1E-3 * Math.pow(Cell.orgScale, 3)
 				+ cyto.getCytoContent().get("LANCL2cyto");}
 		else {
-		metValue = lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area * 1E-3;
+		metValue = lANCL2metabolism.getConcentration("LANCL2cyto")*endosome.area * 1E-3 * Math.pow(Cell.orgScale, 3);
 			}	
 		cyto.getCytoContent().put("LANCL2cyto", metValue);
 	}		

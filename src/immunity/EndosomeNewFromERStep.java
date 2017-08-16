@@ -64,7 +64,7 @@ public class EndosomeNewFromERStep {
 		bud.area = bud.initOrgProp.get("area");
 		bud.volume = bud.initOrgProp.get("volume");
 		bud.size = bud.initOrgProp.get("radius");// radius of a sphere with the volume of the new organelle
-		bud.speed = Cell.orgScale/ bud.size;
+		bud.speed = 1d/ bud.size;
 		bud.heading = Math.random() * 360;
 		// NdPoint myPoint = space.getLocation(bud);
 		double rnd = Math.random();

@@ -60,7 +60,7 @@ public class EndosomeFusionStep {
 		}
 		double rsphere = Math.pow(endosome.volume * 3d / 4d / Math.PI, (1d / 3d));
 		double size = rsphere;
-		endosome.speed = Cell.orgScale/ size;
+		endosome.speed = 1d/ size;
 		endosomeShape(endosome);
 //		EndosomeAntigenPresentationStep.antigenPresentation(endosome);
 		endosome.getAntigenTimeSeries().clear();
