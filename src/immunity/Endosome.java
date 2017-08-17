@@ -87,7 +87,19 @@ public class Endosome {
 	HashMap<Integer, HashMap<String, Double>> antigenTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 	HashMap<Integer, HashMap<String, Double>> LANCL2TimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 	HashMap<Integer, HashMap<String, Double>> rabTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
-
+//	Probabilities of events per tick.  Calculated from the t1/2 of each process
+//	 as the inverse of time1/2(in seconds) / 0.015 * timeScale
+//	0.015 is the fastest event (movement on MT, 1 uM/sec) that I use to calibrate
+//	the tick duration. At time scale 1, I move the endosome 15 nm in a tick. 
+//	At time scale 0.5, I move the endosome 30 nm (15/timeScale)
+//	
+	double p_EndosomeRecycleStep = 1/(60d/0.015*Cell.timeScale);
+	double p_EndosomeUptakeStep = 1/(60d/0.015*Cell.timeScale);
+	double p_EndosomeNewFromERStep = 1/(60d/0.015*Cell.timeScale);
+	double p_EndosomeInternalVesicleStep = 1/(360d/0.015*Cell.timeScale);
+	double p_EndosomeFusionStep =1/(180d/0.015*Cell.timeScale);
+	double p_EndosomeSplitStep = 1/(60d/0.015*Cell.timeScale);
+	double p_EndosomeLysosomalDigestionStep = 1/(60d/0.015*Cell.timeScale);
 
 
 	// constructor of endosomes with grid, space and a set of Rabs, membrane
@@ -114,6 +126,7 @@ public class Endosome {
 		heading = Math.random() * 360d; // initial value, but should change
 		double mvb = 0; // number of internal vesicles
 
+
 	}
 
 	public ContinuousSpace<Object> getSpace() {
@@ -123,16 +136,17 @@ public class Endosome {
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
 		endosomeShape(this);
-		if (Math.random()<0.1)EndosomeRecycleStep.recycle(this);
-		if (Math.random()<0.1)EndosomeUptakeStep.uptake(this);
-		if (Math.random()<0.1)EndosomeNewFromERStep.newFromEr(this);
 		EndosomeMove.changeDirection(this);
 		EndosomeMove.moveTowards(this);
-		//EndosomeTetherStep.tether(this);
-		if (Math.random()<0.1)EndosomeInternalVesicleStep.internalVesicle(this);
-		if (Math.random()<0.01) EndosomeFusionStep.fusion(this);
-		if (Math.random()<0.1)EndosomeSplitStep.split(this);
-		if (Math.random()<0.1)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
+		EndosomeTetherStep.tether(this);
+		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);
+		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
+		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
+
+		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
+		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
+		if (Math.random()<p_EndosomeSplitStep)EndosomeSplitStep.split(this);
+		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%100 ==0) 
 		if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);

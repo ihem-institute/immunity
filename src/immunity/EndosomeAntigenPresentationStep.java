@@ -74,7 +74,6 @@ public class EndosomeAntigenPresentationStep {
 
 		Set<String> metabolites = antigenPresentation.getInstance()
 				.getMetabolites();
-		int antPresTicksPerSec = 67;
 		HashMap<String, Double> localM = new HashMap<String, Double>();
 		for (String met : metabolites) {
 			if (endosome.membraneContent.containsKey(met)) {
@@ -111,7 +110,7 @@ public class EndosomeAntigenPresentationStep {
 			HashMap<String, Double> value = new HashMap<String, Double>();
 			for (int met = 1; met < metNro +1; met = met +1){
 				value.put(timeSeries.getTitle(met), timeSeries.getConcentrationData(time, met));
-				endosome.getAntigenTimeSeries().put(tick+time*67,value);
+				endosome.getAntigenTimeSeries().put((int) (tick+time*Cell.timeScale/0.015),value);
 			}
 		}
 		

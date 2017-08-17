@@ -142,7 +142,7 @@ public class EndosomeRabConversionStep {
 			for (int met = 1; met < metNro +1; met = met +1){
 				value.put(timeSeries.getTitle(met), timeSeries.getConcentrationData(time, met));
 			}
-			endosome.getRabTimeSeries().put(tick+time*67,value);
+			endosome.getRabTimeSeries().put((int) (tick+time*Cell.timeScale/0.015),value);
 		}
 		
 //		System.out.println("RAB time series "+ tick +" " +endosome.getRabTimeSeries());

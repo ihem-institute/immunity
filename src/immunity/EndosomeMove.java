@@ -20,6 +20,7 @@ public class EndosomeMove {
 		/*
 		 * Direction in Repast 0 to the right 180 to the left -90 down +90 up
 		 */
+		endosome.speed = 1d/endosome.size;
 		NdPoint myPoint = space.getLocation(endosome);
 		double x = myPoint.getX() + Math.cos(endosome.heading * 2d * Math.PI / 360d)
 				* endosome.speed*Cell.orgScale/Cell.timeScale;
@@ -102,7 +103,7 @@ public class EndosomeMove {
 		}
 		// when no MT is near the endosome, it rotate randomly
 		// according with its momentum
-		double momentum = endosome.volume * (endosome.a * endosome.a + endosome.c * endosome.c) / 5 / 3E7;
+		double momentum = endosome.volume * (endosome.a * endosome.a + endosome.c * endosome.c) / 1E8;
 		// if (momentum < 0.5 && c>21) System.out.println("momentum  " +
 		// momentum+" "+a+"  "+c);
 
