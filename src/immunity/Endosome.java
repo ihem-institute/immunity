@@ -98,7 +98,7 @@ public class Endosome {
 	double p_EndosomeNewFromERStep = 1/(60d/0.015*Cell.timeScale);
 	double p_EndosomeInternalVesicleStep = 1/(360d/0.015*Cell.timeScale);
 	double p_EndosomeFusionStep =1/(180d/0.015*Cell.timeScale);
-	double p_EndosomeSplitStep = 1/(60d/0.015*Cell.timeScale);
+	double p_EndosomeSplitStep = 1/(1d/0.015*Cell.timeScale);
 	double p_EndosomeLysosomalDigestionStep = 1/(60d/0.015*Cell.timeScale);
 
 

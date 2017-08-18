@@ -1,6 +1,7 @@
 package immunity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -19,8 +20,10 @@ public class EndosomeMove {
 		grid = endosome.getGrid();
 		/*
 		 * Direction in Repast 0 to the right 180 to the left -90 down +90 up
+		 * Move with random speed inversely proportional to the radius of an sphere with the endosome
+		 * volume.  The speed of a small organelle of radius 20 nm is taken as unit.  
 		 */
-		endosome.speed = 1d/endosome.size;
+		endosome.speed = 20d/endosome.size*Math.random();//20 is radius of a minimal endosome
 		NdPoint myPoint = space.getLocation(endosome);
 		double x = myPoint.getX() + Math.cos(endosome.heading * 2d * Math.PI / 360d)
 				* endosome.speed*Cell.orgScale/Cell.timeScale;
@@ -63,19 +66,23 @@ public class EndosomeMove {
 			mts = associateMt();
 		}
 		int mtDir = 0;
-		/*
-		 * mtDirection decides if the endosome is going to move to the (-) end
-		 * of the MT (dyneine like or to the plus end (kinesine like). -1 goes
-		 * to the nucleus, 1 to the PM
-		 */
-		// not used now mtDir = mtDirection(endosome);
+/*
+ * mtDirection decides if the endosome is going to move to the (-) end
+ * of the MT (dyneine like or to the plus end (kinesine like). -1 goes
+ * to the nucleus, 1 to the PM
+ * 
+ */
+// not used now mtDir = mtDirection(endosome);
+		Collections.shuffle(mts);
 		for (MT mt : mts) {
 			double dist = distance(endosome, mt);
-			if (dist < (endosome.c* Cell.orgScale) / 30d) {
+//			The distance is in space units from 0 to 50. At scale 1, the space is 750 nm
+//			Hence o convert to nm, I must multiply for 15. An organelle will sense MT
+//			at a distance less than its size.
+			if (dist*15d < endosome.size* Cell.orgScale) {
 
-		//The volume of a cylinder is = PI*rcyl^2*h; area = PI*2*rcyl*h + 2* PI*rcyl^2
-		//hence for a cylinder of diameter = rcyl, volume / (area-2* PI*rcyl^2) = rcyl/2 
-		//direction is fixed to to the surface for tubules and to the center for the rest
+
+//direction is fixed to to the surface for tubules and to the center for the rest
 				if (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2)
 					{
 					mtDir = -1;
@@ -101,9 +108,11 @@ public class EndosomeMove {
 				return endosome.heading;
 			}
 		}
-		// when no MT is near the endosome, it rotate randomly
-		// according with its momentum
-		double momentum = endosome.volume * (endosome.a * endosome.a + endosome.c * endosome.c) / 1E8;
+// when no MT is near the endosome rotates randomly
+// according with its relative momentum.  As unit momentum I take that of a sphere of radius 20.
+//		Momentum of a ellipsoid = volume*(large radius^2 + small radius^2).  For the sphere or radius 20
+//		4/3*PI*r^3*(20^2+20^2) = 26808257
+		double momentum = 268808257/(endosome.volume * (endosome.a * endosome.a + endosome.c * endosome.c));
 		// if (momentum < 0.5 && c>21) System.out.println("momentum  " +
 		// momentum+" "+a+"  "+c);
 

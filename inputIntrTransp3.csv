@@ -1,5 +1,5 @@
 CELL,,,,,,,,,,,,,,,,,,,,,,,,,
-cellK,rcyl,20,rEndo,60,tMembrane,90000,orgScale,.333333333333333,timeScale,.333333333333333,recyclingProbability,.1,,,,,,,,,,,,,
+cellK,rcyl,20,rEndo,60,tMembrane,90000,orgScale,.33,timeScale,.333333333333333,recyclingProbability,.1,,,,,,,,,,,,,
 null,,,,,,,,,,,,,,,,,,,,,,,,,
 null,,,,,,,,,,,,,,,,,,,,,,,,,
 initRabCell,RabA,1,RabB,1,RabC,1,RabD,1,RabE,1,,,,,,,,,,,,,,,

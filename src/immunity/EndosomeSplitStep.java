@@ -49,6 +49,7 @@ public class EndosomeSplitStep {
 		if ((so - ssphere) < Cell.mincyl)
 			return; // if not enough surface to contain the volume plus a
 		// minimum tubule, no split
+		
 		rabInTube = rabInTube(endosome); // select a rab for the tubule
 		if (rabInTube == null)
 			return; // if non is selected, no fission
@@ -58,7 +59,25 @@ public class EndosomeSplitStep {
 										// cylinder high
 		double vcylinder = 2 * Math.PI * Math.pow(Cell.rcyl, 3); // volume
 		// minimum cylinder
-
+//		the organelles is assessed to be a tubule for the vo/so relationship. If it is a 
+//		tubule, the rules for splitting are different
+		if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) < Cell.rcyl / 2) {
+			if (endosome.rabContent.get(rabInTube)<= Cell.mincyl)return; // the rab area is too small
+//			and return without splitting.
+//			if the area of the rab is enough, the tubule is cut in half. Otherwise, a tubule
+//			with the area of the rab is cut
+			if (endosome.rabContent.get(rabInTube)>= endosome.area/2){
+				vcylinder = endosome.volume/2;
+				scylinder = endosome.area/2;				
+			}
+			else {
+				scylinder = endosome.rabContent.get(rabInTube);
+				vcylinder = vo* endosome.rabContent.get(rabInTube)/endosome.area;
+			}
+			System.out.println("tubule");
+		}
+		else // following rules are for an organelle that is not a tubule
+		{
 		while ((so - ssphere - scylinder > 4 * Math.PI * Math.pow(Cell.rcyl, 2))
 				// organelle area should be enough to cover the volume (ssphere)
 				// to cover the cylinder already formed (scylinder) and to
@@ -69,7 +88,7 @@ public class EndosomeSplitStep {
 				&& (scylinder < 0.5 * so) // the area of the cylinder must not
 											// be larger than 50% of the total
 											// area
-				&& ((vo - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))>2 * Math.PI * Math.pow(Cell.rcyl, 3))
+				&& ((vo - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))>4 * Math.PI * Math.pow(Cell.rcyl, 3))
 				) {
 //			/ ((so - scylinder - 4 * Math.PI
 //					* Math.pow(Cell.rcyl, 2)) - 2 * Math.PI
@@ -87,6 +106,7 @@ public class EndosomeSplitStep {
 			vcylinder = vcylinder + 2 * Math.PI * Math.pow(Cell.rcyl, 3);
 			// add a volume
 			// System.out.println(scylinder +"surface and volume"+ vcylinder);
+		}
 		}
 
 		/*

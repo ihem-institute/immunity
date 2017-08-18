@@ -28,7 +28,7 @@ public class MTStyle implements StyleOGL2D<MT> {
 		double h =  object.getMtheading();
 		double hh = h * Math.PI /180;
 		int length = (int)(- 750 / (Math.sin(hh)));
-		VSpatial createRectangle = this.factory.createRectangle((int) (3d*Cell.orgScale), length);
+		VSpatial createRectangle = this.factory.createRectangle(1, length);
 		return createRectangle;
 
 	}
