@@ -141,7 +141,11 @@ public class PMLANCL2metabolism {
         ReportItemVector body = report.getBodyAddr();
         
         body.add(new CRegisteredObjectName(model.getObject(new CCopasiObjectName("Reference=Time")).getCN().getString()));
-        body.add(new CRegisteredObjectName(report.getSeparator().getCN().getString()));
+
+        
+        /*      I COMMENTED THIS BLOCK TO SPEED UP THE COPASI CALL. THE REPORT IS NOS USED, BUT IT HAS TO 
+ * 	BE DEFINED OR COPASI GIVES AN ERROR
+  		body.add(new CRegisteredObjectName(report.getSeparator().getCN().getString()));
         header.add(new CRegisteredObjectName(new CCopasiStaticString("time").getCN().getString()));
         header.add(new CRegisteredObjectName(report.getSeparator().getCN().getString()));
 
@@ -168,7 +172,7 @@ public class PMLANCL2metabolism {
 
             }
 
-        }
+        }*/
 	}
 	
 	private void setUpTask() {

@@ -25,11 +25,11 @@ public class EndosomeNewFromERStep {
 		// System.out.println("CELL RAB "+ rabCell+ "TMEMBRANE "+ tMembrane);
 		if (!rabCell.containsKey("RabE"))
 			return;
-		double rabCellE = rabCell.get("RabE");
+//		double rabCellE = rabCell.get("RabE");
 //		NEW RAB NET. Since the rabs are supplied, RabEcyto only can decrease with a KO
 		// same area than an newly formed endosome but with half the volume
 
-		if (tMembrane < initOrgProp.get("area") || rabCellE < .1) {
+		if (tMembrane < initOrgProp.get("area")) {
 			return;
 		}
 
@@ -54,9 +54,9 @@ public class EndosomeNewFromERStep {
 		tMembrane = tMembrane - initOrgProp.get("area");
 //		I decrease cytoRabE by 90%.   It will be recovered during RabConversion where
 //		it is constantly supplied		
-		rabCellE = rabCellE * 0.1; //bud.initOrgProp.get("area");
+//		rabCellE = rabCellE * 0.1; //bud.initOrgProp.get("area");
 //		rabCellE = rabCellE - initOrgProp.get("area");
-		rabCell.put("RabE", rabCellE);
+//		rabCell.put("RabE", rabCellE);
 		Cell.getInstance().settMembrane(tMembrane);
 
 		// Cell.getInstance().setRabCell(rabCell);

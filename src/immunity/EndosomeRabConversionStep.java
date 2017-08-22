@@ -60,7 +60,7 @@ public class EndosomeRabConversionStep {
 				// System.out.println("COPASI FINAL " + met +
 				// rabContent.get(Rab));
 			}
-			if (met.endsWith("c")) {
+/*			if (met.endsWith("c")) {
 				String Rab = met.substring(0, 4);
 				double metValue = presentValues.get(met)* endosome.area * 3 * 1E-8;
 				if (Cell.getInstance().getRabCell().containsKey(Rab))
@@ -73,7 +73,7 @@ public class EndosomeRabConversionStep {
 				// System.out.println("COPASI FINAL " + met
 				// + Cell.getInstance().getRabCell().get(Rab));
 			}
-
+*/
 		}
 
 		System.out.println("COPASI FINAL membrane " + endosome.rabContent + " soluble "
