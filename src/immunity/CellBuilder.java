@@ -182,7 +182,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 	public void loadFromCsv() throws IOException {
 
 		Scanner scanner = new Scanner(new File(
-				"C:/Users/lmayorga/workspace/immunity/inputIntrTransp3.csv"));
+				"C:/Users/lmayo/workspace/immunity/inputIntrTransp3.csv"));
 		scanner.useDelimiter(",");
 		CellProperties cellProperties = CellProperties.getInstance();
 // INITIAL CELL PROPERTIES

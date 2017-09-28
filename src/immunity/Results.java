@@ -103,7 +103,7 @@ public class Results {
 		}
 		line = line + "\n";
 		Writer output;
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayorga/workspace/immunity/ResultsIntrTransp3.csv", true));
+		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 		output.append(line);
 		output.close();
 	}
@@ -116,7 +116,7 @@ public class Results {
 		}
 		line = line + "\n";
 		Writer output;
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayorga/workspace/immunity/ResultsIntrTransp3.csv", false));
+		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
 		output.append(line);
 		output.close();	
 	}
@@ -128,7 +128,7 @@ public class Results {
 		}
 		line = line + "\n";
 		Writer output;
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayorga/workspace/immunity/ResultsMarker.csv", false));
+		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsMarker.csv", false));
 		output.append(line);
 		output.close();	
 		// TODO Auto-generated method stub
@@ -246,7 +246,7 @@ public class Results {
 		}
 		line = line + "\n";
 		Writer output;
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayorga/workspace/immunity/ResultsMarker.csv", true));
+		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsMarker.csv", true));
 		output.append(line);
 		output.close();
 	}

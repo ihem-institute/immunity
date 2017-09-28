@@ -54,7 +54,7 @@ public class UpdateParameters {
 		}
 }
 	public void testNewFile() throws IOException {
-		File file = new File("C:/Users/lmayorga/workspace/immunity/inputIntrTransp3.csv");
+		File file = new File("C:/Users/lmayo/workspace/immunity/inputIntrTransp3.csv");
 		Path filePath = file.toPath();		
 		BasicFileAttributes attr = Files.readAttributes(filePath, BasicFileAttributes.class);
 		String newFile = attr.lastModifiedTime().toString();
@@ -102,7 +102,7 @@ public class UpdateParameters {
 	public void loadFromCsv() throws FileNotFoundException {
 
 		Scanner scanner = new Scanner(new File(
-				"C:/Users/lmayorga/workspace/immunity/inputIntrTransp3.csv"));
+				"C:/Users/lmayo/workspace/immunity/inputIntrTransp3.csv"));
 		scanner.useDelimiter(",");
 
 		CellProperties cellProperties = CellProperties.getInstance();
