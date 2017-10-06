@@ -61,7 +61,7 @@ public class EndosomeTetherStep {
 
 			Random r = new Random();
 			double rr = r.nextGaussian();
-			end.heading = rr * 5d + largest.heading;
+			end.heading = rr * 30d + largest.heading;
 	//		EndosomeMove.moveTowards(end);
 		}
 	}

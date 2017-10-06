@@ -84,10 +84,10 @@ public class Cytosol {
 
 
 
-		public void position(int xcoor, int ycoor){
-			space.moveTo(this, xcoor, ycoor);
-			grid.moveTo(this, xcoor, ycoor);	
-			}
+//		public void position(int xcoor, int ycoor){
+//			space.moveTo(this, xcoor, ycoor);
+//			grid.moveTo(this, xcoor, ycoor);	
+//			}
 		public void changeColor() {
 			double c1 = 0;
 			if (this.cytoContent.containsKey("LANCL2cyto")){

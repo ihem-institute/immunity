@@ -276,7 +276,7 @@ public class EndosomeSplitStep {
 		b.getLANCL2TimeSeries().clear();
 		b.getRabTimeSeries().clear();
 		
-		b.heading = endosome.heading + rd.nextGaussian() * 10d;// change the
+		b.heading = endosome.heading + rd.nextGaussian() * 30d;// change the
 															// heading
 		// of the old vesicle heading with a normal distribution
 		// System.out

@@ -98,7 +98,7 @@ public class Endosome {
 	double p_EndosomeNewFromERStep = 1/(60d/0.015*Cell.timeScale);
 	double p_EndosomeInternalVesicleStep = 1/(360d/0.015*Cell.timeScale);
 	double p_EndosomeFusionStep =1/(180d/0.015*Cell.timeScale);
-	double p_EndosomeSplitStep = 1/(1d/0.015*Cell.timeScale);
+	double p_EndosomeSplitStep = 1/(0.1/0.015*Cell.timeScale);
 	double p_EndosomeTetherStep = 1/(1d/0.015*Cell.timeScale);
 	double p_EndosomeLysosomalDigestionStep = 1/(60d/0.015*Cell.timeScale);
 	
@@ -138,7 +138,7 @@ public class Endosome {
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
 		endosomeShape(this);
-		EndosomeMove.changeDirection(this);
+//		EndosomeMove.changeDirection(this);
 		EndosomeMove.moveTowards(this);
 		EndosomeTetherStep.tether(this);
 		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);
@@ -147,7 +147,8 @@ public class Endosome {
 		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
 		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
 		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
-		if (Math.random()<p_EndosomeSplitStep)EndosomeSplitStep.split(this);
+//		if (Math.random()<p_EndosomeSplitStep)
+			EndosomeSplitStep.split(this);
 		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%100 ==0) 

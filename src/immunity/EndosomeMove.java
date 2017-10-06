@@ -14,7 +14,7 @@ public class EndosomeMove {
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 	private static List<MT> mts;
-	
+	public static double cellLimit = 3 * Cell.orgScale;	
 	public static void moveTowards(Endosome endosome) {
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
@@ -22,46 +22,64 @@ public class EndosomeMove {
 		 * Direction in Repast 0 to the right 180 to the left -90 down +90 up
 		 * Move with random speed inversely proportional to the radius of an sphere with the endosome
 		 * volume.  The speed of a small organelle of radius 20 nm is taken as unit.  
+		To move, three situations are considered
+		1- Near the borders, the movement is: speed random between 0 and a value that depends on the endosome size
+		heading, the original heading plus a random number that depends on the momentum
+		2- Away of microtubules is the same than near borders
+		3- Near MT, the speed is fixed and the heading is in the direction of the Mt or 180 that of the Mt
 		 */
-		endosome.speed = 20d/endosome.size*Math.random();//20 is radius of a minimal endosome
-		NdPoint myPoint = space.getLocation(endosome);
-		double x = myPoint.getX() + Math.cos(endosome.heading * 2d * Math.PI / 360d)
-				* endosome.speed*Cell.orgScale/Cell.timeScale;
-		double y = myPoint.getY() + Math.sin(endosome.heading * 2d * Math.PI / 360d)
-				* endosome.speed * Cell.orgScale/Cell.timeScale;
 
-		double cellLimit = 3 * Cell.orgScale;
+		NdPoint myPoint = space.getLocation(endosome);
+		
+		double x = myPoint.getX();
+		double y = myPoint.getY();
+		
+
+//	If near the borders
 		if (y > 50-cellLimit || y < cellLimit) {
-			changeDirection(endosome);
-		    endosome.speed = endosome.speed* Cell.orgScale/Cell.timeScale/1.5;
-			if (y >= 50-cellLimit/2) y = 50 -cellLimit/2;
-			if (y <= 0+cellLimit/2) y = cellLimit/2;
+			changeDirectionRnd(endosome);
 		}
-		space.moveTo(endosome, x, y);
-		grid.moveTo(endosome, (int) x, (int) y);
+		else
+//			if not near the borders
+		{
+			changeDirectionMt(endosome);
+		}
+		
+//		Having the heading and speed, make the movement.  If out of the space, limit
+//		the movement
+		    double xx = x + Math.cos(endosome.heading * 2d * Math.PI / 360d)
+			* endosome.speed*Cell.orgScale/Cell.timeScale;
+		    double yy = y + Math.sin(endosome.heading * 2d * Math.PI / 360d)
+			* endosome.speed * Cell.orgScale/Cell.timeScale;	
+		    if (yy >= 50-cellLimit) yy = 50 -cellLimit;
+			if (yy <= 0+cellLimit) yy = cellLimit;
+		
+		space.moveTo(endosome, xx, yy);
+		grid.moveTo(endosome, (int) xx, (int) yy);
 	}
 	
-	public static double changeDirection(Endosome endosome) {
+	public static void changeDirectionRnd(Endosome endosome) {
 		double initial = endosome.heading;
-		space = endosome.getSpace();
-		grid = endosome.getGrid();
 		endosomeShape(endosome);
-// When near the bottom or the top, the movement is random and depends on the
-// momentum.  Even if not in the edges, it has a probability (0.01) of changing the
-// direction randomly
-		NdPoint myPoint = space.getLocation(endosome);
-		if (myPoint.getY() < 5*Cell.orgScale 
-			|| myPoint.getY() >50 - 4*Cell.orgScale
-			|| Math.random()<0.01) {
 
-			double momentum = endosome.volume * (endosome.a * endosome.a + endosome.c * endosome.c) / 5 / 3E7;
+// when near the borders or no MT is nearby, the organelle rotates randomly
+// according with i) its present heading, ii) a gaussian random number (0+- 10degree/momentum) 
+//	As unit momentum I take that of a sphere of radius 20.
+//	Momentum of a ellipsoid = volume*(large radius^2 + small radius^2)/5.  For the sphere or radius 20
+//	4/3*PI*r^3*(20^2+20^2)/5 = 26808257/5 = 5.361.651
+			double momentum = (endosome.a * endosome.a + endosome.c * endosome.c)/800;
+				// if (momentum < 0.5 && c>21) System.out.println("momentum  " +
+				// momentum+" "+a+"  "+c);
 			Random fRandom = new Random();
-			endosome.heading = endosome.heading + fRandom.nextGaussian() * 20d
-					/ momentum;
-			return endosome.heading;
+			endosome.heading = (endosome.heading + fRandom.nextGaussian() * 10d / momentum) % 360;
+				// if (initial - heading >
+				// 90)System.out.println("GIRO sin MT "+initial+"  "+heading+"  "+momentum);
+// The speed is random between 0 and a value inversely proportional to the endosome size
+			endosome.speed = 20d/endosome.size*Math.random()* Cell.orgScale/Cell.timeScale;
+			return;
 		}
-// when (not in the bottom or the top or a rnd probability)  and near a MT takes the direction of the MT
-// and increases the speed to 1* Cell.orgScale
+	
+	public static void changeDirectionMt(Endosome endosome){
 		if (mts == null) {
 			mts = associateMt();
 		}
@@ -81,7 +99,6 @@ public class EndosomeMove {
 //			at a distance less than its size.
 			if (dist*15d < endosome.size* Cell.orgScale) {
 
-
 //direction is fixed to to the surface for tubules and to the center for the rest
 				if (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2)
 					{
@@ -92,35 +109,25 @@ public class EndosomeMove {
 					mtDir = 1;
 					}
 //				Changes the heading to the heading of the MT
-				endosome.heading = -mtDir * mt.getMtheading() + 180f;
 //				Moves the endosome to the MT position
 				double yy = dist * Math.sin(endosome.heading + 90);
 				double xx = dist * Math.cos(endosome.heading + 90);
 				NdPoint pt = space.getLocation(endosome);
 				double xpt = pt.getX()+xx;
 				double ypt = pt.getY()+yy;
+			    if (ypt >= 50-cellLimit) ypt = 50 -cellLimit;
+				if (ypt <= 0+cellLimit) ypt = cellLimit;
 				space.moveTo(endosome, xpt, ypt);
 				grid.moveTo(endosome, (int) xpt, (int) ypt);
 //				Changes the speed to a standard speed in MT independet of size
 				endosome.speed = 1d*Cell.orgScale/Cell.timeScale;
-				// if (initial - heading > 90)System.out.println("GIRO MT "
-				// +initial+"  "+heading);
-				return endosome.heading;
+				endosome.heading = -mtDir * mt.getMtheading() + 180f;
+				return;
 			}
 		}
-// when no MT is near the endosome rotates randomly
-// according with its relative momentum.  As unit momentum I take that of a sphere of radius 20.
-//		Momentum of a ellipsoid = volume*(large radius^2 + small radius^2).  For the sphere or radius 20
-//		4/3*PI*r^3*(20^2+20^2) = 26808257
-		double momentum = 268808257/(endosome.volume * (endosome.a * endosome.a + endosome.c * endosome.c));
-		// if (momentum < 0.5 && c>21) System.out.println("momentum  " +
-		// momentum+" "+a+"  "+c);
-
-		Random fRandom = new Random();
-		endosome.heading = (endosome.heading + fRandom.nextGaussian() * 10d / momentum) % 360;
-		// if (initial - heading >
-		// 90)System.out.println("GIRO sin MT "+initial+"  "+heading+"  "+momentum);
-		return endosome.heading;
+//		If no Mts, then random
+		changeDirectionRnd(endosome);
+		return;
 	}
 	// Not used!!
 	public static int mtDirection(Endosome endosome) {
@@ -143,7 +150,6 @@ public class EndosomeMove {
 		}
 		// System.out.println(mts);
 		return mts;
-
 	}
 
 	public static void endosomeShape(Endosome end) {
