@@ -148,8 +148,9 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	@Override
 	public float getRotation(Endosome endosome) {
 		// set in a way that object move along its large axis
-		if(endosome.heading%360 > 0 && endosome.heading%360<180) return (float) endosome.heading;
-		else return (float) -endosome.heading;
+		//if(endosome.heading%360 > 0 && endosome.heading%360<180) return (float) endosome.heading;
+		//else 
+			return (float) -endosome.heading;
 	}
 
 	@Override
