@@ -47,9 +47,12 @@ public class EndosomeMove {
 		
 //		Having the heading and speed, make the movement.  If out of the space, limit
 //		the movement
-		    double xx = x + Math.cos(endosome.heading * 2d * Math.PI / 360d)
+			myPoint = space.getLocation(endosome);
+			x = myPoint.getX();
+			y = myPoint.getY();
+		    double xx = x + Math.cos(endosome.heading * Math.PI / 180d)
 			* endosome.speed*Cell.orgScale/Cell.timeScale;
-		    double yy = y + Math.sin(endosome.heading * 2d * Math.PI / 360d)
+		    double yy = y + Math.sin(endosome.heading * Math.PI / 180d)
 			* endosome.speed * Cell.orgScale/Cell.timeScale;	
 		    if (yy >= 50-cellLimit) yy = 50 -cellLimit;
 			if (yy <= 0+cellLimit) yy = cellLimit;
@@ -59,7 +62,7 @@ public class EndosomeMove {
 	}
 	
 	public static void changeDirectionRnd(Endosome endosome) {
-		double initial = endosome.heading;
+		double initialh = endosome.heading;
 		endosomeShape(endosome);
 
 // when near the borders or no MT is nearby, the organelle rotates randomly
@@ -71,7 +74,11 @@ public class EndosomeMove {
 				// if (momentum < 0.5 && c>21) System.out.println("momentum  " +
 				// momentum+" "+a+"  "+c);
 			Random fRandom = new Random();
-			endosome.heading = (endosome.heading + fRandom.nextGaussian() * 10d / momentum) % 360;
+			double finalh = (initialh + fRandom.nextGaussian() * 10d / momentum);
+			if (finalh <-180) endosome.heading = 360d - finalh;
+			if (finalh > 180) endosome.heading = finalh- 360d;
+					
+
 				// if (initial - heading >
 				// 90)System.out.println("GIRO sin MT "+initial+"  "+heading+"  "+momentum);
 // The speed is random between 0 and a value inversely proportional to the endosome size
@@ -94,15 +101,16 @@ public class EndosomeMove {
 		Collections.shuffle(mts);
 		for (MT mt : mts) {
 			double dist = distance(endosome, mt);
-//			The distance is in space units from 0 to 50. At scale 1, the space is 750 nm
-//			Hence o convert to nm, I must multiply for 15. An organelle will sense MT
-//			at a distance less than its size.
-			if (dist*15d < endosome.size* Cell.orgScale) {
+//			System.out.println("distance BEFORE "+ dist+"  " +mt.getMtheading());
+//			The distance is in space units from 0 to 50. At scale 1, the space is 2250 nm
+//			Hence o convert to nm, I must multiply for 45. An organelle will sense MT
+//			at a distance less than its size (considering the organelle scale).
+			if (Math.abs(dist*45d) < endosome.size* Cell.orgScale) {
 
 //direction is fixed to to the surface for tubules and to the center for the rest
 				if (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2)
 					{
-					mtDir = -1;
+					mtDir = 0;
 					} // if no a tubule, goes to the nucleus
 				else
 					{
@@ -110,18 +118,20 @@ public class EndosomeMove {
 					}
 //				Changes the heading to the heading of the MT
 //				Moves the endosome to the MT position
-				double yy = dist * Math.sin(endosome.heading + 90);
-				double xx = dist * Math.cos(endosome.heading + 90);
+				double mth = mt.getMtheading();
+				double yy = dist * Math.sin((mth+90)* Math.PI/180);
+				double xx = dist * Math.cos((mth+90)* Math.PI/180);
 				NdPoint pt = space.getLocation(endosome);
-				double xpt = pt.getX()+xx;
-				double ypt = pt.getY()+yy;
+				double xpt = pt.getX()-xx;
+				double ypt = pt.getY()-yy;
 			    if (ypt >= 50-cellLimit) ypt = 50 -cellLimit;
 				if (ypt <= 0+cellLimit) ypt = cellLimit;
 				space.moveTo(endosome, xpt, ypt);
 				grid.moveTo(endosome, (int) xpt, (int) ypt);
+				dist = distance(endosome, mt);
 //				Changes the speed to a standard speed in MT independet of size
 				endosome.speed = 1d*Cell.orgScale/Cell.timeScale;
-				endosome.heading = -mtDir * mt.getMtheading() + 180f;
+				endosome.heading = -(mtDir * 180f + mt.getMtheading());
 				return;
 			}
 		}
@@ -184,8 +194,8 @@ public class EndosomeMove {
 		double xmin = (double) ((MT) obj).getXorigin();
 		// double a = Math.abs((ymax-ymin) * xpt - (xmax-xmin)*ypt + xmax*ymin -
 		// ymax*xmin);
-		double a = Math.abs((xmax - xmin) * (ymin - ypt) - (ymax - ymin)
-				* (xmin - xpt));
+		double a = (xmax - xmin) * (ymin - ypt) - (ymax - ymin)
+				* (xmin - xpt);
 		double b = Math.sqrt((ymax - ymin) * (ymax - ymin) + (xmax - xmin)
 				* (xmax - xmin));
 		double distance = a / b;
