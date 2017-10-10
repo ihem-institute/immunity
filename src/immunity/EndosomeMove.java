@@ -36,10 +36,8 @@ public class EndosomeMove {
 		double y = myPoint.getY();
 		
 
-//	If near the borders, only move every 10% of the time
+//	If near the borders, move random (only with 10% probability)
 		if (y > 50-cellLimit || y < cellLimit) {
-//			if (Math.random()<0.9) endosome.speed = 0;
-//			else changeDirectionRnd(endosome);
 			changeDirectionRnd(endosome);
 		}
 		else
@@ -47,13 +45,12 @@ public class EndosomeMove {
 		{
 			boolean onMt = false;
 			changeDirectionMt(endosome);
-//			if (onMt && Math.random()<0.9) endosome.speed = 0;
-//			else changeDirectionRnd(endosome);			
+
 		}
 		
 //		Having the heading and speed, make the movement.  If out of the space, limit
 //		the movement
-			if (endosome.speed == 0) return;
+			if (endosome.speed == 0) return;// random movement 90% of the time return speed=0
 			myPoint = space.getLocation(endosome);
 			x = myPoint.getX();
 			y = myPoint.getY();
@@ -69,6 +66,7 @@ public class EndosomeMove {
 	}
 	
 	public static void changeDirectionRnd(Endosome endosome) {
+//		90% of the time, the speed is 0 and the endosome does not move
 		if (Math.random()<0.9) {
 			endosome.speed = 0;
 			return;
@@ -134,7 +132,7 @@ public class EndosomeMove {
 			if (Math.abs(dist*45d/Cell.orgScale) < endosome.size) {
 
 
-//direction is fixed to to the surface for tubules and to the center for the rest
+//direction is fixed to the surface for tubules and to the center for the rest
 				if (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2)
 					{
 					mtDir = 0;
