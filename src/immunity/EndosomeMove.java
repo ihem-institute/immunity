@@ -14,7 +14,8 @@ public class EndosomeMove {
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 	private static List<MT> mts;
-	public static double cellLimit = 3 * Cell.orgScale;	
+	public static double cellLimit = 3 * Cell.orgScale;
+	
 	public static void moveTowards(Endosome endosome) {
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
@@ -35,18 +36,24 @@ public class EndosomeMove {
 		double y = myPoint.getY();
 		
 
-//	If near the borders
+//	If near the borders, only move every 10% of the time
 		if (y > 50-cellLimit || y < cellLimit) {
+//			if (Math.random()<0.9) endosome.speed = 0;
+//			else changeDirectionRnd(endosome);
 			changeDirectionRnd(endosome);
 		}
 		else
 //			if not near the borders
 		{
+			boolean onMt = false;
 			changeDirectionMt(endosome);
+//			if (onMt && Math.random()<0.9) endosome.speed = 0;
+//			else changeDirectionRnd(endosome);			
 		}
 		
 //		Having the heading and speed, make the movement.  If out of the space, limit
 //		the movement
+			if (endosome.speed == 0) return;
 			myPoint = space.getLocation(endosome);
 			x = myPoint.getX();
 			y = myPoint.getY();
@@ -62,19 +69,36 @@ public class EndosomeMove {
 	}
 	
 	public static void changeDirectionRnd(Endosome endosome) {
+		if (Math.random()<0.9) {
+			endosome.speed = 0;
+			return;
+		}
 		double initialh = endosome.heading;
 		endosomeShape(endosome);
 
 // when near the borders or no MT is nearby, the organelle rotates randomly
-// according with i) its present heading, ii) a gaussian random number (0+- 10degree/momentum) 
+// according with i) its present heading, ii) a gaussian random number (0+- 30degree/momentum) 
 //	As unit momentum I take that of a sphere of radius 20.
 //	Momentum of a ellipsoid = volume*(large radius^2 + small radius^2)/5.  For the sphere or radius 20
-//	4/3*PI*r^3*(20^2+20^2)/5 = 26808257/5 = 5.361.651
+//	4/3*PI*r^3*(20^2+20^2)/5 = 26808257/5 = 5.361.651.
+//		To prevent the tubules to move, I did not consider the volume in the calculation
+//		then a 20 nm sphere has a "pseudo" momentum of 800
+//NEW RULE FOR RANDOM CHANGE OF HEADING
+//A free rnd movement 360.  The probability decrease with size
+//An inertial movement.  Gaussian arround 0 with an angle that decreases with size
+//An inertial movement depending on the momentum.  Gaussian around 0 or 180
+
 			double momentum = (endosome.a * endosome.a + endosome.c * endosome.c)/800;
 				// if (momentum < 0.5 && c>21) System.out.println("momentum  " +
 				// momentum+" "+a+"  "+c);
 			Random fRandom = new Random();
-			double finalh = (initialh + fRandom.nextGaussian() * 10d / momentum);
+			double finalh = 0;
+			if (Math.random() < 1d/endosome.size ) finalh = Math.random()*360;// rnd depending  size
+			finalh = finalh + fRandom.nextGaussian() * 45d*1d/endosome.size;// inertial depending size
+			int dir = 1;
+			if (Math.random() < 0.5 ) {dir = -1;}
+			finalh = finalh + fRandom.nextGaussian() * dir * 1d * 800d/momentum;// inertial depending momentum
+			finalh = initialh + finalh;
 			if (finalh <-180) endosome.heading = 360d - finalh;
 			if (finalh > 180) endosome.heading = finalh- 360d;
 					
@@ -87,6 +111,7 @@ public class EndosomeMove {
 		}
 	
 	public static void changeDirectionMt(Endosome endosome){
+//		boolean onMt = false;
 		if (mts == null) {
 			mts = associateMt();
 		}
@@ -102,10 +127,12 @@ public class EndosomeMove {
 		for (MT mt : mts) {
 			double dist = distance(endosome, mt);
 //			System.out.println("distance BEFORE "+ dist+"  " +mt.getMtheading());
-//			The distance is in space units from 0 to 50. At scale 1, the space is 2250 nm
-//			Hence o convert to nm, I must multiply for 45. An organelle will sense MT
-//			at a distance less than its size (considering the organelle scale).
-			if (Math.abs(dist*45d) < endosome.size* Cell.orgScale) {
+//			The distance is in space units from 0 to 50. At scale 1, the space is 2250 nm.  At 
+//			scale 0.5 it is 4500 nm.
+//			Hence to convert to nm, I must multiply by 45 (2250/50) and divide by scale. An organelle will sense MT
+//			at a distance less than its size.
+			if (Math.abs(dist*45d/Cell.orgScale) < endosome.size) {
+
 
 //direction is fixed to to the surface for tubules and to the center for the rest
 				if (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2)
@@ -137,7 +164,7 @@ public class EndosomeMove {
 		}
 //		If no Mts, then random
 		changeDirectionRnd(endosome);
-		return;
+		return ;
 	}
 	// Not used!!
 	public static int mtDirection(Endosome endosome) {
@@ -199,8 +226,7 @@ public class EndosomeMove {
 		double b = Math.sqrt((ymax - ymin) * (ymax - ymin) + (xmax - xmin)
 				* (xmax - xmin));
 		double distance = a / b;
-		// System.out.println("distance");
-		// System.out.println(distance);
+//		The distance has a sign that it is used to move the organelle to the position in the Mt
 		return distance;
 	}
 }

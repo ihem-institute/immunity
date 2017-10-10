@@ -140,15 +140,14 @@ public class Endosome {
 		endosomeShape(this);
 //		EndosomeMove.changeDirection(this);
 		EndosomeMove.moveTowards(this);
-		EndosomeTetherStep.tether(this);
+		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
 		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);
 		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
 		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
 		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
 		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
 		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
-//		if (Math.random()<p_EndosomeSplitStep)
-			EndosomeSplitStep.split(this);
+		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
 		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%100 ==0) 
