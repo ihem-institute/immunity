@@ -37,7 +37,7 @@ public class EndosomeMove {
 		
 
 //	If near the borders, move random (only with 10% probability)
-		if (y > 50-cellLimit || y < cellLimit) {
+		if (y > 50-2*cellLimit || y < 2*cellLimit) {
 			changeDirectionRnd(endosome);
 		}
 		else
@@ -58,9 +58,10 @@ public class EndosomeMove {
 			* endosome.speed*Cell.orgScale/Cell.timeScale;
 		    double yy = y + Math.sin(endosome.heading * Math.PI / 180d)
 			* endosome.speed * Cell.orgScale/Cell.timeScale;	
-		    if (yy >= 50-cellLimit) yy = 50 -cellLimit;
-			if (yy <= 0+cellLimit) yy = cellLimit;
-		
+//		    if (yy >= 50-cellLimit) yy = 50 -cellLimit;
+//			if (yy <= 0+cellLimit) yy = cellLimit;
+//		    if move near the botom or top, do not move
+		    if (yy >= 50-cellLimit || yy <= 0+cellLimit) return;
 		space.moveTo(endosome, xx, yy);
 		grid.moveTo(endosome, (int) xx, (int) yy);
 	}
