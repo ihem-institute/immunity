@@ -114,7 +114,7 @@ public class EndosomeMove {
 		if (mts == null) {
 			mts = associateMt();
 		}
-		int mtDir = 0;
+		double mtDir = 0;
 /*
  * mtDirection decides if the endosome is going to move to the (-) end
  * of the MT (dyneine like or to the plus end (kinesine like). -1 goes
@@ -132,15 +132,39 @@ public class EndosomeMove {
 //			at a distance less than its size.
 			if (Math.abs(dist*45d/Cell.orgScale) < endosome.size) {
 
-
-//direction is fixed to the surface for tubules and to the center for the rest
-				if (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2)
+//direction is: if TUBULE move to PM with a Probability depending on the 
+//SUM of relative ares of RabA, B or C (move to the PM, +1) plus RabD and E (to the nucleus, -1)
+//This amount is compared with a RND number
+//If Rabs PM prevail, move to the PM if not, move randomly
+//If NOT TUBULE, compare the SUM with a (-) sign.  If Rabs Nucleus prevail, move to the
+//nucleous, else, random.
+// In summary, tubules move to the PM if they are rich in PM Rabs (A, B, C) otherwise, move random
+// Non tubules move to the nucleus if they are rich in nucleus Rabs (D and E), otherwise move random
+//	The direction of the Rabs (PM = 1, Nucleus = -1) is indicated the the csv file as "mtTropism"
+				boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2);
+// Calculate mtDir SUM 
+				mtDir = mtDirection(endosome);
+				if (isTubule)
 					{
-					mtDir = 0;
-					} // if no a tubule, goes to the nucleus
+//					System.out.println("IS TUBULE"+ mtDir);
+					if (Math.random()<mtDir) {
+						mtDir = 0; // same direction than Mt
+						}
+						else {
+						changeDirectionRnd(endosome);
+						return;
+						}
+					} // if no a tubule
 				else
 					{
-					mtDir = 1;
+//					System.out.println("IS NOT TUBULE"+ mtDir);
+					if (Math.random()<-mtDir) {
+						mtDir = +1;// 180 + Mt direction
+						}
+						else {
+						changeDirectionRnd(endosome);
+						return;
+						}
 					}
 //				Changes the heading to the heading of the MT
 //				Moves the endosome to the MT position
@@ -166,16 +190,17 @@ public class EndosomeMove {
 		return ;
 	}
 	// Not used!!
-	public static int mtDirection(Endosome endosome) {
+	public static double mtDirection(Endosome endosome) {
 		double mtd = 0d;
-		int mtDirection = 0;
+//		int mtDirection = 0;
 		for (String rab : endosome.rabContent.keySet()) {
 			mtd = mtd + CellProperties.getInstance().mtTropism.get(rab) * endosome.rabContent.get(rab) / endosome.area;
 		}
-		if (mtd > Math.random() * 2 - 1)
-			return mtDirection = -1;
-		else
-			return mtDirection = 1;
+		return mtd;
+//		if (mtd > Math.random() * 2 - 1)
+//			return mtDirection = -1;
+//		else
+//			return mtDirection = 1;
 	}
 	public static List<MT> associateMt() {
 		List<MT> mts = new ArrayList<MT>();

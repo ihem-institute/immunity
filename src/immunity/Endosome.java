@@ -93,14 +93,14 @@ public class Endosome {
 //	the tick duration. At time scale 1, I move the endosome 15 nm in a tick. 
 //	At time scale 0.5, I move the endosome 30 nm (15/timeScale)
 //	
-	double p_EndosomeRecycleStep = 1/(60d/0.015*Cell.timeScale);
-	double p_EndosomeUptakeStep = 1/(60d/0.015*Cell.timeScale);
-	double p_EndosomeNewFromERStep = 1/(60d/0.015*Cell.timeScale);
-	double p_EndosomeInternalVesicleStep = 1/(1d/0.015*Cell.timeScale);
-	double p_EndosomeFusionStep =1/(180d/0.015*Cell.timeScale);
-	double p_EndosomeSplitStep = 1/(0.1/0.015*Cell.timeScale);
-	double p_EndosomeTetherStep = 1/(1d/0.015*Cell.timeScale);
-	double p_EndosomeLysosomalDigestionStep = 1/(60d/0.015*Cell.timeScale);
+	double p_EndosomeRecycleStep = 1d/(1d/0.015*Cell.timeScale);
+	double p_EndosomeUptakeStep = 1d/(60d/0.015*Cell.timeScale);
+	double p_EndosomeNewFromERStep = 1d/(60d/0.015*Cell.timeScale);
+	double p_EndosomeInternalVesicleStep = 1d/(1d/0.015*Cell.timeScale);
+	double p_EndosomeFusionStep =1d/(180d/0.015*Cell.timeScale);
+	double p_EndosomeSplitStep = 1d/(0.1/0.015*Cell.timeScale);
+	double p_EndosomeTetherStep = 1d/(1d/0.015*Cell.timeScale);
+	double p_EndosomeLysosomalDigestionStep = 1d/(60d/0.015*Cell.timeScale);
 	
 
 
