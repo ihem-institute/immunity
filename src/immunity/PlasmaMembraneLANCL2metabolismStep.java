@@ -69,13 +69,13 @@ public class PlasmaMembraneLANCL2metabolismStep {
 		}
 
 		if (plasmamembrane.membraneRecycle.containsKey("pLANCL2")) {
-		double metValue = plasmamembrane.membraneRecycle.get("pLANCL2");
+		double metValue = plasmamembrane.membraneRecycle.get("pLANCL2")/plasmamembrane.area;
 		pmLANCL2metabolism.setInitialConcentration("pLANCL2", metValue);
 //		System.out.println("COPASI INITIAL PM pLANCL2  " +metValue);
 		}
 
 		if (plasmamembrane.membraneRecycle.containsKey("LANCL2")) {
-		double	metValue = plasmamembrane.membraneRecycle.get("LANCL2");
+		double	metValue = plasmamembrane.membraneRecycle.get("LANCL2")/plasmamembrane.area;
 		
 		pmLANCL2metabolism.setInitialConcentration("LANCL2", metValue);
 //		System.out.println("COPASI INITIAL PM pLANCL2  " +metValue);

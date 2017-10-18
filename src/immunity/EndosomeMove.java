@@ -121,7 +121,7 @@ public class EndosomeMove {
  * to the nucleus, 1 to the PM
  * 
  */
-// not used now mtDir = mtDirection(endosome);
+
 		Collections.shuffle(mts);
 		for (MT mt : mts) {
 			double dist = distance(endosome, mt);
