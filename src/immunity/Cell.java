@@ -33,7 +33,7 @@ public class Cell {
 	// mincyl surface = 1884.95 volume = 6283.18
 	public static double orgScale = CellProperties.getInstance().getCellK().get("orgScale");
 	public static double timeScale = CellProperties.getInstance().getCellK().get("timeScale");
-	
+	public static double volume = 750*750*200/(Math.pow(orgScale,3));
 //  When orgScale=1 zoom =0, when > 1 zoom in , when <1 zoom out
 //	global cell and non-cell quantities
 	public double tMembrane = 0;// membrane that is not used in endosomes

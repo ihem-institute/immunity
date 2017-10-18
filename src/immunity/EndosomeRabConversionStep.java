@@ -60,7 +60,11 @@ public class EndosomeRabConversionStep {
 				// System.out.println("COPASI FINAL " + met +
 				// rabContent.get(Rab));
 			}
-/*			if (met.endsWith("c")) {
+/*
+NEED TO UPDATE THIS.  THE IDEA IS TO USE THE CYTOSOLIC RABS OF THE TIME SERIES TO MODIFY 
+RAB CONCENTRATION IN THE CYTOSOL CONSIDERING THE ORGANELLE SIZE AND THE CYTOSOL VOLUME 
+ * 
+ * 			if (met.endsWith("c")) {
 				String Rab = met.substring(0, 4);
 				double metValue = presentValues.get(met)* endosome.area * 3 * 1E-8;
 				if (Cell.getInstance().getRabCell().containsKey(Rab))

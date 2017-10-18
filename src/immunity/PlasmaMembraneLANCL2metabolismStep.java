@@ -12,6 +12,7 @@ public class PlasmaMembraneLANCL2metabolismStep {
 	
 	public static void PMLANCL2TimeSeriesLoad(PlasmaMembrane plasmaMembrane){
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+		System.out.println("PMLANCL2 time series "+ tick +" " +plasmaMembrane.getPMLANCL2TimeSeries());		
 
 		if (plasmaMembrane.getPMLANCL2TimeSeries().isEmpty()){			
 			callPMLANCL2metabolism(plasmaMembrane);
@@ -52,6 +53,7 @@ public class PlasmaMembraneLANCL2metabolismStep {
 	
 	System.out.println("PMLANCL2 UPDATED");
 //	for (String met :presentValues.keySet()){
+//	UPDATE LANCL2cyto using 
 //	System.out.println(met+ " "+presentValues.get(met));
 //		}
 		

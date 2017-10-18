@@ -53,9 +53,29 @@ public class EndosomeAntigenPresentationStep {
 		} else if (endosome.solubleMet.contains(met)) {
 			double metValue = presentValues.get(met)* endosome.volume;
 			endosome.solubleContent.put(met, metValue);
-		} else
-			System.out.println("Met not found in " + endosome.membraneMet + " "
-					+ endosome.solubleMet + " " + met);
+		} //else
+//			System.out.println("Met not found in " + endosome.membraneMet + " "
+//					+ endosome.solubleMet + " " + met);
+		if (met == "preP"){
+			double metValue=0d;
+			if (Cell.getInstance().getSolubleCell().containsKey(met)) {
+			metValue = Cell.getInstance().getSolubleCell().get(met)+presentValues.get(met)* endosome.volume/Cell.volume;
+			}
+			else{
+			metValue = presentValues.get(met)* endosome.volume/Cell.volume;
+			}
+			Cell.getInstance().getSolubleCell().put("preP", metValue);
+		}
+		if (met == "pept"){
+			double metValue=0d;
+			if (Cell.getInstance().getSolubleCell().containsKey(met)) {
+			metValue = Cell.getInstance().getSolubleCell().get(met)+presentValues.get(met)* endosome.volume/Cell.volume;
+			}
+			else{
+			metValue = presentValues.get(met)* endosome.volume/Cell.volume;
+			}
+			Cell.getInstance().getSolubleCell().put("pept", metValue);
+		}
 	}
 //	System.out.println("AntigenPresentation UPDATED");
 //	for (String met :presentValues.keySet()){
@@ -82,6 +102,10 @@ public class EndosomeAntigenPresentationStep {
 				localM.put(met, metValue);
 			} else if (endosome.solubleContent.containsKey(met)) {
 				double metValue = endosome.solubleContent.get(met)/endosome.volume;
+				antigenPresentation.setInitialConcentration(met, metValue);
+				localM.put(met, metValue);
+			} else if (Cell.getInstance().getSolubleCell().containsKey(met)) {
+				double metValue = Cell.getInstance().getSolubleCell().get(met);
 				antigenPresentation.setInitialConcentration(met, metValue);
 				localM.put(met, metValue);
 			} else {
