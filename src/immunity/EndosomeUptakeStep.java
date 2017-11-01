@@ -22,10 +22,11 @@ public class EndosomeUptakeStep {
 		double tMembrane = cell.gettMembrane();
 		HashMap<String, Double> rabCell = cell.getRabCell();
 		// System.out.println("CELL RAB "+ rabCell+ "TMEMBRANE "+ tMembrane);
-		if (!rabCell.containsKey("RabA"))
+		if (!rabCell.containsKey("RabA") || Math.random()>rabCell.get("RabA"))
 			return;
 //		double rabCellA = rabCell.get("RabA");
 // cytosolic RabA is always provided by the -> RabAc reaction.  Only in a KD will go down
+//	Then no uptake if no RabA in cyto.  The uptake is proportional to the amount of RabA	
 		if (tMembrane < initOrgProp.get("area")) {
 			return;
 		}

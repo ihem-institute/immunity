@@ -23,11 +23,12 @@ public class EndosomeNewFromERStep {
 		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitOrgProp().get("kind5"));
 		// System.out.println("CELL RAB "+ rabCell+ "TMEMBRANE "+ tMembrane);
-		if (!rabCell.containsKey("RabE"))
+		if (!rabCell.containsKey("RabE") || Math.random()>rabCell.get("RabE"))
 			return;
-//		double rabCellE = rabCell.get("RabE");
-//		NEW RAB NET. Since the rabs are supplied, RabEcyto only can decrease with a KO
-		// same area than an newly formed endosome but with half the volume
+// cytosolic RabE is always provided by the -> RabEc reaction.  Only in a KD will go down
+//	Then no new from ER if no RabE in cyto.  The probability of new from ER is proportional to the amount of RabE	
+// same area that a newly formed endosome but with half the volume
+		
 
 		if (tMembrane < initOrgProp.get("area")) {
 			return;

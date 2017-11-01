@@ -66,7 +66,14 @@ public class UpdateParameters {
 			System.out.println("lastModifiedTime: " + attr.lastModifiedTime());
 			try {
 				loadFromCsv();
+				
 				CellProperties cellProperties = CellProperties.getInstance();
+				
+// The CellProperties are changed, but for parameters that are actualized only at the  				
+//	beginning, I need to re-load values.  This is the case of initial rabs content in the 
+//	Cell. This maight be useful for knocking down a Rab in the middle of an experiment
+				Cell.getInstance().getRabCell().putAll(cellProperties.getInitRabCell());
+				
 				System.out.println(cellProperties.cellK);
 				System.out.println(cellProperties.initRabCell);
 				System.out.println(cellProperties.rabCompatibility);
@@ -75,6 +82,8 @@ public class UpdateParameters {
 				System.out.println(cellProperties.tubuleTropism);
 				System.out.println(cellProperties.rabTropism);
 				System.out.println(cellProperties.mtTropism);
+				
+				
 
 //				InitialOrganelles inOr = InitialOrganelles.getInstance();
 				System.out
@@ -126,19 +135,17 @@ public class UpdateParameters {
 				}
 				break;
 			}
-			case "solubleCell": {
-				for (int i = 1; i < b.length; i = i + 2) {
-				cellProperties.getSolubleCell().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getSolubleCell());
-				}
-				double value = 	cellProperties.getSolubleCell().get("ABA");
-				Cell.getInstance().getSolubleCell().put("ABA", value);
-				break;
-			}
 			case "initPMmembraneRecycle": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getMembraneRecycle().put(b[i], Double.parseDouble(b[i+1]));
 //				System.out.println(cellProperties.getMembraneRecycle());
+				}
+				break;
+			}
+			case "solubleCell": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				cellProperties.getSolubleCell().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(cellProperties.getSolubleCell());
 				}
 				break;
 			}
@@ -257,186 +264,224 @@ public class UpdateParameters {
 				break;
 			}
 
-//
-//			case "kind2": {
-//				InitialOrganelles inOr = InitialOrganelles.getInstance();
-//				inOr.getDiffOrganelles().add(b[0]);
-//				switch (b[1]) {
-//				case "initOrgProp": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitOrgProp().put(b[0], value);
-//					break;
-//				}
-//				case "initRabContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitRabContent().put(b[0], value);
-//					break;
-//				}
-//				case "initSolubleContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitSolubleContent().put(b[0], value);
-//					break;
-//				}
-//				case "initMembraneContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitMembraneContent().put(b[0], value);
-//					break;
-//				}
-//				default: {
-//					System.out.println("no a valid entry");
-//				}
-//				}
-//				break;
-//			}
-//			case "kind3": {
-//				InitialOrganelles inOr = InitialOrganelles.getInstance();
-//				inOr.getDiffOrganelles().add(b[0]);
-//				switch (b[1]) {
-//				case "initOrgProp": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitOrgProp().put(b[0], value);
-//					break;
-//				}
-//				case "initRabContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitRabContent().put(b[0], value);
-//					break;
-//				}
-//				case "initSolubleContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitSolubleContent().put(b[0], value);
-//					break;
-//				}
-//				case "initMembraneContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitMembraneContent().put(b[0], value);
-//					break;
-//				}
-//				default: {
-//					System.out.println("no a valid entry");
-//				}
-//				}
-//				break;
-//			}
-//			case "kind4": {
-//				InitialOrganelles inOr = InitialOrganelles.getInstance();
-//				inOr.getDiffOrganelles().add(b[0]);
-//				switch (b[1]) {
-//				case "initOrgProp": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitOrgProp().put(b[0], value);
-//					break;
-//				}
-//				case "initRabContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitRabContent().put(b[0], value);
-//					break;
-//				}
-//				case "initSolubleContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitSolubleContent().put(b[0], value);
-//					break;
-//				}
-//				case "initMembraneContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitMembraneContent().put(b[0], value);
-//					break;
-//				}
-//				default: {
-//					System.out.println("no a valid entry");
-//				}
-//				}
-//				break;
-//			}
-//			case "kind5": {
-//				InitialOrganelles inOr = InitialOrganelles.getInstance();
-//				inOr.getDiffOrganelles().add(b[0]);
-//				switch (b[1]) {
-//				case "initOrgProp": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitOrgProp().put(b[0], value);
-//					break;
-//				}
-//				case "initRabContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitRabContent().put(b[0], value);
-//					break;
-//				}
-//				case "initSolubleContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitSolubleContent().put(b[0], value);
-//					break;
-//				}
-//				case "initMembraneContent": {
-//					HashMap<String, Double> value = new HashMap<String, Double>();
-//					for (int i = 2; i < b.length; i = i + 2) {
-//						value.put(b[i], Double.parseDouble(b[i + 1]));
-//					}
-//					inOr.getInitMembraneContent().put(b[0], value);
-//					break;
-//				}
-//				default: {
-//					System.out.println("no a valid entry");
-//				}
-//				}
-//				break;
-//			}
-			default: {
-				System.out.println("no SE POR QUE LEE a valid entry");
+			case "kind2": {
+				InitialOrganelles inOr = InitialOrganelles.getInstance();
+				inOr.getDiffOrganelles().add(b[0]);
+				switch (b[1]) {
+				case "initOrgProp": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitOrgProp().put(b[0], value);
+					break;
+				}
+				case "initRabContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitRabContent().put(b[0], value);
+					break;
+				}
+				case "initSolubleContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitSolubleContent().put(b[0], value);
+					break;
+				}
+				case "initMembraneContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitMembraneContent().put(b[0], value);
+					break;
+				}
+				default: {
+					System.out.println("no a valid entry");
+				}
+				}
+				break;
 			}
+			case "kind3": {
+				InitialOrganelles inOr = InitialOrganelles.getInstance();
+				inOr.getDiffOrganelles().add(b[0]);
+				switch (b[1]) {
+				case "initOrgProp": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitOrgProp().put(b[0], value);
+					break;
+				}
+				case "initRabContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitRabContent().put(b[0], value);
+					break;
+				}
+				case "initSolubleContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitSolubleContent().put(b[0], value);
+					break;
+				}
+				case "initMembraneContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitMembraneContent().put(b[0], value);
+					break;
+				}
+				default: {
+					System.out.println("no a valid entry");
+				}
+				}
+				break;
+			}
+			case "kind4": {
+				InitialOrganelles inOr = InitialOrganelles.getInstance();
+				inOr.getDiffOrganelles().add(b[0]);
+				switch (b[1]) {
+				case "initOrgProp": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitOrgProp().put(b[0], value);
+					break;
+				}
+				case "initRabContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitRabContent().put(b[0], value);
+					break;
+				}
+				case "initSolubleContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitSolubleContent().put(b[0], value);
+					break;
+				}
+				case "initMembraneContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitMembraneContent().put(b[0], value);
+					break;
+				}
+				default: {
+					System.out.println("no a valid entry");
+				}
+				}
+				break;
+			}
+			case "kind5": {
+				InitialOrganelles inOr = InitialOrganelles.getInstance();
+				inOr.getDiffOrganelles().add(b[0]);
+				switch (b[1]) {
+				case "initOrgProp": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitOrgProp().put(b[0], value);
+					break;
+				}
+				case "initRabContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitRabContent().put(b[0], value);
+					break;
+				}
+				case "initSolubleContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitSolubleContent().put(b[0], value);
+					break;
+				}
+				case "initMembraneContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitMembraneContent().put(b[0], value);
+					break;
+				}
+				default: {
+					System.out.println("no a valid entry");
+				}
+				}
+				break;
+			}
+			case "kind6": {
+				InitialOrganelles inOr = InitialOrganelles.getInstance();
+				inOr.getDiffOrganelles().add(b[0]);
+				switch (b[1]) {
+				case "initOrgProp": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitOrgProp().put(b[0], value);
+					break;
+				}
+				case "initRabContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitRabContent().put(b[0], value);
+					break;
+				}
+				case "initSolubleContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitSolubleContent().put(b[0], value);
+					break;
+				}
+				case "initMembraneContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					inOr.getInitMembraneContent().put(b[0], value);
+					break;
+				}
+				default: {
+					System.out.println("no a valid entry");
+				}
+				}
+				break;
+			}
+			default: {
+				System.out.println("no a valid entry");
 			}
 		}
+	}
+		System.out.println("INITIALINITIALINITIALINITIALINITIALINITIALINITIALINITIALINITIALINITIALINITIAL "+ InitialOrganelles.getInstance().initRabContent.toString());
 		scanner.close();
 	}
-
-
-
-
 	
 	
 }
