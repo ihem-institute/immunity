@@ -59,7 +59,8 @@ public class EndosomeAntigenPresentationStep {
 		if (met == "preP"){
 			double metValue=0d;
 			if (Cell.getInstance().getSolubleCell().containsKey(met)) {
-			metValue = Cell.getInstance().getSolubleCell().get(met)+presentValues.get(met)* endosome.volume/Cell.volume;
+			metValue = Cell.getInstance().getSolubleCell().get(met)
+					+presentValues.get(met)* endosome.volume/Cell.volume;
 			}
 			else{
 			metValue = presentValues.get(met)* endosome.volume/Cell.volume;
@@ -69,7 +70,8 @@ public class EndosomeAntigenPresentationStep {
 		if (met == "pept"){
 			double metValue=0d;
 			if (Cell.getInstance().getSolubleCell().containsKey(met)) {
-			metValue = Cell.getInstance().getSolubleCell().get(met)+presentValues.get(met)* endosome.volume/Cell.volume;
+			metValue = Cell.getInstance().getSolubleCell().get(met)
+					+presentValues.get(met)* endosome.volume/Cell.volume;
 			}
 			else{
 			metValue = presentValues.get(met)* endosome.volume/Cell.volume;
