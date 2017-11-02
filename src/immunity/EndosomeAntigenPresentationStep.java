@@ -79,6 +79,8 @@ public class EndosomeAntigenPresentationStep {
 			Cell.getInstance().getSolubleCell().put("pept", metValue);
 		}
 	}
+		endosome.solubleContent.remove("preP");
+		endosome.solubleContent.remove("pept");
 //	System.out.println("AntigenPresentation UPDATED");
 //	for (String met :presentValues.keySet()){
 //	System.out.println(met+ " "+presentValues.get(met));
@@ -100,22 +102,22 @@ public class EndosomeAntigenPresentationStep {
 		for (String met : metabolites) {
 			if (endosome.membraneContent.containsKey(met)) {
 				double metValue = endosome.membraneContent.get(met)/endosome.area;
-				antigenPresentation.setInitialConcentration(met, metValue);
+				antigenPresentation.setInitialConcentration(met, Math.round(metValue*1000d)/1000d);
 				localM.put(met, metValue);
 			} else if (endosome.solubleContent.containsKey(met)) {
 				double metValue = endosome.solubleContent.get(met)/endosome.volume;
-				antigenPresentation.setInitialConcentration(met, metValue);
+				antigenPresentation.setInitialConcentration(met, Math.round(metValue*1000d)/1000d);
 				localM.put(met, metValue);
 			} else if (Cell.getInstance().getSolubleCell().containsKey(met)) {
 				double metValue = Cell.getInstance().getSolubleCell().get(met);
-				antigenPresentation.setInitialConcentration(met, metValue);
+				antigenPresentation.setInitialConcentration(met, Math.round(metValue*1000d)/1000d);
 				localM.put(met, metValue);
 			} else {
 				antigenPresentation.setInitialConcentration(met, 0.0);
 				localM.put(met, 0.0);
 			}
 		}
-		System.out.println("AntigenPresentation INICIAL ");
+		System.out.println("AntigenPresentation INICIAL "+ localM);
 //		for (String met :metabolites){
 //		System.out.println(met+ " "+localM.get(met));
 //		}

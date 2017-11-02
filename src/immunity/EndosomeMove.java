@@ -132,11 +132,12 @@ public class EndosomeMove {
 //			at a distance less than its size.
 			if (Math.abs(dist*45d/Cell.orgScale) < endosome.size) {
 
-//direction is: if TUBULE move to PM with a Probability depending on the 
+//direction is: 
+//TUBULE move to PM with a Probability depending on the 
 //SUM of relative ares of RabA, B or C (move to the PM, +1) plus RabD and E (to the nucleus, -1)
 //This amount is compared with a RND number
 //If Rabs PM prevail, move to the PM if not, move randomly
-//If NOT TUBULE, compare the SUM with a (-) sign.  If Rabs Nucleus prevail, move to the
+//NOT TUBULE, compare the SUM with a (-) sign.  If Rabs Nucleus prevail, move to the
 //nucleous, else, random.
 // In summary, tubules move to the PM if they are rich in PM Rabs (A, B, C) otherwise, move random
 // Non tubules move to the nucleus if they are rich in nucleus Rabs (D and E), otherwise move random
