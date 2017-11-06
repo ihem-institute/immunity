@@ -2,7 +2,6 @@ package immunity;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map.Entry;
 
 public class Test {

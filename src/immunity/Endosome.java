@@ -5,36 +5,25 @@ package immunity;
 //import immunity.EndosomeStyle.SolCont;
 import java.util.Random;
 import java.awt.Graphics;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.apache.commons.logging.impl.Log4JLogger;
 import org.opengis.filter.identity.ObjectId;
 
 import gov.nasa.worldwind.formats.json.JSONDoc;
 import repast.simphony.context.Context;
-import repast.simphony.context.Context;
-import repast.simphony.context.DefaultContext;
-import repast.simphony.context.space.continuous.ContinuousSpaceFactory;
-import repast.simphony.context.space.continuous.ContinuousSpaceFactoryFinder;
-import repast.simphony.context.space.graph.NetworkBuilder;
-import repast.simphony.context.space.grid.GridFactory;
-import repast.simphony.context.space.grid.GridFactoryFinder;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.essentials.RepastEssentials;
 import repast.simphony.parameter.Parameters;
-import repast.simphony.query.space.continuous.ContinuousWithin;
 import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.query.space.grid.GridCellNgh;
-import repast.simphony.random.RandomHelper;
-import repast.simphony.space.SpatialMath;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.grid.Grid;

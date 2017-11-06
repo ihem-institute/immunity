@@ -1,7 +1,6 @@
 package immunity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -10,6 +9,13 @@ import java.util.Set;
 // This class contains the properties of the cell.  It is loaded by the CellBuilder with the same
 // CSV file  used for the inital organelles.  It is updated by the UpdateParameters class.
 public class CellProperties {
+	
+	public CellProperties() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public static final String configFilename = "config.json";
+	
 	private static CellProperties instance;
 	
 	public static CellProperties getInstance() {

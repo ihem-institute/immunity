@@ -1,10 +1,8 @@
 package immunity;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,11 +18,11 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.codehaus.jackson.map.ObjectMapper;
 
-import au.com.bytecode.opencsv.CSVReader;
+
 //import immunity.Element;
 import repast.simphony.context.Context;
-import repast.simphony.context.DefaultContext;
 import repast.simphony.context.space.continuous.ContinuousSpaceFactory;
 import repast.simphony.context.space.continuous.ContinuousSpaceFactoryFinder;
 import repast.simphony.context.space.graph.NetworkBuilder;
@@ -33,7 +31,6 @@ import repast.simphony.context.space.grid.GridFactoryFinder;
 import repast.simphony.dataLoader.ContextBuilder;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.parameter.Parameters;
-import repast.simphony.random.RandomHelper;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.continuous.RandomCartesianAdder;
@@ -182,10 +179,18 @@ public class CellBuilder implements ContextBuilder<Object> {
 	public void loadFromCsv() throws IOException {
 
 		Scanner scanner = new Scanner(new File(
-				"C:/Users/lmayo/workspace/immunity/inputIntrTransp3.csv"));
+				"inputIntrTransp3.csv"));
 		scanner.useDelimiter(",");
 		CellProperties cellProperties = CellProperties.getInstance();
-// INITIAL CELL PROPERTIES
+
+//		ObjectMapper objectMapper = new ObjectMapper();
+//		try {
+//			CellProperties config = objectMapper.readValue(new File(CellProperties.configFilename), CellProperties.class);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		
+		// InitialOrganelles InOr = InitialOrganelles.getInstance();
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
 			String[] b = line.split(",");
