@@ -1,6 +1,9 @@
 package immunity;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 import repast.simphony.context.Context;
@@ -327,13 +330,15 @@ public class EndosomeSplitStep {
 		}
 
 		else {
+			List keys = new ArrayList(copyMap.keySet());
+			Collections.shuffle(keys);
 			while (rab == null) {
-				for (String rab1 : copyMap.keySet()) {
+				for (Object rab1 : keys) {
 //					System.out.println(rab1 + " "+ tubuleTropism);
 					if (Math.random() < CellProperties.getInstance().getTubuleTropism().get(rab1)) {
 						System.out.println(copyMap + "RabInTubeSelected" +
 						rab1);
-						return rab1;
+						return (String) rab1;
 					}
 				}
 			}

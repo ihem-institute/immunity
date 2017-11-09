@@ -258,7 +258,7 @@ public class Results {
 	public HashMap<String, Double> content() {
 		for (String sol : solubleMet) {
 			contentDist.put(sol, 0d);
-		}
+		} 
 		for (String mem : membraneMet) {
 			contentDist.put(mem, 0d);
 		}

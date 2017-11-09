@@ -40,11 +40,11 @@ public class EndosomeSplitStepTest {
 
 	@Test
 	public void testSplit() {
-		this.endosome.area = 20000;
-		this.endosome.volume = 80000;
+		this.endosome.area = 45000;
+		this.endosome.volume = 600000;
 		this.endosome.rabContent.clear();
-		this.endosome.rabContent.put("RabA", 15000d);
-		this.endosome.rabContent.put("RabD", 5000d);
+		this.endosome.rabContent.put("RabA", 35000d);
+		this.endosome.rabContent.put("RabB", 10000d);
 		this.endosome.membraneContent.put("Tf", 10000d);
 			
 			for (int i = 0; i<10; i++){
