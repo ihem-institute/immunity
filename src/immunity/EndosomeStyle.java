@@ -137,8 +137,11 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		colors.add(green);
 		colors.add(blue);
 
-		// (1 - max (list g r b)) ;
+// 		(1 - max (list g r b)) ;
 		Double corr = 1 - Collections.max(colors);
+		if (corr <0) {
+			System.out.println("BORDER COLOR" + colors);
+		}
 //		if the rab in the organelle is not represented, then dark gray
 		if (corr > 0.95)corr = 0.1;
 		return new Color((int) ((red + corr) * 255),

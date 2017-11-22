@@ -40,7 +40,7 @@ public class EndosomeSplitStep {
 		// return;
 		// too small volume for the surface for a tubule. Cannot form a tubule
 		if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) == Cell.rcyl / 2) {
-			System.out.println("tubule");
+			System.out.println("tubuleTubule" + vo + " " + so);
 		}
 
 		double rsphere = Math.pow((vo * 3) / (4 * Math.PI), (1 / 3d));// calculate
@@ -64,18 +64,24 @@ public class EndosomeSplitStep {
 		// minimum cylinder
 //		the organelles is assessed to be a tubule for the vo/so relationship. If it is a 
 //		tubule, the rules for splitting are different
-		if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) < Cell.rcyl / 2) {
+		if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) <= Cell.rcyl / 2) {
 			if (endosome.rabContent.get(rabInTube)<= Cell.mincyl)return; // the rab area is too small
 //			and return without splitting.
 //			if the area of the rab is enough, the tubule is cut in half. Otherwise, a tubule
 //			with the area of the rab is cut
 			if (endosome.rabContent.get(rabInTube)>= endosome.area/2){
 				vcylinder = endosome.volume/2;
-				scylinder = endosome.area/2;				
+				scylinder = endosome.area/2;
+				System.out.println("tubule cut in two");
 			}
 			else {
 				scylinder = endosome.rabContent.get(rabInTube);
-				vcylinder = vo* endosome.rabContent.get(rabInTube)/endosome.area;
+//				vcylinder = vo* endosome.rabContent.get(rabInTube)/endosome.area;
+				double ss = scylinder - 2*Math.PI*Cell.rcyl*Cell.rcyl;//available surface without the two caps
+				double h = ss/(2*Math.PI*Cell.rcyl);// height of the cylinder from the available surface
+				vcylinder = Math.PI*Cell.rcyl*Cell.rcyl*h; // volume of the cylinder from the height
+				System.out.println("tubule cut assymetric" + scylinder +" "+ vcylinder
+						+" "+ vo);
 			}
 			System.out.println("tubule");
 		}

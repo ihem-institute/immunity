@@ -37,10 +37,10 @@ public class EndosomeInternalVesicleStep {
 		return;// if the resulting surface cannot embrance the resulting
 				// volume
 	}
-	double rsphere = Math.pow((0.75 * vp / Math.PI), (1 / 3));
-	double ssphere = 4 * Math.PI * Math.pow(rsphere, 2);
-	if (ssphere >= sp)
-		return;
+//	double rsphere = Math.pow((0.75 * vp / Math.PI), (1 / 3));
+//	double ssphere = 4 * Math.PI * Math.pow(rsphere, 2);
+//	if (ssphere >= sp)
+//		return;
 	// double scylinder = so - ssphere;
 	// if (scylinder < sIV * 1.10) return;//if the available membrane is
 	// less than the surface of an internal vesicle, stop.
@@ -48,7 +48,7 @@ public class EndosomeInternalVesicleStep {
 	// because the increase in volume
 	endosome.area = endosome.area - sIV;
 	endosome.volume = endosome.volume + vIV;
-	//endosomeShape(endosome);
+	Endosome.endosomeShape(endosome);
 	if (endosome.solubleContent.containsKey("mvb")) {
 		double content = endosome.solubleContent.get("mvb") + 1;
 		endosome.solubleContent.put("mvb", content);

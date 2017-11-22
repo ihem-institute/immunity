@@ -61,7 +61,7 @@ public class EndosomeFusionStep {
 		double rsphere = Math.pow(endosome.volume * 3d / 4d / Math.PI, (1d / 3d));
 		double size = rsphere;
 		endosome.speed = 1d/ size;
-		endosomeShape(endosome);
+		Endosome.endosomeShape(endosome);
 //		EndosomeAntigenPresentationStep.antigenPresentation(endosome);
 		endosome.getAntigenTimeSeries().clear();
 		endosome.getLANCL2TimeSeries().clear();
@@ -70,25 +70,25 @@ public class EndosomeFusionStep {
 //		
 
 	}
-	public static void endosomeShape(Endosome end) {
-		double s = end.area;
-		double v = end.volume;
-		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
-		double svratio = s / v; // ratio surface volume
-		double aa = rsphere; // initial a from the radius of a sphere of volume
-								// v
-		double cc = aa;// initially, c=a
-		// calculation from s/v for a cylinder that it is the same than for an
-		// ellipsoid
-		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c hence s/v =(1/c)+(2/a)
-		for (int i = 1; i < 5; i++) {// just two iterations yield an acceptable
-										// a-c ratio for plotting
-			aa = 2 / (svratio - 1 / cc);// from s/v ratio
-			cc = v * 3 / (4 * Math.PI * aa * aa);// from v ellipsoid
-		}
-		end.a = aa;
-		end.c = cc;
-	}
+//	public static void endosomeShape(Endosome end) {
+//		double s = end.area;
+//		double v = end.volume;
+//		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
+//		double svratio = s / v; // ratio surface volume
+//		double aa = rsphere; // initial a from the radius of a sphere of volume
+//								// v
+//		double cc = aa;// initially, c=a
+//		// calculation from s/v for a cylinder that it is the same than for an
+//		// ellipsoid
+//		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c hence s/v =(1/c)+(2/a)
+//		for (int i = 1; i < 5; i++) {// just two iterations yield an acceptable
+//										// a-c ratio for plotting
+//			aa = 2 / (svratio - 1 / cc);// from s/v ratio
+//			cc = v * 3 / (4 * Math.PI * aa * aa);// from v ellipsoid
+//		}
+//		end.a = aa;
+//		end.c = cc;
+//	}
 	private static HashMap<String, Double> sumRabContent(Endosome endosome1,
 			Endosome endosome2) {
 		// HashMap<String, Double> map3 = new HashMap<String, Double>();

@@ -73,7 +73,7 @@ public class EndosomeMove {
 			return;
 		}
 		double initialh = endosome.heading;
-		endosomeShape(endosome);
+//		Endosome.endosomeShape(endosome);
 
 // when near the borders or no MT is nearby, the organelle rotates randomly
 // according with i) its present heading, ii) a gaussian random number (0+- 30degree/momentum) 
@@ -214,25 +214,25 @@ public class EndosomeMove {
 		return mts;
 	}
 
-	public static void endosomeShape(Endosome end) {
-		double s = end.area;
-		double v = end.volume;
-		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
-		double svratio = s / v; // ratio surface volume
-		double aa = rsphere; // initial a from the radius of a sphere of volume
-								// v
-		double cc = aa;// initially, c=a
-		// calculation from s/v for a cylinder that it is the same than for an
-		// ellipsoid
-		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c hence s/v =(1/c)+(2/a)
-		for (int i = 1; i < 5; i++) {// just two iterations yield an acceptable
-										// a-c ratio for plotting
-			aa = 2 / (svratio - 1 / cc);// from s/v ratio
-			cc = v * 3 / (4 * Math.PI * aa * aa);// from v ellipsoid
-		}
-		end.a = aa;
-		end.c = cc;
-	}
+//	public static void endosomeShape(Endosome end) {
+//		double s = end.area;
+//		double v = end.volume;
+//		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
+//		double svratio = s / v; // ratio surface volume
+//		double aa = rsphere; // initial a from the radius of a sphere of volume
+//								// v
+//		double cc = aa;// initially, c=a
+//		// calculation from s/v for a cylinder that it is the same than for an
+//		// ellipsoid
+//		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c hence s/v =(1/c)+(2/a)
+//		for (int i = 1; i < 5; i++) {// just two iterations yield an acceptable
+//										// a-c ratio for plotting
+//			aa = 2 / (svratio - 1 / cc);// from s/v ratio
+//			cc = v * 3 / (4 * Math.PI * aa * aa);// from v ellipsoid
+//		}
+//		end.a = aa;
+//		end.c = cc;
+//	}
 	private static double distance(Endosome endosome, MT obj) {
 
 		// If the line passes through two points P1=(x1,y1) and P2=(x2,y2) then

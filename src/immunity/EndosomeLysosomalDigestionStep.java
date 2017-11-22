@@ -59,5 +59,6 @@ public class EndosomeLysosomalDigestionStep {
 				deltaV = endosome.volume * 0.0001 * rabDratio;
 			}
 		endosome.volume = endosome.volume - deltaV;
+		Endosome.endosomeShape(endosome);
 	}
 }

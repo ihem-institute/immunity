@@ -158,7 +158,7 @@ public class Endosome {
 //		if (tick%100 ==0) 
 		if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
 		// rabConversionN();
-//		if (Math.random() < 1)EndosomeAntigenPresentationStep.antPresTimeSeriesLoad(this);
+		if (Math.random() < 1)EndosomeAntigenPresentationStep.antPresTimeSeriesLoad(this);
 		
 		if (Math.random() < 1){
 //			EndosomeLANCL2metabolismStep.LANCL2TimeSeriesLoad(this);			
@@ -171,7 +171,7 @@ public class Endosome {
 	public static void endosomeShape(Endosome end) {
 		double s = end.area;
 		double v = end.volume;
-		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
+		double rsphere = Math.pow((v * 3d) / (4d * Math.PI), (1d / 3d));
 		double svratio = s / v; // ratio surface volume
 		double aa = rsphere; // initial a from the radius of a sphere of volume
 								// v
@@ -181,9 +181,10 @@ public class Endosome {
 		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c hence s/v =(1/c)+(2/a)
 		for (int i = 1; i < 5; i++) {// just two iterations yield an acceptable
 										// a-c ratio for plotting
-			aa = 2 / (svratio - 1 / cc);// from s/v ratio
-			cc = v * 3 / (4 * Math.PI * aa * aa);// from v ellipsoid
+			aa = 2d / (svratio - 1d / cc);// from s/v ratio
+			cc = v * 3d / (4d * Math.PI * aa * aa);// from v ellipsoid
 		}
+		if (aa<=0)System.out.println("PROBLEMA FORMA " + s +" "+v+"");
 		end.a = aa;
 		end.c = cc;
 	}
@@ -314,46 +315,32 @@ public class Endosome {
 			return 0;
 	}
 
-	// Edge color coded by Rabs
-	// RabA (5) Green (0,255,0)
-	// RabB (22) Red (255,0,0)
-	// RabC (7) Olive (128,128,0)
-	// RabD (11) Blue (0,0,255)
-	// RabE (5) Purple (128,0,128)
-	//
+
 	public double getEdgeRed() {
-		// double red = 0.0;
 		String edgePlot = CellProperties.getInstance().getColorRab().get("red");
 
 		if (rabContent.containsKey(edgePlot)) {
-			double red = rabContent.get(edgePlot) / area;
-			// System.out.println("mHCI content" + red);
+			double red = Math.round(rabContent.get(edgePlot)*1000 / area)/1000;
 			return red;
 		} else
 			return 0;
 	}
 
 	public double getEdgeGreen() {
-		// double red = 0.0;
 		String edgePlot = CellProperties.getInstance().getColorRab()
 				.get("green");
-
 		if (rabContent.containsKey(edgePlot)) {
-			double green = rabContent.get(edgePlot) / area;
-			// System.out.println("mHCI content" + red);
+			double green = Math.round(rabContent.get(edgePlot)*1000 / area)/1000;
 			return green;
 		} else
 			return 0;
 	}
 
 	public double getEdgeBlue() {
-		// double red = 0.0;
 		String edgePlot = CellProperties.getInstance().getColorRab()
 				.get("blue");
-
 		if (rabContent.containsKey(edgePlot)) {
-			double blue = rabContent.get(edgePlot) / area;
-			// System.out.println("mHCI content" + red);
+			double blue = Math.round(rabContent.get(edgePlot)*1000 / area)/1000;
 			return blue;
 		} else
 			return 0;
