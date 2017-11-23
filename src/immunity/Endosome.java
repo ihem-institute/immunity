@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.logging.impl.Log4JLogger;
+import org.apache.log4j.Logger;
 import org.opengis.filter.identity.ObjectId;
 
 import gov.nasa.worldwind.formats.json.JSONDoc;
@@ -39,6 +40,8 @@ import repast.simphony.valueLayer.GridValueLayer;
  *
  */
 public class Endosome {
+	final static Logger logger = Logger.getLogger(Endosome.class);
+
 	// space
 
 	private ContinuousSpace<Object> space;
@@ -128,9 +131,10 @@ public class Endosome {
 
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-//		Log4JLogger logger = new Log4JLogger("immunity");
-//		String message = "MENSAJE";//(new JSONDoc(rabTimeSeries)).toString();
-//		logger.info(message);
+		String message = "MENSAJE";//(new JSONDoc(rabTimeSeries)).toString();
+		if (logger.isDebugEnabled()) {
+			logger.debug(message);			
+		}
 		endosomeShape(this);
 //		EndosomeMove.changeDirection(this);
 		EndosomeMove.moveTowards(this);
