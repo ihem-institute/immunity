@@ -21,7 +21,7 @@ public class EndosomeLysosomalDigestionStep {
 		double finalMemMark = 0d;
 		if (endosome.solubleContent.containsKey("mvb")) {
 			initialMvb = endosome.solubleContent.get("mvb");
-			if (Math.random() < 0.001 * rabDratio * initialMvb) {
+			if (Math.random() < 0.1 * rabDratio * initialMvb) {
 				finalMvb = initialMvb - 1;
 			} else {
 				finalMvb = initialMvb;
@@ -34,7 +34,7 @@ public class EndosomeLysosomalDigestionStep {
 			finalMemMark = endosome.membraneContent.get("membraneMarker");
 		}
 		for (String sol : endosome.solubleContent.keySet()) {
-				double solDigested = endosome.solubleContent.get(sol) * 0.0001
+				double solDigested = endosome.solubleContent.get(sol) * 0.001
 						* rabDratio;
 				endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
 			}
@@ -44,7 +44,7 @@ public class EndosomeLysosomalDigestionStep {
 			endosome.solubleContent.put("solubleMarker", finalSolMark);
 
 		for (String mem : endosome.membraneContent.keySet()) {
-				double memDigested = endosome.membraneContent.get(mem) * 0.0001
+				double memDigested = endosome.membraneContent.get(mem) * 0.001
 						* rabDratio;
 				endosome.membraneContent
 						.put(mem, endosome.membraneContent.get(mem) - memDigested);
@@ -53,7 +53,7 @@ public class EndosomeLysosomalDigestionStep {
 			endosome.membraneContent.put("membraneMarker", finalMemMark);
 			// volume is decreased
 		if (endosome.solubleContent.containsKey("mvb")) {
-				deltaV = (initialMvb - finalMvb) * volIV + endosome.volume * 0.0001
+				deltaV = (initialMvb - finalMvb) * volIV + endosome.volume * 0.001
 						* rabDratio;
 			} else {
 				deltaV = endosome.volume * 0.0001 * rabDratio;

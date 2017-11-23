@@ -10,8 +10,12 @@ public class EndosomeInternalVesicleStep {
 	
 
 	public static void internalVesicle(Endosome endosome) {	
-
-	
+//		lysSurface will allow large structures, rich in RabD to form several internal vesicles
+	int lysSurface = 0;
+	if (endosome.getRabContent().containsKey("RabD"))
+		{lysSurface = (int) (endosome.getRabContent().get("RabD")/50000d);}
+	for (int i = 1; i<=1+lysSurface ; i++)
+	{
 	double vo = endosome.volume;
 	double so = endosome.area;
 	// if it a sphere, cannot form an internal vesicle
@@ -99,6 +103,7 @@ public class EndosomeInternalVesicleStep {
 	// Free membrane is added to the cell
 	double cellMembrane = Cell.getInstance().gettMembrane() + sIV;
 	Cell.getInstance().settMembrane(cellMembrane);
-}
+	}
+	}
 
 }
