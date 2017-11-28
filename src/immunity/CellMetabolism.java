@@ -25,9 +25,9 @@ import org.COPASI.CTrajectoryMethod;
 import org.COPASI.CTrajectoryProblem;
 import org.COPASI.CTrajectoryTask;
 import org.COPASI.ReportItemVector;
-
-public class MregDiff {
-	private static MregDiff instance = null;
+//Run a Copasi for species in the cytosol
+public class CellMetabolism {
+	private static CellMetabolism instance = null;
 	private CCopasiDataModel dataModel;
 	private CModel model;
     private CReportDefinition report;
@@ -35,15 +35,15 @@ public class MregDiff {
 	private HashMap<String, CMetab> nameMetabs = new HashMap<String, CMetab>();
 	//private Endosome Endosome;
 	
-	public static MregDiff getInstance () {
+	public static CellMetabolism getInstance () {
 		if (instance == null) {
-			instance = new MregDiff();
+			instance = new CellMetabolism();
 		}
 		
 		return instance;
 	}
 	
-	protected MregDiff() {
+	protected CellMetabolism() {
 		System.out.println("Instantiation Once");
 		
 		// to defeat instantiation
@@ -52,7 +52,7 @@ public class MregDiff {
 		dataModel = CCopasiRootContainer.addDatamodel();
         assert CCopasiRootContainer.getDatamodelList().size() == 1;
         
-        String modelFileName = "MregDiff.cps";
+        String modelFileName = "CellMetabolism.cps";
         
         try
         {
@@ -254,7 +254,7 @@ public class MregDiff {
 		try
         {
             // now we run the actual trajectory
-        	System.out.println("trajectoryTask.process Macrophage Differenciation");
+        	System.out.println("trajectoryTask.process CellMetabolism");
             result=trajectoryTask.process(true);
             processError = trajectoryTask.getProcessError();
             processWarning = trajectoryTask.getProcessWarning();
