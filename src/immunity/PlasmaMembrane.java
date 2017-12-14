@@ -22,14 +22,14 @@ public class PlasmaMembrane {
 	}
 	
 
-	public HashMap<String, Double> membraneRecycle = new HashMap<String, Double>(CellProperties.getInstance().getMembraneRecycle()); // contains membrane recycled 
+	public HashMap<String, Double> membraneRecycle = new HashMap<String, Double>(CellProperties.getInstance().getInitPMmembraneRecycle()); // contains membrane recycled 
 	public HashMap<String, Double> solubleRecycle = new HashMap<String, Double>();// contains soluble recycled
 	public int pmcolor = 0;
 	public int red = 0;
 	public int green = 0;	
 	public int blue = 0;
 //	c2 is the initial content of pLANCL2 in the plasma membrane
-	public double c2 = CellProperties.getInstance().getMembraneRecycle().get("pLANCL2");
+	public double c2 = CellProperties.getInstance().getInitPMmembraneRecycle().get("pLANCL2");
 	public int area = (int) (750*200*(1/Cell.orgScale)*(1/Cell.orgScale)); // nm2 750nm x 200nm
 	HashMap<Integer, HashMap<String, Double>> PMLANCL2TimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 
@@ -42,7 +42,7 @@ public class PlasmaMembrane {
 
 		CellProperties cellProperties = CellProperties.getInstance();
 		
-		membraneRecycle.putAll(cellProperties.membraneRecycle);
+		membraneRecycle.putAll(cellProperties.initPMmembraneRecycle);
 		System.out.println("membraneRecycle "+ membraneRecycle);
 		for (String met : cellProperties.solubleMet ){
 		solubleRecycle.put(met,  0.0);
@@ -51,6 +51,8 @@ public class PlasmaMembrane {
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
+		this.membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
+		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
 		if (Math.random() < 1){
 			System.out.println("llamo PM LANCL2");
 		PlasmaMembraneLANCL2metabolismStep.PMLANCL2TimeSeriesLoad(this);		

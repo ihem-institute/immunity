@@ -13,15 +13,22 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-
-
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
+import javax.swing.JPanel;
+import javax.swing.table.TableModel;
+
+import repast.simphony.context.Context;
+import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.engine.environment.RunState;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.grid.Grid;
+import repast.simphony.ui.table.AgentTableFactory;
+import repast.simphony.ui.table.SpreadsheetUtils;
+import repast.simphony.ui.table.TablePanel;
 
 public class Results {
 
@@ -77,9 +84,32 @@ public class Results {
 		}
 	}
 
+	@ScheduledMethod(start = 1, interval = 1000)
+	public void stepTable() {
+		log();
+	}
 
+	public void log(){
+	    double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+	    Context<Object> context = RunState.getInstance().getMasterContext();
 
+	    Map<String,TableModel> models = new HashMap<String,TableModel>();
 
+	    // Create a tab panel for each agent layer
+	    for (Object agentType : context.getAgentTypes()){
+	        Class agentClass = (Class)agentType;
+
+	        JPanel agentPanel = AgentTableFactory.createAgentTablePanel(context.getAgentLayer(agentClass), agentClass.getSimpleName());
+
+	        if (agentPanel instanceof TablePanel){
+	            TableModel model = ((TablePanel)agentPanel).getTable().getModel();
+	            models.put(agentClass.getSimpleName(), model);
+
+	        }
+	    }
+
+	    SpreadsheetUtils.saveTablesAsExcel(models, new File("out-"+tick+".xlsx"));
+	}
 
 	@ScheduledMethod(start = 1, interval = 100)
 	public void step() {
@@ -95,6 +125,8 @@ public class Results {
 			e.printStackTrace();
 		}
 	}
+	
+		
 	// to load the file
 	private void writeToCsv(TreeMap<String, Double> orderContDist) throws IOException {
 		String line = "";

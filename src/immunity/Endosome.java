@@ -5,13 +5,17 @@ package immunity;
 //import immunity.EndosomeStyle.SolCont;
 import java.util.Random;
 import java.awt.Graphics;
-
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+
+import javax.swing.JPanel;
+import javax.swing.table.TableModel;
 
 import org.apache.commons.logging.impl.Log4JLogger;
 import org.apache.log4j.Logger;
@@ -20,6 +24,7 @@ import org.opengis.filter.identity.ObjectId;
 import gov.nasa.worldwind.formats.json.JSONDoc;
 import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.engine.environment.RunState;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.essentials.RepastEssentials;
 import repast.simphony.parameter.Parameters;
@@ -29,6 +34,9 @@ import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
+import repast.simphony.ui.table.AgentTableFactory;
+import repast.simphony.ui.table.SpreadsheetUtils;
+import repast.simphony.ui.table.TablePanel;
 import repast.simphony.util.ContextUtils;
 
 import java.util.Random;
@@ -153,12 +161,9 @@ public class Endosome {
 		// rabConversionN();
 		if (Math.random() < 1)EndosomeAntigenPresentationStep.antPresTimeSeriesLoad(this);
 		
-		if (Math.random() < 1){
-//			EndosomeLANCL2metabolismStep.LANCL2TimeSeriesLoad(this);			
-		}
+//		if (Math.random() < 1) EndosomeLANCL2metabolismStep.LANCL2TimeSeriesLoad(this);	
 
 	}
-
 
 
 	public static void endosomeShape(Endosome end) {
@@ -347,48 +352,48 @@ public class Endosome {
 	 * enum SolCont { OVA, DEXTRAN } public SolCont solCont;
 	 */
 	public double getSolContRab() { // (String solCont, String rab){
-		Parameters params = RunEnvironment.getInstance().getParameters();
-		String rab = (String) params.getValue("Rab");
-		String solCont = (String) params.getValue("soluble");
-		Double sc = null;
-		Double rc = null;
-		if (solCont != null && rab != null) {
-			if (solubleContent.containsKey(solCont)) {
-				sc = solubleContent.get(solCont);
-			} else
-				return 0;
-			if (rabContent.containsKey(rab)) {
-				rc = rabContent.get(rab);
-			} else
-				return 0;
-			if (sc != null && rc != null) {
-				double solContRab = sc * rc / this.area;
-				return solContRab;
-			}
-		}
+//		Parameters params = RunEnvironment.getInstance().getParameters();
+//		String rab = (String) params.getValue("Rab");
+//		String solCont = (String) params.getValue("soluble");
+//		Double sc = null;
+//		Double rc = null;
+//		if (solCont != null && rab != null) {
+//			if (solubleContent.containsKey(solCont)) {
+//				sc = solubleContent.get(solCont);
+//			} else
+//				return 0;
+//			if (rabContent.containsKey(rab)) {
+//				rc = rabContent.get(rab);
+//			} else
+//				return 0;
+//			if (sc != null && rc != null) {
+//				double solContRab = sc * rc / this.area;
+//				return solContRab;
+//			}
+//		}
 		return 0;
 	}
 
 	public double getSolContRab2() { // (String solCont, String rab){
-		Parameters params = RunEnvironment.getInstance().getParameters();
-		String rab = (String) params.getValue("Rab2");
-		String solCont = (String) params.getValue("soluble");
-		Double sc = null;
-		Double rc = null;
-		if (solCont != null && rab != null) {
-			if (solubleContent.containsKey(solCont)) {
-				sc = solubleContent.get(solCont);
-			} else
-				return 0;
-			if (rabContent.containsKey(rab)) {
-				rc = rabContent.get(rab);
-			} else
-				return 0;
-			if (sc != null && rc != null) {
-				double solContRab = sc * rc / this.area;
-				return solContRab;
-			}
-		}
+//		Parameters params = RunEnvironment.getInstance().getParameters();
+//		String rab = (String) params.getValue("Rab2");
+//		String solCont = (String) params.getValue("soluble");
+//		Double sc = null;
+//		Double rc = null;
+//		if (solCont != null && rab != null) {
+//			if (solubleContent.containsKey(solCont)) {
+//				sc = solubleContent.get(solCont);
+//			} else
+//				return 0;
+//			if (rabContent.containsKey(rab)) {
+//				rc = rabContent.get(rab);
+//			} else
+//				return 0;
+//			if (sc != null && rc != null) {
+//				double solContRab = sc * rc / this.area;
+//				return solContRab;
+//			}
+//		}
 		return 0;
 	}
 

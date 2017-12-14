@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2017-12-13 20:59:59 UTC -->
+<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2017-11-29 18:12:20 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="20" versionDevel="158" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -35,15 +35,10 @@ Reaction scheme where the products are created from the reactants and the change
     <Function key="Function_14" name="Mass action (reversible)" type="MassAction" reversible="true">
       <MiriamAnnotation>
 <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Function_14">
-    <dcterms:created>
-      <rdf:Description>
-        <dcterms:W3CDTF>2017-11-29T15:16:08Z</dcterms:W3CDTF>
-      </rdf:Description>
-    </dcterms:created>
-    <CopasiMT:is rdf:resource="urn:miriam:obo.sbo:SBO:0000042" />
-  </rdf:Description>
-</rdf:RDF>
+   <rdf:Description rdf:about="#Function_14">
+   <CopasiMT:is rdf:resource="urn:miriam:obo.sbo:SBO:0000042" />
+   </rdf:Description>
+   </rdf:RDF>
       </MiriamAnnotation>
       <Comment>
         <body xmlns="http://www.w3.org/1999/xhtml">
@@ -63,29 +58,34 @@ Reaction scheme where the products are created from the reactants and the change
         <ParameterDescription key="FunctionParameter_71" name="product" order="3" role="product"/>
       </ListOfParameterDescriptions>
     </Function>
-    <Function key="Function_40" name="cMHCIopening" type="UserDefined" reversible="unspecified">
+    <Function key="Function_42" name="function_1" type="UserDefined" reversible="false">
       <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Function_40">
+<rdf:RDF
+   xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Function_42">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-12-01T10:51:50Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2017-11-27T17:06:19Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
+    <CopasiMT:is rdf:resource="urn:miriam:obo.sbo:SBO:0000041"/>
   </rdf:Description>
 </rdf:RDF>
+
       </MiriamAnnotation>
       <Expression>
-        k1*substrate*proton^0.7
+        k1*substrate*(proton^(0.5))
       </Expression>
       <ListOfParameterDescriptions>
-        <ParameterDescription key="FunctionParameter_264" name="k1" order="0" role="constant"/>
-        <ParameterDescription key="FunctionParameter_254" name="substrate" order="1" role="substrate"/>
-        <ParameterDescription key="FunctionParameter_258" name="proton" order="2" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_280" name="k1" order="0" role="constant"/>
+        <ParameterDescription key="FunctionParameter_281" name="substrate" order="1" role="substrate"/>
+        <ParameterDescription key="FunctionParameter_286" name="proton" order="2" role="modifier"/>
       </ListOfParameterDescriptions>
     </Function>
   </ListOfFunctions>
-  <Model key="Model_1" name="AntigenPresentation" simulationType="time" timeUnit="s" volumeUnit="nl" areaUnit="m²" lengthUnit="m" quantityUnit="pmol" type="stochastic" avogadroConstant="6.0221417899999999e+023">
+  <Model key="Model_1" name="AntigenPresentation" simulationType="time" timeUnit="s" volumeUnit="nl" areaUnit="m²" lengthUnit="m" quantityUnit="pmol" type="deterministic" avogadroConstant="6.0221417899999999e+023">
     <MiriamAnnotation>
 <rdf:RDF
    xmlns:dcterms="http://purl.org/dc/terms/"
@@ -355,58 +355,17 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_7" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4948" name="k1" value="0.01"/>
+          <Constant key="Parameter_4948" name="k1" value="0.1"/>
         </ListOfConstants>
-        <KineticLaw function="Function_40" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_42" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_264">
+            <CallParameter functionParameter="FunctionParameter_280">
               <SourceParameter reference="Parameter_4948"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_254">
+            <CallParameter functionParameter="FunctionParameter_281">
               <SourceParameter reference="Metabolite_10"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_258">
-              <SourceParameter reference="Metabolite_7"/>
-            </CallParameter>
-          </ListOfCallParameters>
-        </KineticLaw>
-      </Reaction>
-      <Reaction key="Reaction_5" name="MHCI-peptOpening" reversible="false" fast="false">
-        <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_5">
-    <dcterms:created>
-      <rdf:Description>
-        <dcterms:W3CDTF>2017-11-27T17:06:02Z</dcterms:W3CDTF>
-      </rdf:Description>
-    </dcterms:created>
-  </rdf:Description>
-</rdf:RDF>
-
-        </MiriamAnnotation>
-        <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_6" stoichiometry="1"/>
-        </ListOfSubstrates>
-        <ListOfProducts>
-          <Product metabolite="Metabolite_5" stoichiometry="1"/>
-        </ListOfProducts>
-        <ListOfModifiers>
-          <Modifier metabolite="Metabolite_7" stoichiometry="1"/>
-        </ListOfModifiers>
-        <ListOfConstants>
-          <Constant key="Parameter_4968" name="k1" value="0.01"/>
-        </ListOfConstants>
-        <KineticLaw function="Function_40" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
-          <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_264">
-              <SourceParameter reference="Parameter_4968"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_254">
-              <SourceParameter reference="Metabolite_6"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_258">
+            <CallParameter functionParameter="FunctionParameter_286">
               <SourceParameter reference="Metabolite_7"/>
             </CallParameter>
           </ListOfCallParameters>
@@ -434,7 +393,7 @@ Reaction scheme where the products are created from the reactants and the change
               &lt;CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[protonCy],Reference=InitialConcentration>
             </InitialExpression>
           </ModelParameter>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[vATPase]" value="602214179000000.5" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[vATPase]" value="602214179000000" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[protonCy]" value="60221417900000.047" type="Species" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[cMHCI]" value="6.02214179e+017" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
@@ -456,10 +415,7 @@ Reaction scheme where the products are created from the reactants and the change
             <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-          </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
@@ -469,10 +425,10 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="Metabolite_5"/>
       <StateTemplateVariable objectReference="Metabolite_7"/>
       <StateTemplateVariable objectReference="Metabolite_0"/>
-      <StateTemplateVariable objectReference="Metabolite_6"/>
       <StateTemplateVariable objectReference="Metabolite_4"/>
-      <StateTemplateVariable objectReference="Metabolite_10"/>
+      <StateTemplateVariable objectReference="Metabolite_6"/>
       <StateTemplateVariable objectReference="Metabolite_2"/>
+      <StateTemplateVariable objectReference="Metabolite_10"/>
       <StateTemplateVariable objectReference="ModelValue_0"/>
       <StateTemplateVariable objectReference="Metabolite_9"/>
       <StateTemplateVariable objectReference="Metabolite_1"/>
@@ -481,7 +437,7 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="Compartment_0"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 0 60221417900000.047 0 0 0 6.02214179e+017 0 7 60221417900000.047 0 0 602214179000000.5 1000000 
+      0 0 60221417900000.047 0 0 0 0 6.02214179e+017 7 60221417900000.047 0 0 602214179000000 1000000 
     </InitialState>
   </Model>
   <ListOfTasks>
@@ -528,12 +484,12 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="Subtask" type="unsignedInteger" value="1"/>
         <ParameterGroup name="ScanItems">
           <ParameterGroup name="ScanItem">
-            <Parameter name="Maximum" type="float" value="2"/>
-            <Parameter name="Minimum" type="float" value="0"/>
+            <Parameter name="Maximum" type="float" value="1"/>
+            <Parameter name="Minimum" type="float" value="4.9999999999999998e-008"/>
             <Parameter name="Number of steps" type="unsignedInteger" value="10"/>
             <Parameter name="Object" type="cn" value="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=InitialConcentration"/>
             <Parameter name="Type" type="unsignedInteger" value="1"/>
-            <Parameter name="log" type="bool" value="0"/>
+            <Parameter name="log" type="bool" value="1"/>
           </ParameterGroup>
         </ParameterGroup>
         <Parameter name="Output in subtask" type="bool" value="1"/>

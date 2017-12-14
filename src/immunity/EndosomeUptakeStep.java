@@ -42,7 +42,7 @@ public class EndosomeUptakeStep {
 						.get("kind1"));
 		
 		// new endosome incorporate PM components in a proportion area new/area PM
-		PlasmaMembrane.getInstance().getMembraneRecycle().put("vATPase", 60000d);
+	//	PlasmaMembrane.getInstance().getMembraneRecycle().put("vATPase", 60000d);
 		
 		for (String met : PlasmaMembrane.getInstance().getMembraneRecycle().keySet()){
 			double valueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get(met);

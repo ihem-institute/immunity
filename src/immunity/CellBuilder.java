@@ -76,7 +76,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 			CellProperties cellProperties = CellProperties.getInstance();
 			System.out.println(cellProperties.cellK);
 			System.out.println(cellProperties.initRabCell);
-			System.out.println(cellProperties.membraneRecycle);
+			System.out.println(cellProperties.initPMmembraneRecycle);
 			System.out.println(cellProperties.rabCompatibility);
 			System.out.println(cellProperties.membraneMet);
 			System.out.println(cellProperties.solubleMet);
@@ -212,7 +212,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 			}
 			case "initPMmembraneRecycle": {
 				for (int i = 1; i < b.length; i = i + 2) {
-				cellProperties.getMembraneRecycle().put(b[i], Double.parseDouble(b[i+1]));
+				cellProperties.getInitPMmembraneRecycle().put(b[i], Double.parseDouble(b[i+1]));
 //				System.out.println(cellProperties.getMembraneRecycle());
 				}
 				break;

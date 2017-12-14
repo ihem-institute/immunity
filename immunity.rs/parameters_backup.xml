@@ -24,6 +24,12 @@
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
 									
 		/>
+				<parameter name="endosome_rabA_count" displayName="RabA" type="int" 
+						defaultValue="10" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
 		</parameters>
 
 

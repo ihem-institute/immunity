@@ -3,12 +3,12 @@
   <type>2D</type>
   <styles>
     <entry>
-      <string>immunity.Cytosol</string>
-      <string>immunity.CytosolStyle</string>
-    </entry>
-    <entry>
       <string>immunity.PlasmaMembrane</string>
       <string>immunity.PlasmaMembraneStyle</string>
+    </entry>
+    <entry>
+      <string>immunity.Cytosol</string>
+      <string>immunity.CytosolStyle</string>
     </entry>
     <entry>
       <string>immunity.Endosome</string>
@@ -21,11 +21,11 @@
   </styles>
   <editedStyles>
     <entry>
-      <string>immunity.Cytosol</string>
+      <string>immunity.PlasmaMembrane</string>
       <null/>
     </entry>
     <entry>
-      <string>immunity.PlasmaMembrane</string>
+      <string>immunity.Cytosol</string>
       <null/>
     </entry>
     <entry>
@@ -64,12 +64,12 @@
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>immunity.Cytosol</string>
-      <int>0</int>
-    </entry>
-    <entry>
       <string>immunity.PlasmaMembrane</string>
       <int>1</int>
+    </entry>
+    <entry>
+      <string>immunity.Cytosol</string>
+      <int>0</int>
     </entry>
     <entry>
       <string>immunity.Endosome</string>

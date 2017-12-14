@@ -6,28 +6,10 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="Rab" displayName="Rab" type="java.lang.String" 
-						defaultValue="RabA" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
-									
-		/>
 				<parameter name="soluble" displayName="Soluble" type="java.lang.String" 
 						defaultValue="dextran" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
-									
-		/>
-				<parameter name="Rab2" displayName="Rab2" type="java.lang.String" 
-						defaultValue="RabB" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
-									
-		/>
-				<parameter name="endosome_rabA_count" displayName="RabA" type="int" 
-						defaultValue="10" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
 		</parameters>

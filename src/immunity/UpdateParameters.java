@@ -137,7 +137,7 @@ public class UpdateParameters {
 			}
 			case "initPMmembraneRecycle": {
 				for (int i = 1; i < b.length; i = i + 2) {
-				cellProperties.getMembraneRecycle().put(b[i], Double.parseDouble(b[i+1]));
+				cellProperties.getInitPMmembraneRecycle().put(b[i], Double.parseDouble(b[i+1]));
 //				System.out.println(cellProperties.getMembraneRecycle());
 				}
 				break;

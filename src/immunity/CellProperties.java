@@ -28,7 +28,7 @@ public class CellProperties {
 	public HashMap<String, Double> cellK = new HashMap<String, Double>();
 	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
 	public HashMap<String, Double> solubleCell = new HashMap<String, Double>();
-	public HashMap<String, Double> membraneRecycle = new HashMap<String, Double>();
+	public HashMap<String, Double> initPMmembraneRecycle = new HashMap<String, Double>();
 	public HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
 	public HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
 	public HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>();
@@ -83,7 +83,7 @@ public class CellProperties {
 	public HashMap<String, Double> getSolubleCell() {
 		return solubleCell;
 	}
-	public HashMap<String, Double> getMembraneRecycle() {
-		return membraneRecycle;
+	public HashMap<String, Double> getInitPMmembraneRecycle() {
+		return initPMmembraneRecycle;
 	}
 }
