@@ -84,7 +84,7 @@ public class Results {
 		}
 	}
 
-	@ScheduledMethod(start = 1, interval = 1000)
+	@ScheduledMethod(start = 1, interval = 10000)
 	public void stepTable() {
 		log();
 	}

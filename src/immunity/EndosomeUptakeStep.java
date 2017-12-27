@@ -37,20 +37,27 @@ public class EndosomeUptakeStep {
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitMembraneContent()
 						.get("kind1"));
+
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitSolubleContent()
 						.get("kind1"));
 		
-		// new endosome incorporate PM components in a proportion area new/area PM
-	//	PlasmaMembrane.getInstance().getMembraneRecycle().put("vATPase", 60000d);
+		System.out.println("INITIAL ORGANELLES KIND 1 " + membraneContent  
+				+ solubleContent + rabContent);
+		
+// new endosome incorporate PM components in a proportion area new/area PM
+//to accumulte, I included the 0.001 factor
+//	PlasmaMembrane.getInstance().getMembraneRecycle().put("vATPase", 60000d);
 		
 		for (String met : PlasmaMembrane.getInstance().getMembraneRecycle().keySet()){
 			double valueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get(met);
-			double value = valueIn * initOrgProp.get("area")/PlasmaMembrane.getInstance().area;
-			if (value >  initOrgProp.get("area")) {value = initOrgProp.get("area");	}		
+			double value = 0.001 * valueIn * initOrgProp.get("area")/PlasmaMembrane.getInstance().area;
+			if (value > initOrgProp.get("area")) {value = initOrgProp.get("area");	}		
 			membraneContent.put(met, value);
 			PlasmaMembrane.getInstance().getMembraneRecycle().put(met, valueIn - value);
 			}
+		membraneContent.put("cMHCI", initOrgProp.get("area"));
+		membraneContent.put("vATPase", initOrgProp.get("area")/10.0);
 		System.out.println("PLASMA MEMBRANE "+PlasmaMembrane.getInstance().getMembraneRecycle());
 
 //
@@ -91,8 +98,9 @@ public class EndosomeUptakeStep {
 		
 		// context.add(new Endosome(space, grid, rabContent, membraneContent,
 		// solubleContent));
-		System.out.println(membraneContent + "NEW ENDOSOME UPTAKE"
-				+ solubleContent + rabContent);
+		System.out.println("NEW ENDOSOME UPTAKE \n"
+				+ solubleContent + rabContent + "\n");
+		System.out.println(membraneContent);
 		// tMembrane = Cell.getInstance().gettMembrane();
 		tMembrane = tMembrane - bud.initOrgProp.get("area");
 //		I decrease cytoRabA by 90%.   It will be recovered during RabConversion where
