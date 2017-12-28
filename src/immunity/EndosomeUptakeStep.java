@@ -3,6 +3,7 @@ package immunity;
 import java.util.HashMap;
 
 import repast.simphony.context.Context;
+import repast.simphony.random.RandomHelper;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.grid.Grid;
@@ -31,17 +32,41 @@ public class EndosomeUptakeStep {
 			return;
 		}
 
-		HashMap<String, Double> rabContent = new HashMap<String, Double>(
-				InitialOrganelles.getInstance().getInitRabContent()
-						.get("kind1"));
-		HashMap<String, Double> membraneContent = new HashMap<String, Double>(
-				InitialOrganelles.getInstance().getInitMembraneContent()
-						.get("kind1"));
-
-		HashMap<String, Double> solubleContent = new HashMap<String, Double>(
-				InitialOrganelles.getInstance().getInitSolubleContent()
-						.get("kind1"));
+		double radius = initOrgProp.get("radius");
+		double area = 4d* Math.PI*Math.pow(radius, 2d);
+		double volume = 4d/3d*Math.PI*Math.pow(radius, 3d);
+		initOrgProp.put("area", area);
+		initOrgProp.put("volume", volume);			
+		HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get("kind1"));
+				for (String rab : rabContent.keySet()){
+					double rr = rabContent.get(rab);
+					rabContent.put(rab, rr*area);
+				}
+		HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get("kind1"));
+				for (String mem : membraneContent.keySet()){
+					double mm = membraneContent.get(mem);
+					membraneContent.put(mem, mm*area);
+				}
+			
+			HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get("kind1"));
+				for (String sol : solubleContent.keySet()){
+					double ss = solubleContent.get(sol);
+					solubleContent.put(sol, ss*volume);
 		
+		
+//		
+//		
+//		HashMap<String, Double> rabContent = new HashMap<String, Double>(
+//				InitialOrganelles.getInstance().getInitRabContent()
+//						.get("kind1"));
+//		HashMap<String, Double> membraneContent = new HashMap<String, Double>(
+//				InitialOrganelles.getInstance().getInitMembraneContent()
+//						.get("kind1"));
+//
+//		HashMap<String, Double> solubleContent = new HashMap<String, Double>(
+//				InitialOrganelles.getInstance().getInitSolubleContent()
+//						.get("kind1"));
+//		
 		System.out.println("INITIAL ORGANELLES KIND 1 " + membraneContent  
 				+ solubleContent + rabContent);
 		
@@ -121,6 +146,7 @@ public class EndosomeUptakeStep {
 		double rnd = Math.random();
 		endosome.getSpace().moveTo(bud, rnd * 50, 50 - 2 * cellLimit);
 		endosome.getGrid().moveTo(bud, (int) rnd * 50, (int) (50 - 2 * cellLimit));
+	}
 	}
 
 

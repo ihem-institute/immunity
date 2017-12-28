@@ -129,14 +129,14 @@ public class CellBuilder implements ContextBuilder<Object> {
 			double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
 			double maxRadius = initOrgProp.get("radius");
 			double minRadius = 40d;
-			while (totalArea > 4*Math.PI*minRadius){
+			while (totalArea > 4d*Math.PI*minRadius){
 				double a = RandomHelper.nextDoubleFromTo(40d,maxRadius);
 				double c = a + a  * Math.random();
 				double f = 1.6075;
 				double af= Math.pow(a, f);
 				double cf= Math.pow(c, f);
 				double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
-				double volume = 4d/3d*Math.PI*a*a*c;
+				double volume = 0.9*4d/3d*Math.PI*a*a*c;
 				initOrgProp.put("area", area);
 				initOrgProp.put("volume", volume);
 				totalArea = totalArea-area;
