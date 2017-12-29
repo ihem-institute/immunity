@@ -9,10 +9,10 @@ public class MT {
 	// globals
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
-	double xorigin = 10;
-	double xend = 40;
-	double yorigin = 0;
-	double yend = 50;
+	double xorigin = 40d;
+	double xend = 40d;
+	double yorigin = 0d;
+	double yend = 50d;
 	double mth = Math.atan((yend - yorigin) / (xend - xorigin));
 	public double mtheading = -mth * 180 / Math.PI;
 
@@ -31,8 +31,9 @@ public class MT {
 	public void changePosition(MT mt) {
 		//if (Math.random() < 0.1) return;
 		// move the origin and the end of the MT
-		xorigin = RandomHelper.nextDoubleFromTo(1, 49);
-		xend = (RandomHelper.nextDoubleFromTo(xorigin - 10, xorigin + 10));
+		xorigin = RandomHelper.nextDoubleFromTo(15, 35);
+		if (xorigin <= 25) {xend = xorigin -RandomHelper.nextDoubleFromTo(0, xorigin);}
+		else {xend = xorigin + RandomHelper.nextDoubleFromTo(0, 50-xorigin);}
 		double mth = Math.atan((50) / (xend - xorigin));
 		System.out.println("a-tang");
 		System.out.println(mth * 180 / Math.PI);

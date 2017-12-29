@@ -34,15 +34,32 @@ public class EndosomeNewFromERStep {
 			return;
 		}
 
-		HashMap<String, Double> rabContent = new HashMap<String, Double>(
-				InitialOrganelles.getInstance().getInitRabContent()
-						.get("kind5"));
-		HashMap<String, Double> membraneContent = new HashMap<String, Double>(
-				InitialOrganelles.getInstance().getInitMembraneContent()
-						.get("kind5"));
-		HashMap<String, Double> solubleContent = new HashMap<String, Double>(
-				InitialOrganelles.getInstance().getInitSolubleContent()
-						.get("kind5"));
+		if (tMembrane < initOrgProp.get("area")) {
+			return;
+		}
+
+		double radius = initOrgProp.get("radius");
+		double area = 4d* Math.PI*Math.pow(radius, 2d);
+		double volume = 4d/3d*Math.PI*Math.pow(radius, 3d);
+		initOrgProp.put("area", area);
+		initOrgProp.put("volume", volume);			
+		HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get("kind5"));
+				for (String rab : rabContent.keySet()){
+					double rr = rabContent.get(rab);
+					rabContent.put(rab, rr*area);
+				}
+		HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get("kind5"));
+				for (String mem : membraneContent.keySet()){
+					double mm = membraneContent.get(mem);
+					membraneContent.put(mem, mm*area);
+				}
+			
+			HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get("kind5"));
+				for (String sol : solubleContent.keySet()){
+					double ss = solubleContent.get(sol);
+					solubleContent.put(sol, ss*volume);
+				}
+		
 		Context<Object> context = ContextUtils.getContext(endosome);
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
 				solubleContent, initOrgProp);
