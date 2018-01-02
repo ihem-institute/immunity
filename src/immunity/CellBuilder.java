@@ -310,15 +310,15 @@ public class CellBuilder implements ContextBuilder<Object> {
 			case "tubuleTropism": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					cellProperties.getTubuleTropism().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getTubuleTropism());
+					//System.out.println(cellProperties.getTubuleTropism()); 
 					}
 				break;
 			}
 			case "rabTropism": {
 				Set<String> rabT = new HashSet<String>();
 				for (int i = 2; i < b.length; i++) {
-					System.out.println(b[i]);
-					if (b[i].contains("Rab")) {
+					//System.out.println(b[i]);
+					if (b[i].length()>0) {
 						rabT.add(b[i]);
 					}
 				}

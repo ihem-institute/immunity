@@ -3,14 +3,18 @@ package immunity;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import repast.simphony.context.Context;
+import repast.simphony.random.RandomHelper;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.util.ContextUtils;
+import repast.simphony.util.collections.Contains;
 
 public class EndosomeSplitStep {
 	// Split the endosome in two
@@ -152,98 +156,16 @@ public class EndosomeSplitStep {
 			System.out.println(endosome.rabContent);
 		}
 		endosome.rabContent.put(rabInTube, rabLeft);
-
-		// MEMBRANE CONTENT IS DISTRIBUTED according rabTropism
+		
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
-		// copyMembrane.putAll(endosome.membraneContent);
-		for (String content : copyMembrane.keySet()) {
-			if (!CellProperties.getInstance().getRabTropism().containsKey(content)
-					|| !CellProperties.getInstance().getRabTropism().get(content).contains(rabInTube)) {// not a
-				// specified tropism or no tropism for the rabInTube
-				// hence, distribute according to
-				// the surface ratio
-				// For a membrane marker with no tropism for endosome split process,
-				// the marker is at random located in one or
-				// the other endosome, according to the sVesicle/so ratio
-				if (content.equals("membraneMarker")
-						&& (endosome.membraneContent.get("membreneMarker") > 0.9)) {
-					if (Math.random() < sVesicle / so)
-						endosome.membraneContent.put(content, 1.d);
-				} else {
-					endosome.membraneContent.put(content, copyMembrane.get(content)
-							* (sVesicle) / so);
-				}
-
-			} else {
-				if (CellProperties.getInstance().getRabTropism().get(content).contains(rabInTube)
-						|| CellProperties.getInstance().getRabTropism().get(content).contains("1")) {// a tropism
-					// is specified.
-					// If it is "1" always goes to the tubule.
-					// if it is not "1" but has tropism the Rab forming the
-					// tubule, goes
-					// to the tubule
-
-					if (copyMembrane.get(content) > scylinder) {
-						endosome.membraneContent.put(content,
-								copyMembrane.get(content) - scylinder);
-					} else
-						endosome.membraneContent.put(content, 0.0d);
-				}
-				if (CellProperties.getInstance().getRabTropism().get(content).contains("0")) {// if the tropism
-					// is "0" goes to the sphere
-					if (copyMembrane.get(content) > sVesicle) {
-						endosome.membraneContent.put(content, sVesicle);
-					} else
-						endosome.membraneContent.put(content,
-								copyMembrane.get(content));
-				}
-			}
-		}
-		// SOLUBLE CONTENT IS DISTRIBUTED according rabTropism
+		membraneContentSplit(endosome, rabInTube, so, sVesicle);
+		
 		HashMap<String, Double> copySoluble = new HashMap<String, Double>(
 				endosome.solubleContent);
-		// copySoluble.putAll(endosome.solubleContent);
-		for (String content : copySoluble.keySet()) {
-			if (!CellProperties.getInstance().getRabTropism().containsKey(content)
-					|| !CellProperties.getInstance().getRabTropism().get(content).contains(rabInTube)) {// not a
-				// specified tropism or no tropism for the rabInTube,
-				// hence, distribute according to
-				// the volume ratio
-				if (content.equals("solubleMarker")
-						&& (endosome.solubleContent.get("solubleMarker") > 0.9)) {
-					if (Math.random() < vVesicle / vo)
-						endosome.solubleContent.put(content, 1.d);
-				} else {
-					endosome.solubleContent.put(content, copySoluble.get(content)
-							* (vVesicle) / vo);
-				}
-			} else { // a tropism is specified. If it is "1" always goes to the
-						// tubule.
-				// if it is not "1" but is the Rab forming the tubule, goes to
-				// the tubule
-				if (CellProperties.getInstance().getRabTropism().get(content).contains(rabInTube)
-						|| CellProperties.getInstance().getRabTropism().get(content).contains("1")) {
+		solubleContentSplit(endosome, rabInTube, vo, vVesicle);
 
-					if (copySoluble.get(content) > vcylinder) {
-						endosome.solubleContent.put(content,
-								copySoluble.get(content) - vcylinder);
-					} else
-						endosome.solubleContent.put(content, 0.0d);
-				}
-				if (CellProperties.getInstance().getRabTropism().get(content).contains("0")) { // if the tropism
-																// is "0" goes
-																// to the sphere
-
-					if (copySoluble.get(content) > vVesicle) {
-						endosome.solubleContent.put(content, vVesicle);
-					} else
-						endosome.solubleContent.put(content,
-								copySoluble.get(content));
-				}
-			}
-
-		}
+		
 		endosome.size = Math.pow(endosome.volume * 3d / 4d / Math.PI, (1d / 3d));
 
 		endosome.speed = 1d / endosome.size;
@@ -309,6 +231,179 @@ public class EndosomeSplitStep {
 		grid.moveTo(b, (int) x, (int) y);
 		//moveTowards();
 
+	}
+	
+	
+	
+
+	private static void membraneContentSplit(Endosome endosome, String rabInTube, Double so, Double sVesicle) {
+		// MEMBRANE CONTENT IS DISTRIBUTED according rabTropism
+		// new with a copy of endosome.membraneContent;
+		// copy rabTropism from CellProperties
+		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
+				endosome.membraneContent);
+		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
+				CellProperties.getInstance().getRabTropism());
+		for (String content : copyMembrane.keySet()) {
+
+			if (!rabTropism.containsKey(content)){
+				splitPropSurface(endosome, content, so, sVesicle);	
+			}
+			else if (rabTropism.get(content).contains("tub")){
+				splitToTubule(endosome, content, so, sVesicle);
+			}
+			else if (rabTropism.get(content).contains("sph")){
+				splitToSphere(endosome, content, so, sVesicle);
+			}
+			else 
+			{
+			double sphereTrop = 0;
+			for (String rabTrop : rabTropism.get(content)){
+					String rab = rabTrop.substring(0, 4);
+					if (endosome.rabContent.containsKey(rab)){
+						sphereTrop = sphereTrop + endosome.rabContent.get(rab)/endosome.area*
+								Integer.parseInt(rabTrop.substring(4, 5));
+					}
+			}
+			double tubuleTrop = 0;
+			for (String rabTrop : rabTropism.get(content)){
+				String rab = rabTrop.substring(0, 4);
+				if (rab.equals(rabInTube)){
+					tubuleTrop = Integer.parseInt(rabTrop.substring(4, 5));
+				}
+			}
+			if (tubuleTrop == 0 && sphereTrop == 0 ) 
+				{	
+				splitPropSurface(endosome, content, so, sVesicle);	
+				}
+			else if (RandomHelper.nextDoubleFromTo(-10, 10)<(tubuleTrop-sphereTrop))
+				{
+				splitToTubule(endosome, content, so, sVesicle);
+				}
+				else 
+				{
+				splitToSphere(endosome, content, so, sVesicle);
+				}
+			}
+	}
+					
+					
+
+		
+	}
+
+	private static void solubleContentSplit(Endosome endosome, String rabInTube, double vo, double vVesicle){
+		// SOLUBLE CONTENT IS DISTRIBUTED according rabTropism
+		HashMap<String, Double> copySoluble = new HashMap<String, Double>(
+						endosome.solubleContent);
+		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
+						CellProperties.getInstance().getRabTropism());
+				
+			for (String content : copySoluble.keySet()) {
+					if (!rabTropism.containsKey(content)) 
+					{// not a
+						// specified tropism or no tropism for the rabInTube,
+						// hence, distribute according to
+						// the volume ratio
+					SolSplitPropVolume(endosome, content, vo, vVesicle);
+					}
+					
+					else if (rabTropism.get(content).contains("tub")) 
+					{
+						SolSplitToTubule(endosome, content, vo, vVesicle);
+
+						}
+						if (rabTropism.get(content).contains("sph")) { // if the tropism
+																		// is "0" goes
+																		// to the sphere
+
+							SolSplitToSphere(endosome, content, vo, vVesicle);	
+
+						}
+					}
+
+	
+	}
+
+	private static void SolSplitPropVolume(Endosome endosome, String content, double vo, double vVesicle){
+		HashMap<String, Double> copySoluble = new HashMap<String, Double>(
+				endosome.solubleContent);
+//		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
+//				CellProperties.getInstance().getRabTropism());
+		if (content.equals("solubleMarker")
+				&& (endosome.solubleContent.get("solubleMarker") > 0.9)) {
+			if (Math.random() < vVesicle / vo)
+				endosome.solubleContent.put(content, 1.d);
+		} else {
+			endosome.solubleContent.put(content, copySoluble.get(content)
+					* (vVesicle) / vo);
+		}
+
+	}
+	private static void SolSplitToSphere(Endosome endosome, String content, double vo, double vVesicle){
+		HashMap<String, Double> copySoluble = new HashMap<String, Double>(
+				endosome.solubleContent);
+//		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
+//				CellProperties.getInstance().getRabTropism());
+		if (copySoluble.get(content) > vVesicle) {
+			endosome.solubleContent.put(content, vVesicle);
+		} else
+			endosome.solubleContent.put(content,
+					copySoluble.get(content));
+	}
+	
+	private static void SolSplitToTubule(Endosome endosome, String content, double vo, double vVesicle){
+		HashMap<String, Double> copySoluble = new HashMap<String, Double>(
+				endosome.solubleContent);
+//		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
+//				CellProperties.getInstance().getRabTropism());
+		double vcylinder = vo - vVesicle;
+		if (copySoluble.get(content) > vcylinder) {
+			endosome.solubleContent.put(content,
+					copySoluble.get(content) - vcylinder);
+		} else
+			endosome.solubleContent.put(content, 0.0d);
+	}
+	
+	
+	private static void splitToSphere(Endosome endosome, String content, double so, double sVesicle) {
+		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
+				endosome.membraneContent);
+//		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
+//				CellProperties.getInstance().getRabTropism());
+		double scylinder = so - sVesicle;
+		if (copyMembrane.get(content) > scylinder) {
+			endosome.membraneContent.put(content,
+					copyMembrane.get(content) - scylinder);
+		} else
+			endosome.membraneContent.put(content, 0.0d);
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void splitToTubule(Endosome endosome, String content, double so, double sVesicle) {
+		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
+				endosome.membraneContent);
+//		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
+//				CellProperties.getInstance().getRabTropism());
+		if (copyMembrane.get(content) > sVesicle) {
+			endosome.membraneContent.put(content, sVesicle);
+		} else
+			endosome.membraneContent.put(content,
+					copyMembrane.get(content));
+		
+	}
+
+	private static void splitPropSurface(Endosome endosome, String content, Double so, Double sVesicle) {
+		
+		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
+				endosome.membraneContent);
+		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
+				CellProperties.getInstance().getRabTropism());
+
+				endosome.membraneContent.put(content, copyMembrane.get(content)
+							* (sVesicle) / so);				
+	
 	}
 
 	public static String rabInTube(Endosome endosome) {

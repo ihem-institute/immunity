@@ -22,20 +22,32 @@ public class EndosomeUptakeStep {
 				InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
 		double tMembrane = cell.gettMembrane();
 		HashMap<String, Double> rabCell = cell.getRabCell();
-		// System.out.println("CELL RAB "+ rabCell+ "TMEMBRANE "+ tMembrane);
-		if (!rabCell.containsKey("RabA") || Math.random()>rabCell.get("RabA"))
-			return;
+
+		if (!rabCell.containsKey("RabA") || Math.random()>rabCell.get("RabA")){
+			return;}
 //		double rabCellA = rabCell.get("RabA");
 // cytosolic RabA is always provided by the -> RabAc reaction.  Only in a KD will go down
 //	Then no uptake if no RabA in cyto.  The uptake is proportional to the amount of RabA	
-		if (tMembrane < initOrgProp.get("area")) {
-			return;
-		}
+//	Uptake generate a new RabA organelle.  The size is the radius in the csv file for RabA
+//	initial organelles.  The content is specified in concentration. One (1) is approx 1 mM.
+//	This units are converted to membrane or volume units by multiplying by the area (rabs and
+//	membrane content) or volume (soluble content).  For uptake it is controlled that there is enough
+//	membrane and there is RabA in the cell
+//		
+//		
+//		
+//		
+//		
 
 		double radius = initOrgProp.get("radius");
 		double area = 4d* Math.PI*Math.pow(radius, 2d);
+
 		double volume = 4d/3d*Math.PI*Math.pow(radius, 3d);
 		initOrgProp.put("area", area);
+		if (tMembrane < initOrgProp.get("area")) {
+			return;
+		}
+		
 		initOrgProp.put("volume", volume);			
 		HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get("kind1"));
 				for (String rab : rabContent.keySet()){
