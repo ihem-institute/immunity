@@ -262,28 +262,36 @@ public class EndosomeSplitStep {
 					String rab = rabTrop.substring(0, 4);
 					if (endosome.rabContent.containsKey(rab)){
 						sphereTrop = sphereTrop + endosome.rabContent.get(rab)/endosome.area*
-								Integer.parseInt(rabTrop.substring(4, 5));
+								Integer.parseInt(rabTrop.substring(4, 6));
+//						System.out.println("Trop Number " + Integer.parseInt(rabTrop.substring(4, 6)));
 					}
 			}
 			double tubuleTrop = 0;
 			for (String rabTrop : rabTropism.get(content)){
 				String rab = rabTrop.substring(0, 4);
 				if (rab.equals(rabInTube)){
-					tubuleTrop = Integer.parseInt(rabTrop.substring(4, 5));
+					tubuleTrop = Integer.parseInt(rabTrop.substring(4, 6));
 				}
 			}
-			if (tubuleTrop == 0 && sphereTrop == 0 ) 
+//			System.out.println("sphere tubule " + sphereTrop +" "+ tubuleTrop+ " " +(tubuleTrop-sphereTrop));
+			if (tubuleTrop < 2d && sphereTrop < 2d ) 
 				{	
+//				System.out.println("to even ");
 				splitPropSurface(endosome, content, so, sVesicle);	
 				}
-			else if (RandomHelper.nextDoubleFromTo(-10, 10)<(tubuleTrop-sphereTrop))
+			else if (sphereTrop < 2d || (tubuleTrop-sphereTrop) > 4d)
 				{
+//				System.out.println("to tubule ");
 				splitToTubule(endosome, content, so, sVesicle);
 				}
-				else 
+			else if (tubuleTrop < 2d || (tubuleTrop-sphereTrop) < -4d)
 				{
+//				System.out.println("to sphere ");
 				splitToSphere(endosome, content, so, sVesicle);
 				}
+			else { 
+//				System.out.println("to even even ");
+				splitPropSurface(endosome, content, so, sVesicle);}
 			}
 	}
 					
@@ -313,7 +321,7 @@ public class EndosomeSplitStep {
 						SolSplitToTubule(endosome, content, vo, vVesicle);
 
 						}
-						if (rabTropism.get(content).contains("sph")) { // if the tropism
+					else if (rabTropism.get(content).contains("sph")) { // if the tropism
 																		// is "0" goes
 																		// to the sphere
 
@@ -366,7 +374,7 @@ public class EndosomeSplitStep {
 	}
 	
 	
-	private static void splitToSphere(Endosome endosome, String content, double so, double sVesicle) {
+	private static void splitToTubule(Endosome endosome, String content, double so, double sVesicle) {
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
 //		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
@@ -381,7 +389,7 @@ public class EndosomeSplitStep {
 		
 	}
 
-	private static void splitToTubule(Endosome endosome, String content, double so, double sVesicle) {
+	private static void splitToSphere(Endosome endosome, String content, double so, double sVesicle) {
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
 //		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
