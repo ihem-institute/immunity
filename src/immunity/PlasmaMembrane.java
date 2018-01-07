@@ -30,7 +30,9 @@ public class PlasmaMembrane {
 	public int blue = 0;
 //	c2 is the initial content of pLANCL2 in the plasma membrane
 	public double c2 = CellProperties.getInstance().getInitPMmembraneRecycle().get("pLANCL2");
-	public int area = (int) (750*200*(1/Cell.orgScale)*(1/Cell.orgScale)); // nm2 750nm x 200nm
+	public int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); 
+// nm2 1500nm x 400nm. Space in repast at scale =1 and arbitrary height of the space projected
+//	in 2D
 	HashMap<Integer, HashMap<String, Double>> PMLANCL2TimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 
 
@@ -53,7 +55,7 @@ public class PlasmaMembrane {
 	public void step() {
 		this.membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
 		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
-		if (Math.random() < 1){
+		if (Math.random() < 0){
 			System.out.println("llamo PM LANCL2");
 		PlasmaMembraneLANCL2metabolismStep.PMLANCL2TimeSeriesLoad(this);		
 		}

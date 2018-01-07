@@ -16,7 +16,7 @@ public class EndosomeUptakeStep {
 	public static void uptake(Endosome endosome) {
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
-		double cellLimit = 3 * Cell.orgScale;
+		double cellLimit = 3d * Cell.orgScale;
 		Cell cell = Cell.getInstance();
 		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));

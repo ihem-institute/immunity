@@ -90,19 +90,20 @@ public class Endosome {
 	HashMap<Integer, HashMap<String, Double>> LANCL2TimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 	HashMap<Integer, HashMap<String, Double>> rabTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 //	Probabilities of events per tick.  Calculated from the t1/2 of each process
-//	 as the inverse of time1/2(in seconds) / 0.015 * timeScale
-//	0.015 is the fastest event (movement on MT, 1 uM/sec) that I use to calibrate
-//	the tick duration. At time scale 1, I move the endosome 15 nm in a tick. 
-//	At time scale 0.5, I move the endosome 30 nm (15/timeScale)
+//	 as the inverse of time1/2(in seconds) / 0.03 * timeScale
+//	0.03 is the fastest event (movement on MT, 1 uM/sec) that I use to calibrate
+//	the tick duration. At time scale 1, I move the endosome 30 nm in a tick (50 ticks to travel 1500 nm). Hence
+//	one tick is equivalent to 0.03 seconds
+//	At time scale 0.5, I move the endosome 60 nm (30/timeScale)
 //	
-	double p_EndosomeRecycleStep = 1d/(1d/0.015*Cell.timeScale);
-	double p_EndosomeUptakeStep = 1d/(60d/0.015*Cell.timeScale);
-	double p_EndosomeNewFromERStep = 1d/(60d/0.015*Cell.timeScale);
-	double p_EndosomeInternalVesicleStep = 1d/(1d/0.015*Cell.timeScale);
-	double p_EndosomeFusionStep =1d/(180d/0.015*Cell.timeScale);
-	double p_EndosomeSplitStep = 1d/(0.1/0.015*Cell.timeScale);
-	double p_EndosomeTetherStep = 1d/(1d/0.015*Cell.timeScale);
-	double p_EndosomeLysosomalDigestionStep = 1d/(60d/0.015*Cell.timeScale);
+	double p_EndosomeRecycleStep = 1d/(1d/0.03*Cell.timeScale);
+	double p_EndosomeUptakeStep = 1d/(60d/0.03*Cell.timeScale);
+	double p_EndosomeNewFromERStep = 1d/(60d/0.03*Cell.timeScale);
+	double p_EndosomeInternalVesicleStep = 1d/(1d/0.03*Cell.timeScale);
+	double p_EndosomeFusionStep =1d/(180d/0.03*Cell.timeScale);
+	double p_EndosomeSplitStep = 1d/(0.1/0.03*Cell.timeScale);
+	double p_EndosomeTetherStep = 1d/(1d/0.03*Cell.timeScale);
+	double p_EndosomeLysosomalDigestionStep = 1d/(60d/0.03*Cell.timeScale);
 	
 
 

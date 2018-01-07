@@ -126,11 +126,11 @@ public class EndosomeMove {
 		for (MT mt : mts) {
 			double dist = distance(endosome, mt);
 //			System.out.println("distance BEFORE "+ dist+"  " +mt.getMtheading());
-//			The distance is in space units from 0 to 50. At scale 1, the space is 2250 nm.  At 
-//			scale 0.5 it is 4500 nm.
+//			The distance is in space units from 0 to 50. At scale 1, the space is 1500 nm.  At 
+//			scale 0.5 it is 3000 nm.
 //			Hence to convert to nm, I must multiply by 45 (2250/50) and divide by scale. An organelle will sense MT
 //			at a distance less than its size.
-			if (Math.abs(dist*45d/Cell.orgScale) < endosome.size) {
+			if (Math.abs(dist*30d/Cell.orgScale) < endosome.size) {
 
 //direction is: 
 //TUBULE move to PM with a Probability depending on the 

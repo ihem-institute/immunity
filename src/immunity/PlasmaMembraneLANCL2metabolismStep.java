@@ -105,7 +105,7 @@ public class PlasmaMembraneLANCL2metabolismStep {
 			HashMap<String, Double> value = new HashMap<String, Double>();
 			for (int met = 1; met < metNro +1; met = met +1){
 				value.put(timeSeries.getTitle(met), timeSeries.getConcentrationData(time, met));
-				plasmamembrane.getPMLANCL2TimeSeries().put((int) (tick+time*Cell.timeScale/0.015),value);
+				plasmamembrane.getPMLANCL2TimeSeries().put((int) (tick+time*Cell.timeScale/0.03),value);
 			}
 		}
 		

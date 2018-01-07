@@ -146,7 +146,7 @@ RAB CONCENTRATION IN THE CYTOSOL CONSIDERING THE ORGANELLE SIZE AND THE CYTOSOL 
 			for (int met = 1; met < metNro +1; met = met +1){
 				value.put(timeSeries.getTitle(met), timeSeries.getConcentrationData(time, met));
 			}
-			endosome.getRabTimeSeries().put((int) (tick+time*Cell.timeScale/0.015),value);
+			endosome.getRabTimeSeries().put((int) (tick+time*Cell.timeScale/0.03),value);
 		}
 		
 //		System.out.println("RAB time series "+ tick +" " +endosome.getRabTimeSeries());
