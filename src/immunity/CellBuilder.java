@@ -110,6 +110,8 @@ public class CellBuilder implements ContextBuilder<Object> {
 		
 //		PlasmaMembrane plasmamembrane = PlasmaMembrane.getInstance();
 		context.add(new PlasmaMembrane(space, grid));
+		
+		context.add(new Scale(space, grid));
 
 		// Microtubules
 
@@ -201,6 +203,11 @@ public class CellBuilder implements ContextBuilder<Object> {
 			if (obj instanceof PlasmaMembrane) {
 				space.moveTo(obj, 24.5, 49.5);
 				grid.moveTo(obj, (int) 24, (int) 49);
+			}
+			if (obj instanceof Scale) {
+				space.moveTo(obj, Scale.getScale500nm()/2d, 49.9);
+//				System.out.println ("SCALE SCALE "+Scale.getScale500nm()/2d);
+				grid.moveTo(obj, (int) (Scale.getScale500nm()/2d), (int) 49);
 			}
 			if (obj instanceof MT) {
 				((MT) obj).changePosition((MT)obj);

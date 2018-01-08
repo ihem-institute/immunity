@@ -18,6 +18,10 @@
       <string>immunity.MT</string>
       <string>immunity.MTStyle</string>
     </entry>
+    <entry>
+      <string>immunity.Scale</string>
+      <string>immunity.ScaleStyle</string>
+    </entry>
   </styles>
   <editedStyles>
     <entry>
@@ -34,6 +38,10 @@
     </entry>
     <entry>
       <string>immunity.MT</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>immunity.Scale</string>
       <null/>
     </entry>
   </editedStyles>
@@ -57,7 +65,7 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>1517778402</hashCode>
+    <hashCode>-817173594</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>space</layoutProjection>
@@ -78,6 +86,10 @@
     <entry>
       <string>immunity.MT</string>
       <int>2</int>
+    </entry>
+    <entry>
+      <string>immunity.Scale</string>
+      <int>4</int>
     </entry>
   </layerOrder>
   <projections>

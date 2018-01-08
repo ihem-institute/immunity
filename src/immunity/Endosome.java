@@ -252,12 +252,12 @@ public class Endosome {
 
 		if (membraneContent.containsKey(contentPlot)) {
 			double red = membraneContent.get(contentPlot) / area;
-			if (red > 1)
-				System.out.println("RED FUERA ESCALA " + " " + red + " "
-						+ membraneContent.get(contentPlot) + "  " + area);
-			if (red > 1)
-				System.out.println("RED FUERA ESCALA " + " " + contentPlot);
-			// System.out.println("mHCI content" + red);
+//			if (red > 1)
+//				System.out.println("RED FUERA ESCALA " + " " + red + " "
+//						+ membraneContent.get(contentPlot) + "  " + area);
+//			if (red > 1)
+//				System.out.println("RED FUERA ESCALA " + " " + contentPlot);
+//			// System.out.println("mHCI content" + red);
 			return red;
 		}
 		if (solubleContent.containsKey(contentPlot)) {
@@ -293,22 +293,22 @@ public class Endosome {
 
 		if (membraneContent.containsKey(contentPlot)) {
 			double blue = membraneContent.get(contentPlot) / area;
-			if (blue > 1.1)
-				System.out.println("BLUE FUERA ESCALA " + " " + blue + " "
-						+ membraneContent.get(contentPlot) + "  " + area);
-			if (blue > 1.1)
-				System.out.println("BLUE FUERA ESCALA " + " " + contentPlot);
+//			if (blue > 1.1)
+//				System.out.println("BLUE FUERA ESCALA " + " " + blue + " "
+//						+ membraneContent.get(contentPlot) + "  " + area);
+//			if (blue > 1.1)
+//				System.out.println("BLUE FUERA ESCALA " + " " + contentPlot);
 
 			return blue;
 		}
 		if (solubleContent.containsKey(contentPlot)) {
 			double blue = solubleContent.get(contentPlot) / volume;
-			if (blue > 1.1)
-				System.out.println("BLUE FUERA ESCALA " + " " + blue + " "
-						+ solubleContent.get(contentPlot) + "  " + area);
-			if (blue > 1)
-				System.out.println("BLUE FUERA ESCALA " + " " + contentPlot);
-			// System.out.println("mHCI content" + red);
+//			if (blue > 1.1)
+//				System.out.println("BLUE FUERA ESCALA " + " " + blue + " "
+//						+ solubleContent.get(contentPlot) + "  " + area);
+//			if (blue > 1)
+//				System.out.println("BLUE FUERA ESCALA " + " " + contentPlot);
+//			// System.out.println("mHCI content" + red);
 			return blue;
 		} else
 			return 0;
@@ -319,7 +319,7 @@ public class Endosome {
 		String edgePlot = CellProperties.getInstance().getColorRab().get("red");
 
 		if (rabContent.containsKey(edgePlot)) {
-			double red = Math.round(rabContent.get(edgePlot)*1000 / area)/1000;
+			double red = rabContent.get(edgePlot)/area;
 			return red;
 		} else
 			return 0;
@@ -327,9 +327,9 @@ public class Endosome {
 
 	public double getEdgeGreen() {
 		String edgePlot = CellProperties.getInstance().getColorRab()
-				.get("green");
+			.get("green");
 		if (rabContent.containsKey(edgePlot)) {
-			double green = Math.round(rabContent.get(edgePlot)*1000 / area)/1000;
+			double green = rabContent.get(edgePlot)/ area;
 			return green;
 		} else
 			return 0;
@@ -337,9 +337,9 @@ public class Endosome {
 
 	public double getEdgeBlue() {
 		String edgePlot = CellProperties.getInstance().getColorRab()
-				.get("blue");
+			.get("blue");
 		if (rabContent.containsKey(edgePlot)) {
-			double blue = Math.round(rabContent.get(edgePlot)*1000 / area)/1000;
+			double blue = rabContent.get(edgePlot)/area;
 			return blue;
 		} else
 			return 0;

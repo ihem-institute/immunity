@@ -132,7 +132,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	@Override
 	public int getBorderSize(Endosome object) {
-		return 4;
+		return 8;
 	}
 
 	@Override
@@ -147,14 +147,18 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		colors.add(blue);
 
 // 		(1 - max (list g r b)) ;
-		Double corr = 1 - Collections.max(colors);
+		Double corr = 1d - Collections.max(colors);
 		if (corr <0) {
 			System.out.println("BORDER COLOR" + colors);
 		}
+
 //		if the rab in the organelle is not represented, then dark gray
-		if (corr > 0.95)corr = 0.1;
-		return new Color((int) ((red + corr) * 255),
-				(int) ((green + corr) * 255), (int) ((blue + corr) * 255));
+		if (corr > 0.95){
+			corr = 0.1;
+		}
+
+		return new Color((int) ((red + corr) * 255d),
+				(int) ((green + corr) * 255d), (int) ((blue + corr) * 255d));
 	}
 
 	@Override
