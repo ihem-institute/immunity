@@ -8,6 +8,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 import javax.media.opengl.GL2;
 
@@ -132,11 +133,45 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	@Override
 	public int getBorderSize(Endosome object) {
-		return 10;
+//		if (!object.getSolubleContent().containsKey("solubleMarker")
+//				&&!object.getMembraneContent().containsKey("membraneMarker")) {
+//			return 0;				
+//		}
+//		if (((object.getSolubleContent().containsKey("solubleMarker")
+//				&& object.getSolubleContent().get("solubleMarker")<0.5))
+//			&& 
+//			((object.getMembraneContent().containsKey("membraneMarker")
+//					&& object.getMembraneContent().get("membraneMarker")<0.5)))
+//		{
+//			return 0;				
+//		}
+			return 10;
 	}
 
 	@Override
 	public Color getBorderColor(Endosome object) {
+		int colorCode = 1;
+//		if (!object.getSolubleContent().containsKey("solubleMarker")
+//				&&!object.getMembraneContent().containsKey("membraneMarker")) {
+//			return new Color(255, 255, 255);				
+//		}
+//		if (((object.getSolubleContent().containsKey("solubleMarker")
+//				&& object.getSolubleContent().get("solubleMarker")<0.5))
+//			&& 
+//			((object.getMembraneContent().containsKey("membraneMarker")
+//					&& object.getMembraneContent().get("membraneMarker")<0.5)))
+//		{
+//			return new Color(255, 255, 255);				
+//		}
+		
+		
+		
+		
+		
+
+		if (colorCode ==0)
+			
+		{
 		// color code for rab contents
 		double red = object.getEdgeRed();
 		double green = object.getEdgeGreen();
@@ -154,11 +189,34 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 //		if the rab in the organelle is not represented, then dark gray
 		if (corr > 0.95){
-			corr = 0.1;
+			return new Color(255, 255, 255);
 		}
 
 		return new Color((int) ((red + corr) * 255d),
 				(int) ((green + corr) * 255d), (int) ((blue + corr) * 255d));
+		}
+		
+		else {
+			HashMap<String, Double> rabContent = new HashMap<String, Double>(object.getRabContent());
+			Double rabMax = 0d;
+			String rabColor = null;
+			for (String rab : rabContent.keySet())
+			{
+			if (rabContent.get(rab)> rabMax) {
+				rabMax = rabContent.get(rab);
+				rabColor = rab;
+
+				}
+			}
+//			System.out.println(rabColor+rabContent);
+			if (rabColor.equals("RabA"))	return new Color (0,0,255);
+			else if (rabColor.equals("RabB"))	return new Color (0,255,255);
+			else if (rabColor.equals("RabC"))	return new Color (0,255,0);
+			else if (rabColor.equals("RabD"))	return new Color (255,0,0);
+			else if (rabColor.equals("RabE"))	return new Color (255,255,0);
+			else	return new Color (0,0,0);
+		}
+			
 	}
 
 	@Override
@@ -182,12 +240,21 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	public String getLabel(Endosome object) {
 		// the label is the number of internal vesicles (Multi Vesicular Body)
 		// in the endosome
+		String label = "";
 		if (object.getSolubleContent().containsKey("solubleMarker")
-				&& object.getSolubleContent().get("solubleMarker")> 0){
+				&& object.getSolubleContent().get("solubleMarker")> 0.9){
 		//String marker = object.getSolubleContent().get("solubleMarker").toString();
-		return "M "+object.getMvb();
+		label = label + "S ";
 		}
-		return object.getMvb();
+		if (object.getMembraneContent().containsKey("membraneMarker")
+				&& object.getMembraneContent().get("membraneMarker")> 0.9){
+		//String marker = object.getSolubleContent().get("solubleMarker").toString();
+		label = label + "M ";
+		}
+		if (object.getMvb()== null){
+			return label;
+		}
+		else return label + object.getMvb();
 	}
 
 	@Override

@@ -19,20 +19,22 @@ public class EndosomeLysosomalDigestionStep {
 		double finalMvb = 0d;
 		double finalSolMark = 0d;
 		double finalMemMark = 0d;
+//		double finalvATPase = 0d;
 		if (endosome.solubleContent.containsKey("mvb")) {
 			initialMvb = endosome.solubleContent.get("mvb");
-			if (Math.random() < 0.1 * rabDratio * initialMvb) {
+			if (Math.random() < 0.01 * rabDratio * initialMvb) {
 				finalMvb = initialMvb - 1;
 			} else {
 				finalMvb = initialMvb;
 			}
 		}
-		if (endosome.solubleContent.containsKey("solubleMarker")) {
-				finalSolMark = endosome.solubleContent.get("solubleMarker");
-			}
-		if (endosome.membraneContent.containsKey("membraneMarker")) {
-			finalMemMark = endosome.membraneContent.get("membraneMarker");
-		}
+//		if (endosome.solubleContent.containsKey("solubleMarker")) {
+//				finalSolMark = 1d;
+//			}
+//		if (endosome.membraneContent.containsKey("membraneMarker")) {
+//			finalMemMark = 1d;
+//		}
+//		finalvATPase = endosome.membraneContent.get("vATPase");
 		for (String sol : endosome.solubleContent.keySet()) {
 				double solDigested = endosome.solubleContent.get(sol) * 0.001
 						* rabDratio;
@@ -40,8 +42,8 @@ public class EndosomeLysosomalDigestionStep {
 			}
 		if (endosome.solubleContent.containsKey("mvb"))
 			endosome.solubleContent.put("mvb", finalMvb);
-		if (endosome.solubleContent.containsKey("solubleMarker"))
-			endosome.solubleContent.put("solubleMarker", finalSolMark);
+		if (endosome.solubleContent.containsKey("solubleMarker") && endosome.solubleContent.get("solubleMarker")>0.9)
+			endosome.solubleContent.put("solubleMarker", 1d);
 
 		for (String mem : endosome.membraneContent.keySet()) {
 				double memDigested = endosome.membraneContent.get(mem) * 0.001
@@ -49,16 +51,19 @@ public class EndosomeLysosomalDigestionStep {
 				endosome.membraneContent
 						.put(mem, endosome.membraneContent.get(mem) - memDigested);
 			}
-		if (endosome.membraneContent.containsKey("membraneMarker"))
-			endosome.membraneContent.put("membraneMarker", finalMemMark);
+		if (endosome.membraneContent.containsKey("membraneMarker") && endosome.membraneContent.get("membraneMarker")>0.9){
+			endosome.membraneContent.put("membraneMarker", 1d);}
+//		endosome.membraneContent.put("vATPase", finalvATPase);
+		
 			// volume is decreased
 		if (endosome.solubleContent.containsKey("mvb")) {
 				deltaV = (initialMvb - finalMvb) * volIV + endosome.volume * 0.001
 						* rabDratio;
 			} else {
-				deltaV = endosome.volume * 0.0001 * rabDratio;
+				deltaV = endosome.volume * 0.001 * rabDratio;
 			}
 		endosome.volume = endosome.volume - deltaV;
+		if (deltaV > 40000) EndosomeInternalVesicleStep.internalVesicle(endosome);
 		Endosome.endosomeShape(endosome);
 	}
 }

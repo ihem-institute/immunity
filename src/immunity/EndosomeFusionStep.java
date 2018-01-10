@@ -133,8 +133,11 @@ public class EndosomeFusionStep {
 				memSum.put(key2, sum);
 			}
 		}
-		// endosome1.membraneContent = memSum;
-		// System.out.println("rabMembraneSum" + endosome1.membraneContent);
+//		// endosome1.membraneContent = memSum;
+//		
+//		System.out.println("MemEnd 1" +endosome1.membraneContent +
+//				"\n MemEnd 2"+ endosome2.membraneContent+ 
+//				" \n MemSum" + memSum);
 		return memSum;
 	}
 

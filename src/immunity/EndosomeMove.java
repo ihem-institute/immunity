@@ -31,9 +31,12 @@ public class EndosomeMove {
 		 */
 
 		NdPoint myPoint = space.getLocation(endosome);
+//		NdPoint myPoint = endosome.getEndosomeLocation(endosome);
 		
 		double x = myPoint.getX();
+		endosome.setXcoor(x);
 		double y = myPoint.getY();
+		endosome.setYcoor(y);
 		
 
 //	If near the borders, move random (only with 10% probability)
@@ -142,10 +145,15 @@ public class EndosomeMove {
 // In summary, tubules move to the PM if they are rich in PM Rabs (A, B, C) otherwise, move random
 // Non tubules move to the nucleus if they are rich in nucleus Rabs (D and E), otherwise move random
 //	The direction of the Rabs (PM = 1, Nucleus = -1) is indicated the the csv file as "mtTropism"
+//	Negative numbers: tubules random, and non-tubules to the nucleus.  Positive number: probability
+//	of tubule going to the PM and (1-Nro) probability of non-tubule of going to nucleus.
+//	E.g. RabC MT tropism of 0.4 indicate that tubules goes to PM 40% of the time and non-tubule to the
+//	nucleus 60% of the times.
+				
 				boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2);
 // Calculate mtDir SUM 
 				mtDir = mtDirection(endosome);
-				if (isTubule)
+				if (isTubule || Math.random()<0.01)
 					{
 //					System.out.println("IS TUBULE"+ mtDir);
 					if (Math.random()<mtDir) {
@@ -159,7 +167,7 @@ public class EndosomeMove {
 				else
 					{
 //					System.out.println("IS NOT TUBULE"+ mtDir);
-					if (Math.random()<-mtDir) {
+					if (Math.random()> mtDir) {
 						mtDir = +1;// 180 + Mt direction
 						}
 						else {

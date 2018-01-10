@@ -20,8 +20,39 @@ public class EndosomeRecycleStep {
 //		NdPoint myPoint = space.getLocation(endosome);
 //		System.out.println("TEST  ADENTRO coor  "+myPoint.toString()+ (50 -cellLimit));
 			double y = myPoint.getY();
+//			if far from the PM no recycling
 			if (y < 50-2*cellLimit)
 				return;
+//			if near the PM and having RabA, and having Tf, recycle only Tf
+//			So, I am assuming that there is a Rab4 tubule getting Tf that goes to the PM
+//			leaving the rest of the early endosome (RabA) in place
+			
+			if (endosome.rabContent.containsKey("RabA")
+					&& Math.random() <= endosome.rabContent.get("RabA")/endosome.area 
+					&& endosome.membraneContent.containsKey("Tf")){
+				
+//				System.out.println(" RECICLADO DE RABA" + endosome.membraneContent.get("Tf"));
+//				try {
+//				TimeUnit.SECONDS.sleep(5);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//				
+				
+				double tfValue = endosome.membraneContent.get("Tf");
+				HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance()
+						.getMembraneRecycle();
+				if (membraneRecycle.containsKey("Tf")) {
+					double sum = membraneRecycle.get("Tf")
+							+ tfValue;
+					membraneRecycle.put("Tf", sum);
+				} else {
+					membraneRecycle.put("Tf", tfValue);}
+				
+				endosome.membraneContent.put("Tf", 0d);				
+				return;
+			}
 			double recyProb = 0.0;
 			for (String rab: endosome.rabContent.keySet()){
 				recyProb = recyProb + endosome.rabContent.get(rab) / endosome.area 
@@ -54,6 +85,7 @@ public class EndosomeRecycleStep {
 				// Recycle soluble content
 				HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance()
 						.getSolubleRecycle();
+				double endopH = endosome.solubleContent.get("proton");
 				for (String key1 : endosome.solubleContent.keySet()) {
 					if (solubleRecycle.containsKey(key1)) {
 						double sum = solubleRecycle.get(key1)
@@ -65,9 +97,9 @@ public class EndosomeRecycleStep {
 				}
 				// PlasmaMembrane.getInstance().setSolubleRecycle(solubleRecycle);
 				endosome.solubleContent.clear();
-				endosome.solubleContent.put("proton", 3.98E-5*endosome.volume);
+				endosome.solubleContent.put("proton", endopH);
 				
-//				
+				
 //				System.out.println("ENDOSOME RECYCLE \n"
 //						+ endosome.solubleContent + endosome.rabContent + "\n" + endosome.membraneContent);
 //				try {

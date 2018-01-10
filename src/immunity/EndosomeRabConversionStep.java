@@ -21,7 +21,7 @@ public class EndosomeRabConversionStep {
 		if (endosome.getRabTimeSeries().isEmpty()){			
 			callRabConversion(endosome);
 			timeSeriesLoadintoEndosome(endosome);
-			System.out.println("RabConversion first time");
+//			System.out.println("RabConversion first time");
 			return;
 		} 
 		if (tick >= Collections.max(endosome.getRabTimeSeries().keySet())) {
@@ -29,7 +29,7 @@ public class EndosomeRabConversionStep {
 			timeSeriesLoadintoEndosome(endosome);
 			endosome.getRabTimeSeries().clear();
 			callRabConversion(endosome);
-			System.out.println("RabConversion called after 50 time series");
+//			System.out.println("RabConversion called after 50 time series");
 //			System.out.println("COLLECTION" + tick + " " + endosome.getRabTimeSeries().keySet());
 			return;
 			}
@@ -38,7 +38,7 @@ public class EndosomeRabConversionStep {
 			return;
 		}else {
 			timeSeriesLoadintoEndosome(endosome);
-			System.out.println("Rabs UPDATED FROM TIME SERIES");
+//			System.out.println("Rabs UPDATED FROM TIME SERIES");
 			return;
 
 		}
@@ -80,10 +80,10 @@ RAB CONCENTRATION IN THE CYTOSOL CONSIDERING THE ORGANELLE SIZE AND THE CYTOSOL 
 */
 		}
 
-		System.out.println("COPASI FINAL membrane " + endosome.rabContent + " soluble "
-				+ Cell.getInstance().getRabCell());
-		
-	System.out.println("Rabs UPDATED");
+//		System.out.println("COPASI FINAL membrane " + endosome.rabContent + " soluble "
+//				+ Cell.getInstance().getRabCell());
+//		
+//	System.out.println("Rabs UPDATED");
 //	for (String met :presentValues.keySet()){
 //	System.out.println(met+ " "+presentValues.get(met));
 //		}
@@ -116,7 +116,7 @@ RAB CONCENTRATION IN THE CYTOSOL CONSIDERING THE ORGANELLE SIZE AND THE CYTOSOL 
 				String Rab = met.substring(0, 4);
 				if (Cell.getInstance().getRabCell().containsKey(Rab)) {
 					double metValue = Cell.getInstance().getRabCell().get(Rab);
-					System.out.println("COPASI INITIAL CYTOSOL " + Rab + " " + metValue +"  "+Cell.getInstance().getRabCell().get(Rab) );
+//					System.out.println("COPASI INITIAL CYTOSOL " + Rab + " " + metValue +"  "+Cell.getInstance().getRabCell().get(Rab) );
 					rabConversion.setInitialConcentration(met, Math.round(metValue*1E6d)/1E6d);
 //					System.out.println("COPASI INITIAL CYTOSOL " + met + " " + metValue);
 					// + Cell.getInstance().rabCell.get(Rab));
@@ -132,8 +132,8 @@ RAB CONCENTRATION IN THE CYTOSOL CONSIDERING THE ORGANELLE SIZE AND THE CYTOSOL 
 				rabConversion.setInitialConcentration(met, Rab0(endosome));
 		}
 
-		System.out.println("COPASI INITIAL  membrane " + endosome.rabContent
-				+ " soluble " + Cell.getInstance().getRabCell());
+//		System.out.println("COPASI INITIAL  membrane " + endosome.rabContent
+//				+ " soluble " + Cell.getInstance().getRabCell());
 		
 		rabConversion.runTimeCourse();
 				
@@ -170,8 +170,8 @@ RAB CONCENTRATION IN THE CYTOSOL CONSIDERING THE ORGANELLE SIZE AND THE CYTOSOL 
 //
 //		}
 
-		System.out.println("COPASI FINAL membrane " + endosome.rabContent + " soluble "
-				+ Cell.getInstance().getRabCell());
+//		System.out.println("COPASI FINAL membrane " + endosome.rabContent + " soluble "
+//				+ Cell.getInstance().getRabCell());
 
 	}
 

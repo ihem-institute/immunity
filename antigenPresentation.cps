@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-01-09 15:37:51 UTC -->
+<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-02-21 12:28:59 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="20" versionDevel="158" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -63,25 +63,58 @@ Reaction scheme where the products are created from the reactants and the change
         <ParameterDescription key="FunctionParameter_71" name="product" order="3" role="product"/>
       </ListOfParameterDescriptions>
     </Function>
-    <Function key="Function_40" name="cMHCIopening" type="UserDefined" reversible="unspecified">
+    <Function key="Function_40" name="pH-2s" type="UserDefined" reversible="unspecified">
       <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Function_40">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-12-01T10:51:50Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2018-01-24T16:54:18Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+      </MiriamAnnotation>
+      <Comment>
+        pH limit is the pH that defined the effect.  Above: activates (or inhibits) , below inhibits (or activates) 
+
+enhancer will potenciate the effect of departure from the pHlimit. The sign of enhancer determines if the reaction will be potenciated at pH  higher than pH limit (sign +) or will potenciate at pH lower than pH limit (sign  -)
+
+Notice that at pH = phlimit, the factor is 1.  k then is the kinetics constant at the pHlimit
+      </Comment>
+      <Expression>
+        substrate1 * substrate2  * k *(10^(pH-pHlimit))^enhancer
+      </Expression>
+      <ListOfParameterDescriptions>
+        <ParameterDescription key="FunctionParameter_264" name="substrate1" order="0" role="substrate"/>
+        <ParameterDescription key="FunctionParameter_254" name="substrate2" order="1" role="substrate"/>
+        <ParameterDescription key="FunctionParameter_258" name="k" order="2" role="constant"/>
+        <ParameterDescription key="FunctionParameter_266" name="pH" order="3" role="constant"/>
+        <ParameterDescription key="FunctionParameter_268" name="pHlimit" order="4" role="constant"/>
+        <ParameterDescription key="FunctionParameter_270" name="enhancer" order="5" role="constant"/>
+      </ListOfParameterDescriptions>
+    </Function>
+    <Function key="Function_41" name="pH-1s" type="UserDefined" reversible="unspecified">
+      <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Function_41">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-01-24T16:54:18Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
       </MiriamAnnotation>
       <Expression>
-        k1*substrate*proton^0.7
+        substrate1 * k *(10^(pH-pHlimit))^enhancer
       </Expression>
       <ListOfParameterDescriptions>
-        <ParameterDescription key="FunctionParameter_264" name="k1" order="0" role="constant"/>
-        <ParameterDescription key="FunctionParameter_254" name="substrate" order="1" role="substrate"/>
-        <ParameterDescription key="FunctionParameter_258" name="proton" order="2" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_271" name="substrate1" order="0" role="substrate"/>
+        <ParameterDescription key="FunctionParameter_267" name="k" order="1" role="constant"/>
+        <ParameterDescription key="FunctionParameter_246" name="pH" order="2" role="constant"/>
+        <ParameterDescription key="FunctionParameter_272" name="pHlimit" order="3" role="constant"/>
+        <ParameterDescription key="FunctionParameter_274" name="enhancer" order="4" role="constant"/>
       </ListOfParameterDescriptions>
     </Function>
   </ListOfFunctions>
@@ -106,6 +139,19 @@ mmol/ L
 umol/ml
 nmol/ul
 pmol/nl
+
+Original COPASI for Antigen Presentation.  kpH is 0.0002 (I think it was 0.001)
+
+This basic COPASI will be changed to adapt to endocytosis and transport of Lysosomal enzymes
+
+CHANGES FOR ENDOCYTOSIS	
+All the MHCI species were deleted and de corresponding reactions.  Control of pH was mantained.  Ova hydrolisis was maintained but inactive (k = 0)
+
+Adding LyE association dissociation (p1 > p1-s) and the reverse reaction. Controled by the pH
+
+Adding GM degradation, promoted by low pH and LyE, inhibited by cholesterol
+
+Adding chol digestion by RabD
     </Comment>
     <ListOfCompartments>
       <Compartment key="Compartment_0" name="compartment" simulationType="fixed" dimensionality="3">
@@ -116,20 +162,12 @@ pmol/nl
       </Metabolite>
       <Metabolite key="Metabolite_1" name="p1" simulationType="reactions" compartment="Compartment_0">
       </Metabolite>
-      <Metabolite key="Metabolite_2" name="preP" simulationType="reactions" compartment="Compartment_0">
+      <Metabolite key="Metabolite_2" name="p2" simulationType="reactions" compartment="Compartment_0">
       </Metabolite>
-      <Metabolite key="Metabolite_3" name="p2" simulationType="reactions" compartment="Compartment_0">
-      </Metabolite>
-      <Metabolite key="Metabolite_4" name="pept" simulationType="reactions" compartment="Compartment_0">
-      </Metabolite>
-      <Metabolite key="Metabolite_5" name="mHCI" simulationType="reactions" compartment="Compartment_0">
-      </Metabolite>
-      <Metabolite key="Metabolite_6" name="mHCI-pept" simulationType="reactions" compartment="Compartment_0">
-      </Metabolite>
-      <Metabolite key="Metabolite_7" name="proton" simulationType="reactions" compartment="Compartment_0">
+      <Metabolite key="Metabolite_3" name="proton" simulationType="reactions" compartment="Compartment_0">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_7">
+  <rdf:Description rdf:about="#Metabolite_3">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2017-11-28T14:59:21Z</dcterms:W3CDTF>
@@ -139,10 +177,10 @@ pmol/nl
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_8" name="vATPase" simulationType="reactions" compartment="Compartment_0">
+      <Metabolite key="Metabolite_4" name="vATPase" simulationType="reactions" compartment="Compartment_0">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_8">
+  <rdf:Description rdf:about="#Metabolite_4">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2017-11-28T17:18:32Z</dcterms:W3CDTF>
@@ -152,10 +190,10 @@ pmol/nl
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_9" name="protonCy" simulationType="fixed" compartment="Compartment_0">
+      <Metabolite key="Metabolite_5" name="protonCy" simulationType="fixed" compartment="Compartment_0">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Metabolite_9">
+  <rdf:Description rdf:about="#Metabolite_5">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2017-11-28T17:17:55Z</dcterms:W3CDTF>
@@ -165,7 +203,29 @@ pmol/nl
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_10" name="cMHCI" simulationType="reactions" compartment="Compartment_0">
+      <Metabolite key="Metabolite_6" name="RabD" simulationType="reactions" compartment="Compartment_0">
+        <MiriamAnnotation>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Metabolite_6">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-02-21T09:27:51Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+
+        </MiriamAnnotation>
+      </Metabolite>
+      <Metabolite key="Metabolite_7" name="NOX" simulationType="reactions" compartment="Compartment_0">
+      </Metabolite>
+      <Metabolite key="Metabolite_8" name="p1-s" simulationType="reactions" compartment="Compartment_0">
+      </Metabolite>
+      <Metabolite key="Metabolite_9" name="GM" simulationType="reactions" compartment="Compartment_0">
+      </Metabolite>
+      <Metabolite key="Metabolite_10" name="chol" simulationType="reactions" compartment="Compartment_0">
       </Metabolite>
     </ListOfMetabolites>
     <ListOfModelValues>
@@ -185,86 +245,83 @@ pmol/nl
           -log(&lt;CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[proton],Reference=Concentration>*1e-3)/log(10)
         </Expression>
       </ModelValue>
+      <ModelValue key="ModelValue_1" name="pHinhibition" simulationType="assignment">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#ModelValue_1">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-01-25T15:48:28Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <Expression>
+          0.01*(10^(&lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=Value>-6.7))^3
+        </Expression>
+      </ModelValue>
+      <ModelValue key="ModelValue_2" name="kpH" simulationType="fixed">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#ModelValue_2">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-01-27T18:21:35Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+      </ModelValue>
+      <ModelValue key="ModelValue_3" name="alkpH" simulationType="fixed">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#ModelValue_3">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-01-26T11:02:39Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+      </ModelValue>
+      <ModelValue key="ModelValue_4" name="acidpH" simulationType="fixed">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#ModelValue_4">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-01-26T12:59:17Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+      </ModelValue>
+      <ModelValue key="ModelValue_5" name="cholInhibition" simulationType="assignment">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#ModelValue_5">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-02-14T15:50:30Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <Expression>
+          0.000001/(&lt;CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[chol],Reference=Concentration>+0.00000001)
+        </Expression>
+      </ModelValue>
     </ListOfModelValues>
     <ListOfReactions>
-      <Reaction key="Reaction_0" name="OVAhydr" reversible="false" fast="false">
+      <Reaction key="Reaction_0" name="ProtonPump" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_0">
-    <dcterms:created>
-      <rdf:Description>
-        <dcterms:W3CDTF>2017-01-18T16:29:55Z</dcterms:W3CDTF>
-      </rdf:Description>
-    </dcterms:created>
-  </rdf:Description>
-</rdf:RDF>
-        </MiriamAnnotation>
-        <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_0" stoichiometry="1"/>
-          <Substrate metabolite="Metabolite_1" stoichiometry="1"/>
-        </ListOfSubstrates>
-        <ListOfProducts>
-          <Product metabolite="Metabolite_2" stoichiometry="1"/>
-          <Product metabolite="Metabolite_1" stoichiometry="1"/>
-        </ListOfProducts>
-        <ListOfConstants>
-          <Constant key="Parameter_4953" name="k1" value="0.1"/>
-        </ListOfConstants>
-        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
-          <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="Parameter_4953"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_79">
-              <SourceParameter reference="Metabolite_0"/>
-              <SourceParameter reference="Metabolite_1"/>
-            </CallParameter>
-          </ListOfCallParameters>
-        </KineticLaw>
-      </Reaction>
-      <Reaction key="Reaction_1" name="MCHI-loading" reversible="false" fast="false">
-        <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_1">
-    <dcterms:created>
-      <rdf:Description>
-        <dcterms:W3CDTF>2017-01-18T16:30:48Z</dcterms:W3CDTF>
-      </rdf:Description>
-    </dcterms:created>
-  </rdf:Description>
-</rdf:RDF>
-        </MiriamAnnotation>
-        <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_5" stoichiometry="1"/>
-          <Substrate metabolite="Metabolite_4" stoichiometry="1"/>
-          <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
-        </ListOfSubstrates>
-        <ListOfProducts>
-          <Product metabolite="Metabolite_6" stoichiometry="1"/>
-          <Product metabolite="Metabolite_3" stoichiometry="1"/>
-        </ListOfProducts>
-        <ListOfConstants>
-          <Constant key="Parameter_4952" name="k1" value="1"/>
-        </ListOfConstants>
-        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
-          <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="Parameter_4952"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_79">
-              <SourceParameter reference="Metabolite_5"/>
-              <SourceParameter reference="Metabolite_4"/>
-              <SourceParameter reference="Metabolite_3"/>
-            </CallParameter>
-          </ListOfCallParameters>
-        </KineticLaw>
-      </Reaction>
-      <Reaction key="Reaction_2" name="ProtonPump" reversible="false" fast="false">
-        <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_2">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2017-11-28T15:02:35Z</dcterms:W3CDTF>
@@ -272,33 +329,32 @@ pmol/nl
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_8" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_4" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
-          <Product metabolite="Metabolite_7" stoichiometry="1"/>
-          <Product metabolite="Metabolite_8" stoichiometry="1"/>
+          <Product metabolite="Metabolite_3" stoichiometry="1"/>
+          <Product metabolite="Metabolite_4" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4951" name="k1" value="0.0008"/>
+          <Constant key="Parameter_4953" name="k1" value="0.0008"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="Parameter_4951"/>
+              <SourceParameter reference="Parameter_4953"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
-              <SourceParameter reference="Metabolite_8"/>
+              <SourceParameter reference="Metabolite_4"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_3" name="ProtonLeak" reversible="true" fast="false">
+      <Reaction key="Reaction_1" name="ProtonLeak" reversible="true" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_3">
+  <rdf:Description rdf:about="#Reaction_1">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2017-11-27T17:28:04Z</dcterms:W3CDTF>
@@ -308,104 +364,379 @@ pmol/nl
 </rdf:RDF>
         </MiriamAnnotation>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_9" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
-          <Product metabolite="Metabolite_7" stoichiometry="1"/>
+          <Product metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4950" name="k1" value="0.02"/>
-          <Constant key="Parameter_4949" name="k2" value="0.02"/>
+          <Constant key="Parameter_4952" name="k1" value="0.04"/>
+          <Constant key="Parameter_4951" name="k2" value="0.04"/>
         </ListOfConstants>
         <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_62">
-              <SourceParameter reference="Parameter_4950"/>
+              <SourceParameter reference="Parameter_4952"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_39">
-              <SourceParameter reference="Metabolite_9"/>
+              <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_67">
-              <SourceParameter reference="Parameter_4949"/>
+              <SourceParameter reference="Parameter_4951"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_71">
-              <SourceParameter reference="Metabolite_7"/>
+              <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_4" name="MHCIopening" reversible="false" fast="false">
+      <Reaction key="Reaction_2" name="OVAhydrolysis" reversible="false" fast="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_4">
+  <rdf:Description rdf:about="#Reaction_2">
     <dcterms:created>
       <rdf:Description>
-        <dcterms:W3CDTF>2017-11-27T17:06:02Z</dcterms:W3CDTF>
+        <dcterms:W3CDTF>2018-01-15T12:31:50Z</dcterms:W3CDTF>
       </rdf:Description>
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
         </MiriamAnnotation>
         <ListOfSubstrates>
-          <Substrate metabolite="Metabolite_10" stoichiometry="1"/>
-        </ListOfSubstrates>
-        <ListOfProducts>
-          <Product metabolite="Metabolite_5" stoichiometry="1"/>
-        </ListOfProducts>
-        <ListOfModifiers>
-          <Modifier metabolite="Metabolite_7" stoichiometry="1"/>
-        </ListOfModifiers>
-        <ListOfConstants>
-          <Constant key="Parameter_4948" name="k1" value="0.01"/>
-        </ListOfConstants>
-        <KineticLaw function="Function_40" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
-          <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_264">
-              <SourceParameter reference="Parameter_4948"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_254">
-              <SourceParameter reference="Metabolite_10"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_258">
-              <SourceParameter reference="Metabolite_7"/>
-            </CallParameter>
-          </ListOfCallParameters>
-        </KineticLaw>
-      </Reaction>
-      <Reaction key="Reaction_5" name="MHCI-peptOpening" reversible="false" fast="false">
-        <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Reaction_5">
-    <dcterms:created>
-      <rdf:Description>
-        <dcterms:W3CDTF>2017-11-27T17:06:02Z</dcterms:W3CDTF>
-      </rdf:Description>
-    </dcterms:created>
-  </rdf:Description>
-</rdf:RDF>
-        </MiriamAnnotation>
-        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_0" stoichiometry="1"/>
           <Substrate metabolite="Metabolite_6" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
-          <Product metabolite="Metabolite_5" stoichiometry="1"/>
+          <Product metabolite="Metabolite_6" stoichiometry="1"/>
         </ListOfProducts>
-        <ListOfModifiers>
-          <Modifier metabolite="Metabolite_7" stoichiometry="1"/>
-        </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4947" name="k1" value="0.01"/>
+          <Constant key="Parameter_4950" name="k" value="0"/>
+          <Constant key="Parameter_4949" name="pH" value="4.58503"/>
+          <Constant key="Parameter_4948" name="pHlimit" value="6"/>
+          <Constant key="Parameter_4947" name="enhancer" value="-1.5"/>
         </ListOfConstants>
         <KineticLaw function="Function_40" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_264">
-              <SourceParameter reference="Parameter_4947"/>
+              <SourceParameter reference="Metabolite_0"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_254">
               <SourceParameter reference="Metabolite_6"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_258">
+              <SourceParameter reference="Parameter_4950"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_266">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_268">
+              <SourceParameter reference="Parameter_4948"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_270">
+              <SourceParameter reference="ModelValue_4"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_3" name="NOXpH" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_3">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-01-18T11:42:29Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_7" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_7" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfConstants>
+          <Constant key="Parameter_4946" name="k1" value="5"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="Parameter_4946"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_79">
+              <SourceParameter reference="Metabolite_3"/>
               <SourceParameter reference="Metabolite_7"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_4" name="p2hydrolysis" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_4">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-01-19T13:23:55Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_2" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_6" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_6" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfConstants>
+          <Constant key="Parameter_4945" name="k" value="0.0002"/>
+          <Constant key="Parameter_4944" name="pH" value="4.58503"/>
+          <Constant key="Parameter_4943" name="pHlimit" value="6"/>
+          <Constant key="Parameter_4942" name="enhancer" value="-1.5"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_40" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_264">
+              <SourceParameter reference="Metabolite_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_254">
+              <SourceParameter reference="Metabolite_6"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_258">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_266">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_268">
+              <SourceParameter reference="Parameter_4943"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_270">
+              <SourceParameter reference="ModelValue_4"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_5" name="NOXhydrolysis" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_5">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-01-19T13:24:49Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_7" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_6" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_6" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfConstants>
+          <Constant key="Parameter_4941" name="k" value="0.0002"/>
+          <Constant key="Parameter_4940" name="pH" value="4.58503"/>
+          <Constant key="Parameter_4939" name="pHlimit" value="6"/>
+          <Constant key="Parameter_4938" name="enhancer" value="-1.5"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_40" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_264">
+              <SourceParameter reference="Metabolite_7"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_254">
+              <SourceParameter reference="Metabolite_6"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_258">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_266">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_268">
+              <SourceParameter reference="Parameter_4939"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_270">
+              <SourceParameter reference="ModelValue_4"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_6" name="p1release" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_6">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-01-31T11:33:41Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_1" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_8" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfConstants>
+          <Constant key="Parameter_4937" name="k" value="0.0002"/>
+          <Constant key="Parameter_4936" name="pH" value="4.58503"/>
+          <Constant key="Parameter_4935" name="pHlimit" value="6"/>
+          <Constant key="Parameter_4934" name="enhancer" value="-1.5"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_271">
+              <SourceParameter reference="Metabolite_1"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_267">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_246">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_272">
+              <SourceParameter reference="Parameter_4935"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_274">
+              <SourceParameter reference="ModelValue_4"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_7" name="p1binding" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_7">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-01-31T11:33:41Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_8" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_1" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfConstants>
+          <Constant key="Parameter_4933" name="k" value="1"/>
+          <Constant key="Parameter_4932" name="pH" value="4.58503"/>
+          <Constant key="Parameter_4931" name="pHlimit" value="6"/>
+          <Constant key="Parameter_4930" name="enhancer" value="1.5"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_271">
+              <SourceParameter reference="Metabolite_8"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_267">
+              <SourceParameter reference="Parameter_4933"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_246">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_272">
+              <SourceParameter reference="Parameter_4931"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_274">
+              <SourceParameter reference="Parameter_4930"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_8" name="GMhydrolysis" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_8">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-02-14T15:44:51Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_9" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_8" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_8" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfConstants>
+          <Constant key="Parameter_4929" name="k" value="1e-006"/>
+          <Constant key="Parameter_4928" name="pH" value="4.58503"/>
+          <Constant key="Parameter_4927" name="pHlimit" value="5"/>
+          <Constant key="Parameter_4926" name="enhancer" value="-2"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_40" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_264">
+              <SourceParameter reference="Metabolite_9"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_254">
+              <SourceParameter reference="Metabolite_8"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_258">
+              <SourceParameter reference="ModelValue_5"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_266">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_268">
+              <SourceParameter reference="Parameter_4927"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_270">
+              <SourceParameter reference="Parameter_4926"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_9" name="cholDepletion" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_9">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-02-16T10:27:50Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_10" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_6" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_6" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfConstants>
+          <Constant key="Parameter_4925" name="k1" value="0"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="Parameter_4925"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_79">
+              <SourceParameter reference="Metabolite_10"/>
+              <SourceParameter reference="Metabolite_6"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
@@ -422,60 +753,156 @@ pmol/nl
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[ova]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[p1]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[preP]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[p2]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[pept]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[mHCI]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[mHCI-pept]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[proton]" value="9454765148632766" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[vATPase]" value="6.02214179e+017" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[proton]" value="15657570882192462" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[vATPase]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[protonCy]" value="60221417900000.047" type="Species" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[cMHCI]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[RabD]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[NOX]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[p1-s]" value="6.02214179e+017" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[GM]" value="6.02214179e+017" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[chol]" value="6.02214179e+017" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[pH]" value="4.8041002309951608" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[pH]" value="4.5850265902257403" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[pHinhibition]" value="4.5193894834280823e-009" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[kpH]" value="0.00020000000000000001" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[alkpH]" value="3" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[acidpH]" value="-1.5" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[cholInhibition]" value="9.9999999000000034e-007" type="ModelValue" simulationType="assignment"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
-          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[OVAhydr]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[OVAhydr],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-          </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MCHI-loading]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MCHI-loading],ParameterGroup=Parameters,Parameter=k1" value="1" type="ReactionParameter" simulationType="fixed"/>
-          </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonPump]" type="Reaction">
             <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonPump],ParameterGroup=Parameters,Parameter=k1" value="0.00080000000000000004" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k1" value="0.02" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k2" value="0.02" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k1" value="0.040000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k2" value="0.040000000000000001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[OVAhydrolysis]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[OVAhydrolysis],ParameterGroup=Parameters,Parameter=k" value="0" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[OVAhydrolysis],ParameterGroup=Parameters,Parameter=pH" value="4.5850265902257403" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[OVAhydrolysis],ParameterGroup=Parameters,Parameter=pHlimit" value="6" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[OVAhydrolysis],ParameterGroup=Parameters,Parameter=enhancer" value="-1.5" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[acidpH],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[NOXpH]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[NOXpH],ParameterGroup=Parameters,Parameter=k1" value="5" type="ReactionParameter" simulationType="fixed"/>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[p2hydrolysis]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[p2hydrolysis],ParameterGroup=Parameters,Parameter=k" value="0.00020000000000000001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[kpH],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[p2hydrolysis],ParameterGroup=Parameters,Parameter=pH" value="4.5850265902257403" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[p2hydrolysis],ParameterGroup=Parameters,Parameter=pHlimit" value="6" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[p2hydrolysis],ParameterGroup=Parameters,Parameter=enhancer" value="-1.5" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[acidpH],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[NOXhydrolysis]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[NOXhydrolysis],ParameterGroup=Parameters,Parameter=k" value="0.00020000000000000001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[kpH],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[NOXhydrolysis],ParameterGroup=Parameters,Parameter=pH" value="4.5850265902257403" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[NOXhydrolysis],ParameterGroup=Parameters,Parameter=pHlimit" value="6" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[NOXhydrolysis],ParameterGroup=Parameters,Parameter=enhancer" value="-1.5" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[acidpH],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[p1release]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[p1release],ParameterGroup=Parameters,Parameter=k" value="0.00020000000000000001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[kpH],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[p1release],ParameterGroup=Parameters,Parameter=pH" value="4.5850265902257403" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[p1release],ParameterGroup=Parameters,Parameter=pHlimit" value="6" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[p1release],ParameterGroup=Parameters,Parameter=enhancer" value="-1.5" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[acidpH],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[p1binding]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[p1binding],ParameterGroup=Parameters,Parameter=k" value="1" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[p1binding],ParameterGroup=Parameters,Parameter=pH" value="4.5850265902257403" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[p1binding],ParameterGroup=Parameters,Parameter=pHlimit" value="6" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[p1binding],ParameterGroup=Parameters,Parameter=enhancer" value="1.5" type="ReactionParameter" simulationType="fixed"/>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[GMhydrolysis]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[GMhydrolysis],ParameterGroup=Parameters,Parameter=k" value="9.9999999000000034e-007" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[cholInhibition],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[GMhydrolysis],ParameterGroup=Parameters,Parameter=pH" value="4.5850265902257403" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[GMhydrolysis],ParameterGroup=Parameters,Parameter=pHlimit" value="5" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[GMhydrolysis],ParameterGroup=Parameters,Parameter=enhancer" value="-2" type="ReactionParameter" simulationType="fixed"/>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[cholDepletion]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[cholDepletion],ParameterGroup=Parameters,Parameter=k1" value="0" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
     </ListOfModelParameterSets>
     <StateTemplate>
       <StateTemplateVariable objectReference="Model_1"/>
-      <StateTemplateVariable objectReference="Metabolite_5"/>
-      <StateTemplateVariable objectReference="Metabolite_7"/>
-      <StateTemplateVariable objectReference="Metabolite_0"/>
-      <StateTemplateVariable objectReference="Metabolite_6"/>
-      <StateTemplateVariable objectReference="Metabolite_4"/>
-      <StateTemplateVariable objectReference="Metabolite_10"/>
-      <StateTemplateVariable objectReference="Metabolite_2"/>
-      <StateTemplateVariable objectReference="ModelValue_0"/>
-      <StateTemplateVariable objectReference="Metabolite_9"/>
-      <StateTemplateVariable objectReference="Metabolite_1"/>
       <StateTemplateVariable objectReference="Metabolite_3"/>
+      <StateTemplateVariable objectReference="Metabolite_1"/>
+      <StateTemplateVariable objectReference="Metabolite_2"/>
+      <StateTemplateVariable objectReference="Metabolite_0"/>
+      <StateTemplateVariable objectReference="Metabolite_7"/>
+      <StateTemplateVariable objectReference="Metabolite_9"/>
+      <StateTemplateVariable objectReference="Metabolite_10"/>
       <StateTemplateVariable objectReference="Metabolite_8"/>
+      <StateTemplateVariable objectReference="ModelValue_0"/>
+      <StateTemplateVariable objectReference="ModelValue_1"/>
+      <StateTemplateVariable objectReference="ModelValue_5"/>
+      <StateTemplateVariable objectReference="Metabolite_5"/>
+      <StateTemplateVariable objectReference="Metabolite_4"/>
+      <StateTemplateVariable objectReference="Metabolite_6"/>
       <StateTemplateVariable objectReference="Compartment_0"/>
+      <StateTemplateVariable objectReference="ModelValue_2"/>
+      <StateTemplateVariable objectReference="ModelValue_3"/>
+      <StateTemplateVariable objectReference="ModelValue_4"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 0 9454765148632766 0 0 0 0 0 4.8041002309951608 60221417900000.047 0 0 6.02214179e+017 1000000 
+      0 15657570882192462 0 0 0 0 6.02214179e+017 6.02214179e+017 6.02214179e+017 4.5850265902257403 4.5193894834280823e-009 9.9999999000000034e-007 60221417900000.047 0 0 1000000 0.00020000000000000001 3 -1.5 
     </InitialState>
   </Model>
   <ListOfTasks>
@@ -498,6 +925,7 @@ pmol/nl
       </Method>
     </Task>
     <Task key="Task_15" name="Time-Course" type="timeCourse" scheduled="false" updateModel="false">
+      <Report reference="Report_9" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="AutomaticStepSize" type="bool" value="0"/>
         <Parameter name="StepNumber" type="unsignedInteger" value="10000"/>
@@ -831,97 +1259,7 @@ pmol/nl
     </Report>
   </ListOfReports>
   <ListOfPlots>
-    <PlotSpecification name="Concentrations, Volumes, and Global Quantity Values" type="Plot2D" active="0">
-      <Parameter name="log X" type="bool" value="0"/>
-      <Parameter name="log Y" type="bool" value="0"/>
-      <ListOfPlotItems>
-        <PlotItem name="[ova]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[ova],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[p1]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[p1],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[preP]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[preP],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[p2]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[p2],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[pept]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[pept],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[mHCI]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[mHCI],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-        <PlotItem name="[mHCI-pept]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[mHCI-pept],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
-      </ListOfPlotItems>
-    </PlotSpecification>
-    <PlotSpecification name="Concentrations, Volumes, and Global Quantity Values 1" type="Plot2D" active="1">
+    <PlotSpecification name="Concentrations, Volumes, and Global Quantity Values" type="Plot2D" active="1">
       <Parameter name="log X" type="bool" value="0"/>
       <Parameter name="log Y" type="bool" value="0"/>
       <ListOfPlotItems>
@@ -1033,18 +1371,6 @@ pmol/nl
             <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
-        <PlotItem name="[protonCy]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
-          <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[protonCy],Reference=Concentration"/>
-          </ListOfChannels>
-        </PlotItem>
         <PlotItem name="[cMHCI]" type="Curve2D">
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
@@ -1055,6 +1381,30 @@ pmol/nl
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
             <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[cMHCI],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="[RabD]" type="Curve2D">
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[RabD],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="[NOX]" type="Curve2D">
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[NOX],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="Values[pH]" type="Curve2D">
@@ -1075,12 +1425,14 @@ pmol/nl
   <GUI>
     <ListOfSliders>
       <Slider key="Slider_0" associatedEntityKey="Task_16" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[proton],Reference=InitialConcentration" objectType="float" objectValue="0.0157" minValue="5e-009" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[proton],Reference=InitialConcentration" objectType="float" objectValue="0.0157" minValue="5e-009" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.02" minValue="5e-005" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k2,Reference=Value" objectType="float" objectValue="0.02" minValue="5e-005" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_4" associatedEntityKey="Task_16" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=InitialConcentration" objectType="float" objectValue="0.524" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_5" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonPump],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.000899" minValue="0.0005" maxValue="0.01" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[proton],Reference=InitialConcentration" objectType="float" objectValue="0.026" minValue="5e-009" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.04" minValue="5e-005" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k2,Reference=Value" objectType="float" objectValue="0.04" minValue="5e-005" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_4" associatedEntityKey="Task_16" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_5" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonPump],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.0008" minValue="0.0005" maxValue="0.01" tickNumber="1000" tickFactor="100" scaling="linear"/>
       <Slider key="Slider_6" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_7" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[cMHCI],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_8" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[RabD],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="2" tickNumber="1000" tickFactor="100" scaling="linear"/>
     </ListOfSliders>
   </GUI>
   <ListOfUnitDefinitions>

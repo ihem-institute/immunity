@@ -115,7 +115,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 
 		// Microtubules
 
-		for (int i = 0; i < (int) 2/Cell.orgScale; i++) {
+		for (int i = 0; i < (int) 3/Cell.orgScale; i++) {
 			context.add(new MT(space, grid));
 		}
 
@@ -130,10 +130,23 @@ public class CellBuilder implements ContextBuilder<Object> {
 			HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 			double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
 			double maxRadius = initOrgProp.get("radius");
-			double minRadius = 40d;
-			while (totalArea > 4d*Math.PI*minRadius){
-				double a = RandomHelper.nextDoubleFromTo(40d,maxRadius);
-				double c = a + a  * Math.random();
+			double minRadius = Cell.rcyl*1.1;
+			while (totalArea > 32d*Math.PI*minRadius*minRadius){
+				double a = 0d;
+				double c = 0d;
+//				more round vesicles for RabA and RabD.  Tubules for RabB, RabC and RabE
+				if (kind.equals("kind1") || kind.equals("kind4")){
+					a = RandomHelper.nextDoubleFromTo(minRadius,maxRadius);				
+					c = a + a  * Math.random();
+				}
+				else if (kind.equals("kind6")){
+					a = maxRadius;				
+					c = a;
+				}
+				else{
+					a = minRadius;				
+					c = a + a * RandomHelper.nextDoubleFromTo(2,10);
+				}
 				double f = 1.6075;
 				double af= Math.pow(a, f);
 				double cf= Math.pow(c, f);
@@ -150,14 +163,24 @@ public class CellBuilder implements ContextBuilder<Object> {
 					}
 				HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
 					for (String mem : membraneContent.keySet()){
-						double mm = membraneContent.get(mem);
+						if (mem.equals("membraneMarker")){
+							membraneContent.put(mem, 1d);
+							InitialOrganelles.getInstance().getInitSolubleContent().get(kind).remove("membraneMarker",1d);
+						}
+						else {double mm = membraneContent.get(mem);
 						membraneContent.put(mem, mm*area);
+						}
 					}
 				
 				HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
 					for (String sol : solubleContent.keySet()){
-						double ss = solubleContent.get(sol);
+						if (sol.equals("solubleMarker")){
+							solubleContent.put(sol, 1d);
+							InitialOrganelles.getInstance().getInitSolubleContent().get(kind).remove("solubleMarker",1d);
+						}
+						else {double ss = solubleContent.get(sol);
 						solubleContent.put(sol, ss*volume);
+						}
 					}
 				Endosome end = new Endosome(space, grid, rabContent, membraneContent,
 						solubleContent, initOrgProp);
@@ -189,7 +212,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 		// Cell
 		//context.add(Cell.getInstance());
 		//context.add(CellProperties.getInstance());
-		context.add(new Results(space, grid));// 
+		context.add(new Results(space, grid, null, null));// 
 		context.add(new UpdateParameters());
 
 		// Locate the object in the space and grid
@@ -410,6 +433,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 				case "initMembraneContent": {
 					HashMap<String, Double> value = new HashMap<String, Double>();
 					for (int i = 2; i < b.length; i = i + 2) {
+	//					System.out.println("VALOR MALO" + b[i] + "" + b[i+1]);
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
 					inOr.getInitMembraneContent().put(b[0], value);

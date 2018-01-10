@@ -18,14 +18,14 @@ public class Cell {
 	
 
 //	Cell characteristics
-	public static double rcyl = CellProperties.getInstance().getCellK().get("rcyl");//10.0; // radius tubule
+	public static double rcyl = CellProperties.getInstance().getCellK().get("rcyl");//20.0; // radius tubule
 //	public radius new endosome formed by uptake = radius Kind1, generally 20.0; // 
 	public static double mincyl = 6 * Math.PI * rcyl * rcyl; // surface minimum cylinder
 	// two radius large (almost a sphere)
-	public static double rIV = 25; // Internal vesicle radius
+	public static double rIV = rcyl; //Internal vesicle radius similar to tubule radius 
 //	public static double vEndo = 4d / 3d * Math.PI * Math.pow(rEndo, 3); //volume new endosome
 //	public static double sEndo = 4d * Math.PI * Math.pow(rEndo, 2); // surface new endosome
-	// mincyl surface = 1884.95 volume = 6283.18
+	// mincyl surface (20 nm rcy= 6*PI*rcyl^2) = 7539.82 volume (2*PI*rcyl^3)= 50265.48
 	public static double orgScale = CellProperties.getInstance().getCellK().get("orgScale");
 	public static double timeScale = CellProperties.getInstance().getCellK().get("timeScale");
 	public static double volume = 1500*1500*400/(Math.pow(orgScale,3));

@@ -54,6 +54,9 @@ public class Endosome {
 
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
+	public double xcoor = 0d;
+	public double ycoor = 0d;
+	
 	// Endosomal
 	CellProperties cellProperties = CellProperties.getInstance();
 	HashMap<String, Double> cellK = cellProperties.getCellK();
@@ -67,6 +70,7 @@ public class Endosome {
 	double speed;// = 5d / size; // initial value, but should change
 	double heading = 0;// = Math.random() * 360d; // initial value, but should
 						// change
+	
 	double cellLimit = 3 * Cell.orgScale;
 	double mvb;// = 0; // number of internal vesices
 	double cellMembrane;// = 0;
@@ -85,7 +89,6 @@ public class Endosome {
 	HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 	HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 	HashMap<String, Double> initOrgProp = new HashMap<String, Double>();
-	
 	HashMap<Integer, HashMap<String, Double>> antigenTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 	HashMap<Integer, HashMap<String, Double>> LANCL2TimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 	HashMap<Integer, HashMap<String, Double>> rabTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
@@ -98,12 +101,12 @@ public class Endosome {
 //	
 	double p_EndosomeRecycleStep = 1d/(1d/0.03*Cell.timeScale);
 	double p_EndosomeUptakeStep = 1d/(60d/0.03*Cell.timeScale);
-	double p_EndosomeNewFromERStep = 1d/(60d/0.03*Cell.timeScale);
-	double p_EndosomeInternalVesicleStep = 1d/(1d/0.03*Cell.timeScale);
-	double p_EndosomeFusionStep =1d/(180d/0.03*Cell.timeScale);
-	double p_EndosomeSplitStep = 1d/(0.1/0.03*Cell.timeScale);
+//	double p_EndosomeNewFromERStep = 1d/(60d/0.03*Cell.timeScale);
+	double p_EndosomeInternalVesicleStep = 1d/(5d/0.03*Cell.timeScale);// change from 2 to .1
+	double p_EndosomeFusionStep =1d/(60d/0.03*Cell.timeScale);
+	double p_EndosomeSplitStep = 1d/(0.4/0.03*Cell.timeScale);
 	double p_EndosomeTetherStep = 1d/(1d/0.03*Cell.timeScale);
-	double p_EndosomeLysosomalDigestionStep = 1d/(60d/0.03*Cell.timeScale);
+	double p_EndosomeLysosomalDigestionStep = 1d/(10d/0.03*Cell.timeScale);
 	
 
 
@@ -134,10 +137,31 @@ public class Endosome {
 
 	}
 
+	public final double getXcoor() {
+		return xcoor;
+	}
+
+	public final void setXcoor(double xcoor) {
+		this.xcoor = xcoor;
+	}
+	
+	public final double getYcoor() {
+		return ycoor;
+	}
+	public void setYcoor(double ycoor) {
+		this.ycoor = ycoor;	
+	}
 	public ContinuousSpace<Object> getSpace() {
 		return space;
 	}
 
+	@ScheduledMethod(start = 1, interval = 1000)
+	public void printRabTropism() {
+		System.out.println(" RAB TROPISMS " + cellProperties.getInstance().getRabTropism());
+	}
+
+	
+	
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
 		String message = "MENSAJE";//(new JSONDoc(rabTimeSeries)).toString();
@@ -147,10 +171,10 @@ public class Endosome {
 		endosomeShape(this);
 //		EndosomeMove.changeDirection(this);
 		EndosomeMove.moveTowards(this);
-		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
+//		if (this.solubleContent.containsKey("mvb")) this.membraneContent.put("chol", 0d);
 		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);
 		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
-		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
+//		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
 		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
 		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
 		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
@@ -352,7 +376,7 @@ public class Endosome {
 	 * 
 	 * enum SolCont { OVA, DEXTRAN } public SolCont solCont;
 	 */
-	public double getSolContRab() { // (String solCont, String rab){
+//	public double getSolContRab() { // (String solCont, String rab){
 //		Parameters params = RunEnvironment.getInstance().getParameters();
 //		String rab = (String) params.getValue("Rab");
 //		String solCont = (String) params.getValue("soluble");
@@ -372,10 +396,10 @@ public class Endosome {
 //				return solContRab;
 //			}
 //		}
-		return 0;
-	}
+//		return 0;
+//	}
 
-	public double getSolContRab2() { // (String solCont, String rab){
+//	public double getSolContRab2() { // (String solCont, String rab){
 //		Parameters params = RunEnvironment.getInstance().getParameters();
 //		String rab = (String) params.getValue("Rab2");
 //		String solCont = (String) params.getValue("soluble");
@@ -395,8 +419,8 @@ public class Endosome {
 //				return solContRab;
 //			}
 //		}
-		return 0;
-	}
+//		return 0;
+//	}
 
 	public double getMemContRab(String memCont, String rab) {
 		double memContRab = membraneContent.get(memCont) * rabContent.get(rab)
@@ -427,5 +451,8 @@ public class Endosome {
 	public HashMap<Integer, HashMap<String, Double>> getRabTimeSeries() {
 		return rabTimeSeries;
 	}
+
+
+	
 
 }

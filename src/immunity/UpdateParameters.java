@@ -166,8 +166,8 @@ public class UpdateParameters {
 			case "rabTropism": {
 				Set<String> rabT = new HashSet<String>();
 				for (int i = 2; i < b.length; i++) {
-					System.out.println(b[i]);
-					if (b[i].contains("Rab")) {
+					//System.out.println(b[i]);
+					if (b[i].length()>0) {
 						rabT.add(b[i]);
 					}
 				}

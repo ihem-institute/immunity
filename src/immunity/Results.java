@@ -42,23 +42,28 @@ public class Results {
 	public Set<String> solubleMet = cellProperties.getSolubleMet();
 	public Set<String> membraneMet = cellProperties.getMembraneMet();
 	public Set<String> rabSet = cellProperties.getRabSet();
-	public List<String> allMet = new ArrayList<String>();
-	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
-	public HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
-	public HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
-	public HashMap<String, List<String>> rabTropism = new HashMap<String, List<String>>();
-	public HashMap<String, Double> mtTropism = new HashMap<String, Double>();
-	public HashMap<String, Double> contentDist = new HashMap<String, Double>();
+//	public List<String> allMet = new ArrayList<String>();
+//	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
+//	public HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
+//	public HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
+//	public HashMap<String, List<String>> rabTropism = new HashMap<String, List<String>>();
+//	public HashMap<String, Double> mtTropism = new HashMap<String, Double>();
+	static HashMap<String, Double> contentDist = new HashMap<String, Double>();
+
+	static HashMap<String, Double> totalRabs = new HashMap<String, Double>();	
+	static HashMap<String, Double> totalVolumeRabs = new HashMap<String, Double>();
+	static HashMap<String, Double> initialTotalRabs = new HashMap<String, Double>();
 	public HashMap<String, Double> singleEndosomeContent = new HashMap<String, Double>();
 	
-//	static Results	instance = new Results(space, grid);
+	
+	static Results	instance = new Results(space, grid, totalRabs, initialTotalRabs);
 //	
-//	public static Results getInstance() {
-//		return instance;
-//	}
+	public static Results getInstance() {
+		return instance;
+	}
 	
 	//Constructor.  It is called once from CellBuilder
-	public Results(ContinuousSpace<Object> sp, Grid<Object> gr) {
+	public Results(ContinuousSpace<Object> sp, Grid<Object> gr, HashMap<String, Double> totalRabs, HashMap<String, Double> initialTotalRabs) {
 		this.space = sp;
 		this.grid = gr;
 		// Generate a file with the header of the variables that are going to be followed
@@ -84,7 +89,7 @@ public class Results {
 		}
 	}
 
-	@ScheduledMethod(start = 1, interval = 10000)
+	@ScheduledMethod(start = 1, interval = 5000)
 	public void stepTable() {
 		log();
 	}
@@ -113,11 +118,11 @@ public class Results {
 
 	@ScheduledMethod(start = 1, interval = 100)
 	public void step() {
-		contentDistribution(); // Gets an hash map with all the 
+		contentDistribution(totalRabs, initialTotalRabs); // Gets an hash map with all the 
 		//possible combinations of contents and Rabs
 		// a new line is added each 100 ticks
 		TreeMap<String, Double> orderContDist = new TreeMap<String, Double>(contentDist);
-		System.out.println(orderContDist);
+//		System.out.println(orderContDist);
 		try {
 			writeToCsv(orderContDist);
 		} catch (IOException e) {
@@ -126,7 +131,7 @@ public class Results {
 		}
 	}
 	
-		
+
 	// to load the file
 	private void writeToCsv(TreeMap<String, Double> orderContDist) throws IOException {
 		String line = "";
@@ -167,13 +172,13 @@ public class Results {
 		
 	}
 	// sum the content in all endosomes weighted by the rab content of each endosome
-	public void contentDistribution() {
+	public void contentDistribution(HashMap<String, Double> totalRabs, HashMap<String, Double> initialTotalRabs) {
 		content();// initialize all contents to zero
 		HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
 		// include in the contentDistribution all the recycled components, soluble and membrane
 		HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
 		for (String sol : solubleRecycle.keySet()) {
-			System.out.println(" soluble "+ sol);
+//			System.out.println(" soluble "+ sol);
 			double value = solubleRecycle.get(sol);
 			contentDist.put(sol, value);
 			//System.out.println("SOLUBLE"+sol + "Rab" +rab);
@@ -194,13 +199,18 @@ public class Results {
 //		for the set of all endosomes, calculate the content distribution among the different
 //		rab-containing compartments.  This is calculated as the sum of all the soluble and
 //		membrane components multiplied by the area ratio corresponding to the endosome
-//		this is content*RabX/(area of the endosome).
-		HashMap<String, Double> totalRabs = new HashMap<String, Double>();
+//		this is: content*RabX/(area of the endosome).
+//		In addition, the total amount of each Rab present in all organelles
+//		in the system is calculated.  And the total volume that correspond to the Rab domain adding
+//		all volumes proportional to the rab area of each organelle
+
 		for (String rab: rabSet){
 			totalRabs.put(rab,  0.0);
+			totalVolumeRabs.put(rab, 0.0);
 		}
 		for (Endosome endosome : allEndosomes) {
 			Double area = endosome.area;
+			Double volume = endosome.volume;
 			HashMap<String, Double> rabContent = endosome.getRabContent();
 			HashMap<String, Double> membraneContent = endosome
 					.getMembraneContent();
@@ -218,7 +228,7 @@ public class Results {
 					//System.out.println("SOLUBLE"+sol + "Rab" +rab);
 				}
 			for (String mem : membraneContent.keySet()) {
-				//System.out.println(" membrane "+mem + " Rab " +rab);
+//				System.out.println(" membrane "+mem + " Rab " +rab);
 					double value = contentDist.get(mem + rab)
 							+ membraneContent.get(mem) * rabContent.get(rab)
 							/ area;
@@ -233,12 +243,19 @@ public class Results {
 			double sum = totalRabs.get(rab)+ rabContent.get(rab);
 			totalRabs.put(rab, sum);
 		}
+		for (String rab : rabContent.keySet()){
+			double sum = totalVolumeRabs.get(rab)+ volume*rabContent.get(rab)/area;
+			totalVolumeRabs.put(rab, sum);
+		}
+
+		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+		if (tick == 1) initialTotalRabs.putAll(totalRabs);
 		
 		if((endosome.getMembraneContent().containsKey("membraneMarker") && 
-				endosome.getMembraneContent().get("membraneMarker") > 0.5)
+				endosome.getMembraneContent().get("membraneMarker") > 0.9)
 				||
 			(endosome.getSolubleContent().containsKey("solubleMarker") && 
-				endosome.getSolubleContent().get("solubleMarker") > 0.5))
+				endosome.getSolubleContent().get("solubleMarker") > 0.9))
 		{
 			try {
 				printEndosome(endosome);
@@ -249,12 +266,9 @@ public class Results {
 		}
 		}
 //		sum in cytosol
-		for (String rab : rabSet){
-			double sum = totalRabs.get(rab)+ Cell.getInstance().getRabCell().get(rab);
-			totalRabs.put(rab, sum);
-		}
 		System.out.println(" TOTAL RABS      "+totalRabs);
-		System.out.println("TOTAL CYTO       "+ Cell.getInstance().getRabCell());
+
+
 	}
 	private void printEndosome(Endosome endosome) throws IOException {
 		singleEndosomeContent.put("area", endosome.getArea());
@@ -323,5 +337,19 @@ public class Results {
 	public HashMap<String, Double> getCellK() {
 		return cellK;
 	}
+	
+	public HashMap<String, Double> getTotalRabs() {
+		return totalRabs;
+	}
+	public HashMap<String, Double> getInitialTotalRabs() {
+		return initialTotalRabs;
+	}
 
+	public final HashMap<String, Double> getContentDist() {
+		return contentDist;
+	}
+
+	public final HashMap<String, Double> getTotalVolumeRabs() {
+		return totalVolumeRabs;
+	}
 }

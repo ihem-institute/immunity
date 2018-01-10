@@ -29,7 +29,7 @@ public class PlasmaMembrane {
 	public int green = 0;	
 	public int blue = 0;
 //	c2 is the initial content of pLANCL2 in the plasma membrane
-	public double c2 = CellProperties.getInstance().getInitPMmembraneRecycle().get("pLANCL2");
+//	public double c2 = CellProperties.getInstance().getInitPMmembraneRecycle().get("pLANCL2");
 	public int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); 
 // nm2 1500nm x 400nm. Space in repast at scale =1 and arbitrary height of the space projected
 //	in 2D
@@ -43,8 +43,12 @@ public class PlasmaMembrane {
 // contents.	tMembranes, membrane and soluble content recycling, cytosolic Rabs	
 
 		CellProperties cellProperties = CellProperties.getInstance();
-		
-		membraneRecycle.putAll(cellProperties.initPMmembraneRecycle);
+//		
+//		membraneRecycle.putAll(cellProperties.initPMmembraneRecycle);
+// PM now are in the csv file as proportions of the PM area and need to be multiplied by the area		
+		for (String met : cellProperties.initPMmembraneRecycle.keySet() ){
+		membraneRecycle.put(met, cellProperties.initPMmembraneRecycle.get(met) * area);
+		}
 		System.out.println("membraneRecycle "+ membraneRecycle);
 		for (String met : cellProperties.solubleMet ){
 		solubleRecycle.put(met,  0.0);
@@ -64,13 +68,14 @@ public class PlasmaMembrane {
 		}
 	
 	public void changeColor() {
-		double c1 = 0;
-		if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey("pLANCL2")){
-		c1 = PlasmaMembrane.getInstance().getMembraneRecycle().get("pLANCL2");
+		double c1 = 0d;
+		if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey("mHCI-pept")){
+		c1 = PlasmaMembrane.getInstance().getMembraneRecycle().get("mHCI-pept")/area;
+		this.pmcolor = (int) (c1*255);
 		}
-		this.pmcolor = (int) (c1/area*240);
-		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + pmcolor+" " + c1 +" " + c2);
-		}
+		else this.pmcolor = 0;
+		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + pmcolor+" " + pmcolor);
+	}
 	
 /*	I will consider only red for pLANCL2.  PROBLEM, what could be the area of the PM?
  * public double getRed() {

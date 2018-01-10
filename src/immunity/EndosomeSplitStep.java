@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
@@ -36,8 +37,10 @@ public class EndosomeSplitStep {
 		if (so < 2 * Cell.mincyl)
 			return; // if the surface is less than two minimus tubules, abort
 					// splitting
-		if (so * so * so / (vo * vo) <= 36.01 * Math.PI)
-			return; // organelle is an sphere
+		if (so * so * so / (vo * vo) <= 36.01 * Math.PI){ 
+//			System.out.println("sphere ");
+			return;
+		} // organelle is an sphere
 		// if s^3 / v^2 is equal to 36*PI then it is an sphere and cannot form a
 		// tubule
 		// if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) <= Cell.rcyl / 2)
@@ -53,8 +56,12 @@ public class EndosomeSplitStep {
 		double ssphere = (4 * Math.PI * rsphere * rsphere);// area of a sphere
 															// containing the
 															// volume
-		if ((so - ssphere) < Cell.mincyl)
-			return; // if not enough surface to contain the volume plus a
+		if ((so - ssphere) < Cell.mincyl){
+//			System.out.println("small tubule left " +so + "  " + ssphere + "  " + (so-ssphere));
+			return; 
+		}
+
+		// if not enough surface to contain the volume plus a
 		// minimum tubule, no split
 		
 		rabInTube = rabInTube(endosome); // select a rab for the tubule
@@ -196,6 +203,18 @@ public class EndosomeSplitStep {
 				newMembraneContent, newSolubleContent, newInitOrgProp);
 		Context<Object> context = ContextUtils.getContext(endosome);
 		context.add(b);
+//		if (b.solubleContent.containsKey("ova")&& b.solubleContent.get("ova")>1000d){
+//			System.out.println("OVA EN TUBULE  " + b.solubleContent.get("ova") + "  " + endosome.solubleContent.get("ova"));
+//		
+//		try {
+//		TimeUnit.SECONDS.sleep(5);
+//	} catch (InterruptedException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+//		}
+	
+		
 		b.area = scylinder;
 		b.volume = vcylinder;
 		Endosome.endosomeShape(b);
@@ -245,20 +264,27 @@ public class EndosomeSplitStep {
 		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 				CellProperties.getInstance().getRabTropism());
 		for (String content : copyMembrane.keySet()) {
-
+// if no especification, even distribution proportional to the area
 			if (!rabTropism.containsKey(content)){
 				splitPropSurface(endosome, content, so, sVesicle);	
 			}
+// if tropism to tubule, the content goes to tubule			
 			else if (rabTropism.get(content).contains("tub")){
 				splitToTubule(endosome, content, so, sVesicle);
 			}
+// if tropism to sphere, the content goes to the vesicle		
 			else if (rabTropism.get(content).contains("sph")){
 				splitToSphere(endosome, content, so, sVesicle);
 			}
 			else 
+// finally, if tropism it to a Rab membrane domain, the decision about where to go
+// requires to calculate the tropismo to the vesicle (SUM of the content tropism to all the
+//	membrane domains in the vesicle.  The tropism is indicated by a string (e.g. RabA10) where
+//	the last two digits indicate the affinity for the Rab domain in a scale of 00 to 10.			
 			{
 			double sphereTrop = 0;
 			for (String rabTrop : rabTropism.get(content)){
+				if (rabTrop.equals("mvb")) continue;
 					String rab = rabTrop.substring(0, 4);
 					if (endosome.rabContent.containsKey(rab)){
 						sphereTrop = sphereTrop + endosome.rabContent.get(rab)/endosome.area*
@@ -266,29 +292,36 @@ public class EndosomeSplitStep {
 //						System.out.println("Trop Number " + Integer.parseInt(rabTrop.substring(4, 6)));
 					}
 			}
+// the tropism to the tubule is directly the two digits of the Rab selected for the tubule 
 			double tubuleTrop = 0;
 			for (String rabTrop : rabTropism.get(content)){
+				if (rabTrop.equals("mvb")) continue;
 				String rab = rabTrop.substring(0, 4);
 				if (rab.equals(rabInTube)){
 					tubuleTrop = Integer.parseInt(rabTrop.substring(4, 6));
 				}
 			}
 //			System.out.println("sphere tubule " + sphereTrop +" "+ tubuleTrop+ " " +(tubuleTrop-sphereTrop));
+// the tropismo is to vesicle or to tubule according to the following rules
+// if not clear tropism to tubule or sphere, even distribution			
 			if (tubuleTrop < 2d && sphereTrop < 2d ) 
 				{	
 //				System.out.println("to even ");
 				splitPropSurface(endosome, content, so, sVesicle);	
 				}
+//	if the difference tubule-sphere is larger than 4 and sphere less than 2, to tubule		
 			else if (sphereTrop < 2d || (tubuleTrop-sphereTrop) > 4d)
 				{
 //				System.out.println("to tubule ");
 				splitToTubule(endosome, content, so, sVesicle);
 				}
+//	if the difference tubule-sphere is less than -4 and tubule less than 2, to vesicle			
 			else if (tubuleTrop < 2d || (tubuleTrop-sphereTrop) < -4d)
 				{
 //				System.out.println("to sphere ");
 				splitToSphere(endosome, content, so, sVesicle);
 				}
+//	if no clear differences, even distribution	
 			else { 
 //				System.out.println("to even even ");
 				splitPropSurface(endosome, content, so, sVesicle);}
@@ -340,9 +373,10 @@ public class EndosomeSplitStep {
 //				CellProperties.getInstance().getRabTropism());
 		if (content.equals("solubleMarker")
 				&& (endosome.solubleContent.get("solubleMarker") > 0.9)) {
-			if (Math.random() < vVesicle / vo)
-				endosome.solubleContent.put(content, 1.d);
-		} else {
+			if (Math.random() < vVesicle / vo) endosome.solubleContent.put(content, 1d);
+			} 
+		else 
+		{
 			endosome.solubleContent.put(content, copySoluble.get(content)
 					* (vVesicle) / vo);
 		}
@@ -353,9 +387,11 @@ public class EndosomeSplitStep {
 				endosome.solubleContent);
 //		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 //				CellProperties.getInstance().getRabTropism());
-		if (copySoluble.get(content) > vVesicle) {
-			endosome.solubleContent.put(content, vVesicle);
-		} else
+		
+		
+//		if (copySoluble.get(content) > vVesicle) {
+//			endosome.solubleContent.put(content, vVesicle);
+//		} else
 			endosome.solubleContent.put(content,
 					copySoluble.get(content));
 	}
@@ -403,14 +439,21 @@ public class EndosomeSplitStep {
 	}
 
 	private static void splitPropSurface(Endosome endosome, String content, Double so, Double sVesicle) {
-		
+			
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
-		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
-				CellProperties.getInstance().getRabTropism());
 
-				endosome.membraneContent.put(content, copyMembrane.get(content)
-							* (sVesicle) / so);				
+		if (content.equals("membraneMarker")
+				&& (endosome.membraneContent.get("membraneMarker") > 0.9)) {
+			if (Math.random() < sVesicle / so)
+				endosome.membraneContent.put("membraneMarker", 1d);
+			else {endosome.membraneContent.put("membraneMarker", 0d);}
+			} 
+		else {
+			endosome.membraneContent.put(content, copyMembrane.get(content)
+						* (sVesicle) / so);	
+		}
+			
 	
 	}
 

@@ -321,7 +321,7 @@ public class AntigenPresentation {
         {
             CMetab metab = model.getMetabolite(i);
             assert metab != null;            
-            System.out.println(metab.getObjectName() + ": initial " + metab.getInitialConcentration()+" final "+metab.getConcentration());
+//            System.out.println(metab.getObjectName() + ": initial " + metab.getInitialConcentration()+" final "+metab.getConcentration());
         }
 
 	}

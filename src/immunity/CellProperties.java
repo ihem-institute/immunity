@@ -86,4 +86,8 @@ public class CellProperties {
 	public HashMap<String, Double> getInitPMmembraneRecycle() {
 		return initPMmembraneRecycle;
 	}
+	public Set<String> getmembraneMet() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

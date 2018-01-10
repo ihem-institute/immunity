@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-01-10 16:39:22 UTC -->
+<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-02-08 18:17:19 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="20" versionDevel="158" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -28,7 +28,7 @@ Reaction scheme where the products are created from the reactants and the change
       </ListOfParameterDescriptions>
     </Function>
   </ListOfFunctions>
-  <Model key="Model_1" name="CellMetabolism" simulationType="time" timeUnit="s" volumeUnit="ml" areaUnit="m²" lengthUnit="m" quantityUnit="mmol" type="deterministic" avogadroConstant="6.0221408570000002e+023">
+  <Model key="Model_1" name="CellMetabolism" simulationType="time" timeUnit="s" volumeUnit="nl" areaUnit="m²" lengthUnit="m" quantityUnit="pmol" type="deterministic" avogadroConstant="6.0221408570000002e+023">
     <MiriamAnnotation>
 <rdf:RDF
    xmlns:dcterms="http://purl.org/dc/terms/"
@@ -89,6 +89,72 @@ Reaction scheme where the products are created from the reactants and the change
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
+      <Reaction key="Reaction_1" name="prePlost" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_1">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-01-10T15:49:54Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_0" stoichiometry="2"/>
+        </ListOfSubstrates>
+        <ListOfConstants>
+          <Constant key="Parameter_4952" name="k1" value="0.01"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=CellMetabolism,Vector=Compartments[compartment]">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="Parameter_4952"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_79">
+              <SourceParameter reference="Metabolite_0"/>
+              <SourceParameter reference="Metabolite_0"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_2" name="peptLost" reversible="false" fast="false">
+        <MiriamAnnotation>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_2">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-01-10T15:50:03Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_1" stoichiometry="2"/>
+        </ListOfSubstrates>
+        <ListOfConstants>
+          <Constant key="Parameter_4951" name="k1" value="0.01"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=CellMetabolism,Vector=Compartments[compartment]">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="Parameter_4951"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_79">
+              <SourceParameter reference="Metabolite_1"/>
+              <SourceParameter reference="Metabolite_1"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
     </ListOfReactions>
     <ListOfModelParameterSets activeSet="ModelParameterSet_1">
       <ModelParameterSet key="ModelParameterSet_1" name="Initial State">
@@ -99,7 +165,7 @@ Reaction scheme where the products are created from the reactants and the change
           <ModelParameter cn="CN=Root,Model=CellMetabolism,Vector=Compartments[compartment]" value="1" type="Compartment" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
-          <ModelParameter cn="CN=Root,Model=CellMetabolism,Vector=Compartments[compartment],Vector=Metabolites[preP]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=CellMetabolism,Vector=Compartments[compartment],Vector=Metabolites[preP]" value="75276760712.5" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=CellMetabolism,Vector=Compartments[compartment],Vector=Metabolites[pept]" value="0" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
@@ -107,6 +173,12 @@ Reaction scheme where the products are created from the reactants and the change
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
           <ModelParameterGroup cn="CN=Root,Model=CellMetabolism,Vector=Reactions[peptGeneration]" type="Reaction">
             <ModelParameter cn="CN=Root,Model=CellMetabolism,Vector=Reactions[peptGeneration],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=CellMetabolism,Vector=Reactions[prePlost]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=CellMetabolism,Vector=Reactions[prePlost],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=CellMetabolism,Vector=Reactions[peptLost]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=CellMetabolism,Vector=Reactions[peptLost],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
@@ -118,7 +190,7 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="Compartment_0"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 0 0 1 
+      0 75276760712.5 0 1 
     </InitialState>
   </Model>
   <ListOfTasks>
@@ -496,6 +568,12 @@ Reaction scheme where the products are created from the reactants and the change
     </PlotSpecification>
   </ListOfPlots>
   <GUI>
+    <ListOfSliders>
+      <Slider key="Slider_0" associatedEntityKey="Task_15" objectCN="CN=Root,Model=CellMetabolism,Vector=Compartments[compartment],Vector=Metabolites[preP],Reference=InitialConcentration" objectType="float" objectValue="0.125" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=CellMetabolism,Vector=Reactions[peptGeneration],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.01" minValue="0.001" maxValue="0.02" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=CellMetabolism,Vector=Reactions[peptLost],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.0112" minValue="0" maxValue="0.2" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=CellMetabolism,Vector=Reactions[prePlost],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.01" minValue="0" maxValue="0.4" tickNumber="1000" tickFactor="100" scaling="linear"/>
+    </ListOfSliders>
   </GUI>
   <ListOfUnitDefinitions>
     <UnitDefinition key="Unit_0" name="meter" symbol="m">
