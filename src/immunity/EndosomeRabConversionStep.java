@@ -103,7 +103,7 @@ RAB CONCENTRATION IN THE CYTOSOL CONSIDERING THE ORGANELLE SIZE AND THE CYTOSOL 
 				String Rab = met.substring(0, 4);
 				if (endosome.rabContent.containsKey(Rab)) {
 					double metValue = endosome.rabContent.get(Rab) / endosome.area;
-					rabConversion.setInitialConcentration(met, Math.round(metValue*1000d)/1000d);
+					rabConversion.setInitialConcentration(met, Math.round(metValue*1E6d)/1E6d);
 //					System.out.println("COPASI INITIAL MEMBRANE " + met + " " + metValue);
 
 				} else {
@@ -117,7 +117,7 @@ RAB CONCENTRATION IN THE CYTOSOL CONSIDERING THE ORGANELLE SIZE AND THE CYTOSOL 
 				if (Cell.getInstance().getRabCell().containsKey(Rab)) {
 					double metValue = Cell.getInstance().getRabCell().get(Rab);
 					System.out.println("COPASI INITIAL CYTOSOL " + Rab + " " + metValue +"  "+Cell.getInstance().getRabCell().get(Rab) );
-					rabConversion.setInitialConcentration(met, Math.round(metValue*1000d)/1000d);
+					rabConversion.setInitialConcentration(met, Math.round(metValue*1E6d)/1E6d);
 //					System.out.println("COPASI INITIAL CYTOSOL " + met + " " + metValue);
 					// + Cell.getInstance().rabCell.get(Rab));
 				} else {

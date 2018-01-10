@@ -62,7 +62,7 @@ public class ScaleStyle implements StyleOGL2D<Scale> {
 
 	@Override
 	public String getLabel(Scale object) {
-		String time = Scale.getTimeString();
+		String time = "500 nm   " + Scale.getTimeString();
 		
 		
 		return time; 

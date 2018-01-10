@@ -1,6 +1,7 @@
 package immunity;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
@@ -64,7 +65,19 @@ public class EndosomeRecycleStep {
 				}
 				// PlasmaMembrane.getInstance().setSolubleRecycle(solubleRecycle);
 				endosome.solubleContent.clear();
-				endosome.solubleContent.put("proton", 1E-4*endosome.volume);
+				endosome.solubleContent.put("proton", 3.98E-5*endosome.volume);
+				
+//				
+//				System.out.println("ENDOSOME RECYCLE \n"
+//						+ endosome.solubleContent + endosome.rabContent + "\n" + endosome.membraneContent);
+//				try {
+//					TimeUnit.SECONDS.sleep(5);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+				
+				
 				endosome.getAntigenTimeSeries().clear();
 				endosome.getLANCL2TimeSeries().clear();
 //				System.out.println("soluble Recycled"

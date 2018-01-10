@@ -132,7 +132,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 
 	@Override
 	public int getBorderSize(Endosome object) {
-		return 8;
+		return 10;
 	}
 
 	@Override

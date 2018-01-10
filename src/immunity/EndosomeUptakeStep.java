@@ -1,6 +1,7 @@
 package immunity;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
@@ -65,7 +66,7 @@ public class EndosomeUptakeStep {
 					double ss = solubleContent.get(sol);
 					solubleContent.put(sol, ss*volume);
 		
-		
+				}
 //		
 //		
 //		HashMap<String, Double> rabContent = new HashMap<String, Double>(
@@ -79,9 +80,15 @@ public class EndosomeUptakeStep {
 //				InitialOrganelles.getInstance().getInitSolubleContent()
 //						.get("kind1"));
 //		
-		System.out.println("INITIAL ORGANELLES KIND 1 " + membraneContent  
-				+ solubleContent + rabContent);
-		
+//		System.out.println("UPTAKE ORGANELLES KIND 1 " + membraneContent  
+//				+ solubleContent + rabContent);
+//		try {
+//			TimeUnit.SECONDS.sleep(5);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+	
 // new endosome incorporate PM components in a proportion area new/area PM
 //to accumulte, I included the 0.001 factor
 //	PlasmaMembrane.getInstance().getMembraneRecycle().put("vATPase", 60000d);
@@ -94,7 +101,8 @@ public class EndosomeUptakeStep {
 			PlasmaMembrane.getInstance().getMembraneRecycle().put(met, valueIn - value);
 			}
 		membraneContent.put("cMHCI", initOrgProp.get("area"));
-		membraneContent.put("vATPase", initOrgProp.get("area")/10.0);
+		membraneContent.put("vATPase", initOrgProp.get("area")*0.02);
+		solubleContent.put("proton", 3.98E-5*volume);
 		System.out.println("PLASMA MEMBRANE "+PlasmaMembrane.getInstance().getMembraneRecycle());
 
 //
@@ -135,9 +143,14 @@ public class EndosomeUptakeStep {
 		
 		// context.add(new Endosome(space, grid, rabContent, membraneContent,
 		// solubleContent));
-		System.out.println("NEW ENDOSOME UPTAKE \n"
-				+ solubleContent + rabContent + "\n");
-		System.out.println(membraneContent);
+//		System.out.println("NEW ENDOSOME UPTAKE \n"
+//				+ solubleContent + rabContent + "\n" + membraneContent);
+//		try {
+//			TimeUnit.SECONDS.sleep(5);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		// tMembrane = Cell.getInstance().gettMembrane();
 		tMembrane = tMembrane - bud.initOrgProp.get("area");
 //		I decrease cytoRabA by 90%.   It will be recovered during RabConversion where
@@ -159,7 +172,7 @@ public class EndosomeUptakeStep {
 		endosome.getSpace().moveTo(bud, rnd * 50, 50 - 2 * cellLimit);
 		endosome.getGrid().moveTo(bud, (int) rnd * 50, (int) (50 - 2 * cellLimit));
 	}
-	}
+	
 
 
 }

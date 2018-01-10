@@ -12,7 +12,7 @@ public class CellMetabolismStep {
 		for (String met : metabolites) {
 		if (cell.getSolubleCell().containsKey(met)) {
 			double metValue = Math.round
-						(cell.getSolubleCell().get(met) * 1000d) / 1000d;
+						(cell.getSolubleCell().get(met) * 1E6d) / 1E6d;
 		
 			cellMetabolism.setInitialConcentration(met, metValue);
 		}

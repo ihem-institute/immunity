@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2017-11-28 16:11:42 UTC -->
+<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-01-10 16:39:22 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="20" versionDevel="158" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -56,7 +56,9 @@ Reaction scheme where the products are created from the reactants and the change
     <ListOfReactions>
       <Reaction key="Reaction_0" name="peptGeneration" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_0">
     <dcterms:created>
       <rdf:Description>
@@ -65,6 +67,7 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_0" stoichiometry="1"/>
@@ -73,7 +76,7 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_1" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4953" name="k1" value="0.1"/>
+          <Constant key="Parameter_4953" name="k1" value="0.01"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=CellMetabolism,Vector=Compartments[compartment]">
           <ListOfCallParameters>
@@ -96,14 +99,14 @@ Reaction scheme where the products are created from the reactants and the change
           <ModelParameter cn="CN=Root,Model=CellMetabolism,Vector=Compartments[compartment]" value="1" type="Compartment" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
-          <ModelParameter cn="CN=Root,Model=CellMetabolism,Vector=Compartments[compartment],Vector=Metabolites[preP]" value="6.0221408570000002e+020" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=CellMetabolism,Vector=Compartments[compartment],Vector=Metabolites[pept]" value="6.0221408570000002e+020" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=CellMetabolism,Vector=Compartments[compartment],Vector=Metabolites[preP]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=CellMetabolism,Vector=Compartments[compartment],Vector=Metabolites[pept]" value="0" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
           <ModelParameterGroup cn="CN=Root,Model=CellMetabolism,Vector=Reactions[peptGeneration]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=CellMetabolism,Vector=Reactions[peptGeneration],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=CellMetabolism,Vector=Reactions[peptGeneration],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
@@ -115,7 +118,7 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="Compartment_0"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 6.0221408570000002e+020 6.0221408570000002e+020 1 
+      0 0 0 1 
     </InitialState>
   </Model>
   <ListOfTasks>

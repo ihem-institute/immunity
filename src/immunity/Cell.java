@@ -46,7 +46,7 @@ public class Cell {
 		rabCell.putAll(CellProperties.getInstance().getInitRabCell());
 		tMembrane = CellProperties.getInstance().cellK.get("tMembrane");
 	}
-	@ScheduledMethod(start = 1, interval = 1)
+	@ScheduledMethod(start = 1, interval = 30)
 	public void step() {
 		CellMetabolismStep.cellMetabolim(Cell.getInstance());
 		if (Math.random() < 0.00){
