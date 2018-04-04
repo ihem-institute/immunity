@@ -18,7 +18,7 @@ import repast.simphony.util.collections.IndexedIterable;
 
 import org.COPASI.*;
 
-public class EndosomeAntigenPresentationStepTest {
+public class EndosomeLipidMetabolismStepTest {
 	private Endosome endosome;
 	@Before
 	public void setUp() throws Exception {
@@ -53,7 +53,7 @@ public class EndosomeAntigenPresentationStepTest {
 			this.endosome.solubleContent.put("p1", i*500d);
 			this.endosome.membraneContent.put("p2", i*500d);
 			System.out.println("\nTEST   antes    \n "+this.endosome.solubleContent + this.endosome.membraneContent);
-			EndosomeAntigenPresentationStep.callAntigenPresentation(this.endosome);
+			EndosomeLipidMetabolismStep.callAntigenPresentation(this.endosome);
 			System.out.println("\nTEST   despues    \n "+this.endosome.solubleContent + this.endosome.membraneContent);
 
 		//assertSame(this.endosome.solubleContent, this.endosome.solubleContent);

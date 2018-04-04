@@ -26,8 +26,8 @@ import org.COPASI.CTrajectoryProblem;
 import org.COPASI.CTrajectoryTask;
 import org.COPASI.ReportItemVector;
 
-public class AntigenPresentation {
-	private static AntigenPresentation instance = null;
+public class LipidMetabolism {
+	private static LipidMetabolism instance = null;
 	private CCopasiDataModel dataModel;
 	private CModel model;
     private CReportDefinition report;
@@ -36,15 +36,15 @@ public class AntigenPresentation {
     private int stepNumber = 50;
 	//private Endosome Endosome;
 	
-	public static AntigenPresentation getInstance () {
+	public static LipidMetabolism getInstance () {
 		if (instance == null) {
-			instance = new AntigenPresentation();
+			instance = new LipidMetabolism();
 		}
 		
 		return instance;
 	}
 	
-	protected AntigenPresentation() {
+	protected LipidMetabolism() {
 
 		System.out.println("Instantiation Once");
 		
@@ -54,7 +54,7 @@ public class AntigenPresentation {
 		dataModel = CCopasiRootContainer.addDatamodel();
         assert CCopasiRootContainer.getDatamodelList().size() == 1;
         
-        String modelFileName = "antigenPresentation.cps";
+        String modelFileName = "lipidMetabolism-eLife.cps";
         
         try
         {

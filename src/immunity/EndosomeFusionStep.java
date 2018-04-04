@@ -62,7 +62,6 @@ public class EndosomeFusionStep {
 		double size = rsphere;
 		endosome.speed = 1d/ size;
 		Endosome.endosomeShape(endosome);
-//		EndosomeAntigenPresentationStep.antigenPresentation(endosome);
 		endosome.getAntigenTimeSeries().clear();
 		endosome.getLANCL2TimeSeries().clear();
 		endosome.getRabTimeSeries().clear();
