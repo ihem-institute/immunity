@@ -48,11 +48,7 @@ public class Cell {
 	}
 	@ScheduledMethod(start = 1, interval = 30)
 	public void step() {
-		CellMetabolismStep.cellMetabolim(Cell.getInstance());
-		if (Math.random() < 0.00){
-			System.out.println("llamo CELL MREGDIFF");
-			CellMregDiffStep.mregDiff(Cell.getInstance());			
-		}
+			
 
 	}
 	// GETTERS AND SETTERS (to get and set Cell contents)

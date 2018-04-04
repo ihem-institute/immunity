@@ -179,7 +179,7 @@ public class EndosomeSplitStep {
 //		Time series are re calculated in the next tick
 		endosome.getRabTimeSeries().clear();
 		endosome.getLipidTimeSeries().clear();
-		endosome.getLANCL2TimeSeries().clear();
+//		endosome.getLANCL2TimeSeries().clear();
 		
 		// moveTowards();
 
@@ -223,7 +223,7 @@ public class EndosomeSplitStep {
 		Random rd = new Random();
 //		Time series will be recalculated in the next tick
 		b.getLipidTimeSeries().clear();
-		b.getLANCL2TimeSeries().clear();
+//		b.getLANCL2TimeSeries().clear();
 		b.getRabTimeSeries().clear();
 		
 		b.heading = endosome.heading + rd.nextGaussian() * 30d;// change the

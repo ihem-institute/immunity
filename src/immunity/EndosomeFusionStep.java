@@ -63,7 +63,7 @@ public class EndosomeFusionStep {
 		endosome.speed = 1d/ size;
 		Endosome.endosomeShape(endosome);
 		endosome.getLipidTimeSeries().clear();
-		endosome.getLANCL2TimeSeries().clear();
+//		endosome.getLANCL2TimeSeries().clear();
 		endosome.getRabTimeSeries().clear();
 //		The time series will be re-calculated by COPASI call in the next tick
 //		

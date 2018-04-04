@@ -111,7 +111,7 @@ public class EndosomeRecycleStep {
 				
 				
 				endosome.getLipidTimeSeries().clear();
-				endosome.getLANCL2TimeSeries().clear();
+//				endosome.getLANCL2TimeSeries().clear();
 //				System.out.println("soluble Recycled"
 //						+ PlasmaMembrane.getInstance().getSolubleRecycle());
 			}

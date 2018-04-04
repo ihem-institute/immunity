@@ -59,10 +59,6 @@ public class PlasmaMembrane {
 	public void step() {
 		this.membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
 		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
-		if (Math.random() < 0){
-			System.out.println("llamo PM LANCL2");
-		PlasmaMembraneLANCL2metabolismStep.PMLANCL2TimeSeriesLoad(this);		
-		}
 		this.changeColor();
 
 		}

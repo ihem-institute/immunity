@@ -90,7 +90,7 @@ public class Endosome {
 	HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 	HashMap<String, Double> initOrgProp = new HashMap<String, Double>();
 	HashMap<Integer, HashMap<String, Double>> lipidTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
-	HashMap<Integer, HashMap<String, Double>> LANCL2TimeSeries = new HashMap<Integer, HashMap<String, Double>>();
+//	HashMap<Integer, HashMap<String, Double>> LANCL2TimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 	HashMap<Integer, HashMap<String, Double>> rabTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 //	Probabilities of events per tick.  Calculated from the t1/2 of each process
 //	 as the inverse of time1/2(in seconds) / 0.03 * timeScale
@@ -444,9 +444,9 @@ public class Endosome {
 		return lipidTimeSeries;
 	}
 
-	public HashMap<Integer, HashMap<String, Double>> getLANCL2TimeSeries() {
-		return LANCL2TimeSeries;
-	}
+//	public HashMap<Integer, HashMap<String, Double>> getLANCL2TimeSeries() {
+//		return LANCL2TimeSeries;
+//	}
 
 	public HashMap<Integer, HashMap<String, Double>> getRabTimeSeries() {
 		return rabTimeSeries;
