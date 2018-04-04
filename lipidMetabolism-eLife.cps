@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-04-04 19:41:28 UTC -->
+<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-04-04 20:39:20 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="20" versionDevel="158" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -118,7 +118,7 @@ Notice that at pH = phlimit, the factor is 1.  k then is the kinetics constant a
       </ListOfParameterDescriptions>
     </Function>
   </ListOfFunctions>
-  <Model key="Model_1" name="AntigenPresentation" simulationType="time" timeUnit="s" volumeUnit="nl" areaUnit="m²" lengthUnit="m" quantityUnit="pmol" type="stochastic" avogadroConstant="6.0221417899999999e+023">
+  <Model key="Model_1" name="LipidMetabolism" simulationType="time" timeUnit="s" volumeUnit="nl" areaUnit="m²" lengthUnit="m" quantityUnit="pmol" type="stochastic" avogadroConstant="6.0221417899999999e+023">
     <MiriamAnnotation>
 <rdf:RDF
    xmlns:dcterms="http://purl.org/dc/terms/"
@@ -135,23 +135,15 @@ Notice that at pH = phlimit, the factor is 1.  k then is the kinetics constant a
     </MiriamAnnotation>
     <Comment>
       Units are in millimolar.  
-mmol/ L
-umol/ml
-nmol/ul
 pmol/nl
 
-Original COPASI for Antigen Presentation.  kpH is 0.0002 (I think it was 0.001)
 
-This basic COPASI will be changed to adapt to endocytosis and transport of Lysosomal enzymes
 
-CHANGES FOR ENDOCYTOSIS	
-All the MHCI species were deleted and de corresponding reactions.  Control of pH was mantained.  Ova hydrolisis was maintained but inactive (k = 0)
+Adding HexA association dissociation and the reverse reaction. Controled by the pH
 
-Adding LyE association dissociation (p1 > p1-s) and the reverse reaction. Controled by the pH
+Adding GM degradation, promoted by low pH and HexA, inhibited by cholesterol
 
-Adding GM degradation, promoted by low pH and LyE, inhibited by cholesterol
-
-Adding chol digestion by RabD
+Adding chol removal in RabD endosomes
     </Comment>
     <ListOfCompartments>
       <Compartment key="Compartment_0" name="compartment" simulationType="fixed" dimensionality="3">
@@ -301,7 +293,7 @@ Adding chol digestion by RabD
 </rdf:RDF>
         </MiriamAnnotation>
         <Expression>
-          -log(&lt;CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[proton],Reference=Concentration>*1e-3)/log(10)
+          -log(&lt;CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[proton],Reference=Concentration>*1e-3)/log(10)
         </Expression>
       </ModelValue>
       <ModelValue key="ModelValue_1" name="pHinhibition" simulationType="assignment">
@@ -317,7 +309,7 @@ Adding chol digestion by RabD
 </rdf:RDF>
         </MiriamAnnotation>
         <Expression>
-          0.01*(10^(&lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=Value>-6.7))^3
+          0.01*(10^(&lt;CN=Root,Model=LipidMetabolism,Vector=Values[pH],Reference=Value>-6.7))^3
         </Expression>
       </ModelValue>
       <ModelValue key="ModelValue_2" name="kpH" simulationType="fixed">
@@ -372,7 +364,7 @@ Adding chol digestion by RabD
 </rdf:RDF>
         </MiriamAnnotation>
         <Expression>
-          0.000001/(&lt;CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[chol],Reference=Concentration>+0.00000001)
+          0.000001/(&lt;CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[chol],Reference=Concentration>+0.00000001)
         </Expression>
       </ModelValue>
     </ListOfModelValues>
@@ -399,7 +391,7 @@ Adding chol digestion by RabD
         <ListOfConstants>
           <Constant key="Parameter_4953" name="k1" value="0.0008"/>
         </ListOfConstants>
-        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Parameter_4953"/>
@@ -432,7 +424,7 @@ Adding chol digestion by RabD
           <Constant key="Parameter_4952" name="k1" value="0.04"/>
           <Constant key="Parameter_4951" name="k2" value="0.04"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_62">
               <SourceParameter reference="Parameter_4952"/>
@@ -476,7 +468,7 @@ Adding chol digestion by RabD
           <Constant key="Parameter_4935" name="pHlimit" value="6"/>
           <Constant key="Parameter_4934" name="enhancer" value="-1.5"/>
         </ListOfConstants>
-        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_271">
               <SourceParameter reference="Metabolite_1"/>
@@ -523,7 +515,7 @@ Adding chol digestion by RabD
           <Constant key="Parameter_4931" name="pHlimit" value="6"/>
           <Constant key="Parameter_4930" name="enhancer" value="1.5"/>
         </ListOfConstants>
-        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_271">
               <SourceParameter reference="Metabolite_8"/>
@@ -568,7 +560,7 @@ Adding chol digestion by RabD
           <Constant key="Parameter_4927" name="pHlimit" value="5"/>
           <Constant key="Parameter_4926" name="enhancer" value="-2"/>
         </ListOfConstants>
-        <KineticLaw function="Function_40" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_40" unitType="Default" scalingCompartment="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_264">
               <SourceParameter reference="Metabolite_9"/>
@@ -613,7 +605,7 @@ Adding chol digestion by RabD
         <ListOfConstants>
           <Constant key="Parameter_4925" name="k1" value="0"/>
         </ListOfConstants>
-        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Parameter_4925"/>
@@ -629,81 +621,81 @@ Adding chol digestion by RabD
     <ListOfModelParameterSets activeSet="ModelParameterSet_1">
       <ModelParameterSet key="ModelParameterSet_1" name="Initial State">
         <ModelParameterGroup cn="String=Initial Time" type="Group">
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation" value="0" type="Model" simulationType="time"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism" value="0" type="Model" simulationType="time"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Compartment Sizes" type="Group">
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]" value="1000000" type="Compartment" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment]" value="1000000" type="Compartment" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[p1]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[proton]" value="15657570882192462" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[vATPase]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[protonCy]" value="60221417900000.047" type="Species" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[RabD]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[p1-s]" value="6.02214179e+017" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[GM]" value="6.02214179e+017" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[chol]" value="6.02214179e+017" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[p1]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[proton]" value="15657570882192462" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[vATPase]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[protonCy]" value="60221417900000.047" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[RabD]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[p1-s]" value="6.02214179e+017" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[GM]" value="6.02214179e+017" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[chol]" value="6.02214179e+017" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[pH]" value="4.5850265902257403" type="ModelValue" simulationType="assignment"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[pHinhibition]" value="4.5193894834280823e-009" type="ModelValue" simulationType="assignment"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[kpH]" value="0.00020000000000000001" type="ModelValue" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[alkpH]" value="3" type="ModelValue" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[acidpH]" value="-1.5" type="ModelValue" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[cholInhibition]" value="9.9999999000000034e-007" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Values[pH]" value="4.5850265902257403" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Values[pHinhibition]" value="4.5193894834280823e-009" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Values[kpH]" value="0.00020000000000000001" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Values[alkpH]" value="3" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Values[acidpH]" value="-1.5" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Values[cholInhibition]" value="9.9999999000000034e-007" type="ModelValue" simulationType="assignment"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
-          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonPump]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonPump],ParameterGroup=Parameters,Parameter=k1" value="0.00080000000000000004" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[ProtonPump]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[ProtonPump],ParameterGroup=Parameters,Parameter=k1" value="0.00080000000000000004" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k1" value="0.040000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k2" value="0.040000000000000001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[ProtonLeak]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k1" value="0.040000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k2" value="0.040000000000000001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[HexArelease]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[HexArelease],ParameterGroup=Parameters,Parameter=k" value="0.00020000000000000001" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[HexArelease]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[HexArelease],ParameterGroup=Parameters,Parameter=k" value="0.00020000000000000001" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[kpH],Reference=InitialValue>
+                &lt;CN=Root,Model=LipidMetabolism,Vector=Values[kpH],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[HexArelease],ParameterGroup=Parameters,Parameter=pH" value="4.5850265902257403" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[HexArelease],ParameterGroup=Parameters,Parameter=pH" value="4.5850265902257403" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
+                &lt;CN=Root,Model=LipidMetabolism,Vector=Values[pH],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[HexArelease],ParameterGroup=Parameters,Parameter=pHlimit" value="6" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[HexArelease],ParameterGroup=Parameters,Parameter=enhancer" value="-1.5" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[HexArelease],ParameterGroup=Parameters,Parameter=pHlimit" value="6" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[HexArelease],ParameterGroup=Parameters,Parameter=enhancer" value="-1.5" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[acidpH],Reference=InitialValue>
+                &lt;CN=Root,Model=LipidMetabolism,Vector=Values[acidpH],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[HexAbinding]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[HexAbinding],ParameterGroup=Parameters,Parameter=k" value="1" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[HexAbinding],ParameterGroup=Parameters,Parameter=pH" value="4.5850265902257403" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[HexAbinding]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[HexAbinding],ParameterGroup=Parameters,Parameter=k" value="1" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[HexAbinding],ParameterGroup=Parameters,Parameter=pH" value="4.5850265902257403" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
+                &lt;CN=Root,Model=LipidMetabolism,Vector=Values[pH],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[HexAbinding],ParameterGroup=Parameters,Parameter=pHlimit" value="6" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[HexAbinding],ParameterGroup=Parameters,Parameter=enhancer" value="1.5" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[HexAbinding],ParameterGroup=Parameters,Parameter=pHlimit" value="6" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[HexAbinding],ParameterGroup=Parameters,Parameter=enhancer" value="1.5" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[GMhydrolysis]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[GMhydrolysis],ParameterGroup=Parameters,Parameter=k" value="9.9999999000000034e-007" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[GMhydrolysis]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[GMhydrolysis],ParameterGroup=Parameters,Parameter=k" value="9.9999999000000034e-007" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[cholInhibition],Reference=InitialValue>
+                &lt;CN=Root,Model=LipidMetabolism,Vector=Values[cholInhibition],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[GMhydrolysis],ParameterGroup=Parameters,Parameter=pH" value="4.5850265902257403" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[GMhydrolysis],ParameterGroup=Parameters,Parameter=pH" value="4.5850265902257403" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
+                &lt;CN=Root,Model=LipidMetabolism,Vector=Values[pH],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[GMhydrolysis],ParameterGroup=Parameters,Parameter=pHlimit" value="5" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[GMhydrolysis],ParameterGroup=Parameters,Parameter=enhancer" value="-2" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[GMhydrolysis],ParameterGroup=Parameters,Parameter=pHlimit" value="5" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[GMhydrolysis],ParameterGroup=Parameters,Parameter=enhancer" value="-2" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[cholDepletion]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[cholDepletion],ParameterGroup=Parameters,Parameter=k1" value="0" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[cholDepletion]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[cholDepletion],ParameterGroup=Parameters,Parameter=k1" value="0" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
@@ -778,7 +770,7 @@ Adding chol digestion by RabD
             <Parameter name="Maximum" type="float" value="0.10000000000000001"/>
             <Parameter name="Minimum" type="float" value="0"/>
             <Parameter name="Number of steps" type="unsignedInteger" value="10"/>
-            <Parameter name="Object" type="cn" value="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=InitialConcentration"/>
+            <Parameter name="Object" type="cn" value="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=InitialConcentration"/>
             <Parameter name="Type" type="unsignedInteger" value="1"/>
             <Parameter name="log" type="bool" value="0"/>
           </ParameterGroup>
@@ -1096,8 +1088,8 @@ Adding chol digestion by RabD
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[ova],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[ova],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[p1]" type="Curve2D">
@@ -1108,8 +1100,8 @@ Adding chol digestion by RabD
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[p1],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[p1],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[preP]" type="Curve2D">
@@ -1120,8 +1112,8 @@ Adding chol digestion by RabD
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[preP],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[preP],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[p2]" type="Curve2D">
@@ -1132,8 +1124,8 @@ Adding chol digestion by RabD
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[p2],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[p2],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[pept]" type="Curve2D">
@@ -1144,8 +1136,8 @@ Adding chol digestion by RabD
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[pept],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[pept],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[mHCI]" type="Curve2D">
@@ -1156,8 +1148,8 @@ Adding chol digestion by RabD
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[mHCI],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[mHCI],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[mHCI-pept]" type="Curve2D">
@@ -1168,8 +1160,8 @@ Adding chol digestion by RabD
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[mHCI-pept],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[mHCI-pept],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[proton]" type="Curve2D">
@@ -1180,8 +1172,8 @@ Adding chol digestion by RabD
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[proton],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[proton],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[vATPase]" type="Curve2D">
@@ -1192,8 +1184,8 @@ Adding chol digestion by RabD
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[cMHCI]" type="Curve2D">
@@ -1204,8 +1196,8 @@ Adding chol digestion by RabD
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[cMHCI],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[cMHCI],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[RabD]" type="Curve2D">
@@ -1216,8 +1208,8 @@ Adding chol digestion by RabD
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[RabD],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[RabD],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[NOX]" type="Curve2D">
@@ -1228,8 +1220,8 @@ Adding chol digestion by RabD
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[NOX],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[NOX],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="Values[pH]" type="Curve2D">
@@ -1240,8 +1232,8 @@ Adding chol digestion by RabD
           <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=Value"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Values[pH],Reference=Value"/>
           </ListOfChannels>
         </PlotItem>
       </ListOfPlotItems>
@@ -1249,15 +1241,15 @@ Adding chol digestion by RabD
   </ListOfPlots>
   <GUI>
     <ListOfSliders>
-      <Slider key="Slider_0" associatedEntityKey="Task_16" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[proton],Reference=InitialConcentration" objectType="float" objectValue="0.0157" minValue="5e-009" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[proton],Reference=InitialConcentration" objectType="float" objectValue="0.026" minValue="5e-009" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.04" minValue="5e-005" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k2,Reference=Value" objectType="float" objectValue="0.04" minValue="5e-005" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_4" associatedEntityKey="Task_16" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_5" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonPump],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.0008" minValue="0.0005" maxValue="0.01" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_6" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_7" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[cMHCI],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_8" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[RabD],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="2" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_0" associatedEntityKey="Task_16" objectCN="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[proton],Reference=InitialConcentration" objectType="float" objectValue="0.0157" minValue="5e-009" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[proton],Reference=InitialConcentration" objectType="float" objectValue="0.026" minValue="5e-009" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=LipidMetabolism,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.04" minValue="5e-005" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=LipidMetabolism,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k2,Reference=Value" objectType="float" objectValue="0.04" minValue="5e-005" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_4" associatedEntityKey="Task_16" objectCN="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_5" associatedEntityKey="Task_15" objectCN="CN=Root,Model=LipidMetabolism,Vector=Reactions[ProtonPump],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.0008" minValue="0.0005" maxValue="0.01" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_6" associatedEntityKey="Task_15" objectCN="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_7" associatedEntityKey="Task_15" objectCN="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[cMHCI],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_8" associatedEntityKey="Task_15" objectCN="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[RabD],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="2" tickNumber="1000" tickFactor="100" scaling="linear"/>
     </ListOfSliders>
   </GUI>
   <ListOfUnitDefinitions>

@@ -178,7 +178,7 @@ public class EndosomeSplitStep {
 		endosome.speed = 1d / endosome.size;
 //		Time series are re calculated in the next tick
 		endosome.getRabTimeSeries().clear();
-		endosome.getAntigenTimeSeries().clear();
+		endosome.getLipidTimeSeries().clear();
 		endosome.getLANCL2TimeSeries().clear();
 		
 		// moveTowards();
@@ -222,7 +222,7 @@ public class EndosomeSplitStep {
 		b.speed = 1d / b.size;
 		Random rd = new Random();
 //		Time series will be recalculated in the next tick
-		b.getAntigenTimeSeries().clear();
+		b.getLipidTimeSeries().clear();
 		b.getLANCL2TimeSeries().clear();
 		b.getRabTimeSeries().clear();
 		

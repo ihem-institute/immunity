@@ -259,7 +259,7 @@ public class LipidMetabolism {
 		try
         {
             // now we run the actual trajectory
-        	System.out.println("trajectoryTask.process ANTIGEN");
+        	System.out.println("trajectoryTask.process LIPID");
             result=trajectoryTask.process(true);
             processError = trajectoryTask.getProcessError();
             processWarning = trajectoryTask.getProcessWarning();
