@@ -28,12 +28,10 @@ public class PlasmaMembrane {
 	public int red = 0;
 	public int green = 0;	
 	public int blue = 0;
-//	c2 is the initial content of pLANCL2 in the plasma membrane
-//	public double c2 = CellProperties.getInstance().getInitPMmembraneRecycle().get("pLANCL2");
 	public int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); 
 // nm2 1500nm x 400nm. Space in repast at scale =1 and arbitrary height of the space projected
 //	in 2D
-	HashMap<Integer, HashMap<String, Double>> PMLANCL2TimeSeries = new HashMap<Integer, HashMap<String, Double>>();
+
 
 
 
@@ -73,60 +71,19 @@ public class PlasmaMembrane {
 		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + pmcolor+" " + pmcolor);
 	}
 	
-/*	I will consider only red for pLANCL2.  PROBLEM, what could be the area of the PM?
- * public double getRed() {
-		// double red = 0.0;
-		String contentPlot = CellProperties.getInstance().getColorContent()
-				.get("red");
 
-		if (membraneRecycle.containsKey(contentPlot)) {
-			double red = membraneRecycle.get(contentPlot) / area;
-			return red;
-		} else {return 0;}
-	}
-
-	public double getGreen() {
-		// double red = 0.0;
-		String contentPlot = CellProperties.getInstance().getColorContent()
-				.get("green");
-
-		if (membraneRecycle.containsKey(contentPlot)) {
-			double green = membraneRecycle.get(contentPlot) / area;
-			// System.out.println("mHCI content" + red);
-			return green;
-
-		} else  {return 0;}
-	}
-
-	public double getBlue() {
-		// double red = 0.0;
-		String contentPlot = CellProperties.getInstance().getColorContent()
-				.get("blue");
-
-		if (membraneRecycle.containsKey(contentPlot)) {
-			double blue = membraneRecycle.get(contentPlot) / area;
-			return blue;
-			} else {return 0;}
-	}
-
-*/	
 	// GETTERS AND SETTERS (to get and set Cell contents)
 	public static PlasmaMembrane getInstance() {
 		return instance;
 	}
 
 	
-//	public void setRabCell(HashMap<String, Double> rabCell) {
-//	this.rabCell = rabCell;
-//}
 
 	public HashMap<String, Double> getMembraneRecycle() {
 		return membraneRecycle;
 	}
 
-//	public void setMembraneRecycle(HashMap<String, Double> membraneRecycle) {
-//		this.membraneRecycle = membraneRecycle;
-//	}
+
 
 	public HashMap<String, Double> getSolubleRecycle() {
 		return solubleRecycle;
@@ -135,13 +92,9 @@ public class PlasmaMembrane {
 	public int getPmcolor() {
 		return pmcolor;
 	}
-	public HashMap<Integer, HashMap<String, Double>> getPMLANCL2TimeSeries() {
-		return PMLANCL2TimeSeries;
-	}
 
-//	public void setSolubleRecycle(HashMap<String, Double> solubleRecycle) {
-//		this.solubleRecycle = solubleRecycle;
-//	}
+
+
 
 
 }

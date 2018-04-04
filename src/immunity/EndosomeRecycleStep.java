@@ -77,12 +77,8 @@ public class EndosomeRecycleStep {
 					}
 				}
 
-				// PlasmaMembrane.getInstance().setMembraneRecycle(membraneRecycle);
 				endosome.membraneContent.clear();
-//				System.out.println("membrane Recycled"
-//						+ PlasmaMembrane.getInstance().getMembraneRecycle());
 
-				// Recycle soluble content
 				HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance()
 						.getSolubleRecycle();
 				double endopH = endosome.solubleContent.get("proton");
@@ -95,25 +91,16 @@ public class EndosomeRecycleStep {
 						solubleRecycle.put(key1, solubleContent.get(key1));
 					}
 				}
-				// PlasmaMembrane.getInstance().setSolubleRecycle(solubleRecycle);
+
 				endosome.solubleContent.clear();
 				endosome.solubleContent.put("proton", endopH);
 				
 				
-//				System.out.println("ENDOSOME RECYCLE \n"
-//						+ endosome.solubleContent + endosome.rabContent + "\n" + endosome.membraneContent);
-//				try {
-//					TimeUnit.SECONDS.sleep(5);
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
+
 				
 				
 				endosome.getLipidTimeSeries().clear();
-//				endosome.getLANCL2TimeSeries().clear();
-//				System.out.println("soluble Recycled"
-//						+ PlasmaMembrane.getInstance().getSolubleRecycle());
+
 			}
 		}
 

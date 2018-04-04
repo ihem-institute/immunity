@@ -179,11 +179,7 @@ public class EndosomeSplitStep {
 //		Time series are re calculated in the next tick
 		endosome.getRabTimeSeries().clear();
 		endosome.getLipidTimeSeries().clear();
-//		endosome.getLANCL2TimeSeries().clear();
-		
-		// moveTowards();
 
-		/* the tubule is created as an independent endosome */
 		HashMap<String, Double> newRabContent = new HashMap<String, Double>();
 		newRabContent.put(rabInTube, scylinder);
 		HashMap<String, Double> newInitOrgProp = new HashMap<String, Double>();
@@ -223,17 +219,11 @@ public class EndosomeSplitStep {
 		Random rd = new Random();
 //		Time series will be recalculated in the next tick
 		b.getLipidTimeSeries().clear();
-//		b.getLANCL2TimeSeries().clear();
 		b.getRabTimeSeries().clear();
 		
-		b.heading = endosome.heading + rd.nextGaussian() * 30d;// change the
-															// heading
+		b.heading = endosome.heading + rd.nextGaussian() * 30d;
+		// change the													// heading
 		// of the old vesicle heading with a normal distribution
-		// System.out
-		// .println("                                                 VESICLE B");
-		// System.out.println(b.area + " " + b.rabContent + " "
-		// + b.membraneContent + " " + b.solubleContent + " "
-		// + b.initOrgProp);
 //		scale 750 nm is the 50 size space. Size in nm/15 is the size in the space scale
 		double deltax = Math.cos(endosome.heading * 2d * Math.PI / 360d)
 				* (endosome.size + b.size) * Cell.orgScale/15;
@@ -248,7 +238,7 @@ public class EndosomeSplitStep {
 		if (y > 50 - cellLimit)y = 50-cellLimit;
 		space.moveTo(b, x, y);
 		grid.moveTo(b, (int) x, (int) y);
-		//moveTowards();
+
 
 	}
 	

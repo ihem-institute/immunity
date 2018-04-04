@@ -36,8 +36,8 @@ public class Cytosol {
 		//solute diffusion etc.
 		@ScheduledMethod(start = 1, interval = 1)
 		public void step() {
-			this.changeColor();
-			if (Math.random()<0.01) this.diffusion();
+//			this.changeColor();
+//			if (Math.random()<0.01) this.diffusion();
 
 			}
 		
@@ -84,22 +84,6 @@ public class Cytosol {
 
 
 
-//		public void position(int xcoor, int ycoor){
-//			space.moveTo(this, xcoor, ycoor);
-//			grid.moveTo(this, xcoor, ycoor);	
-//			}
-		public void changeColor() {
-			double c1 = 0;
-			if (this.cytoContent.containsKey("LANCL2cyto")){
-			c1 = this.cytoContent.get("LANCL2cyto");
-			}
-			if (Cell.getInstance().getSolubleCell().containsKey("LANCL2cyto")){
-			c1 = c1 + Cell.getInstance().getSolubleCell().get("LANCL2cyto");
-			}
-			c1=c1*240;
-			if (c1 > 240){c1 = 240;}
-			this.blue = (int) c1;
-			}
 		//GETTERS AND SETTERS
 		public double getXcoor() {
 				return xcoor;
