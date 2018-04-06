@@ -123,7 +123,7 @@ public class EndosomeInternalVesicleStep {
 		}
 		else if (rabTropism.get(content).contains("mvb")){
 //				
-//		System.out.println(content + " CHOLESTEROL RAB TROPISM " + rabTropism.get(content)+ "  \n"+rabTropism);
+System.out.println(content + " CHOLESTEROL RAB TROPISM " + rabTropism.get(content)+ "  \n"+rabTropism);
 //			try {
 //			TimeUnit.SECONDS.sleep(2);
 //		} catch (InterruptedException e) {

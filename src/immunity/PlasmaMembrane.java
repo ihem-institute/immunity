@@ -57,20 +57,20 @@ public class PlasmaMembrane {
 	public void step() {
 		this.membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
 		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
-		this.changeColor();
+//		this.changeColor();
 
 		}
 	
-	public void changeColor() {
+/*	public void changeColor() {
 		double c1 = 0d;
-		if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey("mHCI-pept")){
-		c1 = PlasmaMembrane.getInstance().getMembraneRecycle().get("mHCI-pept")/area;
+		if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey("XX")){
+		c1 = PlasmaMembrane.getInstance().getMembraneRecycle().get("XX")/area;
 		this.pmcolor = (int) (c1*255);
 		}
 		else this.pmcolor = 0;
 		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + pmcolor+" " + pmcolor);
 	}
-	
+*/	
 
 	// GETTERS AND SETTERS (to get and set Cell contents)
 	public static PlasmaMembrane getInstance() {

@@ -141,7 +141,7 @@ public class EndosomeUptakeStep {
 //One 60 radius endosomes has an area of about 45000 nm.  This is about 7.5% of the 1500 x 400 nm of
 //the PM considered at the 1 organelle scale.  So to internalize 0.3%. a factor of 0.04 (0.3%/7.5%) is applied.
 //Hence, factor = endosome area/ PM area * 0.04 for cMHCIa and pept-mHCI, and endosome area/ PM area * 0.2 for mHCI
-			double cMHCIvalueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get("cMHCI");
+/*			double cMHCIvalueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get("cMHCI");
 			double cMHCIvalue = cMHCIvalueIn * 0.4 * area/ (double) PlasmaMembrane.getInstance().area;
 			membraneContent.put("cMHCI", cMHCIvalue);
 			PlasmaMembrane.getInstance().getMembraneRecycle().put("cMHCI", cMHCIvalueIn - cMHCIvalue);
@@ -150,7 +150,7 @@ public class EndosomeUptakeStep {
 			double mHCIvalue = mHCIvalueIn * 1 * area/ (double) PlasmaMembrane.getInstance().area;
 			membraneContent.put("mHCI", mHCIvalue);
 			PlasmaMembrane.getInstance().getMembraneRecycle().put("mHCI", mHCIvalueIn - mHCIvalue);
-//			
+*///			
 //			for (String met : PlasmaMembrane.getInstance().getMembraneRecycle().keySet()){
 //				double valueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get(met);
 //				value = 0.001 * valueIn * initOrgProp.get("area")/PlasmaMembrane.getInstance().area;

@@ -30,15 +30,7 @@ public class EndosomeRecycleStep {
 			if (endosome.rabContent.containsKey("RabA")
 					&& Math.random() <= endosome.rabContent.get("RabA")/endosome.area 
 					&& endosome.membraneContent.containsKey("Tf")){
-				
-//				System.out.println(" RECICLADO DE RABA" + endosome.membraneContent.get("Tf"));
-//				try {
-//				TimeUnit.SECONDS.sleep(5);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//				
+								
 				
 				double tfValue = endosome.membraneContent.get("Tf");
 				HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance()
@@ -61,7 +53,7 @@ public class EndosomeRecycleStep {
 			if (Math.random() >= recyProb){
 				return;} // if not near the PM
 						// or without a recycling Rab return
-						// recycling Rabs are RabA (Rab5), RabB(Rab22) and RabC (Rab11)
+						// recycling Rabs are RabA and RabC (Rab11)
 			else {
 				// RECYCLE
 				// Recycle membrane content

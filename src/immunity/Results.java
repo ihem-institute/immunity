@@ -228,7 +228,7 @@ public class Results {
 					//System.out.println("SOLUBLE"+sol + "Rab" +rab);
 				}
 			for (String mem : membraneContent.keySet()) {
-//				System.out.println(" membrane "+mem + " Rab " +rab);
+				System.out.println(" membrane "+mem + " Rab " +rab);
 					double value = contentDist.get(mem + rab)
 							+ membraneContent.get(mem) * rabContent.get(rab)
 							/ area;
