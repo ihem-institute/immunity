@@ -60,12 +60,12 @@
   <frequency>ON_MOVE</frequency>
   <schedParams>
     <start>1.0</start>
-    <interval>1.0</interval>
+    <interval>10.0</interval>
     <priority>-Infinity</priority>
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>1397504254</hashCode>
+    <hashCode>-1076626194</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>space</layoutProjection>

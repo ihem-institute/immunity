@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-04-05 21:43:52 UTC -->
+<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-04-20 16:58:33 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="20" versionDevel="158" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -349,7 +349,9 @@ Adding chol removal in RabD endosomes
     <ListOfReactions>
       <Reaction key="Reaction_0" name="ProtonPump" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_0">
     <dcterms:created>
       <rdf:Description>
@@ -358,6 +360,7 @@ Adding chol removal in RabD endosomes
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_2" stoichiometry="1"/>
@@ -382,7 +385,9 @@ Adding chol removal in RabD endosomes
       </Reaction>
       <Reaction key="Reaction_1" name="ProtonLeak" reversible="true" fast="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_1">
     <dcterms:created>
       <rdf:Description>
@@ -391,6 +396,7 @@ Adding chol removal in RabD endosomes
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
@@ -421,7 +427,9 @@ Adding chol removal in RabD endosomes
       </Reaction>
       <Reaction key="Reaction_2" name="HexArelease" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_2">
     <dcterms:created>
       <rdf:Description>
@@ -430,6 +438,7 @@ Adding chol removal in RabD endosomes
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_0" stoichiometry="1"/>
@@ -466,7 +475,9 @@ Adding chol removal in RabD endosomes
       </Reaction>
       <Reaction key="Reaction_3" name="HexAbinding" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_3">
     <dcterms:created>
       <rdf:Description>
@@ -475,6 +486,7 @@ Adding chol removal in RabD endosomes
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_8" stoichiometry="1"/>
@@ -514,7 +526,9 @@ Adding chol removal in RabD endosomes
       </Reaction>
       <Reaction key="Reaction_4" name="GMhydrolysis" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_4">
     <dcterms:created>
       <rdf:Description>
@@ -523,6 +537,7 @@ Adding chol removal in RabD endosomes
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_6" stoichiometry="1"/>
@@ -562,7 +577,9 @@ Adding chol removal in RabD endosomes
       </Reaction>
       <Reaction key="Reaction_5" name="cholDepletion" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_5">
     <dcterms:created>
       <rdf:Description>
@@ -571,6 +588,7 @@ Adding chol removal in RabD endosomes
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_7" stoichiometry="1"/>
@@ -580,7 +598,7 @@ Adding chol removal in RabD endosomes
           <Product metabolite="Metabolite_4" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4938" name="k1" value="0"/>
+          <Constant key="Parameter_4938" name="k1" value="10"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment]">
           <ListOfCallParameters>
@@ -607,7 +625,7 @@ Adding chol removal in RabD endosomes
           <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[M6PR-HexA]" value="6.02214179e+017" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[proton]" value="15657570882192462" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[vATPase]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[protonCy]" value="60221417900000.016" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[protonCy]" value="60221417900000.023" type="Species" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[RabD]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[HexA]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[GM]" value="0" type="Species" simulationType="reactions"/>
@@ -673,7 +691,7 @@ Adding chol removal in RabD endosomes
             <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[GMhydrolysis],ParameterGroup=Parameters,Parameter=enhancer" value="-2" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[cholDepletion]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[cholDepletion],ParameterGroup=Parameters,Parameter=k1" value="0" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=LipidMetabolism,Vector=Reactions[cholDepletion],ParameterGroup=Parameters,Parameter=k1" value="10" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
@@ -698,7 +716,7 @@ Adding chol removal in RabD endosomes
       <StateTemplateVariable objectReference="ModelValue_4"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 6.02214179e+017 15657570882192462 0 0 0 0 4.5850265902257403 4.5193894834280823e-009 100 60221417900000.016 0 0 1000000 0.00020000000000000001 3 -1.5 
+      0 6.02214179e+017 15657570882192462 0 0 0 0 4.5850265902257403 4.5193894834280823e-009 100 60221417900000.023 0 0 1000000 0.00020000000000000001 3 -1.5 
     </InitialState>
   </Model>
   <ListOfTasks>
@@ -1222,132 +1240,132 @@ Adding chol removal in RabD endosomes
       <Parameter name="log Y" type="bool" value="0"/>
       <ListOfPlotItems>
         <PlotItem name="[M6PR-HexA]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[M6PR-HexA],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[proton]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[proton],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[vATPase]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[RabD]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[RabD],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[HexA]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[HexA],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[GM]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[GM],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[chol]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[chol],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[M6PR]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[M6PR],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="Values[pH]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Values[pH],Reference=Value"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="Values[pHinhibition]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Values[pHinhibition],Reference=Value"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="Values[cholInhibition]" type="Curve2D">
-          <Parameter name="Line type" type="unsignedInteger" value="0"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
-          <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Reference=Time"/>
             <ChannelSpec cn="CN=Root,Model=LipidMetabolism,Vector=Values[cholInhibition],Reference=Value"/>
@@ -1365,7 +1383,7 @@ Adding chol removal in RabD endosomes
       <Slider key="Slider_4" associatedEntityKey="Task_16" objectCN="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
       <Slider key="Slider_5" associatedEntityKey="Task_15" objectCN="CN=Root,Model=LipidMetabolism,Vector=Reactions[ProtonPump],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.0008" minValue="0.0005" maxValue="0.01" tickNumber="1000" tickFactor="100" scaling="linear"/>
       <Slider key="Slider_6" associatedEntityKey="Task_15" objectCN="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[vATPase],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_8" associatedEntityKey="Task_15" objectCN="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[RabD],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="2" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_7" associatedEntityKey="Task_15" objectCN="CN=Root,Model=LipidMetabolism,Vector=Compartments[compartment],Vector=Metabolites[RabD],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="2" tickNumber="1000" tickFactor="100" scaling="linear"/>
     </ListOfSliders>
   </GUI>
   <ListOfUnitDefinitions>
