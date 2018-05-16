@@ -74,7 +74,9 @@ public class CellBuilder implements ContextBuilder<Object> {
 
 //			loadFromCsv();
 		CellProperties cellProperties = CellProperties.getInstance();
-		System.out.println(cellProperties.cellK);
+		context.add(cellProperties);
+		System.out.println("CELL BUILDER CARGADO");
+		System.out.println("VALOR "+ cellProperties.getCellK());
 		System.out.println(cellProperties.initRabCell);
 		System.out.println(cellProperties.initPMmembraneRecycle);
 		System.out.println(cellProperties.rabCompatibility);
@@ -82,7 +84,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 		System.out.println(cellProperties.solubleMet);
 		System.out.println(cellProperties.tubuleTropism);
 		System.out.println(cellProperties.rabTropism);
-		System.out.println(cellProperties.mtTropism);
+		System.out.println("VALOR " + cellProperties.mtTropism);
 
 //			InitialOrganelles inOr = InitialOrganelles.getInstance();
 		System.out

@@ -29,6 +29,7 @@ public class CellProperties {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
 		}
 		return instance;
 	}
@@ -480,5 +481,15 @@ public class CellProperties {
 		}
 		System.out.println("INITIAL "+ InitialOrganelles.getInstance().initRabContent.toString());
 		scanner.close();
+		System.out.println("CELL PROPERITES CARGADO");
+		System.out.println("VALOR "+ cellProperties.cellK);
+		System.out.println(cellProperties.initRabCell);
+		System.out.println(cellProperties.initPMmembraneRecycle);
+		System.out.println(cellProperties.rabCompatibility);
+		System.out.println(cellProperties.membraneMet);
+		System.out.println(cellProperties.solubleMet);
+		System.out.println(cellProperties.tubuleTropism);
+		System.out.println(cellProperties.rabTropism);
+		System.out.println("VALOR " + cellProperties.mtTropism);
 	}
 }
