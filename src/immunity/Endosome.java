@@ -284,6 +284,11 @@ public class Endosome {
 		}
 		if (solubleContent.containsKey(contentPlot)) {
 			double red = solubleContent.get(contentPlot) / volume;
+			if (contentPlot.equals("proton")) {
+				double pH = -Math.log10(red/1000);
+				red = (7-pH)/(7-4.5);
+//				System.out.println("PROTON" + red);
+			}
 			// System.out.println("mHCI content" + red);
 			return red;
 		} else
