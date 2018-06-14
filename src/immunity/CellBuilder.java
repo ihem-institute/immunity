@@ -74,7 +74,15 @@ public class CellBuilder implements ContextBuilder<Object> {
 
 //			loadFromCsv();
 		CellProperties cellProperties = CellProperties.getInstance();
-		context.add(cellProperties);
+		context.add(cellProperties);	
+		Cell cell = Cell.getInstance();
+		context.add(cell);
+		context.add(new Results(space, grid, null, null));// 
+		context.add(new UpdateParameters());
+		context.add(new PlasmaMembrane(space, grid));
+		
+		context.add(new Scale(space, grid));
+
 		System.out.println("CELL BUILDER CARGADO");
 		System.out.println("VALOR "+ cellProperties.getCellK());
 		System.out.println(cellProperties.initRabCell);
@@ -84,9 +92,11 @@ public class CellBuilder implements ContextBuilder<Object> {
 		System.out.println(cellProperties.solubleMet);
 		System.out.println(cellProperties.tubuleTropism);
 		System.out.println(cellProperties.rabTropism);
-		System.out.println("VALOR " + cellProperties.mtTropism);
+		System.out.println("VALOR mtTrop" + cellProperties.mtTropism);
 
 //			InitialOrganelles inOr = InitialOrganelles.getInstance();
+		InitialOrganelles initialOrganelles  = InitialOrganelles.getInstance();
+		context.add(initialOrganelles);
 		System.out
 				.println(InitialOrganelles.getInstance().getInitOrgProp());
 		System.out.println(InitialOrganelles.getInstance()
@@ -102,14 +112,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 		 */
 		
 //		Cell and recycled contents.  Total initial free membrane 
-		Cell cell = Cell.getInstance();
-		context.add(cell);
 		
-//		PlasmaMembrane plasmamembrane = PlasmaMembrane.getInstance();
-		context.add(new PlasmaMembrane(space, grid));
-		
-		context.add(new Scale(space, grid));
-
 		// Microtubules
 
 		for (int i = 0; i < (int) 3/Cell.orgScale; i++) {
@@ -200,17 +203,16 @@ public class CellBuilder implements ContextBuilder<Object> {
 //		}
 		
 		// Cytosol
-		for (int i = 0; i < 50; i++) {
-			for (int j = 0; j < 50; j++) {
-				HashMap<String, Double> cytoContent = new HashMap<String, Double>();
-				context.add(new Cytosol(space, grid, cytoContent, i, j));
-			}
-		}
+//		for (int i = 0; i < 50; i++) {
+//			for (int j = 0; j < 50; j++) {
+//				HashMap<String, Double> cytoContent = new HashMap<String, Double>();
+//				context.add(new Cytosol(space, grid, cytoContent, i, j));
+//			}
+//		}
 		// Cell
 		//context.add(Cell.getInstance());
 		//context.add(CellProperties.getInstance());
-		context.add(new Results(space, grid, null, null));// 
-		context.add(new UpdateParameters());
+
 
 		// Locate the object in the space and grid
 		for (Object obj : context) {

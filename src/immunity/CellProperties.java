@@ -13,10 +13,10 @@ import java.util.Set;
 // CSV file  used for the inital organelles.  It is updated by the UpdateParameters class.
 public class CellProperties {
 	
-	public CellProperties() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+//	public CellProperties() {
+//		super();
+//		// TODO Auto-generated constructor stub
+//	}
 	public static final String configFilename = "config.json";
 	
 	private static CellProperties instance;
@@ -479,8 +479,8 @@ public class CellProperties {
 			}
 			}
 		}
-		System.out.println("INITIAL "+ InitialOrganelles.getInstance().initRabContent.toString());
 		scanner.close();
+		System.out.println("INITIAL cellProp"+ InitialOrganelles.getInstance().initRabContent.toString());
 		System.out.println("CELL PROPERITES CARGADO");
 		System.out.println("VALOR "+ cellProperties.cellK);
 		System.out.println(cellProperties.initRabCell);
@@ -490,6 +490,6 @@ public class CellProperties {
 		System.out.println(cellProperties.solubleMet);
 		System.out.println(cellProperties.tubuleTropism);
 		System.out.println(cellProperties.rabTropism);
-		System.out.println("VALOR " + cellProperties.mtTropism);
+		System.out.println("VALOR cellProp" + cellProperties.mtTropism);
 	}
 }

@@ -51,7 +51,7 @@ public class PlasmaMembrane {
 		for (String met : cellProperties.solubleMet ){
 		solubleRecycle.put(met,  0.0);
 		}
-			
+		System.out.println("solubleRecycle "+solubleRecycle);		
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
