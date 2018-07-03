@@ -115,18 +115,20 @@ public class CellBuilder implements ContextBuilder<Object> {
 		
 		// Microtubules
 
-		for (int i = 0; i < (int) 3/Cell.orgScale; i++) {
-			context.add(new MT(space, grid));
-		}
-
+//		for (int i = 0; i < (int) 3/Cell.orgScale; i++) {
+//			context.add(new MT(space, grid));
+//		}
+		context.add(new MT(space, grid));
+//		context.add(new MT(space, grid));
+//		context.add(new MT(space, grid));
 		// Endosomes
 		// RabA is Rab5.  Organelles are constructed with a given radius that depend on the type (EE, LE, Lys) and with a 
 		// total surface.  These values were obtained of simulations that progressed by 40000 steps
 
 		Set<String> diffOrganelles = InitialOrganelles.getInstance().getDiffOrganelles();
 		System.out.println(diffOrganelles);
+		int uno = 0;
 		for (String kind : diffOrganelles){
-
 			HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 			double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
 			double maxRadius = initOrgProp.get("radius");
@@ -182,13 +184,18 @@ public class CellBuilder implements ContextBuilder<Object> {
 						solubleContent.put(sol, ss*volume);
 						}
 					}
+
+
 				Endosome end = new Endosome(space, grid, rabContent, membraneContent,
 						solubleContent, initOrgProp);
 				context.add(end);
 				Endosome.endosomeShape(end);
-				System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
-		}
 				
+				System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
+uno = 1;
+				break;
+			}	
+if (uno == 1) break;
 	}
 //		this is used for standard starting
 //			for (int i = 0; i < initOrgProp.get("number")/Cell.orgScale; i++) {

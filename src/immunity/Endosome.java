@@ -21,6 +21,8 @@ import org.apache.commons.logging.impl.Log4JLogger;
 import org.apache.log4j.Logger;
 import org.opengis.filter.identity.ObjectId;
 
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import gov.nasa.worldwind.formats.json.JSONDoc;
 import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;
@@ -54,6 +56,7 @@ public class Endosome {
 
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
+	
 	public double xcoor = 0d;
 	public double ycoor = 0d;
 	
@@ -152,6 +155,9 @@ public class Endosome {
 	}
 	public ContinuousSpace<Object> getSpace() {
 		return space;
+	}
+	public void setSpace(ContinuousSpace<Object> value) {
+		space = value;
 	}
 
 	@ScheduledMethod(start = 1, interval = 1000)
