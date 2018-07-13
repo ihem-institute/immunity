@@ -73,7 +73,9 @@ public class CellBuilder implements ContextBuilder<Object> {
 		Parameters params = RunEnvironment.getInstance().getParameters();
 
 //			loadFromCsv();
+
 		CellProperties cellProperties = CellProperties.getInstance();
+		System.out.println(" builder CellProperties cargado");
 		context.add(cellProperties);	
 		Cell cell = Cell.getInstance();
 		context.add(cell);
@@ -83,16 +85,19 @@ public class CellBuilder implements ContextBuilder<Object> {
 		
 		context.add(new Scale(space, grid));
 
-		System.out.println("CELL BUILDER CARGADO");
-		System.out.println("VALOR "+ cellProperties.getCellK());
+		System.out.println(" builder CELL BUILDER CARGADO");
+		System.out.println("builder VALOR "+ cellProperties.getCellK());
 		System.out.println(cellProperties.initRabCell);
 		System.out.println(cellProperties.initPMmembraneRecycle);
 		System.out.println(cellProperties.rabCompatibility);
 		System.out.println(cellProperties.membraneMet);
 		System.out.println(cellProperties.solubleMet);
 		System.out.println(cellProperties.tubuleTropism);
+		System.out.println("builder hasta aquí llegamos");
 		System.out.println(cellProperties.rabTropism);
-		System.out.println("VALOR mtTrop" + cellProperties.mtTropism);
+		// correct
+		System.out.println("builder hasta aquí llegamos");
+		System.out.println("builder VALOR mtTrop" + cellProperties.mtTropism);
 
 //			InitialOrganelles inOr = InitialOrganelles.getInstance();
 		InitialOrganelles initialOrganelles  = InitialOrganelles.getInstance();
@@ -115,10 +120,9 @@ public class CellBuilder implements ContextBuilder<Object> {
 		
 		// Microtubules
 
-//		for (int i = 0; i < (int) 3/Cell.orgScale; i++) {
-//			context.add(new MT(space, grid));
-//		}
-		context.add(new MT(space, grid));
+		for (int i = 0; i < (int) 3/Cell.orgScale; i++) {
+			context.add(new MT(space, grid));
+		}
 //		context.add(new MT(space, grid));
 //		context.add(new MT(space, grid));
 		// Endosomes
@@ -192,10 +196,10 @@ public class CellBuilder implements ContextBuilder<Object> {
 				Endosome.endosomeShape(end);
 				
 				System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
-uno = 1;
-				break;
+//uno = 1;
+//				break;
 			}	
-if (uno == 1) break;
+//if (uno == 1) break;
 	}
 //		this is used for standard starting
 //			for (int i = 0; i < initOrgProp.get("number")/Cell.orgScale; i++) {

@@ -115,6 +115,14 @@ public class EndosomeUptakeStep {
 						double mm = membraneContent.get(mem);
 						membraneContent.put(mem, mm*area);
 					}
+					double cMHCIvalueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get("cMHCI");
+					double cMHCIvalue = 0d;
+//					if (cMHCIvalueIn < area) cMHCIvalue = cMHCIvalueIn;
+//					else cMHCIvalue = area;
+					cMHCIvalue = cMHCIvalueIn * 1 * area/ (double) PlasmaMembrane.getInstance().area;
+					membraneContent.put("cMHCI", cMHCIvalue);
+					PlasmaMembrane.getInstance().getMembraneRecycle().put("cMHCI", cMHCIvalueIn - cMHCIvalue);
+	
 				
 				HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get("kind1"));
 					for (String sol : solubleContent.keySet()){

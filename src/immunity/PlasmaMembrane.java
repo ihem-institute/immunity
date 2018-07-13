@@ -47,7 +47,7 @@ public class PlasmaMembrane {
 		for (String met : cellProperties.initPMmembraneRecycle.keySet() ){
 		membraneRecycle.put(met, cellProperties.initPMmembraneRecycle.get(met) * area);
 		}
-		System.out.println("membraneRecycle "+ membraneRecycle);
+		System.out.println("PM membraneRecycle "+ membraneRecycle);
 		for (String met : cellProperties.solubleMet ){
 		solubleRecycle.put(met,  0.0);
 		}

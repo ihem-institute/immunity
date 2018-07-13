@@ -480,9 +480,9 @@ public class CellProperties {
 			}
 		}
 		scanner.close();
-		System.out.println("INITIAL cellProp"+ InitialOrganelles.getInstance().initRabContent.toString());
-		System.out.println("CELL PROPERITES CARGADO");
-		System.out.println("VALOR "+ cellProperties.cellK);
+		System.out.println("CP INITIAL cellProp"+ InitialOrganelles.getInstance().initRabContent.toString());
+		System.out.println("CP CELL PROPERITES CARGADO");
+		System.out.println("CP VALOR "+ cellProperties.cellK);
 		System.out.println(cellProperties.initRabCell);
 		System.out.println(cellProperties.initPMmembraneRecycle);
 		System.out.println(cellProperties.rabCompatibility);
@@ -490,6 +490,6 @@ public class CellProperties {
 		System.out.println(cellProperties.solubleMet);
 		System.out.println(cellProperties.tubuleTropism);
 		System.out.println(cellProperties.rabTropism);
-		System.out.println("VALOR cellProp" + cellProperties.mtTropism);
+		System.out.println("CP VALOR cellProp" + cellProperties.mtTropism);
 	}
 }

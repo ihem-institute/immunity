@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-03-23 13:21:20 UTC -->
+<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-07-13 17:24:07 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="20" versionDevel="158" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -27,10 +27,10 @@ Reaction scheme where the products are created from the reactants and the change
         <ParameterDescription key="FunctionParameter_79" name="substrate" order="1" role="substrate"/>
       </ListOfParameterDescriptions>
     </Function>
-    <Function key="Function_41" name="Sig+Pot2S" type="UserDefined" reversible="unspecified">
+    <Function key="Function_40" name="Sig+Pot2S" type="UserDefined" reversible="unspecified">
       <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Function_41">
+  <rdf:Description rdf:about="#Function_40">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2017-07-20T13:22:16Z</dcterms:W3CDTF>
@@ -43,23 +43,25 @@ Reaction scheme where the products are created from the reactants and the change
         kS1/(1+(exp(kS2-A1-A2)^kS3)+(exp(-(kS4-I1-I2))^kS5))*s1*s2
       </Expression>
       <ListOfParameterDescriptions>
-        <ParameterDescription key="FunctionParameter_279" name="kS1" order="0" role="constant"/>
-        <ParameterDescription key="FunctionParameter_275" name="kS2" order="1" role="constant"/>
-        <ParameterDescription key="FunctionParameter_271" name="A1" order="2" role="modifier"/>
-        <ParameterDescription key="FunctionParameter_267" name="A2" order="3" role="modifier"/>
-        <ParameterDescription key="FunctionParameter_246" name="kS3" order="4" role="constant"/>
-        <ParameterDescription key="FunctionParameter_280" name="kS4" order="5" role="constant"/>
-        <ParameterDescription key="FunctionParameter_282" name="I1" order="6" role="modifier"/>
-        <ParameterDescription key="FunctionParameter_284" name="I2" order="7" role="modifier"/>
-        <ParameterDescription key="FunctionParameter_286" name="kS5" order="8" role="constant"/>
-        <ParameterDescription key="FunctionParameter_288" name="s1" order="9" role="substrate"/>
-        <ParameterDescription key="FunctionParameter_290" name="s2" order="10" role="substrate"/>
+        <ParameterDescription key="FunctionParameter_264" name="kS1" order="0" role="constant"/>
+        <ParameterDescription key="FunctionParameter_254" name="kS2" order="1" role="constant"/>
+        <ParameterDescription key="FunctionParameter_258" name="A1" order="2" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_266" name="A2" order="3" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_268" name="kS3" order="4" role="constant"/>
+        <ParameterDescription key="FunctionParameter_270" name="kS4" order="5" role="constant"/>
+        <ParameterDescription key="FunctionParameter_272" name="I1" order="6" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_274" name="I2" order="7" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_276" name="kS5" order="8" role="constant"/>
+        <ParameterDescription key="FunctionParameter_278" name="s1" order="9" role="substrate"/>
+        <ParameterDescription key="FunctionParameter_280" name="s2" order="10" role="substrate"/>
       </ListOfParameterDescriptions>
     </Function>
-    <Function key="Function_42" name="Sig+Pot1S" type="UserDefined" reversible="unspecified">
+    <Function key="Function_41" name="Sig+Pot1S" type="UserDefined" reversible="unspecified">
       <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Function_42">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Function_41">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2017-07-20T13:22:16Z</dcterms:W3CDTF>
@@ -67,21 +69,22 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
       </MiriamAnnotation>
       <Expression>
         kS1/(1+(exp(kS2-A1-A2)^kS3)+(exp(-(kS4-I1-I2))^kS5))*S1
       </Expression>
       <ListOfParameterDescriptions>
-        <ParameterDescription key="FunctionParameter_291" name="kS1" order="0" role="constant"/>
-        <ParameterDescription key="FunctionParameter_287" name="kS2" order="1" role="constant"/>
-        <ParameterDescription key="FunctionParameter_283" name="A1" order="2" role="modifier"/>
-        <ParameterDescription key="FunctionParameter_262" name="A2" order="3" role="modifier"/>
-        <ParameterDescription key="FunctionParameter_269" name="kS3" order="4" role="constant"/>
-        <ParameterDescription key="FunctionParameter_277" name="kS4" order="5" role="constant"/>
-        <ParameterDescription key="FunctionParameter_293" name="I1" order="6" role="modifier"/>
-        <ParameterDescription key="FunctionParameter_295" name="I2" order="7" role="modifier"/>
-        <ParameterDescription key="FunctionParameter_297" name="kS5" order="8" role="constant"/>
-        <ParameterDescription key="FunctionParameter_299" name="S1" order="9" role="substrate"/>
+        <ParameterDescription key="FunctionParameter_281" name="kS1" order="0" role="constant"/>
+        <ParameterDescription key="FunctionParameter_277" name="kS2" order="1" role="constant"/>
+        <ParameterDescription key="FunctionParameter_273" name="A1" order="2" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_269" name="A2" order="3" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_265" name="kS3" order="4" role="constant"/>
+        <ParameterDescription key="FunctionParameter_262" name="kS4" order="5" role="constant"/>
+        <ParameterDescription key="FunctionParameter_283" name="I1" order="6" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_285" name="I2" order="7" role="modifier"/>
+        <ParameterDescription key="FunctionParameter_287" name="kS5" order="8" role="constant"/>
+        <ParameterDescription key="FunctionParameter_289" name="S1" order="9" role="substrate"/>
       </ListOfParameterDescriptions>
     </Function>
   </ListOfFunctions>
@@ -348,7 +351,9 @@ Reaction scheme where the products are created from the reactants and the change
     <ListOfModelValues>
       <ModelValue key="ModelValue_0" name="kS1" simulationType="fixed">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#ModelValue_0">
     <dcterms:created>
       <rdf:Description>
@@ -357,6 +362,7 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
       </ModelValue>
       <ModelValue key="ModelValue_1" name="kS2" simulationType="fixed">
@@ -420,45 +426,45 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4953" name="kS1" value="11"/>
+          <Constant key="Parameter_4953" name="kS1" value="1"/>
           <Constant key="Parameter_4952" name="kS2" value="0.8"/>
           <Constant key="Parameter_4951" name="kS3" value="2"/>
           <Constant key="Parameter_4950" name="kS4" value="0.2"/>
           <Constant key="Parameter_4949" name="kS5" value="13"/>
         </ListOfConstants>
-        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_40" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_279">
+            <CallParameter functionParameter="FunctionParameter_264">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_275">
+            <CallParameter functionParameter="FunctionParameter_254">
               <SourceParameter reference="ModelValue_1"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_271">
+            <CallParameter functionParameter="FunctionParameter_258">
               <SourceParameter reference="Metabolite_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_267">
+            <CallParameter functionParameter="FunctionParameter_266">
               <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_246">
+            <CallParameter functionParameter="FunctionParameter_268">
               <SourceParameter reference="ModelValue_2"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_280">
+            <CallParameter functionParameter="FunctionParameter_270">
               <SourceParameter reference="ModelValue_3"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_282">
+            <CallParameter functionParameter="FunctionParameter_272">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_284">
+            <CallParameter functionParameter="FunctionParameter_274">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_286">
+            <CallParameter functionParameter="FunctionParameter_276">
               <SourceParameter reference="ModelValue_4"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_288">
+            <CallParameter functionParameter="FunctionParameter_278">
               <SourceParameter reference="Metabolite_2"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_290">
+            <CallParameter functionParameter="FunctionParameter_280">
               <SourceParameter reference="Metabolite_1"/>
             </CallParameter>
           </ListOfCallParameters>
@@ -489,42 +495,42 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4948" name="kS1" value="11"/>
+          <Constant key="Parameter_4948" name="kS1" value="1"/>
           <Constant key="Parameter_4947" name="kS2" value="0.8"/>
           <Constant key="Parameter_4946" name="kS3" value="2"/>
           <Constant key="Parameter_4945" name="kS4" value="0.2"/>
           <Constant key="Parameter_4944" name="kS5" value="13"/>
         </ListOfConstants>
-        <KineticLaw function="Function_42" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_291">
+            <CallParameter functionParameter="FunctionParameter_281">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_287">
+            <CallParameter functionParameter="FunctionParameter_277">
               <SourceParameter reference="ModelValue_1"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_283">
+            <CallParameter functionParameter="FunctionParameter_273">
               <SourceParameter reference="Metabolite_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_262">
+            <CallParameter functionParameter="FunctionParameter_269">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_269">
+            <CallParameter functionParameter="FunctionParameter_265">
               <SourceParameter reference="ModelValue_2"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_277">
+            <CallParameter functionParameter="FunctionParameter_262">
               <SourceParameter reference="ModelValue_3"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_293">
+            <CallParameter functionParameter="FunctionParameter_283">
               <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_295">
+            <CallParameter functionParameter="FunctionParameter_285">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_297">
+            <CallParameter functionParameter="FunctionParameter_287">
               <SourceParameter reference="ModelValue_4"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_299">
+            <CallParameter functionParameter="FunctionParameter_289">
               <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
           </ListOfCallParameters>
@@ -555,45 +561,45 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_0" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4943" name="kS1" value="11"/>
+          <Constant key="Parameter_4943" name="kS1" value="1"/>
           <Constant key="Parameter_4942" name="kS2" value="0.8"/>
           <Constant key="Parameter_4941" name="kS3" value="2"/>
           <Constant key="Parameter_4940" name="kS4" value="0.2"/>
           <Constant key="Parameter_4939" name="kS5" value="13"/>
         </ListOfConstants>
-        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_40" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_279">
+            <CallParameter functionParameter="FunctionParameter_264">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_275">
+            <CallParameter functionParameter="FunctionParameter_254">
               <SourceParameter reference="ModelValue_1"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_271">
+            <CallParameter functionParameter="FunctionParameter_258">
               <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_267">
+            <CallParameter functionParameter="FunctionParameter_266">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_246">
+            <CallParameter functionParameter="FunctionParameter_268">
               <SourceParameter reference="ModelValue_2"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_280">
+            <CallParameter functionParameter="FunctionParameter_270">
               <SourceParameter reference="ModelValue_3"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_282">
+            <CallParameter functionParameter="FunctionParameter_272">
               <SourceParameter reference="Metabolite_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_284">
+            <CallParameter functionParameter="FunctionParameter_274">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_286">
+            <CallParameter functionParameter="FunctionParameter_276">
               <SourceParameter reference="ModelValue_4"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_288">
+            <CallParameter functionParameter="FunctionParameter_278">
               <SourceParameter reference="Metabolite_4"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_290">
+            <CallParameter functionParameter="FunctionParameter_280">
               <SourceParameter reference="Metabolite_1"/>
             </CallParameter>
           </ListOfCallParameters>
@@ -624,42 +630,42 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4938" name="kS1" value="11"/>
+          <Constant key="Parameter_4938" name="kS1" value="1"/>
           <Constant key="Parameter_4937" name="kS2" value="0.8"/>
           <Constant key="Parameter_4936" name="kS3" value="2"/>
           <Constant key="Parameter_4935" name="kS4" value="0.2"/>
           <Constant key="Parameter_4934" name="kS5" value="13"/>
         </ListOfConstants>
-        <KineticLaw function="Function_42" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_291">
+            <CallParameter functionParameter="FunctionParameter_281">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_287">
+            <CallParameter functionParameter="FunctionParameter_277">
               <SourceParameter reference="ModelValue_1"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_283">
-              <SourceParameter reference="Metabolite_5"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_262">
+            <CallParameter functionParameter="FunctionParameter_273">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_269">
+              <SourceParameter reference="Metabolite_5"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_265">
               <SourceParameter reference="ModelValue_2"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_277">
+            <CallParameter functionParameter="FunctionParameter_262">
               <SourceParameter reference="ModelValue_3"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_293">
+            <CallParameter functionParameter="FunctionParameter_283">
               <SourceParameter reference="Metabolite_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_295">
+            <CallParameter functionParameter="FunctionParameter_285">
               <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_297">
+            <CallParameter functionParameter="FunctionParameter_287">
               <SourceParameter reference="ModelValue_4"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_299">
+            <CallParameter functionParameter="FunctionParameter_289">
               <SourceParameter reference="Metabolite_0"/>
             </CallParameter>
           </ListOfCallParameters>
@@ -1009,45 +1015,45 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4923" name="kS1" value="11"/>
+          <Constant key="Parameter_4923" name="kS1" value="1"/>
           <Constant key="Parameter_4922" name="kS2" value="0.8"/>
           <Constant key="Parameter_4921" name="kS3" value="2"/>
           <Constant key="Parameter_4920" name="kS4" value="0.2"/>
           <Constant key="Parameter_4919" name="kS5" value="13"/>
         </ListOfConstants>
-        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_40" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_279">
+            <CallParameter functionParameter="FunctionParameter_264">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_275">
+            <CallParameter functionParameter="FunctionParameter_254">
               <SourceParameter reference="ModelValue_1"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_271">
+            <CallParameter functionParameter="FunctionParameter_258">
               <SourceParameter reference="Metabolite_9"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_267">
+            <CallParameter functionParameter="FunctionParameter_266">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_246">
+            <CallParameter functionParameter="FunctionParameter_268">
               <SourceParameter reference="ModelValue_2"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_280">
+            <CallParameter functionParameter="FunctionParameter_270">
               <SourceParameter reference="ModelValue_3"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_282">
+            <CallParameter functionParameter="FunctionParameter_272">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_284">
+            <CallParameter functionParameter="FunctionParameter_274">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_286">
+            <CallParameter functionParameter="FunctionParameter_276">
               <SourceParameter reference="ModelValue_4"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_288">
+            <CallParameter functionParameter="FunctionParameter_278">
               <SourceParameter reference="Metabolite_6"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_290">
+            <CallParameter functionParameter="FunctionParameter_280">
               <SourceParameter reference="Metabolite_1"/>
             </CallParameter>
           </ListOfCallParameters>
@@ -1055,9 +1061,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_15" name="Rab22Inactivation" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_15">
     <dcterms:created>
       <rdf:Description>
@@ -1066,7 +1070,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_9" stoichiometry="1"/>
@@ -1080,42 +1083,42 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_9" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4918" name="kS1" value="11"/>
+          <Constant key="Parameter_4918" name="kS1" value="1"/>
           <Constant key="Parameter_4917" name="kS2" value="0.8"/>
           <Constant key="Parameter_4916" name="kS3" value="2"/>
           <Constant key="Parameter_4915" name="kS4" value="0.2"/>
           <Constant key="Parameter_4914" name="kS5" value="13"/>
         </ListOfConstants>
-        <KineticLaw function="Function_42" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_291">
+            <CallParameter functionParameter="FunctionParameter_281">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_287">
+            <CallParameter functionParameter="FunctionParameter_277">
               <SourceParameter reference="ModelValue_1"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_283">
-              <SourceParameter reference="Metabolite_5"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_262">
+            <CallParameter functionParameter="FunctionParameter_273">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_269">
-              <SourceParameter reference="ModelValue_2"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_277">
-              <SourceParameter reference="ModelValue_3"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_293">
-              <SourceParameter reference="Metabolite_9"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_295">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_297">
+            <CallParameter functionParameter="FunctionParameter_265">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_262">
+              <SourceParameter reference="ModelValue_3"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_283">
+              <SourceParameter reference="Metabolite_9"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_285">
+              <SourceParameter reference="Metabolite_5"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_287">
               <SourceParameter reference="ModelValue_4"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_299">
+            <CallParameter functionParameter="FunctionParameter_289">
               <SourceParameter reference="Metabolite_9"/>
             </CallParameter>
           </ListOfCallParameters>
@@ -1145,45 +1148,45 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4913" name="kS1" value="11"/>
+          <Constant key="Parameter_4913" name="kS1" value="1"/>
           <Constant key="Parameter_4912" name="kS2" value="0.8"/>
           <Constant key="Parameter_4911" name="kS3" value="2"/>
           <Constant key="Parameter_4910" name="kS4" value="0.2"/>
           <Constant key="Parameter_4909" name="kS5" value="13"/>
         </ListOfConstants>
-        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_40" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_279">
+            <CallParameter functionParameter="FunctionParameter_264">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_275">
+            <CallParameter functionParameter="FunctionParameter_254">
               <SourceParameter reference="ModelValue_1"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_271">
+            <CallParameter functionParameter="FunctionParameter_258">
               <SourceParameter reference="Metabolite_10"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_267">
+            <CallParameter functionParameter="FunctionParameter_266">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_246">
+            <CallParameter functionParameter="FunctionParameter_268">
               <SourceParameter reference="ModelValue_2"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_280">
+            <CallParameter functionParameter="FunctionParameter_270">
               <SourceParameter reference="ModelValue_3"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_282">
+            <CallParameter functionParameter="FunctionParameter_272">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_284">
+            <CallParameter functionParameter="FunctionParameter_274">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_286">
+            <CallParameter functionParameter="FunctionParameter_276">
               <SourceParameter reference="ModelValue_4"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_288">
+            <CallParameter functionParameter="FunctionParameter_278">
               <SourceParameter reference="Metabolite_7"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_290">
+            <CallParameter functionParameter="FunctionParameter_280">
               <SourceParameter reference="Metabolite_1"/>
             </CallParameter>
           </ListOfCallParameters>
@@ -1191,9 +1194,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_17" name="Rab11Inactivation" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_17">
     <dcterms:created>
       <rdf:Description>
@@ -1202,7 +1203,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_10" stoichiometry="1"/>
@@ -1216,42 +1216,42 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_10" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4908" name="kS1" value="11"/>
+          <Constant key="Parameter_4908" name="kS1" value="1"/>
           <Constant key="Parameter_4907" name="kS2" value="0.8"/>
           <Constant key="Parameter_4906" name="kS3" value="2"/>
           <Constant key="Parameter_4905" name="kS4" value="0.2"/>
           <Constant key="Parameter_4904" name="kS5" value="13"/>
         </ListOfConstants>
-        <KineticLaw function="Function_42" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_291">
+            <CallParameter functionParameter="FunctionParameter_281">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_287">
+            <CallParameter functionParameter="FunctionParameter_277">
               <SourceParameter reference="ModelValue_1"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_283">
-              <SourceParameter reference="Metabolite_5"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_262">
+            <CallParameter functionParameter="FunctionParameter_273">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_269">
-              <SourceParameter reference="ModelValue_2"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_277">
-              <SourceParameter reference="ModelValue_3"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_293">
-              <SourceParameter reference="Metabolite_10"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_295">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_297">
+            <CallParameter functionParameter="FunctionParameter_265">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_262">
+              <SourceParameter reference="ModelValue_3"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_283">
+              <SourceParameter reference="Metabolite_10"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_285">
+              <SourceParameter reference="Metabolite_5"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_287">
               <SourceParameter reference="ModelValue_4"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_299">
+            <CallParameter functionParameter="FunctionParameter_289">
               <SourceParameter reference="Metabolite_10"/>
             </CallParameter>
           </ListOfCallParameters>
@@ -1281,45 +1281,45 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4903" name="kS1" value="11"/>
+          <Constant key="Parameter_4903" name="kS1" value="1"/>
           <Constant key="Parameter_4902" name="kS2" value="0.8"/>
           <Constant key="Parameter_4901" name="kS3" value="2"/>
           <Constant key="Parameter_4900" name="kS4" value="0.2"/>
           <Constant key="Parameter_4899" name="kS5" value="13"/>
         </ListOfConstants>
-        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_40" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_279">
+            <CallParameter functionParameter="FunctionParameter_264">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_275">
+            <CallParameter functionParameter="FunctionParameter_254">
               <SourceParameter reference="ModelValue_1"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_271">
+            <CallParameter functionParameter="FunctionParameter_258">
               <SourceParameter reference="Metabolite_11"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_267">
+            <CallParameter functionParameter="FunctionParameter_266">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_246">
+            <CallParameter functionParameter="FunctionParameter_268">
               <SourceParameter reference="ModelValue_2"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_280">
+            <CallParameter functionParameter="FunctionParameter_270">
               <SourceParameter reference="ModelValue_3"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_282">
+            <CallParameter functionParameter="FunctionParameter_272">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_284">
+            <CallParameter functionParameter="FunctionParameter_274">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_286">
+            <CallParameter functionParameter="FunctionParameter_276">
               <SourceParameter reference="ModelValue_4"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_288">
+            <CallParameter functionParameter="FunctionParameter_278">
               <SourceParameter reference="Metabolite_8"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_290">
+            <CallParameter functionParameter="FunctionParameter_280">
               <SourceParameter reference="Metabolite_1"/>
             </CallParameter>
           </ListOfCallParameters>
@@ -1349,42 +1349,42 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4898" name="kS1" value="11"/>
+          <Constant key="Parameter_4898" name="kS1" value="1"/>
           <Constant key="Parameter_4897" name="kS2" value="0.8"/>
           <Constant key="Parameter_4896" name="kS3" value="2"/>
           <Constant key="Parameter_4895" name="kS4" value="0.2"/>
           <Constant key="Parameter_4894" name="kS5" value="13"/>
         </ListOfConstants>
-        <KineticLaw function="Function_42" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
+        <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=RabConversion,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_291">
+            <CallParameter functionParameter="FunctionParameter_281">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_287">
+            <CallParameter functionParameter="FunctionParameter_277">
               <SourceParameter reference="ModelValue_1"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_283">
-              <SourceParameter reference="Metabolite_5"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_262">
+            <CallParameter functionParameter="FunctionParameter_273">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_269">
-              <SourceParameter reference="ModelValue_2"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_277">
-              <SourceParameter reference="ModelValue_3"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_293">
-              <SourceParameter reference="Metabolite_11"/>
-            </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_295">
               <SourceParameter reference="Metabolite_5"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_297">
+            <CallParameter functionParameter="FunctionParameter_265">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_262">
+              <SourceParameter reference="ModelValue_3"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_283">
+              <SourceParameter reference="Metabolite_11"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_285">
+              <SourceParameter reference="Metabolite_5"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_287">
               <SourceParameter reference="ModelValue_4"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_299">
+            <CallParameter functionParameter="FunctionParameter_289">
               <SourceParameter reference="Metabolite_11"/>
             </CallParameter>
           </ListOfCallParameters>
@@ -1423,7 +1423,7 @@ Reaction scheme where the products are created from the reactants and the change
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabEcyto]" value="0" type="Species" simulationType="assignment"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS1]" value="11" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS1]" value="1" type="ModelValue" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS2]" value="0.80000000000000004" type="ModelValue" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS3]" value="2" type="ModelValue" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS4]" value="0.20000000000000001" type="ModelValue" simulationType="fixed"/>
@@ -1433,7 +1433,7 @@ Reaction scheme where the products are created from the reactants and the change
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1460,7 +1460,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1487,7 +1487,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1514,7 +1514,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1611,7 +1611,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1638,7 +1638,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1665,7 +1665,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1692,7 +1692,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1719,7 +1719,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1746,7 +1746,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSInactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1804,7 +1804,7 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="ModelValue_6"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 513688694687 0 602214179000 0 0 0 88525484313 0 0 0 0 602214179000 0 0 0 0 0 1 11 0.80000000000000004 2 0.20000000000000001 13 0.29999999999999999 0.29999999999999999 
+      0 513688694687 0 602214179000 0 0 0 88525484313 0 0 0 0 602214179000 0 0 0 0 0 1 1 0.80000000000000004 2 0.20000000000000001 13 0.29999999999999999 0.29999999999999999 
     </InitialState>
   </Model>
   <ListOfTasks>

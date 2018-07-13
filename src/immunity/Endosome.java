@@ -101,7 +101,7 @@ public class Endosome {
 //	one tick is equivalent to 0.03 seconds
 //	At time scale 0.5, I move the endosome 60 nm (30/timeScale)
 //	
-	double p_EndosomeRecycleStep = 1d/(1d/0.03*Cell.timeScale);
+	double p_EndosomeRecycleStep = 1d/(10d/0.03*Cell.timeScale);
 	double p_EndosomeUptakeStep = 1d/(60d/0.03*Cell.timeScale);
 //	double p_EndosomeNewFromERStep = 1d/(60d/0.03*Cell.timeScale);
 	double p_EndosomeInternalVesicleStep = 1d/(5d/0.03*Cell.timeScale);// change from 2 to .1
