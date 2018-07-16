@@ -45,18 +45,18 @@ public class EndosomeLipidMetabolismStep {
 		HashMap<String, Double> presentValues = new HashMap<String, Double>(endosome.lipidTimeSeries.get(tick));
 		for (String met :presentValues.keySet()){
 			
-			if (met.equals("preP")){
+			if (Cell.getInstance().getSolubleCell().containsKey(met)){
 				double metValue = Cell.getInstance().getSolubleCell().get(met)
 						+presentValues.get(met)* endosome.volume/Cell.volume;
 
-				Cell.getInstance().getSolubleCell().put("preP", metValue);
+				Cell.getInstance().getSolubleCell().put(met, metValue);
 				}
-			else if (met == "pept"){
-
-				double metValue = Cell.getInstance().getSolubleCell().get(met)
-						+presentValues.get(met)* endosome.volume/Cell.volume;
-				Cell.getInstance().getSolubleCell().put("pept", metValue);
-				}
+//			else if (met == "pept"){
+//
+//				double metValue = Cell.getInstance().getSolubleCell().get(met)
+//						+presentValues.get(met)* endosome.volume/Cell.volume;
+//				Cell.getInstance().getSolubleCell().put("pept", metValue);
+//				}
 			else if (endosome.membraneMet.contains(met)) {
 			double metValue = presentValues.get(met)* endosome.area;
 			endosome.membraneContent.put(met, metValue);

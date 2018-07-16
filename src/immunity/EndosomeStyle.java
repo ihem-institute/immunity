@@ -151,72 +151,75 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	@Override
 	public Color getBorderColor(Endosome object) {
 		int colorCode = 1;
-//		if (!object.getSolubleContent().containsKey("solubleMarker")
-//				&&!object.getMembraneContent().containsKey("membraneMarker")) {
-//			return new Color(255, 255, 255);				
-//		}
-//		if (((object.getSolubleContent().containsKey("solubleMarker")
-//				&& object.getSolubleContent().get("solubleMarker")<0.5))
-//			&& 
-//			((object.getMembraneContent().containsKey("membraneMarker")
-//					&& object.getMembraneContent().get("membraneMarker")<0.5)))
-//		{
-//			return new Color(255, 255, 255);				
-//		}
-		
-		
-		
-		
-		
+//		As a routine, border color represents the rab content.  It may be a mix (colorCode = 0) or just to select the more
+//		aboundant Rab (colorCode = 1)
+		//		if (!object.getSolubleContent().containsKey("solubleMarker")
+		//				&&!object.getMembraneContent().containsKey("membraneMarker")) {
+		//			return new Color(255, 255, 255);				
+		//		}
+		//		if (((object.getSolubleContent().containsKey("solubleMarker")
+		//				&& object.getSolubleContent().get("solubleMarker")<0.5))
+		//			&& 
+		//			((object.getMembraneContent().containsKey("membraneMarker")
+		//					&& object.getMembraneContent().get("membraneMarker")<0.5)))
+		//		{
+		//			return new Color(255, 255, 255);				
+		//		}
+
+
+
+
+
 
 		if (colorCode ==0)
-			
+
 		{
-		// color code for rab contents
-		double red = object.getEdgeRed();
-		double green = object.getEdgeGreen();
-		double blue = object.getEdgeBlue();
-		ArrayList<Double> colors = new ArrayList<Double>();
-		colors.add(red);
-		colors.add(green);
-		colors.add(blue);
+			// color code for rab contents
+			double red = object.getEdgeRed();
+			double green = object.getEdgeGreen();
+			double blue = object.getEdgeBlue();
+			ArrayList<Double> colors = new ArrayList<Double>();
+			colors.add(red);
+			colors.add(green);
+			colors.add(blue);
 
-// 		(1 - max (list g r b)) ;
-		Double corr = 1d - Collections.max(colors);
-		if (corr <0) {
-			System.out.println("BORDER COLOR" + colors);
-		}
+			// 		(1 - max (list g r b)) ;
+			Double corr = 1d - Collections.max(colors);
+			if (corr <0) {
+				System.out.println("BORDER COLOR" + colors);
+			}
 
-//		if the rab in the organelle is not represented, then dark gray
-		if (corr > 0.95){
-			return new Color(255, 255, 255);
-		}
+			//		if the rab in the organelle is not represented, then dark gray
+			if (corr > 0.95){
+				return new Color(255, 255, 255);
+			}
 
-		return new Color((int) ((red + corr) * 255d),
-				(int) ((green + corr) * 255d), (int) ((blue + corr) * 255d));
+			return new Color((int) ((red + corr) * 255d),
+					(int) ((green + corr) * 255d), (int) ((blue + corr) * 255d));
 		}
 		
+//		color code = 1.  Select the more aboundant Rab
 		else {
 			HashMap<String, Double> rabContent = new HashMap<String, Double>(object.getRabContent());
 			Double rabMax = 0d;
 			String rabColor = null;
 			for (String rab : rabContent.keySet())
 			{
-			if (rabContent.get(rab)> rabMax) {
-				rabMax = rabContent.get(rab);
-				rabColor = rab;
+				if (rabContent.get(rab)> rabMax) {
+					rabMax = rabContent.get(rab);
+					rabColor = rab;
 
 				}
 			}
-//			System.out.println(rabColor+rabContent);
+			//			System.out.println(rabColor+rabContent);
 			if (rabColor.equals("RabA"))	return new Color (0,0,255);
 			else if (rabColor.equals("RabB"))	return new Color (0,255,255);
 			else if (rabColor.equals("RabC"))	return new Color (0,255,0);
-			else if (rabColor.equals("RabD"))	return new Color (255,0,0);
-			else if (rabColor.equals("RabE"))	return new Color (255,255,0);
+			else if (rabColor.equals("RabD"))	return new Color (255,255,255);
+			else if (rabColor.equals("RabE"))	return new Color (255,255,255);
 			else	return new Color (0,0,0);
 		}
-			
+
 	}
 
 	@Override
