@@ -43,13 +43,17 @@ public class EndosomeLipidMetabolismStep {
 //		by area the membrane metabolites and by volume the soluble metabolites
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		HashMap<String, Double> presentValues = new HashMap<String, Double>(endosome.lipidTimeSeries.get(tick));
+
 		for (String met :presentValues.keySet()){
+// if the content is cytosolic, increase the cell pull proportinal to the volume.  The content is
+//			eliminated from endosome
 			
 			if (Cell.getInstance().getSolubleCell().containsKey(met)){
 				double metValue = Cell.getInstance().getSolubleCell().get(met)
 						+presentValues.get(met)* endosome.volume/Cell.volume;
 
 				Cell.getInstance().getSolubleCell().put(met, metValue);
+				endosome.solubleContent.remove(met);
 				}
 //			else if (met == "pept"){
 //
