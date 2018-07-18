@@ -454,6 +454,11 @@ public class Endosome {
 		return rabTimeSeries;
 	}
 
+	public HashMap<String, Double> getInitOrgProp() {
+		// TODO Auto-generated method stub
+		return initOrgProp;
+	}
+
 
 	
 

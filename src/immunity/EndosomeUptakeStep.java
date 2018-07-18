@@ -80,16 +80,16 @@ public class EndosomeUptakeStep {
 //		membrane content) or volume (soluble content).  For uptake it is controlled that there is enough
 //		membrane and there is RabA in the cell
 
-			double maxRadius = initOrgProp.get("radius");
-			double minRadius = Cell.rcyl*1.75;
+			double maxRadius = initOrgProp.get("maxRadius");
+			double minRadius = Cell.rcyl*1.1;
 			double a = RandomHelper.nextDoubleFromTo(minRadius,maxRadius);				
-			double c = a + a  * Math.random();
+			double c = a + a  * Math.random() * initOrgProp.get("maxAsym");
 
 			double f = 1.6075;
 			double af= Math.pow(a, f);
 			double cf= Math.pow(c, f);
 			double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
-			double volume = 0.9*4d/3d*Math.PI*a*a*c;
+			double volume = 4d/3d*Math.PI*a*a*c;
 			
 //			if (tMembrane < area) {
 //				return;
@@ -178,7 +178,7 @@ public class EndosomeUptakeStep {
 //			tMembrane = tMembrane - bud.initOrgProp.get("area");
 			bud.area = initOrgProp.get("area");
 			bud.volume = initOrgProp.get("volume");
-			bud.size = initOrgProp.get("radius");// radius of a sphere with the volume of the
+			bud.size = initOrgProp.get("maxRadius");// radius of a sphere with the volume of the
 									// cylinder
 			bud.speed = 1d / bud.size;
 			bud.heading = -90;// heading down
@@ -203,7 +203,7 @@ public class EndosomeUptakeStep {
 					InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 //		double tMembrane = Cell.getInstance().gettMembrane();
 
-			double maxRadius = initOrgProp.get("radius");
+			double maxRadius = initOrgProp.get("maxRadius");
 			double minRadius =Cell.rcyl*1.75;
 			double a = 0d;
 			double c = 0d;
@@ -277,7 +277,7 @@ public class EndosomeUptakeStep {
 			context.add(bud);
 			bud.area = initOrgProp.get("area");
 			bud.volume = initOrgProp.get("volume");
-			bud.size = initOrgProp.get("radius");// radius of a sphere with the volume of the
+			bud.size = initOrgProp.get("maxRadius");// radius of a sphere with the volume of the
 											// cylinder
 			bud.speed = 1d / bud.size;
 			bud.heading = -90;// heading down

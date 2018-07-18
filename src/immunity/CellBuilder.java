@@ -135,29 +135,18 @@ public class CellBuilder implements ContextBuilder<Object> {
 		for (String kind : diffOrganelles){
 			HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 			double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
-			double maxRadius = initOrgProp.get("radius");
+			double maxRadius = initOrgProp.get("maxRadius");
+			double maxAsym = initOrgProp.get("maxAsym");
 			double minRadius = Cell.rcyl*1.1;
 			while (totalArea > 32d*Math.PI*minRadius*minRadius){
-				double a = 0d;
-				double c = 0d;
-//				more round vesicles for RabA and RabD.  Tubules for RabB, RabC and RabE
-				if (kind.equals("kind1") || kind.equals("kind4")){
-					a = RandomHelper.nextDoubleFromTo(minRadius,maxRadius);				
-					c = a + a  * Math.random();
-				}
-				else if (kind.equals("kind6")){
-					a = maxRadius;				
-					c = a;
-				}
-				else{
-					a = minRadius;				
-					c = a + a * RandomHelper.nextDoubleFromTo(2,10);
-				}
+
+				double a = RandomHelper.nextDoubleFromTo(minRadius,maxRadius);				
+				double c = a + a  * Math.random()* maxAsym;
 				double f = 1.6075;
 				double af= Math.pow(a, f);
 				double cf= Math.pow(c, f);
 				double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
-				double volume = 0.9*4d/3d*Math.PI*a*a*c;
+				double volume = 4d/3d*Math.PI*a*a*c;
 				initOrgProp.put("area", area);
 				initOrgProp.put("volume", volume);
 				totalArea = totalArea-area;
@@ -246,51 +235,90 @@ public class CellBuilder implements ContextBuilder<Object> {
 				((MT) obj).changePosition((MT)obj);
 			} 
 			if (obj instanceof Endosome) {
-				if(((Endosome) obj).getRabContent().containsKey("RabA")){
-	//				NdPoint pt = space.getLocation(obj);
-					double x = RandomHelper.nextDoubleFromTo(5d, 45d);
-					double y = RandomHelper.nextDoubleFromTo(25d, 45d);
-					space.moveTo(obj, x, y);
-					grid.moveTo(obj, (int) x, (int) y);					
-					}
-				if(((Endosome) obj).getRabContent().containsKey("RabB")){
-//					NdPoint pt = space.getLocation(obj);
-					double x = RandomHelper.nextDoubleFromTo(5d, 45d);
-					double y = RandomHelper.nextDoubleFromTo(25d, 45d);
-					space.moveTo(obj, x, y);
-					grid.moveTo(obj, (int) x, (int) y);					
-					}
-				if(((Endosome) obj).getRabContent().containsKey("RabC")){
-//					NdPoint pt = space.getLocation(obj);
-					double x = RandomHelper.nextDoubleFromTo(5d, 45d);
-					double y = RandomHelper.nextDoubleFromTo(5d, 25d);
-					space.moveTo(obj, x, y);
-					grid.moveTo(obj, (int) x, (int) y);					
-					}
-				if(((Endosome) obj).getRabContent().containsKey("RabD")){
-//					NdPoint pt = space.getLocation(obj);
-					double x = RandomHelper.nextDoubleFromTo(5d, 45d);
-					double y = RandomHelper.nextDoubleFromTo(5d, 25d);
-					space.moveTo(obj, x, y);
-					grid.moveTo(obj, (int) x, (int) y);					
-					}
-				if(((Endosome) obj).getRabContent().containsKey("RabE")){
-//					NdPoint pt = space.getLocation(obj);
-					double x = RandomHelper.nextDoubleFromTo(5d, 45d);
-					double y = RandomHelper.nextDoubleFromTo(5d, 25d);
-					space.moveTo(obj, x, y);
-					grid.moveTo(obj, (int) x, (int) y);					
-					}
+			double position = ((Endosome) obj).getInitOrgProp().get("position");
+//				NdPoint pt = space.getLocation(obj);
+				double y = 5d + 40d * position + RandomHelper.nextDoubleFromTo(-4d, 4d);
+				double x = RandomHelper.nextDoubleFromTo(5d, 45d);
+				space.moveTo(obj, x, y);
+				grid.moveTo(obj, (int) x, (int) y);					
+//			
+//				if(((Endosome) obj).getRabContent().containsKey("RabB")){
+////					NdPoint pt = space.getLocation(obj);
+//					double x = RandomHelper.nextDoubleFromTo(5d, 45d);
+//					double y = RandomHelper.nextDoubleFromTo(25d, 45d);
+//					space.moveTo(obj, x, y);
+//					grid.moveTo(obj, (int) x, (int) y);					
+//					}
+//				if(((Endosome) obj).getRabContent().containsKey("RabC")){
+////					NdPoint pt = space.getLocation(obj);
+//					double x = RandomHelper.nextDoubleFromTo(5d, 45d);
+//					double y = RandomHelper.nextDoubleFromTo(5d, 25d);
+//					space.moveTo(obj, x, y);
+//					grid.moveTo(obj, (int) x, (int) y);					
+//					}
+//				if(((Endosome) obj).getRabContent().containsKey("RabD")){
+////					NdPoint pt = space.getLocation(obj);
+//					double x = RandomHelper.nextDoubleFromTo(5d, 45d);
+//					double y = RandomHelper.nextDoubleFromTo(5d, 25d);
+//					space.moveTo(obj, x, y);
+//					grid.moveTo(obj, (int) x, (int) y);					
+//					}
+//				if(((Endosome) obj).getRabContent().containsKey("RabE")){
+////					NdPoint pt = space.getLocation(obj);
+//					double x = RandomHelper.nextDoubleFromTo(5d, 45d);
+//					double y = RandomHelper.nextDoubleFromTo(5d, 25d);
+//					space.moveTo(obj, x, y);
+//					grid.moveTo(obj, (int) x, (int) y);					
+//					}
 
 			}
 		}
 
+		
 		if (RunEnvironment.getInstance().isBatch()) {
 			RunEnvironment.getInstance().endAt(20);
 		}
 
-		return context;
+
+	
+		
+		return context;	
+		
 	}
+	
+	
+
+/*	private void loadFromExcel(Context<Endosome> context, ContinuousSpace<Object> space, Grid<Object> grid)
+
+			throws IOException {
+		// open the excel file
+		Workbook book = new XSSFWorkbook(new FileInputStream("./data/agent_input.xlsx"));
+		// get the first worksheet
+		Sheet sheet = book.getSheetAt(0);
+
+		// iterate over the rows, skipping the first one
+
+		for (Row row : sheet) {
+
+			if (row.getRowNum() > 0) {
+
+				String id = row.getCell(1).getStringCellValue();
+				int age = (int) row.getCell(2).getNumericCellValue();
+				double energy = row.getCell(3).getNumericCellValue();
+				Endosome endosome = new Endosome(space, grid, null, null, null, null);
+				context.add(endosome);
+
+				double x = row.getCell(5).getNumericCellValue();
+				double y = row.getCell(6).getNumericCellValue();
+				space.moveTo(endosome, x, y);
+			}
+
+		}
+
+
+
+	}*/
+
 
 	
 }
