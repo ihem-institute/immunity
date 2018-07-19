@@ -80,6 +80,9 @@ public class CellProperties {
 	public HashMap<String, String> getColorContent() {
 		return colorContent;
 	}
+	// membraneMet was originally a string set.  Now is a hashmap because
+	// the probability of internalization from PM was added.  So, there is
+	// two getters, one that return the keySet and another that return the hashmap
 	public Set<String> getMembraneMet() {
 		return membraneMet.keySet();
 	}
@@ -189,12 +192,10 @@ public class CellProperties {
 					}
 				break;
 			}
+
 			case "membraneMet": {
-				for (int i = 1; i < b.length; i++) {
-					String lastTwo = b[i].substring(b[i].length() - 2);	
-					double metUptakeSpeed = Integer.parseInt(lastTwo)/10d;
-					String metName =  b[i].substring(0, b[i].length() - 2);
-					cellProperties.membraneMet.put(metName, metUptakeSpeed);
+				for (int i = 1; i < b.length; i = i + 2) {
+					cellProperties.getMembraneMetRec().put(b[i], Double.parseDouble(b[i+1]));
 				}
 				break;
 			}

@@ -255,6 +255,7 @@ public class EndosomeUptakeStep {
 			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 			HashSet<String> solubleMet = new HashSet<String>(CellProperties.getInstance().getSolubleMet());
 			HashSet<String> membraneMet = new HashSet<String>(CellProperties.getInstance().getMembraneMet());
+//	This is getting the keyset of the membrane metabolisms
 			for (String mem : membraneMet){
 //				System.out.println(mem + "  MMEEMM " + selectedRab + "\n " + Results.getInstance().getContentDist());
 				value = Results.getInstance().getContentDist().get(mem+selectedRab)
