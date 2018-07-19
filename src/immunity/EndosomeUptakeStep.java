@@ -3,6 +3,7 @@ package immunity;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
@@ -110,18 +111,33 @@ public class EndosomeUptakeStep {
 //						rabContent.put(rab, rr*area);
 //					}
 // 		Soluble and membrane content of the kind1, but cMHCI and mHCI depends now on PM content
-			HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get("kind1"));
-					for (String mem : membraneContent.keySet()){
-						double mm = membraneContent.get(mem);
-						membraneContent.put(mem, mm*area);
+			HashMap<String, Double> membraneContent = new HashMap<String,Double>();
+			Set<String> membraneMet = new HashSet<String>(CellProperties.getInstance().getMembraneMet());
+					for (String mem : membraneMet){
+						double valueIn = 0d;
+						if (InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").containsKey(mem))
+						{
+						valueIn = InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").get(mem);
+						}
+						if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey(mem)){
+						double pM = PlasmaMembrane.getInstance().getMembraneRecycle().get(mem);
+						pM = pM * CellProperties.getInstance().getMembraneMetRec().get(mem) * area/ (double) PlasmaMembrane.getInstance().area;
+						valueIn = valueIn + pM;	
+						}
+						if (valueIn < area) membraneContent.put(mem, valueIn);
+						else membraneContent.put(mem, area);
+						
 					}
-					double cMHCIvalueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get("cMHCI");
-					double cMHCIvalue = 0d;
-//					if (cMHCIvalueIn < area) cMHCIvalue = cMHCIvalueIn;
-//					else cMHCIvalue = area;
-					cMHCIvalue = cMHCIvalueIn * 1 * area/ (double) PlasmaMembrane.getInstance().area;
-					membraneContent.put("cMHCI", cMHCIvalue);
-					PlasmaMembrane.getInstance().getMembraneRecycle().put("cMHCI", cMHCIvalueIn - cMHCIvalue);
+					
+
+//					
+//					double cMHCIvalueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get("cMHCI");
+//					double cMHCIvalue = 0d;
+////					if (cMHCIvalueIn < area) cMHCIvalue = cMHCIvalueIn;
+////					else cMHCIvalue = area;
+//					cMHCIvalue = cMHCIvalueIn * 1 * area/ (double) PlasmaMembrane.getInstance().area;
+//					membraneContent.put("cMHCI", cMHCIvalue);
+//					PlasmaMembrane.getInstance().getMembraneRecycle().put("cMHCI", cMHCIvalueIn - cMHCIvalue);
 	
 				
 				HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get("kind1"));
@@ -143,12 +159,18 @@ public class EndosomeUptakeStep {
 // new endosome incorporate PM components in a proportion area new/area PM
 //					"Fully conformed MHC-I proteins internalize with the
 //					rate 0.002–0.004 min−1 (0.2–0.4% loss of initially surface expressed
-//					molecules per minute, i.e. 12–24% per hour) which is 5–8-fold lower
+//					molecules per minute, i.e. 12–24% per hour) which is 5–8-fold slower
 //					than IR of their open forms (0.011–0.022 min−1), 
 //					Molecular Immunology 55 (2013) 149– 152 (Pero Lucin)"
 //One 60 radius endosomes has an area of about 45000 nm.  This is about 7.5% of the 1500 x 400 nm of
 //the PM considered at the 1 organelle scale.  So to internalize 0.3%. a factor of 0.04 (0.3%/7.5%) is applied.
 //Hence, factor = endosome area/ PM area * 0.04 for cMHCIa and pept-mHCI, and endosome area/ PM area * 0.2 for mHCI
+/*				
+	My problem is that I do not know the rate of uptake that depends on how much Kind1(Rab5) organelles are 
+	switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 for open MHCI and 0.15 for closed.
+			
+					
+*/					
 /*			double cMHCIvalueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get("cMHCI");
 			double cMHCIvalue = cMHCIvalueIn * 0.4 * area/ (double) PlasmaMembrane.getInstance().area;
 			membraneContent.put("cMHCI", cMHCIvalue);
@@ -231,8 +253,8 @@ public class EndosomeUptakeStep {
 			rabContent.put(selectedRab, area);
 			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
-			HashSet<String> solubleMet = (HashSet<String>) CellProperties.getInstance().getSolubleMet();
-			HashSet<String> membraneMet = (HashSet<String>) CellProperties.getInstance().getMembraneMet();
+			HashSet<String> solubleMet = new HashSet<String>(CellProperties.getInstance().getSolubleMet());
+			HashSet<String> membraneMet = new HashSet<String>(CellProperties.getInstance().getMembraneMet());
 			for (String mem : membraneMet){
 //				System.out.println(mem + "  MMEEMM " + selectedRab + "\n " + Results.getInstance().getContentDist());
 				value = Results.getInstance().getContentDist().get(mem+selectedRab)

@@ -190,7 +190,10 @@ public class UpdateParameters {
 			}
 			case "membraneMet": {
 				for (int i = 1; i < b.length; i++) {
-					cellProperties.getMembraneMet().add(b[i]);
+					String lastTwo = b[i].substring(b[i].length() - 2);	
+					double metUptakeSpeed = Integer.parseInt(lastTwo)/10d;
+					String metName =  b[i].substring(0, b[i].length() - 2);
+					cellProperties.getMembraneMetRec().put(metName, metUptakeSpeed);
 				}
 				break;
 			}

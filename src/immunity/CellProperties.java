@@ -45,7 +45,7 @@ public class CellProperties {
 	public HashMap<String, Double> rabRecyProb = new HashMap<String, Double>();
 	public HashMap<String, String> colorRab = new HashMap<String, String>();
 	public HashMap<String, String> colorContent = new HashMap<String, String>();
-	Set<String> membraneMet = new HashSet<String>();
+	public HashMap<String, Double> membraneMet = new HashMap<String, Double>();
 
 	Set<String> solubleMet = new HashSet<String>();
 	Set<String> rabSet = new HashSet<String>();
@@ -81,6 +81,9 @@ public class CellProperties {
 		return colorContent;
 	}
 	public Set<String> getMembraneMet() {
+		return membraneMet.keySet();
+	}
+	public HashMap<String, Double> getMembraneMetRec() {
 		return membraneMet;
 	}
 	public Set<String> getSolubleMet() {
@@ -95,10 +98,10 @@ public class CellProperties {
 	public HashMap<String, Double> getInitPMmembraneRecycle() {
 		return initPMmembraneRecycle;
 	}
-	public Set<String> getmembraneMet() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public Set<String> getmembraneMet() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 	
 	public static void loadFromCsv(CellProperties cellProperties) throws IOException {
 
@@ -188,7 +191,10 @@ public class CellProperties {
 			}
 			case "membraneMet": {
 				for (int i = 1; i < b.length; i++) {
-					cellProperties.getMembraneMet().add(b[i]);
+					String lastTwo = b[i].substring(b[i].length() - 2);	
+					double metUptakeSpeed = Integer.parseInt(lastTwo)/10d;
+					String metName =  b[i].substring(0, b[i].length() - 2);
+					cellProperties.membraneMet.put(metName, metUptakeSpeed);
 				}
 				break;
 			}

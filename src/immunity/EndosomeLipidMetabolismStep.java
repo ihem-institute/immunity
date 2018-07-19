@@ -69,9 +69,8 @@ public class EndosomeLipidMetabolismStep {
 			double metValue = presentValues.get(met)* endosome.volume;
 			endosome.solubleContent.put(met, metValue);
 				}
-	}
-	endosome.solubleContent.remove("preP");
-	endosome.solubleContent.remove("pept");
+		}
+
 
 		
 	}
