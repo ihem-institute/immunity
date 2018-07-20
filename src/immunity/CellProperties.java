@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
-// This class contains the properties of the cell.  It is loaded by the CellBuilder with the same
+// This class contains the properties of the cell.  It is loaded with the same
 // CSV file  used for the inital organelles.  It is updated by the UpdateParameters class.
 public class CellProperties {
 	

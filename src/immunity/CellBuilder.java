@@ -72,7 +72,6 @@ public class CellBuilder implements ContextBuilder<Object> {
 
 		Parameters params = RunEnvironment.getInstance().getParameters();
 
-//			loadFromCsv();
 
 		CellProperties cellProperties = CellProperties.getInstance();
 		System.out.println(" builder CellProperties cargado");
@@ -111,10 +110,6 @@ public class CellBuilder implements ContextBuilder<Object> {
 		System.out.println(InitialOrganelles.getInstance()
 				.getInitSolubleContent());
 
-		/*
-		 * try { loadFromExcel(); } catch (IOException e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); }
-		 */
 		
 //		Cell and recycled contents.  Total initial free membrane 
 		
@@ -123,8 +118,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 		for (int i = 0; i < (int) 3/Cell.orgScale; i++) {
 			context.add(new MT(space, grid));
 		}
-//		context.add(new MT(space, grid));
-//		context.add(new MT(space, grid));
+
 		// Endosomes
 		// RabA is Rab5.  Organelles are constructed with a given radius that depend on the type (EE, LE, Lys) and with a 
 		// total surface.  These values were obtained of simulations that progressed by 40000 steps
@@ -202,7 +196,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 //				System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
 //		}
 		
-		// Cytosol
+		// Cytosol (NOT USED IN PRESENT BRANCH)
 //		for (int i = 0; i < 50; i++) {
 //			for (int j = 0; j < 50; j++) {
 //				HashMap<String, Double> cytoContent = new HashMap<String, Double>();
@@ -241,7 +235,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 				double x = RandomHelper.nextDoubleFromTo(5d, 45d);
 				space.moveTo(obj, x, y);
 				grid.moveTo(obj, (int) x, (int) y);					
-//			
+//			to position endosomes in a specific way
 //				if(((Endosome) obj).getRabContent().containsKey("RabB")){
 ////					NdPoint pt = space.getLocation(obj);
 //					double x = RandomHelper.nextDoubleFromTo(5d, 45d);
