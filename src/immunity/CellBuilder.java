@@ -154,7 +154,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 					for (String mem : membraneContent.keySet()){
 						if (mem.equals("membraneMarker")){
 							membraneContent.put(mem, 1d);
-							InitialOrganelles.getInstance().getInitSolubleContent().get(kind).remove("membraneMarker");
+							InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove("membraneMarker");
 						}
 						else {double mm = membraneContent.get(mem);
 						membraneContent.put(mem, mm*area);
