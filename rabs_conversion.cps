@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-07-13 17:24:07 UTC -->
+<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-09-16 21:13:43 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="20" versionDevel="158" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -58,9 +58,7 @@ Reaction scheme where the products are created from the reactants and the change
     </Function>
     <Function key="Function_41" name="Sig+Pot1S" type="UserDefined" reversible="unspecified">
       <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Function_41">
     <dcterms:created>
       <rdf:Description>
@@ -69,7 +67,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
       </MiriamAnnotation>
       <Expression>
         kS1/(1+(exp(kS2-A1-A2)^kS3)+(exp(-(kS4-I1-I2))^kS5))*S1
@@ -351,9 +348,7 @@ Reaction scheme where the products are created from the reactants and the change
     <ListOfModelValues>
       <ModelValue key="ModelValue_0" name="kS1" simulationType="fixed">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#ModelValue_0">
     <dcterms:created>
       <rdf:Description>
@@ -362,7 +357,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
       </ModelValue>
       <ModelValue key="ModelValue_1" name="kS2" simulationType="fixed">
@@ -426,7 +420,7 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4953" name="kS1" value="1"/>
+          <Constant key="Parameter_4953" name="kS1" value="11"/>
           <Constant key="Parameter_4952" name="kS2" value="0.8"/>
           <Constant key="Parameter_4951" name="kS3" value="2"/>
           <Constant key="Parameter_4950" name="kS4" value="0.2"/>
@@ -495,7 +489,7 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4948" name="kS1" value="1"/>
+          <Constant key="Parameter_4948" name="kS1" value="11"/>
           <Constant key="Parameter_4947" name="kS2" value="0.8"/>
           <Constant key="Parameter_4946" name="kS3" value="2"/>
           <Constant key="Parameter_4945" name="kS4" value="0.2"/>
@@ -561,7 +555,7 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_0" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4943" name="kS1" value="1"/>
+          <Constant key="Parameter_4943" name="kS1" value="11"/>
           <Constant key="Parameter_4942" name="kS2" value="0.8"/>
           <Constant key="Parameter_4941" name="kS3" value="2"/>
           <Constant key="Parameter_4940" name="kS4" value="0.2"/>
@@ -630,7 +624,7 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4938" name="kS1" value="1"/>
+          <Constant key="Parameter_4938" name="kS1" value="11"/>
           <Constant key="Parameter_4937" name="kS2" value="0.8"/>
           <Constant key="Parameter_4936" name="kS3" value="2"/>
           <Constant key="Parameter_4935" name="kS4" value="0.2"/>
@@ -1015,7 +1009,7 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4923" name="kS1" value="1"/>
+          <Constant key="Parameter_4923" name="kS1" value="11"/>
           <Constant key="Parameter_4922" name="kS2" value="0.8"/>
           <Constant key="Parameter_4921" name="kS3" value="2"/>
           <Constant key="Parameter_4920" name="kS4" value="0.2"/>
@@ -1083,7 +1077,7 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_9" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4918" name="kS1" value="1"/>
+          <Constant key="Parameter_4918" name="kS1" value="11"/>
           <Constant key="Parameter_4917" name="kS2" value="0.8"/>
           <Constant key="Parameter_4916" name="kS3" value="2"/>
           <Constant key="Parameter_4915" name="kS4" value="0.2"/>
@@ -1148,7 +1142,7 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4913" name="kS1" value="1"/>
+          <Constant key="Parameter_4913" name="kS1" value="11"/>
           <Constant key="Parameter_4912" name="kS2" value="0.8"/>
           <Constant key="Parameter_4911" name="kS3" value="2"/>
           <Constant key="Parameter_4910" name="kS4" value="0.2"/>
@@ -1216,7 +1210,7 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_10" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4908" name="kS1" value="1"/>
+          <Constant key="Parameter_4908" name="kS1" value="11"/>
           <Constant key="Parameter_4907" name="kS2" value="0.8"/>
           <Constant key="Parameter_4906" name="kS3" value="2"/>
           <Constant key="Parameter_4905" name="kS4" value="0.2"/>
@@ -1281,7 +1275,7 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4903" name="kS1" value="1"/>
+          <Constant key="Parameter_4903" name="kS1" value="11"/>
           <Constant key="Parameter_4902" name="kS2" value="0.8"/>
           <Constant key="Parameter_4901" name="kS3" value="2"/>
           <Constant key="Parameter_4900" name="kS4" value="0.2"/>
@@ -1349,7 +1343,7 @@ Reaction scheme where the products are created from the reactants and the change
           <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4898" name="kS1" value="1"/>
+          <Constant key="Parameter_4898" name="kS1" value="11"/>
           <Constant key="Parameter_4897" name="kS2" value="0.8"/>
           <Constant key="Parameter_4896" name="kS3" value="2"/>
           <Constant key="Parameter_4895" name="kS4" value="0.2"/>
@@ -1423,7 +1417,7 @@ Reaction scheme where the products are created from the reactants and the change
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabEcyto]" value="0" type="Species" simulationType="assignment"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS1]" value="1" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS1]" value="11" type="ModelValue" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS2]" value="0.80000000000000004" type="ModelValue" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS3]" value="2" type="ModelValue" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS4]" value="0.20000000000000001" type="ModelValue" simulationType="fixed"/>
@@ -1433,7 +1427,7 @@ Reaction scheme where the products are created from the reactants and the change
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1460,7 +1454,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1487,7 +1481,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1514,7 +1508,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1611,7 +1605,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1638,7 +1632,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1665,7 +1659,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1692,7 +1686,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1719,7 +1713,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1746,7 +1740,7 @@ Reaction scheme where the products are created from the reactants and the change
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSInactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS1" value="1" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1804,7 +1798,7 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="ModelValue_6"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 513688694687 0 602214179000 0 0 0 88525484313 0 0 0 0 602214179000 0 0 0 0 0 1 1 0.80000000000000004 2 0.20000000000000001 13 0.29999999999999999 0.29999999999999999 
+      0 513688694687 0 602214179000 0 0 0 88525484313 0 0 0 0 602214179000 0 0 0 0 0 1 11 0.80000000000000004 2 0.20000000000000001 13 0.29999999999999999 0.29999999999999999 
     </InitialState>
   </Model>
   <ListOfTasks>

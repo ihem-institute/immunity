@@ -330,30 +330,33 @@ public class EndosomeSplitStep {
 		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 						CellProperties.getInstance().getRabTropism());
 				
-			for (String content : copySoluble.keySet()) {
-					if (!rabTropism.containsKey(content)) 
-					{// not a
-						// specified tropism or no tropism for the rabInTube,
-						// hence, distribute according to
-						// the volume ratio
-					SolSplitPropVolume(endosome, content, vo, vVesicle);
-					}
-					
-					else if (rabTropism.get(content).contains("tub")) 
-					{
-						SolSplitToTubule(endosome, content, vo, vVesicle);
+		for (String content : copySoluble.keySet()) {
+			if (!rabTropism.containsKey(content)) 
+			{// not a
+				// specified tropism or no tropism for the rabInTube,
+				// hence, distribute according to
+				// the volume ratio
+				SolSplitPropVolume(endosome, content, vo, vVesicle);
+			}
 
-						}
-					else if (rabTropism.get(content).contains("sph")) { // if the tropism
-																		// is "0" goes
-																		// to the sphere
+			else if (rabTropism.get(content).contains("tub")) 
+			{
+				SolSplitToTubule(endosome, content, vo, vVesicle);
 
-							SolSplitToSphere(endosome, content, vo, vVesicle);	
+			}
+			else if (rabTropism.get(content).contains("sph")) { // if the tropism
+				// is "0" goes
+				// to the sphere
 
-						}
-					}
+				SolSplitToSphere(endosome, content, vo, vVesicle);	
 
-	
+			}
+			else{// rabtropism for the content is not "tub" or "sph", then distribute according to volume 
+				SolSplitPropVolume(endosome, content, vo, vVesicle);
+			}
+		}
+
+
 	}
 
 	private static void SolSplitPropVolume(Endosome endosome, String content, double vo, double vVesicle){
