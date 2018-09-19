@@ -109,8 +109,6 @@ public class Endosome {
 	double p_EndosomeSplitStep = 1d/(0.4/0.03*Cell.timeScale);
 	double p_EndosomeTetherStep = 1d/(1d/0.03*Cell.timeScale);
 	double p_EndosomeLysosomalDigestionStep = 1d/(10d/0.03*Cell.timeScale);
-	
-
 
 	// constructor of endosomes with grid, space and a set of Rabs, membrane
 	// contents,
@@ -193,7 +191,16 @@ public class Endosome {
 		
 
 	}
-
+	public List<Endosome> getAllEndosomes(){
+		List<Endosome> allEndosomes = new ArrayList<Endosome>();
+		for (Object obj : grid.getObjects()) {
+			if (obj instanceof Endosome) {
+				allEndosomes.add((Endosome) obj);
+			}
+		}
+		System.out.println("ALL ENDOSOMES FORM PLASMA MEMBRANE " +allEndosomes);
+		return allEndosomes;
+	}
 
 	public static void endosomeShape(Endosome end) {
 		double s = end.area;
@@ -215,7 +222,6 @@ public class Endosome {
 		end.a = aa;
 		end.c = cc;
 	}
-
 
 	public double getArea() {
 		return area;
@@ -251,6 +257,8 @@ public class Endosome {
 	public Endosome getEndosome() {
 		return this;
 	}
+
+//	To be used for freeze dry
 
 	/*
 	 * public static Cell getInstance() { return instance; }

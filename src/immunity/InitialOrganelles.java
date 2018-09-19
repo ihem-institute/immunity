@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 //	This class contains the properties of the initial organelles.  It is modified
-// by the Cell Builder that gets the values from a CSV file 
+// by the CellProperties that gets the values from a CSV file 
 
 public class InitialOrganelles {
 

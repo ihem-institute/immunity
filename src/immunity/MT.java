@@ -1,5 +1,10 @@
 package immunity;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
+import com.thoughtworks.xstream.XStream;
+
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.space.continuous.ContinuousSpace;
@@ -46,6 +51,16 @@ public class MT {
 		double x = xorigin + 25 * Math.cos(mtheading * Math.PI / 180);
 		space.moveTo(mt, x, y);
 		grid.moveTo(mt, (int) x, (int) y);
+//		writing to a xml file.  It works, but I will not be able to use to strart a simulation
+//		XStream xstream = new XStream();
+//		String file = "C:/Users/lmayo/Desktop/pruebaXML.xml";
+//		try {
+//			xstream.toXML(mt, new FileWriter(file));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
 	}
 	// GETTERS AND SETTERS
 	public double getXorigin() {

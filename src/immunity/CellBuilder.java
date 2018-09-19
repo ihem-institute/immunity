@@ -39,6 +39,7 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridBuilderParameters;
 import repast.simphony.space.grid.SimpleGridAdder;
 import repast.simphony.space.grid.WrapAroundBorders;
+import repast.simphony.util.collections.IndexedIterable;
 
 public class CellBuilder implements ContextBuilder<Object> {
 
@@ -49,6 +50,12 @@ public class CellBuilder implements ContextBuilder<Object> {
 	 * repast.simphony.dataLoader.ContextBuilder#build(repast.simphony.context
 	 * .Context)
 	 */
+	public static IndexedIterable collection = null;
+
+	public static final IndexedIterable getCollection() {
+		return collection;
+	}
+
 
 	@Override
 	public Context build(Context<Object> context) {
@@ -119,128 +126,160 @@ public class CellBuilder implements ContextBuilder<Object> {
 			context.add(new MT(space, grid));
 		}
 
-		// Endosomes
-		// RabA is Rab5.  Organelles are constructed with a given radius that depend on the type (EE, LE, Lys) and with a 
-		// total surface.  These values were obtained of simulations that progressed by 40000 steps
+		// ENDOSOMES ENDOSOMES ENDOSOMES
+		
+		if (CellProperties.getInstance().getCellK().get("freezeDry").equals(0d))
+			// RabA is Rab5.  Organelles are constructed with a given radius that depend on the type (EE, LE, Lys) and with a 
+			// total surface.  These values were obtained of simulations that progressed by 40000 steps
+		{
+			Set<String> diffOrganelles = InitialOrganelles.getInstance().getDiffOrganelles();
+			System.out.println(diffOrganelles);
+			for (String kind : diffOrganelles){
+				if (!kind.equals("kind7")){
+					HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
+					double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
+					double maxRadius = initOrgProp.get("maxRadius");
+					double maxAsym = initOrgProp.get("maxAsym");
+					double minRadius = Cell.rcyl*1.1;
+					while (totalArea > 32d*Math.PI*minRadius*minRadius){
 
-		Set<String> diffOrganelles = InitialOrganelles.getInstance().getDiffOrganelles();
-		System.out.println(diffOrganelles);
-		int uno = 0;
-		for (String kind : diffOrganelles){
-			if (!kind.equals("kind7")){
-				HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
-				double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
-				double maxRadius = initOrgProp.get("maxRadius");
-				double maxAsym = initOrgProp.get("maxAsym");
-				double minRadius = Cell.rcyl*1.1;
-				while (totalArea > 32d*Math.PI*minRadius*minRadius){
+						double a = RandomHelper.nextDoubleFromTo(minRadius,maxRadius);				
+						double c = a + a  * Math.random()* maxAsym;
+						double f = 1.6075;
+						double af= Math.pow(a, f);
+						double cf= Math.pow(c, f);
+						double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
+						double volume = 4d/3d*Math.PI*a*a*c;
+						initOrgProp.put("area", area);
+						initOrgProp.put("volume", volume);
+						totalArea = totalArea-area;
 
-					double a = RandomHelper.nextDoubleFromTo(minRadius,maxRadius);				
-					double c = a + a  * Math.random()* maxAsym;
-					double f = 1.6075;
-					double af= Math.pow(a, f);
-					double cf= Math.pow(c, f);
-					double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
-					double volume = 4d/3d*Math.PI*a*a*c;
-					initOrgProp.put("area", area);
-					initOrgProp.put("volume", volume);
-					totalArea = totalArea-area;
+						HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
+						for (String rab : rabContent.keySet()){
+							double rr = rabContent.get(rab);
+							rabContent.put(rab, rr*area);
+						}
+						HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
+						for (String mem : membraneContent.keySet()){
+							if (mem.equals("membraneMarker")){
+								membraneContent.put(mem, 1d);
+								InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove("membraneMarker");
+							}
+							else {double mm = membraneContent.get(mem);
+							membraneContent.put(mem, mm*area);
+							}
+						}
 
-					HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
-					for (String rab : rabContent.keySet()){
-						double rr = rabContent.get(rab);
-						rabContent.put(rab, rr*area);
+						HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
+						for (String sol : solubleContent.keySet()){
+							if (sol.equals("solubleMarker")){
+								solubleContent.put(sol, 1d);
+								InitialOrganelles.getInstance().getInitSolubleContent().get(kind).remove("solubleMarker");
+							}
+							else {double ss = solubleContent.get(sol);
+							solubleContent.put(sol, ss*volume);
+							}
+						}
+
+
+						Endosome end = new Endosome(space, grid, rabContent, membraneContent,
+								solubleContent, initOrgProp);
+						context.add(end);
+						Endosome.endosomeShape(end);
+
+						System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
+
+					}	
+				}
+				else {
+					//				create a phagosome
+					HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
+					double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
+					double maxRadius = initOrgProp.get("maxRadius");
+					double maxAsym = initOrgProp.get("maxAsym");
+					double minRadius = Cell.rcyl*1.1;
+					while (totalArea > 32d*Math.PI*minRadius*minRadius){
+
+						double a = maxRadius;				
+						double c = a + a  * Math.random()* maxAsym;
+						double f = 1.6075;
+						double af= Math.pow(a, f);
+						double cf= Math.pow(c, f);
+						double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
+						double volume = 4d/3d*Math.PI*a*a*c;
+						initOrgProp.put("area", area);
+						initOrgProp.put("volume", volume);
+						totalArea = totalArea-area;
+
+						HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
+						for (String rab : rabContent.keySet()){
+							double rr = rabContent.get(rab);
+							rabContent.put(rab, rr*area);
+						}
+						HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
+						for (String mem : membraneContent.keySet()){
+							if (mem.equals("membraneMarker")){
+								membraneContent.put(mem, 1d);
+								InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove("membraneMarker");
+							}
+							else {double mm = membraneContent.get(mem);
+							membraneContent.put(mem, mm*area);
+							}
+						}
+
+						HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
+						for (String sol : solubleContent.keySet()){
+							if (sol.equals("solubleMarker")){
+								solubleContent.put(sol, 1d);
+								InitialOrganelles.getInstance().getInitSolubleContent().get(kind).remove("solubleMarker");
+							}
+							else {double ss = solubleContent.get(sol);
+							solubleContent.put(sol, ss*volume);
+							}
+						}
+
+
+						Endosome end = new Endosome(space, grid, rabContent, membraneContent,
+								solubleContent, initOrgProp);
+						context.add(end);
+						Endosome.endosomeShape(end);
+
+						System.out.println(membraneContent + "SOY UN FAGOSOMA " + solubleContent + " " + rabContent+" " + initOrgProp);
+
 					}
-					HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
-					for (String mem : membraneContent.keySet()){
-						if (mem.equals("membraneMarker")){
-							membraneContent.put(mem, 1d);
-							InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove("membraneMarker");
-						}
-						else {double mm = membraneContent.get(mem);
-						membraneContent.put(mem, mm*area);
-						}
-					}
-
-					HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
-					for (String sol : solubleContent.keySet()){
-						if (sol.equals("solubleMarker")){
-							solubleContent.put(sol, 1d);
-							InitialOrganelles.getInstance().getInitSolubleContent().get(kind).remove("solubleMarker");
-						}
-						else {double ss = solubleContent.get(sol);
-						solubleContent.put(sol, ss*volume);
-						}
-					}
-
-
-					Endosome end = new Endosome(space, grid, rabContent, membraneContent,
-							solubleContent, initOrgProp);
-					context.add(end);
-					Endosome.endosomeShape(end);
-
-					System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
-
-				}	
-			}
-			else {
-				//				create a phagosome
-				HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
-				double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
-				double maxRadius = initOrgProp.get("maxRadius");
-				double maxAsym = initOrgProp.get("maxAsym");
-				double minRadius = Cell.rcyl*1.1;
-				while (totalArea > 32d*Math.PI*minRadius*minRadius){
-
-					double a = maxRadius;				
-					double c = a + a  * Math.random()* maxAsym;
-					double f = 1.6075;
-					double af= Math.pow(a, f);
-					double cf= Math.pow(c, f);
-					double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
-					double volume = 4d/3d*Math.PI*a*a*c;
-					initOrgProp.put("area", area);
-					initOrgProp.put("volume", volume);
-					totalArea = totalArea-area;
-
-					HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
-					for (String rab : rabContent.keySet()){
-						double rr = rabContent.get(rab);
-						rabContent.put(rab, rr*area);
-					}
-					HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
-					for (String mem : membraneContent.keySet()){
-						if (mem.equals("membraneMarker")){
-							membraneContent.put(mem, 1d);
-							InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove("membraneMarker");
-						}
-						else {double mm = membraneContent.get(mem);
-						membraneContent.put(mem, mm*area);
-						}
-					}
-
-					HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
-					for (String sol : solubleContent.keySet()){
-						if (sol.equals("solubleMarker")){
-							solubleContent.put(sol, 1d);
-							InitialOrganelles.getInstance().getInitSolubleContent().get(kind).remove("solubleMarker");
-						}
-						else {double ss = solubleContent.get(sol);
-						solubleContent.put(sol, ss*volume);
-						}
-					}
-
-
-					Endosome end = new Endosome(space, grid, rabContent, membraneContent,
-							solubleContent, initOrgProp);
-					context.add(end);
-					Endosome.endosomeShape(end);
-
-					System.out.println(membraneContent + "SOY UN FAGOSOMA " + solubleContent + " " + rabContent+" " + initOrgProp);
-
 				}
 			}
 		}
+		else
+//			if endosomes are loadaed from a freezeDry csv file
+//			CellProperties.getInstance().getCellK().get("freezeDry").equals(1d)
+			
+		{
+			
+			Set<String> diffOrganelles = InitialOrganelles.getInstance().getDiffOrganelles();
+			System.out.println(diffOrganelles);
+			for (String kind : diffOrganelles){
+				HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
+				HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
+				HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
+				HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
+				System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
+						Endosome end = new Endosome(space, grid, rabContent, membraneContent,
+								solubleContent, initOrgProp);
+						context.add(end);
+						double x = initOrgProp.get("xcoor");
+						double y = initOrgProp.get("ycoor");
+						space.moveTo(end, x, y);
+						grid.moveTo(end, (int) x, (int) y);	
+						Endosome.endosomeShape(end);
+
+
+
+					}	
+				}
+			
+			
+		
 //		this is used for standard starting
 //			for (int i = 0; i < initOrgProp.get("number")/Cell.orgScale; i++) {
 //				HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
@@ -285,7 +324,8 @@ public class CellBuilder implements ContextBuilder<Object> {
 			if (obj instanceof MT) {
 				((MT) obj).changePosition((MT)obj);
 			} 
-			if (obj instanceof Endosome) {
+// Find new position for endosomes unless they are coming from a freezeDry file
+			if (obj instanceof Endosome && CellProperties.getInstance().getCellK().get("freezeDry").equals(0d) ) {
 			double position = ((Endosome) obj).getInitOrgProp().get("position");
 //				NdPoint pt = space.getLocation(obj);
 				double y = 5d + 40d * position + RandomHelper.nextDoubleFromTo(-4d, 4d);
@@ -330,7 +370,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 			RunEnvironment.getInstance().endAt(20);
 		}
 
-
+		collection = context.getObjects(Endosome.class);
 	
 		
 		return context;	

@@ -92,6 +92,14 @@ public class Results {
 	@ScheduledMethod(start = 1, interval = 5000)
 	public void stepTable() {
 		log();
+//		freeze endosome set
+		FreezeDryEndosomes.getInstance();
+		try {
+			FreezeDryEndosomes.getInstance().writeToCsv();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void log(){
@@ -220,7 +228,8 @@ public class Results {
 
 			for (String rab : rabContent.keySet()) {
 				for (String sol : solubleContent.keySet()) {
-					//System.out.println(" soluble "+ sol + " Rab " +rab);
+//					System.out.println(" soluble "+ sol + " Rab " +rab);
+//					System.out.println(" FALTA " + contentDist.get(sol + rab));
 					double value = contentDist.get(sol + rab)
 							+ solubleContent.get(sol) * rabContent.get(rab)
 							/ area;

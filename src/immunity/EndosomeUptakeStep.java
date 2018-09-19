@@ -29,7 +29,7 @@ public class EndosomeUptakeStep {
 		Cell cell = Cell.getInstance();
 		HashMap<String, Double> totalRabs = new HashMap<String, Double>(Results.getInstance().getTotalRabs());
 		HashMap<String, Double> initialTotalRabs = new HashMap<String, Double>(Results.getInstance().getInitialTotalRabs());
-		System.out.println("totalRabs  "+totalRabs);
+//		System.out.println("totalRabs  "+totalRabs);
 
 		HashMap<String, Double> deltaRabs = new HashMap<String, Double>();  
 		HashMap<String, String> rabCode = new HashMap<String, String>();
@@ -40,6 +40,7 @@ public class EndosomeUptakeStep {
 		rabCode.put("RabE", "kind5");
 
 		for (String rab : totalRabs.keySet()){
+//			System.out.println("ErrorRabs  "+ rab + "   " +initialTotalRabs.get(rab) +"     "+ totalRabs.get(rab));
 			double value = initialTotalRabs.get(rab) - totalRabs.get(rab);
 			deltaRabs.put(rab, value);
 		}

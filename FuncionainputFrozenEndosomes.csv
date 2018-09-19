@@ -1,0 +1,12 @@
+endosome1,initOrgProp,area,20000,volume,200000,xcoor,25,ycoor,25
+endosome1,initRabContent,RabA,20000,,,,,
+endosome1,initSolubleContent,proton,157
+endosome1,initMembraneContent,,,,,,,,
+endosome2,initOrgProp,area,40000,volume,400000,xcoor,20,ycoor,20
+endosome2,initRabContent,RabB,40000,,,,,
+endosome2,initSolubleContent,,,,,,,,
+endosome2,initMembraneContent,,,,,,,,
+endosome3,initOrgProp,area,60000,volume,450000,xcoor,30,ycoor,30
+endosome3,initRabContent,RabC,60000,,,,,
+endosome3,initSolubleContent,,,,,,,,
+endosome3,initMembraneContent,,,,,,,,

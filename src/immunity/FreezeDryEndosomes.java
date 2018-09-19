@@ -1,7 +1,12 @@
 package immunity;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,23 +14,29 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.TreeMap;
+
+import repast.simphony.context.space.grid.ContextGrid;
+import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.space.grid.Grid;
+import repast.simphony.util.collections.IndexedIterable;
 // This class contains the properties of the cell.  It is loaded with the same
 // CSV file  used for the inital organelles.  It is updated by the UpdateParameters class.
-public class CellProperties {
+public class FreezeDryEndosomes {
 	
-//	public CellProperties() {
+//	public frozenEndosomes() {
 //		super();
 //		// TODO Auto-generated constructor stub
 //	}
 	public static final String configFilename = "config.json";
 	
-	private static CellProperties instance;
+	private static FreezeDryEndosomes instance;
 	
-	public static CellProperties getInstance() {
+	public static FreezeDryEndosomes getInstance() {
 		if( instance == null ) {
-			instance = new  CellProperties();
+			instance = new  FreezeDryEndosomes();
 			try {
-				CellProperties.loadFromCsv(instance);
+				FreezeDryEndosomes.loadFromCsv(instance);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -33,7 +44,7 @@ public class CellProperties {
 		}
 		return instance;
 	}
-//	Cell proterties that are loaded from a csv file by the CellBuilder class
+//	FreezeDryEndosomes are loaded from a csv file and use by the CellBuilder class
 	public HashMap<String, Double> cellK = new HashMap<String, Double>();
 	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
 	public HashMap<String, Double> solubleCell = new HashMap<String, Double>();
@@ -106,137 +117,34 @@ public class CellProperties {
 //		return null;
 //	}
 	
-	public static void loadFromCsv(CellProperties cellProperties) throws IOException {
+	public static void loadFromCsv(FreezeDryEndosomes frozenEndosomes) throws IOException {
 
 		Scanner scanner = new Scanner(new File(
-				"inputIntrTransp3.csv"));
+				"inputFrozenEndosomes.csv"));
 		scanner.useDelimiter(",");
 
 //		ObjectMapper objectMapper = new ObjectMapper();
 //		try {
-//			CellProperties config = objectMapper.readValue(new File(CellProperties.configFilename), CellProperties.class);
+//			frozenEndosomes config = objectMapper.readValue(new File(frozenEndosomes.configFilename), frozenEndosomes.class);
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
 		
 		// InitialOrganelles InOr = InitialOrganelles.getInstance();
-		freezeDryOption: // this names the loop.  Something I did not know that it could be done
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
 			String[] b = line.split(",");
-			switch (b[0]) {
-			case "cellK": {
-				for (int i = 1; i < b.length; i = i + 2) {
-				cellProperties.getCellK().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getCellK());
-				}
-				
-				break;
-			}
-			case "initRabCell": {
-				for (int i = 1; i < b.length; i = i + 2) {
-				cellProperties.getInitRabCell().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getInitRabCell());
-				}
-				break;
-			}
-			case "initPMmembraneRecycle": {
-				for (int i = 1; i < b.length; i = i + 2) {
-				cellProperties.getInitPMmembraneRecycle().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getMembraneRecycle());
-				}
-				break;
-			}
-			case "solubleCell": {
-				for (int i = 1; i < b.length; i = i + 2) {
-				cellProperties.getSolubleCell().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getSolubleCell());
-				}
-				break;
-			}
-			case "rabCompatibility": {
-				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getRabCompatibility().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getRabCompatibility());
-					}
-				break;
-			}
-			case "tubuleTropism": {
-				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getTubuleTropism().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getTubuleTropism()); 
-					}
-				break;
-			}
-			case "rabTropism": {
-				Set<String> rabT = new HashSet<String>();
-				for (int i = 2; i < b.length; i++) {
-					//System.out.println(b[i]);
-					if (b[i].length()>0) {
-						rabT.add(b[i]);
-					}
-				}
-				cellProperties.getRabTropism().put(b[1], rabT);
-				break;
-			}
-			case "mtTropism": {
-				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getMtTropism().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getMtTropism());
-					}
-				break;
-			}
-			
-			case "rabRecyProb": {
-				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getRabRecyProb().put(b[i], Double.parseDouble(b[i+1]));
-					}
-				break;
-			}
+			String subString = b[0].substring(0,2);
+			switch (subString) {
 
-			case "membraneMet": {
-				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getMembraneMetRec().put(b[i], Double.parseDouble(b[i+1]));
-				}
-				break;
-			}
-			case "solubleMet": {
-				for (int i = 1; i < b.length; i++) {
-					cellProperties.getSolubleMet().add(b[i]);
-				}
-				break;
-			}
-			case "rabSet": {
-				for (int i = 1; i < b.length; i++) {
-					cellProperties.getRabSet().add(b[i]);
-				}
-				break;
-			}
-			
-			case "colorRab": {
-				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getColorRab().put(b[i], b[i + 1]);
-				}
-				break;
-			}
-			case "colorContent": {
-				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getColorContent().put(b[i], b[i + 1]);
-				}
-				break;
-			}
-			
-			case "freezeDry":
-				{
-					FreezeDryEndosomes.getInstance();
-					break freezeDryOption; // if freezeDry then exit because the initial organelles will be loaded in a 
-					// different way
-			}
 			// INITIAL ORGANELLES kind 7 is for phagosomes
-			case "kind1": case "kind2": case "kind3": case "kind4": case "kind5": case "kind6": case "kind7":
+ // if the first two letters are "en", load data for an endosome
+			case "en":
 			{
 				InitialOrganelles inOr = InitialOrganelles.getInstance();
+//				System.out.println("AQUI PARA b0  "+b[0]);
 				inOr.getDiffOrganelles().add(b[0]);
+//				System.out.println("AQUI PARA  "+b[1]);
 				switch (b[1]) {
 				case "initOrgProp": {
 					HashMap<String, Double> value = new HashMap<String, Double>();
@@ -249,6 +157,7 @@ public class CellProperties {
 				case "initRabContent": {
 					HashMap<String, Double> value = new HashMap<String, Double>();
 					for (int i = 2; i < b.length; i = i + 2) {
+//						System.out.println("AQUI PARA  "+b[i]+" "+ b[i + 1]);
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
 					inOr.getInitRabContent().put(b[0], value);
@@ -286,16 +195,71 @@ public class CellProperties {
 
 		}
 		scanner.close();
-		System.out.println("CP INITIAL cellProp"+ InitialOrganelles.getInstance().initRabContent.toString());
-		System.out.println("CP CELL PROPERITES CARGADO");
-		System.out.println("CP VALOR "+ cellProperties.cellK);
-		System.out.println(cellProperties.initRabCell);
-		System.out.println(cellProperties.initPMmembraneRecycle);
-		System.out.println(cellProperties.rabCompatibility);
-		System.out.println(cellProperties.membraneMet);
-		System.out.println(cellProperties.solubleMet);
-		System.out.println(cellProperties.tubuleTropism);
-		System.out.println(cellProperties.rabTropism);
-		System.out.println("CP VALOR cellProp" + cellProperties.mtTropism);
+//		System.out.println(frozenEndosomes.solubleMet);
+//		System.out.println(frozenEndosomes.tubuleTropism);
 	}
+	
+	
+	
+	public static void writeToCsv() throws IOException {
+		
+		IndexedIterable<Endosome> collection = CellBuilder.getCollection();
+//		System.out.println("ALL ENDOSOMES"+collection);
+		int index = 0;
+		Writer output;	
+		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
+	    double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+		String line = tick + "\n";
+		output.append(line);
+		for (Endosome endosome : collection) {
+			line = "";
+            line = line + "endosome"+index + ",";
+            line = line + "initOrgProp" + ",";
+            line = line + "area" + "," + endosome.getArea()  + ",";
+            line = line + "volume" + "," + endosome.getVolume() + ",";
+            line = line + "xcoor" + "," + endosome.getXcoor() + ",";
+            line = line + "ycoor" + "," + endosome.getYcoor() + ",";
+		line = line + "\n";	
+		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
+		output.append(line);
+		line = "";
+        line = line + "endosome"+index + ",";
+        String rabContent = endosome.getRabContent().toString().replace("=",",");
+        rabContent = rabContent.replace("{","");
+        rabContent = rabContent.replace("}","");
+        rabContent = rabContent.replace(" ","");
+        line = line + "initRabContent" + "," + rabContent;
+        line = line + "\n";
+//		Writer output;
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
+		output.append(line);
+		
+		line = "";  
+        line = line + "endosome"+index + ",";
+		String membraneContent = endosome.getMembraneContent().toString().replaceAll("=",","); 
+		membraneContent = membraneContent.replace("{","");
+		membraneContent = membraneContent.replace("}","");
+        membraneContent = membraneContent.replace(" ","");
+        line = line + "initMembraneContent" + "," + membraneContent;
+        line = line + "\n";
+//		Writer output;
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
+		output.append(line);
+		
+		line = "";  
+        line = line + "endosome"+index + ",";        
+        String solubleContent = endosome.getSolubleContent().toString().replaceAll("=",",");        
+		solubleContent = solubleContent.replace("{","");
+		solubleContent = solubleContent.replace("}","");
+        solubleContent = solubleContent.replace(" ","");
+        line = line + "initSolubleContent" + "," + solubleContent;
+        line = line + "\n";
+//		Writer output;
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
+		output.append(line);
+		index = index + 1;
+		output.close();
+	}
+	}
+	
 }
