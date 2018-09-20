@@ -160,7 +160,7 @@ public class EndosomeSplitStep {
 		if (rabLeft < 0) {
 			System.out.println(rabInTube + endosome.rabContent.get(rabInTube)
 					+ "surfaceCy" + scylinder);
-			System.out.println(endosome.rabContent);
+//			System.out.println(endosome.rabContent);
 		}
 		endosome.rabContent.put(rabInTube, rabLeft);
 		

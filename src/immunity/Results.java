@@ -245,18 +245,19 @@ public class Results {
 				}
 
 			}
-			// CONTROL OF RAB LOST
-			// sum Rabs in all endosomes and in the cytosol
-//			sum in endosomes
+// CONTROL OF RAB LOST
+// sum Rabs in all endosomes
 		for (String rab : rabContent.keySet()){
 			double sum = totalRabs.get(rab)+ rabContent.get(rab);
 			totalRabs.put(rab, sum);
 		}
+// Sum all the organelle volume surrounded by a rab domain
 		for (String rab : rabContent.keySet()){
 			double sum = totalVolumeRabs.get(rab)+ volume*rabContent.get(rab)/area;
 			totalVolumeRabs.put(rab, sum);
 		}
-
+//
+// If the endosome contains a MARKER, print info in a Results file		
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		if (tick == 1) initialTotalRabs.putAll(totalRabs);
 		
@@ -279,6 +280,7 @@ public class Results {
 
 
 	}
+// Send information about the endosome that contains a membrane or a soluble MARKER
 	private void printEndosome(Endosome endosome) throws IOException {
 		singleEndosomeContent.put("area", endosome.getArea());
 		singleEndosomeContent.put("volume", endosome.getVolume());

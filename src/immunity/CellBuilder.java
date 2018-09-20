@@ -81,7 +81,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 
 
 		CellProperties cellProperties = CellProperties.getInstance();
-		System.out.println(" builder CellProperties cargado");
+//		System.out.println(" builder CellProperties cargado");
 		context.add(cellProperties);	
 		Cell cell = Cell.getInstance();
 		context.add(cell);
@@ -91,31 +91,30 @@ public class CellBuilder implements ContextBuilder<Object> {
 		
 		context.add(new Scale(space, grid));
 
-		System.out.println(" builder CELL BUILDER CARGADO");
-		System.out.println("builder VALOR "+ cellProperties.getCellK());
-		System.out.println(cellProperties.initRabCell);
-		System.out.println(cellProperties.initPMmembraneRecycle);
-		System.out.println(cellProperties.rabCompatibility);
-		System.out.println(cellProperties.membraneMet);
-		System.out.println(cellProperties.solubleMet);
-		System.out.println(cellProperties.tubuleTropism);
-		System.out.println("builder hasta aquí llegamos");
-		System.out.println(cellProperties.rabTropism);
-		// correct
-		System.out.println("builder hasta aquí llegamos");
-		System.out.println("builder VALOR mtTrop" + cellProperties.mtTropism);
+//		System.out.println(" builder CELL BUILDER CARGADO");
+//		System.out.println("builder VALOR "+ cellProperties.getCellK());
+//		System.out.println(cellProperties.initRabCell);
+//		System.out.println(cellProperties.initPMmembraneRecycle);
+//		System.out.println(cellProperties.rabCompatibility);
+//		System.out.println(cellProperties.membraneMet);
+//		System.out.println(cellProperties.solubleMet);
+//		System.out.println(cellProperties.tubuleTropism);
+//		System.out.println("builder hasta aquí llegamos");
+//		System.out.println(cellProperties.rabTropism);
+//		// correct
+//		System.out.println("builder hasta aquí llegamos");
+//		System.out.println("builder VALOR mtTrop" + cellProperties.mtTropism);
 
 //			InitialOrganelles inOr = InitialOrganelles.getInstance();
 		InitialOrganelles initialOrganelles  = InitialOrganelles.getInstance();
 		context.add(initialOrganelles);
-		System.out
-				.println(InitialOrganelles.getInstance().getInitOrgProp());
-		System.out.println(InitialOrganelles.getInstance()
-				.getInitRabContent());		
-		System.out.println(InitialOrganelles.getInstance()
-				.getInitMembraneContent());
-		System.out.println(InitialOrganelles.getInstance()
-				.getInitSolubleContent());
+//		System.out.println(InitialOrganelles.getInstance().getInitOrgProp());
+//		System.out.println(InitialOrganelles.getInstance()
+//				.getInitRabContent());		
+//		System.out.println(InitialOrganelles.getInstance()
+//				.getInitMembraneContent());
+//		System.out.println(InitialOrganelles.getInstance()
+//				.getInitSolubleContent());
 
 		
 //		Cell and recycled contents.  Total initial free membrane 
@@ -187,7 +186,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 						context.add(end);
 						Endosome.endosomeShape(end);
 
-						System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
+//						System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
 
 					}	
 				}
@@ -244,7 +243,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 						context.add(end);
 						Endosome.endosomeShape(end);
 
-						System.out.println(membraneContent + "SOY UN FAGOSOMA " + solubleContent + " " + rabContent+" " + initOrgProp);
+//						System.out.println(membraneContent + "SOY UN FAGOSOMA " + solubleContent + " " + rabContent+" " + initOrgProp);
 
 					}
 				}
@@ -257,13 +256,13 @@ public class CellBuilder implements ContextBuilder<Object> {
 		{
 			
 			Set<String> diffOrganelles = InitialOrganelles.getInstance().getDiffOrganelles();
-			System.out.println(diffOrganelles);
+//			System.out.println(diffOrganelles);
 			for (String kind : diffOrganelles){
 				HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 				HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
 				HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
 				HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
-				System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
+//				System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
 						Endosome end = new Endosome(space, grid, rabContent, membraneContent,
 								solubleContent, initOrgProp);
 						context.add(end);

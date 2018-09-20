@@ -207,10 +207,11 @@ public class FreezeDryEndosomes {
 //		System.out.println("ALL ENDOSOMES"+collection);
 		int index = 0;
 		Writer output;	
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
 	    double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-		String line = tick + "\n";
-		output.append(line);
+		String line ="tick " + tick + "\n";
+		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
+	    output.append(line);
+		output.close();
 		for (Endosome endosome : collection) {
 			line = "";
             line = line + "endosome"+index + ",";

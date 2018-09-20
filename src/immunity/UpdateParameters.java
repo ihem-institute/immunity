@@ -60,10 +60,10 @@ public class UpdateParameters {
 		String newFile = attr.lastModifiedTime().toString();
 		if (newFile.equals(oldFile)){return;}
 		else{
-			System.out.println("newFile " + newFile+ "oldFile "+ oldFile);
-			System.out.println("creationTime: " + attr.creationTime());
-			System.out.println("lastAccessTime: " + attr.lastAccessTime());
-			System.out.println("lastModifiedTime: " + attr.lastModifiedTime());
+//			System.out.println("newFile " + newFile+ "oldFile "+ oldFile);
+//			System.out.println("creationTime: " + attr.creationTime());
+//			System.out.println("lastAccessTime: " + attr.lastAccessTime());
+//			System.out.println("lastModifiedTime: " + attr.lastModifiedTime());
 			try {
 				loadFromCsv();
 				
@@ -74,26 +74,34 @@ public class UpdateParameters {
 //	Cell. This maight be useful for knocking down a Rab in the middle of an experiment
 				Cell.getInstance().getRabCell().putAll(cellProperties.getInitRabCell());
 				
-				System.out.println(cellProperties.cellK);
-				System.out.println(cellProperties.initRabCell);
-				System.out.println(cellProperties.rabCompatibility);
-				System.out.println(cellProperties.membraneMet);
-				System.out.println(cellProperties.solubleMet);
-				System.out.println(cellProperties.tubuleTropism);
-				System.out.println(cellProperties.rabTropism);
-				System.out.println(cellProperties.mtTropism);
+//				System.out.println(cellProperties.cellK);
+//				System.out.println(cellProperties.initRabCell);
+//				System.out.println(cellProperties.rabCompatibility);
+//				System.out.println(cellProperties.membraneMet);
+//				System.out.println(cellProperties.solubleMet);
+//				System.out.println(cellProperties.tubuleTropism);
+//				System.out.println(cellProperties.rabTropism);
+//				System.out.println(cellProperties.mtTropism);
 				
 				
 
 //				InitialOrganelles inOr = InitialOrganelles.getInstance();
 				System.out
-						.println(InitialOrganelles.getInstance().getInitOrgProp());
-				System.out.println(InitialOrganelles.getInstance()
-						.getInitRabContent());
-				System.out.println(InitialOrganelles.getInstance()
-						.getInitMembraneContent());
-				System.out.println(InitialOrganelles.getInstance()
-						.getInitSolubleContent());
+						.println("A VER?" +  InitialOrganelles.getInstance().getInitOrgProp());
+				
+				try {
+					Thread.sleep(4000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+//				System.out.println(InitialOrganelles.getInstance()
+//						.getInitRabContent());
+//				System.out.println(InitialOrganelles.getInstance()
+//						.getInitMembraneContent());
+//				System.out.println(InitialOrganelles.getInstance()
+//						.getInitSolubleContent());
 
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block

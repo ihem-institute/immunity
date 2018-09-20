@@ -160,7 +160,7 @@ public class Endosome {
 
 	@ScheduledMethod(start = 1, interval = 1000)
 	public void printRabTropism() {
-		System.out.println(" RAB TROPISMS " + cellProperties.getInstance().getRabTropism());
+//		System.out.println(" RAB TROPISMS " + cellProperties.getInstance().getRabTropism());
 	}
 
 	
@@ -198,7 +198,7 @@ public class Endosome {
 				allEndosomes.add((Endosome) obj);
 			}
 		}
-		System.out.println("ALL ENDOSOMES FORM PLASMA MEMBRANE " +allEndosomes);
+//		System.out.println("ALL ENDOSOMES FORM PLASMA MEMBRANE " +allEndosomes);
 		return allEndosomes;
 	}
 
