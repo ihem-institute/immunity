@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-09-16 21:13:43 UTC -->
+<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-09-21 19:36:12 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="20" versionDevel="158" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -29,7 +29,9 @@ Reaction scheme where the products are created from the reactants and the change
     </Function>
     <Function key="Function_40" name="Sig+Pot2S" type="UserDefined" reversible="unspecified">
       <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Function_40">
     <dcterms:created>
       <rdf:Description>
@@ -38,6 +40,7 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
       </MiriamAnnotation>
       <Expression>
         kS1/(1+(exp(kS2-A1-A2)^kS3)+(exp(-(kS4-I1-I2))^kS5))*s1*s2
@@ -58,7 +61,9 @@ Reaction scheme where the products are created from the reactants and the change
     </Function>
     <Function key="Function_41" name="Sig+Pot1S" type="UserDefined" reversible="unspecified">
       <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Function_41">
     <dcterms:created>
       <rdf:Description>
@@ -67,6 +72,7 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
       </MiriamAnnotation>
       <Expression>
         kS1/(1+(exp(kS2-A1-A2)^kS3)+(exp(-(kS4-I1-I2))^kS5))*S1
@@ -100,6 +106,11 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
 
     </MiriamAnnotation>
+    <Comment>
+      Added area as a paremeter that control kinetics.  The larger the area of the compratment, the smaller will be Sk1, a global quantity that control sigmoideal kinetics.
+Area is passed by ABM in relative units. 1=  area of an endosome with a radius =  eEndo (generally 60 nm).
+
+    </Comment>
     <ListOfCompartments>
       <Compartment key="Compartment_0" name="compartment" simulationType="fixed" dimensionality="3">
       </Compartment>
@@ -344,11 +355,15 @@ Reaction scheme where the products are created from the reactants and the change
           &lt;CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabEc],Reference=InitialConcentration>
         </Expression>
       </Metabolite>
+      <Metabolite key="Metabolite_17" name="area" simulationType="fixed" compartment="Compartment_0">
+      </Metabolite>
     </ListOfMetabolites>
     <ListOfModelValues>
       <ModelValue key="ModelValue_0" name="kS1" simulationType="fixed">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#ModelValue_0">
     <dcterms:created>
       <rdf:Description>
@@ -357,7 +372,11 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
+        <InitialExpression>
+          11/&lt;CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[area],Reference=InitialConcentration>
+        </InitialExpression>
       </ModelValue>
       <ModelValue key="ModelValue_1" name="kS2" simulationType="fixed">
         <MiriamAnnotation>
@@ -532,7 +551,9 @@ Reaction scheme where the products are created from the reactants and the change
       </Reaction>
       <Reaction key="Reaction_2" name="Rab5Activation" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_2">
     <dcterms:created>
       <rdf:Description>
@@ -541,6 +562,7 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_4" stoichiometry="1"/>
@@ -1415,9 +1437,14 @@ Reaction scheme where the products are created from the reactants and the change
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabBcyto]" value="0" type="Species" simulationType="assignment"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabCcyto]" value="0" type="Species" simulationType="assignment"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabEcyto]" value="0" type="Species" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[area]" value="602214179000" type="Species" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS1]" value="11" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS1]" value="11" type="ModelValue" simulationType="fixed">
+            <InitialExpression>
+              11/&lt;CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[area],Reference=InitialConcentration>
+            </InitialExpression>
+          </ModelParameter>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS2]" value="0.80000000000000004" type="ModelValue" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS3]" value="2" type="ModelValue" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS4]" value="0.20000000000000001" type="ModelValue" simulationType="fixed"/>
@@ -1788,6 +1815,7 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="Metabolite_15"/>
       <StateTemplateVariable objectReference="Metabolite_16"/>
       <StateTemplateVariable objectReference="Metabolite_5"/>
+      <StateTemplateVariable objectReference="Metabolite_17"/>
       <StateTemplateVariable objectReference="Compartment_0"/>
       <StateTemplateVariable objectReference="ModelValue_0"/>
       <StateTemplateVariable objectReference="ModelValue_1"/>
@@ -1798,7 +1826,7 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="ModelValue_6"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 513688694687 0 602214179000 0 0 0 88525484313 0 0 0 0 602214179000 0 0 0 0 0 1 11 0.80000000000000004 2 0.20000000000000001 13 0.29999999999999999 0.29999999999999999 
+      0 513688694687 0 602214179000 0 0 0 88525484313 0 0 0 0 602214179000 0 0 0 0 0 602214179000 1 11 0.80000000000000004 2 0.20000000000000001 13 0.29999999999999999 0.29999999999999999 
     </InitialState>
   </Model>
   <ListOfTasks>
