@@ -128,11 +128,17 @@ RAB CONCENTRATION IN THE CYTOSOL CONSIDERING THE ORGANELLE SIZE AND THE CYTOSOL 
 			}
 			if (met.equals("zero"))
 				rabConversion.setInitialConcentration(met, 0);
-			if (met.equals("area") && CellProperties.getInstance().getCellK().get("kineticsArea") == 1d){
-				double rcyl = CellProperties.getInstance().getCellK().get("rcyl");
-				double radius = Math.sqrt(endosome.getArea()/(4d * Math.PI));
-				rabConversion.setInitialConcentration(met, radius/rcyl);
-//				System.out.println("RELATIVE RADIUS  "+ radius/rcyl); in a normal run, between 1 and 13
+			if (met.equals("area")){
+				if (CellProperties.getInstance().getCellK().get("kineticsArea") == 1d)
+				{
+					double rcyl = CellProperties.getInstance().getCellK().get("rcyl");
+					double radius = Math.sqrt(endosome.getArea()/(4d * Math.PI));
+					rabConversion.setInitialConcentration(met, radius*radius/rcyl/rcyl);
+					//				System.out.println("RELATIVE RADIUS  "+ radius/rcyl); in a normal run, between 1 and 13
+				}
+				else {				
+					rabConversion.setInitialConcentration(met, 1d);
+				}
 			}
 			if (met.equals("Rab0"))
 				rabConversion.setInitialConcentration(met, Rab0(endosome));

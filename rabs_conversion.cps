@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-09-21 19:36:12 UTC -->
+<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-09-24 19:10:36 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="20" versionDevel="158" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -29,9 +29,7 @@ Reaction scheme where the products are created from the reactants and the change
     </Function>
     <Function key="Function_40" name="Sig+Pot2S" type="UserDefined" reversible="unspecified">
       <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Function_40">
     <dcterms:created>
       <rdf:Description>
@@ -40,7 +38,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
       </MiriamAnnotation>
       <Expression>
         kS1/(1+(exp(kS2-A1-A2)^kS3)+(exp(-(kS4-I1-I2))^kS5))*s1*s2
@@ -61,9 +58,7 @@ Reaction scheme where the products are created from the reactants and the change
     </Function>
     <Function key="Function_41" name="Sig+Pot1S" type="UserDefined" reversible="unspecified">
       <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Function_41">
     <dcterms:created>
       <rdf:Description>
@@ -72,7 +67,6 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
       </MiriamAnnotation>
       <Expression>
         kS1/(1+(exp(kS2-A1-A2)^kS3)+(exp(-(kS4-I1-I2))^kS5))*S1
@@ -109,7 +103,6 @@ Reaction scheme where the products are created from the reactants and the change
     <Comment>
       Added area as a paremeter that control kinetics.  The larger the area of the compratment, the smaller will be Sk1, a global quantity that control sigmoideal kinetics.
 Area is passed by ABM in relative units. 1=  area of an endosome with a radius =  eEndo (generally 60 nm).
-
     </Comment>
     <ListOfCompartments>
       <Compartment key="Compartment_0" name="compartment" simulationType="fixed" dimensionality="3">
@@ -356,6 +349,20 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
         </Expression>
       </Metabolite>
       <Metabolite key="Metabolite_17" name="area" simulationType="fixed" compartment="Compartment_0">
+        <MiriamAnnotation>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Metabolite_17">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-09-24T16:10:08Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+
+        </MiriamAnnotation>
       </Metabolite>
     </ListOfMetabolites>
     <ListOfModelValues>
@@ -439,7 +446,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
           <Modifier metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4953" name="kS1" value="11"/>
+          <Constant key="Parameter_4953" name="kS1" value="3.47003"/>
           <Constant key="Parameter_4952" name="kS2" value="0.8"/>
           <Constant key="Parameter_4951" name="kS3" value="2"/>
           <Constant key="Parameter_4950" name="kS4" value="0.2"/>
@@ -508,7 +515,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
           <Modifier metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4948" name="kS1" value="11"/>
+          <Constant key="Parameter_4948" name="kS1" value="3.47003"/>
           <Constant key="Parameter_4947" name="kS2" value="0.8"/>
           <Constant key="Parameter_4946" name="kS3" value="2"/>
           <Constant key="Parameter_4945" name="kS4" value="0.2"/>
@@ -551,9 +558,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
       </Reaction>
       <Reaction key="Reaction_2" name="Rab5Activation" reversible="false" fast="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_2">
     <dcterms:created>
       <rdf:Description>
@@ -562,7 +567,6 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_4" stoichiometry="1"/>
@@ -577,7 +581,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
           <Modifier metabolite="Metabolite_0" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4943" name="kS1" value="11"/>
+          <Constant key="Parameter_4943" name="kS1" value="3.47003"/>
           <Constant key="Parameter_4942" name="kS2" value="0.8"/>
           <Constant key="Parameter_4941" name="kS3" value="2"/>
           <Constant key="Parameter_4940" name="kS4" value="0.2"/>
@@ -646,7 +650,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
           <Modifier metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4938" name="kS1" value="11"/>
+          <Constant key="Parameter_4938" name="kS1" value="3.47003"/>
           <Constant key="Parameter_4937" name="kS2" value="0.8"/>
           <Constant key="Parameter_4936" name="kS3" value="2"/>
           <Constant key="Parameter_4935" name="kS4" value="0.2"/>
@@ -1031,7 +1035,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
           <Modifier metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4923" name="kS1" value="11"/>
+          <Constant key="Parameter_4923" name="kS1" value="3.47003"/>
           <Constant key="Parameter_4922" name="kS2" value="0.8"/>
           <Constant key="Parameter_4921" name="kS3" value="2"/>
           <Constant key="Parameter_4920" name="kS4" value="0.2"/>
@@ -1099,7 +1103,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
           <Modifier metabolite="Metabolite_9" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4918" name="kS1" value="11"/>
+          <Constant key="Parameter_4918" name="kS1" value="3.47003"/>
           <Constant key="Parameter_4917" name="kS2" value="0.8"/>
           <Constant key="Parameter_4916" name="kS3" value="2"/>
           <Constant key="Parameter_4915" name="kS4" value="0.2"/>
@@ -1164,7 +1168,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
           <Modifier metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4913" name="kS1" value="11"/>
+          <Constant key="Parameter_4913" name="kS1" value="3.47003"/>
           <Constant key="Parameter_4912" name="kS2" value="0.8"/>
           <Constant key="Parameter_4911" name="kS3" value="2"/>
           <Constant key="Parameter_4910" name="kS4" value="0.2"/>
@@ -1232,7 +1236,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
           <Modifier metabolite="Metabolite_10" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4908" name="kS1" value="11"/>
+          <Constant key="Parameter_4908" name="kS1" value="3.47003"/>
           <Constant key="Parameter_4907" name="kS2" value="0.8"/>
           <Constant key="Parameter_4906" name="kS3" value="2"/>
           <Constant key="Parameter_4905" name="kS4" value="0.2"/>
@@ -1297,7 +1301,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
           <Modifier metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4903" name="kS1" value="11"/>
+          <Constant key="Parameter_4903" name="kS1" value="3.47003"/>
           <Constant key="Parameter_4902" name="kS2" value="0.8"/>
           <Constant key="Parameter_4901" name="kS3" value="2"/>
           <Constant key="Parameter_4900" name="kS4" value="0.2"/>
@@ -1365,7 +1369,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
           <Modifier metabolite="Metabolite_11" stoichiometry="1"/>
         </ListOfModifiers>
         <ListOfConstants>
-          <Constant key="Parameter_4898" name="kS1" value="11"/>
+          <Constant key="Parameter_4898" name="kS1" value="3.47003"/>
           <Constant key="Parameter_4897" name="kS2" value="0.8"/>
           <Constant key="Parameter_4896" name="kS3" value="2"/>
           <Constant key="Parameter_4895" name="kS4" value="0.2"/>
@@ -1417,13 +1421,13 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDm]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[Rab0]" value="513688694687" type="Species" simulationType="reactions">
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[Rab0]" value="0" type="Species" simulationType="reactions">
             <InitialExpression>
               1-(&lt;CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=InitialConcentration>+&lt;CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabBm],Reference=InitialConcentration>+&lt;CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabCm],Reference=InitialConcentration>+&lt;CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=InitialConcentration>+&lt;CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabEm],Reference=InitialConcentration>)
             </InitialExpression>
           </ModelParameter>
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAm]" value="88525484313" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDc]" value="602214179000" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAm]" value="602214179000" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAc]" value="602214179000" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[zero]" value="0" type="Species" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabBc]" value="0" type="Species" simulationType="reactions"/>
@@ -1433,14 +1437,14 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabCm]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabEm]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAcyto]" value="602214179000" type="Species" simulationType="assignment"/>
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDcyto]" value="0" type="Species" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDcyto]" value="602214179000" type="Species" simulationType="assignment"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabBcyto]" value="0" type="Species" simulationType="assignment"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabCcyto]" value="0" type="Species" simulationType="assignment"/>
           <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabEcyto]" value="0" type="Species" simulationType="assignment"/>
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[area]" value="602214179000" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[area]" value="1909018947430" type="Species" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
-          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS1]" value="11" type="ModelValue" simulationType="fixed">
+          <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Values[kS1]" value="3.4700315457413251" type="ModelValue" simulationType="fixed">
             <InitialExpression>
               11/&lt;CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[area],Reference=InitialConcentration>
             </InitialExpression>
@@ -1454,7 +1458,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Activation],ParameterGroup=Parameters,Parameter=kS1" value="3.4700315457413251" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1481,7 +1485,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="3.4700315457413251" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1508,7 +1512,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab5Activation],ParameterGroup=Parameters,Parameter=kS1" value="3.4700315457413251" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1535,7 +1539,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab7Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="3.4700315457413251" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1632,7 +1636,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Activation],ParameterGroup=Parameters,Parameter=kS1" value="3.4700315457413251" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1659,7 +1663,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab22Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="3.4700315457413251" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1686,7 +1690,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Activation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Activation],ParameterGroup=Parameters,Parameter=kS1" value="3.4700315457413251" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1713,7 +1717,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Inactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[Rab11Inactivation],ParameterGroup=Parameters,Parameter=kS1" value="3.4700315457413251" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1740,7 +1744,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSActivation],ParameterGroup=Parameters,Parameter=kS1" value="3.4700315457413251" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1767,7 +1771,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSInactivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS1" value="11" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=RabConversion,Vector=Reactions[RabSInactivation],ParameterGroup=Parameters,Parameter=kS1" value="3.4700315457413251" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue>
               </InitialExpression>
@@ -1826,7 +1830,7 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
       <StateTemplateVariable objectReference="ModelValue_6"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 513688694687 0 602214179000 0 0 0 88525484313 0 0 0 0 602214179000 0 0 0 0 0 602214179000 1 11 0.80000000000000004 2 0.20000000000000001 13 0.29999999999999999 0.29999999999999999 
+      0 0 602214179000 602214179000 0 0 0 602214179000 0 0 0 0 602214179000 602214179000 0 0 0 0 1909018947430 1 3.4700315457413251 0.80000000000000004 2 0.20000000000000001 13 0.29999999999999999 0.29999999999999999 
     </InitialState>
   </Model>
   <ListOfTasks>
@@ -1851,9 +1855,9 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
     <Task key="Task_15" name="Time-Course" type="timeCourse" scheduled="false" updateModel="false">
       <Problem>
         <Parameter name="AutomaticStepSize" type="bool" value="0"/>
-        <Parameter name="StepNumber" type="unsignedInteger" value="150"/>
-        <Parameter name="StepSize" type="float" value="0.20000000000000001"/>
-        <Parameter name="Duration" type="float" value="30"/>
+        <Parameter name="StepNumber" type="unsignedInteger" value="75"/>
+        <Parameter name="StepSize" type="float" value="20"/>
+        <Parameter name="Duration" type="float" value="1500"/>
         <Parameter name="TimeSeriesRequested" type="bool" value="1"/>
         <Parameter name="OutputStartTime" type="float" value="0"/>
         <Parameter name="Output Event" type="bool" value="0"/>
@@ -2486,10 +2490,11 @@ Area is passed by ABM in relative units. 1=  area of an endosome with a radius =
       <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Values[kS3],Reference=InitialValue" objectType="float" objectValue="2" minValue="2" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
       <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Values[kS5],Reference=InitialValue" objectType="float" objectValue="13" minValue="2.5" maxValue="20" tickNumber="1000" tickFactor="100" scaling="linear"/>
       <Slider key="Slider_4" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Values[kS1],Reference=InitialValue" objectType="float" objectValue="11" minValue="0.05" maxValue="12" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_5" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=InitialConcentration" objectType="float" objectValue="0.147" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_5" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAm],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
       <Slider key="Slider_6" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabDm],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
       <Slider key="Slider_7" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabBm],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
       <Slider key="Slider_8" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[RabAc],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_9" associatedEntityKey="Task_15" objectCN="CN=Root,Model=RabConversion,Vector=Compartments[compartment],Vector=Metabolites[area],Reference=InitialConcentration" objectType="float" objectValue="3.17" minValue="1" maxValue="15" tickNumber="1000" tickFactor="100" scaling="linear"/>
     </ListOfSliders>
   </GUI>
   <ListOfUnitDefinitions>
