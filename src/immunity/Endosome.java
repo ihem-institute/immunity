@@ -210,15 +210,21 @@ public class Endosome {
 		double aa = rsphere; // initial a from the radius of a sphere of volume
 								// v
 		double cc = aa;// initially, c=a
-		// calculation from s/v for a cylinder that it is the same than for an
+		// calculation from s/v for a cylinder that it is more or less the same than for an
 		// ellipsoid
 		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c hence s/v =(1/c)+(2/a)
 		for (int i = 1; i < 5; i++) {// just two iterations yield an acceptable
 										// a-c ratio for plotting
+//			for elongated ellipsoid (tubule)
+			cc = v * 3d / (4d * Math.PI * aa * aa);// from v ellipsoid	
 			aa = 2d / (svratio - 1d / cc);// from s/v ratio
-			cc = v * 3d / (4d * Math.PI * aa * aa);// from v ellipsoid
+//			for flat ellipsoid (Golgi cisternae)
+//			aa = Math.sqrt(v*3d/(4d*Math.PI*cc));
+//			cc = 1d/(svratio-1d/aa);
+			
+//			System.out.println("FORMA s/v " + s/v +"c "+ cc +"a " + aa);
 		}
-		if (aa<=0)System.out.println("PROBLEMA FORMA " + s +" "+v+"");
+//		if (aa<=0)System.out.println("PROBLEMA FORMA " + s +" "+v+"");
 		end.a = aa;
 		end.c = cc;
 	}

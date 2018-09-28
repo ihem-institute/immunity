@@ -76,7 +76,7 @@ public class EndosomeFusionStep {
 //		double aa = rsphere; // initial a from the radius of a sphere of volume
 //								// v
 //		double cc = aa;// initially, c=a
-//		// calculation from s/v for a cylinder that it is the same than for an
+//		// calculation from s/v for a cylinder that it is more or less the same than for an
 //		// ellipsoid
 //		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c hence s/v =(1/c)+(2/a)
 //		for (int i = 1; i < 5; i++) {// just two iterations yield an acceptable
