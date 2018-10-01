@@ -206,22 +206,29 @@ public class Endosome {
 		double s = end.area;
 		double v = end.volume;
 		double rsphere = Math.pow((v * 3d) / (4d * Math.PI), (1d / 3d));
-		double svratio = s / v; // ratio surface volume
+		double p =  1.6075;
+//		double svratio = s / v; // ratio surface volume
 		double aa = rsphere; // initial a from the radius of a sphere of volume
 								// v
 		double cc = aa;// initially, c=a
+//		NOT USED
 		// calculation from s/v for a cylinder that it is more or less the same than for an
 		// ellipsoid
 		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c hence s/v =(1/c)+(2/a)
-		for (int i = 1; i < 5; i++) {// just two iterations yield an acceptable
-										// a-c ratio for plotting
-//			for elongated ellipsoid (tubule)
-			cc = v * 3d / (4d * Math.PI * aa * aa);// from v ellipsoid	
-			aa = 2d / (svratio - 1d / cc);// from s/v ratio
-//			for flat ellipsoid (Golgi cisternae)
-//			aa = Math.sqrt(v*3d/(4d*Math.PI*cc));
-//			cc = 1d/(svratio-1d/aa);
-			
+//		USED
+//		Surface ellipsoid (tubule or disk) = 4*PI*(  ((a^2p + 2 a^p * c^p)/3)^(1/p)  )
+//		where p =  1.6075
+		
+
+		for (int i = 0; i < 4; i++) {
+//			for flat ellipsoid (Golgi cisternae), from the area of ellipsoid
+//			aa= Math.pow((Math.pow((s/4/Math.PI),p)*3 - 2*Math.pow(aa,p)*Math.pow(cc,p)),(0.5/p)) ;
+//			cc = v * 3d / (4d * Math.PI * aa * aa);// from v ellipsoid				
+//				APPROX NOT USED aa = 2d / (svratio - 1d / cc);// from s/v ratio
+//			for elongated ellipsoid (tubule), from area of ellipsoid
+			cc=Math.pow((Math.pow((s/4/Math.PI),p)*3 - Math.pow(aa, 2*p))/(2*Math.pow(aa, p)),(1/p));
+			aa = Math.sqrt(v*3d/(4d*Math.PI*cc));			
+//				APPROX NOT USEDcc = 1d/(svratio-1d/aa);
 //			System.out.println("FORMA s/v " + s/v +"c "+ cc +"a " + aa);
 		}
 //		if (aa<=0)System.out.println("PROBLEMA FORMA " + s +" "+v+"");
