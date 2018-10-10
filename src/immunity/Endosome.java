@@ -179,15 +179,15 @@ public class Endosome {
 		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
 //		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
 		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
-		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
+//		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
 		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
 		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
-		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
+//		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%100 ==0) 
-		if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
+//		if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
 		// rabConversionN();
-		if (Math.random() < 1)EndosomeLipidMetabolismStep.antPresTimeSeriesLoad(this);
+//		if (Math.random() < 1)EndosomeLipidMetabolismStep.antPresTimeSeriesLoad(this);
 		
 
 	}
@@ -227,9 +227,10 @@ public class Endosome {
 //				APPROX NOT USED aa = 2d / (svratio - 1d / cc);// from s/v ratio
 //			for elongated ellipsoid (tubule), from area of ellipsoid
 			cc=Math.pow((Math.pow((s/4/Math.PI),p)*3 - Math.pow(aa, 2*p))/(2*Math.pow(aa, p)),(1/p));
+//			double cc= (s*3/(4*Math.PI*aa)-aa)/2; Aprox from DOI: 10.2307/3608515
 			aa = Math.sqrt(v*3d/(4d*Math.PI*cc));			
 //				APPROX NOT USEDcc = 1d/(svratio-1d/aa);
-//			System.out.println("FORMA s/v " + s/v +"c "+ cc +"a " + aa);
+//			System.out.println("FORMA s/v " + s/v +" c "+ cc +" a " + aa);
 		}
 //		if (aa<=0)System.out.println("PROBLEMA FORMA " + s +" "+v+"");
 		end.a = aa;

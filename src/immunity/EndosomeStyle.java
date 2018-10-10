@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
+import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -72,6 +73,9 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
         double c=object.c;
         Shape ellypse = new Ellipse2D.Double(-c/2, -a/2, c, a);
         shape = this.factory.createShape(ellypse);
+//        Shape rec = new RoundRectangle2D.Double(-c/2, -a/2, c, a,  5, 50);
+//        arguments x, y, ancho, largo, corner angle (small sharp), side curvature (small, straight)
+//        shape = this.factory.createShape(rec);
 //		}
 //		else{
 //		shape = this.factory.createRectangle((int) (v/Math.PI/100),5);	
