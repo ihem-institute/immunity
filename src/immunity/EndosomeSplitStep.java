@@ -31,24 +31,24 @@ public class EndosomeSplitStep {
 		String rabInTube = null;
 		double vo = endosome.volume;
 		double so = endosome.area;
-		if (vo < 2 * 2 * Math.PI * Cell.rcyl * Cell.rcyl * Cell.rcyl)
+		double volMincyl = 2 * Math.PI * Cell.rcyl * Cell.rcyl * Cell.rcyl;
+		if (vo < 2 * volMincyl)
 			return; // if too small to form two mincyl do not split. Volume of a cylinder of 2
 					// cylinder radius long (almost a sphere)
 		if (so < 2 * Cell.mincyl)
 			return; // if the surface is less than two minimus tubules, abort
 					// splitting
-		if (so * so * so / (vo * vo) <= 36.01 * Math.PI){ 
-//			System.out.println("sphere ");
+		double vv = vo - volMincyl;
+		double ss = so - Cell.mincyl;
+		if (ss * ss * ss / (vv * vv) <= 36.01 * Math.PI){ 
+//			System.out.println("NO ALCANZA" + endosome.getRabContent());
 			return;
 		} // organelle is an sphere
-		// if s^3 / v^2 is equal to 36*PI then it is an sphere and cannot form a
-		// tubule
-		// if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) <= Cell.rcyl / 2)
-		// return;
-		// too small volume for the surface for a tubule. Cannot form a tubule
-		if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) == Cell.rcyl / 2) {
-			System.out.println("tubuleTubule" + vo + " " + so);
-		}
+// if s^3 / v^2 is equal to 36*PI then it is an sphere and cannot form a tubule
+// if the area and volume after budding a minimal tubule is	less than 36*PI, then cannot form a tubule	
+//		if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) == Cell.rcyl / 2) {
+//			System.out.println("tubuleTubule" + vo + " " + so);
+//		}
 
 		double rsphere = Math.pow((vo * 3) / (4 * Math.PI), (1 / 3d));// calculate
 		// the radius of the sphere with a given volume
@@ -57,75 +57,46 @@ public class EndosomeSplitStep {
 															// containing the
 															// volume
 		if ((so - ssphere) < Cell.mincyl){
+// if not enough surface to contain the volume plus a
+// minimum tubule, no split
 //			System.out.println("small tubule left " +so + "  " + ssphere + "  " + (so-ssphere));
 			return; 
 		}
 
-		// if not enough surface to contain the volume plus a
-		// minimum tubule, no split
-		
 		rabInTube = rabInTube(endosome); // select a rab for the tubule
-		if (rabInTube == null)
-			return; // if non is selected, no fission
-
-		/* initial minimum tubule to be formed */
+		if (rabInTube == null) return; // if non is selected, no fission
+		if (endosome.rabContent.get(rabInTube)<= Cell.mincyl) return; // the rab area is too small		
 		double scylinder = Cell.mincyl; // surface minimum cylinder 2*radius
-										// cylinder high
-		double vcylinder = 2 * Math.PI * Math.pow(Cell.rcyl, 3); // volume
+		// cylinder high
+		double vcylinder = volMincyl; // volume	
 		// minimum cylinder
-//		the organelles is assessed to be a tubule for the vo/so relationship. If it is a 
-//		tubule, the rules for splitting are different
-		if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) <= Cell.rcyl / 2) {
-			if (endosome.rabContent.get(rabInTube)<= Cell.mincyl)return; // the rab area is too small
-//			and return without splitting.
-//			if the area of the rab is enough, the tubule is cut in half. Otherwise, a tubule
-//			with the area of the rab is cut
-			if (endosome.rabContent.get(rabInTube)>= endosome.area/2){
-				vcylinder = endosome.volume/2;
-				scylinder = endosome.area/2;
-				System.out.println("tubule cut in two");
-			}
-			else {
-				scylinder = endosome.rabContent.get(rabInTube);
-//				vcylinder = vo* endosome.rabContent.get(rabInTube)/endosome.area;
-				double ss = scylinder - 2*Math.PI*Cell.rcyl*Cell.rcyl;//available surface without the two caps
-				double h = ss/(2*Math.PI*Cell.rcyl);// height of the cylinder from the available surface
-				vcylinder = Math.PI*Cell.rcyl*Cell.rcyl*h; // volume of the cylinder from the height
-				System.out.println("tubule cut assymetric" + scylinder +" "+ vcylinder
-						+" "+ vo);
-			}
-			System.out.println("tubule");
-		}
-		else // following rules are for an organelle that is not a tubule
+		switch(rabInTube)
 		{
-		while ((so - ssphere - scylinder > 4 * Math.PI * Math.pow(Cell.rcyl, 2))
-				// organelle area should be enough to cover the volume (ssphere)
-				// to cover the cylinder already formed (scylinder) and to
-				// elongate a two r cylinder (without caps)
-				&& (endosome.rabContent.get(rabInTube) - scylinder > 4 * Math.PI
-						* Math.pow(Cell.rcyl, 2))// the Rab area should b enough
-				// to cover the minimum cylinder and to elongate a two r cylider
-				&& (scylinder < 0.5 * so) // the area of the cylinder must not
-											// be larger than 50% of the total
-											// area
-				&& ((vo - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))>4 * Math.PI * Math.pow(Cell.rcyl, 3))
-				) {
-//			/ ((so - scylinder - 4 * Math.PI
-//					* Math.pow(Cell.rcyl, 2)) - 2 * Math.PI
-//					* Cell.rcyl * Cell.rcyl) > Cell.rcyl / 2
-			// volume left cannot be smaller than the volume
-			// of the mincyl
-			/*
-			 * while there is enough membrane and enough rab surface, the tubule
-			 * grows
-			 */
+		case "RabA": case "RabB": case "RabC":// Golgi Rab
+		{
+		if (vo*10000 / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) <= Cell.rcyl / 2
+				|| Math.random()<0.99){
+			System.out.println("TUBULAR GOLGI");
+//			if it is a tubule, cannot grow a cistern
+			return;
+		} 
+		else
+		{
 
-			scylinder = scylinder + 4 * Math.PI * Math.pow(Cell.rcyl, 2);
-			// add a cylinder without caps (the caps were considered in
-			// the mincyl
-			vcylinder = vcylinder + 2 * Math.PI * Math.pow(Cell.rcyl, 3);
-			// add a volume
-			// System.out.println(scylinder +"surface and volume"+ vcylinder);
+		double[] areaVolume = areaVolumeCistern(endosome, rabInTube);
+		scylinder = areaVolume[0];
+		vcylinder = areaVolume[1];
+		
+		}
+		}
+		case "RabD": case "RabE"://endo Rab
+		{
+			double[] areaVolume = areaVolumeTubule(endosome, rabInTube);
+			scylinder = areaVolume[0];
+			vcylinder = areaVolume[1];		
+		}
+		default: {
+			System.out.println("no a valid rabInTubule " + rabInTube);
 		}
 		}
 
@@ -242,8 +213,177 @@ public class EndosomeSplitStep {
 
 	}
 	
+	private static double[] areaVolumeCistern(Endosome endosome, String rabInTube)
+	{
+		/*
+		 * AREA / VOLUME OF CYLINDER. 
+		 * TUBULE (LONG) VERSUS CISTERN (FLAT)
+		 * a = radius flat cylinder; c = length long cylinder/2; 
+		 * r fixed to Cell.rcyl, it is the radius of the tubules and the height/2 of the cistern
+		 * 
+		 * AREA
+		 * tubule 2*PI*r^2 + 2*PI*r*2*c
+		 * cistern 2*PI*a^2 + 2*PI*a*2*r
+		 * 
+		 * VOLUME
+		 * tubule PI*r^2 *2*c
+		 * cistern PI*a^2 *2*r
+		 * 
+		 * AREA/VOLUME
+		 * tubule (area-(2*PI*r^2))/volume = 2/r  for long tubules area/volume = 2/r
+		 * cistern area/volume = 1/r + 2/a for large cistern, were a>>r, area/volume = 1/r
+		 * So, a long tubule has a area/volume ratio about twice of the cistern that can be build with the same area and volume
+		 * The volume of the cistern need to be smaller, and for that, the height decreased.
+		 * 
+
+		 * If it is a Golgi Rab and RabArea > minCyl
+		 * 1- If it is a cistern, generate Golgi vesicle with probability proportional to perimeter (2*PI*a) and return
+		 * 2- if the vesicle was not generated or the organelle is not a cistern, split a cistern with the rab selected
+		 * with the area of the selected rab, leaving at list a vesicle
+		 *  */
+
+
+		//{
+//		    System.out.println("Roots are real and unequal");
+//		    root1 = ( - b + Math.sqrt(d))/(2*a);
+//		    root2 = (-b - Math.sqrt(d))/(2*a);
+//		    System.out.println("First root is:"+root1);
+//		    System.out.println("Second root is:"+root2);
+		//}   
+		
+		if (Math.random()<0.9){
+// high probability of forming a single vesicle
+			return new double[] {Cell.mincyl, 2 * Math.PI * Math.pow(Cell.rcyl, 3)};
+		}
+		else
+		{
+			double vo = endosome.volume;
+			double so = endosome.area;
+			double rsphere = Math.pow((vo * 3) / (4 * Math.PI), (1 / 3d));// calculate
+			// the radius of the sphere with a given volume
+			double ssphere = (4 * Math.PI * rsphere * rsphere);// area of a sphere
+																// containing the
+																// volume
+			double scylinder = 0; 
+			double vcylinder = 0;	
+			do{
+				vcylinder = vcylinder + 2 * Math.PI * Math.pow(Cell.rcyl, 3);// volume of minimal cylinder PI*rcyl^2*2*rcyl
+				// add a minimal volume
+				double aradius =Math.sqrt(vcylinder /(2*Math.PI*Cell.rcyl)); // from vcylinder = PI*aradius^2 * cistern height (2 rcyl)
+				scylinder = 2*Math.PI*aradius*aradius + 4*Math.PI*aradius*Cell.rcyl;//from Scyl = 2*PI*aradius^2+4*PI*aradius*rcyl
+System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+"  scylinder "+ scylinder);
+							
+				// System.out.println(scylinder +"surface and volume"+ vcylinder);
+			}
+			while (
+					(so - ssphere - scylinder > 4 * Math.PI * Math.pow(Cell.rcyl, 2))
+					// organelle area should be enough to cover the volume (ssphere)
+					// plus the cylinder already formed (scylinder) and to
+					// elongate a two r cylinder (without caps)
+					&&(endosome.rabContent.get(rabInTube) - scylinder > 4 * Math.PI * Math.pow(Cell.rcyl, 2))// the Rab area should b enough
+					// to cover the minimum cylinder and to elongate a two r cylinder
+					&& ((vo - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))>4 * Math.PI * Math.pow(Cell.rcyl, 3))
+					&& ((vo - vcylinder)/((so-scylinder)-2*Math.PI*Cell.rcyl*Cell.rcyl)>Cell.rcyl/2)); 
+// volume left cannot be smaller than the volume of the mincyl and cannot be less than the volume of a tubule with the remaining area
+//				 * while there is enough membrane and enough rab surface, the tubule grows
+
+			
+//			double area = endosome.getRabContent().get(rabInTube);
+//			if (endosome.area - area < Cell.mincyl) area = area - Cell.mincyl; 
+//			{
+////				 * AREA (to find a (radius cylinder, r half height of cistern)
+////				 * cistern 2*PI* x^2 + 2*PI*r*2*r x  +  (-area) = 0
+//				double aq = 2d*Math.PI;
+//				double bq = 4*Math.PI*Cell.rcyl;
+//				double cq = -area;
+//				double dq =  bq * bq - 4 * aq * cq;
+//				double root1 = ( - bq + Math.sqrt(dq))/(2*aq);
+////			    root2 = (-b - Math.sqrt(d))/(2*a);
+////			    VOLUME
+//				double volume = Math.PI*root1*root1*2*Cell.rcyl;
+//System.out.println("SPLIT CISTERN vo "+ vo +"  so  "+so+"  vcylinder "+vcylinder+"  scylinder "+ scylinder);
+				return new double[] {scylinder, vcylinder};		
+			}
+
+//		return new double[] {Cell.mincyl, 2 * Math.PI * Math.pow(Cell.rcyl, 3)};
+		}
+
 	
 	
+	private static double[] areaVolumeTubule(Endosome endosome, String rabInTube)
+	{
+//		the organelles is assessed to be a tubule for the vo/so relationship. If it is a 
+//		tubule, the rules for splitting are different
+		double vo = endosome.volume;
+		double so = endosome.area;
+		double rsphere = Math.pow((vo * 3) / (4 * Math.PI), (1 / 3d));// calculate
+		// the radius of the sphere with a given volume
+
+		double ssphere = (4 * Math.PI * rsphere * rsphere);// area of a sphere
+															// containing the
+															// volume
+		double scylinder = Cell.mincyl; // surface minimum cylinder 2*radius
+		// cylinder high
+		double vcylinder = 2 * Math.PI * Math.pow(Cell.rcyl, 3); // volume	
+
+		
+		if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) <= Cell.rcyl / 2) {
+//			if it is a tubule
+			if (endosome.rabContent.get(rabInTube)>= endosome.area/2){
+//				if it is a tubule and the rab selected has enough area, divide in two
+				vcylinder = endosome.volume/2;
+				scylinder = endosome.area/2;
+
+				System.out.println("tubule cut in two");
+				 return new double[] {scylinder, vcylinder};
+			}
+			else {
+//				if it is a tubule and the Rab selected is not enough, generate a tubule with the 
+//				available Rab area
+				scylinder = endosome.rabContent.get(rabInTube);
+//				vcylinder = vo* endosome.rabContent.get(rabInTube)/endosome.area;
+				double ss = scylinder - 2*Math.PI*Cell.rcyl*Cell.rcyl;//available surface without the two caps
+				double h = ss/(2*Math.PI*Cell.rcyl);// height of the cylinder from the available surface
+				vcylinder = Math.PI*Cell.rcyl*Cell.rcyl*h; // volume of the cylinder from the height
+				System.out.println("tubule cut assymetric" + scylinder +" "+ vcylinder
+						+" "+ vo);
+				return new double[] {scylinder, vcylinder};
+			}
+		}
+		else // following rules are for an organelle that is not a tubule
+		{
+		while ((so - ssphere - scylinder > 4 * Math.PI * Math.pow(Cell.rcyl, 2))
+				// organelle area should be enough to cover the volume (ssphere)
+				// to cover the cylinder already formed (scylinder) and to
+				// elongate a two r cylinder (without caps)
+				&& (endosome.rabContent.get(rabInTube) - scylinder > 4 * Math.PI
+						* Math.pow(Cell.rcyl, 2))// the Rab area should b enough
+				// to cover the minimum cylinder and to elongate a two r cylider
+				&& (scylinder < 0.5 * so) // the area of the cylinder must not
+											// be larger than 50% of the total
+											// area
+				&& ((vo - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))>4 * Math.PI * Math.pow(Cell.rcyl, 3))
+				) {
+//			/ ((so - scylinder - 4 * Math.PI
+//					* Math.pow(Cell.rcyl, 2)) - 2 * Math.PI
+//					* Cell.rcyl * Cell.rcyl) > Cell.rcyl / 2
+			// volume left cannot be smaller than the volume
+			// of the mincyl
+			/*
+			 * while there is enough membrane and enough rab surface, the tubule
+			 * grows
+			 */
+
+			scylinder = scylinder + 4 * Math.PI * Math.pow(Cell.rcyl, 2);
+			// add a cylinder without caps (the caps were considered in
+			// the mincyl
+			vcylinder = vcylinder + 2 * Math.PI * Math.pow(Cell.rcyl, 3);
+			// add a volume
+			// System.out.println(scylinder +"surface and volume"+ vcylinder);
+		}
+		}
+		return new double[] {scylinder, vcylinder};	
+	}
 
 	private static void membraneContentSplit(Endosome endosome, String rabInTube, Double so, Double sVesicle) {
 		// MEMBRANE CONTENT IS DISTRIBUTED according rabTropism
@@ -462,7 +602,7 @@ public class EndosomeSplitStep {
 			}
 		}
 		if (copyMap.isEmpty()) {
-			System.out.println("NINGUN RAB" + copyMap);
+			System.out.println("NINGUN RAB " + copyMap);
 			return null;
 		}
 
@@ -481,8 +621,7 @@ public class EndosomeSplitStep {
 				for (Object rab1 : keys) {
 //					System.out.println(rab1 + " "+ tubuleTropism);
 					if (Math.random() < CellProperties.getInstance().getTubuleTropism().get(rab1)) {
-						System.out.println(copyMap + "RabInTubeSelected" +
-						rab1);
+						System.out.println(copyMap + "RabInTubeSelected" + rab1);
 						return (String) rab1;
 					}
 				}

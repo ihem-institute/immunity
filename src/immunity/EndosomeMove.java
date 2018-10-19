@@ -40,11 +40,11 @@ public class EndosomeMove {
 		
 
 //	If near the borders, move random (only with 10% probability)
-		if (y > 50-2*cellLimit || y < 2*cellLimit) {
+		if (y > 50-2*cellLimit || y < 0.5*cellLimit) { // near the nucleus non random
 			changeDirectionRnd(endosome);
 		}
 		else
-//			if not near the borders
+//			if not near the borders.  Notice less random near the nucleous
 		{
 			boolean onMt = false;
 			changeDirectionMt(endosome);

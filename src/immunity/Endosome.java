@@ -218,25 +218,57 @@ public class Endosome {
 //		USED
 //		Surface ellipsoid (tubule or disk) = 4*PI*(  ((a^2p + 2 a^p * c^p)/3)^(1/p)  )
 //		where p =  1.6075
-		
-
-		for (int i = 0; i < 4; i++) {
-//			for flat ellipsoid (Golgi cisternae), from the area of ellipsoid
-//			aa= Math.pow((Math.pow((s/4/Math.PI),p)*3 - 2*Math.pow(aa,p)*Math.pow(cc,p)),(0.5/p)) ;
-//			cc = v * 3d / (4d * Math.PI * aa * aa);// from v ellipsoid				
-//				APPROX NOT USED aa = 2d / (svratio - 1d / cc);// from s/v ratio
-//			for elongated ellipsoid (tubule), from area of ellipsoid
-			cc=Math.pow((Math.pow((s/4/Math.PI),p)*3 - Math.pow(aa, 2*p))/(2*Math.pow(aa, p)),(1/p));
-//			double cc= (s*3/(4*Math.PI*aa)-aa)/2; Aprox from DOI: 10.2307/3608515
-			aa = Math.sqrt(v*3d/(4d*Math.PI*cc));			
-//				APPROX NOT USEDcc = 1d/(svratio-1d/aa);
-//			System.out.println("FORMA s/v " + s/v +" c "+ cc +" a " + aa);
+		double golgiArea = 0;
+		for (String rab : end.rabContent.keySet())
+		{
+			if (CellProperties.getInstance().getRabOrganelle().get(rab).contains("Golgi"))
+			{
+				golgiArea = golgiArea + end.rabContent.get(rab);
+			}
 		}
-//		if (aa<=0)System.out.println("PROBLEMA FORMA " + s +" "+v+"");
-		end.a = aa;
-		end.c = cc;
+		if (golgiArea/end.area > 0.5){
+			for (int i = 0; i < 4; i++) {
+//				for flat ellipsoid (Golgi cisternae)
+////			 * AREA (to find a (radius cylinder, r half height of cistern)
+////			 * cistern 2*PI* x^2 + 2*PI*r*2*r x  +  (-area) = 0
+			double aq = 2d*Math.PI;
+			double bq = 4*Math.PI*Cell.rcyl;
+			double cq = -s;
+			double dq =  bq * bq - 4 * aq * cq;
+			aa = ( - bq + Math.sqrt(dq))/(2*aq);
+////		    root2 = (-b - Math.sqrt(d))/(2*a);
+////		    VOLUME
+//			double volume = Math.PI*root1*root1*2*Cell.rcyl;			
+			cc = v / (2d * Math.PI * aa * aa);// from volume of cylinder of aa radius v = PI*(aa^2)*2*cc			
+//				//					APPROX NOT USED aa = 2d / (svratio - 1d / cc);// from s/v ratio
+//				//				for elongated ellipsoid (tubule), from area of ellipsoid
+//				cc=Math.pow((Math.pow((s/4/Math.PI),p)*3 - Math.pow(aa, 2*p))/(2*Math.pow(aa, p)),(1/p));
+//				//				double cc= (s*3/(4*Math.PI*aa)-aa)/2; Aprox from DOI: 10.2307/3608515
+//				aa = Math.sqrt(v*3d/(4d*Math.PI*cc));			
+//				//					APPROX NOT USEDcc = 1d/(svratio-1d/aa);
+//				//				System.out.println("FORMA s/v " + s/v +" c "+ cc +" a " + aa);
+			}
+//			System.out.println("FLAT FLAT  c  a  " + cc +" " + aa);
+			end.a = aa;
+			end.c = cc;
+		}
+		else 	
+		{
+			for (int i = 0; i < 4; i++) {
+				//				APPROX NOT USED aa = 2d / (svratio - 1d / cc);// from s/v ratio
+				//			for elongated ellipsoid (tubule), from area of ellipsoid
+				cc=Math.pow((Math.pow((s/4/Math.PI),p)*3 - Math.pow(aa, 2*p))/(2*Math.pow(aa, p)),(1/p));
+				//			double cc= (s*3/(4*Math.PI*aa)-aa)/2; Aprox from DOI: 10.2307/3608515
+				aa = Math.sqrt(v*3d/(4d*Math.PI*cc));			
+				//				APPROX NOT USEDcc = 1d/(svratio-1d/aa);
+				//			System.out.println("FORMA s/v " + s/v +" c "+ cc +" a " + aa);
+			}
+//			System.out.println("LONG LONG  c  a  " + cc +" " + aa);
+			//		if (aa<=0)System.out.println("PROBLEMA FORMA " + s +" "+v+"");
+			end.a = aa;
+			end.c = cc;
+		}
 	}
-
 	public double getArea() {
 		return area;
 	}

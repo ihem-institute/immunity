@@ -71,12 +71,15 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 //      division by 3 to pass from nm to space units
         double a=object.a;
         double c=object.c;
+        if (a<=c){
         Shape ellypse = new Ellipse2D.Double(-c/2, -a/2, c, a);
         shape = this.factory.createShape(ellypse);
-//        Shape rec = new RoundRectangle2D.Double(-c/2, -a/2, c, a,  5, 50);
+        }
+        else{
+         Shape rec = new RoundRectangle2D.Double(-c/2, -a/2, c, a,  0, 0);
 //        arguments x, y, ancho, largo, corner angle (small sharp), side curvature (small, straight)
-//        shape = this.factory.createShape(rec);
-//		}
+        shape = this.factory.createShape(rec);
+		}
 //		else{
 //		shape = this.factory.createRectangle((int) (v/Math.PI/100),5);	
 //		}

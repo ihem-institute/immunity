@@ -46,6 +46,7 @@ public class CellProperties {
 	public HashMap<String, String> colorRab = new HashMap<String, String>();
 	public HashMap<String, String> colorContent = new HashMap<String, String>();
 	public HashMap<String, Double> membraneMet = new HashMap<String, Double>();
+	public HashMap<String, String> rabOrganelle = new HashMap<String, String>();
 
 	Set<String> solubleMet = new HashSet<String>();
 	Set<String> rabSet = new HashSet<String>();
@@ -73,6 +74,9 @@ public class CellProperties {
 	}
 	public HashMap<String, Double> getRabRecyProb() {
 		return rabRecyProb;
+	}
+	public HashMap<String, String> getRabOrganelle() {
+		return rabOrganelle;
 	}
 	public HashMap<String, String> getColorRab() {
 		return colorRab;
@@ -193,7 +197,13 @@ public class CellProperties {
 					}
 				break;
 			}
-
+			
+			case "organelle": {
+				for (int i = 1; i < b.length; i = i + 2) {
+					cellProperties.getRabOrganelle().put(b[i], b[i+1]);
+					}
+				break;
+			}
 			case "membraneMet": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					cellProperties.getMembraneMetRec().put(b[i], Double.parseDouble(b[i+1]));
