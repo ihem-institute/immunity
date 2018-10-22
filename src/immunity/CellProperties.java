@@ -124,7 +124,8 @@ public class CellProperties {
 //		}
 		
 		// InitialOrganelles InOr = InitialOrganelles.getInstance();
-		freezeDryOption: // this names the loop.  Something I did not know that it could be done
+		freezeDryOption: // this names the WHILE loop, so I can break from the loop when I want.  
+			//Something I did not know that it could be done
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
 			String[] b = line.split(",");

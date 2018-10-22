@@ -127,6 +127,7 @@ public class Endosome {
 		this.initOrgProp = initOrgProp;
 		area = initOrgProp.get("area");// 4d * Math.PI * 30d * 30d; // initial
 										// value, but should change
+//		System.out.println("area" + area + " "+initOrgProp);
 		volume = initOrgProp.get("volume");// 4d / 3d * Math.PI * 30d * 30d *
 											// 30d; // initial value, but
 		size = Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));

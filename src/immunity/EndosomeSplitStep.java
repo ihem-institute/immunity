@@ -70,35 +70,27 @@ public class EndosomeSplitStep {
 		// cylinder high
 		double vcylinder = volMincyl; // volume	
 		// minimum cylinder
-		switch(rabInTube)
-		{
-		case "RabA": case "RabB": case "RabC":// Golgi Rab
-		{
-		if (vo*10000 / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) <= Cell.rcyl / 2
-				|| Math.random()<0.99){
-			System.out.println("TUBULAR GOLGI");
-//			if it is a tubule, cannot grow a cistern
-			return;
-		} 
-		else
-		{
+		if (CellProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi"))
+		{ // Golgi domain
+			if ( Math.random()<1){
+//		TO BE ADJUSTED.  IF SMALLER, THE CISTERNS FRACTIONATE IF LARGER, LARGE CISTERNS
+				return;
+			} 
+			else
+			{
+				double[] areaVolume = areaVolumeCistern(endosome, rabInTube);
+				scylinder = areaVolume[0];
+				vcylinder = areaVolume[1];
 
-		double[] areaVolume = areaVolumeCistern(endosome, rabInTube);
-		scylinder = areaVolume[0];
-		vcylinder = areaVolume[1];
-		
+			}
 		}
-		}
-		case "RabD": case "RabE"://endo Rab
+		else //non Golgi domain
 		{
 			double[] areaVolume = areaVolumeTubule(endosome, rabInTube);
 			scylinder = areaVolume[0];
 			vcylinder = areaVolume[1];		
 		}
-		default: {
-			System.out.println("no a valid rabInTubule " + rabInTube);
-		}
-		}
+	
 
 		/*
 		 * the volume of the vesicle is formed subtracting the volume of the
