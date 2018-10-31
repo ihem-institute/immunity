@@ -134,30 +134,32 @@ public class EndosomeMove {
 //			Hence to convert to nm, I must multiply by 45 (2250/50) and divide by scale. An organelle will sense MT
 //			at a distance less than its size.
 			if (Math.abs(dist*30d/Cell.orgScale) < endosome.size) {
+// Each domain has a moving rule specified by a number (mtDir) that goes from -1 to +1
+// This number is used in the following way
+// FOR TUBULES
+// -move to the PM if mtDir is positive with a probability equal to mtDir (sign not considered); else random
+// -move to the NUCLEUS if mtDir is negative with a probability equal to mtDir (sign not considered); else random
+// NON-TUBULE ORGANELLES
+// -move to the NUCLEUS if mtDir is positive with a probability equal to 1-mtDir (sign not considered); else random
+// -move to the PM if mtDir is negative with a probability equal to 1-mtDir (sign not considered); else random
 
-//direction is: 
-//TUBULE move to PM with a Probability depending on the 
-//SUM of relative ares of RabA, B or C (move to the PM, +1) plus RabD and E (to the nucleus, -1)
-//This amount is compared with a RND number
-//If Rabs PM prevail, move to the PM if not, move randomly
-//NOT TUBULE, compare the SUM with a (-) sign.  If Rabs Nucleus prevail, move to the
-//nucleous, else, random.
-// In summary, tubules move to the PM if they are rich in PM Rabs (A, B, C) otherwise, move random
-// Non tubules move to the nucleus if they are rich in nucleus Rabs (D and E), otherwise move random
-//	The direction of the Rabs (PM = 1, Nucleus = -1) is indicated the the csv file as "mtTropism"
-//	Negative numbers: tubules random, and non-tubules to the nucleus.  Positive number: probability
-//	of tubule going to the PM and (1-Nro) probability of non-tubule of going to nucleus.
-//	E.g. RabC MT tropism of 0.4 indicate that tubules goes to PM 40% of the time and non-tubule to the
-//	nucleus 60% of the times.
+// The behavior achieved is  
+//					-1			-0.5		-0.00		+0.00		0.5			+1
+//tubules			N		0.5N 0.5rnd		rnd			rnd		0.5PM 0.5rnd	PM
+//non-tubules		rnd		0.5PM 0.5rnd	PM			N		0.5N 0.5rnd		rnd
+				
+// tubules and non-tubules goes to opposite directions
 				
 				boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2);
-// Calculate mtDir SUM 
+// select a mtDir according with the domains present in the endosome.  Larger probability for the more aboundant domain
+// 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
 				mtDir = mtDirection(endosome);
-				if (isTubule || Math.random()<0.01)
+				if (isTubule)
 					{
 //					System.out.println("IS TUBULE"+ mtDir);
-					if (Math.random()<mtDir) {
-						mtDir = 0; // same direction than Mt
+					if (Math.random()<Math.abs(mtDir)) {
+// 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
+						if (Math.signum(mtDir)>=0) {mtDir = 0;} else {mtDir = 1;}
 						}
 						else {
 						changeDirectionRnd(endosome);
@@ -167,8 +169,9 @@ public class EndosomeMove {
 				else
 					{
 //					System.out.println("IS NOT TUBULE"+ mtDir);
-					if (Math.random()> mtDir) {
-						mtDir = +1;// 180 + Mt direction
+					if (Math.random()> Math.abs(mtDir)) {
+// 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
+						if (Math.signum(mtDir)>=0) {mtDir = 1;} else {mtDir = 0;}
 						}
 						else {
 						changeDirectionRnd(endosome);
@@ -198,18 +201,18 @@ public class EndosomeMove {
 		changeDirectionRnd(endosome);
 		return ;
 	}
-	// Not used!!
 	public static double mtDirection(Endosome endosome) {
+//		Picks a Rab domainaccording to the relative area of the domains in the organelle
+//		More abundant Rabs have more probability of being selected
+//		Returns the moving properties on MT of this domain 
+		double rnd = Math.random();// select a random number
 		double mtd = 0d;
-//		int mtDirection = 0;
+//		Start adding the rabs domains present in the organelle until the value is larger than the random number selected
 		for (String rab : endosome.rabContent.keySet()) {
-			mtd = mtd + CellProperties.getInstance().mtTropism.get(rab) * endosome.rabContent.get(rab) / endosome.area;
+			mtd = mtd + endosome.rabContent.get(rab) / endosome.area;
+			if (rnd <= mtd) return CellProperties.getInstance().mtTropism.get(rab);
 		}
-		return mtd;
-//		if (mtd > Math.random() * 2 - 1)
-//			return mtDirection = -1;
-//		else
-//			return mtDirection = 1;
+		return 0;// never used
 	}
 	public static List<MT> associateMt() {
 		List<MT> mts = new ArrayList<MT>();
@@ -222,25 +225,6 @@ public class EndosomeMove {
 		return mts;
 	}
 
-//	public static void endosomeShape(Endosome end) {
-//		double s = end.area;
-//		double v = end.volume;
-//		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
-//		double svratio = s / v; // ratio surface volume
-//		double aa = rsphere; // initial a from the radius of a sphere of volume
-//								// v
-//		double cc = aa;// initially, c=a
-//		// calculation from s/v for a cylinder that it is the same than for an
-//		// ellipsoid
-//		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c hence s/v =(1/c)+(2/a)
-//		for (int i = 1; i < 5; i++) {// just two iterations yield an acceptable
-//										// a-c ratio for plotting
-//			aa = 2 / (svratio - 1 / cc);// from s/v ratio
-//			cc = v * 3 / (4 * Math.PI * aa * aa);// from v ellipsoid
-//		}
-//		end.a = aa;
-//		end.c = cc;
-//	}
 	private static double distance(Endosome endosome, MT obj) {
 
 		// If the line passes through two points P1=(x1,y1) and P2=(x2,y2) then

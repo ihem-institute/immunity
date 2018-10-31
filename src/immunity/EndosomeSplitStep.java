@@ -72,8 +72,8 @@ public class EndosomeSplitStep {
 		// minimum cylinder
 		if (CellProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi"))
 		{ // Golgi domain
-			if ( Math.random()<1){
-//		TO BE ADJUSTED.  IF SMALLER, THE CISTERNS FRACTIONATE IF LARGER, LARGE CISTERNS
+			if ( Math.random()<0.9){
+//		SET TO 0.9. TO BE ADJUSTED.  IF SMALLER, THE CISTERNS FRACTIONATE IF LARGER, LARGE CISTERNS
 				return;
 			} 
 			else
@@ -244,7 +244,7 @@ public class EndosomeSplitStep {
 		//}   
 		
 		if (Math.random()<0.9){
-// high probability of forming a single vesicle
+// high probability of forming a single vesicle.  SET TO 0.9
 			return new double[] {Cell.mincyl, 2 * Math.PI * Math.pow(Cell.rcyl, 3)};
 		}
 		else
