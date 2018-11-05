@@ -16,6 +16,8 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 import repast.simphony.context.space.grid.ContextGrid;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.space.grid.Grid;
@@ -214,7 +216,8 @@ public class FreezeDryEndosomes {
 		output.close();
 		for (Endosome endosome : collection) {
 			line = "";
-            line = line + "endosome"+index + ",";
+			String ch = RandomStringUtils.randomAlphabetic(1);
+            line = line + "endosome"+index + ch + ",";
             line = line + "initOrgProp" + ",";
             line = line + "area" + "," + endosome.getArea()  + ",";
             line = line + "volume" + "," + endosome.getVolume() + ",";
@@ -224,7 +227,7 @@ public class FreezeDryEndosomes {
 		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
 		output.append(line);
 		line = "";
-        line = line + "endosome"+index + ",";
+        line = line + "endosome"+index + ch + ",";
         String rabContent = endosome.getRabContent().toString().replace("=",",");
         rabContent = rabContent.replace("{","");
         rabContent = rabContent.replace("}","");
@@ -236,7 +239,7 @@ public class FreezeDryEndosomes {
 		output.append(line);
 		
 		line = "";  
-        line = line + "endosome"+index + ",";
+        line = line + "endosome"+index + ch + ",";
 		String membraneContent = endosome.getMembraneContent().toString().replaceAll("=",","); 
 		membraneContent = membraneContent.replace("{","");
 		membraneContent = membraneContent.replace("}","");
@@ -248,7 +251,7 @@ public class FreezeDryEndosomes {
 		output.append(line);
 		
 		line = "";  
-        line = line + "endosome"+index + ",";        
+        line = line + "endosome"+index + ch + ",";        
         String solubleContent = endosome.getSolubleContent().toString().replaceAll("=",",");        
 		solubleContent = solubleContent.replace("{","");
 		solubleContent = solubleContent.replace("}","");

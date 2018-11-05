@@ -95,14 +95,13 @@ public class EndosomeMove {
 				// momentum+" "+a+"  "+c);
 			Random fRandom = new Random();
 			double finalh = 0;
-			if (Math.random() < 1d/endosome.size ) finalh = Math.random()*360;// rnd depending  size
-			finalh = finalh + fRandom.nextGaussian() * 45d*1d/endosome.size;// inertial depending size
-			int dir = 1;
-			if (Math.random() < 0.5 ) {dir = -1;}
-			finalh = finalh + fRandom.nextGaussian() * dir * 1d * 800d/momentum;// inertial depending momentum
+//			if (Math.random() < 1d/endosome.size ) finalh = Math.random()*360;// rnd depending  size
+			finalh = finalh + fRandom.nextGaussian() * 45d/endosome.size;// inertial depending size
+//			if (Math.random() < 0.5 ) {dir = -1;}
+			finalh = finalh + fRandom.nextGaussian() * 1d * 800d/momentum;// inertial depending momentum
 			finalh = initialh + finalh;
-			if (finalh <-180) endosome.heading = 360d - finalh;
-			if (finalh > 180) endosome.heading = finalh- 360d;
+//			if (finalh <-180) endosome.heading = 360d - finalh;
+//			if (finalh > 180) endosome.heading = finalh- 360d;
 					
 
 				// if (initial - heading >

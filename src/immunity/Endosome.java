@@ -132,7 +132,7 @@ public class Endosome {
 											// 30d; // initial value, but
 		size = Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
 		speed = Cell.orgScale / size; // initial value, but should change
-		heading = Math.random() * 360d; // initial value, but should change
+		heading = Math.random() * 360d - 180; // initial value, but should change
 		double mvb = 0; // number of internal vesicles
 
 
