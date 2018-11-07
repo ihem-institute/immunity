@@ -3,9 +3,11 @@ package immunity;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
+import repast.simphony.context.Context;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.grid.Grid;
+import repast.simphony.util.ContextUtils;
 
 public class EndosomeRecycleStep {
 	private static ContinuousSpace<Object> space;
@@ -86,12 +88,11 @@ public class EndosomeRecycleStep {
 
 				endosome.solubleContent.clear();
 				endosome.solubleContent.put("proton", endopH);
-				
-				
-
-				
-				
 				endosome.getLipidTimeSeries().clear();
+				double rcyl = CellProperties.getInstance().getCellK().get("rcyl");// radius tubule
+				double h = (endosome.area-2*Math.PI*rcyl*rcyl)/(2*Math.PI*rcyl);// length of a tubule with the area of the recycled endosome
+				endosome.volume = Math.PI*rcyl*rcyl*h; // new volume of the endosome, now converted in a tubule.
+				endosome.heading = -90; //moving in the nucleus direction
 
 			}
 		}

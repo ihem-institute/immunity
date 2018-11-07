@@ -243,7 +243,7 @@ public class EndosomeSplitStep {
 //		    System.out.println("Second root is:"+root2);
 		//}   
 		
-		if (Math.random()<0.9){
+		if (Math.random()<0.9){// standard 0.9
 // high probability of forming a single vesicle.  SET TO 0.9
 			return new double[] {Cell.mincyl, 2 * Math.PI * Math.pow(Cell.rcyl, 3)};
 		}
@@ -319,7 +319,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 		double vcylinder = 2 * Math.PI * Math.pow(Cell.rcyl, 3); // volume	
 
 		
-		if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) <= Cell.rcyl / 2) {
+		if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) <= Cell.rcyl / 2) {// should be 2
 //			if it is a tubule
 			if (endosome.rabContent.get(rabInTube)>= endosome.area/2){
 //				if it is a tubule and the rab selected has enough area, divide in two
@@ -355,6 +355,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 											// be larger than 50% of the total
 											// area
 				&& ((vo - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))>4 * Math.PI * Math.pow(Cell.rcyl, 3))
+				&& Math.random()< 0.9 //cut the tubule with a 10% probability in each step.  Prevent too long tubules
 				) {
 //			/ ((so - scylinder - 4 * Math.PI
 //					* Math.pow(Cell.rcyl, 2)) - 2 * Math.PI
@@ -607,20 +608,52 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 		}
 
 		else {
-			List keys = new ArrayList(copyMap.keySet());
-			Collections.shuffle(keys);
-			while (rab == null) {
-				for (Object rab1 : keys) {
-//					System.out.println(rab1 + " "+ tubuleTropism);
-					if (Math.random() < CellProperties.getInstance().getTubuleTropism().get(rab1)) {
-						System.out.println(copyMap + "RabInTubeSelected" + rab1);
-						return (String) rab1;
+			
+			List<String> keys = new ArrayList(copyMap.keySet());
+			Collections.shuffle(keys);			
+
+//				Picks a Rab domain according to the relative "tubule tropism" of the Rab domains present
+//				Rabs with larger tubule tropism have more probability of being selected
+
+
+				double totalTubuleTropism = 0d;
+//				add all the tubule tropisms of the rab domains
+				for (String rab1 : keys) {
+					totalTubuleTropism = totalTubuleTropism + CellProperties.getInstance().getTubuleTropism().get(rab1);
+				}
+
+// 				select a random number between 0 and total tubule tropism.  Notice that it can be zero
+				double rnd = Math.random() * totalTubuleTropism;
+				double tubuleTropism = 0d;
+//				select a rab domain with a probability proportional to its tubule tropism
+				for (String rab1 : keys){
+				tubuleTropism = tubuleTropism + CellProperties.getInstance().getTubuleTropism().get(rab1);
+					if (rnd <= tubuleTropism){
+						System.out.println(copyMap + " RabInTubeSelected " + rab1);
+						return rab1;
 					}
 				}
-			}
-		}
 
-		return null;
+			}
+			
+		return null;// never used
+			
+			
+			
+//			List keys = new ArrayList(copyMap.keySet());
+//			Collections.shuffle(keys);
+//			while (rab == null) {
+//				for (Object rab1 : keys) {
+////					System.out.println(rab1 + " "+ tubuleTropism);
+//					if (Math.random() < CellProperties.getInstance().getTubuleTropism().get(rab1)) {
+//						System.out.println(copyMap + "RabInTubeSelected" + rab1);
+//						return (String) rab1;
+//					}
+//				}
+//			}
+//		}
+//
+//		return null;
 	}
 
 }

@@ -149,7 +149,7 @@ public class EndosomeMove {
 				
 // tubules and non-tubules goes to opposite directions
 				
-				boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2);
+				boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2); // should be /2
 // select a mtDir according with the domains present in the endosome.  Larger probability for the more aboundant domain
 // 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
 				mtDir = mtDirection(endosome);
@@ -209,7 +209,11 @@ public class EndosomeMove {
 //		Start adding the rabs domains present in the organelle until the value is larger than the random number selected
 		for (String rab : endosome.rabContent.keySet()) {
 			mtd = mtd + endosome.rabContent.get(rab) / endosome.area;
-			if (rnd <= mtd) return CellProperties.getInstance().mtTropism.get(rab);
+			if (rnd <= mtd) {
+				double mtTropism = CellProperties.getInstance().mtTropism.get(rab);
+//				if (rab.equals("RabE") && Math.random()<0.1){mtTropism = -mtTropism;}
+				return mtTropism;
+			}
 		}
 		return 0;// never used
 	}
