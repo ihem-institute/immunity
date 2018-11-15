@@ -11,7 +11,7 @@ import repast.simphony.util.ContextUtils;
 
 public class EndosomeRecycleStep {
 	private static ContinuousSpace<Object> space;
-	
+	private static Grid<Object> grid;
 	public static void recycle(Endosome endosome) {
 		HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
@@ -93,6 +93,9 @@ public class EndosomeRecycleStep {
 				double h = (endosome.area-2*Math.PI*rcyl*rcyl)/(2*Math.PI*rcyl);// length of a tubule with the area of the recycled endosome
 				endosome.volume = Math.PI*rcyl*rcyl*h; // new volume of the endosome, now converted in a tubule.
 				endosome.heading = -90; //moving in the nucleus direction
+//				to delete the recycled endosome.
+//				Context<Object> context = ContextUtils.getContext(endosome);
+//				context.remove(endosome);
 
 			}
 		}

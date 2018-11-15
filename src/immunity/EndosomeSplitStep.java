@@ -197,7 +197,18 @@ public class EndosomeSplitStep {
 		double x = myPoint.getX()+ deltax;
 
 		double y = myPoint.getY()+ deltay;
-		if (y < cellLimit)y= cellLimit;
+		if (y < cellLimit){
+			y= cellLimit;
+//			specific for Golgi transport.  To increase TGN volume, when split a pure TGN (RabE) tubule, near the nucleus, increase the volume in a random
+//			way between 0 and the maximal volume (the volume of a sphere with the area of the tubule
+			if (rabInTube.equals("RabE")){
+				double radius = Math.sqrt(b.area/(4*Math.PI));
+				double maxVol = 4/3*Math.PI*Math.pow(radius, 3);
+				double deltaVol = maxVol-b.volume;
+				b.volume = b.volume + deltaVol;
+			}
+		}
+		
 		if (y > 50 - cellLimit)y = 50-cellLimit;
 		space.moveTo(b, x, y);
 		grid.moveTo(b, (int) x, (int) y);

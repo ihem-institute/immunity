@@ -51,7 +51,6 @@ import repast.simphony.valueLayer.GridValueLayer;
  */
 public class Endosome {
 	final static Logger logger = Logger.getLogger(Endosome.class);
-
 	// space
 
 	private ContinuousSpace<Object> space;
@@ -168,15 +167,15 @@ public class Endosome {
 	
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-		String message = "MENSAJE";//(new JSONDoc(rabTimeSeries)).toString();
-		if (logger.isDebugEnabled()) {
-			logger.debug(message);			
-		}
+//		String message = "MENSAJE";//(new JSONDoc(rabTimeSeries)).toString();
+//		if (logger.isDebugEnabled()) {
+//			logger.debug(message);			
+//		}
+
 		endosomeShape(this);
 //		EndosomeMove.changeDirection(this);
 		EndosomeMove.moveTowards(this);
 //		if (this.solubleContent.containsKey("mvb")) this.membraneContent.put("chol", 0d);
-		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);
 		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
 //		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
 		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
@@ -189,6 +188,7 @@ public class Endosome {
 //		if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
 		// rabConversionN();
 //		if (Math.random() < 1)EndosomeLipidMetabolismStep.antPresTimeSeriesLoad(this);
+		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);
 		
 
 	}

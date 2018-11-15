@@ -222,6 +222,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		initOrgProp.put("volume", volume);	
 		HashMap<String, Double> rabContent = new HashMap<String, Double>();
 		rabContent.put(selectedRab, area);
+		
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 		HashSet<String> solubleMet = new HashSet<String>(CellProperties.getInstance().getSolubleMet());
