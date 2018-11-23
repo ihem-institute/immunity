@@ -57,6 +57,9 @@ public class Results {
 	
 	
 	static Results	instance = new Results(space, grid, totalRabs, initialTotalRabs);
+	LocalPath mainpath=new LocalPath(); 
+	String ITResultsPath = mainpath.getPathResultsIT(); 	
+	String MarkerResultsPath =mainpath.getPathResultsMarkers();
 //	
 	public static Results getInstance() {
 		return instance;
@@ -148,7 +151,9 @@ public class Results {
 		}
 		line = line + "\n";
 		Writer output;
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
+		//CAMBIO
+		output = new BufferedWriter(new FileWriter(ITResultsPath, true));
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 		output.append(line);
 		output.close();
 	}
@@ -161,7 +166,9 @@ public class Results {
 		}
 		line = line + "\n";
 		Writer output;
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
+		//CAMBIO
+		output = new BufferedWriter(new FileWriter(ITResultsPath, false));		
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
 		output.append(line);
 		output.close();	
 	}
@@ -173,7 +180,9 @@ public class Results {
 		}
 		line = line + "\n";
 		Writer output;
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsMarker.csv", false));
+		//CAMBIO
+		output = new BufferedWriter(new FileWriter(MarkerResultsPath, false));
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsMarker.csv", false));
 		output.append(line);
 		output.close();	
 		// TODO Auto-generated method stub
@@ -303,7 +312,9 @@ public class Results {
 		}
 		line = line + "\n";
 		Writer output;
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsMarker.csv", true));
+		//CAMBIO
+		output = new BufferedWriter(new FileWriter(MarkerResultsPath, true));
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsMarker.csv", true));
 		output.append(line);
 		output.close();
 	}

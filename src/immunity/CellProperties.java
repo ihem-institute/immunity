@@ -271,6 +271,7 @@ public class CellProperties {
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
 					inOr.getInitSolubleContent().put(b[0], value);
+//					System.out.println("Proton is there?" + inOr.getInitialSolubleContent());
 					break;
 				}
 				case "initMembraneContent": {

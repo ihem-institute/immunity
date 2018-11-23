@@ -33,6 +33,9 @@ public class FreezeDryEndosomes {
 	public static final String configFilename = "config.json";
 	
 	private static FreezeDryEndosomes instance;
+	//CAMBIO
+	LocalPath mainpath=new LocalPath(); 
+	String FreezeOutputPath = mainpath.getPathOutputFE(); 	
 	
 	public static FreezeDryEndosomes getInstance() {
 		if( instance == null ) {
@@ -203,7 +206,7 @@ public class FreezeDryEndosomes {
 	
 	
 	
-	public static void writeToCsv() throws IOException {
+	public void writeToCsv() throws IOException {
 		
 		IndexedIterable<Endosome> collection = CellBuilder.getCollection();
 //		System.out.println("ALL ENDOSOMES"+collection);
@@ -211,8 +214,9 @@ public class FreezeDryEndosomes {
 		Writer output;	
 	    double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		String line ="tick " + tick + "\n";
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
-	    output.append(line);
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
+		output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
+		output.append(line);
 		output.close();
 		for (Endosome endosome : collection) {
 			line = "";
@@ -224,7 +228,8 @@ public class FreezeDryEndosomes {
             line = line + "xcoor" + "," + endosome.getXcoor() + ",";
             line = line + "ycoor" + "," + endosome.getYcoor() + ",";
 		line = line + "\n";	
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
+		output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
 		output.append(line);
 		line = "";
         line = line + "endosome"+index + ch + ",";

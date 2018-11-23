@@ -21,6 +21,9 @@ import repast.simphony.space.grid.Grid;
 public class UpdateParameters {
 
 	private static UpdateParameters instance;
+	//CAMBIO
+	LocalPath mainpath=new LocalPath(); 
+	String InputPath = mainpath.getPathInputIT();
 	
 	public static UpdateParameters getInstance() {
 		if( instance == null ) {
@@ -54,7 +57,9 @@ public class UpdateParameters {
 		}
 }
 	public void testNewFile() throws IOException {
-		File file = new File("C:/Users/lmayo/workspace/immunity/inputIntrTransp3.csv");
+		//CAMBIO
+		File file = new File(InputPath);
+//		File file = new File("C:/Users/lmayo/workspace/immunity/inputIntrTransp3.csv");
 		Path filePath = file.toPath();		
 		BasicFileAttributes attr = Files.readAttributes(filePath, BasicFileAttributes.class);
 		String newFile = attr.lastModifiedTime().toString();
@@ -117,9 +122,10 @@ public class UpdateParameters {
 
 	
 	public void loadFromCsv() throws FileNotFoundException {
-
-		Scanner scanner = new Scanner(new File(
-				"C:/Users/lmayo/workspace/immunity/inputIntrTransp3.csv"));
+		//CAMBIO
+		Scanner scanner = new Scanner(new File(InputPath));
+//		Scanner scanner = new Scanner(new File(
+//				"C:/Users/lmayo/workspace/immunity/inputIntrTransp3.csv"));	
 		scanner.useDelimiter(",");
 
 		CellProperties cellProperties = CellProperties.getInstance();

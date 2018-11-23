@@ -47,4 +47,9 @@ public class InitialOrganelles {
 //		return new HashMap<String, HashMap<String, Double>>(initMembraneContent);
 	}
 
+	public String getInitialSolubleContent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
