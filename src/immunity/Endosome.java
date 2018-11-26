@@ -179,13 +179,13 @@ public class Endosome {
 		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
 //		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
 		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
-//		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
+		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
 		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
 		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
-//		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
+		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%100 ==0) 
-//		if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
+		if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
 		// rabConversionN();
 //		if (Math.random() < 1)EndosomeLipidMetabolismStep.antPresTimeSeriesLoad(this);
 		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);

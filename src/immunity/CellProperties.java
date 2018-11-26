@@ -277,7 +277,7 @@ public class CellProperties {
 				case "initMembraneContent": {
 					HashMap<String, Double> value = new HashMap<String, Double>();
 					for (int i = 2; i < b.length; i = i + 2) {
-	//					System.out.println("VALOR MALO" + b[i] + "" + b[i+1]);
+//					System.out.println("VALOR MALO" + b[i] + "" + b[i+1]);
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
 					inOr.getInitMembraneContent().put(b[0], value);
