@@ -29,6 +29,9 @@ public class PlasmaMembrane {
 	public int green = 0;	
 	public int blue = 0;
 	public int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); 
+	public int volume = (int) (1500*400*1000*(1/Cell.orgScale)*(1/Cell.orgScale)*(1/Cell.orgScale)); 
+	HashMap<Integer, HashMap<String, Double>> receptorTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
+
 // nm2 1500nm x 400nm. Space in repast at scale =1 and arbitrary height of the space projected
 //	in 2D
 
@@ -45,18 +48,24 @@ public class PlasmaMembrane {
 //		membraneRecycle.putAll(cellProperties.initPMmembraneRecycle);
 // PM now are in the csv file as proportions of the PM area and need to be multiplied by the area		
 		for (String met : cellProperties.initPMmembraneRecycle.keySet() ){
-		membraneRecycle.put(met, cellProperties.initPMmembraneRecycle.get(met) * area);
+		membraneRecycle.put(met, cellProperties.initPMmembraneRecycle.get(met)*this.area);
 		}
 		System.out.println("PM membraneRecycle "+ membraneRecycle);
-		for (String met : cellProperties.solubleMet ){
-		solubleRecycle.put(met,  0.0);
+		for (String met : cellProperties.initPMsolubleRecycle.keySet() ){
+		solubleRecycle.put(met, cellProperties.initPMsolubleRecycle.get(met)*this.volume);
 		}
-		System.out.println("solubleRecycle "+solubleRecycle);		
+		System.out.println("PM solubleRecycle "+ solubleRecycle);		
+//		for (String met : cellProperties.solubleMet ){
+//		solubleRecycle.put(met,  0.0);
+//		}
+//		System.out.println("solubleRecycle "+solubleRecycle);		
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-		this.membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
-		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
+//		this.membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
+//		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
+		if (Math.random() < 1)PlasmaMembraneReceptorStep.antPresTimeSeriesLoad(PlasmaMembrane.getInstance());
+
 //		this.changeColor();
 
 		}
@@ -91,6 +100,9 @@ public class PlasmaMembrane {
 
 	public int getPmcolor() {
 		return pmcolor;
+	}
+	public final HashMap<Integer, HashMap<String, Double>> getReceptorTimeSeries() {
+		return receptorTimeSeries;
 	}
 
 

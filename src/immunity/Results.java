@@ -198,13 +198,13 @@ public class Results {
 //			System.out.println(" soluble "+ sol);
 			double value = solubleRecycle.get(sol);
 			contentDist.put(sol, value);
-			//System.out.println("SOLUBLE"+sol + "Rab" +rab);
+			System.out.println("SOLUBLE  "+ sol + value );
 		}
 		for (String mem : membraneRecycle.keySet()) {
 			//System.out.println(" soluble "+ sol + " Rab " +rab);
 			double value = membraneRecycle.get(mem);
 			contentDist.put(mem, value);
-			//System.out.println("SOLUBLE"+sol + "Rab" +rab);
+			System.out.println("MEMBRANE  "+ mem + value);
 		}			
 		
 		List<Endosome> allEndosomes = new ArrayList<Endosome>();

@@ -156,6 +156,13 @@ public class UpdateParameters {
 				}
 				break;
 			}
+			case "initPMsolubleRecycle": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				cellProperties.getInitPMsolubleRecycle().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(cellProperties.getMembraneRecycle());
+				}
+				break;
+			}
 			case "solubleCell": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getSolubleCell().put(b[i], Double.parseDouble(b[i+1]));

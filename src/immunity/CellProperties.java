@@ -38,6 +38,7 @@ public class CellProperties {
 	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
 	public HashMap<String, Double> solubleCell = new HashMap<String, Double>();
 	public HashMap<String, Double> initPMmembraneRecycle = new HashMap<String, Double>();
+	public HashMap<String, Double> initPMsolubleRecycle = new HashMap<String, Double>();
 	public HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
 	public HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
 	public HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>();
@@ -105,6 +106,9 @@ public class CellProperties {
 	public HashMap<String, Double> getInitPMmembraneRecycle() {
 		return initPMmembraneRecycle;
 	}
+	public HashMap<String, Double> getInitPMsolubleRecycle() {
+		return initPMsolubleRecycle;
+	}
 //	public Set<String> getmembraneMet() {
 //		// TODO Auto-generated method stub
 //		return null;
@@ -148,6 +152,13 @@ public class CellProperties {
 			case "initPMmembraneRecycle": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getInitPMmembraneRecycle().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(cellProperties.getMembraneRecycle());
+				}
+				break;
+			}
+			case "initPMsolubleRecycle": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				cellProperties.getInitPMsolubleRecycle().put(b[i], Double.parseDouble(b[i+1]));
 //				System.out.println(cellProperties.getMembraneRecycle());
 				}
 				break;

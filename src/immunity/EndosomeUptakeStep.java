@@ -116,26 +116,77 @@ public class EndosomeUptakeStep {
 		HashMap<String, Double> membraneContent = new HashMap<String,Double>();
 		Set<String> membraneMet = new HashSet<String>(CellProperties.getInstance().getMembraneMet());
 		for (String mem : membraneMet){
-			double valueIn = 0d;
+			double valueInEn = 0d;
+			double valueInPM =0d;
+			double valueInTotal = 0d;
+
+			if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey(mem))
+			{
+				double valuePM = PlasmaMembrane.getInstance().getMembraneRecycle().get(mem);
+				valueInPM = valuePM * CellProperties.getInstance().getMembraneMetRec().get(mem) * area/ PlasmaMembrane.getInstance().area;	
+
+				if (valueInPM >= area) 
+				{
+					membraneContent.put(mem, area);
+					// decrease PM content
+					PlasmaMembrane.getInstance().getMembraneRecycle().put(mem, valuePM - area);
+					//			System.out.println(mem + valuePM + "   UPTAKE DECREASE 1111  " + valueInPM);
+					continue;
+				}
+				// decrease PM content
+				PlasmaMembrane.getInstance().getMembraneRecycle().put(mem, valuePM-valueInPM);
+				//			System.out.println(mem+valuePM +"           UPTAKE DECREASE 2222222222222222222222222222  " + valueInPM);
+				valueInTotal = valueInPM;
+			}
 			if (InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").containsKey(mem))
 			{
-				valueIn = InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").get(mem);
+				valueInEn = InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").get(mem)*area;
+				valueInTotal = valueInEn + valueInPM;
 			}
-			if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey(mem)){
-				double pM = PlasmaMembrane.getInstance().getMembraneRecycle().get(mem);
-				pM = pM * CellProperties.getInstance().getMembraneMetRec().get(mem) * area/ (double) PlasmaMembrane.getInstance().area;
-				valueIn = valueIn + pM;	
+			if (valueInTotal >= area) 	
+			{
+				valueInTotal= area;
 			}
-			if (valueIn < area) membraneContent.put(mem, valueIn);
-			else membraneContent.put(mem, area);
+			membraneContent.put(mem, valueInTotal);	
 
 		}
+//	System.out.println("RRRRRRRRRRRRRRRRRRRRRREEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSS "+ membraneContent);
+		HashMap<String, Double> solubleContent = new HashMap<String,Double>();
+		Set<String> solubleMet = new HashSet<String>(CellProperties.getInstance().getSolubleMet());
+		for (String sol : solubleMet){
+			double valueInEn = 0d;
+			double valueInPM =0d;
+			
+			if (PlasmaMembrane.getInstance().getSolubleRecycle().containsKey(sol))
+			{
+				double valuePM = PlasmaMembrane.getInstance().getSolubleRecycle().get(sol);
+				valueInPM = valuePM * volume/ PlasmaMembrane.getInstance().volume;	
 
-		HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get("kind1"));
-		for (String sol : solubleContent.keySet()){
-			double ss = solubleContent.get(sol);
-			solubleContent.put(sol, ss*volume);
+				if (valueInPM >= volume) 
+				{
+				solubleContent.put(sol, volume);
+				// decrease PM content
+				PlasmaMembrane.getInstance().getSolubleRecycle().put(sol, valuePM - volume);
+				continue;
+				}
+				// decrease PM content
+				PlasmaMembrane.getInstance().getSolubleRecycle().put(sol, valuePM-valueInPM);
+			}
+			if (InitialOrganelles.getInstance().getInitSolubleContent().get("kind1").containsKey(sol))
+			{
+				valueInEn = InitialOrganelles.getInstance().getInitSolubleContent().get("kind1").get(sol)*volume;
+				valueInEn = valueInEn + valueInPM;
+			}
+			if (valueInEn >= volume) 	valueInEn= volume;
+			solubleContent.put(sol, valueInEn);	
 
+		}
+//		HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get("kind1"));
+//		for (String sol : solubleContent.keySet()){
+//			double ss = solubleContent.get(sol);
+//			solubleContent.put(sol, ss*volume);
+//		}
+		solubleContent.put("proton", 3.98E-5*volume); //pH 7.4
 	// new endosome incorporate PM components in a proportion area new/area PM
 	//					"Fully conformed MHC-I proteins internalize with the
 	//					rate 0.002–0.004 min−1 (0.2–0.4% loss of initially surface expressed
@@ -166,7 +217,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 	//				value = 0.001 * valueIn * initOrgProp.get("area")/PlasmaMembrane.getInstance().area;
 	//				if (value > area) {value = area;}
 
-		solubleContent.put("proton", 3.98E-5*volume); //pH 7.4
+
 //		System.out.println("PLASMA MEMBRANE "+PlasmaMembrane.getInstance().getMembraneRecycle());
 
 		//			Cell.getInstance().settMembrane(tMembrane);
@@ -178,8 +229,8 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 				solubleContent, initOrgProp);
 		context.add(bud);
 		//			tMembrane = tMembrane - bud.initOrgProp.get("area");
-		bud.area = initOrgProp.get("area");
-		bud.volume = initOrgProp.get("volume");
+//		bud.area = initOrgProp.get("area");
+//		bud.volume = initOrgProp.get("volume");
 //		bud.size = initOrgProp.get("maxRadius");// radius of a sphere with the volume of the
 		// cylinder
 		bud.speed = 1d / bud.size;
@@ -197,7 +248,8 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		//			// TODO Auto-generated catch block
 		//			e.printStackTrace();
 		//		}
-		}
+	PlasmaMembrane.getInstance().getReceptorTimeSeries().clear();
+		
 	}
 
 	private static void newOrganelle(Endosome endosome, String selectedRab, HashMap<String, String> rabCode) {

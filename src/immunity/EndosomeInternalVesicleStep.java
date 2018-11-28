@@ -112,6 +112,8 @@ public class EndosomeInternalVesicleStep {
 	// Membrane content with mvb tropism is degraded (e.g. EGF)
 	//this can be established in RabTropism adding in the EGF tropisms "mvb",
 	for (String content : endosome.membraneContent.keySet()) {
+//		System.out.println(content + " CHOLESTEROL RAB TROPISM " + rabTropism.get(content)+ "  \n"+rabTropism);
+		
 		if(content.equals("membraneMarker")) {
 				if (endosome.membraneContent.get("membraneMarker")>0.9){
 					endosome.membraneContent.put("membraneMarker", 1d);
@@ -121,9 +123,8 @@ public class EndosomeInternalVesicleStep {
 				}
 						
 		}
-		else if (rabTropism.get(content).contains("mvb")){
-//				
-// System.out.println(content + " CHOLESTEROL RAB TROPISM " + rabTropism.get(content)+ "  \n"+rabTropism);
+		else if (rabTropism.get(content).contains("mvb")){				
+//			System.out.println(content + " CHOLESTEROL RAB TROPISM " + rabTropism.get(content)+ "  \n"+rabTropism);
 //			try {
 //			TimeUnit.SECONDS.sleep(2);
 //		} catch (InterruptedException e) {
