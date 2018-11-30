@@ -62,24 +62,29 @@ public class PlasmaMembrane {
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-//		this.membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
-//		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
+		changeColor();
+		this.membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
+		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
+		this.receptorTimeSeries=PlasmaMembrane.getInstance().getReceptorTimeSeries();
 		if (Math.random() < 1)PlasmaMembraneReceptorStep.antPresTimeSeriesLoad(PlasmaMembrane.getInstance());
 
 //		this.changeColor();
 
 		}
 	
-/*	public void changeColor() {
+	public void changeColor() {
 		double c1 = 0d;
-		if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey("XX")){
-		c1 = PlasmaMembrane.getInstance().getMembraneRecycle().get("XX")/area;
+		{
+		c1 = PlasmaMembrane.getInstance().getMembraneRecycle().get("Ra")+
+				PlasmaMembrane.getInstance().getMembraneRecycle().get("Rr")+
+				PlasmaMembrane.getInstance().getMembraneRecycle().get("Rm");
+		c1 = c1/area;
 		this.pmcolor = (int) (c1*255);
 		}
-		else this.pmcolor = 0;
+
 		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + pmcolor+" " + pmcolor);
 	}
-*/	
+	
 
 	// GETTERS AND SETTERS (to get and set Cell contents)
 	public static PlasmaMembrane getInstance() {
