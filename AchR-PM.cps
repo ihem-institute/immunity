@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-11-30 17:12:54 UTC -->
+<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-11-30 21:44:43 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="20" versionDevel="158" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -313,9 +313,9 @@ Reaction scheme where the products are created from the reactants and the change
           <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment]" value="1" type="Compartment" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
-          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Rm]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Rr]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[chol]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Rm]" value="60221408570" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Rr]" value="60221408570" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[chol]" value="60221408570" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[L]" value="0" type="Species" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Ra]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[species]" value="0" type="Species" simulationType="reactions"/>
@@ -371,7 +371,7 @@ Reaction scheme where the products are created from the reactants and the change
       <StateTemplateVariable objectReference="ModelValue_0"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 0 0 0 0 0 0 0 0 1 0.01 
+      0 60221408570 0 60221408570 60221408570 0 0 0 0 1 0.01 
     </InitialState>
   </Model>
   <ListOfTasks>
@@ -786,7 +786,7 @@ Reaction scheme where the products are created from the reactants and the change
   </ListOfPlots>
   <GUI>
     <ListOfSliders>
-      <Slider key="Slider_0" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[chol],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_0" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[chol],Reference=InitialConcentration" objectType="float" objectValue="0.1" minValue="0" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
       <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Cd],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
       <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[L],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
       <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AchR-PM,Vector=Values[globalKinetics],Reference=InitialValue" objectType="float" objectValue="0.01" minValue="0.005" maxValue="0.02" tickNumber="1000" tickFactor="100" scaling="linear"/>
