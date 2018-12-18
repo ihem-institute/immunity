@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import repast.simphony.engine.environment.RunEnvironment;
 
-public class EndosomeLipidMetabolismStep {
+public class EndosomeCopasiStep {
 	
 	public static void antPresTimeSeriesLoad(Endosome endosome){
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
@@ -86,7 +86,7 @@ public class EndosomeLipidMetabolismStep {
 // From my calculations (see Calculos), dividing these units by the area or the volume of the endosome, transform the 
 //the values in mM.  Back from copasi, I recalculate the values to area and volume
 //
-		LipidMetabolism lipidMetabolism = LipidMetabolism
+		EndosomeCopasi lipidMetabolism = EndosomeCopasi
 				.getInstance();
 
 		Set<String> metabolites = lipidMetabolism.getInstance()

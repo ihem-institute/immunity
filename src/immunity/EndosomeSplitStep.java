@@ -240,7 +240,7 @@ public class EndosomeSplitStep {
 		 * 
 
 		 * If it is a Golgi Rab and RabArea > minCyl
-		 * 1- If it is a cistern, generate Golgi vesicle with probability proportional to perimeter (2*PI*a) and return
+		 * 1- NOT IMPLEMENTED If it is a cistern, generate Golgi vesicle with probability proportional to perimeter (2*PI*a) and return
 		 * 2- if the vesicle was not generated or the organelle is not a cistern, split a cistern with the rab selected
 		 * with the area of the selected rab, leaving at list a vesicle
 		 *  */
@@ -412,7 +412,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 			}
 			else 
 // finally, if tropism it to a Rab membrane domain, the decision about where to go
-// requires to calculate the tropismo to the vesicle (SUM of the content tropism to all the
+// requires to calculate the tropism to the vesicle (SUM of the content tropism to all the
 //	membrane domains in the vesicle.  The tropism is indicated by a string (e.g. RabA10) where
 //	the last two digits indicate the affinity for the Rab domain in a scale of 00 to 10.			
 			{

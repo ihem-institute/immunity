@@ -66,7 +66,7 @@ public class PlasmaMembrane {
 		this.membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
 		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
 		this.receptorTimeSeries=PlasmaMembrane.getInstance().getReceptorTimeSeries();
-		if (Math.random() < 1)PlasmaMembraneReceptorStep.antPresTimeSeriesLoad(PlasmaMembrane.getInstance());
+		if (Math.random() < 1)PlasmaMembraneCopasiStep.antPresTimeSeriesLoad(PlasmaMembrane.getInstance());
 
 //		this.changeColor();
 

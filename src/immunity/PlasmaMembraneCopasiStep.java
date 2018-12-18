@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import repast.simphony.engine.environment.RunEnvironment;
 
-public class PlasmaMembraneReceptorStep {
+public class PlasmaMembraneCopasiStep {
 	
 	public static void antPresTimeSeriesLoad(PlasmaMembrane plasmaMembrane){
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
@@ -72,7 +72,7 @@ public class PlasmaMembraneReceptorStep {
 // From my calculations (see Calculos), dividing these units by the area or the volume of the endosome, transform the 
 //the values in mM.  Back from copasi, I recalculate the values to area and volume
 //
-		ReceptorDynamics receptorDynamics = ReceptorDynamics.getInstance();
+		PlasmaMembraneCopasi receptorDynamics = PlasmaMembraneCopasi.getInstance();
 
 		Set<String> metabolites = receptorDynamics.getInstance()
 				.getMetabolites();

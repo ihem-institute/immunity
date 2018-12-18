@@ -26,8 +26,8 @@ import org.COPASI.CTrajectoryProblem;
 import org.COPASI.CTrajectoryTask;
 import org.COPASI.ReportItemVector;
 
-public class LipidMetabolism {
-	private static LipidMetabolism instance = null;
+public class EndosomeCopasi {
+	private static EndosomeCopasi instance = null;
 	private CCopasiDataModel dataModel;
 	private CModel model;
     private CReportDefinition report;
@@ -36,15 +36,15 @@ public class LipidMetabolism {
     private int stepNumber = 50;
 	//private Endosome Endosome;
 	
-	public static LipidMetabolism getInstance () {
+	public static EndosomeCopasi getInstance () {
 		if (instance == null) {
-			instance = new LipidMetabolism();
+			instance = new EndosomeCopasi();
 		}
 		
 		return instance;
 	}
 	
-	protected LipidMetabolism() {
+	protected EndosomeCopasi() {
 
 		System.out.println("Instantiation Once");
 		

@@ -26,8 +26,8 @@ import org.COPASI.CTrajectoryProblem;
 import org.COPASI.CTrajectoryTask;
 import org.COPASI.ReportItemVector;
 
-public class ReceptorDynamics {
-	private static ReceptorDynamics instance = null;
+public class PlasmaMembraneCopasi {
+	private static PlasmaMembraneCopasi instance = null;
 	private CCopasiDataModel dataModel;
 	private CModel model;
     private CReportDefinition report;
@@ -36,15 +36,15 @@ public class ReceptorDynamics {
     private int stepNumber = 50;
 	//private Endosome Endosome;
 	
-	public static ReceptorDynamics getInstance () {
+	public static PlasmaMembraneCopasi getInstance () {
 		if (instance == null) {
-			instance = new ReceptorDynamics();
+			instance = new PlasmaMembraneCopasi();
 		}
 		
 		return instance;
 	}
 	
-	protected ReceptorDynamics() {
+	protected PlasmaMembraneCopasi() {
 
 		System.out.println("Instantiation Once");
 		
