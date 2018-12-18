@@ -54,7 +54,7 @@ public class LipidMetabolism {
 		dataModel = CCopasiRootContainer.addDatamodel();
         assert CCopasiRootContainer.getDatamodelList().size() == 1;
         
-        String modelFileName = "lipidMetabolism-eLife.cps";
+        String modelFileName = "lipidMetabDiego.cps";
         
         try
         {

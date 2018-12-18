@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.Collections;
 import org.COPASI.CModel;
 import org.COPASI.CTimeSeries;
+import org.apache.commons.lang3.StringUtils;
 
 import repast.simphony.engine.environment.RunEnvironment;
 
@@ -45,33 +46,38 @@ public class EndosomeLipidMetabolismStep {
 		HashMap<String, Double> presentValues = new HashMap<String, Double>(endosome.lipidTimeSeries.get(tick));
 
 		for (String met :presentValues.keySet()){
-// if the content is cytosolic, increase the cell pull proportinal to the volume.  The content is
-//			eliminated from endosome
-			
-			if (Cell.getInstance().getSolubleCell().containsKey(met)){
-				double metValue = Cell.getInstance().getSolubleCell().get(met)
-						+presentValues.get(met)* endosome.volume/Cell.volume;
-
-				Cell.getInstance().getSolubleCell().put(met, metValue);
-				endosome.solubleContent.remove(met);
-				}
-//			else if (met == "pept"){
-//
-//				double metValue = Cell.getInstance().getSolubleCell().get(met)
-//						+presentValues.get(met)* endosome.volume/Cell.volume;
-//				Cell.getInstance().getSolubleCell().put("pept", metValue);
-//				}
-			else if (endosome.membraneMet.contains(met)) {
-			double metValue = presentValues.get(met)* endosome.area;
-			endosome.membraneContent.put(met, metValue);
-				} 
-			else if (endosome.solubleMet.contains(met)) {
-			double metValue = presentValues.get(met)* endosome.volume;
-			endosome.solubleContent.put(met, metValue);
-				}
+			// if the content is cytosolic, increase the cell pull proportinal to the volume.  The content is
+			//			eliminated from endosome
+			String met1 = met.substring(0, met.length()-2);
+			if (StringUtils.endsWith(met, "En") && endosome.solubleMet.contains(met1)) {
+				double metValue = presentValues.get(met)* endosome.volume;
+				endosome.solubleContent.put(met1, metValue);
+			}
+			else if (StringUtils.endsWith(met, "En") && endosome.membraneMet.contains(met1)) {
+				double metValue = presentValues.get(met)* endosome.area;
+				endosome.membraneContent.put(met1, metValue);
+			}
+//			metabolites in the Cell are expressed in concentration. Only a fraction of the metabolite in the cell participates
+//			in copasi, hence the concentration are added to the existing values.
+			else if (StringUtils.endsWith(met, "Cy")){
+				double metValue = Cell.getInstance().getSolubleCell().get(met1)
+						+ presentValues.get(met)* endosome.volume/Cell.volume;
+				Cell.getInstance().getSolubleCell().put(met1, metValue);
+				//				endosome.solubleContent.remove(met1);
+			}
+//			Only a fraction of the metabolite in the plasma membrane participates
+//			in copasi, hence the concentration are added to the existing values.
+			else if (StringUtils.endsWith(met, "Pm") && PlasmaMembrane.getInstance().getSolubleRecycle().containsKey(met1)) {
+				double metValue = PlasmaMembrane.getInstance().getSolubleRecycle().get(met1)
+						+ presentValues.get(met)* endosome.volume;
+				PlasmaMembrane.getInstance().getSolubleRecycle().put(met1, metValue);
+			}
+			else if (StringUtils.endsWith(met, "Pm") && PlasmaMembrane.getInstance().getMembraneRecycle().containsKey(met1)) {
+				double metValue = PlasmaMembrane.getInstance().getMembraneRecycle().get(met1)
+						+ presentValues.get(met)* endosome.area;
+				PlasmaMembrane.getInstance().getMembraneRecycle().put(met1, metValue);
+			}
 		}
-
-
 		
 	}
 	
@@ -87,20 +93,41 @@ public class EndosomeLipidMetabolismStep {
 				.getMetabolites();
 		HashMap<String, Double> localM = new HashMap<String, Double>();
 		for (String met : metabolites) {
-			if (endosome.membraneContent.containsKey(met)) {
-				double metValue = endosome.membraneContent.get(met)/endosome.area;
+			String met1 = met.substring(0, met.length()-2);
+//			for endosomes and other organelles, all the metabolites participate in the reaction
+			if (StringUtils.endsWith(met, "En") && endosome.membraneContent.containsKey(met1)) {
+				double metValue = endosome.membraneContent.get(met1)/endosome.area;
 				lipidMetabolism.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
-			} else if (endosome.rabContent.containsKey(met)) {
+			} else if (StringUtils.endsWith(met, "En") && endosome.solubleContent.containsKey(met1)) {
+				double metValue = Math.abs(endosome.solubleContent.get(met1))/endosome.volume;
+				lipidMetabolism.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
+				localM.put(met, metValue);
+//				for metabolites in the plasma membrane, only a fraction participate in the reaction and it is consumed 
+//				for soluble metabolites, proportional to the volume and for membrane metabolites proportional to the area
+			} else if (StringUtils.endsWith(met, "Pm") && PlasmaMembrane.getInstance().getMembraneRecycle().containsKey(met1)) {
+				double metValue = PlasmaMembrane.getInstance().getMembraneRecycle().get(met1)/PlasmaMembrane.getInstance().area;
+				double metLeft = metValue* (PlasmaMembrane.getInstance().area - endosome.area);
+				PlasmaMembrane.getInstance().getMembraneRecycle().put(met1, metLeft);
+				lipidMetabolism.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
+				localM.put(met, metValue);
+			} else if (StringUtils.endsWith(met, "Pm") && PlasmaMembrane.getInstance().getSolubleRecycle().containsKey(met1)) {
+				double metValue = Math.abs(PlasmaMembrane.getInstance().getSolubleRecycle().get(met1))/PlasmaMembrane.getInstance().volume;
+				double metLeft = metValue* (PlasmaMembrane.getInstance().volume - endosome.volume);
+				PlasmaMembrane.getInstance().getSolubleRecycle().put(met1, metLeft);
+				lipidMetabolism.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
+				localM.put(met, metValue);
+//				Rabs are included only for reactions that occurrs in a specific compartment. 
+			} else if (StringUtils.startsWith(met, "Rab") && endosome.rabContent.containsKey(met)) {
 				double metValue = Math.abs(endosome.rabContent.get(met))/endosome.area;
 				lipidMetabolism.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
-			} else if (endosome.solubleContent.containsKey(met)) {
-				double metValue = Math.abs(endosome.solubleContent.get(met))/endosome.volume;
-				lipidMetabolism.setInitialConcentration(met, Math.round(metValue*1E12d)/1E12d);
-				localM.put(met, metValue);
-			} else if (Cell.getInstance().getSolubleCell().containsKey(met)) {
-				double metValue = Cell.getInstance().getSolubleCell().get(met);
+//				for metabolites in the cell, only a fraction participate in the reaction and it is consumed 
+//				metabolites in the cell are in concentration units and only soluble metabolites are considered
+			} else if (StringUtils.endsWith(met, "Cy") && Cell.getInstance().getSolubleCell().containsKey(met1)) {
+				double metValue = Cell.getInstance().getSolubleCell().get(met1);
+				double metLeft = metValue*(Cell.getInstance().volume)/(Cell.getInstance().volume - endosome.volume);
+				Cell.getInstance().getSolubleCell().put(met1, metLeft);
 				lipidMetabolism.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
 			} else {
@@ -132,10 +159,6 @@ public class EndosomeLipidMetabolismStep {
 			}
 		}
 		
-			
-
-			
-
 		}
 	
 }

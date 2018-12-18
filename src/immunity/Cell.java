@@ -35,6 +35,7 @@ public class Cell {
 	public HashMap<String, Double> rabCell = new HashMap<String, Double>();// contains rabs free in cytosol
 	public HashMap<String, Double> membraneCell = new HashMap<String, Double>(); // contains membrane factors within the cell 
 	public HashMap<String, Double> solubleCell = new HashMap<String, Double>();// contains soluble factors within the cell
+	HashMap<Integer, HashMap<String, Double>> cellTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 
 	// Constructor
 	public Cell() {
@@ -45,8 +46,9 @@ public class Cell {
 		rabCell.putAll(CellProperties.getInstance().getInitRabCell());
 		tMembrane = CellProperties.getInstance().cellK.get("tMembrane");
 	}
-	@ScheduledMethod(start = 1, interval = 30)
+	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
+		if (Math.random() < 1)CellCopasiStep.antPresTimeSeriesLoad(Cell.getInstance());
 			
 // eventual use for cell metabolism
 	}
@@ -70,6 +72,13 @@ public class Cell {
 	}
 	public HashMap<String, Double> getSolubleCell() {
 		return solubleCell;
+	}
+	public final HashMap<Integer, HashMap<String, Double>> getCellTimeSeries() {
+		return cellTimeSeries;
+	}
+	public HashMap<String, Double> getcellTimeSeries() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

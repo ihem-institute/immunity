@@ -54,7 +54,7 @@ public class ReceptorDynamics {
 		dataModel = CCopasiRootContainer.addDatamodel();
         assert CCopasiRootContainer.getDatamodelList().size() == 1;
         
-        String modelFileName = "AchR-PM.cps";
+        String modelFileName = "PMDiego.cps";
         
         try
         {

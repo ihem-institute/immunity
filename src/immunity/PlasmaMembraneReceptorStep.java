@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.Collections;
 import org.COPASI.CModel;
 import org.COPASI.CTimeSeries;
+import org.apache.commons.lang3.StringUtils;
 
 import repast.simphony.engine.environment.RunEnvironment;
 
@@ -42,35 +43,27 @@ public class PlasmaMembraneReceptorStep {
 //		by area the membrane metabolites and by volume the soluble metabolites
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		HashMap<String, Double> presentValues = new HashMap<String, Double>(plasmaMembrane.getReceptorTimeSeries().get(tick));
-
+		
 		for (String met :presentValues.keySet()){
-// if the content is cytosolic, increase the cell pull proportinal to the volume.  The content is
-//			eliminated from plasma membrane
+//			Organelle (endosomes/Golgi) metabolites are not considered. The reaction should be called from endosomes.
+			String met1 = met.substring(0, met.length()-2);
+//			metabolites in the Cell are expressed in concentration. Only a fraction of the metabolite in the cell participates
+//			in copasi, hence the concentration are added to the existing values.
+			if (StringUtils.endsWith(met, "Cy")){
+				double metValue = Cell.getInstance().getSolubleCell().get(met1)
+						+ presentValues.get(met)* plasmaMembrane.volume/Cell.volume;
+				Cell.getInstance().getSolubleCell().put(met1, metValue);
+			}
 			
-			if (Cell.getInstance().getSolubleCell().containsKey(met)){
-				double metValue = Cell.getInstance().getSolubleCell().get(met)
-						+presentValues.get(met)* plasmaMembrane.volume/Cell.volume;
-
-				Cell.getInstance().getSolubleCell().put(met, metValue);
-				plasmaMembrane.solubleRecycle.remove(met);
-				}
-//			else if (met == "pept"){
-//
-//				double metValue = Cell.getInstance().getSolubleCell().get(met)
-//						+presentValues.get(met)* endosome.volume/Cell.volume;
-//				Cell.getInstance().getSolubleCell().put("pept", metValue);
-//				}
-			else if (plasmaMembrane.membraneRecycle.containsKey(met)) {
-			double metValue = presentValues.get(met)*plasmaMembrane.area;
-			plasmaMembrane.membraneRecycle.put(met, metValue);
-				} 
-			else if (plasmaMembrane.solubleRecycle.containsKey(met)) {
-			double metValue = presentValues.get(met)*plasmaMembrane.volume;
-			plasmaMembrane.solubleRecycle.put(met, metValue);
-				}
+			else if (StringUtils.endsWith(met, "Pm") && plasmaMembrane.getSolubleRecycle().containsKey(met1)) {
+				double metValue = presentValues.get(met)* plasmaMembrane.volume;
+				plasmaMembrane.getSolubleRecycle().put(met1, metValue);
+			}
+			else if (StringUtils.endsWith(met, "Pm") && plasmaMembrane.getMembraneRecycle().containsKey(met1)) {
+				double metValue = presentValues.get(met)* plasmaMembrane.area;
+				plasmaMembrane.getMembraneRecycle().put(met1, metValue);
+			}
 		}
-
-
 		
 	}
 	
@@ -85,22 +78,24 @@ public class PlasmaMembraneReceptorStep {
 				.getMetabolites();
 		HashMap<String, Double> localM = new HashMap<String, Double>();
 		System.out.println("PM MEMBRENE RECYCLE " + plasmaMembrane.getMembraneRecycle());
+		
 		for (String met : metabolites) {
-			if (plasmaMembrane.getMembraneRecycle().containsKey(met)) {
-				double metValue = plasmaMembrane.getMembraneRecycle().get(met)/plasmaMembrane.area;
-				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E12d)/1E12d);
+			System.out.println("metabolito que no anda" + met);
+			String met1 = met.substring(0, met.length()-2);
+
+			 if (StringUtils.endsWith(met, "Pm") && plasmaMembrane.getMembraneRecycle().containsKey(met1)) {
+				double metValue = plasmaMembrane.getMembraneRecycle().get(met1)/plasmaMembrane.area;
+				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
-//			} else if (endosome.rabContent.containsKey(met)) {
-//				double metValue = Math.abs(endosome.rabContent.get(met))/endosome.area;
-//				lipidMetabolism.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
-//				localM.put(met, metValue);
-			} else if (plasmaMembrane.getSolubleRecycle().containsKey(met)) {
-				double metValue = plasmaMembrane.getSolubleRecycle().get(met)/plasmaMembrane.volume;
-				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E12d)/1E12d);
+			} else if (StringUtils.endsWith(met, "Pm") && plasmaMembrane.getSolubleRecycle().containsKey(met1)) {
+				double metValue = Math.abs(plasmaMembrane.getSolubleRecycle().get(met1))/plasmaMembrane.volume;
+				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
-			} else if (Cell.getInstance().getSolubleCell().containsKey(met)) {
-				double metValue = Cell.getInstance().getSolubleCell().get(met);
-				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E12d)/1E12d);
+			} else if (StringUtils.endsWith(met, "Cy") && Cell.getInstance().getSolubleCell().containsKey(met1)) {
+				double metValue = Cell.getInstance().getSolubleCell().get(met1);
+				double metLeft = metValue*(Cell.volume)/(Cell.volume - plasmaMembrane.volume);
+				Cell.getInstance().getSolubleCell().put(met1, metLeft);
+				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
 			} else {
 				receptorDynamics.setInitialConcentration(met, 0.0);
@@ -114,6 +109,9 @@ public class PlasmaMembraneReceptorStep {
 			receptorDynamics.setInitialConcentration("proton", 1e-04);
 			localM.put("proton", 1e-04);
 		}
+		
+		
+	
 System.out.println("LOCAL MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM " + localM);
 
 		receptorDynamics.runTimeCourse();

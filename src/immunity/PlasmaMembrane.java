@@ -75,10 +75,8 @@ public class PlasmaMembrane {
 	public void changeColor() {
 		double c1 = 0d;
 		{
-		c1 = PlasmaMembrane.getInstance().getMembraneRecycle().get("Ra")+
-				PlasmaMembrane.getInstance().getMembraneRecycle().get("Rr")+
-				PlasmaMembrane.getInstance().getMembraneRecycle().get("Rm");
-		c1 = c1/area;
+		c1 = PlasmaMembrane.getInstance().getMembraneRecycle().get("chol");
+		c1 = c1/this.area;
 		this.pmcolor = (int) (c1*255);
 		}
 
