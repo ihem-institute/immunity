@@ -45,6 +45,7 @@ public class Cell {
 		solubleCell.putAll(CellProperties.getInstance().getSolubleCell());
 		rabCell.putAll(CellProperties.getInstance().getInitRabCell());
 		tMembrane = CellProperties.getInstance().cellK.get("tMembrane");
+//		cellTimeSeries = null;
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {

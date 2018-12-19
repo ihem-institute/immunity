@@ -16,20 +16,20 @@ public class PlasmaMembraneCopasiStep {
 	public static void antPresTimeSeriesLoad(PlasmaMembrane plasmaMembrane){
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 
-		if (plasmaMembrane.getReceptorTimeSeries().isEmpty()){			
+		if (plasmaMembrane.getPlasmaMembraneTimeSeries().isEmpty()){			
 			callReceptorDynamics(plasmaMembrane);
 			timeSeriesLoadintoPlasmaMembrane(plasmaMembrane);
 
 			return;
 		} 
-		if (tick >= Collections.max(plasmaMembrane.getReceptorTimeSeries().keySet())) {
+		if (tick >= Collections.max(plasmaMembrane.getPlasmaMembraneTimeSeries().keySet())) {
 			timeSeriesLoadintoPlasmaMembrane(plasmaMembrane);
-			plasmaMembrane.getReceptorTimeSeries().clear();
+			plasmaMembrane.getPlasmaMembraneTimeSeries().clear();
 			callReceptorDynamics(plasmaMembrane);
 
 			return;
 			}
-		if (!plasmaMembrane.getReceptorTimeSeries().containsKey(tick)) {
+		if (!plasmaMembrane.getPlasmaMembraneTimeSeries().containsKey(tick)) {
 //			System.out.println("Return without UPDATED");
 			return;
 		}else {
@@ -39,10 +39,10 @@ public class PlasmaMembraneCopasiStep {
 		}
 	}
 	public static void timeSeriesLoadintoPlasmaMembrane(PlasmaMembrane plasmaMembrane){
-//		values in receptorTimeSeries are in mM.  Transform back in area and volume units multiplying
+//		values in plasmaMembraneTimeSeries are in mM.  Transform back in area and volume units multiplying
 //		by area the membrane metabolites and by volume the soluble metabolites
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-		HashMap<String, Double> presentValues = new HashMap<String, Double>(plasmaMembrane.getReceptorTimeSeries().get(tick));
+		HashMap<String, Double> presentValues = new HashMap<String, Double>(plasmaMembrane.getPlasmaMembraneTimeSeries().get(tick));
 		
 		for (String met :presentValues.keySet()){
 //			Organelle (endosomes/Golgi) metabolites are not considered. The reaction should be called from endosomes.
@@ -125,7 +125,7 @@ System.out.println("LOCAL MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM " + loca
 			HashMap<String, Double> value = new HashMap<String, Double>();
 			for (int met = 1; met < metNro +1; met = met +1){
 				value.put(timeSeries.getTitle(met), timeSeries.getConcentrationData(time, met));
-				plasmaMembrane.getReceptorTimeSeries().put((int) (tick+time*Cell.timeScale/0.03),value);
+				plasmaMembrane.getPlasmaMembraneTimeSeries().put((int) (tick+time*Cell.timeScale/0.03),value);
 			}
 		}
 		

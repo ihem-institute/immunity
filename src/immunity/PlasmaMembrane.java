@@ -30,7 +30,7 @@ public class PlasmaMembrane {
 	public int blue = 0;
 	public int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); 
 	public int volume = (int) (1500*400*1000*(1/Cell.orgScale)*(1/Cell.orgScale)*(1/Cell.orgScale)); 
-	HashMap<Integer, HashMap<String, Double>> receptorTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
+	HashMap<Integer, HashMap<String, Double>> plasmaMembraneTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 
 // nm2 1500nm x 400nm. Space in repast at scale =1 and arbitrary height of the space projected
 //	in 2D
@@ -44,6 +44,7 @@ public class PlasmaMembrane {
 // contents.	tMembranes, membrane and soluble content recycling, cytosolic Rabs	
 
 		CellProperties cellProperties = CellProperties.getInstance();
+//		plasmaMembraneTimeSeries = null;
 //		
 //		membraneRecycle.putAll(cellProperties.initPMmembraneRecycle);
 // PM now are in the csv file as proportions of the PM area and need to be multiplied by the area		
@@ -65,7 +66,7 @@ public class PlasmaMembrane {
 		changeColor();
 		this.membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
 		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
-		this.receptorTimeSeries=PlasmaMembrane.getInstance().getReceptorTimeSeries();
+		this.plasmaMembraneTimeSeries=PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries();
 		if (Math.random() < 1)PlasmaMembraneCopasiStep.antPresTimeSeriesLoad(PlasmaMembrane.getInstance());
 
 //		this.changeColor();
@@ -104,8 +105,8 @@ public class PlasmaMembrane {
 	public int getPmcolor() {
 		return pmcolor;
 	}
-	public final HashMap<Integer, HashMap<String, Double>> getReceptorTimeSeries() {
-		return receptorTimeSeries;
+	public final HashMap<Integer, HashMap<String, Double>> getPlasmaMembraneTimeSeries() {
+		return plasmaMembraneTimeSeries;
 	}
 
 

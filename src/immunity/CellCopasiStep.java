@@ -37,7 +37,7 @@ public class CellCopasiStep {
 		}
 	}
 	public static void timeSeriesLoadintoCell(Cell cell){
-//		values in receptorTimeSeries are in mM.  Transform back in area and volume units multiplying
+//		values in plasmaMembraneTimeSeries are in mM.  Transform back in area and volume units multiplying
 //		by area the membrane metabolites and by volume the soluble metabolites
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		HashMap<String, Double> presentValues = new HashMap<String, Double>(cell.getCellTimeSeries().get(tick));

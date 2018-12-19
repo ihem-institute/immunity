@@ -141,7 +141,7 @@ public class EndosomeSplitStep {
 		endosome.speed = 1d / endosome.size;
 //		Time series are re calculated in the next tick
 		endosome.getRabTimeSeries().clear();
-		endosome.getLipidTimeSeries().clear();
+		endosome.getEndosomeTimeSeries().clear();
 
 		HashMap<String, Double> newRabContent = new HashMap<String, Double>();
 		newRabContent.put(rabInTube, scylinder);
@@ -181,7 +181,7 @@ public class EndosomeSplitStep {
 		b.speed = 1d / b.size;
 		Random rd = new Random();
 //		Time series will be recalculated in the next tick
-		b.getLipidTimeSeries().clear();
+		b.getEndosomeTimeSeries().clear();
 		b.getRabTimeSeries().clear();
 		
 		b.heading = endosome.heading + rd.nextGaussian() * 30d;
@@ -201,12 +201,12 @@ public class EndosomeSplitStep {
 			y= cellLimit;
 //			specific for Golgi transport.  To increase TGN volume, when split a pure TGN (RabE) tubule, near the nucleus, increase the volume in a random
 //			way between 0 and the maximal volume (the volume of a sphere with the area of the tubule
-			if (rabInTube.equals("RabE")){
-				double radius = Math.sqrt(b.area/(4*Math.PI));
-				double maxVol = 4/3*Math.PI*Math.pow(radius, 3);
-				double deltaVol = maxVol-b.volume;
-				b.volume = b.volume + deltaVol;
-			}
+//			if (rabInTube.equals("RabE")){
+//				double radius = Math.sqrt(b.area/(4*Math.PI));
+//				double maxVol = 4/3*Math.PI*Math.pow(radius, 3);
+//				double deltaVol = maxVol-b.volume;
+//				b.volume = b.volume + deltaVol;
+//			}
 		}
 		
 		if (y > 50 - cellLimit)y = 50-cellLimit;

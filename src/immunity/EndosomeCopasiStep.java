@@ -16,20 +16,20 @@ public class EndosomeCopasiStep {
 	public static void antPresTimeSeriesLoad(Endosome endosome){
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 
-		if (endosome.getLipidTimeSeries().isEmpty()){			
+		if (endosome.getEndosomeTimeSeries().isEmpty()){			
 			callLipidPresentation(endosome);
 			timeSeriesLoadintoEndosome(endosome);
 
 			return;
 		} 
-		if (tick >= Collections.max(endosome.getLipidTimeSeries().keySet())) {
+		if (tick >= Collections.max(endosome.getEndosomeTimeSeries().keySet())) {
 			timeSeriesLoadintoEndosome(endosome);
-			endosome.getLipidTimeSeries().clear();
+			endosome.getEndosomeTimeSeries().clear();
 			callLipidPresentation(endosome);
 
 			return;
 			}
-		if (!endosome.lipidTimeSeries.containsKey(tick)) {
+		if (!endosome.endosomeTimeSeries.containsKey(tick)) {
 //			System.out.println("Return without UPDATED");
 			return;
 		}else {
@@ -40,10 +40,10 @@ public class EndosomeCopasiStep {
 		}
 	}
 	public static void timeSeriesLoadintoEndosome(Endosome endosome){
-//		values in lipidTimeSeries are in mM.  Transform back in area and volume units multiplying
+//		values in endosomeTimeSeries are in mM.  Transform back in area and volume units multiplying
 //		by area the membrane metabolites and by volume the soluble metabolites
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-		HashMap<String, Double> presentValues = new HashMap<String, Double>(endosome.lipidTimeSeries.get(tick));
+		HashMap<String, Double> presentValues = new HashMap<String, Double>(endosome.endosomeTimeSeries.get(tick));
 
 		for (String met :presentValues.keySet()){
 			// if the content is cytosolic, increase the cell pull proportinal to the volume.  The content is
@@ -155,7 +155,7 @@ public class EndosomeCopasiStep {
 			HashMap<String, Double> value = new HashMap<String, Double>();
 			for (int met = 1; met < metNro +1; met = met +1){
 				value.put(timeSeries.getTitle(met), timeSeries.getConcentrationData(time, met));
-				endosome.getLipidTimeSeries().put((int) (tick+time*Cell.timeScale/0.03),value);
+				endosome.getEndosomeTimeSeries().put((int) (tick+time*Cell.timeScale/0.03),value);
 			}
 		}
 		

@@ -248,7 +248,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		//			// TODO Auto-generated catch block
 		//			e.printStackTrace();
 		//		}
-	PlasmaMembrane.getInstance().getReceptorTimeSeries().clear();
+	PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
 		
 	}
 
