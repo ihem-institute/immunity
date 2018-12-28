@@ -29,8 +29,10 @@ public class PlasmaMembrane {
 	public int red = 0;
 	public int green = 0;	
 	public int blue = 0;
-	public int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); //CellProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 
-	public int volume = (int) (1500*400*1000*(1/Cell.orgScale)*(1/Cell.orgScale)*(1/Cell.orgScale)); //CellProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
+	private double plasmaMembraneVolume;
+	private double plasmaMembraneArea;
+//	public int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); //CellProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 
+//	public int volume = (int) (1500*400*1000*(1/Cell.orgScale)*(1/Cell.orgScale)*(1/Cell.orgScale)); //CellProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
 	TreeMap<Integer, HashMap<String, Double>> plasmaMembraneTimeSeries = new TreeMap<Integer, HashMap<String, Double>>();
 	public String plasmaMembraneCopasi = CellProperties.getInstance().getCopasiFiles().get("plasmaMembraneCopasi");
 // nm2 1500nm x 400nm. Space in repast at scale =1 and arbitrary height of the space projected
@@ -45,16 +47,19 @@ public class PlasmaMembrane {
 // contents.	tMembranes, membrane and soluble content recycling, cytosolic Rabs	
 
 		CellProperties cellProperties = CellProperties.getInstance();
+		plasmaMembraneArea = CellProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 
+		plasmaMembraneVolume = CellProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
+
 //		plasmaMembraneTimeSeries = null;
 //		
 //		membraneRecycle.putAll(cellProperties.initPMmembraneRecycle);
 // PM now are in the csv file as proportions of the PM area and need to be multiplied by the area		
 		for (String met : cellProperties.initPMmembraneRecycle.keySet() ){
-		membraneRecycle.put(met, cellProperties.initPMmembraneRecycle.get(met)*this.area);
+		membraneRecycle.put(met, cellProperties.initPMmembraneRecycle.get(met)*this.plasmaMembraneArea);
 		}
 		System.out.println("PM membraneRecycle "+ membraneRecycle);
 		for (String met : cellProperties.initPMsolubleRecycle.keySet() ){
-		solubleRecycle.put(met, cellProperties.initPMsolubleRecycle.get(met)*this.volume);
+		solubleRecycle.put(met, cellProperties.initPMsolubleRecycle.get(met)*this.plasmaMembraneVolume);
 		}
 		System.out.println("PM solubleRecycle "+ solubleRecycle);		
 //		for (String met : cellProperties.solubleMet ){
@@ -78,7 +83,7 @@ public class PlasmaMembrane {
 		double c1 = 0d;
 		{
 		c1 = PlasmaMembrane.getInstance().getMembraneRecycle().get("chol");
-		c1 = c1/this.area;
+		c1 = c1/this.plasmaMembraneArea;
 		this.pmcolor = (int) (c1*255);
 		}
 
@@ -106,6 +111,15 @@ public class PlasmaMembrane {
 	public int getPmcolor() {
 		return pmcolor;
 	}
+
+	public double getPlasmaMembraneArea() {
+		return plasmaMembraneArea;
+	}
+
+	public double getPlasmaMembraneVolume() {
+		return plasmaMembraneVolume;
+	}
+	
 	public final TreeMap<Integer, HashMap<String, Double>> getPlasmaMembraneTimeSeries() {
 		return plasmaMembraneTimeSeries;
 	}

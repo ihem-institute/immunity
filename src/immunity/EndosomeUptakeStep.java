@@ -124,7 +124,7 @@ public class EndosomeUptakeStep {
 			if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey(mem))
 			{
 				double valuePM = PlasmaMembrane.getInstance().getMembraneRecycle().get(mem);
-				valueInPM = valuePM * CellProperties.getInstance().getUptakeRate().get(mem) * area/ PlasmaMembrane.getInstance().area;	
+				valueInPM = valuePM * CellProperties.getInstance().getUptakeRate().get(mem) * area/ PlasmaMembrane.getInstance().getPlasmaMembraneArea();	
 
 				if (valueInPM >= area) 
 				{
@@ -161,7 +161,7 @@ public class EndosomeUptakeStep {
 			if (PlasmaMembrane.getInstance().getSolubleRecycle().containsKey(sol))
 			{
 				double valuePM = PlasmaMembrane.getInstance().getSolubleRecycle().get(sol);
-				valueInPM = valuePM * volume/ PlasmaMembrane.getInstance().volume;	
+				valueInPM = valuePM * volume/ PlasmaMembrane.getInstance().getPlasmaMembraneVolume();	
 
 				if (valueInPM >= volume) 
 				{

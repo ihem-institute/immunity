@@ -67,16 +67,16 @@ public class PlasmaMembraneCopasiStep {
 					//			 );
 					double delta =  presentValues.get(met) - pastValues.get(met);
 					double metValue = Cell.getInstance().getSolubleCell().get(met1)
-										+ delta * plasmaMembrane.area/Cell.area;
+										+ delta * PlasmaMembrane.getInstance().getPlasmaMembraneArea()/Cell.getInstance().getCellArea();
 								Cell.getInstance().getSolubleCell().put(met1, metValue);
 			}
 			
 			else if (StringUtils.endsWith(met, "Pm") && CellProperties.getInstance().getSolubleMet().contains(met1)){
-				double metValue = presentValues.get(met)* plasmaMembrane.volume;
+				double metValue = presentValues.get(met)* PlasmaMembrane.getInstance().getPlasmaMembraneVolume();
 				plasmaMembrane.getSolubleRecycle().put(met1, metValue);
 			}
 			else if (StringUtils.endsWith(met, "Pm") && CellProperties.getInstance().getMembraneMet().contains(met1)) {
-				double metValue = presentValues.get(met)* plasmaMembrane.area;
+				double metValue = presentValues.get(met)* PlasmaMembrane.getInstance().getPlasmaMembraneArea();
 				plasmaMembrane.getMembraneRecycle().put(met1, metValue);
 			}
 		}
@@ -99,16 +99,16 @@ public class PlasmaMembraneCopasiStep {
 			String met1 = met.substring(0, met.length()-2);
 
 			 if (StringUtils.endsWith(met, "Pm") && plasmaMembrane.getMembraneRecycle().containsKey(met1)) {
-				double metValue = plasmaMembrane.getMembraneRecycle().get(met1)/plasmaMembrane.area;
+				double metValue = plasmaMembrane.getMembraneRecycle().get(met1)/PlasmaMembrane.getInstance().getPlasmaMembraneArea();
 				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
 			} else if (StringUtils.endsWith(met, "Pm") && plasmaMembrane.getSolubleRecycle().containsKey(met1)) {
-				double metValue = Math.abs(plasmaMembrane.getSolubleRecycle().get(met1))/plasmaMembrane.volume;
+				double metValue = Math.abs(plasmaMembrane.getSolubleRecycle().get(met1))/PlasmaMembrane.getInstance().getPlasmaMembraneVolume();
 				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
 			} else if (StringUtils.endsWith(met, "Cy") && Cell.getInstance().getSolubleCell().containsKey(met1)) {
 				double metValue = Cell.getInstance().getSolubleCell().get(met1);
-				double metLeft = metValue*(Cell.volume - plasmaMembrane.volume)/(Cell.volume);
+				double metLeft = metValue*(Cell.getInstance().getCellVolume() - PlasmaMembrane.getInstance().getPlasmaMembraneVolume())/(Cell.getInstance().getCellVolume());
 				Cell.getInstance().getSolubleCell().put(met1, metLeft);
 				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);

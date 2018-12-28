@@ -28,8 +28,8 @@ public class Cell {
 // mincyl surface (20 nm rcy= 6*PI*rcyl^2) = 7539.82 volume (2*PI*rcyl^3)= 50265.48
 	public static double orgScale = CellProperties.getInstance().getCellK().get("orgScale");
 	public static double timeScale = CellProperties.getInstance().getCellK().get("timeScale");
-	public static int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); //CellProperties.getInstance().getCellAgentProperties().get("cellArea");// 
-	public static int volume = (int) (1500*400*1000*(1/Cell.orgScale)*(1/Cell.orgScale)*(1/Cell.orgScale)); //CellProperties.getInstance().getCellAgentProperties().get("cellVolume");//
+//	public static int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); //CellProperties.getInstance().getCellAgentProperties().get("cellArea");// 
+//	public static int volume = (int) (1500*400*1000*(1/Cell.orgScale)*(1/Cell.orgScale)*(1/Cell.orgScale)); //CellProperties.getInstance().getCellAgentProperties().get("cellVolume");//
 //	public static double volume = 1500*1500*400/(Math.pow(orgScale,3));//900*10^6, scale 1; 7200 *10^6, scale 0.5
 //	public static double area = 1500*1500/(Math.pow(orgScale,2));//2.25 *10^6, scale 1
 //  When orgScale=1 zoom =0, when > 1 zoom in , when <1 zoom out.
@@ -40,12 +40,17 @@ public class Cell {
 	public HashMap<String, Double> membraneCell = new HashMap<String, Double>(); // contains membrane factors within the cell 
 	public HashMap<String, Double> solubleCell = new HashMap<String, Double>();// contains soluble factors within the cell
 	TreeMap<Integer, HashMap<String, Double>> cellTimeSeries = new TreeMap<Integer, HashMap<String, Double>>();
+	private double cellVolume;
+	private double cellArea;
 
 	// Constructor
 	public Cell() {
 // Contains factors that are in the cell without specifying organelle or position.
 // It is modified by Endosome that uses and changes cytosolic Rabs
 // contents.	tMembranes, membrane and soluble content recycling,
+		cellArea = CellProperties.getInstance().getCellAgentProperties().get("cellArea");// 
+		cellVolume = CellProperties.getInstance().getCellAgentProperties().get("cellVolume");//
+
 		solubleCell.putAll(CellProperties.getInstance().getSolubleCell());
 		rabCell.putAll(CellProperties.getInstance().getInitRabCell());
 		tMembrane = 10000000;//CellProperties.getInstance().cellK.get("tMembrane");
@@ -66,7 +71,12 @@ public class Cell {
 	public double gettMembrane() {
 		return tMembrane;
 	}
-
+	public double getCellVolume() {
+		return cellVolume;
+	}
+	public double getCellArea() {
+		return cellArea;
+	}
 	public void settMembrane(double tMembrane) {
 		this.tMembrane = tMembrane;
 	}

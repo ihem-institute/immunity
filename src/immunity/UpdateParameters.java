@@ -282,12 +282,12 @@ public class UpdateParameters {
 				break;
 			}
 			
-			case "freezeDry":
-				{
-					FreezeDryEndosomes.getInstance();
-					break freezeDryOption; // if freezeDry then exit because the initial organelles will be loaded in a 
-					// different way
-			}
+//			case "freezeDry":
+//				{
+//					FreezeDryEndosomes.getInstance();
+//					break freezeDryOption; // if freezeDry then exit because the initial organelles will be loaded in a 
+//					// different way
+//			}
 			// INITIAL ORGANELLES kind 7 is for phagosomes
 			case "kind1": case "kind2": case "kind3": case "kind4": case "kind5": case "kind6": case "kindLarge":
 			{

@@ -154,7 +154,7 @@ public class CellProperties {
 				
 				break;
 			}
-			case "cellProperties": {
+			case "cellAgentProperties": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getCellAgentProperties().put(b[i], Double.parseDouble(b[i+1]));
 //				System.out.println(cellProperties.getCellK());
@@ -297,9 +297,11 @@ public class CellProperties {
 				{
 					FreezeDryEndosomes.getInstance();
 					break freezeDryOption; // if freezeDry then exit because the initial organelles will be loaded in a 
-					// different way
+					// different way.  HOWEVER, THE KIND1-KIND6 PROPERTIES NEED TO BE LOADED BECAUSE THEY ARE
+//					USED FOR NEW ORGANELLES (UPTAKE). JUST BY CHANCE THIS IS DONE FOR THE UPDATE CLASS
+//					NEED TO IMPROVE THIS
 			}
-			// INITIAL ORGANELLES kind 7 is for phagosomes
+			// INITIAL ORGANELLES kind Large is for phagosomes
 			case "kind1": case "kind2": case "kind3": case "kind4": case "kind5": case "kind6": case "kindLarge":
 			{
 				InitialOrganelles inOr = InitialOrganelles.getInstance();

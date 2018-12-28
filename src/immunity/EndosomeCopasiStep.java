@@ -79,7 +79,7 @@ public class EndosomeCopasiStep {
 	//			 );
 				double delta =  presentValues.get(met) - pastValues.get(met);
 				double metValue = Cell.getInstance().getSolubleCell().get(met1)
-						+ delta * endosome.area/Cell.area;
+						+ delta * endosome.area/Cell.getInstance().getCellArea();
 				Cell.getInstance().getSolubleCell().put(met1, metValue);
 				//				endosome.solubleContent.remove(met1);
 			}
@@ -131,14 +131,14 @@ public class EndosomeCopasiStep {
 //				for metabolites in the plasma membrane, only a fraction participate in the reaction and it is consumed 
 //				for soluble metabolites, proportional to the volume and for membrane metabolites proportional to the area
 			} else if (StringUtils.endsWith(met, "Pm") && PlasmaMembrane.getInstance().getMembraneRecycle().containsKey(met1)) {
-				double metValue = PlasmaMembrane.getInstance().getMembraneRecycle().get(met1)/PlasmaMembrane.getInstance().area;
-				double metLeft = metValue* (PlasmaMembrane.getInstance().area - endosome.area);
+				double metValue = PlasmaMembrane.getInstance().getMembraneRecycle().get(met1)/PlasmaMembrane.getInstance().getPlasmaMembraneArea();
+				double metLeft = metValue* (PlasmaMembrane.getInstance().getPlasmaMembraneArea() - endosome.area);
 				PlasmaMembrane.getInstance().getMembraneRecycle().put(met1, metLeft);
 				lipidMetabolism.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
 			} else if (StringUtils.endsWith(met, "Pm") && PlasmaMembrane.getInstance().getSolubleRecycle().containsKey(met1)) {
-				double metValue = Math.abs(PlasmaMembrane.getInstance().getSolubleRecycle().get(met1))/PlasmaMembrane.getInstance().volume;
-				double metLeft = metValue* (PlasmaMembrane.getInstance().volume - endosome.volume);
+				double metValue = Math.abs(PlasmaMembrane.getInstance().getSolubleRecycle().get(met1))/PlasmaMembrane.getInstance().getPlasmaMembraneVolume();
+				double metLeft = metValue* (PlasmaMembrane.getInstance().getPlasmaMembraneVolume() - endosome.volume);
 				PlasmaMembrane.getInstance().getSolubleRecycle().put(met1, metLeft);
 				lipidMetabolism.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
@@ -152,7 +152,7 @@ public class EndosomeCopasiStep {
 			} else if (StringUtils.endsWith(met, "Cy") && Cell.getInstance().getSolubleCell().containsKey(met1)) {
 				double metValue = Cell.getInstance().getSolubleCell().get(met1);
 //				System.out.println(Cell.area + "volume cell "+Cell.volume);
-				double metLeft = metValue*(Cell.volume - endosome.volume)/(Cell.volume);
+				double metLeft = metValue*(Cell.getInstance().getCellVolume() - endosome.volume)/(Cell.getInstance().getCellVolume());
 				Cell.getInstance().getSolubleCell().put(met1, metLeft);
 				lipidMetabolism.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
