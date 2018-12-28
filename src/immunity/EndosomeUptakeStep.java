@@ -66,6 +66,7 @@ public class EndosomeUptakeStep {
 		
 	private static void newUptake(Endosome endosome, String selectedRab) {
 		double cellLimit = 3d * Cell.orgScale;
+		System.out.println("UPTAKE INITIAL ORGANELLES " +	InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
 		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
 		
@@ -123,7 +124,7 @@ public class EndosomeUptakeStep {
 			if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey(mem))
 			{
 				double valuePM = PlasmaMembrane.getInstance().getMembraneRecycle().get(mem);
-				valueInPM = valuePM * CellProperties.getInstance().getMembraneMetRec().get(mem) * area/ PlasmaMembrane.getInstance().area;	
+				valueInPM = valuePM * CellProperties.getInstance().getUptakeRate().get(mem) * area/ PlasmaMembrane.getInstance().area;	
 
 				if (valueInPM >= area) 
 				{
@@ -254,6 +255,8 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 
 	private static void newOrganelle(Endosome endosome, String selectedRab, HashMap<String, String> rabCode) {
 		String kind = rabCode.get(selectedRab);
+		System.out.println(kind + " UPTAKE INITIAL ORGANELLES " +	InitialOrganelles.getInstance().getInitOrgProp().get(kind));
+
 		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 		//		double tMembrane = Cell.getInstance().gettMembrane();

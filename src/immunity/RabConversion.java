@@ -52,7 +52,7 @@ public class RabConversion {
 		dataModel = CCopasiRootContainer.addDatamodel();
         assert CCopasiRootContainer.getDatamodelList().size() == 1;
         
-        String modelFileName = "rabs_conversion.cps";
+        String modelFileName = CellProperties.getInstance().getCopasiFiles().get("rabCopasi");//"rabs_conversion.cps";
         
         try
         {

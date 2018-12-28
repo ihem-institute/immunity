@@ -1,6 +1,7 @@
 package immunity;
 
 import java.util.HashMap;
+import java.util.TreeMap;
 
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.space.continuous.ContinuousSpace;
@@ -27,7 +28,10 @@ public class Cell {
 // mincyl surface (20 nm rcy= 6*PI*rcyl^2) = 7539.82 volume (2*PI*rcyl^3)= 50265.48
 	public static double orgScale = CellProperties.getInstance().getCellK().get("orgScale");
 	public static double timeScale = CellProperties.getInstance().getCellK().get("timeScale");
-	public static double volume = 1500*1500*400/(Math.pow(orgScale,3));
+	public static int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); //CellProperties.getInstance().getCellAgentProperties().get("cellArea");// 
+	public static int volume = (int) (1500*400*1000*(1/Cell.orgScale)*(1/Cell.orgScale)*(1/Cell.orgScale)); //CellProperties.getInstance().getCellAgentProperties().get("cellVolume");//
+//	public static double volume = 1500*1500*400/(Math.pow(orgScale,3));//900*10^6, scale 1; 7200 *10^6, scale 0.5
+//	public static double area = 1500*1500/(Math.pow(orgScale,2));//2.25 *10^6, scale 1
 //  When orgScale=1 zoom =0, when > 1 zoom in , when <1 zoom out.
 //	volume of the repast space  (1500 nm x 1500 nm) 400 nm deep (arbitrary heigth of the projection in 2D)
 //	global cell and non-cell quantities
@@ -35,7 +39,7 @@ public class Cell {
 	public HashMap<String, Double> rabCell = new HashMap<String, Double>();// contains rabs free in cytosol
 	public HashMap<String, Double> membraneCell = new HashMap<String, Double>(); // contains membrane factors within the cell 
 	public HashMap<String, Double> solubleCell = new HashMap<String, Double>();// contains soluble factors within the cell
-	HashMap<Integer, HashMap<String, Double>> cellTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
+	TreeMap<Integer, HashMap<String, Double>> cellTimeSeries = new TreeMap<Integer, HashMap<String, Double>>();
 
 	// Constructor
 	public Cell() {
@@ -44,12 +48,15 @@ public class Cell {
 // contents.	tMembranes, membrane and soluble content recycling,
 		solubleCell.putAll(CellProperties.getInstance().getSolubleCell());
 		rabCell.putAll(CellProperties.getInstance().getInitRabCell());
-		tMembrane = CellProperties.getInstance().cellK.get("tMembrane");
+		tMembrane = 10000000;//CellProperties.getInstance().cellK.get("tMembrane");
 //		cellTimeSeries = null;
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-		if (Math.random() < 1)CellCopasiStep.antPresTimeSeriesLoad(Cell.getInstance());
+		if (Math.random() < 0.1){
+			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
+			CellCopasiStep.antPresTimeSeriesLoad(this);
+		}
 			
 // eventual use for cell metabolism
 	}
@@ -74,13 +81,13 @@ public class Cell {
 	public HashMap<String, Double> getSolubleCell() {
 		return solubleCell;
 	}
-	public final HashMap<Integer, HashMap<String, Double>> getCellTimeSeries() {
+	public final TreeMap<Integer, HashMap<String, Double>> getCellTimeSeries() {
 		return cellTimeSeries;
 	}
-	public HashMap<String, Double> getcellTimeSeries() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public HashMap<String, Double> getcellTimeSeries() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 
 }

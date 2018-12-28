@@ -35,6 +35,8 @@ public class CellProperties {
 	}
 //	Cell proterties that are loaded from a csv file by the CellBuilder class
 	public HashMap<String, Double> cellK = new HashMap<String, Double>();
+	public HashMap<String, Double> cellAgentProperties = new HashMap<String, Double>();
+	public HashMap<String, Double> plasmaMembraneProperties = new HashMap<String, Double>();
 	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
 	public HashMap<String, Double> solubleCell = new HashMap<String, Double>();
 	public HashMap<String, Double> initPMmembraneRecycle = new HashMap<String, Double>();
@@ -42,19 +44,31 @@ public class CellProperties {
 	public HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
 	public HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
 	public HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>();
-	public HashMap<String, Double> mtTropism = new HashMap<String, Double>();
+	public HashMap<String, Double> mtTropismTubule = new HashMap<String, Double>();
+	public HashMap<String, Double> mtTropismRest = new HashMap<String, Double>();
 	public HashMap<String, Double> rabRecyProb = new HashMap<String, Double>();
 	public HashMap<String, String> colorRab = new HashMap<String, String>();
 	public HashMap<String, String> colorContent = new HashMap<String, String>();
-	public HashMap<String, Double> membraneMet = new HashMap<String, Double>();
+	public HashMap<String, String> copasiFiles = new HashMap<String, String>();
+	public HashMap<String, Double> uptakeRate = new HashMap<String, Double>();
 	public HashMap<String, String> rabOrganelle = new HashMap<String, String>();
 
-	Set<String> solubleMet = new HashSet<String>();
-	Set<String> rabSet = new HashSet<String>();
+	public Set<String> solubleMet = new HashSet<String>();
+	public Set<String> membraneMet = new HashSet<String>();
+	public Set<String> rabSet = new HashSet<String>();
 	
 
 //	GETTERS
 	
+	public HashMap<String, Double> getCellAgentProperties() {
+		return cellAgentProperties;
+	}
+	public HashMap<String, Double> getPlasmaMembraneProperties() {
+		return plasmaMembraneProperties;
+	}
+	public HashMap<String, String> getCopasiFiles() {
+		return copasiFiles;
+	}
 	public HashMap<String, Double> getCellK() {
 		return cellK;
 	}
@@ -70,8 +84,11 @@ public class CellProperties {
 	public HashMap<String, Set<String>> getRabTropism() {
 		return rabTropism;
 	}
-	public HashMap<String, Double> getMtTropism() {
-		return mtTropism;
+	public HashMap<String, Double> getMtTropismTubule() {
+		return mtTropismTubule;
+	}
+	public HashMap<String, Double> getMtTropismRest() {
+		return mtTropismRest;
 	}
 	public HashMap<String, Double> getRabRecyProb() {
 		return rabRecyProb;
@@ -85,14 +102,12 @@ public class CellProperties {
 	public HashMap<String, String> getColorContent() {
 		return colorContent;
 	}
-	// membraneMet was originally a string set.  Now is a hashmap because
-	// the probability of internalization from PM was added.  So, there is
-	// two getters, one that return the keySet and another that return the hashmap
+
 	public Set<String> getMembraneMet() {
-		return membraneMet.keySet();
-	}
-	public HashMap<String, Double> getMembraneMetRec() {
 		return membraneMet;
+	}
+	public HashMap<String, Double> getUptakeRate() {
+		return uptakeRate;
 	}
 	public Set<String> getSolubleMet() {
 		return solubleMet;
@@ -109,10 +124,7 @@ public class CellProperties {
 	public HashMap<String, Double> getInitPMsolubleRecycle() {
 		return initPMsolubleRecycle;
 	}
-//	public Set<String> getmembraneMet() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+
 	
 	public static void loadFromCsv(CellProperties cellProperties) throws IOException {
 
@@ -140,6 +152,27 @@ public class CellProperties {
 //				System.out.println(cellProperties.getCellK());
 				}
 				
+				break;
+			}
+			case "cellProperties": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				cellProperties.getCellAgentProperties().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(cellProperties.getCellK());
+				}
+				
+				break;
+			}
+			case "plasmaMembraneProperties": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				cellProperties.getPlasmaMembraneProperties().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(cellProperties.getCellK());
+				}
+				
+				break;
+			}
+			case "cellCopasi": case "plasmaMembraneCopasi" : case "endosomeCopasi": case "rabCopasi":{
+					cellProperties.getCopasiFiles().put(b[0], b[1]);
+
 				break;
 			}
 			case "initRabCell": {
@@ -195,14 +228,20 @@ public class CellProperties {
 				cellProperties.getRabTropism().put(b[1], rabT);
 				break;
 			}
-			case "mtTropism": {
+			case "mtTropismTubule": {
 				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getMtTropism().put(b[i], Double.parseDouble(b[i+1]));
+					cellProperties.getMtTropismTubule().put(b[i], Double.parseDouble(b[i+1]));
 					//System.out.println(cellProperties.getMtTropism());
 					}
 				break;
 			}
-			
+			case "mtTropismRest": {
+				for (int i = 1; i < b.length; i = i + 2) {
+					cellProperties.getMtTropismRest().put(b[i], Double.parseDouble(b[i+1]));
+					//System.out.println(cellProperties.getMtTropism());
+					}
+				break;
+			}
 			case "rabRecyProb": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					cellProperties.getRabRecyProb().put(b[i], Double.parseDouble(b[i+1]));
@@ -216,15 +255,21 @@ public class CellProperties {
 					}
 				break;
 			}
-			case "membraneMet": {
+			case "uptakeRate": {
 				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getMembraneMetRec().put(b[i], Double.parseDouble(b[i+1]));
+					cellProperties.getUptakeRate().put(b[i], Double.parseDouble(b[i+1]));
 				}
 				break;
 			}
 			case "solubleMet": {
 				for (int i = 1; i < b.length; i++) {
 					cellProperties.getSolubleMet().add(b[i]);
+				}
+				break;
+			}
+			case "membraneMet": {
+				for (int i = 1; i < b.length; i++) {
+					cellProperties.getMembraneMet().add(b[i]);
 				}
 				break;
 			}
@@ -255,7 +300,7 @@ public class CellProperties {
 					// different way
 			}
 			// INITIAL ORGANELLES kind 7 is for phagosomes
-			case "kind1": case "kind2": case "kind3": case "kind4": case "kind5": case "kind6": case "kind7":
+			case "kind1": case "kind2": case "kind3": case "kind4": case "kind5": case "kind6": case "kindLarge":
 			{
 				InitialOrganelles inOr = InitialOrganelles.getInstance();
 				inOr.getDiffOrganelles().add(b[0]);

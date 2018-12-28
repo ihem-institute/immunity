@@ -134,7 +134,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 			Set<String> diffOrganelles = InitialOrganelles.getInstance().getDiffOrganelles();
 			System.out.println(diffOrganelles);
 			for (String kind : diffOrganelles){
-				if (!kind.equals("kind7")){
+				if (!kind.equals("kindLarge")){
 					HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 					double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
 					double maxRadius = initOrgProp.get("maxRadius");
@@ -256,7 +256,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 		{
 			
 			Set<String> diffOrganelles = InitialOrganelles.getInstance().getDiffOrganelles();
-//			System.out.println(diffOrganelles);
+			System.out.println("FREEZE DRY METHOD   "+diffOrganelles);
 			for (String kind : diffOrganelles){
 				HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 				HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));

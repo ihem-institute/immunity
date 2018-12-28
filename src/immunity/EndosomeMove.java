@@ -3,6 +3,7 @@ package immunity;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import repast.simphony.space.continuous.ContinuousSpace;
@@ -117,6 +118,7 @@ public class EndosomeMove {
 			mts = associateMt();
 		}
 		double mtDir = 0;
+		String rabDir = "";
 /*
  * mtDirection decides if the endosome is going to move to the (-) end
  * of the MT (dyneine like or to the plus end (kinesine like). -1 goes
@@ -152,10 +154,11 @@ public class EndosomeMove {
 				boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2); // should be /2
 // select a mtDir according with the domains present in the endosome.  Larger probability for the more aboundant domain
 // 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
-				mtDir = mtDirection(endosome);
+				rabDir = mtDirection(endosome);
 				if (isTubule)
 					{
-//					System.out.println("IS TUBULE"+ mtDir);
+//					System.out.println("IS TUBULE"+ rabDir);
+					mtDir = CellProperties.getInstance().mtTropismTubule.get(rabDir);
 					if (Math.random()<Math.abs(mtDir)) {
 // 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
 						if (Math.signum(mtDir)>=0) {mtDir = 0;} else {mtDir = 1;}
@@ -167,10 +170,11 @@ public class EndosomeMove {
 					} // if no a tubule
 				else
 					{
+					mtDir = CellProperties.getInstance().mtTropismRest.get(rabDir);
 //					System.out.println("IS NOT TUBULE"+ mtDir);
-					if (Math.random()> Math.abs(mtDir)) {
-// 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
-						if (Math.signum(mtDir)>=0) {mtDir = 1;} else {mtDir = 0;}
+					if (Math.random()< Math.abs(mtDir)) {
+// 0 means to plus end of MT (to PM); +1 means to the minus end of MT (to nucleus)
+						if (Math.signum(mtDir)>=0) {mtDir = 0;} else {mtDir = 1;}
 						}
 						else {
 						changeDirectionRnd(endosome);
@@ -200,8 +204,8 @@ public class EndosomeMove {
 		changeDirectionRnd(endosome);
 		return ;
 	}
-	public static double mtDirection(Endosome endosome) {
-//		Picks a Rab domainaccording to the relative area of the domains in the organelle
+	public static String mtDirection(Endosome endosome) {
+//		Picks a Rab domain according to the relative area of the domains in the organelle
 //		More abundant Rabs have more probability of being selected
 //		Returns the moving properties on MT of this domain 
 		double rnd = Math.random();// select a random number
@@ -210,12 +214,15 @@ public class EndosomeMove {
 		for (String rab : endosome.rabContent.keySet()) {
 			mtd = mtd + endosome.rabContent.get(rab) / endosome.area;
 			if (rnd <= mtd) {
-				double mtTropism = CellProperties.getInstance().mtTropism.get(rab);
-//				if (rab.equals("RabE") && Math.random()<0.1){mtTropism = -mtTropism;}
-				return mtTropism;
+//				double mtTropismTubule = CellProperties.getInstance().mtTropismTubule.get(rab);
+//				double mtTropismRest = CellProperties.getInstance().mtTropismRest.get(rab);
+//				//				if (rab.equals("RabE") && Math.random()<0.1){mtTropism = -mtTropism;}
+				return rab;
 			}
 		}
-		return 0;// never used
+//		System.out.println(endosome.area + "rab content" + endosome.rabContent);
+		String rab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+		return rab;// never used
 	}
 	public static List<MT> associateMt() {
 		List<MT> mts = new ArrayList<MT>();

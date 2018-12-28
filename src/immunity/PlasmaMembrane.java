@@ -3,6 +3,7 @@ package immunity;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 import repast.simphony.context.Context;
 import repast.simphony.engine.schedule.ISchedulableAction;
@@ -28,10 +29,10 @@ public class PlasmaMembrane {
 	public int red = 0;
 	public int green = 0;	
 	public int blue = 0;
-	public int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); 
-	public int volume = (int) (1500*400*1000*(1/Cell.orgScale)*(1/Cell.orgScale)*(1/Cell.orgScale)); 
-	HashMap<Integer, HashMap<String, Double>> plasmaMembraneTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
-
+	public int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); //CellProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 
+	public int volume = (int) (1500*400*1000*(1/Cell.orgScale)*(1/Cell.orgScale)*(1/Cell.orgScale)); //CellProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
+	TreeMap<Integer, HashMap<String, Double>> plasmaMembraneTimeSeries = new TreeMap<Integer, HashMap<String, Double>>();
+	public String plasmaMembraneCopasi = CellProperties.getInstance().getCopasiFiles().get("plasmaMembraneCopasi");
 // nm2 1500nm x 400nm. Space in repast at scale =1 and arbitrary height of the space projected
 //	in 2D
 
@@ -105,7 +106,7 @@ public class PlasmaMembrane {
 	public int getPmcolor() {
 		return pmcolor;
 	}
-	public final HashMap<Integer, HashMap<String, Double>> getPlasmaMembraneTimeSeries() {
+	public final TreeMap<Integer, HashMap<String, Double>> getPlasmaMembraneTimeSeries() {
 		return plasmaMembraneTimeSeries;
 	}
 

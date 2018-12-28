@@ -54,7 +54,7 @@ public class EndosomeCopasi {
 		dataModel = CCopasiRootContainer.addDatamodel();
         assert CCopasiRootContainer.getDatamodelList().size() == 1;
         
-        String modelFileName = "lipidMetabDiego.cps";
+        String modelFileName = CellProperties.getInstance().getCopasiFiles().get("endosomeCopasi");//"lipidMetabDiego.cps";
         
         try
         {

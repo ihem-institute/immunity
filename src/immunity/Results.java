@@ -48,7 +48,7 @@ public class Results {
 //	public HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
 //	public HashMap<String, List<String>> rabTropism = new HashMap<String, List<String>>();
 //	public HashMap<String, Double> mtTropism = new HashMap<String, Double>();
-	static HashMap<String, Double> contentDist = new HashMap<String, Double>();
+	static TreeMap<String, Double> contentDist = new TreeMap<String, Double>((String.CASE_INSENSITIVE_ORDER));
 
 	static HashMap<String, Double> totalRabs = new HashMap<String, Double>();	
 	static HashMap<String, Double> totalVolumeRabs = new HashMap<String, Double>();
@@ -76,7 +76,8 @@ public class Results {
 	
 	@ScheduledMethod(start = 1)
 	public void header(){
-		TreeMap<String, Double> header = new TreeMap<String, Double>(content());
+		TreeMap<String, Double> header = new TreeMap<String, Double>(String.CASE_INSENSITIVE_ORDER);
+		header.putAll(content());
 		try {
 			writeToCsvHeader(header);
 		} catch (IOException e) {
@@ -194,18 +195,25 @@ public class Results {
 		HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
 		// include in the contentDistribution all the recycled components, soluble and membrane
 		HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
+		HashMap<String, Double> solubleCell = Cell.getInstance().getSolubleCell();
 		for (String sol : solubleRecycle.keySet()) {
 //			System.out.println(" soluble "+ sol);
 			double value = solubleRecycle.get(sol);
-			contentDist.put(sol, value);
-			System.out.println("SOLUBLE  "+ sol + value );
+			contentDist.put("Pm"+sol, value);
+			System.out.println("SOLUBLE  PM"+ sol + value );
 		}
 		for (String mem : membraneRecycle.keySet()) {
 			//System.out.println(" soluble "+ sol + " Rab " +rab);
 			double value = membraneRecycle.get(mem);
-			contentDist.put(mem, value);
-			System.out.println("MEMBRANE  "+ mem + value);
+			contentDist.put("Pm"+mem , value);
+			System.out.println("MEMBRANE PM  "+ mem + value);
 		}			
+		for (String sol : solubleCell.keySet()) {
+//			System.out.println(" soluble "+ sol);
+			double value = solubleCell.get(sol);
+			contentDist.put("Cy"+sol, value);
+			System.out.println("SOLUBLE CELL  "+ sol + value );
+		}
 		
 		List<Endosome> allEndosomes = new ArrayList<Endosome>();
 		for (Object obj : grid.getObjects()) {
@@ -323,12 +331,15 @@ public class Results {
 
 	// generate the set of all combinations between contents 
 	//(soluble or membrane) with all Rabs and sets the initial values to zero
-	public HashMap<String, Double> content() {
+	public TreeMap<String, Double> content() {
 		for (String sol : solubleMet) {
-			contentDist.put(sol, 0d);
+			contentDist.put("Pm"+sol, 0d);
 		} 
 		for (String mem : membraneMet) {
-			contentDist.put(mem, 0d);
+			contentDist.put("Pm"+mem, 0d);
+		}
+		for (String sol : Cell.getInstance().getSolubleCell().keySet()) {
+			contentDist.put("Cy"+sol, 0d);
 		}
 		for (String rab : rabSet) {
 			for (String sol : solubleMet) {
@@ -367,7 +378,7 @@ public class Results {
 		return initialTotalRabs;
 	}
 
-	public final HashMap<String, Double> getContentDist() {
+	public final TreeMap<String, Double> getContentDist() {
 		return contentDist;
 	}
 

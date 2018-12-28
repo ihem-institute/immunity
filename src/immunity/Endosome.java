@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import javax.swing.JPanel;
 import javax.swing.table.TableModel;
@@ -86,12 +87,13 @@ public class Endosome {
 			.getRabCompatibility();
 	HashMap<String, Double> tubuleTropism = cellProperties.getTubuleTropism();
 	HashMap<String, Set<String>> rabTropism = cellProperties.getRabTropism();
-	HashMap<String, Double> mtTropism = cellProperties.getMtTropism();
+	HashMap<String, Double> mtTropismTubule = cellProperties.getMtTropismTubule();
+	HashMap<String, Double> mtTropismRest = cellProperties.getMtTropismRest();
 	HashMap<String, Double> rabContent = new HashMap<String, Double>();
 	HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 	HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 	HashMap<String, Double> initOrgProp = new HashMap<String, Double>();
-	HashMap<Integer, HashMap<String, Double>> endosomeTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
+	TreeMap<Integer, HashMap<String, Double>> endosomeTimeSeries = new TreeMap<Integer, HashMap<String, Double>>();
 	HashMap<Integer, HashMap<String, Double>> rabTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
 //	Probabilities of events per tick.  Calculated from the t1/2 of each process
 //	 as the inverse of time1/2(in seconds) / 0.03 * timeScale
@@ -499,7 +501,7 @@ public class Endosome {
 		return grid;
 	}
 
-	public HashMap<Integer, HashMap<String, Double>> getEndosomeTimeSeries() {
+	public TreeMap<Integer, HashMap<String, Double>> getEndosomeTimeSeries() {
 		return endosomeTimeSeries;
 	}
 

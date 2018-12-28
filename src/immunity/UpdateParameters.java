@@ -129,7 +129,8 @@ public class UpdateParameters {
 		scanner.useDelimiter(",");
 
 		CellProperties cellProperties = CellProperties.getInstance();
-// INITIAL CELL PROPERTIES
+		freezeDryOption: // this names the WHILE loop, so I can break from the loop when I want.  
+			//Something I did not know that it could be done
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
 			String[] b = line.split(",");
@@ -140,6 +141,27 @@ public class UpdateParameters {
 //				System.out.println(cellProperties.getCellK());
 				}
 				
+				break;
+			}
+			case "cellProperties": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				cellProperties.getCellAgentProperties().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(cellProperties.getCellK());
+				}
+				
+				break;
+			}
+			case "plasmaMembraneProperties": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				cellProperties.getPlasmaMembraneProperties().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(cellProperties.getCellK());
+				}
+				
+				break;
+			}
+			case "cellCopasi": case "plasmaMembraneCopasi" : case "endosomeCopasi": case "rabCopasi":{
+					cellProperties.getCopasiFiles().put(b[0], b[1]);
+
 				break;
 			}
 			case "initRabCell": {
@@ -180,7 +202,7 @@ public class UpdateParameters {
 			case "tubuleTropism": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					cellProperties.getTubuleTropism().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getTubuleTropism());
+					//System.out.println(cellProperties.getTubuleTropism()); 
 					}
 				break;
 			}
@@ -195,29 +217,48 @@ public class UpdateParameters {
 				cellProperties.getRabTropism().put(b[1], rabT);
 				break;
 			}
-			case "mtTropism": {
+			case "mtTropismTubule": {
 				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getMtTropism().put(b[i], Double.parseDouble(b[i+1]));
+					cellProperties.getMtTropismTubule().put(b[i], Double.parseDouble(b[i+1]));
 					//System.out.println(cellProperties.getMtTropism());
 					}
 				break;
 			}
-			
+			case "mtTropismRest": {
+				for (int i = 1; i < b.length; i = i + 2) {
+					cellProperties.getMtTropismRest().put(b[i], Double.parseDouble(b[i+1]));
+					//System.out.println(cellProperties.getMtTropism());
+					}
+				break;
+			}
 			case "rabRecyProb": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					cellProperties.getRabRecyProb().put(b[i], Double.parseDouble(b[i+1]));
 					}
 				break;
 			}
-			case "membraneMet": {
+			
+			case "organelle": {
 				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getMembraneMetRec().put(b[i], Double.parseDouble(b[i+1]));
-				}				
+					cellProperties.getRabOrganelle().put(b[i], b[i+1]);
+					}
+				break;
+			}
+			case "uptakeRate": {
+				for (int i = 1; i < b.length; i = i + 2) {
+					cellProperties.getUptakeRate().put(b[i], Double.parseDouble(b[i+1]));
+				}
 				break;
 			}
 			case "solubleMet": {
 				for (int i = 1; i < b.length; i++) {
 					cellProperties.getSolubleMet().add(b[i]);
+				}
+				break;
+			}
+			case "membraneMet": {
+				for (int i = 1; i < b.length; i++) {
+					cellProperties.getMembraneMet().add(b[i]);
 				}
 				break;
 			}
@@ -241,8 +282,14 @@ public class UpdateParameters {
 				break;
 			}
 			
-			// INITIAL ORGANELLES
-			case "kind1": case "kind2": case "kind3": case "kind4": case "kind5": case "kind6":
+			case "freezeDry":
+				{
+					FreezeDryEndosomes.getInstance();
+					break freezeDryOption; // if freezeDry then exit because the initial organelles will be loaded in a 
+					// different way
+			}
+			// INITIAL ORGANELLES kind 7 is for phagosomes
+			case "kind1": case "kind2": case "kind3": case "kind4": case "kind5": case "kind6": case "kindLarge":
 			{
 				InitialOrganelles inOr = InitialOrganelles.getInstance();
 				inOr.getDiffOrganelles().add(b[0]);
@@ -269,12 +316,13 @@ public class UpdateParameters {
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
 					inOr.getInitSolubleContent().put(b[0], value);
+//					System.out.println("Proton is there?" + inOr.getInitialSolubleContent());
 					break;
 				}
 				case "initMembraneContent": {
 					HashMap<String, Double> value = new HashMap<String, Double>();
 					for (int i = 2; i < b.length; i = i + 2) {
-	//					System.out.println("VALOR MALO" + b[i] + "" + b[i+1]);
+//					System.out.println("VALOR MALO" + b[i] + "" + b[i+1]);
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
 					inOr.getInitMembraneContent().put(b[0], value);
@@ -295,6 +343,7 @@ public class UpdateParameters {
 
 		}
 		scanner.close();
+//	
 	}
 	
 	

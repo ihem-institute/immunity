@@ -54,7 +54,7 @@ public class PlasmaMembraneCopasi {
 		dataModel = CCopasiRootContainer.addDatamodel();
         assert CCopasiRootContainer.getDatamodelList().size() == 1;
         
-        String modelFileName = "PMDiego.cps";
+        String modelFileName = CellProperties.getInstance().getCopasiFiles().get("plasmaMembraneCopasi");
         
         try
         {

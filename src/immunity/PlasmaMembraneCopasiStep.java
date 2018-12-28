@@ -43,23 +43,39 @@ public class PlasmaMembraneCopasiStep {
 //		by area the membrane metabolites and by volume the soluble metabolites
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		HashMap<String, Double> presentValues = new HashMap<String, Double>(plasmaMembrane.getPlasmaMembraneTimeSeries().get(tick));
-		
+		HashMap<String, Double> pastValues = new HashMap<String, Double>();
+		int pastTick = 0;
+		if (tick == plasmaMembrane.plasmaMembraneTimeSeries.firstKey()){ ;// (int) (tick + 1 - Cell.timeScale/0.03);
+		pastValues = presentValues;
+		pastTick = tick;
+		} else {
+			pastTick = plasmaMembrane.plasmaMembraneTimeSeries.lowerKey(tick);
+			pastValues = plasmaMembrane.plasmaMembraneTimeSeries.get(pastTick);
+		}
 		for (String met :presentValues.keySet()){
 //			Organelle (endosomes/Golgi) metabolites are not considered. The reaction should be called from endosomes.
 			String met1 = met.substring(0, met.length()-2);
-//			metabolites in the Cell are expressed in concentration. Only a fraction of the metabolite in the cell participates
+//			metabolites in the Cell are expressed in concentration. I am using the area ratio between PM and Cell 
+//			for dilution of the metabilite that is released into the cell.  I may use volume ratio? 
+//			Only a fraction of the metabolite in the cell participates
 //			in copasi, hence the concentration are added to the existing values.
+//			Since the PM is releasing Cyto metabolites at each tick, what must be incorporated is the delta with respect to the previous tick.
+//			At tick = 0, nothing is released (pastValues = presentValues)
 			if (StringUtils.endsWith(met, "Cy")){
-				double metValue = Cell.getInstance().getSolubleCell().get(met1)
-						+ presentValues.get(met)* plasmaMembrane.volume/Cell.volume;
-				Cell.getInstance().getSolubleCell().put(met1, metValue);
+				 if (!Cell.getInstance().getSolubleCell().containsKey(met1)){Cell.getInstance().getSolubleCell().put(met1, 0.0);}
+					//			 System.out.println("TICK " + met+tick + "\n " + pastTick + "\n " + presentValues.get(met) + "\n " + pastValues.get(met) + "\n" + endosome
+					//			 );
+					double delta =  presentValues.get(met) - pastValues.get(met);
+					double metValue = Cell.getInstance().getSolubleCell().get(met1)
+										+ delta * plasmaMembrane.area/Cell.area;
+								Cell.getInstance().getSolubleCell().put(met1, metValue);
 			}
 			
-			else if (StringUtils.endsWith(met, "Pm") && plasmaMembrane.getSolubleRecycle().containsKey(met1)) {
+			else if (StringUtils.endsWith(met, "Pm") && CellProperties.getInstance().getSolubleMet().contains(met1)){
 				double metValue = presentValues.get(met)* plasmaMembrane.volume;
 				plasmaMembrane.getSolubleRecycle().put(met1, metValue);
 			}
-			else if (StringUtils.endsWith(met, "Pm") && plasmaMembrane.getMembraneRecycle().containsKey(met1)) {
+			else if (StringUtils.endsWith(met, "Pm") && CellProperties.getInstance().getMembraneMet().contains(met1)) {
 				double metValue = presentValues.get(met)* plasmaMembrane.area;
 				plasmaMembrane.getMembraneRecycle().put(met1, metValue);
 			}
@@ -74,13 +90,12 @@ public class PlasmaMembraneCopasiStep {
 //
 		PlasmaMembraneCopasi receptorDynamics = PlasmaMembraneCopasi.getInstance();
 
-		Set<String> metabolites = receptorDynamics.getInstance()
-				.getMetabolites();
+		Set<String> metabolites = receptorDynamics.getInstance().getMetabolites();
 		HashMap<String, Double> localM = new HashMap<String, Double>();
 		System.out.println("PM MEMBRENE RECYCLE " + plasmaMembrane.getMembraneRecycle());
 		
 		for (String met : metabolites) {
-			System.out.println("metabolito que no anda" + met);
+//			System.out.println("metabolito que no anda" + met);
 			String met1 = met.substring(0, met.length()-2);
 
 			 if (StringUtils.endsWith(met, "Pm") && plasmaMembrane.getMembraneRecycle().containsKey(met1)) {
@@ -93,7 +108,7 @@ public class PlasmaMembraneCopasiStep {
 				localM.put(met, metValue);
 			} else if (StringUtils.endsWith(met, "Cy") && Cell.getInstance().getSolubleCell().containsKey(met1)) {
 				double metValue = Cell.getInstance().getSolubleCell().get(met1);
-				double metLeft = metValue*(Cell.volume)/(Cell.volume - plasmaMembrane.volume);
+				double metLeft = metValue*(Cell.volume - plasmaMembrane.volume)/(Cell.volume);
 				Cell.getInstance().getSolubleCell().put(met1, metLeft);
 				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
@@ -112,7 +127,7 @@ public class PlasmaMembraneCopasiStep {
 		
 		
 	
-System.out.println("LOCAL MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM " + localM);
+//System.out.println("LOCAL MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM " + localM);
 
 		receptorDynamics.runTimeCourse();
 		
