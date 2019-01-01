@@ -51,33 +51,48 @@ public class EndosomeRabConversionStep {
 //		by area the membrane metabolites and by volume the soluble metabolites
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		HashMap<String, Double> presentValues = new HashMap<String, Double>(endosome.rabTimeSeries.get(tick));	
-
+// Following block is used for cytosol release of Rabs.  It works but I will not use it
+		/*	HashMap<String, Double> pastValues = new HashMap<String, Double>();
+//		The release of metabolites into cytosol from a time series must consider that it is a "delta".
+//		Supose a metabolite is not modified by the copasi, if the value in the time series is added, the
+//		concentration will artificially build up. At time zero of the series, the delta is zero for all the 
+//		metabolites.
+		int pastTick = 0;
+		if (tick == endosome.rabTimeSeries.firstKey()){ ;// first tick in the time series
+		pastValues = presentValues;
+		pastTick = tick;
+		} else {
+			pastTick = endosome.rabTimeSeries.lowerKey(tick);
+			pastValues = endosome.rabTimeSeries.get(pastTick);
+		}*/
+		
 		for (String met : presentValues.keySet()) {
-			if (met.endsWith("m")) {
+			if (met.endsWith("En")) {
 				String Rab = met.substring(0, 4);
 				double metValue = presentValues.get(met)*endosome.area;
 				endosome.rabContent.put(Rab, metValue);
 				// System.out.println("COPASI FINAL " + met +
 				// rabContent.get(Rab));
 			}
-/*
-NEED TO UPDATE THIS.  THE IDEA IS TO USE THE CYTOSOLIC RABS OF THE TIME SERIES TO MODIFY 
-RAB CONCENTRATION IN THE CYTOSOL CONSIDERING THE ORGANELLE SIZE AND THE CYTOSOL VOLUME 
- * 
- * 			if (met.endsWith("c")) {
+//			metabolites in the Cell are expressed in concentration. I am using the area ratio between PM and Cell 
+//			for dilution of the metabilite that is released into the cell.  I may use volume ratio?
+//			Only a fraction of the metabolite in the cell participates
+//			in copasi, hence the concentration are added to the existing values.
+//			Since the endosome is releasing Cyto metabolites at each tick, what must be incorporated is the delta with respect to the previous tick.
+//			At tick = 0, nothing is released (pastValues = presentValues)
+//			Following block works OK.  I commented because it changes the concentration of Rab cyto
+//			RabA is released and RabD consumed during the Rab5->Rab7 conversion. 
+/*			else if (met.endsWith("Cy")){
 				String Rab = met.substring(0, 4);
-				double metValue = presentValues.get(met)* endosome.area * 3 * 1E-8;
-				if (Cell.getInstance().getRabCell().containsKey(Rab))
-				{
-				metValue = metValue
-							+Cell.getInstance().getRabCell().get(Rab);	
-				}
+				 if (!Cell.getInstance().getRabCell().containsKey(Rab)){Cell.getInstance().getRabCell().put(Rab, 0.0);}
+	//			 System.out.println("TICK " + met+tick + "\n " + pastTick + "\n " + presentValues.get(met) + "\n " + pastValues.get(met) + "\n" + endosome
+	//			 );
+				double delta =  presentValues.get(met) - pastValues.get(met);
+				double metValue = Cell.getInstance().getRabCell().get(Rab)
+						+ delta * endosome.area/Cell.getInstance().getCellArea();
 				Cell.getInstance().getRabCell().put(Rab, metValue);
-
-				// System.out.println("COPASI FINAL " + met
-				// + Cell.getInstance().getRabCell().get(Rab));
-			}
-*/
+				//				endosome.solubleContent.remove(met1);
+			}*/
 		}
 
 //		System.out.println("COPASI FINAL membrane " + endosome.rabContent + " soluble "
@@ -99,7 +114,7 @@ RAB CONCENTRATION IN THE CYTOSOL CONSIDERING THE ORGANELLE SIZE AND THE CYTOSOL 
 // New strategy for Rab conversion.  The Rabs in endosomes are passed divided by the area 
 //(about 1 mM as calculated elsewhere). The Rabs in cytosol are in mM and are not transformed
 		for (String met : metabolites) {
-			if (met.endsWith("m")) {
+			if (met.endsWith("En")) {
 				String Rab = met.substring(0, 4);
 				if (endosome.rabContent.containsKey(Rab)) {
 					double metValue = endosome.rabContent.get(Rab) / endosome.area;
@@ -112,7 +127,7 @@ RAB CONCENTRATION IN THE CYTOSOL CONSIDERING THE ORGANELLE SIZE AND THE CYTOSOL 
 				}
 			}
 
-			if (met.endsWith("c")) {
+			if (met.endsWith("Cy")) {
 				String Rab = met.substring(0, 4);
 				if (Cell.getInstance().getRabCell().containsKey(Rab)) {
 					double metValue = Cell.getInstance().getRabCell().get(Rab);

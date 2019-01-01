@@ -59,7 +59,7 @@ public class CellCopasiStep {
 			String met1 = met.substring(0, met.length()-2);
 //			metabolites in the Cell are expressed in concentration. Only a fraction of the metabolite in the cell participates
 //			in copasi, hence the concentration are added to the existing values.
-			if (StringUtils.endsWith(met, "Cy")){
+			if (met.endsWith("Cy")){
 				double metValue = presentValues.get(met);
 				cell.getSolubleCell().put(met1, metValue);
 			}

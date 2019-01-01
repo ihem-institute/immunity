@@ -94,7 +94,7 @@ public class Endosome {
 	HashMap<String, Double> solubleContent = new HashMap<String, Double>();
 	HashMap<String, Double> initOrgProp = new HashMap<String, Double>();
 	TreeMap<Integer, HashMap<String, Double>> endosomeTimeSeries = new TreeMap<Integer, HashMap<String, Double>>();
-	HashMap<Integer, HashMap<String, Double>> rabTimeSeries = new HashMap<Integer, HashMap<String, Double>>();
+	TreeMap<Integer, HashMap<String, Double>> rabTimeSeries = new TreeMap<Integer, HashMap<String, Double>>();
 //	Probabilities of events per tick.  Calculated from the t1/2 of each process
 //	 as the inverse of time1/2(in seconds) / 0.03 * timeScale
 //	0.03 is the fastest event (movement on MT, 1 uM/sec) that I use to calibrate
@@ -507,7 +507,7 @@ public class Endosome {
 
 
 
-	public HashMap<Integer, HashMap<String, Double>> getRabTimeSeries() {
+	public TreeMap<Integer, HashMap<String, Double>> getRabTimeSeries() {
 		return rabTimeSeries;
 	}
 

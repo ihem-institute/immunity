@@ -98,15 +98,15 @@ public class PlasmaMembraneCopasiStep {
 //			System.out.println("metabolito que no anda" + met);
 			String met1 = met.substring(0, met.length()-2);
 
-			 if (StringUtils.endsWith(met, "Pm") && plasmaMembrane.getMembraneRecycle().containsKey(met1)) {
+			 if (met.endsWith("Pm") && plasmaMembrane.getMembraneRecycle().containsKey(met1)) {
 				double metValue = plasmaMembrane.getMembraneRecycle().get(met1)/PlasmaMembrane.getInstance().getPlasmaMembraneArea();
 				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
-			} else if (StringUtils.endsWith(met, "Pm") && plasmaMembrane.getSolubleRecycle().containsKey(met1)) {
+			} else if (met.endsWith("Pm") && plasmaMembrane.getSolubleRecycle().containsKey(met1)) {
 				double metValue = Math.abs(plasmaMembrane.getSolubleRecycle().get(met1))/PlasmaMembrane.getInstance().getPlasmaMembraneVolume();
 				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
-			} else if (StringUtils.endsWith(met, "Cy") && Cell.getInstance().getSolubleCell().containsKey(met1)) {
+			} else if (met.endsWith("Cy") && Cell.getInstance().getSolubleCell().containsKey(met1)) {
 				double metValue = Cell.getInstance().getSolubleCell().get(met1);
 				double metLeft = metValue*(Cell.getInstance().getCellVolume() - PlasmaMembrane.getInstance().getPlasmaMembraneVolume())/(Cell.getInstance().getCellVolume());
 				Cell.getInstance().getSolubleCell().put(met1, metLeft);

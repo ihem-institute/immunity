@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.24 (Build 197) (http://www.copasi.org) at 2018-12-25 22:21:51 UTC -->
+<!-- generated with COPASI 4.24 (Build 197) (http://www.copasi.org) at 2018-12-31 14:22:27 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="24" versionDevel="197" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -138,7 +138,9 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
     <ListOfReactions>
       <Reaction key="Reaction_0" name="cholCyActivation" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_0">
     <dcterms:created>
       <rdf:Description>
@@ -147,6 +149,7 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
@@ -159,12 +162,12 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
           <Product metabolite="Metabolite_0" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5003" name="k1" value="0.1"/>
+          <Constant key="Parameter_5003" name="k1" value="0.0001"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_80">
-              <SourceParameter reference="Parameter_5003"/>
+              <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Metabolite_3"/>
@@ -176,7 +179,9 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
       </Reaction>
       <Reaction key="Reaction_1" name="dafachronicAcid" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_1">
     <dcterms:created>
       <rdf:Description>
@@ -185,6 +190,7 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_2" stoichiometry="1"/>
@@ -195,12 +201,12 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
           <Product metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5002" name="k1" value="0.1"/>
+          <Constant key="Parameter_5002" name="k1" value="0.0001"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_80">
-              <SourceParameter reference="Parameter_5002"/>
+              <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Metabolite_2"/>
@@ -219,22 +225,30 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
           <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment]" value="1" type="Compartment" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
-          <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[PEGCCy]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[cannCy]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[PEGCCy]" value="602214085700" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[cannCy]" value="602214085700" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[cholAcCy]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[cholCy]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[cholCy]" value="602214085700" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[DACy]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[DAF-9Cy]" value="602214085700" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
-          <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Values[globalKinetics]" value="0.01" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Values[globalKinetics]" value="0.0001" type="ModelValue" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
           <ModelParameterGroup cn="CN=Root,Model=cholCyDiego,Vector=Reactions[cholCyActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Reactions[cholCyActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Reactions[cholCyActivation],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=cholCyDiego,Vector=Values[globalKinetics],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=cholCyDiego,Vector=Reactions[dafachronicAcid]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Reactions[dafachronicAcid],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Reactions[dafachronicAcid],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=cholCyDiego,Vector=Values[globalKinetics],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
@@ -251,7 +265,7 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
       <StateTemplateVariable objectReference="ModelValue_0"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 0 0 0 0 0 602214085700 1 0.01 
+      0 0 602214085700 0 602214085700 602214085700 602214085700 1 0.0001 
     </InitialState>
   </Model>
   <ListOfTasks>
@@ -276,9 +290,9 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
     <Task key="Task_15" name="Time-Course" type="timeCourse" scheduled="false" updateModel="false">
       <Problem>
         <Parameter name="AutomaticStepSize" type="bool" value="0"/>
-        <Parameter name="StepNumber" type="unsignedInteger" value="100"/>
-        <Parameter name="StepSize" type="float" value="1"/>
-        <Parameter name="Duration" type="float" value="100"/>
+        <Parameter name="StepNumber" type="unsignedInteger" value="1000"/>
+        <Parameter name="StepSize" type="float" value="10"/>
+        <Parameter name="Duration" type="float" value="10000"/>
         <Parameter name="TimeSeriesRequested" type="bool" value="1"/>
         <Parameter name="OutputStartTime" type="float" value="0"/>
         <Parameter name="Output Event" type="bool" value="0"/>
@@ -604,7 +618,7 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
       <Parameter name="log X" type="bool" value="0"/>
       <Parameter name="log Y" type="bool" value="0"/>
       <ListOfPlotItems>
-        <PlotItem name="[Rm]" type="Curve2D">
+        <PlotItem name="[PEGCCy]" type="Curve2D">
           <Parameter name="Line type" type="unsignedInteger" value="0"/>
           <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line width" type="unsignedFloat" value="1"/>
@@ -613,10 +627,10 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=cholCyDiego,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[Rm],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[PEGCCy],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
-        <PlotItem name="[Rr]" type="Curve2D">
+        <PlotItem name="[cannCy]" type="Curve2D">
           <Parameter name="Line type" type="unsignedInteger" value="0"/>
           <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line width" type="unsignedFloat" value="1"/>
@@ -625,10 +639,10 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=cholCyDiego,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[Rr],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[cannCy],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
-        <PlotItem name="[chol]" type="Curve2D">
+        <PlotItem name="[cholAcCy]" type="Curve2D">
           <Parameter name="Line type" type="unsignedInteger" value="0"/>
           <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line width" type="unsignedFloat" value="1"/>
@@ -637,10 +651,10 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=cholCyDiego,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[chol],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[cholAcCy],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
-        <PlotItem name="[L]" type="Curve2D">
+        <PlotItem name="[cholCy]" type="Curve2D">
           <Parameter name="Line type" type="unsignedInteger" value="0"/>
           <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line width" type="unsignedFloat" value="1"/>
@@ -649,10 +663,10 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=cholCyDiego,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[L],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[cholCy],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
-        <PlotItem name="[Ra]" type="Curve2D">
+        <PlotItem name="[DACy]" type="Curve2D">
           <Parameter name="Line type" type="unsignedInteger" value="0"/>
           <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line width" type="unsignedFloat" value="1"/>
@@ -661,7 +675,19 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=cholCyDiego,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[Ra],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[DACy],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="[DAF-9Cy]" type="Curve2D">
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[DAF-9Cy],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
       </ListOfPlotItems>
@@ -669,10 +695,7 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
   </ListOfPlots>
   <GUI>
     <ListOfSliders>
-      <Slider key="Slider_0" associatedEntityKey="Task_15" objectCN="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[chol],Reference=InitialConcentration" objectType="float" objectValue="0.1" minValue="0" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[Cd],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[L],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=cholCyDiego,Vector=Values[globalKinetics],Reference=InitialValue" objectType="float" objectValue="0.01" minValue="0.005" maxValue="0.02" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=cholCyDiego,Vector=Values[globalKinetics],Reference=InitialValue" objectType="float" objectValue="0.0001" minValue="0.0001" maxValue="0.02" tickNumber="1000" tickFactor="100" scaling="linear"/>
     </ListOfSliders>
   </GUI>
   <ListOfUnitDefinitions>
