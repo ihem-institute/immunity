@@ -73,8 +73,8 @@ public class PlasmaMembrane {
 		this.membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
 		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
 		this.plasmaMembraneTimeSeries=PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries();
-		if (Math.random() < 1)PlasmaMembraneCopasiStep.antPresTimeSeriesLoad(PlasmaMembrane.getInstance());
-
+		String name =  CellProperties.getInstance().getCopasiFiles().get("plasmaMembraneCopasi");
+		if (Math.random() < 1 && !name.equals("null"))PlasmaMembraneCopasiStep.antPresTimeSeriesLoad(PlasmaMembrane.getInstance());
 //		this.changeColor();
 
 		}

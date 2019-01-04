@@ -58,7 +58,8 @@ public class Cell {
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-		if (Math.random() < 0.1){
+		String name = CellProperties.getInstance().getCopasiFiles().get("cellCopasi");
+		if (Math.random() < 0.1 && !name.equals("null")){
 			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
 			CellCopasiStep.antPresTimeSeriesLoad(this);
 		}

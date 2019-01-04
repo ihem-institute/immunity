@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.24 (Build 197) (http://www.copasi.org) at 2018-12-31 14:22:27 UTC -->
+<!-- generated with COPASI 4.24 (Build 197) (http://www.copasi.org) at 2019-01-03 17:02:14 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="24" versionDevel="197" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -130,13 +130,67 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
+      <Metabolite key="Metabolite_6" name="PUFACy" simulationType="reactions" compartment="Compartment_0" addNoise="false">
+      </Metabolite>
     </ListOfMetabolites>
     <ListOfModelValues>
       <ModelValue key="ModelValue_0" name="globalKinetics" simulationType="fixed" addNoise="false">
+        <MiriamAnnotation>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#ModelValue_0">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2019-01-03T14:01:53Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+
+        </MiriamAnnotation>
+      </ModelValue>
+      <ModelValue key="ModelValue_1" name="globalLeak" simulationType="assignment" addNoise="false">
+        <MiriamAnnotation>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#ModelValue_1">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2019-01-03T11:59:32Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+
+        </MiriamAnnotation>
+        <Expression>
+          &lt;CN=Root,Model=cholCyDiego,Vector=Values[globalKinetics],Reference=InitialValue>/5
+        </Expression>
+      </ModelValue>
+      <ModelValue key="ModelValue_2" name="globalCholActivation" simulationType="assignment" addNoise="false">
+        <MiriamAnnotation>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#ModelValue_2">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2019-01-03T13:54:13Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+
+        </MiriamAnnotation>
+        <Expression>
+          &lt;CN=Root,Model=cholCyDiego,Vector=Values[globalKinetics],Reference=InitialValue>/10
+        </Expression>
       </ModelValue>
     </ListOfModelValues>
     <ListOfReactions>
-      <Reaction key="Reaction_0" name="cholCyActivation" reversible="false" fast="false" addNoise="false">
+      <Reaction key="Reaction_0" name="cholCyActivationPEGC" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
 <rdf:RDF
    xmlns:dcterms="http://purl.org/dc/terms/"
@@ -153,12 +207,10 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
-          <Substrate metabolite="Metabolite_1" stoichiometry="1"/>
           <Substrate metabolite="Metabolite_0" stoichiometry="1"/>
         </ListOfSubstrates>
         <ListOfProducts>
           <Product metabolite="Metabolite_2" stoichiometry="1"/>
-          <Product metabolite="Metabolite_1" stoichiometry="1"/>
           <Product metabolite="Metabolite_0" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
@@ -167,11 +219,10 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_80">
-              <SourceParameter reference="ModelValue_0"/>
+              <SourceParameter reference="ModelValue_2"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Metabolite_3"/>
-              <SourceParameter reference="Metabolite_1"/>
               <SourceParameter reference="Metabolite_0"/>
             </CallParameter>
           </ListOfCallParameters>
@@ -201,7 +252,7 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
           <Product metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5002" name="k1" value="0.0001"/>
+          <Constant key="Parameter_5002" name="k1" value="0.001"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment]">
           <ListOfCallParameters>
@@ -211,6 +262,208 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
             <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Metabolite_2"/>
               <SourceParameter reference="Metabolite_5"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_2" name="cholCyActivationCann" reversible="false" fast="false" addNoise="false">
+        <MiriamAnnotation>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_2">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2018-12-17T14:02:57Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_3" stoichiometry="1"/>
+          <Substrate metabolite="Metabolite_1" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_2" stoichiometry="1"/>
+          <Product metabolite="Metabolite_1" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfConstants>
+          <Constant key="Parameter_5018" name="k1" value="0.0001"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment]">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_80">
+              <SourceParameter reference="ModelValue_2"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="Metabolite_3"/>
+              <SourceParameter reference="Metabolite_1"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_3" name="CannSynthesis" reversible="false" fast="false" addNoise="false">
+        <MiriamAnnotation>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_3">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2019-01-03T11:58:55Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_6" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfProducts>
+          <Product metabolite="Metabolite_1" stoichiometry="1"/>
+          <Product metabolite="Metabolite_6" stoichiometry="1"/>
+        </ListOfProducts>
+        <ListOfConstants>
+          <Constant key="Parameter_5053" name="k1" value="0.001"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment]">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_80">
+              <SourceParameter reference="ModelValue_0"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="Metabolite_6"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_4" name="PUFALeak" reversible="false" fast="false" addNoise="false">
+        <MiriamAnnotation>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_4">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2019-01-03T12:00:54Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_6" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfConstants>
+          <Constant key="Parameter_5055" name="k1" value="0"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment]">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_80">
+              <SourceParameter reference="Parameter_5055"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="Metabolite_6"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_5" name="cannLeak" reversible="false" fast="false" addNoise="false">
+        <MiriamAnnotation>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_5">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2019-01-03T12:00:23Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_1" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfConstants>
+          <Constant key="Parameter_5056" name="k1" value="0.0002"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment]">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_80">
+              <SourceParameter reference="ModelValue_1"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="Metabolite_1"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_6" name="cholAcLeak" reversible="false" fast="false" addNoise="false">
+        <MiriamAnnotation>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_6">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2019-01-03T12:00:32Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_2" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfConstants>
+          <Constant key="Parameter_5050" name="k1" value="0.0002"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment]">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_80">
+              <SourceParameter reference="ModelValue_1"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="Metabolite_2"/>
+            </CallParameter>
+          </ListOfCallParameters>
+        </KineticLaw>
+      </Reaction>
+      <Reaction key="Reaction_7" name="DALeak" reversible="false" fast="false" addNoise="false">
+        <MiriamAnnotation>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="#Reaction_7">
+    <dcterms:created>
+      <rdf:Description>
+        <dcterms:W3CDTF>2019-01-03T12:00:46Z</dcterms:W3CDTF>
+      </rdf:Description>
+    </dcterms:created>
+  </rdf:Description>
+</rdf:RDF>
+
+        </MiriamAnnotation>
+        <ListOfSubstrates>
+          <Substrate metabolite="Metabolite_4" stoichiometry="1"/>
+        </ListOfSubstrates>
+        <ListOfConstants>
+          <Constant key="Parameter_5052" name="k1" value="0.0002"/>
+        </ListOfConstants>
+        <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment]">
+          <ListOfCallParameters>
+            <CallParameter functionParameter="FunctionParameter_80">
+              <SourceParameter reference="ModelValue_1"/>
+            </CallParameter>
+            <CallParameter functionParameter="FunctionParameter_81">
+              <SourceParameter reference="Metabolite_4"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
@@ -226,27 +479,68 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
           <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[PEGCCy]" value="602214085700" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[cannCy]" value="602214085700" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[cannCy]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[cholAcCy]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[cholCy]" value="602214085700" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[DACy]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[DAF-9Cy]" value="602214085700" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[PUFACy]" value="0" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
-          <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Values[globalKinetics]" value="0.0001" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Values[globalKinetics]" value="0.001" type="ModelValue" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Values[globalLeak]" value="0.00020000000000000001" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Values[globalCholActivation]" value="0.0001" type="ModelValue" simulationType="assignment"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
-          <ModelParameterGroup cn="CN=Root,Model=cholCyDiego,Vector=Reactions[cholCyActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Reactions[cholCyActivation],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=cholCyDiego,Vector=Reactions[cholCyActivationPEGC]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Reactions[cholCyActivationPEGC],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=cholCyDiego,Vector=Values[globalCholActivation],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=cholCyDiego,Vector=Reactions[dafachronicAcid]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Reactions[dafachronicAcid],ParameterGroup=Parameters,Parameter=k1" value="0.001" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=cholCyDiego,Vector=Values[globalKinetics],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=cholCyDiego,Vector=Reactions[dafachronicAcid]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Reactions[dafachronicAcid],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=cholCyDiego,Vector=Reactions[cholCyActivationCann]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Reactions[cholCyActivationCann],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=cholCyDiego,Vector=Values[globalCholActivation],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=cholCyDiego,Vector=Reactions[CannSynthesis]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Reactions[CannSynthesis],ParameterGroup=Parameters,Parameter=k1" value="0.001" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=cholCyDiego,Vector=Values[globalKinetics],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=cholCyDiego,Vector=Reactions[PUFALeak]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Reactions[PUFALeak],ParameterGroup=Parameters,Parameter=k1" value="0" type="ReactionParameter" simulationType="fixed"/>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=cholCyDiego,Vector=Reactions[cannLeak]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Reactions[cannLeak],ParameterGroup=Parameters,Parameter=k1" value="0.00020000000000000001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=cholCyDiego,Vector=Values[globalLeak],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=cholCyDiego,Vector=Reactions[cholAcLeak]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Reactions[cholAcLeak],ParameterGroup=Parameters,Parameter=k1" value="0.00020000000000000001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=cholCyDiego,Vector=Values[globalLeak],Reference=InitialValue>
+              </InitialExpression>
+            </ModelParameter>
+          </ModelParameterGroup>
+          <ModelParameterGroup cn="CN=Root,Model=cholCyDiego,Vector=Reactions[DALeak]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=cholCyDiego,Vector=Reactions[DALeak],ParameterGroup=Parameters,Parameter=k1" value="0.00020000000000000001" type="ReactionParameter" simulationType="assignment">
+              <InitialExpression>
+                &lt;CN=Root,Model=cholCyDiego,Vector=Values[globalLeak],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
           </ModelParameterGroup>
@@ -256,16 +550,19 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
     <StateTemplate>
       <StateTemplateVariable objectReference="Model_1"/>
       <StateTemplateVariable objectReference="Metabolite_2"/>
-      <StateTemplateVariable objectReference="Metabolite_3"/>
-      <StateTemplateVariable objectReference="Metabolite_4"/>
-      <StateTemplateVariable objectReference="Metabolite_0"/>
       <StateTemplateVariable objectReference="Metabolite_1"/>
+      <StateTemplateVariable objectReference="Metabolite_4"/>
+      <StateTemplateVariable objectReference="Metabolite_6"/>
+      <StateTemplateVariable objectReference="Metabolite_3"/>
+      <StateTemplateVariable objectReference="ModelValue_1"/>
+      <StateTemplateVariable objectReference="ModelValue_2"/>
+      <StateTemplateVariable objectReference="Metabolite_0"/>
       <StateTemplateVariable objectReference="Metabolite_5"/>
       <StateTemplateVariable objectReference="Compartment_0"/>
       <StateTemplateVariable objectReference="ModelValue_0"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 0 602214085700 0 602214085700 602214085700 602214085700 1 0.0001 
+      0 0 0 0 0 602214085700 0.00020000000000000001 0.0001 602214085700 602214085700 1 0.001 
     </InitialState>
   </Model>
   <ListOfTasks>
@@ -690,12 +987,48 @@ it requires movilización of chol to active chol (requires PEGC and and canabino
             <ChannelSpec cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[DAF-9Cy],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
+        <PlotItem name="[PUFACy]" type="Curve2D">
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Vector=Compartments[compartment],Vector=Metabolites[PUFACy],Reference=Concentration"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="Values[globalLeak]" type="Curve2D">
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Vector=Values[globalLeak],Reference=Value"/>
+          </ListOfChannels>
+        </PlotItem>
+        <PlotItem name="Values[globalCholActivation]" type="Curve2D">
+          <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Line width" type="unsignedFloat" value="1"/>
+          <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
+          <ListOfChannels>
+            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=cholCyDiego,Vector=Values[globalCholActivation],Reference=Value"/>
+          </ListOfChannels>
+        </PlotItem>
       </ListOfPlotItems>
     </PlotSpecification>
   </ListOfPlots>
   <GUI>
     <ListOfSliders>
-      <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=cholCyDiego,Vector=Values[globalKinetics],Reference=InitialValue" objectType="float" objectValue="0.0001" minValue="0.0001" maxValue="0.02" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_0" associatedEntityKey="Task_15" objectCN="CN=Root,Model=cholCyDiego,Vector=Values[globalKinetics],Reference=InitialValue" objectType="float" objectValue="0.00106947" minValue="1e-05" maxValue="0.02" tickNumber="1000" tickFactor="100" scaling="linear"/>
     </ListOfSliders>
   </GUI>
   <ListOfUnitDefinitions>

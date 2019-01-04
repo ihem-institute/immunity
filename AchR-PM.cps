@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.20 (Build 158) (http://www.copasi.org) at 2018-11-30 21:44:43 UTC -->
+<!-- generated with COPASI 4.24 (Build 197) (http://www.copasi.org) at 2019-01-04 18:08:57 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
-<COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="20" versionDevel="158" copasiSourcesModified="0">
+<COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="24" versionDevel="197" copasiSourcesModified="0">
   <ListOfFunctions>
     <Function key="Function_13" name="Mass action (irreversible)" type="MassAction" reversible="false">
       <MiriamAnnotation>
@@ -23,8 +23,8 @@ Reaction scheme where the products are created from the reactants and the change
         k1*PRODUCT&lt;substrate_i>
       </Expression>
       <ListOfParameterDescriptions>
-        <ParameterDescription key="FunctionParameter_81" name="k1" order="0" role="constant"/>
-        <ParameterDescription key="FunctionParameter_79" name="substrate" order="1" role="substrate"/>
+        <ParameterDescription key="FunctionParameter_80" name="k1" order="0" role="constant"/>
+        <ParameterDescription key="FunctionParameter_81" name="substrate" order="1" role="substrate"/>
       </ListOfParameterDescriptions>
     </Function>
     <Function key="Function_14" name="Mass action (reversible)" type="MassAction" reversible="true">
@@ -47,14 +47,14 @@ Reaction scheme where the products are created from the reactants and the change
         k1*PRODUCT&lt;substrate_i>-k2*PRODUCT&lt;product_j>
       </Expression>
       <ListOfParameterDescriptions>
-        <ParameterDescription key="FunctionParameter_62" name="k1" order="0" role="constant"/>
-        <ParameterDescription key="FunctionParameter_39" name="substrate" order="1" role="substrate"/>
-        <ParameterDescription key="FunctionParameter_67" name="k2" order="2" role="constant"/>
-        <ParameterDescription key="FunctionParameter_71" name="product" order="3" role="product"/>
+        <ParameterDescription key="FunctionParameter_69" name="k1" order="0" role="constant"/>
+        <ParameterDescription key="FunctionParameter_68" name="substrate" order="1" role="substrate"/>
+        <ParameterDescription key="FunctionParameter_78" name="k2" order="2" role="constant"/>
+        <ParameterDescription key="FunctionParameter_79" name="product" order="3" role="product"/>
       </ListOfParameterDescriptions>
     </Function>
   </ListOfFunctions>
-  <Model key="Model_1" name="AchR-PM" simulationType="time" timeUnit="s" volumeUnit="nl" areaUnit="m²" lengthUnit="m" quantityUnit="pmol" type="deterministic" avogadroConstant="6.0221408570000002e+023">
+  <Model key="Model_1" name="AchR-PM" simulationType="time" timeUnit="s" volumeUnit="nl" areaUnit="m²" lengthUnit="m" quantityUnit="pmol" type="deterministic" avogadroConstant="6.0221408570000002e+23">
     <MiriamAnnotation>
 <rdf:RDF
    xmlns:dcterms="http://purl.org/dc/terms/"
@@ -73,13 +73,13 @@ Reaction scheme where the products are created from the reactants and the change
       model of acetyl choline receptor
     </Comment>
     <ListOfCompartments>
-      <Compartment key="Compartment_0" name="compartment" simulationType="fixed" dimensionality="3">
+      <Compartment key="Compartment_0" name="compartment" simulationType="fixed" dimensionality="3" addNoise="false">
       </Compartment>
     </ListOfCompartments>
     <ListOfMetabolites>
-      <Metabolite key="Metabolite_0" name="Rm" simulationType="reactions" compartment="Compartment_0">
+      <Metabolite key="Metabolite_0" name="RmPm" simulationType="reactions" compartment="Compartment_0" addNoise="false">
       </Metabolite>
-      <Metabolite key="Metabolite_1" name="Rr" simulationType="reactions" compartment="Compartment_0">
+      <Metabolite key="Metabolite_1" name="RrPm" simulationType="reactions" compartment="Compartment_0" addNoise="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_1">
@@ -92,9 +92,9 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_2" name="chol" simulationType="reactions" compartment="Compartment_0">
+      <Metabolite key="Metabolite_2" name="cholPm" simulationType="reactions" compartment="Compartment_0" addNoise="false">
       </Metabolite>
-      <Metabolite key="Metabolite_3" name="L" simulationType="fixed" compartment="Compartment_0">
+      <Metabolite key="Metabolite_3" name="LPm" simulationType="fixed" compartment="Compartment_0" addNoise="false">
         <MiriamAnnotation>
 <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_3">
@@ -107,21 +107,21 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
       </Metabolite>
-      <Metabolite key="Metabolite_4" name="Ra" simulationType="reactions" compartment="Compartment_0">
+      <Metabolite key="Metabolite_4" name="RaPm" simulationType="reactions" compartment="Compartment_0" addNoise="false">
       </Metabolite>
-      <Metabolite key="Metabolite_5" name="species" simulationType="reactions" compartment="Compartment_0">
+      <Metabolite key="Metabolite_5" name="species" simulationType="reactions" compartment="Compartment_0" addNoise="false">
       </Metabolite>
-      <Metabolite key="Metabolite_6" name="Cd" simulationType="reactions" compartment="Compartment_0">
+      <Metabolite key="Metabolite_6" name="CdPm" simulationType="reactions" compartment="Compartment_0" addNoise="false">
       </Metabolite>
-      <Metabolite key="Metabolite_7" name="Cd-chol" simulationType="reactions" compartment="Compartment_0">
+      <Metabolite key="Metabolite_7" name="Cd-cholPm" simulationType="reactions" compartment="Compartment_0" addNoise="false">
       </Metabolite>
     </ListOfMetabolites>
     <ListOfModelValues>
-      <ModelValue key="ModelValue_0" name="globalKinetics" simulationType="fixed">
+      <ModelValue key="ModelValue_0" name="globalKinetics" simulationType="fixed" addNoise="false">
       </ModelValue>
     </ListOfModelValues>
     <ListOfReactions>
-      <Reaction key="Reaction_0" name="RmtoRaft" reversible="false" fast="false">
+      <Reaction key="Reaction_0" name="RmtoRaft" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
 <rdf:RDF
    xmlns:dcterms="http://purl.org/dc/terms/"
@@ -145,23 +145,25 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_2" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4953" name="k1" value="1"/>
+          <Constant key="Parameter_5003" name="k1" value="1"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AchR-PM,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="Parameter_4953"/>
+            <CallParameter functionParameter="FunctionParameter_80">
+              <SourceParameter reference="Parameter_5003"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_79">
+            <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Metabolite_0"/>
               <SourceParameter reference="Metabolite_2"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_1" name="RmfromRaft" reversible="false" fast="false">
+      <Reaction key="Reaction_1" name="RmfromRaft" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_1">
     <dcterms:created>
       <rdf:Description>
@@ -170,6 +172,7 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_1" stoichiometry="1"/>
@@ -178,20 +181,20 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_0" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4952" name="k1" value="0.01"/>
+          <Constant key="Parameter_5002" name="k1" value="0.01"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AchR-PM,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_81">
+            <CallParameter functionParameter="FunctionParameter_80">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_79">
+            <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Metabolite_1"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_2" name="RmActivation" reversible="false" fast="false">
+      <Reaction key="Reaction_2" name="RmActivation" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
 <rdf:RDF
    xmlns:dcterms="http://purl.org/dc/terms/"
@@ -214,23 +217,25 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_4" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4951" name="k1" value="1"/>
+          <Constant key="Parameter_5001" name="k1" value="1"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AchR-PM,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="Parameter_4951"/>
+            <CallParameter functionParameter="FunctionParameter_80">
+              <SourceParameter reference="Parameter_5001"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_79">
+            <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Metabolite_0"/>
               <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_3" name="RrActivation" reversible="false" fast="false">
+      <Reaction key="Reaction_3" name="RrActivation" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_3">
     <dcterms:created>
       <rdf:Description>
@@ -239,6 +244,7 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_1" stoichiometry="1"/>
@@ -248,23 +254,25 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_4" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4950" name="k1" value="1"/>
+          <Constant key="Parameter_5000" name="k1" value="1"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AchR-PM,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_81">
-              <SourceParameter reference="Parameter_4950"/>
+            <CallParameter functionParameter="FunctionParameter_80">
+              <SourceParameter reference="Parameter_5000"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_79">
+            <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Metabolite_1"/>
               <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
           </ListOfCallParameters>
         </KineticLaw>
       </Reaction>
-      <Reaction key="Reaction_4" name="CdChol" reversible="true" fast="false">
+      <Reaction key="Reaction_4" name="CdChol" reversible="true" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_4">
     <dcterms:created>
       <rdf:Description>
@@ -273,6 +281,7 @@ Reaction scheme where the products are created from the reactants and the change
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_6" stoichiometry="1"/>
@@ -282,22 +291,22 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_7" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_4949" name="k1" value="0.01"/>
-          <Constant key="Parameter_4948" name="k2" value="0.01"/>
+          <Constant key="Parameter_4999" name="k1" value="0.01"/>
+          <Constant key="Parameter_4998" name="k2" value="0.01"/>
         </ListOfConstants>
         <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=AchR-PM,Vector=Compartments[compartment]">
           <ListOfCallParameters>
-            <CallParameter functionParameter="FunctionParameter_62">
+            <CallParameter functionParameter="FunctionParameter_69">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_39">
+            <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_6"/>
               <SourceParameter reference="Metabolite_2"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_67">
+            <CallParameter functionParameter="FunctionParameter_78">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
-            <CallParameter functionParameter="FunctionParameter_71">
+            <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_7"/>
             </CallParameter>
           </ListOfCallParameters>
@@ -313,14 +322,14 @@ Reaction scheme where the products are created from the reactants and the change
           <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment]" value="1" type="Compartment" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
-          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Rm]" value="60221408570" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Rr]" value="60221408570" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[chol]" value="60221408570" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[L]" value="0" type="Species" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Ra]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[RmPm]" value="60221408570" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[RrPm]" value="60221408570" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[cholPm]" value="60221408570" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[LPm]" value="0" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[RaPm]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[species]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Cd]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Cd-chol]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[CdPm]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Cd-cholPm]" value="0" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
           <ModelParameter cn="CN=Root,Model=AchR-PM,Vector=Values[globalKinetics]" value="0.01" type="ModelValue" simulationType="fixed"/>
@@ -382,7 +391,7 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="StabilityAnalysisRequested" type="bool" value="1"/>
       </Problem>
       <Method name="Enhanced Newton" type="EnhancedNewton">
-        <Parameter name="Resolution" type="unsignedFloat" value="1.0000000000000001e-009"/>
+        <Parameter name="Resolution" type="unsignedFloat" value="1.0000000000000001e-09"/>
         <Parameter name="Derivation Factor" type="unsignedFloat" value="0.001"/>
         <Parameter name="Use Newton" type="bool" value="1"/>
         <Parameter name="Use Integration" type="bool" value="1"/>
@@ -406,8 +415,8 @@ Reaction scheme where the products are created from the reactants and the change
       </Problem>
       <Method name="Deterministic (LSODA)" type="Deterministic(LSODA)">
         <Parameter name="Integrate Reduced Model" type="bool" value="0"/>
-        <Parameter name="Relative Tolerance" type="unsignedFloat" value="9.9999999999999995e-007"/>
-        <Parameter name="Absolute Tolerance" type="unsignedFloat" value="9.9999999999999998e-013"/>
+        <Parameter name="Relative Tolerance" type="unsignedFloat" value="9.9999999999999995e-07"/>
+        <Parameter name="Absolute Tolerance" type="unsignedFloat" value="9.9999999999999998e-13"/>
         <Parameter name="Max Internal Steps" type="unsignedInteger" value="10000"/>
         <Parameter name="Max Internal Step Size" type="unsignedFloat" value="0"/>
       </Method>
@@ -446,6 +455,7 @@ Reaction scheme where the products are created from the reactants and the change
         </ParameterGroup>
       </Problem>
       <Method name="Random Search" type="RandomSearch">
+        <Parameter name="Log Verbosity" type="unsignedInteger" value="0"/>
         <Parameter name="Number of Iterations" type="unsignedInteger" value="100000"/>
         <Parameter name="Random Number Generator" type="unsignedInteger" value="1"/>
         <Parameter name="Seed" type="unsignedInteger" value="0"/>
@@ -467,15 +477,17 @@ Reaction scheme where the products are created from the reactants and the change
         <ParameterGroup name="Experiment Set">
         </ParameterGroup>
         <ParameterGroup name="Validation Set">
-          <Parameter name="Threshold" type="unsignedInteger" value="5"/>
           <Parameter name="Weight" type="unsignedFloat" value="1"/>
+          <Parameter name="Threshold" type="unsignedInteger" value="5"/>
         </ParameterGroup>
       </Problem>
       <Method name="Evolutionary Programming" type="EvolutionaryProgram">
+        <Parameter name="Log Verbosity" type="unsignedInteger" value="0"/>
         <Parameter name="Number of Generations" type="unsignedInteger" value="200"/>
         <Parameter name="Population Size" type="unsignedInteger" value="20"/>
         <Parameter name="Random Number Generator" type="unsignedInteger" value="1"/>
         <Parameter name="Seed" type="unsignedInteger" value="0"/>
+        <Parameter name="Stop after # Stalled Generations" type="unsignedInteger" value="0"/>
       </Method>
     </Task>
     <Task key="Task_20" name="Metabolic Control Analysis" type="metabolicControlAnalysis" scheduled="false" updateModel="false">
@@ -484,7 +496,7 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="Steady-State" type="key" value="Task_14"/>
       </Problem>
       <Method name="MCA Method (Reder)" type="MCAMethod(Reder)">
-        <Parameter name="Modulation Factor" type="unsignedFloat" value="1.0000000000000001e-009"/>
+        <Parameter name="Modulation Factor" type="unsignedFloat" value="1.0000000000000001e-09"/>
         <Parameter name="Use Reder" type="bool" value="1"/>
         <Parameter name="Use Smallbone" type="bool" value="1"/>
       </Method>
@@ -499,8 +511,8 @@ Reaction scheme where the products are created from the reactants and the change
       <Method name="Wolf Method" type="WolfMethod">
         <Parameter name="Orthonormalization Interval" type="unsignedFloat" value="1"/>
         <Parameter name="Overall time" type="unsignedFloat" value="1000"/>
-        <Parameter name="Relative Tolerance" type="unsignedFloat" value="9.9999999999999995e-007"/>
-        <Parameter name="Absolute Tolerance" type="unsignedFloat" value="9.9999999999999998e-013"/>
+        <Parameter name="Relative Tolerance" type="unsignedFloat" value="9.9999999999999995e-07"/>
+        <Parameter name="Absolute Tolerance" type="unsignedFloat" value="9.9999999999999998e-13"/>
         <Parameter name="Max Internal Steps" type="unsignedInteger" value="10000"/>
       </Method>
     </Task>
@@ -514,7 +526,7 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="OutputStartTime" type="float" value="0"/>
       </Problem>
       <Method name="ILDM (LSODA,Deuflhard)" type="TimeScaleSeparation(ILDM,Deuflhard)">
-        <Parameter name="Deuflhard Tolerance" type="unsignedFloat" value="9.9999999999999995e-007"/>
+        <Parameter name="Deuflhard Tolerance" type="unsignedFloat" value="9.9999999999999995e-07"/>
       </Method>
     </Task>
     <Task key="Task_23" name="Sensitivities" type="sensitivities" scheduled="false" updateModel="false">
@@ -538,7 +550,7 @@ Reaction scheme where the products are created from the reactants and the change
       </Problem>
       <Method name="Sensitivities Method" type="SensitivitiesMethod">
         <Parameter name="Delta factor" type="unsignedFloat" value="0.001"/>
-        <Parameter name="Delta minimum" type="unsignedFloat" value="9.9999999999999998e-013"/>
+        <Parameter name="Delta minimum" type="unsignedFloat" value="9.9999999999999998e-13"/>
       </Method>
     </Task>
     <Task key="Task_24" name="Moieties" type="moieties" scheduled="false" updateModel="false">
@@ -564,10 +576,10 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="PositiveDirection" type="bool" value="1"/>
         <Parameter name="NumOutCrossingsLimit" type="unsignedInteger" value="0"/>
         <Parameter name="LimitUntilConvergence" type="bool" value="0"/>
-        <Parameter name="ConvergenceTolerance" type="float" value="9.9999999999999995e-007"/>
+        <Parameter name="ConvergenceTolerance" type="float" value="9.9999999999999995e-07"/>
         <Parameter name="Threshold" type="float" value="0"/>
         <Parameter name="DelayOutputUntilConvergence" type="bool" value="0"/>
-        <Parameter name="OutputConvergenceTolerance" type="float" value="9.9999999999999995e-007"/>
+        <Parameter name="OutputConvergenceTolerance" type="float" value="9.9999999999999995e-07"/>
         <ParameterText name="TriggerExpression" type="expression">
           
         </ParameterText>
@@ -575,8 +587,8 @@ Reaction scheme where the products are created from the reactants and the change
       </Problem>
       <Method name="Deterministic (LSODA)" type="Deterministic(LSODA)">
         <Parameter name="Integrate Reduced Model" type="bool" value="0"/>
-        <Parameter name="Relative Tolerance" type="unsignedFloat" value="9.9999999999999995e-007"/>
-        <Parameter name="Absolute Tolerance" type="unsignedFloat" value="9.9999999999999998e-013"/>
+        <Parameter name="Relative Tolerance" type="unsignedFloat" value="9.9999999999999995e-07"/>
+        <Parameter name="Absolute Tolerance" type="unsignedFloat" value="9.9999999999999998e-13"/>
         <Parameter name="Max Internal Steps" type="unsignedInteger" value="10000"/>
         <Parameter name="Max Internal Step Size" type="unsignedFloat" value="0"/>
       </Method>
@@ -717,68 +729,68 @@ Reaction scheme where the products are created from the reactants and the change
     </Report>
   </ListOfReports>
   <ListOfPlots>
-    <PlotSpecification name="Concentrations, Volumes, and Global Quantity Values" type="Plot2D" active="1">
+    <PlotSpecification name="Concentrations, Volumes, and Global Quantity Values" type="Plot2D" active="1" taskTypes="">
       <Parameter name="log X" type="bool" value="0"/>
       <Parameter name="log Y" type="bool" value="0"/>
       <ListOfPlotItems>
         <PlotItem name="[Rm]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=AchR-PM,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Rm],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[RmPm],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[Rr]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=AchR-PM,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Rr],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[RrPm],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[chol]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=AchR-PM,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[chol],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[cholPm],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[L]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=AchR-PM,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[L],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[LPm],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[Ra]" type="Curve2D">
-          <Parameter name="Color" type="string" value="auto"/>
-          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line type" type="unsignedInteger" value="0"/>
+          <Parameter name="Line subtype" type="unsignedInteger" value="0"/>
           <Parameter name="Line width" type="unsignedFloat" value="1"/>
-          <Parameter name="Recording Activity" type="string" value="during"/>
           <Parameter name="Symbol subtype" type="unsignedInteger" value="0"/>
+          <Parameter name="Color" type="string" value="auto"/>
+          <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
             <ChannelSpec cn="CN=Root,Model=AchR-PM,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Ra],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[RaPm],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
       </ListOfPlotItems>
@@ -786,9 +798,9 @@ Reaction scheme where the products are created from the reactants and the change
   </ListOfPlots>
   <GUI>
     <ListOfSliders>
-      <Slider key="Slider_0" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[chol],Reference=InitialConcentration" objectType="float" objectValue="0.1" minValue="0" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[Cd],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[L],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_0" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[cholPm],Reference=InitialConcentration" objectType="float" objectValue="0.1" minValue="0" maxValue="10" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[CdPm],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AchR-PM,Vector=Compartments[compartment],Vector=Metabolites[LPm],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
       <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AchR-PM,Vector=Values[globalKinetics],Reference=InitialValue" objectType="float" objectValue="0.01" minValue="0.005" maxValue="0.02" tickNumber="1000" tickFactor="100" scaling="linear"/>
     </ListOfSliders>
   </GUI>
@@ -801,6 +813,26 @@ Reaction scheme where the products are created from the reactants and the change
     <UnitDefinition key="Unit_2" name="second" symbol="s">
       <Expression>
         s
+      </Expression>
+    </UnitDefinition>
+    <UnitDefinition key="Unit_6" name="Avogadro" symbol="Avogadro">
+      <Expression>
+        Avogadro
+      </Expression>
+    </UnitDefinition>
+    <UnitDefinition key="Unit_8" name="item" symbol="#">
+      <Expression>
+        #
+      </Expression>
+    </UnitDefinition>
+    <UnitDefinition key="Unit_17" name="liter" symbol="l">
+      <Expression>
+        0.001*m^3
+      </Expression>
+    </UnitDefinition>
+    <UnitDefinition key="Unit_20" name="mole" symbol="mol">
+      <Expression>
+        Avogadro*#
       </Expression>
     </UnitDefinition>
   </ListOfUnitDefinitions>

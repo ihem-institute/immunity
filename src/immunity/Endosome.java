@@ -189,7 +189,8 @@ public class Endosome {
 //		if (tick%100 ==0) 
 		if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
 		// rabConversionN();
-		if (Math.random() < 1)EndosomeCopasiStep.antPresTimeSeriesLoad(this);
+		String name =  CellProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
+		if (Math.random() < 1 && !name.equals("null"))EndosomeCopasiStep.antPresTimeSeriesLoad(this);
 		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);
 		
 

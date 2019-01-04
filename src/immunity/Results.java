@@ -148,7 +148,7 @@ public class Results {
 	private void writeToCsv(TreeMap<String, Double> orderContDist) throws IOException {
 		String line = "";
 		for (String key : orderContDist.keySet()) {
-            line = line+ Math.round(orderContDist.get(key)*10000d)/10000d + ",";
+            line = line+ Math.round(orderContDist.get(key)*100000d)/100000d + ",";
 		}
 		line = line + "\n";
 		Writer output;
