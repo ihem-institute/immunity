@@ -83,7 +83,7 @@ public class PlasmaMembrane {
 		double c1 = 0d;
 		{
 		
-		c1 = PlasmaMembrane.getInstance().getMembraneRecycle().get("L1");
+		c1 = PlasmaMembrane.getInstance().getMembraneRecycle().get("chol");
 		c1 = c1/this.plasmaMembraneArea;
 		this.pmcolor = (int) (c1*255);
 		}
