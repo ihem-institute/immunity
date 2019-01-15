@@ -53,7 +53,7 @@ public class Results {
 	static HashMap<String, Double> totalRabs = new HashMap<String, Double>();	
 	static HashMap<String, Double> totalVolumeRabs = new HashMap<String, Double>();
 	static HashMap<String, Double> initialTotalRabs = new HashMap<String, Double>();
-	public HashMap<String, Double> singleEndosomeContent = new HashMap<String, Double>();
+	public TreeMap<String, Double> singleEndosomeContent = new TreeMap<String, Double>();
 	
 	
 	static Results	instance = new Results(space, grid, totalRabs, initialTotalRabs);
@@ -199,13 +199,13 @@ public class Results {
 		for (String sol : solubleRecycle.keySet()) {
 //			System.out.println(" soluble "+ sol);
 			double value = solubleRecycle.get(sol);
-			contentDist.put("Pm"+sol, value);
+			contentDist.put(sol, value);
 			System.out.println("SOLUBLE  PM"+ sol + value );
 		}
 		for (String mem : membraneRecycle.keySet()) {
 			//System.out.println(" soluble "+ sol + " Rab " +rab);
 			double value = membraneRecycle.get(mem);
-			contentDist.put("Pm"+mem , value);
+			contentDist.put(mem , value);
 			System.out.println("MEMBRANE PM  "+ mem + value);
 		}			
 		for (String sol : solubleCell.keySet()) {
@@ -313,10 +313,10 @@ public class Results {
 			if (endosome.getMembraneContent().containsKey(mem)){
 				singleEndosomeContent.put(mem, endosome.getMembraneContent().get(mem));
 			}
-		TreeMap<String, Double> orderSingleEndosome = new TreeMap<String, Double>(singleEndosomeContent);
+//		TreeMap<String, Double> orderSingleEndosome = new TreeMap<String, Double>(singleEndosomeContent);
 		String line = "";
-		for (String key : orderSingleEndosome.keySet()) {
-            line = line+ Math.round(orderSingleEndosome.get(key)*100d)/100d + ",";
+		for (String key : singleEndosomeContent.keySet()) {
+            line = line+ Math.round(singleEndosomeContent.get(key)*100d)/100d + ",";
 		}
 		line = line + "\n";
 		Writer output;
@@ -333,10 +333,10 @@ public class Results {
 	//(soluble or membrane) with all Rabs and sets the initial values to zero
 	public TreeMap<String, Double> content() {
 		for (String sol : solubleMet) {
-			contentDist.put("Pm"+sol, 0d);
+			contentDist.put(sol, 0d);
 		} 
 		for (String mem : membraneMet) {
-			contentDist.put("Pm"+mem, 0d);
+			contentDist.put(mem, 0d);
 		}
 		for (String sol : Cell.getInstance().getSolubleCell().keySet()) {
 			contentDist.put("Cy"+sol, 0d);
@@ -351,7 +351,7 @@ public class Results {
 		}
 		return contentDist;
 	}
-	public HashMap<String, Double> endosomeContent() {
+	public TreeMap<String, Double> endosomeContent() {
 		singleEndosomeContent.put("area", 0d);
 		singleEndosomeContent.put("volume", 0d);
 		

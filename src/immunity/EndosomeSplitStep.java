@@ -72,8 +72,9 @@ public class EndosomeSplitStep {
 		// minimum cylinder
 		if (CellProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi"))
 		{ // Golgi domain
-			if ( Math.random()<0.9){
+			if ( Math.random()<0.5){
 //		SET TO 0.9. TO BE ADJUSTED.  IF SMALLER, THE CISTERNS FRACTIONATE IF LARGER, LARGE CISTERNS
+//				0.5 works great when MT direction of tubules is set to the nucleus
 				return;
 			} 
 			else

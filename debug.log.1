@@ -1,1363 +1,4 @@
-FATAL [Thread-7] 2018-12-05 18:09:44,566 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-05 18:11:25,212 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-05 18:13:25,596 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-05 18:15:23,772 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-05 18:17:12,101 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-05 18:21:42,207 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-05 18:24:30,027 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-05 18:26:19,007 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-06 11:48:01,405 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-06 11:51:28,308 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-06 12:01:47,721 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-06 12:04:59,604 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-06 12:07:57,465 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-06 13:01:20,563 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-06 13:05:24,110 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-ERROR [AWT-EventQueue-0] 2018-12-07 10:57:05,414 repast.simphony.ui.RSApplication - Error while initializing simulation
-java.lang.StringIndexOutOfBoundsException: String index out of range: 2
-	at java.lang.String.substring(Unknown Source)
-	at immunity.FreezeDryEndosomes.loadFromCsv(FreezeDryEndosomes.java:142)
-	at immunity.FreezeDryEndosomes.getInstance(FreezeDryEndosomes.java:44)
-	at immunity.CellProperties.loadFromCsv(CellProperties.java:242)
-	at immunity.CellProperties.getInstance(CellProperties.java:28)
-	at immunity.CellBuilder.build(CellBuilder.java:83)
-	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
-	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
-	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
-	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
-	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
-	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
-	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
-	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
-	at repast.simphony.ui.RSApplication.initSim(RSApplication.java:157)
-	at repast.simphony.ui.action.InitRun.actionPerformed(InitRun.java:17)
-	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
-	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
-	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
-	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
-	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
-	at java.awt.AWTEventMulticaster.mouseReleased(Unknown Source)
-	at java.awt.Component.processMouseEvent(Unknown Source)
-	at javax.swing.JComponent.processMouseEvent(Unknown Source)
-	at java.awt.Component.processEvent(Unknown Source)
-	at java.awt.Container.processEvent(Unknown Source)
-	at java.awt.Component.dispatchEventImpl(Unknown Source)
-	at java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.awt.Component.dispatchEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
-	at java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.awt.Window.dispatchEventImpl(Unknown Source)
-	at java.awt.Component.dispatchEvent(Unknown Source)
-	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
-	at java.awt.EventQueue.access$500(Unknown Source)
-	at java.awt.EventQueue$3.run(Unknown Source)
-	at java.awt.EventQueue$3.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.awt.EventQueue$4.run(Unknown Source)
-	at java.awt.EventQueue$4.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.awt.EventQueue.dispatchEvent(Unknown Source)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.awt.EventDispatchThread.run(Unknown Source)
-FATAL [Thread-7] 2018-12-07 11:04:44,838 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-07 11:07:53,086 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-07 11:11:41,933 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-07 11:14:03,623 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-07 11:18:10,814 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-07 11:32:43,723 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-07 11:34:56,444 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-ERROR [AWT-EventQueue-0] 2018-12-13 15:26:59,429 repast.simphony.ui.RSApplication - Error while initializing simulation
-java.lang.ArrayIndexOutOfBoundsException: 1
-	at immunity.CellProperties.loadFromCsv(CellProperties.java:195)
-	at immunity.CellProperties.getInstance(CellProperties.java:28)
-	at immunity.CellBuilder.build(CellBuilder.java:83)
-	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
-	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
-	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
-	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
-	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
-	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
-	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
-	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
-	at repast.simphony.ui.RSApplication.initSim(RSApplication.java:157)
-	at repast.simphony.ui.action.InitRun.actionPerformed(InitRun.java:17)
-	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
-	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
-	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
-	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
-	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
-	at java.awt.AWTEventMulticaster.mouseReleased(Unknown Source)
-	at java.awt.Component.processMouseEvent(Unknown Source)
-	at javax.swing.JComponent.processMouseEvent(Unknown Source)
-	at java.awt.Component.processEvent(Unknown Source)
-	at java.awt.Container.processEvent(Unknown Source)
-	at java.awt.Component.dispatchEventImpl(Unknown Source)
-	at java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.awt.Component.dispatchEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
-	at java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.awt.Window.dispatchEventImpl(Unknown Source)
-	at java.awt.Component.dispatchEvent(Unknown Source)
-	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
-	at java.awt.EventQueue.access$500(Unknown Source)
-	at java.awt.EventQueue$3.run(Unknown Source)
-	at java.awt.EventQueue$3.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.awt.EventQueue$4.run(Unknown Source)
-	at java.awt.EventQueue$4.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.awt.EventQueue.dispatchEvent(Unknown Source)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.awt.EventDispatchThread.run(Unknown Source)
-FATAL [Thread-7] 2018-12-13 15:29:36,104 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (1.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.PlasmaMembrane$$FastClassByCGLIB$$4ec27737.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.NullPointerException
-	at immunity.PlasmaMembrane.changeColor(PlasmaMembrane.java:78)
-	at immunity.PlasmaMembrane.step(PlasmaMembrane.java:65)
-	... 10 more
-FATAL [Thread-7] 2018-12-13 15:32:13,883 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (1.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.PlasmaMembrane$$FastClassByCGLIB$$4ec27737.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.NullPointerException
-	at immunity.PlasmaMembrane.changeColor(PlasmaMembrane.java:78)
-	at immunity.PlasmaMembrane.step(PlasmaMembrane.java:65)
-	... 10 more
-FATAL [Thread-7] 2018-12-18 13:00:05,177 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (1.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.PlasmaMembrane$$FastClassByCGLIB$$4ec27737.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range: -1
-	at java.lang.String.substring(Unknown Source)
-	at immunity.PlasmaMembraneReceptorStep.callReceptorDynamics(PlasmaMembraneReceptorStep.java:83)
-	at immunity.PlasmaMembraneReceptorStep.antPresTimeSeriesLoad(PlasmaMembraneReceptorStep.java:20)
-	at immunity.PlasmaMembrane.step(PlasmaMembrane.java:69)
-	... 10 more
-FATAL [Thread-7] 2018-12-18 13:21:53,247 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (1.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.PlasmaMembrane$$FastClassByCGLIB$$4ec27737.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range: -1
-	at java.lang.String.substring(Unknown Source)
-	at immunity.PlasmaMembraneReceptorStep.callReceptorDynamics(PlasmaMembraneReceptorStep.java:83)
-	at immunity.PlasmaMembraneReceptorStep.antPresTimeSeriesLoad(PlasmaMembraneReceptorStep.java:20)
-	at immunity.PlasmaMembrane.step(PlasmaMembrane.java:69)
-	... 10 more
-FATAL [Thread-7] 2018-12-18 13:23:19,929 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (1.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.PlasmaMembrane$$FastClassByCGLIB$$4ec27737.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range: -1
-	at java.lang.String.substring(Unknown Source)
-	at immunity.PlasmaMembraneReceptorStep.callReceptorDynamics(PlasmaMembraneReceptorStep.java:84)
-	at immunity.PlasmaMembraneReceptorStep.antPresTimeSeriesLoad(PlasmaMembraneReceptorStep.java:20)
-	at immunity.PlasmaMembrane.step(PlasmaMembrane.java:69)
-	... 10 more
-FATAL [Thread-7] 2018-12-18 16:33:34,576 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (1.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Cell$$FastClassByCGLIB$$3f8a70e4.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.NullPointerException
-	at immunity.CellCopasiStep.timeSeriesLoadintoCell(CellCopasiStep.java:51)
-	at immunity.CellCopasiStep.antPresTimeSeriesLoad(CellCopasiStep.java:21)
-	at immunity.Cell.step(Cell.java:51)
-	... 10 more
-FATAL [Thread-7] 2018-12-18 16:42:02,729 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (1.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.PlasmaMembrane$$FastClassByCGLIB$$4ec27737.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.NullPointerException
-	at immunity.PlasmaMembrane.changeColor(PlasmaMembrane.java:78)
-	at immunity.PlasmaMembrane.step(PlasmaMembrane.java:65)
-	... 10 more
-FATAL [Thread-7] 2018-12-18 16:44:05,589 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (1.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.PlasmaMembrane$$FastClassByCGLIB$$4ec27737.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.NullPointerException
-	at immunity.PlasmaMembrane.changeColor(PlasmaMembrane.java:78)
-	at immunity.PlasmaMembrane.step(PlasmaMembrane.java:65)
-	... 10 more
-FATAL [Thread-7] 2018-12-18 16:45:34,248 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (1.0)
-java.lang.IllegalArgumentException: Color parameter outside of expected range: Green Blue
-	at java.awt.Color.testColorValueRange(Unknown Source)
-	at java.awt.Color.<init>(Unknown Source)
-	at java.awt.Color.<init>(Unknown Source)
-	at immunity.PlasmaMembraneStyle.getColor(PlasmaMembraneStyle.java:39)
-	at immunity.PlasmaMembraneStyle.getColor(PlasmaMembraneStyle.java:1)
-	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.applyStyle(StyledDisplayLayerOGL2D.java:57)
-	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.updateSpatial(StyledDisplayLayerOGL2D.java:213)
-	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.updateExistingSpatials(StyledDisplayLayerOGL2D.java:176)
-	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.update(StyledDisplayLayerOGL2D.java:249)
-	at repast.simphony.visualizationOGL2D.DisplayOGL2D.update(DisplayOGL2D.java:404)
-	at repast.simphony.visualization.engine.DisplayComponentControllerAction$DisplayUpdater.execute(DisplayComponentControllerAction.java:44)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:238)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-FATAL [Thread-7] 2018-12-18 16:56:15,644 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (841.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Cell$$FastClassByCGLIB$$3f8a70e4.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.NullPointerException
-	at java.util.HashMap.putMapEntries(Unknown Source)
-	at java.util.HashMap.<init>(Unknown Source)
-	at immunity.CellCopasiStep.timeSeriesLoadintoCell(CellCopasiStep.java:43)
-	at immunity.CellCopasiStep.antPresTimeSeriesLoad(CellCopasiStep.java:25)
-	at immunity.Cell.step(Cell.java:51)
-	... 10 more
-ERROR [AWT-EventQueue-0] 2018-12-19 12:09:27,712 repast.simphony.ui.RSApplication - Error while initializing simulation
-java.lang.ArrayIndexOutOfBoundsException: 14
-	at immunity.CellProperties.loadFromCsv(CellProperties.java:221)
-	at immunity.CellProperties.getInstance(CellProperties.java:28)
-	at immunity.CellBuilder.build(CellBuilder.java:83)
-	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
-	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
-	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
-	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
-	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
-	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
-	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
-	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
-	at repast.simphony.ui.RSApplication.initSim(RSApplication.java:157)
-	at repast.simphony.ui.RSApplication.start(RSApplication.java:189)
-	at repast.simphony.ui.action.StartRun.actionPerformed(StartRun.java:17)
-	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
-	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
-	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
-	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
-	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
-	at java.awt.AWTEventMulticaster.mouseReleased(Unknown Source)
-	at java.awt.Component.processMouseEvent(Unknown Source)
-	at javax.swing.JComponent.processMouseEvent(Unknown Source)
-	at java.awt.Component.processEvent(Unknown Source)
-	at java.awt.Container.processEvent(Unknown Source)
-	at java.awt.Component.dispatchEventImpl(Unknown Source)
-	at java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.awt.Component.dispatchEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
-	at java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.awt.Window.dispatchEventImpl(Unknown Source)
-	at java.awt.Component.dispatchEvent(Unknown Source)
-	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
-	at java.awt.EventQueue.access$500(Unknown Source)
-	at java.awt.EventQueue$3.run(Unknown Source)
-	at java.awt.EventQueue$3.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.awt.EventQueue$4.run(Unknown Source)
-	at java.awt.EventQueue$4.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.awt.EventQueue.dispatchEvent(Unknown Source)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.awt.EventDispatchThread.run(Unknown Source)
-FATAL [Thread-7] 2018-12-19 12:12:57,392 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (3561.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.NullPointerException
-	at immunity.EndosomeInternalVesicleStep.internalVesicle(EndosomeInternalVesicleStep.java:126)
-	at immunity.Endosome.step(Endosome.java:182)
-	... 10 more
-FATAL [Thread-7] 2018-12-19 12:21:14,754 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (655.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.NullPointerException
-	at immunity.EndosomeInternalVesicleStep.internalVesicle(EndosomeInternalVesicleStep.java:126)
-	at immunity.Endosome.step(Endosome.java:182)
-	... 10 more
-FATAL [Thread-7] 2018-12-19 12:29:42,662 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (1194.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.NullPointerException
-	at immunity.EndosomeInternalVesicleStep.internalVesicle(EndosomeInternalVesicleStep.java:126)
-	at immunity.Endosome.step(Endosome.java:182)
-	... 10 more
-FATAL [Thread-7] 2018-12-19 12:34:09,476 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (3957.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.NullPointerException
-	at immunity.EndosomeInternalVesicleStep.internalVesicle(EndosomeInternalVesicleStep.java:126)
-	at immunity.Endosome.step(Endosome.java:182)
-	... 10 more
-FATAL [Thread-7] 2018-12-19 12:37:29,213 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (1378.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.NullPointerException
-	at immunity.EndosomeInternalVesicleStep.internalVesicle(EndosomeInternalVesicleStep.java:126)
-	at immunity.Endosome.step(Endosome.java:182)
-	... 10 more
-FATAL [Thread-7] 2018-12-19 12:43:40,692 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (1.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
-	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-19 12:45:11,884 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (3097.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.NullPointerException
-	at immunity.EndosomeInternalVesicleStep.internalVesicle(EndosomeInternalVesicleStep.java:126)
-	at immunity.Endosome.step(Endosome.java:182)
-	... 10 more
-ERROR [AWT-EventQueue-0] 2018-12-19 12:51:45,030 repast.simphony.ui.RSApplication - Error while initializing simulation
-java.lang.ArrayIndexOutOfBoundsException: 7
-	at immunity.CellProperties.loadFromCsv(CellProperties.java:292)
-	at immunity.CellProperties.getInstance(CellProperties.java:28)
-	at immunity.CellBuilder.build(CellBuilder.java:83)
-	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
-	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
-	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
-	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
-	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
-	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
-	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
-	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
-	at repast.simphony.ui.RSApplication.initSim(RSApplication.java:157)
-	at repast.simphony.ui.RSApplication.start(RSApplication.java:189)
-	at repast.simphony.ui.action.StartRun.actionPerformed(StartRun.java:17)
-	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
-	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
-	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
-	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
-	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
-	at java.awt.AWTEventMulticaster.mouseReleased(Unknown Source)
-	at java.awt.Component.processMouseEvent(Unknown Source)
-	at javax.swing.JComponent.processMouseEvent(Unknown Source)
-	at java.awt.Component.processEvent(Unknown Source)
-	at java.awt.Container.processEvent(Unknown Source)
-	at java.awt.Component.dispatchEventImpl(Unknown Source)
-	at java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.awt.Component.dispatchEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
-	at java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.awt.Window.dispatchEventImpl(Unknown Source)
-	at java.awt.Component.dispatchEvent(Unknown Source)
-	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
-	at java.awt.EventQueue.access$500(Unknown Source)
-	at java.awt.EventQueue$3.run(Unknown Source)
-	at java.awt.EventQueue$3.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.awt.EventQueue$4.run(Unknown Source)
-	at java.awt.EventQueue$4.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.awt.EventQueue.dispatchEvent(Unknown Source)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.awt.EventDispatchThread.run(Unknown Source)
-ERROR [AWT-EventQueue-0] 2018-12-19 12:53:09,767 repast.simphony.ui.RSApplication - Error while initializing simulation
-java.lang.ArrayIndexOutOfBoundsException: 7
-	at immunity.CellProperties.loadFromCsv(CellProperties.java:292)
-	at immunity.CellProperties.getInstance(CellProperties.java:28)
-	at immunity.CellBuilder.build(CellBuilder.java:83)
-	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
-	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
-	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
-	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
-	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
-	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
-	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
-	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
-	at repast.simphony.ui.RSApplication.initSim(RSApplication.java:157)
-	at repast.simphony.ui.RSApplication.start(RSApplication.java:189)
-	at repast.simphony.ui.action.StartRun.actionPerformed(StartRun.java:17)
-	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
-	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
-	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
-	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
-	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
-	at java.awt.AWTEventMulticaster.mouseReleased(Unknown Source)
-	at java.awt.Component.processMouseEvent(Unknown Source)
-	at javax.swing.JComponent.processMouseEvent(Unknown Source)
-	at java.awt.Component.processEvent(Unknown Source)
-	at java.awt.Container.processEvent(Unknown Source)
-	at java.awt.Component.dispatchEventImpl(Unknown Source)
-	at java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.awt.Component.dispatchEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
-	at java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.awt.Window.dispatchEventImpl(Unknown Source)
-	at java.awt.Component.dispatchEvent(Unknown Source)
-	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
-	at java.awt.EventQueue.access$500(Unknown Source)
-	at java.awt.EventQueue$3.run(Unknown Source)
-	at java.awt.EventQueue$3.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.awt.EventQueue$4.run(Unknown Source)
-	at java.awt.EventQueue$4.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.awt.EventQueue.dispatchEvent(Unknown Source)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.awt.EventDispatchThread.run(Unknown Source)
-FATAL [Thread-7] 2018-12-19 13:30:46,147 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (1.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.Cell$$FastClassByCGLIB$$3f8a70e4.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.NullPointerException
-	at immunity.CellCopasiStep.antPresTimeSeriesLoad(CellCopasiStep.java:19)
-	at immunity.Cell.step(Cell.java:52)
-	... 10 more
-FATAL [Thread-7] 2018-12-19 13:32:20,937 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (1.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
-	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: java.lang.reflect.InvocationTargetException
-	at immunity.PlasmaMembrane$$FastClassByCGLIB$$4ec27737.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-	... 7 more
-Caused by: java.lang.NullPointerException
-	at immunity.PlasmaMembraneCopasiStep.antPresTimeSeriesLoad(PlasmaMembraneCopasiStep.java:19)
-	at immunity.PlasmaMembrane.step(PlasmaMembrane.java:70)
-	... 10 more
-FATAL [Thread-7] 2018-12-19 14:16:42,655 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+FATAL [Thread-7] 2018-12-24 12:10:57,687 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
 Current tick (5001.0)
 java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
@@ -1373,23 +14,21 @@ Caused by: java.lang.reflect.InvocationTargetException
 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
 	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
+Caused by: java.lang.OutOfMemoryError: Java heap space
+	at java.util.Arrays.copyOf(Unknown Source)
+	at java.io.ByteArrayOutputStream.toByteArray(Unknown Source)
+	at org.apache.poi.openxml4j.opc.internal.MemoryPackagePartOutputStream.flush(MemoryPackagePartOutputStream.java:76)
+	at org.apache.poi.openxml4j.opc.internal.MemoryPackagePartOutputStream.close(MemoryPackagePartOutputStream.java:51)
+	at org.apache.poi.xssf.model.SharedStringsTable.commit(SharedStringsTable.java:226)
+	at org.apache.poi.POIXMLDocumentPart.onSave(POIXMLDocumentPart.java:313)
+	at org.apache.poi.POIXMLDocumentPart.onSave(POIXMLDocumentPart.java:317)
+	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:173)
 	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
+	at immunity.Results.log(Results.java:128)
+	at immunity.Results.stepTable(Results.java:98)
 	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-19 14:23:53,649 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (5001.0)
+FATAL [Thread-7] 2018-12-24 12:39:36,841 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (10001.0)
 java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
@@ -1404,22 +43,25 @@ Caused by: java.lang.reflect.InvocationTargetException
 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
 	... 7 more
-Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
-	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
-	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
+Caused by: java.lang.OutOfMemoryError: Java heap space
+	at java.util.Arrays.copyOf(Unknown Source)
+	at java.io.ByteArrayOutputStream.grow(Unknown Source)
+	at java.io.ByteArrayOutputStream.ensureCapacity(Unknown Source)
+	at java.io.ByteArrayOutputStream.write(Unknown Source)
+	at org.apache.poi.openxml4j.opc.internal.MemoryPackagePartOutputStream.write(MemoryPackagePartOutputStream.java:88)
+	at org.apache.xmlbeans.impl.store.Cursor._save(Cursor.java:590)
+	at org.apache.xmlbeans.impl.store.Cursor.save(Cursor.java:2544)
+	at org.apache.xmlbeans.impl.values.XmlObjectBase.save(XmlObjectBase.java:180)
+	at org.apache.poi.xssf.model.SharedStringsTable.writeTo(SharedStringsTable.java:218)
+	at org.apache.poi.xssf.model.SharedStringsTable.commit(SharedStringsTable.java:225)
+	at org.apache.poi.POIXMLDocumentPart.onSave(POIXMLDocumentPart.java:313)
+	at org.apache.poi.POIXMLDocumentPart.onSave(POIXMLDocumentPart.java:317)
+	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:173)
 	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
+	at immunity.Results.log(Results.java:128)
+	at immunity.Results.stepTable(Results.java:98)
 	... 10 more
-Caused by: java.lang.NullPointerException
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
-	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
-	... 15 more
-FATAL [Thread-7] 2018-12-23 19:37:16,949 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+FATAL [Thread-7] 2018-12-26 17:35:47,456 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
 Current tick (10001.0)
 java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
@@ -1440,8 +82,8 @@ Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail t
 	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
 	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
 	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
-	at immunity.Results.log(Results.java:127)
-	at immunity.Results.stepTable(Results.java:97)
+	at immunity.Results.log(Results.java:128)
+	at immunity.Results.stepTable(Results.java:98)
 	... 10 more
 Caused by: java.lang.NullPointerException
 	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
@@ -1450,8 +92,893 @@ Caused by: java.lang.NullPointerException
 	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
 	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
 	... 15 more
-FATAL [Thread-7] 2018-12-24 11:46:39,702 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (15001.0)
+FATAL [Thread-7] 2018-12-27 12:24:46,211 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (18.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeCopasiStep.timeSeriesLoadintoEndosome(EndosomeCopasiStep.java:70)
+	at immunity.EndosomeCopasiStep.antPresTimeSeriesLoad(EndosomeCopasiStep.java:21)
+	at immunity.Endosome.step(Endosome.java:190)
+	... 10 more
+FATAL [Thread-7] 2018-12-27 12:30:47,866 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (18.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeCopasiStep.timeSeriesLoadintoEndosome(EndosomeCopasiStep.java:71)
+	at immunity.EndosomeCopasiStep.antPresTimeSeriesLoad(EndosomeCopasiStep.java:21)
+	at immunity.Endosome.step(Endosome.java:190)
+	... 10 more
+FATAL [Thread-7] 2018-12-27 12:37:39,799 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (18.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeCopasiStep.timeSeriesLoadintoEndosome(EndosomeCopasiStep.java:71)
+	at immunity.EndosomeCopasiStep.antPresTimeSeriesLoad(EndosomeCopasiStep.java:37)
+	at immunity.Endosome.step(Endosome.java:190)
+	... 10 more
+FATAL [Thread-7] 2018-12-27 12:39:56,687 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (17.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeCopasiStep.timeSeriesLoadintoEndosome(EndosomeCopasiStep.java:71)
+	at immunity.EndosomeCopasiStep.antPresTimeSeriesLoad(EndosomeCopasiStep.java:21)
+	at immunity.Endosome.step(Endosome.java:190)
+	... 10 more
+FATAL [Thread-7] 2018-12-27 12:42:22,820 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (17.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeCopasiStep.timeSeriesLoadintoEndosome(EndosomeCopasiStep.java:71)
+	at immunity.EndosomeCopasiStep.antPresTimeSeriesLoad(EndosomeCopasiStep.java:21)
+	at immunity.Endosome.step(Endosome.java:190)
+	... 10 more
+FATAL [Thread-7] 2018-12-27 12:45:34,141 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (18.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeCopasiStep.timeSeriesLoadintoEndosome(EndosomeCopasiStep.java:71)
+	at immunity.EndosomeCopasiStep.antPresTimeSeriesLoad(EndosomeCopasiStep.java:21)
+	at immunity.Endosome.step(Endosome.java:190)
+	... 10 more
+FATAL [Thread-7] 2018-12-27 13:46:16,090 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.ClassCastException: java.util.AbstractMap$SimpleImmutableEntry cannot be cast to java.lang.Comparable
+	at java.util.TreeMap.getEntry(Unknown Source)
+	at java.util.TreeMap.get(Unknown Source)
+	at immunity.EndosomeCopasiStep.timeSeriesLoadintoEndosome(EndosomeCopasiStep.java:49)
+	at immunity.EndosomeCopasiStep.antPresTimeSeriesLoad(EndosomeCopasiStep.java:21)
+	at immunity.Endosome.step(Endosome.java:190)
+	... 10 more
+FATAL [Thread-7] 2018-12-27 14:01:08,541 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeCopasiStep.timeSeriesLoadintoEndosome(EndosomeCopasiStep.java:48)
+	at immunity.EndosomeCopasiStep.antPresTimeSeriesLoad(EndosomeCopasiStep.java:21)
+	at immunity.Endosome.step(Endosome.java:190)
+	... 10 more
+ERROR [AWT-EventQueue-0] 2018-12-28 12:44:31,802 repast.simphony.ui.RSApplication - Error while initializing simulation
+java.lang.NumberFormatException: empty String
+	at sun.misc.FloatingDecimal.readJavaFormatString(Unknown Source)
+	at sun.misc.FloatingDecimal.parseDouble(Unknown Source)
+	at java.lang.Double.parseDouble(Unknown Source)
+	at immunity.CellProperties.loadFromCsv(CellProperties.java:170)
+	at immunity.CellProperties.getInstance(CellProperties.java:28)
+	at immunity.CellBuilder.build(CellBuilder.java:83)
+	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+	at repast.simphony.ui.RSApplication.initSim(RSApplication.java:157)
+	at repast.simphony.ui.action.InitRun.actionPerformed(InitRun.java:17)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.AWTEventMulticaster.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+ERROR [AWT-EventQueue-0] 2018-12-28 12:49:48,840 repast.simphony.ui.RSApplication - Error while initializing simulation
+java.lang.NullPointerException
+	at immunity.Cell.<init>(Cell.java:51)
+	at immunity.Cell.getInstance(Cell.java:15)
+	at immunity.CellBuilder.build(CellBuilder.java:86)
+	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+	at repast.simphony.ui.RSApplication.initSim(RSApplication.java:157)
+	at repast.simphony.ui.action.InitRun.actionPerformed(InitRun.java:17)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.AWTEventMulticaster.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+FATAL [Thread-7] 2018-12-28 12:53:01,917 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.PlasmaMembrane$$FastClassByCGLIB$$4ec27737.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	Cannot make a static reference to the non-static field Cell.volume
+	Cannot make a static reference to the non-static field Cell.volume
+
+	at immunity.PlasmaMembraneCopasiStep.callReceptorDynamics(PlasmaMembraneCopasiStep.java:111)
+	at immunity.PlasmaMembraneCopasiStep.antPresTimeSeriesLoad(PlasmaMembraneCopasiStep.java:20)
+	at immunity.PlasmaMembrane.step(PlasmaMembrane.java:71)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 12:55:10,233 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.UpdateParameters$$FastClassByCGLIB$$3716e415.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	The method getMtTropism() is undefined for the type CellProperties
+	The method getMembraneMetRec() is undefined for the type CellProperties
+
+	at immunity.UpdateParameters.loadFromCsv(UpdateParameters.java:200)
+	at immunity.UpdateParameters.testNewFile(UpdateParameters.java:73)
+	at immunity.UpdateParameters.step(UpdateParameters.java:53)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 13:16:46,970 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeCopasiStep.callLipidPresentation(EndosomeCopasiStep.java:154)
+	at immunity.EndosomeCopasiStep.antPresTimeSeriesLoad(EndosomeCopasiStep.java:20)
+	at immunity.Endosome.step(Endosome.java:192)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 13:25:31,170 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeCopasiStep.callLipidPresentation(EndosomeCopasiStep.java:155)
+	at immunity.EndosomeCopasiStep.antPresTimeSeriesLoad(EndosomeCopasiStep.java:20)
+	at immunity.Endosome.step(Endosome.java:192)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 13:30:19,899 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.PlasmaMembrane$$FastClassByCGLIB$$4ec27737.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	Cannot make a static reference to the non-static field Cell.volume
+	Cannot make a static reference to the non-static field Cell.volume
+
+	at immunity.PlasmaMembraneCopasiStep.callReceptorDynamics(PlasmaMembraneCopasiStep.java:111)
+	at immunity.PlasmaMembraneCopasiStep.antPresTimeSeriesLoad(PlasmaMembraneCopasiStep.java:20)
+	at immunity.PlasmaMembrane.step(PlasmaMembrane.java:71)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 13:38:16,014 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1113.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeMove.changeDirectionMt(EndosomeMove.java:160)
+	at immunity.EndosomeMove.moveTowards(EndosomeMove.java:50)
+	at immunity.Endosome.step(Endosome.java:179)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 13:41:49,324 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (167.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeMove.changeDirectionMt(EndosomeMove.java:160)
+	at immunity.EndosomeMove.moveTowards(EndosomeMove.java:50)
+	at immunity.Endosome.step(Endosome.java:179)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 13:43:21,338 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (312.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeInternalVesicleStep.internalVesicle(EndosomeInternalVesicleStep.java:126)
+	at immunity.Endosome.step(Endosome.java:184)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 13:49:32,522 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (222.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeMove.changeDirectionMt(EndosomeMove.java:160)
+	at immunity.EndosomeMove.moveTowards(EndosomeMove.java:50)
+	at immunity.Endosome.step(Endosome.java:179)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 14:23:43,234 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (684.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeMove.changeDirectionMt(EndosomeMove.java:160)
+	at immunity.EndosomeMove.moveTowards(EndosomeMove.java:50)
+	at immunity.Endosome.step(Endosome.java:179)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 14:50:08,021 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (103.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeInternalVesicleStep.internalVesicle(EndosomeInternalVesicleStep.java:126)
+	at immunity.Endosome.step(Endosome.java:184)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 14:57:57,894 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (134.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeInternalVesicleStep.internalVesicle(EndosomeInternalVesicleStep.java:126)
+	at immunity.Endosome.step(Endosome.java:184)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 15:51:16,951 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeCopasiStep.timeSeriesLoadintoEndosome(EndosomeCopasiStep.java:82)
+	at immunity.EndosomeCopasiStep.antPresTimeSeriesLoad(EndosomeCopasiStep.java:21)
+	at immunity.Endosome.step(Endosome.java:192)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 16:07:55,221 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (403.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at java.util.HashMap.putMapEntries(Unknown Source)
+	at java.util.HashMap.<init>(Unknown Source)
+	at immunity.EndosomeUptakeStep.newUptake(EndosomeUptakeStep.java:69)
+	at immunity.EndosomeUptakeStep.uptake(EndosomeUptakeStep.java:62)
+	at immunity.Endosome.step(Endosome.java:181)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 16:11:10,780 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (202.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at java.util.HashMap.putMapEntries(Unknown Source)
+	at java.util.HashMap.<init>(Unknown Source)
+	at immunity.EndosomeUptakeStep.newUptake(EndosomeUptakeStep.java:69)
+	at immunity.EndosomeUptakeStep.uptake(EndosomeUptakeStep.java:62)
+	at immunity.Endosome.step(Endosome.java:181)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 16:20:58,967 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (404.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at java.util.HashMap.putMapEntries(Unknown Source)
+	at java.util.HashMap.<init>(Unknown Source)
+	at immunity.EndosomeUptakeStep.newUptake(EndosomeUptakeStep.java:69)
+	at immunity.EndosomeUptakeStep.uptake(EndosomeUptakeStep.java:62)
+	at immunity.Endosome.step(Endosome.java:181)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 16:23:39,181 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (402.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at java.util.HashMap.putMapEntries(Unknown Source)
+	at java.util.HashMap.<init>(Unknown Source)
+	at immunity.EndosomeUptakeStep.newOrganelle(EndosomeUptakeStep.java:258)
+	at immunity.EndosomeUptakeStep.uptake(EndosomeUptakeStep.java:63)
+	at immunity.Endosome.step(Endosome.java:181)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 16:25:01,041 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (105.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at java.util.HashMap.putMapEntries(Unknown Source)
+	at java.util.HashMap.<init>(Unknown Source)
+	at immunity.EndosomeUptakeStep.newOrganelle(EndosomeUptakeStep.java:258)
+	at immunity.EndosomeUptakeStep.uptake(EndosomeUptakeStep.java:63)
+	at immunity.Endosome.step(Endosome.java:181)
+	... 10 more
+FATAL [Thread-7] 2018-12-28 16:27:39,131 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (404.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at java.util.HashMap.putMapEntries(Unknown Source)
+	at java.util.HashMap.<init>(Unknown Source)
+	at immunity.EndosomeUptakeStep.newUptake(EndosomeUptakeStep.java:70)
+	at immunity.EndosomeUptakeStep.uptake(EndosomeUptakeStep.java:62)
+	at immunity.Endosome.step(Endosome.java:181)
+	... 10 more
+ERROR [AWT-EventQueue-0] 2018-12-28 17:32:30,679 repast.simphony.ui.RSApplication - Error while initializing simulation
+java.lang.NullPointerException
+	at immunity.Endosome.<init>(Endosome.java:132)
+	at immunity.CellBuilder.build(CellBuilder.java:266)
+	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+	at repast.simphony.ui.RSApplication.initSim(RSApplication.java:157)
+	at repast.simphony.ui.RSApplication.start(RSApplication.java:189)
+	at repast.simphony.ui.action.StartRun.actionPerformed(StartRun.java:17)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.AWTEventMulticaster.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+ERROR [AWT-EventQueue-0] 2018-12-28 18:21:42,795 repast.simphony.ui.RSApplication - Error while initializing simulation
+java.lang.NullPointerException
+	at immunity.Cell.<init>(Cell.java:51)
+	at immunity.Cell.getInstance(Cell.java:15)
+	at immunity.CellBuilder.build(CellBuilder.java:86)
+	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+	at repast.simphony.ui.RSApplication.initSim(RSApplication.java:157)
+	at repast.simphony.ui.RSApplication.start(RSApplication.java:189)
+	at repast.simphony.ui.action.StartRun.actionPerformed(StartRun.java:17)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.AWTEventMulticaster.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+ERROR [AWT-EventQueue-0] 2018-12-28 18:24:37,356 repast.simphony.ui.RSApplication - Error while initializing simulation
+java.lang.NullPointerException
+	at immunity.Cell.<init>(Cell.java:52)
+	at immunity.Cell.getInstance(Cell.java:15)
+	at immunity.CellBuilder.build(CellBuilder.java:86)
+	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+	at repast.simphony.ui.RSApplication.initSim(RSApplication.java:157)
+	at repast.simphony.ui.RSApplication.start(RSApplication.java:189)
+	at repast.simphony.ui.action.StartRun.actionPerformed(StartRun.java:17)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.AWTEventMulticaster.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+FATAL [Thread-7] 2019-01-01 07:39:59,424 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.util.NoSuchElementException
+	at java.util.TreeMap.key(Unknown Source)
+	at java.util.TreeMap.firstKey(Unknown Source)
+	at immunity.EndosomeRabConversionStep.timeSeriesLoadintoEndosome(EndosomeRabConversionStep.java:60)
+	at immunity.EndosomeRabConversionStep.rabTimeSeriesLoad(EndosomeRabConversionStep.java:23)
+	at immunity.Endosome.step(Endosome.java:190)
+	... 10 more
+FATAL [Thread-7] 2019-01-01 08:25:24,234 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (5001.0)
 java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
@@ -1466,13 +993,455 @@ Caused by: java.lang.reflect.InvocationTargetException
 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
 	... 7 more
-Caused by: java.lang.OutOfMemoryError: GC overhead limit exceeded
-	at org.apache.poi.xssf.usermodel.XSSFRichTextString.utfDecode(XSSFRichTextString.java:480)
-	at org.apache.poi.xssf.usermodel.XSSFRichTextString.getString(XSSFRichTextString.java:297)
-	at org.apache.poi.xssf.usermodel.XSSFCell.setCellValue(XSSFCell.java:327)
-	at org.apache.poi.xssf.usermodel.XSSFCell.setCellValue(XSSFCell.java:315)
-	at repast.simphony.ui.table.SpreadsheetUtils.createSheet(SpreadsheetUtils.java:127)
-	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:57)
+Caused by: org.apache.poi.openxml4j.exceptions.OpenXML4JRuntimeException: Fail to save: an error occurs while saving the package : null
+	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:479)
+	at org.apache.poi.openxml4j.opc.OPCPackage.save(OPCPackage.java:1414)
+	at org.apache.poi.POIXMLDocument.write(POIXMLDocument.java:179)
+	at repast.simphony.ui.table.SpreadsheetUtils.saveTablesAsExcel(SpreadsheetUtils.java:67)
 	at immunity.Results.log(Results.java:128)
 	at immunity.Results.stepTable(Results.java:98)
+	... 10 more
+Caused by: java.lang.NullPointerException
+	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
+	at java.util.zip.DeflaterOutputStream.<init>(Unknown Source)
+	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
+	at java.util.zip.ZipOutputStream.<init>(Unknown Source)
+	at org.apache.poi.openxml4j.opc.ZipPackage.saveImpl(ZipPackage.java:412)
+	... 15 more
+FATAL [Thread-7] 2019-01-03 12:55:39,070 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (25201.0)
+java.lang.ArrayIndexOutOfBoundsException: 752
+	at saf.v3d.util.GLUErrors.getTessErrorString(GLUErrors.java:53)
+	at saf.v3d.util.Tessellator$Callback.getError(Tessellator.java:85)
+	at saf.v3d.util.Tessellator.createRenderer(Tessellator.java:183)
+	at saf.v3d.ShapeFactory2D.createRenderer(ShapeFactory2D.java:383)
+	at saf.v3d.ShapeFactory2D.createShape(ShapeFactory2D.java:371)
+	at saf.v3d.ShapeFactory2D.createShape(ShapeFactory2D.java:356)
+	at immunity.EndosomeStyle.getVSpatial(EndosomeStyle.java:81)
+	at immunity.EndosomeStyle.getVSpatial(EndosomeStyle.java:1)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.updateSpatial(StyledDisplayLayerOGL2D.java:119)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.updateSpatial(StyledDisplayLayerOGL2D.java:212)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.updateExistingSpatials(StyledDisplayLayerOGL2D.java:176)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.update(StyledDisplayLayerOGL2D.java:249)
+	at repast.simphony.visualizationOGL2D.DisplayOGL2D.update(DisplayOGL2D.java:404)
+	at repast.simphony.visualization.engine.DisplayComponentControllerAction$DisplayUpdater.execute(DisplayComponentControllerAction.java:44)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:238)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+INFO  [AWT-EventQueue-0] 2019-01-04 12:35:41,771 repast.simphony.ui.widget.MovieMaker - Movie capture has started metaData=[STATUS]
+INFO  [AWT-EventQueue-0] 2019-01-04 12:46:23,145 repast.simphony.ui.widget.MovieMaker - Movie capture has started metaData=[STATUS]
+INFO  [AWT-EventQueue-0] 2019-01-04 12:49:41,446 repast.simphony.ui.widget.MovieMaker - Movie capture has finished metaData=[STATUS]
+FATAL [Thread-7] 2019-01-04 15:30:51,340 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeInternalVesicleStep.internalVesicle(EndosomeInternalVesicleStep.java:126)
+	at immunity.Endosome.step(Endosome.java:184)
+	... 10 more
+FATAL [Thread-7] 2019-01-04 15:37:39,985 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.Results.contentDistribution(Results.java:258)
+	at immunity.Results.step(Results.java:133)
+	... 10 more
+FATAL [Thread-7] 2019-01-04 15:42:44,443 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.Results.contentDistribution(Results.java:250)
+	at immunity.Results.step(Results.java:133)
+	... 10 more
+FATAL [Thread-7] 2019-01-04 15:44:30,040 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.Results.contentDistribution(Results.java:258)
+	at immunity.Results.step(Results.java:133)
+	... 10 more
+FATAL [Thread-7] 2019-01-04 15:49:01,267 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.Results.contentDistribution(Results.java:258)
+	at immunity.Results.step(Results.java:133)
+	... 10 more
+FATAL [Thread-7] 2019-01-04 16:13:53,357 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (461.0)
+java.lang.IllegalArgumentException: Color parameter outside of expected range: Green Blue
+	at java.awt.Color.testColorValueRange(Unknown Source)
+	at java.awt.Color.<init>(Unknown Source)
+	at java.awt.Color.<init>(Unknown Source)
+	at immunity.PlasmaMembraneStyle.getColor(PlasmaMembraneStyle.java:39)
+	at immunity.PlasmaMembraneStyle.getColor(PlasmaMembraneStyle.java:1)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.applyStyle(StyledDisplayLayerOGL2D.java:57)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.updateSpatial(StyledDisplayLayerOGL2D.java:213)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.updateExistingSpatials(StyledDisplayLayerOGL2D.java:176)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.update(StyledDisplayLayerOGL2D.java:249)
+	at repast.simphony.visualizationOGL2D.DisplayOGL2D.update(DisplayOGL2D.java:404)
+	at repast.simphony.visualization.engine.DisplayComponentControllerAction$DisplayUpdater.execute(DisplayComponentControllerAction.java:44)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:238)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+FATAL [Thread-7] 2019-01-08 09:30:06,293 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (753.0)
+java.lang.IllegalArgumentException: Color parameter outside of expected range: Green Blue
+	at java.awt.Color.testColorValueRange(Unknown Source)
+	at java.awt.Color.<init>(Unknown Source)
+	at java.awt.Color.<init>(Unknown Source)
+	at immunity.PlasmaMembraneStyle.getColor(PlasmaMembraneStyle.java:39)
+	at immunity.PlasmaMembraneStyle.getColor(PlasmaMembraneStyle.java:1)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.applyStyle(StyledDisplayLayerOGL2D.java:57)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.updateSpatial(StyledDisplayLayerOGL2D.java:213)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.updateExistingSpatials(StyledDisplayLayerOGL2D.java:176)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.update(StyledDisplayLayerOGL2D.java:249)
+	at repast.simphony.visualizationOGL2D.DisplayOGL2D.update(DisplayOGL2D.java:404)
+	at repast.simphony.visualization.engine.DisplayComponentControllerAction$DisplayUpdater.execute(DisplayComponentControllerAction.java:44)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:238)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+INFO  [AWT-EventQueue-0] 2019-01-08 10:20:00,665 repast.simphony.ui.widget.MovieMaker - Movie capture has started metaData=[STATUS]
+INFO  [AWT-EventQueue-0] 2019-01-08 10:20:01,297 repast.simphony.ui.widget.MovieMaker - Movie capture has started metaData=[STATUS]
+FATAL [Thread-7] 2019-01-11 11:21:12,697 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.PlasmaMembrane$$FastClassByCGLIB$$4ec27737.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.PlasmaMembrane.changeColor(PlasmaMembrane.java:85)
+	at immunity.PlasmaMembrane.step(PlasmaMembrane.java:72)
+	... 10 more
+FATAL [Thread-7] 2019-01-11 11:24:12,384 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (152.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeInternalVesicleStep.internalVesicle(EndosomeInternalVesicleStep.java:126)
+	at immunity.EndosomeLysosomalDigestionStep.lysosomalDigestion(EndosomeLysosomalDigestionStep.java:66)
+	at immunity.Endosome.step(Endosome.java:187)
+	... 10 more
+FATAL [Thread-7] 2019-01-11 11:27:01,525 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (167.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeInternalVesicleStep.internalVesicle(EndosomeInternalVesicleStep.java:126)
+	at immunity.EndosomeLysosomalDigestionStep.lysosomalDigestion(EndosomeLysosomalDigestionStep.java:66)
+	at immunity.Endosome.step(Endosome.java:187)
+	... 10 more
+FATAL [Thread-7] 2019-01-11 11:46:02,333 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.PlasmaMembrane$$FastClassByCGLIB$$4ec27737.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.PlasmaMembrane.changeColor(PlasmaMembrane.java:85)
+	at immunity.PlasmaMembrane.step(PlasmaMembrane.java:72)
+	... 10 more
+FATAL [Thread-7] 2019-01-11 12:03:13,570 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.PlasmaMembrane$$FastClassByCGLIB$$4ec27737.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.PlasmaMembrane.changeColor(PlasmaMembrane.java:86)
+	at immunity.PlasmaMembrane.step(PlasmaMembrane.java:72)
+	... 10 more
+FATAL [Thread-7] 2019-01-11 12:23:22,114 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (375.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeInternalVesicleStep.internalVesicle(EndosomeInternalVesicleStep.java:126)
+	at immunity.Endosome.step(Endosome.java:184)
+	... 10 more
+FATAL [Thread-7] 2019-01-11 12:26:18,735 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (413.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeInternalVesicleStep.internalVesicle(EndosomeInternalVesicleStep.java:126)
+	at immunity.Endosome.step(Endosome.java:184)
+	... 10 more
+FATAL [Thread-7] 2019-01-11 12:29:46,887 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (651.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Endosome$$FastClassByCGLIB$$3ff3446a.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at immunity.EndosomeInternalVesicleStep.internalVesicle(EndosomeInternalVesicleStep.java:126)
+	at immunity.Endosome.step(Endosome.java:184)
+	... 10 more
+FATAL [Thread-7] 2019-01-14 16:23:15,458 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (41891.0)
+java.lang.ArrayIndexOutOfBoundsException: 752
+	at saf.v3d.util.GLUErrors.getTessErrorString(GLUErrors.java:53)
+	at saf.v3d.util.Tessellator$Callback.getError(Tessellator.java:85)
+	at saf.v3d.util.Tessellator.createRenderer(Tessellator.java:183)
+	at saf.v3d.ShapeFactory2D.createRenderer(ShapeFactory2D.java:383)
+	at saf.v3d.ShapeFactory2D.createShape(ShapeFactory2D.java:371)
+	at saf.v3d.ShapeFactory2D.createShape(ShapeFactory2D.java:356)
+	at immunity.EndosomeStyle.getVSpatial(EndosomeStyle.java:81)
+	at immunity.EndosomeStyle.getVSpatial(EndosomeStyle.java:1)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.updateSpatial(StyledDisplayLayerOGL2D.java:119)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.updateSpatial(StyledDisplayLayerOGL2D.java:212)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.updateExistingSpatials(StyledDisplayLayerOGL2D.java:176)
+	at repast.simphony.visualizationOGL2D.StyledDisplayLayerOGL2D.update(StyledDisplayLayerOGL2D.java:249)
+	at repast.simphony.visualizationOGL2D.DisplayOGL2D.update(DisplayOGL2D.java:404)
+	at repast.simphony.visualization.engine.DisplayComponentControllerAction$DisplayUpdater.execute(DisplayComponentControllerAction.java:44)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:238)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+FATAL [Thread-7] 2019-01-14 17:51:18,061 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.ArrayIndexOutOfBoundsException: 1
+	at immunity.FreezeDryEndosomes.loadFromCsv(FreezeDryEndosomes.java:153)
+	at immunity.FreezeDryEndosomes.getInstance(FreezeDryEndosomes.java:44)
+	at immunity.Results.stepTable(Results.java:100)
+	... 10 more
+FATAL [Thread-7] 2019-01-14 17:52:32,226 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.ArrayIndexOutOfBoundsException: 1
+	at immunity.FreezeDryEndosomes.loadFromCsv(FreezeDryEndosomes.java:153)
+	at immunity.FreezeDryEndosomes.getInstance(FreezeDryEndosomes.java:44)
+	at immunity.Results.stepTable(Results.java:100)
+	... 10 more
+FATAL [Thread-7] 2019-01-14 17:54:16,268 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.ArrayIndexOutOfBoundsException: 1
+	at immunity.FreezeDryEndosomes.loadFromCsv(FreezeDryEndosomes.java:153)
+	at immunity.FreezeDryEndosomes.getInstance(FreezeDryEndosomes.java:44)
+	at immunity.Results.stepTable(Results.java:100)
+	... 10 more
+FATAL [Thread-7] 2019-01-14 17:56:56,948 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at immunity.Results$$FastClassByCGLIB$$696d0d34.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.ArrayIndexOutOfBoundsException: 1
+	at immunity.FreezeDryEndosomes.loadFromCsv(FreezeDryEndosomes.java:153)
+	at immunity.FreezeDryEndosomes.getInstance(FreezeDryEndosomes.java:44)
+	at immunity.Results.stepTable(Results.java:100)
 	... 10 more
