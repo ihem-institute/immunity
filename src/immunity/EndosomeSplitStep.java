@@ -105,6 +105,12 @@ public class EndosomeSplitStep {
 		double vVesicle = vo - vcylinder;
 		if(vVesicle < 0 || vcylinder < 0){
 			System.out.println(vVesicle +"surface and volume"+ vcylinder);	
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		double sVesicle = so - scylinder;
 		/*
@@ -345,10 +351,13 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 //				if it is a tubule and the Rab selected is not enough, generate a tubule with the 
 //				available Rab area
 				scylinder = endosome.rabContent.get(rabInTube);
-//				vcylinder = vo* endosome.rabContent.get(rabInTube)/endosome.area;
-				double ss = scylinder - 2*Math.PI*Cell.rcyl*Cell.rcyl;//available surface without the two caps
-				double h = ss/(2*Math.PI*Cell.rcyl);// height of the cylinder from the available surface
-				vcylinder = Math.PI*Cell.rcyl*Cell.rcyl*h; // volume of the cylinder from the height
+				double sphereRadius = Math.sqrt(scylinder/(Math.PI * 4));
+				double maxVol = 4/3*Math.PI*Math.pow(sphereRadius, 3);
+				vcylinder = vo* endosome.rabContent.get(rabInTube)/endosome.area;
+				if (vcylinder > maxVol) vcylinder =maxVol;
+//				double ss = scylinder - 2*Math.PI*Cell.rcyl*Cell.rcyl;//available surface without the two caps
+//				double h = ss/(2*Math.PI*Cell.rcyl);// height of the cylinder from the available surface
+//				vcylinder = Math.PI*Cell.rcyl*Cell.rcyl*h; // volume of the cylinder from the height
 				System.out.println("tubule cut assymetric" + scylinder +" "+ vcylinder
 						+" "+ vo);
 				return new double[] {scylinder, vcylinder};
@@ -398,60 +407,71 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 				endosome.membraneContent);
 		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 				CellProperties.getInstance().getRabTropism());
+		double propSurf = 0;
 		for (String content : copyMembrane.keySet()) {
-// if no especification, even distribution proportional to the area
+			// if no especification, even distribution proportional to the area
 			if (!rabTropism.containsKey(content)){
-				splitPropSurface(endosome, content, so, sVesicle);	
+				propSurf = sVesicle/so;
+				splitPropSurface(endosome, content, so, sVesicle, propSurf);	
 			}
-// if tropism to tubule, the content goes to tubule			
+			// if tropism to tubule, the content goes to tubule			
 			else if (rabTropism.get(content).contains("tub")){
 				splitToTubule(endosome, content, so, sVesicle);
 			}
-// if tropism to sphere, the content goes to the vesicle		
+			// if tropism to sphere, the content goes to the vesicle		
 			else if (rabTropism.get(content).contains("sph")){
 				splitToSphere(endosome, content, so, sVesicle);
 			}
 			else 
-// finally, if tropism it to a Rab membrane domain, the decision about where to go
-// requires to calculate the tropism to the vesicle (SUM of the content tropism to all the
-//	membrane domains in the vesicle.  The tropism is indicated by a string (e.g. RabA10) where
-//	the last two digits indicate the affinity for the Rab domain in a scale of 00 to 10.			
+				// finally, if tropism it to a Rab membrane domain, the decision about where to go
+				// requires to calculate the tropism to the vesicle (SUM of the content tropism to all the
+				//	membrane domains in the vesicle.  The tropism is indicated by a string (e.g. RabA10) where
+				//	the last two digits indicate the affinity for the Rab domain in a scale of 00 to 10.			
 			{
-			double sphereTrop = 0;
-			for (String rabTrop : rabTropism.get(content)){
-				if (rabTrop.equals("mvb")) continue;
+				double sphereTrop = 0;
+				for (String rabTrop : rabTropism.get(content)){
+					if (rabTrop.equals("mvb")) continue;
 					String rab = rabTrop.substring(0, 4);
 					if (endosome.rabContent.containsKey(rab)){
 						sphereTrop = sphereTrop + endosome.rabContent.get(rab)/endosome.area*
 								Integer.parseInt(rabTrop.substring(4, 6));
-//						System.out.println("Trop Number " + Integer.parseInt(rabTrop.substring(4, 6)));
+						//						System.out.println("Trop Number " + Integer.parseInt(rabTrop.substring(4, 6)));
 					}
-			}
-// the tropism to the tubule is directly the two digits of the Rab selected for the tubule 
-			double tubuleTrop = 0;
-			for (String rabTrop : rabTropism.get(content)){
-				if (rabTrop.equals("mvb")) continue;
-				String rab = rabTrop.substring(0, 4);
-				if (rab.equals(rabInTube)){
-					tubuleTrop = Integer.parseInt(rabTrop.substring(4, 6));
 				}
+				// the tropism to the tubule is directly the two digits of the Rab selected for the tubule 
+				double tubuleTrop = 0;
+				for (String rabTrop : rabTropism.get(content)){
+					if (rabTrop.equals("mvb")) continue;
+					String rab = rabTrop.substring(0, 4);
+					if (rab.equals(rabInTube)){
+						tubuleTrop = Integer.parseInt(rabTrop.substring(4, 6));
+					}
+				}
+				double sCylinder = so -sVesicle;
+				if (sphereTrop + tubuleTrop == 0 ) propSurf = sVesicle/so;
+				else propSurf = sVesicle*sphereTrop/(sVesicle*sphereTrop + sCylinder*tubuleTrop);
+				splitPropSurface(endosome, content, so, sVesicle, propSurf);
 			}
+		}
+	}
+			/*
+			
 //			System.out.println("sphere tubule " + sphereTrop +" "+ tubuleTrop+ " " +(tubuleTrop-sphereTrop));
 // the tropismo is to vesicle or to tubule according to the following rules
 // if not clear tropism to tubule or sphere, even distribution			
-			if (tubuleTrop < 2d && sphereTrop < 2d ) 
+			if (tubuleTrop < 1d && sphereTrop < 1d ) //was 2 and 2
 				{	
 //				System.out.println("to even ");
 				splitPropSurface(endosome, content, so, sVesicle);	
 				}
 //	if the difference tubule-sphere is larger than 4 and sphere less than 2, to tubule		
-			else if (sphereTrop < 2d || (tubuleTrop-sphereTrop) > 4d)
+			else if (sphereTrop < 1d || (tubuleTrop-sphereTrop) > 2d)// was 2 and 4
 				{
 //				System.out.println("to tubule ");
 				splitToTubule(endosome, content, so, sVesicle);
 				}
 //	if the difference tubule-sphere is less than -4 and tubule less than 2, to vesicle			
-			else if (tubuleTrop < 2d || (tubuleTrop-sphereTrop) < -4d)
+			else if (tubuleTrop < 1d || (tubuleTrop-sphereTrop) < -2d)// was 2 and -4
 				{
 //				System.out.println("to sphere ");
 				splitToSphere(endosome, content, so, sVesicle);
@@ -461,12 +481,13 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 //				System.out.println("to even even ");
 				splitPropSurface(endosome, content, so, sVesicle);}
 			}
+	
+	}			
+			
 	}
-					
-					
+	*/				
+						
 
-		
-	}
 
 	private static void solubleContentSplit(Endosome endosome, String rabInTube, double vo, double vVesicle){
 		// SOLUBLE CONTENT IS DISTRIBUTED according rabTropism
@@ -576,20 +597,29 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 		
 	}
 
-	private static void splitPropSurface(Endosome endosome, String content, Double so, Double sVesicle) {
+	private static void splitPropSurface(Endosome endosome, String content, Double so, Double sVesicle, double propSurf) {
 			
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
 
 		if (content.equals("membraneMarker")
 				&& (endosome.membraneContent.get("membraneMarker") > 0.9)) {
-			if (Math.random() < sVesicle / so)
+			if (Math.random() < propSurf)
 				endosome.membraneContent.put("membraneMarker", 1d);
 			else {endosome.membraneContent.put("membraneMarker", 0d);}
 			} 
 		else {
-			endosome.membraneContent.put(content, copyMembrane.get(content)
-						* (sVesicle) / so);	
+			double totalContent = copyMembrane.get(content);
+			double vContent = totalContent * propSurf;
+//			if the content to the round vesicle is larger than the round vesicle area, 
+//			or if the content to the tubule is larger than the tubule area, then put in the vesicle
+//			the vesicle area.
+			if (vContent > sVesicle) vContent = sVesicle;// all that can fit in the round vesicle area
+			if ((totalContent - vContent) > (so-sVesicle)) vContent = totalContent-(so-sVesicle);// all that cannot fit into the tubule area
+			endosome.membraneContent.put(content, vContent);	
+
+//			System.out.println( +"  "+ (so-sVesicle) +"  "+ vContent +"  "+ (totalContent-vContent));
+			System.out.println(sVesicle +"  "+ (so-sVesicle) +"  "+ vContent +"  "+ (totalContent-vContent));
 		}
 			
 	

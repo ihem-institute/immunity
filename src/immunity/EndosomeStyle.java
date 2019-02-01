@@ -78,7 +78,8 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
         else{
          Shape rec = new RoundRectangle2D.Double(-c/2, -a/2, c, a,  50, 50);
 //        arguments x, y, ancho, largo, corner angle (small sharp), side curvature (small, straight)
-        shape = this.factory.createShape(rec);
+ 		System.out.println("a  "+ a+"c  "+c);
+         shape = this.factory.createShape(rec);
 		}
 //		else{
 //		shape = this.factory.createRectangle((int) (v/Math.PI/100),5);	
