@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.24 (Build 197) (http://www.copasi.org) at 2019-03-14 20:29:23 UTC -->
+<!-- generated with COPASI 4.24 (Build 197) (http://www.copasi.org) at 2019-04-11 12:25:52 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="24" versionDevel="197" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -35,12 +35,12 @@ Reaction scheme where the products are created from the reactants and the change
       </ListOfParameterDescriptions>
     </Function>
   </ListOfFunctions>
-  <Model key="Model_0" name="New Model" simulationType="time" timeUnit="s" volumeUnit="µm³" areaUnit="µm²" lengthUnit="µm" quantityUnit="mmol" type="deterministic" avogadroConstant="6.0221408570000002e+23">
+  <Model key="Model_1" name="Barrantes" simulationType="time" timeUnit="s" volumeUnit="µm³" areaUnit="µm²" lengthUnit="µm" quantityUnit="mmol" type="deterministic" avogadroConstant="6.0221408570000002e+23">
     <MiriamAnnotation>
 <rdf:RDF
    xmlns:dcterms="http://purl.org/dc/terms/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Model_0">
+  <rdf:Description rdf:about="#Model_1">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2019-03-13T11:55:53Z</dcterms:W3CDTF>
@@ -122,7 +122,7 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
         <Expression>
-          &lt;CN=Root,Model=New Model,Vector=Compartments[raft],Reference=InitialVolume>*0.1
+          &lt;CN=Root,Model=Barrantes,Vector=Compartments[raft],Reference=InitialVolume>*0.1
         </Expression>
       </ModelValue>
       <ModelValue key="ModelValue_1" name="raftSize001" simulationType="assignment" addNoise="false">
@@ -138,7 +138,7 @@ Reaction scheme where the products are created from the reactants and the change
 </rdf:RDF>
         </MiriamAnnotation>
         <Expression>
-          &lt;CN=Root,Model=New Model,Vector=Values[raftSize],Reference=InitialValue>*0.01
+          &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize],Reference=InitialValue>*0.01
         </Expression>
       </ModelValue>
     </ListOfModelValues>
@@ -151,20 +151,20 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_1" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5053" name="k1" value="0.01"/>
-          <Constant key="Parameter_5055" name="k2" value="0.01"/>
+          <Constant key="Parameter_5003" name="k1" value="0.01"/>
+          <Constant key="Parameter_5002" name="k2" value="0.01"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=New Model,Vector=Compartments[noRaft]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=Barrantes,Vector=Compartments[noRaft]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5053"/>
+              <SourceParameter reference="Parameter_5003"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_0"/>
               <SourceParameter reference="Metabolite_0"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5055"/>
+              <SourceParameter reference="Parameter_5002"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_1"/>
@@ -180,20 +180,20 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_4" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5056" name="k1" value="0.01"/>
-          <Constant key="Parameter_5050" name="k2" value="0.01"/>
+          <Constant key="Parameter_5001" name="k1" value="0.01"/>
+          <Constant key="Parameter_5000" name="k2" value="0.01"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=New Model,Vector=Compartments[raft]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=Barrantes,Vector=Compartments[raft]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5056"/>
+              <SourceParameter reference="Parameter_5001"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_3"/>
               <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5050"/>
+              <SourceParameter reference="Parameter_5000"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_4"/>
@@ -220,13 +220,13 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_2" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5052" name="k1" value="0.0001"/>
-          <Constant key="Parameter_5051" name="k2" value="0.01"/>
+          <Constant key="Parameter_4999" name="k1" value="0.0001"/>
+          <Constant key="Parameter_4998" name="k2" value="0.01"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=New Model,Vector=Compartments[noRaft]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=Barrantes,Vector=Compartments[noRaft]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5052"/>
+              <SourceParameter reference="Parameter_4999"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_0"/>
@@ -235,7 +235,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Metabolite_0"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5051"/>
+              <SourceParameter reference="Parameter_4998"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_2"/>
@@ -262,13 +262,13 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5054" name="k1" value="0.01"/>
-          <Constant key="Parameter_5057" name="k2" value="0.0001"/>
+          <Constant key="Parameter_4997" name="k1" value="0.01"/>
+          <Constant key="Parameter_4996" name="k2" value="0.0001"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=New Model,Vector=Compartments[raft]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=Barrantes,Vector=Compartments[raft]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5054"/>
+              <SourceParameter reference="Parameter_4997"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_3"/>
@@ -277,7 +277,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5057"/>
+              <SourceParameter reference="Parameter_4996"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_5"/>
@@ -304,20 +304,20 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_2" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5048" name="k1" value="0.0001"/>
-          <Constant key="Parameter_5046" name="k2" value="0.01"/>
+          <Constant key="Parameter_4995" name="k1" value="0.0001"/>
+          <Constant key="Parameter_4994" name="k2" value="0.01"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=New Model,Vector=Compartments[noRaft]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=Barrantes,Vector=Compartments[noRaft]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5048"/>
+              <SourceParameter reference="Parameter_4995"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_1"/>
               <SourceParameter reference="Metabolite_1"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5046"/>
+              <SourceParameter reference="Parameter_4994"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_2"/>
@@ -344,20 +344,20 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5045" name="k1" value="0.01"/>
-          <Constant key="Parameter_5049" name="k2" value="0.0001"/>
+          <Constant key="Parameter_4993" name="k1" value="0.01"/>
+          <Constant key="Parameter_4992" name="k2" value="0.0001"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=New Model,Vector=Compartments[raft]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=Barrantes,Vector=Compartments[raft]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5045"/>
+              <SourceParameter reference="Parameter_4993"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_4"/>
               <SourceParameter reference="Metabolite_4"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5049"/>
+              <SourceParameter reference="Parameter_4992"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_5"/>
@@ -373,20 +373,20 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_7" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5047" name="k1" value="0.01"/>
-          <Constant key="Parameter_5022" name="k2" value="0.01"/>
+          <Constant key="Parameter_4991" name="k1" value="0.01"/>
+          <Constant key="Parameter_4990" name="k2" value="0.01"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=New Model,Vector=Compartments[noRaft]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=Barrantes,Vector=Compartments[noRaft]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5047"/>
+              <SourceParameter reference="Parameter_4991"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_6"/>
               <SourceParameter reference="Metabolite_6"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5022"/>
+              <SourceParameter reference="Parameter_4990"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_7"/>
@@ -402,20 +402,20 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_10" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5020" name="k1" value="0.01"/>
-          <Constant key="Parameter_5019" name="k2" value="0.01"/>
+          <Constant key="Parameter_4989" name="k1" value="0.01"/>
+          <Constant key="Parameter_4988" name="k2" value="0.01"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=New Model,Vector=Compartments[raft]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=Barrantes,Vector=Compartments[raft]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5020"/>
+              <SourceParameter reference="Parameter_4989"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_9"/>
               <SourceParameter reference="Metabolite_9"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5019"/>
+              <SourceParameter reference="Parameter_4988"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_10"/>
@@ -442,13 +442,13 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_8" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5023" name="k1" value="0.0001"/>
-          <Constant key="Parameter_5021" name="k2" value="0.01"/>
+          <Constant key="Parameter_4987" name="k1" value="0.0001"/>
+          <Constant key="Parameter_4986" name="k2" value="0.01"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=New Model,Vector=Compartments[noRaft]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=Barrantes,Vector=Compartments[noRaft]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5023"/>
+              <SourceParameter reference="Parameter_4987"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_6"/>
@@ -457,7 +457,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Metabolite_6"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5021"/>
+              <SourceParameter reference="Parameter_4986"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_8"/>
@@ -484,13 +484,13 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_11" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5025" name="k1" value="0.01"/>
-          <Constant key="Parameter_5040" name="k2" value="0.0001"/>
+          <Constant key="Parameter_4985" name="k1" value="0.01"/>
+          <Constant key="Parameter_4984" name="k2" value="0.0001"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=New Model,Vector=Compartments[raft]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=Barrantes,Vector=Compartments[raft]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5025"/>
+              <SourceParameter reference="Parameter_4985"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_9"/>
@@ -499,7 +499,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Metabolite_9"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5040"/>
+              <SourceParameter reference="Parameter_4984"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_11"/>
@@ -526,20 +526,20 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_8" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5028" name="k1" value="0.0001"/>
-          <Constant key="Parameter_5042" name="k2" value="0.01"/>
+          <Constant key="Parameter_4983" name="k1" value="0.0001"/>
+          <Constant key="Parameter_4982" name="k2" value="0.01"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=New Model,Vector=Compartments[noRaft]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=Barrantes,Vector=Compartments[noRaft]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5028"/>
+              <SourceParameter reference="Parameter_4983"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_7"/>
               <SourceParameter reference="Metabolite_7"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5042"/>
+              <SourceParameter reference="Parameter_4982"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_8"/>
@@ -566,20 +566,20 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_11" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5043" name="k1" value="0.01"/>
-          <Constant key="Parameter_5037" name="k2" value="0.0001"/>
+          <Constant key="Parameter_4981" name="k1" value="0.01"/>
+          <Constant key="Parameter_4980" name="k2" value="0.0001"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=New Model,Vector=Compartments[raft]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=Barrantes,Vector=Compartments[raft]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5043"/>
+              <SourceParameter reference="Parameter_4981"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_10"/>
               <SourceParameter reference="Metabolite_10"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5037"/>
+              <SourceParameter reference="Parameter_4980"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_11"/>
@@ -596,20 +596,20 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_6" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5024" name="k1" value="0.1"/>
-          <Constant key="Parameter_5032" name="k2" value="0.001"/>
+          <Constant key="Parameter_4979" name="k1" value="0.1"/>
+          <Constant key="Parameter_4978" name="k2" value="0.001"/>
         </ListOfConstants>
         <KineticLaw function="Function_14" unitType="Default">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5024"/>
+              <SourceParameter reference="Parameter_4979"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_0"/>
               <SourceParameter reference="Metabolite_12"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5032"/>
+              <SourceParameter reference="Parameter_4978"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_6"/>
@@ -637,20 +637,20 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_7" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5039" name="k1" value="0.1"/>
-          <Constant key="Parameter_5026" name="k2" value="0.001"/>
+          <Constant key="Parameter_4977" name="k1" value="0.1"/>
+          <Constant key="Parameter_4976" name="k2" value="0.001"/>
         </ListOfConstants>
         <KineticLaw function="Function_14" unitType="Default">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5039"/>
+              <SourceParameter reference="Parameter_4977"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_1"/>
               <SourceParameter reference="Metabolite_12"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5026"/>
+              <SourceParameter reference="Parameter_4976"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_7"/>
@@ -667,20 +667,20 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_8" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5038" name="k1" value="0.1"/>
-          <Constant key="Parameter_5031" name="k2" value="0.001"/>
+          <Constant key="Parameter_4975" name="k1" value="0.1"/>
+          <Constant key="Parameter_4974" name="k2" value="0.001"/>
         </ListOfConstants>
         <KineticLaw function="Function_14" unitType="Default">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5038"/>
+              <SourceParameter reference="Parameter_4975"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_2"/>
               <SourceParameter reference="Metabolite_12"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5031"/>
+              <SourceParameter reference="Parameter_4974"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_8"/>
@@ -697,20 +697,20 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_9" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5035" name="k1" value="0.1"/>
-          <Constant key="Parameter_5030" name="k2" value="0.001"/>
+          <Constant key="Parameter_4973" name="k1" value="0.1"/>
+          <Constant key="Parameter_4972" name="k2" value="0.001"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=New Model,Vector=Compartments[raft]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=Barrantes,Vector=Compartments[raft]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5035"/>
+              <SourceParameter reference="Parameter_4973"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_3"/>
               <SourceParameter reference="Metabolite_12"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5030"/>
+              <SourceParameter reference="Parameter_4972"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_9"/>
@@ -738,20 +738,20 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_10" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5034" name="k1" value="0.1"/>
-          <Constant key="Parameter_5033" name="k2" value="0.001"/>
+          <Constant key="Parameter_4971" name="k1" value="0.1"/>
+          <Constant key="Parameter_4970" name="k2" value="0.001"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=New Model,Vector=Compartments[raft]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=Barrantes,Vector=Compartments[raft]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5034"/>
+              <SourceParameter reference="Parameter_4971"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_4"/>
               <SourceParameter reference="Metabolite_12"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5033"/>
+              <SourceParameter reference="Parameter_4970"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_10"/>
@@ -779,20 +779,20 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_11" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5036" name="k1" value="0.1"/>
-          <Constant key="Parameter_5041" name="k2" value="0.001"/>
+          <Constant key="Parameter_4969" name="k1" value="0.1"/>
+          <Constant key="Parameter_4968" name="k2" value="0.001"/>
         </ListOfConstants>
-        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=New Model,Vector=Compartments[raft]">
+        <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=Barrantes,Vector=Compartments[raft]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5036"/>
+              <SourceParameter reference="Parameter_4969"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_5"/>
               <SourceParameter reference="Metabolite_12"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5041"/>
+              <SourceParameter reference="Parameter_4968"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_11"/>
@@ -819,8 +819,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5027" name="k1" value="0.0103449"/>
-          <Constant key="Parameter_5029" name="k2" value="0.001"/>
+          <Constant key="Parameter_4967" name="k1" value="0.0103449"/>
+          <Constant key="Parameter_4966" name="k2" value="0.001"/>
         </ListOfConstants>
         <KineticLaw function="Function_14" unitType="Default">
           <ListOfCallParameters>
@@ -831,7 +831,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Metabolite_0"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5029"/>
+              <SourceParameter reference="Parameter_4966"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_3"/>
@@ -858,8 +858,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_4" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5044" name="k1" value="0.0103449"/>
-          <Constant key="Parameter_5058" name="k2" value="0.001"/>
+          <Constant key="Parameter_4965" name="k1" value="0.0103449"/>
+          <Constant key="Parameter_4964" name="k2" value="0.001"/>
         </ListOfConstants>
         <KineticLaw function="Function_14" unitType="Default">
           <ListOfCallParameters>
@@ -870,7 +870,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Metabolite_1"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5058"/>
+              <SourceParameter reference="Parameter_4964"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_4"/>
@@ -897,8 +897,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_5" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5059" name="k1" value="0.000103449"/>
-          <Constant key="Parameter_5065" name="k2" value="1e-05"/>
+          <Constant key="Parameter_4963" name="k1" value="0.000103449"/>
+          <Constant key="Parameter_4962" name="k2" value="1e-05"/>
         </ListOfConstants>
         <KineticLaw function="Function_14" unitType="Default">
           <ListOfCallParameters>
@@ -909,7 +909,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Metabolite_2"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5065"/>
+              <SourceParameter reference="Parameter_4962"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_5"/>
@@ -936,8 +936,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_9" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5064" name="k1" value="0.0103449"/>
-          <Constant key="Parameter_5066" name="k2" value="0.001"/>
+          <Constant key="Parameter_4961" name="k1" value="0.0103449"/>
+          <Constant key="Parameter_4960" name="k2" value="0.001"/>
         </ListOfConstants>
         <KineticLaw function="Function_14" unitType="Default">
           <ListOfCallParameters>
@@ -948,7 +948,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Metabolite_6"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5066"/>
+              <SourceParameter reference="Parameter_4960"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_9"/>
@@ -975,8 +975,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_10" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5061" name="k1" value="0.0103449"/>
-          <Constant key="Parameter_5060" name="k2" value="0.001"/>
+          <Constant key="Parameter_4959" name="k1" value="0.0103449"/>
+          <Constant key="Parameter_4958" name="k2" value="0.001"/>
         </ListOfConstants>
         <KineticLaw function="Function_14" unitType="Default">
           <ListOfCallParameters>
@@ -987,7 +987,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Metabolite_7"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5060"/>
+              <SourceParameter reference="Parameter_4958"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_10"/>
@@ -1014,8 +1014,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Product metabolite="Metabolite_11" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5063" name="k1" value="0.000103449"/>
-          <Constant key="Parameter_5062" name="k2" value="1e-05"/>
+          <Constant key="Parameter_4957" name="k1" value="0.000103449"/>
+          <Constant key="Parameter_4956" name="k2" value="1e-05"/>
         </ListOfConstants>
         <KineticLaw function="Function_14" unitType="Default">
           <ListOfCallParameters>
@@ -1026,7 +1026,7 @@ Reaction scheme where the products are created from the reactants and the change
               <SourceParameter reference="Metabolite_8"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5062"/>
+              <SourceParameter reference="Parameter_4956"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_11"/>
@@ -1035,463 +1035,463 @@ Reaction scheme where the products are created from the reactants and the change
         </KineticLaw>
       </Reaction>
     </ListOfReactions>
-    <ListOfModelParameterSets activeSet="ModelParameterSet_0">
-      <ModelParameterSet key="ModelParameterSet_0" name="Initial State">
+    <ListOfModelParameterSets activeSet="ModelParameterSet_1">
+      <ModelParameterSet key="ModelParameterSet_1" name="Initial State">
         <ModelParameterGroup cn="String=Initial Time" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model" value="0" type="Model" simulationType="time"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes" value="0" type="Model" simulationType="time"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Compartment Sizes" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft]" value="0.1034485" type="Compartment" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft]" value="1" type="Compartment" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[medium]" value="10" type="Compartment" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft]" value="0.1034485" type="Compartment" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft]" value="1" type="Compartment" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[medium]" value="10" type="Compartment" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[Rm]" value="6.0221408570000002e+20" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[Rd]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[Rna]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RmRf]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RdRf]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RnaRf]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[RmAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[RdAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[RnaAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RmRfAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RdRfAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RnaRfAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[medium],Vector=Metabolites[Ac]" value="6.0221408570000005e+21" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[Rm]" value="6.0221408570000002e+20" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[Rd]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[Rna]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RmRf]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RdRf]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RnaRf]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[RmAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[RdAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[RnaAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RmRfAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RdRfAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RnaRfAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[medium],Vector=Metabolites[Ac]" value="6.0221408570000005e+21" type="Species" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Values[raftSize]" value="0.010344850000000001" type="ModelValue" simulationType="assignment"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Values[raftSize001]" value="0.00010344850000000001" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Values[raftSize]" value="0.010344850000000001" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Values[raftSize001]" value="0.00010344850000000001" type="ModelValue" simulationType="assignment"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaft],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaft],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaft],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaft],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RmActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RmActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RmActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RmActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RmActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RmActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RdActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RdActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RdActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RdActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RdActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RdActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RnaActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RnaActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RnaActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RmRfActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RmRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RmRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RmRfActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RmRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RmRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RdRfActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RdRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RdRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RdRfActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RdRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RdRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RnaRfActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RnaRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RnaRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaRfActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRm]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRm],ParameterGroup=Parameters,Parameter=k1" value="0.010344850000000001" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRm]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRm],ParameterGroup=Parameters,Parameter=k1" value="0.010344850000000001" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRm],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRm],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRd]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRd],ParameterGroup=Parameters,Parameter=k1" value="0.010344850000000001" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRd]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRd],ParameterGroup=Parameters,Parameter=k1" value="0.010344850000000001" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRd],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRd],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRna]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRna],ParameterGroup=Parameters,Parameter=k1" value="0.00010344850000000001" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRna]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRna],ParameterGroup=Parameters,Parameter=k1" value="0.00010344850000000001" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize001],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize001],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRna],ParameterGroup=Parameters,Parameter=k2" value="1.0000000000000001e-05" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRna],ParameterGroup=Parameters,Parameter=k2" value="1.0000000000000001e-05" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRmAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRmAc],ParameterGroup=Parameters,Parameter=k1" value="0.010344850000000001" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRmAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRmAc],ParameterGroup=Parameters,Parameter=k1" value="0.010344850000000001" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRmAc],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRmAc],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRdAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRdAc],ParameterGroup=Parameters,Parameter=k1" value="0.010344850000000001" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRdAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRdAc],ParameterGroup=Parameters,Parameter=k1" value="0.010344850000000001" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRdAc],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRdAc],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRnaAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRnaAc],ParameterGroup=Parameters,Parameter=k1" value="0.00010344850000000001" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRnaAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRnaAc],ParameterGroup=Parameters,Parameter=k1" value="0.00010344850000000001" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize001],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize001],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRnaAc],ParameterGroup=Parameters,Parameter=k2" value="1.0000000000000001e-05" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRnaAc],ParameterGroup=Parameters,Parameter=k2" value="1.0000000000000001e-05" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
       <ModelParameterSet key="ModelParameterSet_3" name="Parameter Set 2019-03-14 14:23:26">
         <ModelParameterGroup cn="String=Initial Time" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model" value="0" type="Model" simulationType="time"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes" value="0" type="Model" simulationType="time"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Compartment Sizes" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft]" value="0.0134935" type="Compartment" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft]" value="1" type="Compartment" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[medium]" value="10" type="Compartment" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft]" value="0.0134935" type="Compartment" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft]" value="1" type="Compartment" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[medium]" value="10" type="Compartment" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[Rm]" value="6.0221408570000002e+20" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[Rd]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[Rna]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RmRf]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RdRf]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RnaRf]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[RmAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[RdAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[RnaAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RmRfAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RdRfAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RnaRfAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[medium],Vector=Metabolites[Ac]" value="0" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[Rm]" value="6.0221408570000002e+20" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[Rd]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[Rna]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RmRf]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RdRf]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RnaRf]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[RmAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[RdAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[RnaAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RmRfAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RdRfAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RnaRfAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[medium],Vector=Metabolites[Ac]" value="0" type="Species" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Values[raftSize]" value="0.00134935" type="ModelValue" simulationType="assignment"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Values[raftSize001]" value="1.34935e-05" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Values[raftSize]" value="0.00134935" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Values[raftSize001]" value="1.34935e-05" type="ModelValue" simulationType="assignment"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaft],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaft],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaft],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaft],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RmActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RmActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RmActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RmActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RmActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RmActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RdActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RdActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RdActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RdActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RdActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RdActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RnaActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RnaActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RnaActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RmRfActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RmRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RmRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RmRfActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RmRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RmRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RdRfActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RdRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RdRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RdRfActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RdRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RdRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RnaRfActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RnaRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RnaRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaRfActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRm]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRm],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRm]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRm],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRm],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRm],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRd]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRd],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRd]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRd],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRd],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRd],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRna]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRna],ParameterGroup=Parameters,Parameter=k1" value="1.34935e-05" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRna]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRna],ParameterGroup=Parameters,Parameter=k1" value="1.34935e-05" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize001],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize001],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRna],ParameterGroup=Parameters,Parameter=k2" value="1.0000000000000001e-05" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRna],ParameterGroup=Parameters,Parameter=k2" value="1.0000000000000001e-05" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRmAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRmAc],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRmAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRmAc],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRmAc],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRmAc],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRdAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRdAc],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRdAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRdAc],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRdAc],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRdAc],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRnaAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRnaAc],ParameterGroup=Parameters,Parameter=k1" value="1.34935e-05" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRnaAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRnaAc],ParameterGroup=Parameters,Parameter=k1" value="1.34935e-05" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize001],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize001],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRnaAc],ParameterGroup=Parameters,Parameter=k2" value="1.0000000000000001e-05" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRnaAc],ParameterGroup=Parameters,Parameter=k2" value="1.0000000000000001e-05" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
       <ModelParameterSet key="ModelParameterSet_4" name="Parameter Set 2019-03-14 14:24:11">
         <ModelParameterGroup cn="String=Initial Time" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model" value="0" type="Model" simulationType="time"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes" value="0" type="Model" simulationType="time"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Compartment Sizes" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft]" value="0.0134935" type="Compartment" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft]" value="1" type="Compartment" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[medium]" value="10" type="Compartment" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft]" value="0.0134935" type="Compartment" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft]" value="1" type="Compartment" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[medium]" value="10" type="Compartment" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[Rm]" value="6.0221408570000002e+20" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[Rd]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[Rna]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RmRf]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RdRf]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RnaRf]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[RmAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[RdAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[RnaAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RmRfAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RdRfAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RnaRfAc]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Compartments[medium],Vector=Metabolites[Ac]" value="0" type="Species" simulationType="fixed"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[Rm]" value="6.0221408570000002e+20" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[Rd]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[Rna]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RmRf]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RdRf]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RnaRf]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[RmAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[RdAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[RnaAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RmRfAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RdRfAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RnaRfAc]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Compartments[medium],Vector=Metabolites[Ac]" value="0" type="Species" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Values[raftSize]" value="0.00134935" type="ModelValue" simulationType="assignment"/>
-          <ModelParameter cn="CN=Root,Model=New Model,Vector=Values[raftSize001]" value="1.34935e-05" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Values[raftSize]" value="0.00134935" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Values[raftSize001]" value="1.34935e-05" type="ModelValue" simulationType="assignment"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaft],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaft],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaft],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaft],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaft]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaft],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaft]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaft],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaft],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[DimerRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[DimerRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimNoRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.01" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaftAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[PolyDimRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaftAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaftAc],ParameterGroup=Parameters,Parameter=k1" value="0.01" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[PolyDimRaftAc],ParameterGroup=Parameters,Parameter=k2" value="0.0001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RmActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RmActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RmActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RmActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RmActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RmActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RdActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RdActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RdActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RdActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RdActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RdActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RnaActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RnaActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RnaActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RmRfActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RmRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RmRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RmRfActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RmRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RmRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RdRfActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RdRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RdRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RdRfActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RdRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RdRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[RnaRfActivation]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RnaRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[RnaRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaRfActivation]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaRfActivation],ParameterGroup=Parameters,Parameter=k1" value="0.10000000000000001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[RnaRfActivation],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRm]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRm],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRm]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRm],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRm],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRm],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRd]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRd],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRd]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRd],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRd],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRd],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRna]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRna],ParameterGroup=Parameters,Parameter=k1" value="1.34935e-05" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRna]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRna],ParameterGroup=Parameters,Parameter=k1" value="1.34935e-05" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize001],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize001],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRna],ParameterGroup=Parameters,Parameter=k2" value="1.0000000000000001e-05" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRna],ParameterGroup=Parameters,Parameter=k2" value="1.0000000000000001e-05" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRmAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRmAc],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRmAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRmAc],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRmAc],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRmAc],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRdAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRdAc],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRdAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRdAc],ParameterGroup=Parameters,Parameter=k1" value="0.00134935" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRdAc],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRdAc],ParameterGroup=Parameters,Parameter=k2" value="0.001" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
-          <ModelParameterGroup cn="CN=Root,Model=New Model,Vector=Reactions[raftRnaAc]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRnaAc],ParameterGroup=Parameters,Parameter=k1" value="1.34935e-05" type="ReactionParameter" simulationType="assignment">
+          <ModelParameterGroup cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRnaAc]" type="Reaction">
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRnaAc],ParameterGroup=Parameters,Parameter=k1" value="1.34935e-05" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
-                &lt;CN=Root,Model=New Model,Vector=Values[raftSize001],Reference=InitialValue>
+                &lt;CN=Root,Model=Barrantes,Vector=Values[raftSize001],Reference=InitialValue>
               </InitialExpression>
             </ModelParameter>
-            <ModelParameter cn="CN=Root,Model=New Model,Vector=Reactions[raftRnaAc],ParameterGroup=Parameters,Parameter=k2" value="1.0000000000000001e-05" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=Barrantes,Vector=Reactions[raftRnaAc],ParameterGroup=Parameters,Parameter=k2" value="1.0000000000000001e-05" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
         </ModelParameterGroup>
       </ModelParameterSet>
     </ListOfModelParameterSets>
     <StateTemplate>
-      <StateTemplateVariable objectReference="Model_0"/>
+      <StateTemplateVariable objectReference="Model_1"/>
       <StateTemplateVariable objectReference="Metabolite_3"/>
       <StateTemplateVariable objectReference="Metabolite_6"/>
       <StateTemplateVariable objectReference="Metabolite_9"/>
@@ -1516,8 +1516,8 @@ Reaction scheme where the products are created from the reactants and the change
     </InitialState>
   </Model>
   <ListOfTasks>
-    <Task key="Task_12" name="Steady-State" type="steadyState" scheduled="false" updateModel="false">
-      <Report reference="Report_8" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_14" name="Steady-State" type="steadyState" scheduled="false" updateModel="false">
+      <Report reference="Report_9" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="JacobianRequested" type="bool" value="1"/>
         <Parameter name="StabilityAnalysisRequested" type="bool" value="1"/>
@@ -1534,7 +1534,7 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="Maximum duration for backward integration" type="unsignedFloat" value="1000000"/>
       </Method>
     </Task>
-    <Task key="Task_11" name="Time-Course" type="timeCourse" scheduled="false" updateModel="false">
+    <Task key="Task_15" name="Time-Course" type="timeCourse" scheduled="false" updateModel="false">
       <Problem>
         <Parameter name="AutomaticStepSize" type="bool" value="0"/>
         <Parameter name="StepNumber" type="unsignedInteger" value="100"/>
@@ -1553,15 +1553,15 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="Max Internal Step Size" type="unsignedFloat" value="0"/>
       </Method>
     </Task>
-    <Task key="Task_10" name="Scan" type="scan" scheduled="false" updateModel="false">
-      <Report reference="Report_8" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_16" name="Scan" type="scan" scheduled="false" updateModel="false">
+      <Report reference="Report_9" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="Subtask" type="unsignedInteger" value="1"/>
         <ParameterGroup name="ScanItems">
           <ParameterGroup name="ScanItem">
             <Parameter name="Number of steps" type="unsignedInteger" value="1"/>
             <Parameter name="Type" type="unsignedInteger" value="1"/>
-            <Parameter name="Object" type="cn" value="CN=Root,Model=New Model,Vector=Compartments[raft],Reference=InitialVolume"/>
+            <Parameter name="Object" type="cn" value="CN=Root,Model=Barrantes,Vector=Compartments[raft],Reference=InitialVolume"/>
             <Parameter name="Minimum" type="float" value="0.0001"/>
             <Parameter name="Maximum" type="float" value="1"/>
             <Parameter name="log" type="bool" value="0"/>
@@ -1573,15 +1573,15 @@ Reaction scheme where the products are created from the reactants and the change
       <Method name="Scan Framework" type="ScanFramework">
       </Method>
     </Task>
-    <Task key="Task_9" name="Elementary Flux Modes" type="fluxMode" scheduled="false" updateModel="false">
-      <Report reference="Report_7" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_17" name="Elementary Flux Modes" type="fluxMode" scheduled="false" updateModel="false">
+      <Report reference="Report_10" target="" append="1" confirmOverwrite="1"/>
       <Problem>
       </Problem>
       <Method name="EFM Algorithm" type="EFMAlgorithm">
       </Method>
     </Task>
-    <Task key="Task_8" name="Optimization" type="optimization" scheduled="false" updateModel="false">
-      <Report reference="Report_6" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_18" name="Optimization" type="optimization" scheduled="false" updateModel="false">
+      <Report reference="Report_11" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="Subtask" type="cn" value="CN=Root,Vector=TaskList[Steady-State]"/>
         <ParameterText name="ObjectiveExpression" type="expression">
@@ -1602,8 +1602,8 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="Seed" type="unsignedInteger" value="0"/>
       </Method>
     </Task>
-    <Task key="Task_7" name="Parameter Estimation" type="parameterFitting" scheduled="false" updateModel="false">
-      <Report reference="Report_5" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_19" name="Parameter Estimation" type="parameterFitting" scheduled="false" updateModel="false">
+      <Report reference="Report_12" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="Maximize" type="bool" value="0"/>
         <Parameter name="Randomize Start Values" type="bool" value="0"/>
@@ -1631,10 +1631,10 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="Stop after # Stalled Generations" type="unsignedInteger" value="0"/>
       </Method>
     </Task>
-    <Task key="Task_6" name="Metabolic Control Analysis" type="metabolicControlAnalysis" scheduled="false" updateModel="false">
-      <Report reference="Report_4" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_20" name="Metabolic Control Analysis" type="metabolicControlAnalysis" scheduled="false" updateModel="false">
+      <Report reference="Report_13" target="" append="1" confirmOverwrite="1"/>
       <Problem>
-        <Parameter name="Steady-State" type="key" value="Task_12"/>
+        <Parameter name="Steady-State" type="key" value="Task_14"/>
       </Problem>
       <Method name="MCA Method (Reder)" type="MCAMethod(Reder)">
         <Parameter name="Modulation Factor" type="unsignedFloat" value="1.0000000000000001e-09"/>
@@ -1642,8 +1642,8 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="Use Smallbone" type="bool" value="1"/>
       </Method>
     </Task>
-    <Task key="Task_5" name="Lyapunov Exponents" type="lyapunovExponents" scheduled="false" updateModel="false">
-      <Report reference="Report_3" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_21" name="Lyapunov Exponents" type="lyapunovExponents" scheduled="false" updateModel="false">
+      <Report reference="Report_14" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="ExponentNumber" type="unsignedInteger" value="3"/>
         <Parameter name="DivergenceRequested" type="bool" value="1"/>
@@ -1657,8 +1657,8 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="Max Internal Steps" type="unsignedInteger" value="10000"/>
       </Method>
     </Task>
-    <Task key="Task_4" name="Time Scale Separation Analysis" type="timeScaleSeparationAnalysis" scheduled="false" updateModel="false">
-      <Report reference="Report_2" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_22" name="Time Scale Separation Analysis" type="timeScaleSeparationAnalysis" scheduled="false" updateModel="false">
+      <Report reference="Report_15" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="StepNumber" type="unsignedInteger" value="100"/>
         <Parameter name="StepSize" type="float" value="0.01"/>
@@ -1670,8 +1670,8 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="Deuflhard Tolerance" type="unsignedFloat" value="0.0001"/>
       </Method>
     </Task>
-    <Task key="Task_3" name="Sensitivities" type="sensitivities" scheduled="false" updateModel="false">
-      <Report reference="Report_1" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_23" name="Sensitivities" type="sensitivities" scheduled="false" updateModel="false">
+      <Report reference="Report_16" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="SubtaskType" type="unsignedInteger" value="1"/>
         <ParameterGroup name="TargetFunctions">
@@ -1694,13 +1694,13 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="Delta minimum" type="unsignedFloat" value="9.9999999999999998e-13"/>
       </Method>
     </Task>
-    <Task key="Task_2" name="Moieties" type="moieties" scheduled="false" updateModel="false">
+    <Task key="Task_24" name="Moieties" type="moieties" scheduled="false" updateModel="false">
       <Problem>
       </Problem>
       <Method name="Householder Reduction" type="Householder">
       </Method>
     </Task>
-    <Task key="Task_1" name="Cross Section" type="crosssection" scheduled="false" updateModel="false">
+    <Task key="Task_25" name="Cross Section" type="crosssection" scheduled="false" updateModel="false">
       <Problem>
         <Parameter name="AutomaticStepSize" type="bool" value="0"/>
         <Parameter name="StepNumber" type="unsignedInteger" value="100"/>
@@ -1734,8 +1734,8 @@ Reaction scheme where the products are created from the reactants and the change
         <Parameter name="Max Internal Step Size" type="unsignedFloat" value="0"/>
       </Method>
     </Task>
-    <Task key="Task_13" name="Linear Noise Approximation" type="linearNoiseApproximation" scheduled="false" updateModel="false">
-      <Report reference="Report_0" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_26" name="Linear Noise Approximation" type="linearNoiseApproximation" scheduled="false" updateModel="false">
+      <Report reference="Report_17" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="Steady-State" type="key" value=""/>
       </Problem>
@@ -1744,7 +1744,7 @@ Reaction scheme where the products are created from the reactants and the change
     </Task>
   </ListOfTasks>
   <ListOfReports>
-    <Report key="Report_8" name="Steady-State" taskType="steadyState" separator="&#x09;" precision="6">
+    <Report key="Report_9" name="Steady-State" taskType="steadyState" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1752,7 +1752,7 @@ Reaction scheme where the products are created from the reactants and the change
         <Object cn="CN=Root,Vector=TaskList[Steady-State]"/>
       </Footer>
     </Report>
-    <Report key="Report_7" name="Elementary Flux Modes" taskType="fluxMode" separator="&#x09;" precision="6">
+    <Report key="Report_10" name="Elementary Flux Modes" taskType="fluxMode" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1760,7 +1760,7 @@ Reaction scheme where the products are created from the reactants and the change
         <Object cn="CN=Root,Vector=TaskList[Elementary Flux Modes],Object=Result"/>
       </Footer>
     </Report>
-    <Report key="Report_6" name="Optimization" taskType="optimization" separator="&#x09;" precision="6">
+    <Report key="Report_11" name="Optimization" taskType="optimization" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1784,7 +1784,7 @@ Reaction scheme where the products are created from the reactants and the change
         <Object cn="CN=Root,Vector=TaskList[Optimization],Object=Result"/>
       </Footer>
     </Report>
-    <Report key="Report_5" name="Parameter Estimation" taskType="parameterFitting" separator="&#x09;" precision="6">
+    <Report key="Report_12" name="Parameter Estimation" taskType="parameterFitting" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1808,7 +1808,7 @@ Reaction scheme where the products are created from the reactants and the change
         <Object cn="CN=Root,Vector=TaskList[Parameter Estimation],Object=Result"/>
       </Footer>
     </Report>
-    <Report key="Report_4" name="Metabolic Control Analysis" taskType="metabolicControlAnalysis" separator="&#x09;" precision="6">
+    <Report key="Report_13" name="Metabolic Control Analysis" taskType="metabolicControlAnalysis" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1820,7 +1820,7 @@ Reaction scheme where the products are created from the reactants and the change
         <Object cn="CN=Root,Vector=TaskList[Metabolic Control Analysis],Object=Result"/>
       </Footer>
     </Report>
-    <Report key="Report_3" name="Lyapunov Exponents" taskType="lyapunovExponents" separator="&#x09;" precision="6">
+    <Report key="Report_14" name="Lyapunov Exponents" taskType="lyapunovExponents" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1832,7 +1832,7 @@ Reaction scheme where the products are created from the reactants and the change
         <Object cn="CN=Root,Vector=TaskList[Lyapunov Exponents],Object=Result"/>
       </Footer>
     </Report>
-    <Report key="Report_2" name="Time Scale Separation Analysis" taskType="timeScaleSeparationAnalysis" separator="&#x09;" precision="6">
+    <Report key="Report_15" name="Time Scale Separation Analysis" taskType="timeScaleSeparationAnalysis" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1844,7 +1844,7 @@ Reaction scheme where the products are created from the reactants and the change
         <Object cn="CN=Root,Vector=TaskList[Time Scale Separation Analysis],Object=Result"/>
       </Footer>
     </Report>
-    <Report key="Report_1" name="Sensitivities" taskType="sensitivities" separator="&#x09;" precision="6">
+    <Report key="Report_16" name="Sensitivities" taskType="sensitivities" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1856,7 +1856,7 @@ Reaction scheme where the products are created from the reactants and the change
         <Object cn="CN=Root,Vector=TaskList[Sensitivities],Object=Result"/>
       </Footer>
     </Report>
-    <Report key="Report_0" name="Linear Noise Approximation" taskType="linearNoiseApproximation" separator="&#x09;" precision="6">
+    <Report key="Report_17" name="Linear Noise Approximation" taskType="linearNoiseApproximation" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1882,8 +1882,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[Rd],Reference=ParticleNumber"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[Rd],Reference=ParticleNumber"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="RdAc.ParticleNumber" type="Curve2D">
@@ -1894,8 +1894,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[RdAc],Reference=ParticleNumber"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[RdAc],Reference=ParticleNumber"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="RdRf.ParticleNumber" type="Curve2D">
@@ -1906,8 +1906,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RdRf],Reference=ParticleNumber"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RdRf],Reference=ParticleNumber"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="RdRfAc.ParticleNumber" type="Curve2D">
@@ -1918,8 +1918,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RdRfAc],Reference=ParticleNumber"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RdRfAc],Reference=ParticleNumber"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="Rm.ParticleNumber" type="Curve2D">
@@ -1930,8 +1930,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[Rm],Reference=ParticleNumber"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[Rm],Reference=ParticleNumber"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="RmAc.ParticleNumber" type="Curve2D">
@@ -1942,8 +1942,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[RmAc],Reference=ParticleNumber"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[RmAc],Reference=ParticleNumber"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="RmRf.ParticleNumber" type="Curve2D">
@@ -1954,8 +1954,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RmRf],Reference=ParticleNumber"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RmRf],Reference=ParticleNumber"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="RmRfAc.ParticleNumber" type="Curve2D">
@@ -1966,8 +1966,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RmRfAc],Reference=ParticleNumber"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RmRfAc],Reference=ParticleNumber"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="Rna.ParticleNumber" type="Curve2D">
@@ -1978,8 +1978,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[Rna],Reference=ParticleNumber"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[Rna],Reference=ParticleNumber"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="RnaAc.ParticleNumber" type="Curve2D">
@@ -1990,8 +1990,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[RnaAc],Reference=ParticleNumber"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[RnaAc],Reference=ParticleNumber"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="RnaRf.ParticleNumber" type="Curve2D">
@@ -2002,8 +2002,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RnaRf],Reference=ParticleNumber"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RnaRf],Reference=ParticleNumber"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="RnaRfAc.ParticleNumber" type="Curve2D">
@@ -2014,8 +2014,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RnaRfAc],Reference=ParticleNumber"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RnaRfAc],Reference=ParticleNumber"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="Values[raftSize001]" type="Curve2D">
@@ -2026,8 +2026,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Values[raftSize001],Reference=Value"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Values[raftSize001],Reference=Value"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="Values[raftSize]" type="Curve2D">
@@ -2038,8 +2038,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Values[raftSize],Reference=Value"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Values[raftSize],Reference=Value"/>
           </ListOfChannels>
         </PlotItem>
       </ListOfPlotItems>
@@ -2056,8 +2056,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[Rm],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[Rm],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[Rd]" type="Curve2D">
@@ -2068,8 +2068,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[Rd],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[Rd],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[Rna]" type="Curve2D">
@@ -2080,8 +2080,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[Rna],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[Rna],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[RmRf]" type="Curve2D">
@@ -2092,8 +2092,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RmRf],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RmRf],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[RdRf]" type="Curve2D">
@@ -2104,8 +2104,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RdRf],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RdRf],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[RnaRf]" type="Curve2D">
@@ -2116,8 +2116,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RnaRf],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RnaRf],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[RmAc]" type="Curve2D">
@@ -2128,8 +2128,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[RmAc],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[RmAc],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[RdAc]" type="Curve2D">
@@ -2140,8 +2140,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[RdAc],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[RdAc],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[RnaAc]" type="Curve2D">
@@ -2152,8 +2152,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[noRaft],Vector=Metabolites[RnaAc],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[noRaft],Vector=Metabolites[RnaAc],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[RmRfAc]" type="Curve2D">
@@ -2164,8 +2164,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RmRfAc],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RmRfAc],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[RdRfAc]" type="Curve2D">
@@ -2176,8 +2176,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RdRfAc],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RdRfAc],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="[RnaRfAc]" type="Curve2D">
@@ -2188,8 +2188,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Compartments[raft],Vector=Metabolites[RnaRfAc],Reference=Concentration"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Compartments[raft],Vector=Metabolites[RnaRfAc],Reference=Concentration"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="Values[raftSize]" type="Curve2D">
@@ -2200,8 +2200,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Values[raftSize],Reference=Value"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Values[raftSize],Reference=Value"/>
           </ListOfChannels>
         </PlotItem>
         <PlotItem name="Values[raftSize001]" type="Curve2D">
@@ -2212,8 +2212,8 @@ Reaction scheme where the products are created from the reactants and the change
           <Parameter name="Color" type="string" value="auto"/>
           <Parameter name="Recording Activity" type="string" value="during"/>
           <ListOfChannels>
-            <ChannelSpec cn="CN=Root,Model=New Model,Reference=Time"/>
-            <ChannelSpec cn="CN=Root,Model=New Model,Vector=Values[raftSize001],Reference=Value"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Reference=Time"/>
+            <ChannelSpec cn="CN=Root,Model=Barrantes,Vector=Values[raftSize001],Reference=Value"/>
           </ListOfChannels>
         </PlotItem>
       </ListOfPlotItems>
@@ -2221,8 +2221,8 @@ Reaction scheme where the products are created from the reactants and the change
   </ListOfPlots>
   <GUI>
     <ListOfSliders>
-      <Slider key="Slider_0" associatedEntityKey="Task_11" objectCN="CN=Root,Model=New Model,Vector=Compartments[raft],Reference=InitialVolume" objectType="float" objectValue="0.103448" minValue="0.0005" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_1" associatedEntityKey="Task_11" objectCN="CN=Root,Model=New Model,Vector=Compartments[medium],Vector=Metabolites[Ac],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_0" associatedEntityKey="Task_15" objectCN="CN=Root,Model=Barrantes,Vector=Compartments[raft],Reference=InitialVolume" objectType="float" objectValue="0.103448" minValue="0.0005" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=Barrantes,Vector=Compartments[medium],Vector=Metabolites[Ac],Reference=InitialConcentration" objectType="float" objectValue="1" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
     </ListOfSliders>
   </GUI>
   <ListOfUnitDefinitions>
