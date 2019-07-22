@@ -150,12 +150,16 @@ public class EndosomeMove {
 //non-tubules		rnd		0.5PM 0.5rnd	PM			N		0.5N 0.5rnd		rnd
 				
 // tubules and non-tubules goes to opposite directions
-				
-				boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2); // should be /2
+				boolean isCistern = endosome.a > endosome.c;
+				boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2);
+				rabDir = mtDirection(endosome);
+				if (isCistern) {
+					mtDir = -1;			
+				}
+// should be /2
 // select a mtDir according with the domains present in the endosome.  Larger probability for the more aboundant domain
 // 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
-				rabDir = mtDirection(endosome);
-				if (isTubule)
+				else if (isTubule)
 					{
 //					System.out.println("IS TUBULE"+ rabDir);
 					mtDir = CellProperties.getInstance().mtTropismTubule.get(rabDir);

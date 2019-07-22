@@ -69,9 +69,9 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 //      AT THE BEGINNING, 1 SPACE UNIT = 1 NM, NOW 1 SPACE UNIT = 3 NM
 //      BEFORE, 50X15 WERE 750 NM, NOW ARE 2250 NM. This justify the 
 //      division by 3 to pass from nm to space units
-        double a=object.a;
-        double c=object.c;
-        if (a<=c){
+        double a=object.a; //ancho, 
+        double c=object.c; // largo, length
+        if (a<=c){// if it is a tubule and not a cistern
         Shape ellypse = new Ellipse2D.Double(-c/2, -a/2, c, a);
         shape = this.factory.createShape(ellypse);
         }

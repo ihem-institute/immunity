@@ -35,10 +35,15 @@ public class EndosomeFusionStep {
 
 		List<GridCell<Endosome>> cellList = nghCreator.getNeighborhood(true);
 		List<Endosome> endosomes_to_delete = new ArrayList<Endosome>();
+		boolean isCistern = (endosome.a < endosome.c);
 		for (GridCell<Endosome> gr : cellList) {
+
 			// include all endosomes
 			for (Endosome end : gr.items()) {
-				if (end != endosome && (end.volume <= endosome.volume)
+				boolean isCistern2 = (end.a < end.c);
+				if (end != endosome  // it is not itself
+						&& (end.volume <= endosome.volume) // the other is smaller
+						&& (!isCistern || !isCistern2) // both are not cisterns
 						&& (EndosomeAssessCompatibility.compatibles(endosome, end))) {
 					endosomes_to_delete.add(end);
 				}

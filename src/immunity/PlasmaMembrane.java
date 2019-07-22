@@ -83,8 +83,9 @@ public class PlasmaMembrane {
 		double c1 = 0d;
 		{
 		
-		c1 = PlasmaMembrane.getInstance().getMembraneRecycle().get("L1");
+		c1 = PlasmaMembrane.getInstance().getMembraneRecycle().get("VSVG");
 		c1 = c1/this.plasmaMembraneArea;
+		if (c1 > 1d) c1 = 1d;
 		this.pmcolor = (int) (c1*255);
 		}
 
