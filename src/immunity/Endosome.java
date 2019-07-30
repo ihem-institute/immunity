@@ -106,7 +106,7 @@ public class Endosome {
 	double p_EndosomeUptakeStep = 1d/(60d/0.03*Cell.timeScale);
 //	double p_EndosomeNewFromERStep = 1d/(60d/0.03*Cell.timeScale);
 	double p_EndosomeInternalVesicleStep = 1d/(5d/0.03*Cell.timeScale);// change from 2 to .1
-	double p_EndosomeFusionStep =1d/(60d/0.03*Cell.timeScale);
+	double p_EndosomeFusionStep =1d/(60d/0.03*Cell.timeScale);//
 	double p_EndosomeKissRunStep =1d/(60d/0.03*Cell.timeScale);	
 	double p_EndosomeSplitStep = 1d/(0.4/0.03*Cell.timeScale); // use to be 0.4
 	double p_EndosomeTetherStep = 1d/(1d/0.03*Cell.timeScale);
@@ -215,13 +215,8 @@ public class Endosome {
 		double p =  1.6075;
 //		double svratio = s / v; // ratio surface volume
 		double aa = rsphere; // initial a from the radius of a sphere of volume
-								// v
-		double cc = aa;// initially, c=a
-//		NOT USED
-		// calculation from s/v for a cylinder that it is more or less the same than for an
-		// ellipsoid
-		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c hence s/v =(1/c)+(2/a)
-//		USED
+								// v.  aa is the perpendicular axis of the rotation spheroid
+		double cc = aa;// cc is the rotation axis.  initially, c=a
 //		Surface ellipsoid (tubule or disk) = 4*PI*(  ((a^2p + 2 a^p * c^p)/3)^(1/p)  )
 //		where p =  1.6075
 		double golgiArea = 0;
@@ -233,44 +228,46 @@ public class Endosome {
 			}
 		}
 		if (golgiArea/end.area > 0.5){
+			double transC = Cell.rcyl;
 			for (int i = 0; i < 4; i++) {
-//				for flat ellipsoid (Golgi cisternae)
+//				for flat ellipsoid (Golgi cisternae) from a flat cylinder
 ////			 * AREA (to find a (radius cylinder, r half height of cistern)
-////			 * cistern 2*PI* x^2 + 2*PI*r*2*r x  +  (-area) = 0
+			// here we want to calculate a, the perpendicular axis of the rotating cylinder
+			// hence a = x
+			// cylinder area =  2*PI* a^2 (the two circles) + 2*PI*r*2*r a (the side) 
+			// to solve the cuadratic equation 	2*PI* x^2 + 2*PI*r*2*r x - area = 0
 			double aq = 2d*Math.PI;
-			double bq = 4*Math.PI*Cell.rcyl;
+			double bq = 4*Math.PI*transC;
 			double cq = -s;
 			double dq =  bq * bq - 4 * aq * cq;
 			aa = ( - bq + Math.sqrt(dq))/(2*aq);
 ////		    root2 = (-b - Math.sqrt(d))/(2*a);
 ////		    VOLUME
 //			double volume = Math.PI*root1*root1*2*Cell.rcyl;			
-			cc = v / (2d * Math.PI * aa * aa);// from volume of cylinder of aa radius v = PI*(aa^2)*2*cc			
-//				//					APPROX NOT USED aa = 2d / (svratio - 1d / cc);// from s/v ratio
-//				//				for elongated ellipsoid (tubule), from area of ellipsoid
-//				cc=Math.pow((Math.pow((s/4/Math.PI),p)*3 - Math.pow(aa, 2*p))/(2*Math.pow(aa, p)),(1/p));
-//				//				double cc= (s*3/(4*Math.PI*aa)-aa)/2; Aprox from DOI: 10.2307/3608515
-//				aa = Math.sqrt(v*3d/(4d*Math.PI*cc));			
-//				//					APPROX NOT USEDcc = 1d/(svratio-1d/aa);
-//				//				System.out.println("FORMA s/v " + s/v +" c "+ cc +" a " + aa);
+			// from the volume obtain c, the rotation axis
+			transC = v / (2d * Math.PI * aa * aa);// from volume of cylinder of aa radius v = PI*(aa^2)*2*cc			
+//			// with the new cc iterate 4 times	
+			//	NOT USED			double cc= (s*3/(4*Math.PI*aa)-aa)/2; Aprox from DOI: 10.2307/3608515
+				
 			}
 //			System.out.println("FLAT FLAT  c  a  " + cc +" " + aa);
 			end.a = aa;
-			end.c = cc;
+			end.c = transC;
 		}
 		else 	
 		{
 			for (int i = 0; i < 4; i++) {
-				//				APPROX NOT USED aa = 2d / (svratio - 1d / cc);// from s/v ratio
 				//			for elongated ellipsoid (tubule), from area of ellipsoid
+				// area = 4*PI* (a^2p + 2*a^p*c^p)^(1/p). Obtain c with an initial a.
+			
 				cc=Math.pow((Math.pow((s/4/Math.PI),p)*3 - Math.pow(aa, 2*p))/(2*Math.pow(aa, p)),(1/p));
-				//			double cc= (s*3/(4*Math.PI*aa)-aa)/2; Aprox from DOI: 10.2307/3608515
+				//			NOT USED double cc= (s*3/(4*Math.PI*aa)-aa)/2; Aprox from DOI: 10.2307/3608515
+				// with c, calculate aa using the volume equation
+				// volume = 4/3*a^2*c
 				aa = Math.sqrt(v*3d/(4d*Math.PI*cc));			
-				//				APPROX NOT USEDcc = 1d/(svratio-1d/aa);
-				//			System.out.println("FORMA s/v " + s/v +" c "+ cc +" a " + aa);
+				// with the new a iterate 4 time
 			}
-//			System.out.println("LONG LONG  c  a  " + cc +" " + aa);
-			//		if (aa<=0)System.out.println("PROBLEMA FORMA " + s +" "+v+"");
+
 			end.a = aa;
 			end.c = cc;
 		}

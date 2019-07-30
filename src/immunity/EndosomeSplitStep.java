@@ -71,10 +71,11 @@ public class EndosomeSplitStep {
 		double vcylinder = volMincyl; // volume	
 		// minimum cylinder
 		if (CellProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi"))
-		{ // Golgi domain
+		{// Golgi domain
 			if ( Math.random()<0.5){
 //		SET TO 0.9. TO BE ADJUSTED.  IF SMALLER, THE CISTERNS FRACTIONATE IF LARGER, LARGE CISTERNS
 //				0.5 works great when MT direction of tubules is set to the nucleus
+// for brefeldin A, set to 0.0 (no split without COP I)
 				return;
 			} 
 			else
@@ -84,6 +85,10 @@ public class EndosomeSplitStep {
 				vcylinder = areaVolume[1];
 
 			}
+		}
+		else if (CellProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Gollgi"))
+		{// Golgi domain with BrfA.  No fission
+			return;
 		}
 		else //non Golgi domain
 		{
@@ -393,7 +398,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 			// the mincyl
 			vcylinder = vcylinder + 2 * Math.PI * Math.pow(Cell.rcyl, 3);
 			// add a volume
-			// System.out.println(scylinder +"surface and volume"+ vcylinder);
+			 System.out.println(scylinder +rabInTube + "NOT TUBULE SPLIT IN TUBULE surface and volume"+ vcylinder);
 		}
 		}
 		return new double[] {scylinder, vcylinder};	

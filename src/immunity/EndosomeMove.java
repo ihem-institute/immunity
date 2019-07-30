@@ -135,56 +135,49 @@ public class EndosomeMove {
 //			Hence to convert to nm, I must multiply by 45 (2250/50) and divide by scale. An organelle will sense MT
 //			at a distance less than its size.
 			if (Math.abs(dist*30d/Cell.orgScale) < endosome.size) {
-// Each domain has a moving rule specified by a number (mtDir) that goes from -1 to +1
-// This number is used in the following way
-// FOR TUBULES
-// -move to the PM if mtDir is positive with a probability equal to mtDir (sign not considered); else random
-// -move to the NUCLEUS if mtDir is negative with a probability equal to mtDir (sign not considered); else random
-// NON-TUBULE ORGANELLES
-// -move to the NUCLEUS if mtDir is positive with a probability equal to 1-mtDir (sign not considered); else random
-// -move to the PM if mtDir is negative with a probability equal to 1-mtDir (sign not considered); else random
-
-// The behavior achieved is  
-//					-1			-0.5		-0.00		+0.00		0.5			+1
-//tubules			N		0.5N 0.5rnd		rnd			rnd		0.5PM 0.5rnd	PM
-//non-tubules		rnd		0.5PM 0.5rnd	PM			N		0.5N 0.5rnd		rnd
-				
-// tubules and non-tubules goes to opposite directions
+// Each domain has a moving rule specified by two numbers (mtDir) that go from -1 to +1
+// Tubules and no-tubules can move to different ends of the MT.  The sign indicate the direction
+// -1 to the nucleous and +1 to the PM.  The absolute number is the probability of taking the 
+// MT direction or to move randomly.  1 is that it always move on MT 0 it is always random.
+// 
 				boolean isCistern = endosome.a > endosome.c;
 				boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2);
 				rabDir = mtDirection(endosome);
-				if (isCistern) {
-					mtDir = -1;			
-				}
-// should be /2
+//				Picks a Rab domain according to the relative area of the domains in the organelle
+//				More abundant Rabs have more probability of being selected
+//				Returns the moving properties on MT of this domain 
+				double rnd = Math.random();// select a random number
+//				if (isCistern) {
+//					mtDir = 1;	// to the nucleous		
+//				}
 // select a mtDir according with the domains present in the endosome.  Larger probability for the more aboundant domain
 // 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
-				else if (isTubule)
-					{
+				if (isTubule && !isCistern)
+				{
 //					System.out.println("IS TUBULE"+ rabDir);
 					mtDir = CellProperties.getInstance().mtTropismTubule.get(rabDir);
 					if (Math.random()<Math.abs(mtDir)) {
 // 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
 						if (Math.signum(mtDir)>=0) {mtDir = 0;} else {mtDir = 1;}
-						}
-						else {
-						changeDirectionRnd(endosome);
-						return;
-						}
-					} // if no a tubule
-				else
-					{
-					mtDir = CellProperties.getInstance().mtTropismRest.get(rabDir);
-//					System.out.println("IS NOT TUBULE"+ mtDir);
-					if (Math.random()< Math.abs(mtDir)) {
-// 0 means to plus end of MT (to PM); +1 means to the minus end of MT (to nucleus)
-						if (Math.signum(mtDir)>=0) {mtDir = 0;} else {mtDir = 1;}
-						}
-						else {
-						changeDirectionRnd(endosome);
-						return;
-						}
 					}
+					else {
+						changeDirectionRnd(endosome);
+						return;
+					}
+				} 
+				else// if no a tubule (can be cistern or  a no tubule
+				{
+					mtDir = CellProperties.getInstance().mtTropismRest.get(rabDir);
+					//					System.out.println("IS NOT TUBULE"+ mtDir);
+					if (Math.random()< Math.abs(mtDir)) {
+						// 0 means to plus end of MT (to PM); +1 means to the minus end of MT (to nucleus)
+						if (Math.signum(mtDir)>=0) {mtDir = 0;} else {mtDir = 1;}
+					}
+					else {
+						changeDirectionRnd(endosome);
+						return;
+					}
+				}
 //				Changes the heading to the heading of the MT
 //				Moves the endosome to the MT position
 				double mth = mt.getMtheading();

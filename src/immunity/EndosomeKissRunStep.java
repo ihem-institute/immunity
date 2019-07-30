@@ -19,7 +19,7 @@ public class EndosomeKissRunStep {
 	private static Grid<Object> grid;
 	
 	public static void kissRun (Endosome endosome) {
-		if (endosome.a <= endosome.c) return; // if it is a tubule and not a cistern
+		if (endosome.a <= endosome.c) return; // if it is not a cistern
 		HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>(endosome.getSolubleContent());
