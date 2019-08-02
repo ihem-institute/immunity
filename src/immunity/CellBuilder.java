@@ -160,7 +160,11 @@ public class CellBuilder implements ContextBuilder<Object> {
 						}
 						HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
 						for (String mem : membraneContent.keySet()){
-							if (mem.equals("membraneMarker")){
+							if (membraneContent.get(mem) == 0) {
+								InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove(mem);
+								//membraneContent.remove(mem);
+								}
+							else if (mem.equals("membraneMarker")){
 								membraneContent.put(mem, 1d);
 								InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove("membraneMarker");
 							}
@@ -171,7 +175,11 @@ public class CellBuilder implements ContextBuilder<Object> {
 
 						HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
 						for (String sol : solubleContent.keySet()){
-							if (sol.equals("solubleMarker")){
+							if (solubleContent.get(sol).equals(0d)) {
+								InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove(sol);
+								//solubleContent.remove(sol);
+								}
+							else if (sol.equals("solubleMarker")){
 								solubleContent.put(sol, 1d);
 								InitialOrganelles.getInstance().getInitSolubleContent().get(kind).remove("solubleMarker");
 							}
@@ -217,7 +225,11 @@ public class CellBuilder implements ContextBuilder<Object> {
 						}
 						HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
 						for (String mem : membraneContent.keySet()){
-							if (mem.equals("membraneMarker")){
+							if (membraneContent.get(mem) == 0) {
+								InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove(mem);
+								//membraneContent.remove(mem);
+								}
+							else if (mem.equals("membraneMarker")){
 								membraneContent.put(mem, 1d);
 								InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove("membraneMarker");
 							}
@@ -225,10 +237,14 @@ public class CellBuilder implements ContextBuilder<Object> {
 							membraneContent.put(mem, mm*area);
 							}
 						}
-
+// System.out.println(InitialOrganelles.getInstance().getInitMembraneContent().get(kind)+ " 	iniciales " +membraneContent);
 						HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
 						for (String sol : solubleContent.keySet()){
-							if (sol.equals("solubleMarker")){
+							if (solubleContent.get(sol).equals(0d)) {
+								InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove(sol);
+								//solubleContent.remove(sol);
+								}
+							else if (sol.equals("solubleMarker") ){
 								solubleContent.put(sol, 1d);
 								InitialOrganelles.getInstance().getInitSolubleContent().get(kind).remove("solubleMarker");
 							}

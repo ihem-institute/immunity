@@ -73,26 +73,26 @@ public class Results {
 		//along the simulation.  Up to now= content distribution according to rabs contents.
 
 	}
-	
-	@ScheduledMethod(start = 1)
-	public void header(){
-		TreeMap<String, Double> header = new TreeMap<String, Double>(String.CASE_INSENSITIVE_ORDER);
-		header.putAll(content());
-		try {
-			writeToCsvHeader(header);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		TreeMap<String, Double> singleEndosomeHeader = new TreeMap<String, Double>(endosomeContent());
-		try {
-			writeToCsvHeadSingleEndosomeHeader(singleEndosomeHeader);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
+// FILE HEADERS/  not used.  Now it is added by the same methods that load the values	
+//	@ScheduledMethod(start = 1)
+//	public void header(){
+//		TreeMap<String, Double> header = new TreeMap<String, Double>(String.CASE_INSENSITIVE_ORDER);
+//		header.putAll(content());
+//		try {
+//			writeToCsvHeader(header);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		TreeMap<String, Double> singleEndosomeHeader = new TreeMap<String, Double>(endosomeContent());
+//		try {
+//			writeToCsvHeadSingleEndosomeHeader(singleEndosomeHeader);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+// STORE ALL AGENTS OF THE SIMULATION EVERY 5000 TICKS AS AN EXCEL FILE
 	@ScheduledMethod(start = 1, interval = 5000)
 	public void stepTable() {
 		log();
@@ -105,7 +105,7 @@ public class Results {
 			e.printStackTrace();
 		}
 	}
-
+// PART OF THE RUTINE TO GENERATE THE EXCELL WITH ALL AGENTS
 	public void log(){
 	    double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 	    Context<Object> context = RunState.getInstance().getMasterContext();
@@ -127,12 +127,12 @@ public class Results {
 
 	    SpreadsheetUtils.saveTablesAsExcel(models, new File("out-"+tick+".xlsx"));
 	}
-
+// STORE THE CONTENT DISTRIBUTION IN THE CELL (IN ENDOSOMES/ GOLGI/ CYTO/ RECYCLED)
 	@ScheduledMethod(start = 1, interval = 100)
 	public void step() {
 		contentDistribution(totalRabs, initialTotalRabs); // Gets an hash map with all the 
 		//possible combinations of contents and Rabs
-		// a new line is added each 100 ticks
+		// a new line is added every 100 ticks
 		TreeMap<String, Double> orderContDist = new TreeMap<String, Double>(contentDist);
 //		System.out.println(orderContDist);
 		try {
@@ -146,6 +146,21 @@ public class Results {
 
 	// to load the file
 	private void writeToCsv(TreeMap<String, Double> orderContDist) throws IOException {
+	double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+	if (tick <10){// HEADER
+		String line = "";
+		for (String key : orderContDist.keySet()) {
+            line = line+ key + ",";
+		}
+		line = line + "\n";
+		Writer output;
+		//CAMBIO
+		output = new BufferedWriter(new FileWriter(ITResultsPath, false));		
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
+		output.append(line);
+		output.close();	
+		
+	}
 		String line = "";
 		for (String key : orderContDist.keySet()) {
             line = line+ Math.round(orderContDist.get(key)*100000d)/100000d + ",";
@@ -159,39 +174,41 @@ public class Results {
 		output.close();
 	}
 	// to generate the file and add the headers in the first row
-	private void writeToCsvHeader(TreeMap<String, Double> orderContDist) throws IOException {
-		
-		String line = "";
-		for (String key : orderContDist.keySet()) {
-            line = line+ key + ",";
-		}
-		line = line + "\n";
-		Writer output;
-		//CAMBIO
-		output = new BufferedWriter(new FileWriter(ITResultsPath, false));		
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
-		output.append(line);
-		output.close();	
-	}
-	private void writeToCsvHeadSingleEndosomeHeader (TreeMap<String, Double> orderSingleEndHead) throws IOException {
-		
-		String line = "";
-		for (String key : orderSingleEndHead.keySet()) {
-            line = line+ key + ",";
-		}
-		line = line + "\n";
-		Writer output;
-		//CAMBIO
-		output = new BufferedWriter(new FileWriter(MarkerResultsPath, false));
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsMarker.csv", false));
-		output.append(line);
-		output.close();	
-		// TODO Auto-generated method stub
-		
-	}
+//	private void writeToCsvHeader(TreeMap<String, Double> orderContDist) throws IOException {
+//		
+//		String line = "";
+//		for (String key : orderContDist.keySet()) {
+//            line = line+ key + ",";
+//		}
+//		line = line + "\n";
+//		Writer output;
+//		//CAMBIO
+//		output = new BufferedWriter(new FileWriter(ITResultsPath, false));		
+////		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
+//		output.append(line);
+//		output.close();	
+//	}
+//	private void writeToCsvHeadSingleEndosomeHeader (TreeMap<String, Double> orderSingleEndHead) throws IOException {
+//		
+//		String line = "";
+//		for (String key : orderSingleEndHead.keySet()) {
+//            line = line+ key + ",";
+//		}
+//		line = line + "\n";
+//		Writer output;
+//		//CAMBIO
+//		output = new BufferedWriter(new FileWriter(MarkerResultsPath, false));
+////		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsMarker.csv", false));
+//		output.append(line);
+//		output.close();	
+//		// TODO Auto-generated method stub
+//		
+//	}
 	// sum the content in all endosomes weighted by the rab content of each endosome
 	public void contentDistribution(HashMap<String, Double> totalRabs, HashMap<String, Double> initialTotalRabs) {
-		content();// initialize all contents to zero
+//		initialize all contents to zero
+		content();
+// 		first include the content of PM (soluble and membrane associated) and cytosol
 		HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
 		// include in the contentDistribution all the recycled components, soluble and membrane
 		HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
@@ -214,7 +231,7 @@ public class Results {
 			contentDist.put("Cy"+sol, value);
 			System.out.println("SOLUBLE CELL  "+ sol + value );
 		}
-		
+//		now the content of the organelles is added, classified according to the membrane domains of each organelle
 		List<Endosome> allEndosomes = new ArrayList<Endosome>();
 		for (Object obj : grid.getObjects()) {
 			if (obj instanceof Endosome) {
@@ -275,8 +292,7 @@ public class Results {
 		}
 //
 // If the endosome contains a MARKER, print info in a Results file		
-		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-		if (tick == 1) initialTotalRabs.putAll(totalRabs);
+
 		
 		if((endosome.getMembraneContent().containsKey("membraneMarker") && 
 				endosome.getMembraneContent().get("membraneMarker") > 0.9)
@@ -292,6 +308,9 @@ public class Results {
 			}
 		}
 		}
+		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+		if (tick == 1) initialTotalRabs.putAll(totalRabs);
+		
 //		sum in cytosol
 		System.out.println(" TOTAL RABS      "+totalRabs);
 
@@ -302,18 +321,42 @@ public class Results {
 		singleEndosomeContent.put("area", endosome.getArea());
 		singleEndosomeContent.put("volume", endosome.getVolume());
 		for (String rab : rabSet)
+		{
 			if (endosome.getRabContent().containsKey(rab)){
 				singleEndosomeContent.put(rab, endosome.getRabContent().get(rab));
 			}
+			else {singleEndosomeContent.put(rab, 0.0);}
+		}
 		for (String sol : solubleMet)
+		{
 			if (endosome.getSolubleContent().containsKey(sol)){
 				singleEndosomeContent.put(sol, endosome.getSolubleContent().get(sol));
 			}
-		for (String mem : membraneMet)
+			else {singleEndosomeContent.put(sol, 0.0);}
+		}
+		for (String mem : membraneMet){
 			if (endosome.getMembraneContent().containsKey(mem)){
 				singleEndosomeContent.put(mem, endosome.getMembraneContent().get(mem));
 			}
+			else {singleEndosomeContent.put(mem, 0.0);}
+		}
 //		TreeMap<String, Double> orderSingleEndosome = new TreeMap<String, Double>(singleEndosomeContent);
+		double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+		if (tick <10)// HEADER
+		{
+
+		String line = "";
+		for (String key : singleEndosomeContent.keySet()) {
+            line = line+ key + ",";
+		}
+			line = line + "\n";
+		Writer output;
+		//CAMBIO
+		output = new BufferedWriter(new FileWriter(MarkerResultsPath, false));
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsMarker.csv", false));
+		output.append(line);
+		output.close();	
+		}
 		String line = "";
 		for (String key : singleEndosomeContent.keySet()) {
             line = line+ Math.round(singleEndosomeContent.get(key)*100d)/100d + ",";
