@@ -44,7 +44,7 @@ public class EndosomeKissRunStep {
 				if (end != endosome // if it is not itself
 						&& (end.volume <= endosome.volume) // if it is smaller
 						&&(end.a >= end.c) // if it is another cistern
-						&& (EndosomeAssessCompatibility.compatibles(endosome, end)))// if it is compatible
+						&& Math.random()<(EndosomeAssessCompatibility.compatibles(endosome, end)))// if it is compatible
 				{
 					cisterns.add(end);
 				}
@@ -74,7 +74,7 @@ private static void exchangeSolContent(Endosome cist1, Endosome cist2) {
 			CellProperties.getInstance().getRabTropism());
 	cist2.solubleContent.forEach((k, v) -> totalSolubleContent.merge(k, v, Double::sum));//(v1, v2) -> v1 + v2));
 
-	System.out.println("Trop Number " + cist1.solubleContent + cist2.solubleContent + totalSolubleContent);
+//	System.out.println("Trop Number " + cist1.solubleContent + cist2.solubleContent + totalSolubleContent);
 	double propVolume = 0;
 	double totalVolume = cist1.volume + cist2.volume;
 	for (String content : totalSolubleContent.keySet())	{
@@ -112,6 +112,7 @@ private static void splitPropVolume(Endosome cist1, String content, Double conte
 }
 
 private static void exchangeMemContent(Endosome cist1, Endosome cist2) {
+//	Suma ambas cisternas para tener un totalMembraneContent
 	HashMap<String, Double> totalMembraneContent = new HashMap<String, Double>(cist1.membraneContent);
 	cist2.membraneContent.forEach((k, v) -> totalMembraneContent.merge(k, v, Double::sum));//(v1, v2) -> v1 + v2));
 	HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
@@ -122,13 +123,13 @@ private static void exchangeMemContent(Endosome cist1, Endosome cist2) {
 	double propSurf = 0;
 	double totalArea = cist1.area + cist2.area;
 	for (String content : totalMembraneContent.keySet())	{
-		System.out.println(totalMembraneContent);
-		if (totalMembraneContent.get(content) != totalMembraneContent.get(content) ) continue;
-		else if (!rabTropism.containsKey(content)){;
+//		System.out.println(totalMembraneContent);
+//		if (totalMembraneContent.get(content) != totalMembraneContent.get(content) ) continue;
+		if (!rabTropism.containsKey(content)){;
 			propSurf = cist1.area/totalArea;
 			splitPropSurface(cist1, content, totalMembraneContent.get(content), cist2, propSurf);	
 		}
-		else if (rabTropism.get(content).contains("sph")) {continue;}
+		else if (rabTropism.get(content).contains("sph")) {continue;} // if the content is big, cannot difuse through tubules
 		else 
 		// finally, if tropism it to a Rab membrane domain, the decision about where to go
 		// requires to calculate the tropism to the vesicle (SUM of the content tropism to all the
@@ -137,8 +138,8 @@ private static void exchangeMemContent(Endosome cist1, Endosome cist2) {
 		{
 		double cist1Trop = 0;
 		for (String rabTrop : rabTropism.get(content)){
-			if (rabTrop.equals("mvb")) continue;
-			System.out.println("se clava en  " + content);		
+			if (rabTrop.equals("mvb") || rabTrop.equals("tub")) continue;//ignore "mvb" and "tub" for this distribution
+//			System.out.println("se clava en  " + content);		
 			String rab = rabTrop.substring(0, 4);
 			if (cist1.rabContent.containsKey(rab)){
 				cist1Trop = cist1Trop + cist1.rabContent.get(rab)/cist1.area*
@@ -149,7 +150,7 @@ private static void exchangeMemContent(Endosome cist1, Endosome cist2) {
 		// the tropism to the tubule is directly the two digits of the Rab selected for the tubule 
 		double cist2Trop = 0;
 		for (String rabTrop : rabTropism.get(content)){
-			if (rabTrop.equals("mvb")) continue;
+			if (rabTrop.equals("mvb") || rabTrop.equals("tub")) continue;//ignore "mvb" and "tub" for this distribution
 			String rab = rabTrop.substring(0, 4);
 			if (cist2.rabContent.containsKey(rab)){
 				cist2Trop = cist2Trop + cist2.rabContent.get(rab)/cist2.area*

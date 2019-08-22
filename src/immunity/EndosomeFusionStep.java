@@ -1,8 +1,10 @@
 package immunity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import repast.simphony.context.Context;
 import repast.simphony.query.space.grid.GridCell;
@@ -43,8 +45,15 @@ public class EndosomeFusionStep {
 				boolean isCistern2 = (end.a > end.c);
 				if (end != endosome  // it is not itself
 						&& (end.volume <= endosome.volume) // the other is smaller
-						&& (!isCistern || !isCistern2) // both are not cisterns
-						&& (EndosomeAssessCompatibility.compatibles(endosome, end))) {
+						&& ((!isCistern || !isCistern2) // at list one is not cistern
+							|| // or they share the same maximal Rab domain
+						(Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey() ==
+						Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey()))
+						
+						&& (Math.random() < EndosomeAssessCompatibility.compatibles(endosome, end))) {
+						if (EndosomeAssessCompatibility.compatibles(endosome, end)==0d){
+							System.out.println("OJO FUSION "+endosome.rabContent + " "+ end.rabContent);
+						}
 					endosomes_to_delete.add(end);
 				}
 				// System.out.println(endosomes_to_delete);

@@ -2,7 +2,7 @@ package immunity;
 
 public class EndosomeAssessCompatibility {
 	
-	public static boolean compatibles(Endosome endosome1, Endosome endosome2) {
+	public static double compatibles(Endosome endosome1, Endosome endosome2) {
 		double sum = 0;
 		for (String key1 : endosome1.rabContent.keySet()) {
 			for (String key2 : endosome2.rabContent.keySet()) {
@@ -14,7 +14,9 @@ public class EndosomeAssessCompatibility {
 		}
 		// compatibility is a value between 0 and 1. Fusion
 		// occurs with a probability proportional to the compatibility
-		return Math.random() < sum;
+
+//		if (isCompatible) System.out.println(sum +" "+endosome1.rabContent + " "+ endosome2.rabContent);
+		return sum;
 	}
 
 	private static double getCompatibility(String rabX, String rabY) {

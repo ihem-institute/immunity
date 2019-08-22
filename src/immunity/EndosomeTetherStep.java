@@ -39,7 +39,8 @@ public class EndosomeTetherStep {
 		for (GridCell<Endosome> gr : cellList) {
 			// include all endosomes
 			for (Endosome end : gr.items()) {
-				if (EndosomeAssessCompatibility.compatibles(endosome, (Endosome) end)) {
+				if (Math.random()<(EndosomeAssessCompatibility.compatibles(endosome, end)))
+						{
 					endosomesToTether.add(end);
 				}
 			}

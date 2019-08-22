@@ -187,7 +187,7 @@ public class EndosomeUptakeStep {
 //			double ss = solubleContent.get(sol);
 //			solubleContent.put(sol, ss*volume);
 //		}
-		solubleContent.put("proton", 3.98E-5*volume); //pH 7.4
+		solubleContent.put("protonEn", 3.98E-5*volume); //pH 7.4
 	// new endosome incorporate PM components in a proportion area new/area PM
 	//					"Fully conformed MHC-I proteins internalize with the
 	//					rate 0.002–0.004 min−1 (0.2–0.4% loss of initially surface expressed

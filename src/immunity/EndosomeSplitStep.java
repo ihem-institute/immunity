@@ -72,10 +72,18 @@ public class EndosomeSplitStep {
 		// minimum cylinder
 		if (CellProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi"))
 		{// Golgi domain
-			if ( Math.random()<0.5){
+			double probFission = 0.1;
+//			if (endosome.c>=endosome.a){// it is a cistern.  Probability proportional to radius.  Max 500 nm, Min rcyl 
+//				
+//				probFission = (endosome.c - Cell.rcyl)/(500-Cell.rcyl);
+//			}
+//			else {// it is not a cistern.  Probability proportional to the length
+//				probFission = 0.5;//(endosome.a - Cell.rcyl)/(500-Cell.rcyl);
+//			}
+//			double probFission = 
+			if ( Math.random()<probFission){
 //		SET TO 0.9. TO BE ADJUSTED.  IF SMALLER, THE CISTERNS FRACTIONATE IF LARGER, LARGE CISTERNS
 //				0.5 works great when MT direction of tubules is set to the nucleus
-// for brefeldin A, set to 0.0 (no split without COP I)
 				return;
 			} 
 			else
@@ -553,9 +561,9 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 //				CellProperties.getInstance().getRabTropism());
 		
 		
-//		if (copySoluble.get(content) > vVesicle) {
-//			endosome.solubleContent.put(content, vVesicle);
-//		} else
+		if (copySoluble.get(content) > vVesicle) {
+			endosome.solubleContent.put(content, vVesicle);
+		} else
 			endosome.solubleContent.put(content,
 					copySoluble.get(content));
 	}

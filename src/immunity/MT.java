@@ -36,7 +36,7 @@ public class MT {
 	public void changePosition(MT mt) {
 		//if (Math.random() < 0.1) return;
 		// move the origin and the end of the MT
-		xorigin = RandomHelper.nextDoubleFromTo(15, 35);
+		xorigin = RandomHelper.nextDoubleFromTo(5, 45);
 		if (xorigin <= 25) {xend = xorigin -RandomHelper.nextDoubleFromTo(0, xorigin);}
 		else {xend = xorigin + RandomHelper.nextDoubleFromTo(0, 50-xorigin);}
 		double mth = Math.atan((50) / (xend - xorigin));
