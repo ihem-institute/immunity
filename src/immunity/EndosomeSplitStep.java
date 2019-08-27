@@ -72,7 +72,7 @@ public class EndosomeSplitStep {
 		// minimum cylinder
 		if (CellProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi"))
 		{// Golgi domain
-			double probFission = 0.1;
+			double probFission = 0.2;
 //			if (endosome.c>=endosome.a){// it is a cistern.  Probability proportional to radius.  Max 500 nm, Min rcyl 
 //				
 //				probFission = (endosome.c - Cell.rcyl)/(500-Cell.rcyl);
@@ -81,7 +81,7 @@ public class EndosomeSplitStep {
 //				probFission = 0.5;//(endosome.a - Cell.rcyl)/(500-Cell.rcyl);
 //			}
 //			double probFission = 
-			if ( Math.random()<probFission){
+			if ( Math.random()<1-probFission){
 //		SET TO 0.9. TO BE ADJUSTED.  IF SMALLER, THE CISTERNS FRACTIONATE IF LARGER, LARGE CISTERNS
 //				0.5 works great when MT direction of tubules is set to the nucleus
 				return;
@@ -428,7 +428,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 				splitPropSurface(endosome, content, so, sVesicle, propSurf);	
 			}
 			// if tropism to tubule, the content goes to tubule			
-			else if (rabTropism.get(content).contains("tub")){
+			else if (rabTropism.get(content).contains("tub") || (content.equals("enzyme") && rabInTube.equals("RabD"))){
 				splitToTubule(endosome, content, so, sVesicle);
 			}
 			// if tropism to sphere, the content goes to the vesicle		
@@ -585,16 +585,26 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 	private static void splitToTubule(Endosome endosome, String content, double so, double sVesicle) {
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
+		
 //		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 //				CellProperties.getInstance().getRabTropism());
+		double concentrate = 20d;
 		double scylinder = so - sVesicle;
-		if (copyMembrane.get(content) > scylinder) {
-			endosome.membraneContent.put(content,
-					copyMembrane.get(content) - scylinder);
-		} else
-			endosome.membraneContent.put(content, 0.0d);
-		// TODO Auto-generated method stub
-		
+		double value = (copyMembrane.get(content)/so)*concentrate*scylinder;
+//		if(copyMembrane.get(content)> scylinder){
+//			endosome.membraneContent.put(content, copyMembrane.get(content) - scylinder);
+//		}
+//		else {
+//			endosome.membraneContent.put(content, 0d);
+//		}
+//		
+		if (value >= scylinder) {value = scylinder;} 
+		if (value >= copyMembrane.get(content)){ value = copyMembrane.get(content);}
+
+		endosome.membraneContent.put(content, copyMembrane.get(content) - value);
+//		System.out.println(content +" content  existente "+copyMembrane.get(content)+" a restar "+value);
+//		
+//		System.out.println(endosome.membraneContent);
 	}
 
 	private static void splitToSphere(Endosome endosome, String content, double so, double sVesicle) {
@@ -623,16 +633,16 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 			} 
 		else {
 			double totalContent = copyMembrane.get(content);
-			double vContent = totalContent * propSurf;
+			double sContent = totalContent * propSurf;
 //			if the content to the round vesicle is larger than the round vesicle area, 
 //			or if the content to the tubule is larger than the tubule area, then put in the vesicle
 //			the vesicle area.
-			if (vContent > sVesicle) vContent = sVesicle;// all that can fit in the round vesicle area
-			if ((totalContent - vContent) > (so-sVesicle)) vContent = totalContent-(so-sVesicle);// all that cannot fit into the tubule area
-			endosome.membraneContent.put(content, vContent);	
+			if (sContent > sVesicle) sContent = sVesicle;// all that can fit in the round vesicle area
+			if ((totalContent - sContent) > (so-sVesicle)) sContent = totalContent-(so-sVesicle);// all that cannot fit into the tubule area
+			endosome.membraneContent.put(content, sContent);	
 
 //			System.out.println( +"  "+ (so-sVesicle) +"  "+ vContent +"  "+ (totalContent-vContent));
-			System.out.println(sVesicle +"  "+ (so-sVesicle) +"  "+ vContent +"  "+ (totalContent-vContent));
+			System.out.println(sVesicle +"  "+ (so-sVesicle) +"  "+ sContent +"  "+ (totalContent-sContent));
 		}
 			
 	
