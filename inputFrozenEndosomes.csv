@@ -1,6 +1,6 @@
 endosome25O,initOrgProp,area,31198.91502841103,volume,194553.80710528596,xcoor,25.217299654321376,ycoor,2.84721713467844,
 endosome25O,initRabContent,RabA,31198.91502841103
-endosome25O,initMembraneContent,enzyme,31198.0,enzymeG55,0.0,G55,11368.145514931133,membraneMarker,1.0,enzymeGo3,0.0,Go3,0.0
+endosome25O,initMembraneContent,enzyme,31198.0,enzymeG55,31198.0,G55,11368.145514931133,membraneMarker,1.0,enzymeGo3,0.0,Go3,31198.0
 endosome25O,initSolubleContent,ProC,194553.0,albumin,194553.0,solubleMarker,1.0,proton,19.455380710528658
 endosome0b,initOrgProp,area,732777.5117207126,volume,5.8460685874559626E7,xcoor,12.96562912145108,ycoor,1.5000212011370189,
 endosome0b,initRabContent,RabE,721644.2215429232,RabC,2776.2681821138176,RabD,3229.4143540837104,RabA,2161.332026009284,RabB,2966.275615550958

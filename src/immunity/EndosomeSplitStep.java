@@ -22,10 +22,15 @@ public class EndosomeSplitStep {
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 	static double cellLimit = 3 * Cell.orgScale;
+	public static HashMap<String, Integer> nroVesicles = new HashMap<String, Integer>();
+//nroVesicles.     ("RabA",0);//nroVesicles.put("RabB",0);nroVesicles.put("RabC",0);nroVesicles.put("RabD",0);nroVesicles.put("RabE",0);
+
 	
 	public static void split(Endosome endosome) {	
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
+
+
 
 		
 		String rabInTube = null;
@@ -72,7 +77,7 @@ public class EndosomeSplitStep {
 		// minimum cylinder
 		if (CellProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi"))
 		{// Golgi domain
-			double probFission = 0.2;
+			double probFission = 1;
 //			if (endosome.c>=endosome.a){// it is a cistern.  Probability proportional to radius.  Max 500 nm, Min rcyl 
 //				
 //				probFission = (endosome.c - Cell.rcyl)/(500-Cell.rcyl);
@@ -91,6 +96,13 @@ public class EndosomeSplitStep {
 				double[] areaVolume = areaVolumeCistern(endosome, rabInTube);
 				scylinder = areaVolume[0];
 				vcylinder = areaVolume[1];
+				int value = 0;
+				if (nroVesicles.containsKey(rabInTube)) {
+					value = nroVesicles.get(rabInTube)+1;
+				}
+				
+				nroVesicles.put(rabInTube, value);
+				System.out.println("NUMERO DE VESÍCULAS POR RAB "+ nroVesicles);
 
 			}
 		}
@@ -117,7 +129,7 @@ public class EndosomeSplitStep {
 		 */
 		double vVesicle = vo - vcylinder;
 		if(vVesicle < 0 || vcylinder < 0){
-			System.out.println(vVesicle +"surface and volume"+ vcylinder);	
+//			System.out.println(vVesicle +"surface and volume"+ vcylinder);	
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
@@ -141,8 +153,7 @@ public class EndosomeSplitStep {
 		 */
 		double rabLeft = endosome.rabContent.get(rabInTube) - scylinder;
 		if (rabLeft < 0) {
-			System.out.println(rabInTube + endosome.rabContent.get(rabInTube)
-					+ "surfaceCy" + scylinder);
+//			System.out.println(rabInTube + endosome.rabContent.get(rabInTube)+ "surfaceCy" + scylinder);
 //			System.out.println(endosome.rabContent);
 		}
 		endosome.rabContent.put(rabInTube, rabLeft);
@@ -294,7 +305,7 @@ public class EndosomeSplitStep {
 				// add a minimal volume
 				double aradius =Math.sqrt(vcylinder /(2*Math.PI*Cell.rcyl)); // from vcylinder = PI*aradius^2 * cistern height (2 rcyl)
 				scylinder = 2*Math.PI*aradius*aradius + 4*Math.PI*aradius*Cell.rcyl;//from Scyl = 2*PI*aradius^2+4*PI*aradius*rcyl
-System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+"  scylinder "+ scylinder);
+//System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+"  scylinder "+ scylinder);
 							
 				// System.out.println(scylinder +"surface and volume"+ vcylinder);
 			}
@@ -406,7 +417,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 			// the mincyl
 			vcylinder = vcylinder + 2 * Math.PI * Math.pow(Cell.rcyl, 3);
 			// add a volume
-			 System.out.println(scylinder +rabInTube + "NOT TUBULE SPLIT IN TUBULE surface and volume"+ vcylinder);
+//			 System.out.println(scylinder +rabInTube + "NOT TUBULE SPLIT IN TUBULE surface and volume"+ vcylinder);
 		}
 		}
 		return new double[] {scylinder, vcylinder};	
@@ -428,7 +439,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 				splitPropSurface(endosome, content, so, sVesicle, propSurf);	
 			}
 			// if tropism to tubule, the content goes to tubule			
-			else if (rabTropism.get(content).contains("tub") || (content.equals("enzyme") && rabInTube.equals("RabD"))){
+			else if (rabTropism.get(content).contains("tub") || (content.contains("enzyme") && rabInTube.equals("RabD"))){
 				splitToTubule(endosome, content, so, sVesicle);
 			}
 			// if tropism to sphere, the content goes to the vesicle		
@@ -588,7 +599,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 		
 //		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 //				CellProperties.getInstance().getRabTropism());
-		double concentrate = 20d;
+		double concentrate = 2d;
 		double scylinder = so - sVesicle;
 		double value = (copyMembrane.get(content)/so)*concentrate*scylinder;
 //		if(copyMembrane.get(content)> scylinder){
@@ -642,7 +653,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 			endosome.membraneContent.put(content, sContent);	
 
 //			System.out.println( +"  "+ (so-sVesicle) +"  "+ vContent +"  "+ (totalContent-vContent));
-			System.out.println(sVesicle +"  "+ (so-sVesicle) +"  "+ sContent +"  "+ (totalContent-sContent));
+//			System.out.println(sVesicle +"  "+ (so-sVesicle) +"  "+ sContent +"  "+ (totalContent-sContent));
 		}
 			
 	
@@ -694,7 +705,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 				for (String rab1 : keys){
 				tubuleTropism = tubuleTropism + CellProperties.getInstance().getTubuleTropism().get(rab1);
 					if (rnd <= tubuleTropism){
-						System.out.println(copyMap + " RabInTubeSelected " + rab1);
+//						System.out.println(copyMap + " RabInTubeSelected " + rab1);
 						return rab1;
 					}
 				}

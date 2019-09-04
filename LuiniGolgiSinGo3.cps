@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.24 (Build 197) (http://www.copasi.org) at 2019-08-26 15:43:32 UTC -->
+<!-- generated with COPASI 4.24 (Build 197) (http://www.copasi.org) at 2019-08-27 13:12:25 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="24" versionDevel="197" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -102,7 +102,7 @@ Adding chol removal in RabD endosomes
 
         </MiriamAnnotation>
         <Expression>
-          IF(&lt;CN=Root,Model=LuiniGolgiEnzymes,Vector=Compartments[compartment],Vector=Metabolites[RabD],Reference=InitialConcentration> > 0.5,100,5)
+          IF(&lt;CN=Root,Model=LuiniGolgiEnzymes,Vector=Compartments[compartment],Vector=Metabolites[RabD],Reference=InitialConcentration> > 0.9,100,10)
         </Expression>
       </ModelValue>
     </ListOfModelValues>
@@ -161,7 +161,7 @@ Adding chol removal in RabD endosomes
           <Product metabolite="Metabolite_0" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5055" name="k1" value="5"/>
+          <Constant key="Parameter_5055" name="k1" value="10"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=LuiniGolgiEnzymes,Vector=Compartments[compartment]">
           <ListOfCallParameters>
@@ -190,14 +190,14 @@ Adding chol removal in RabD endosomes
           <ModelParameter cn="CN=Root,Model=LuiniGolgiEnzymes,Vector=Compartments[compartment],Vector=Metabolites[RabD]" value="2.12581605187e+17" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
-          <ModelParameter cn="CN=Root,Model=LuiniGolgiEnzymes,Vector=Values[RabDact]" value="5" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=LuiniGolgiEnzymes,Vector=Values[RabDact]" value="10" type="ModelValue" simulationType="assignment"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Kinetic Parameters" type="Group">
           <ModelParameterGroup cn="CN=Root,Model=LuiniGolgiEnzymes,Vector=Reactions[G55 binding]" type="Reaction">
             <ModelParameter cn="CN=Root,Model=LuiniGolgiEnzymes,Vector=Reactions[G55 binding],ParameterGroup=Parameters,Parameter=k1" value="10" type="ReactionParameter" simulationType="fixed"/>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=LuiniGolgiEnzymes,Vector=Reactions[enzymeG55 hydr]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=LuiniGolgiEnzymes,Vector=Reactions[enzymeG55 hydr],ParameterGroup=Parameters,Parameter=k1" value="5" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=LuiniGolgiEnzymes,Vector=Reactions[enzymeG55 hydr],ParameterGroup=Parameters,Parameter=k1" value="10" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=LuiniGolgiEnzymes,Vector=Values[RabDact],Reference=InitialValue>
               </InitialExpression>
@@ -216,7 +216,7 @@ Adding chol removal in RabD endosomes
       <StateTemplateVariable objectReference="Compartment_0"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 6.02214179e+17 60221417900000000 0 5 2.12581605187e+17 1000000 
+      0 6.02214179e+17 60221417900000000 0 10 2.12581605187e+17 1000000 
     </InitialState>
   </Model>
   <ListOfTasks>
