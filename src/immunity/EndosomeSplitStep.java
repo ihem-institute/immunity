@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -37,6 +38,10 @@ public class EndosomeSplitStep {
 		double vo = endosome.volume;
 		double so = endosome.area;
 		double volMincyl = 2 * Math.PI * Cell.rcyl * Cell.rcyl * Cell.rcyl;
+		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux");
+		if (membraneFlux == 1d && maxRab.equals("RabA")) return;
+//		System.out.println("NO LO AGGARROO Y FORMA VESÍCULAS "+maxRab + membraneFlux);	
 		if (vo < 2 * volMincyl)
 			return; // if too small to form two mincyl do not split. Volume of a cylinder of 2
 					// cylinder radius long (almost a sphere)
@@ -78,6 +83,7 @@ public class EndosomeSplitStep {
 		if (CellProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi"))
 		{// Golgi domain
 			double probFission = 1;
+//			probFission = (endosome.a - Cell.rcyl)/(900-Cell.rcyl);
 //			if (endosome.c>=endosome.a){// it is a cistern.  Probability proportional to radius.  Max 500 nm, Min rcyl 
 //				
 //				probFission = (endosome.c - Cell.rcyl)/(500-Cell.rcyl);
@@ -96,7 +102,7 @@ public class EndosomeSplitStep {
 				double[] areaVolume = areaVolumeCistern(endosome, rabInTube);
 				scylinder = areaVolume[0];
 				vcylinder = areaVolume[1];
-				int value = 0;
+				int value = 1;
 				if (nroVesicles.containsKey(rabInTube)) {
 					value = nroVesicles.get(rabInTube)+1;
 				}
@@ -189,6 +195,7 @@ public class EndosomeSplitStep {
 			newSolubleContent.put(content, copySoluble.get(content)
 					- endosome.solubleContent.get(content));
 		}
+//		if (membraneFlux == 1d && maxRab.equals("RabA")) return;
 		Endosome b = new Endosome(endosome.getSpace(), endosome.getGrid(), newRabContent,
 				newMembraneContent, newSolubleContent, newInitOrgProp);
 		Context<Object> context = ContextUtils.getContext(endosome);
@@ -285,8 +292,8 @@ public class EndosomeSplitStep {
 //		    System.out.println("Second root is:"+root2);
 		//}   
 		
-		if (Math.random()<0.9){// standard 0.9
-// high probability of forming a single vesicle.  SET TO 0.9
+		if (Math.random()<2){// standard 0.9
+// high probability of forming a single vesicle.  SET TO 0.9.  SET to <1 for membraneFlux Luini
 			return new double[] {Cell.mincyl, 2 * Math.PI * Math.pow(Cell.rcyl, 3)};
 		}
 		else
@@ -519,6 +526,7 @@ public class EndosomeSplitStep {
 						endosome.solubleContent);
 		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 						CellProperties.getInstance().getRabTropism());
+//		System.out.println("RABTROPISM ANTES DE SPLIT  "+rabTropism);
 				
 		for (String content : copySoluble.keySet()) {
 			if (!rabTropism.containsKey(content)) 
@@ -545,7 +553,6 @@ public class EndosomeSplitStep {
 				SolSplitPropVolume(endosome, content, vo, vVesicle);
 			}
 		}
-
 
 	}
 
@@ -575,8 +582,9 @@ public class EndosomeSplitStep {
 		if (copySoluble.get(content) > vVesicle) {
 			endosome.solubleContent.put(content, vVesicle);
 		} else
-			endosome.solubleContent.put(content,
-					copySoluble.get(content));
+			{endosome.solubleContent.put(content,
+					copySoluble.get(content));}
+
 	}
 	
 	private static void SolSplitToTubule(Endosome endosome, String content, double vo, double vVesicle){
@@ -599,7 +607,7 @@ public class EndosomeSplitStep {
 		
 //		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 //				CellProperties.getInstance().getRabTropism());
-		double concentrate = 2d;
+		double concentrate = 7d;
 		double scylinder = so - sVesicle;
 		double value = (copyMembrane.get(content)/so)*concentrate*scylinder;
 //		if(copyMembrane.get(content)> scylinder){

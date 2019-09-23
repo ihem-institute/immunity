@@ -60,6 +60,7 @@ public class Results {
 	LocalPath mainpath=new LocalPath(); 
 	String ITResultsPath = mainpath.getPathResultsIT(); 	
 	String MarkerResultsPath =mainpath.getPathResultsMarkers();
+	String TotalRabs = mainpath.getPathTotalRabs();
 //	
 	public static Results getInstance() {
 		return instance;
@@ -134,9 +135,13 @@ public class Results {
 		//possible combinations of contents and Rabs
 		// a new line is added every 100 ticks
 		TreeMap<String, Double> orderContDist = new TreeMap<String, Double>(contentDist);
+		TreeMap<String, Double> orderTotalRabs = new TreeMap<String, Double>((String.CASE_INSENSITIVE_ORDER));
+		orderTotalRabs.putAll(totalRabs);
+
 //		System.out.println(orderContDist);
 		try {
 			writeToCsv(orderContDist);
+			writeToCsvTotalRabs(orderTotalRabs);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -169,6 +174,34 @@ public class Results {
 		Writer output;
 		//CAMBIO
 		output = new BufferedWriter(new FileWriter(ITResultsPath, true));
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
+		output.append(line);
+		output.close();
+	}
+	private void writeToCsvTotalRabs(TreeMap<String, Double> totalRabs2) throws IOException {
+	double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+	if (tick <10){// HEADER
+		String line = "";
+		for (String key : totalRabs2.keySet()) {
+            line = line+ key + ",";
+		}
+		line = line + "\n";
+		Writer output;
+		//CAMBIO
+		output = new BufferedWriter(new FileWriter(TotalRabs, false));		
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
+		output.append(line);
+		output.close();	
+		
+	}
+		String line = "";
+		for (String key : totalRabs2.keySet()) {
+            line = line+ Math.round(totalRabs2.get(key)*100000d)/100000d + ",";
+		}
+		line = line + "\n";
+		Writer output;
+		//CAMBIO
+		output = new BufferedWriter(new FileWriter(TotalRabs, true));
 //		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 		output.append(line);
 		output.close();
@@ -217,19 +250,19 @@ public class Results {
 //			System.out.println(" soluble "+ sol);
 			double value = solubleRecycle.get(sol);
 			contentDist.put(sol, value);
-			System.out.println("SOLUBLE  PM"+ sol + value );
+//			System.out.println("SOLUBLE  PM"+ sol + value );
 		}
 		for (String mem : membraneRecycle.keySet()) {
 			//System.out.println(" soluble "+ sol + " Rab " +rab);
 			double value = membraneRecycle.get(mem);
 			contentDist.put(mem , value);
-			System.out.println("MEMBRANE PM  "+ mem + value);
+//			System.out.println("MEMBRANE PM  "+ mem + value);
 		}			
 		for (String sol : solubleCell.keySet()) {
 //			System.out.println(" soluble "+ sol);
 			double value = solubleCell.get(sol);
 			contentDist.put("Cy"+sol, value);
-			System.out.println("SOLUBLE CELL  "+ sol + value );
+//			System.out.println("SOLUBLE CELL  "+ sol + value );
 		}
 //		now the content of the organelles is added, classified according to the membrane domains of each organelle
 		List<Endosome> allEndosomes = new ArrayList<Endosome>();

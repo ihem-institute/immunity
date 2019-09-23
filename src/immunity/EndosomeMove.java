@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import repast.simphony.context.Context;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.grid.Grid;
+import repast.simphony.util.ContextUtils;
 
 public class EndosomeMove {
 
@@ -16,8 +18,76 @@ public class EndosomeMove {
 	private static Grid<Object> grid;
 	private static List<MT> mts;
 	public static double cellLimit = 3 * Cell.orgScale;
-	
+
 	public static void moveTowards(Endosome endosome) {
+		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux");
+		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+		String organelleName = CellProperties.getInstance().rabOrganelle.get(maxRab);
+		if (membraneFlux == 1d 
+				&& endosome.area > 1E5
+				&& organelleName.contains("Golgi")){
+			moveCistern(endosome, maxRab);
+		}
+		else {
+			moveNormal(endosome);
+		}
+	}
+
+	public static void moveCistern(Endosome endosome, String maxRab){
+		space = endosome.getSpace();
+		grid = endosome.getGrid();		
+		if (Math.random()<0.01){
+		endosome.rabContent.clear();
+		endosome.rabContent.put(maxRab, endosome.area);			
+		}
+
+		double yrnd = Math.random();
+		switch (maxRab) {
+		case "RabA": {
+			endosome.heading = -90;
+			space.moveTo(endosome, 25, yrnd*2);
+			grid.moveTo(endosome, 25, (int)yrnd*2);
+			break;
+		}
+		case "RabB": {
+			endosome.heading = -90;
+			space.moveTo(endosome, 25, yrnd*3);
+			grid.moveTo(endosome, 25, (int)yrnd*3);
+			break;
+		}
+		case "RabC": {
+			endosome.heading = -90;
+			space.moveTo(endosome, 25, yrnd*4);
+			grid.moveTo(endosome, 25, (int)yrnd*4);
+			break;
+		}
+		case "RabD": {
+			endosome.heading = -90;
+			space.moveTo(endosome, 25, yrnd*5);
+			grid.moveTo(endosome, 25, (int)yrnd*5);
+			break;
+		}
+		case "RabE": {
+			endosome.heading = -90;
+			space.moveTo(endosome, 25, yrnd*6);
+			grid.moveTo(endosome, 25, (int)yrnd*6);
+			break;
+		}
+		
+		}
+		NdPoint myPoint = space.getLocation(endosome);
+//		NdPoint myPoint = endosome.getEndosomeLocation(endosome);
+		
+		double x = myPoint.getX();
+		endosome.setXcoor(x);
+		double y = myPoint.getY();
+		endosome.setYcoor(y);
+		
+
+	}
+
+	
+	public static void moveNormal(Endosome endosome) {
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
 		/*

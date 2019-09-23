@@ -19,6 +19,11 @@ public class EndosomeFusionStep {
 	private static Grid<Object> grid;
 	
 	public static void fusion (Endosome endosome) {
+		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+		if ((endosome.volume < 4 * Math.PI*Math.pow(Cell.rcyl, 3)
+				|| endosome.area < 2*(2*Math.PI*Math.pow(Cell.rcyl, 2)+2*Math.PI*Cell.rcyl*20))
+//				&& !maxRab.equals("RabA")
+				) return;
 		HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>(endosome.getSolubleContent());
@@ -30,7 +35,7 @@ public class EndosomeFusionStep {
 		// I calculated that the 50 x 50 grid is equivalent to a 750 x 750 nm
 		// square
 		// Hence, size/15 is in grid units
-		int gridSize = (int) Math.round(endosome.size*Cell.orgScale / 15d);
+		int gridSize = (int) Math.round(endosome.size*Cell.orgScale / 15d);// para aumentar fusión.  Lo normal es 15d
 		GridCellNgh<Endosome> nghCreator = new GridCellNgh<Endosome>(grid, pt,
 				Endosome.class, gridSize, gridSize);
 		// System.out.println("SIZE           "+gridSize);
@@ -42,18 +47,21 @@ public class EndosomeFusionStep {
 
 			// include all endosomes
 			for (Endosome end : gr.items()) {
+//				if (!(EndosomeAssessCompatibility.compatibles(endosome, end) == 0d)){
+//					System.out.println("DEBE FUSION "+endosome.rabContent + " "+ end.rabContent);
+//				}
 				boolean isCistern2 = (end.a > end.c);
 				if (end != endosome  // it is not itself
-						&& (end.volume <= endosome.volume) // the other is smaller
-						&& ((!isCistern || !isCistern2) // at list one is not cistern
-							|| // or they share the same maximal Rab domain
-						(Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey() ==
-						Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey()))
+						&& (end.volume < 4 * Math.PI*Math.pow(Cell.rcyl, 3))// use to be endosome.volume) // the other is smaller
+//						&& ((!isCistern || !isCistern2) // at list one is not cistern
+//							|| // or they share the same maximal Rab domain
+//						(Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey() ==
+//						Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey()))
 						
 						&& (Math.random() < EndosomeAssessCompatibility.compatibles(endosome, end))) {
-						if (EndosomeAssessCompatibility.compatibles(endosome, end)==0d){
-							System.out.println("OJO FUSION "+endosome.rabContent + " "+ end.rabContent);
-						}
+//						if (EndosomeAssessCompatibility.compatibles(endosome, end)==0d){
+//							System.out.println("OJO FUSION "+endosome.rabContent + " "+ end.rabContent);
+//						}
 					endosomes_to_delete.add(end);
 				}
 				// System.out.println(endosomes_to_delete);

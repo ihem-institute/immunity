@@ -89,7 +89,7 @@ public class PlasmaMembrane {
 		this.pmcolor = (int) (c1*255);
 		}
 
-		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + pmcolor+" " + pmcolor);
+//		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + pmcolor+" " + pmcolor);
 	}
 	
 

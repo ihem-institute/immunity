@@ -153,7 +153,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 //		{
 //			return 0;				
 //		}
-			return (int) (10* Math.pow(object.a/object.c, (0.3)));
+			return (int) (3* Math.pow(object.a/object.c, 0.3));
 	}
 
 	@Override

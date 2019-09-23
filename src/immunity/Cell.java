@@ -42,6 +42,7 @@ public class Cell {
 	TreeMap<Integer, HashMap<String, Double>> cellTimeSeries = new TreeMap<Integer, HashMap<String, Double>>();
 	private double cellVolume;
 	private double cellArea;
+	private boolean scheduledUptake;
 
 	// Constructor
 	public Cell() {
@@ -62,13 +63,25 @@ public class Cell {
 		if (Math.random() < 0.1 && name.endsWith(".cps")){
 			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
 			CellCopasiStep.antPresTimeSeriesLoad(this);
+
+			// eventual use for cell metabolism
 		}
-			
-// eventual use for cell metabolism
+	}
+
+	@ScheduledMethod(start = 1, interval = 3000)
+	public void uptake() {
+		scheduledUptake = true;
+
 	}
 	// GETTERS AND SETTERS (to get and set Cell contents)
 
 
+	public final boolean isScheduledUptake() {
+		return scheduledUptake;
+	}
+	public final void setScheduledUptake(boolean scheduledUptake) {
+		this.scheduledUptake = scheduledUptake;
+	}
 	public double gettMembrane() {
 		return tMembrane;
 	}
