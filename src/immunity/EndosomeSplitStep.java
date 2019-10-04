@@ -163,15 +163,15 @@ public class EndosomeSplitStep {
 //			System.out.println(endosome.rabContent);
 		}
 		endosome.rabContent.put(rabInTube, rabLeft);
-		
+//		here it is sent for membrane and soluble distribution
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
-		membraneContentSplit(endosome, rabInTube, so, sVesicle);
+		boolean empty = Math.random()<0.5;
+		membraneContentSplit(endosome, rabInTube, so, sVesicle, empty);
 		
 		HashMap<String, Double> copySoluble = new HashMap<String, Double>(
 				endosome.solubleContent);
-		solubleContentSplit(endosome, rabInTube, vo, vVesicle);
-
+		solubleContentSplit(endosome, rabInTube, vo, vVesicle, empty);
 		
 		endosome.size = Math.pow(endosome.volume * 3d / 4d / Math.PI, (1d / 3d));
 
@@ -185,6 +185,10 @@ public class EndosomeSplitStep {
 		HashMap<String, Double> newInitOrgProp = new HashMap<String, Double>();
 		newInitOrgProp.put("area", scylinder);
 		newInitOrgProp.put("volume", vcylinder);
+//		if empty = 1, fusion will be backward if empty = 0 fusion will be forward
+		double value = 0d;
+		if(empty == true){value = 1d;}
+		newInitOrgProp.put("empty", value);			
 		HashMap<String, Double> newMembraneContent = new HashMap<String, Double>();
 		for (String content : copyMembrane.keySet()) {
 			newMembraneContent.put(content, copyMembrane.get(content)
@@ -198,6 +202,7 @@ public class EndosomeSplitStep {
 //		if (membraneFlux == 1d && maxRab.equals("RabA")) return;
 		Endosome b = new Endosome(endosome.getSpace(), endosome.getGrid(), newRabContent,
 				newMembraneContent, newSolubleContent, newInitOrgProp);
+		System.out.println(newRabContent.toString() + newMembraneContent + newSolubleContent + newInitOrgProp);
 		Context<Object> context = ContextUtils.getContext(endosome);
 		context.add(b);
 //		if (b.solubleContent.containsKey("ova")&& b.solubleContent.get("ova")>1000d){
@@ -430,12 +435,25 @@ public class EndosomeSplitStep {
 		return new double[] {scylinder, vcylinder};	
 	}
 
-	private static void membraneContentSplit(Endosome endosome, String rabInTube, Double so, Double sVesicle) {
+	private static void membraneContentSplit(Endosome endosome, String rabInTube, Double so, Double sVesicle, boolean empty) {
 		// MEMBRANE CONTENT IS DISTRIBUTED according rabTropism
 		// new with a copy of endosome.membraneContent;
 		// copy rabTropism from CellProperties
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
+//	Generate empty vesicles that fuse backward in the Vesicular Transport Model		
+		if (empty == true){
+			for (String content : copyMembrane.keySet()) {
+				splitToSphere(endosome, content, so, sVesicle);
+			}
+			return;
+		}
+		
+		
+		
+		
+		
+		
 		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 				CellProperties.getInstance().getRabTropism());
 		double propSurf = 0;
@@ -446,7 +464,10 @@ public class EndosomeSplitStep {
 				splitPropSurface(endosome, content, so, sVesicle, propSurf);	
 			}
 			// if tropism to tubule, the content goes to tubule			
-			else if (rabTropism.get(content).contains("tub") || (content.contains("enzyme") && rabInTube.equals("RabD"))){
+			else if (rabTropism.get(content).contains("tub")
+			//		|| (content.contains("enzyme") && rabInTube.equals("RabD"))
+					)
+			{
 				splitToTubule(endosome, content, so, sVesicle);
 			}
 			// if tropism to sphere, the content goes to the vesicle		
@@ -520,12 +541,19 @@ public class EndosomeSplitStep {
 						
 
 
-	private static void solubleContentSplit(Endosome endosome, String rabInTube, double vo, double vVesicle){
+	private static void solubleContentSplit(Endosome endosome, String rabInTube, double vo, double vVesicle, boolean empty){
 		// SOLUBLE CONTENT IS DISTRIBUTED according rabTropism
 		HashMap<String, Double> copySoluble = new HashMap<String, Double>(
 						endosome.solubleContent);
 		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 						CellProperties.getInstance().getRabTropism());
+//		Generate empty vesicles that fuse backward in the Vesicular Transport Model		
+			if (empty == true){
+				for (String content : copySoluble.keySet()) {
+					SolSplitToSphere(endosome, content, vo, vVesicle);
+				}
+				return;
+			}
 //		System.out.println("RABTROPISM ANTES DE SPLIT  "+rabTropism);
 				
 		for (String content : copySoluble.keySet()) {

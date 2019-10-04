@@ -4,12 +4,25 @@ public class EndosomeAssessCompatibility {
 	
 	public static double compatibles(Endosome endosome1, Endosome endosome2) {
 		double sum = 0;
+		if (!endosome2.initOrgProp.containsKey("empty")){
+			endosome2.initOrgProp.put("empty", 0d);	
+		}
+		double empty = endosome2.initOrgProp.get("empty");
 		for (String key1 : endosome1.rabContent.keySet()) {
 			for (String key2 : endosome2.rabContent.keySet()) {
+				if (empty ==0){
 				double comp = getCompatibility(key1, key2)
 						* endosome1.rabContent.get(key1) / endosome1.area
 						* endosome2.rabContent.get(key2) / endosome2.area;
 				sum = sum + comp;
+				}
+				else {
+				double comp = getCompatibility(key2, key1)
+							* endosome1.rabContent.get(key1) / endosome1.area
+							* endosome2.rabContent.get(key2) / endosome2.area;
+				sum = sum + comp;
+				}
+
 			}
 		}
 		// compatibility is a value between 0 and 1. Fusion

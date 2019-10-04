@@ -23,8 +23,10 @@ public class EndosomeMove {
 		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux");
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		String organelleName = CellProperties.getInstance().rabOrganelle.get(maxRab);
-		if (membraneFlux == 1d 
-				&& endosome.area > 1E5
+		if (
+//				membraneFlux == 1d 
+//				&& 
+				endosome.area > 1E5
 				&& organelleName.contains("Golgi")){
 			moveCistern(endosome, maxRab);
 		}
@@ -36,7 +38,7 @@ public class EndosomeMove {
 	public static void moveCistern(Endosome endosome, String maxRab){
 		space = endosome.getSpace();
 		grid = endosome.getGrid();		
-		if (Math.random()<0.01){
+		if (Math.random()<0.00000){
 		endosome.rabContent.clear();
 		endosome.rabContent.put(maxRab, endosome.area);			
 		}
