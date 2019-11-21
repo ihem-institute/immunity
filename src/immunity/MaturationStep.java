@@ -23,7 +23,11 @@ public class MaturationStep {
 			specialMature(endosome);
 		}
 	}
-	
+//	NOT USED
+//	The idea is to preserve the content of Rab domains.  When a domain disappears by maturation, the 
+//	previous domain.
+//	For each endosome, take the maxRab. Control the content of all endosomes of following domain.  If it lower
+//	than a value, convert the maxRab to the following domain. 
 	private static void membraneFluxMature(Endosome endosome, String maxRab) {
 		double maturationTrigger = CellProperties.getInstance().cellK.get("maturationTrigger");
 		double value = endosome.rabContent.get(maxRab);
@@ -78,8 +82,12 @@ public class MaturationStep {
 
 	}
 	
+//	USED. take the maxRab of the endosome and convert it to the following domain.  If maxRab is Rabe 
+//	(last cistern) then delete the endosome
+//	
+	
 	private static void membraneFluxMatureSyn(Endosome endosome, String maxRab) {
-		double maturationTrigger = CellProperties.getInstance().cellK.get("maturationTrigger");
+//		double maturationTrigger = CellProperties.getInstance().cellK.get("maturationTrigger");
 		double value = endosome.rabContent.get(maxRab);
 		switch (maxRab) {
 		case "RabA": {
