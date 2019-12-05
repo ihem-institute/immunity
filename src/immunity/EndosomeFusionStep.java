@@ -19,6 +19,13 @@ public class EndosomeFusionStep {
 	private static Grid<Object> grid;
 	
 	public static void fusion (Endosome endosome) {
+//		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+//// Solo fucionan cisternas con vesículas.  Esto evita fusión entre vesíclas pequeñas (menore a dos veces el volumen o
+////		o menores a al área de un cilindro de 20 veces el rcyl de largo)
+//		if ((endosome.volume <= 4 * Math.PI*Math.pow(Cell.rcyl, 3)
+//				|| endosome.area <= 2*(2*Math.PI*Math.pow(Cell.rcyl, 2)+2*Math.PI*Cell.rcyl*2))
+////				&& !maxRab.equals("RabA")
+//				) return;
 		HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>(endosome.getSolubleContent());
@@ -37,12 +44,17 @@ public class EndosomeFusionStep {
 
 		List<GridCell<Endosome>> cellList = nghCreator.getNeighborhood(true);
 		List<Endosome> endosomes_to_delete = new ArrayList<Endosome>();
-		boolean isCistern = (endosome.a > endosome.c);
+		double vv = endosome.volume;
+		double ss = endosome.area;
+		boolean isCistern = (ss * ss * ss / (vv * vv) > 36.01 * Math.PI);// is a sphere
+
 		for (GridCell<Endosome> gr : cellList) {
 
 			// include all endosomes
 			for (Endosome end : gr.items()) {
-				boolean isCistern2 = (end.a > end.c);
+				vv = end.volume;
+				ss = end.area;
+				boolean isCistern2 = (ss * ss * ss / (vv * vv) < 36.01 * Math.PI);
 				if (end != endosome  // it is not itself
 						&& (end.volume <= endosome.volume) // the other is smaller
 						&& ((!isCistern || !isCistern2) // at list one is not cistern

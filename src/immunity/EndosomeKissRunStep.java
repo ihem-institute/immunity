@@ -19,7 +19,8 @@ public class EndosomeKissRunStep {
 	private static Grid<Object> grid;
 	
 	public static void kissRun (Endosome endosome) {
-		if (endosome.a <= endosome.c) return; // if it is not a cistern
+		if (endosome.a <= endosome.c
+				|| endosome.volume < 4*Math.PI*Math.pow(Cell.rcyl, 3)) return; // if it is not a cistern
 		HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>(endosome.getSolubleContent());
@@ -42,7 +43,7 @@ public class EndosomeKissRunStep {
 			// include all endosomes
 			for (Endosome end : gr.items()) {
 				if (end != endosome // if it is not itself
-						&& (end.volume <= endosome.volume) // if it is smaller
+						&& (end.volume <= 4*Math.PI*Math.pow(Cell.rcyl, 3))// if it is smaller
 						&&(end.a >= end.c) // if it is another cistern
 						&& Math.random()<(EndosomeAssessCompatibility.compatibles(endosome, end)))// if it is compatible
 				{

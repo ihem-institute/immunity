@@ -197,16 +197,16 @@ public class Endosome {
 //		if (Math.random()<0.01)MaturationStep.mature(this);
 
 	}
-	public List<Endosome> getAllEndosomes(){
-		List<Endosome> allEndosomes = new ArrayList<Endosome>();
-		for (Object obj : grid.getObjects()) {
-			if (obj instanceof Endosome) {
-				allEndosomes.add((Endosome) obj);
-			}
-		}
-//		System.out.println("ALL ENDOSOMES FORM PLASMA MEMBRANE " +allEndosomes);
-		return allEndosomes;
-	}
+//	public List<Endosome> getAllEndosomes(){
+//		List<Endosome> allEndosomes = new ArrayList<Endosome>();
+//		for (Object obj : grid.getObjects()) {
+//			if (obj instanceof Endosome) {
+//				allEndosomes.add((Endosome) obj);
+//			}
+//		}
+////		System.out.println("ALL ENDOSOMES FORM PLASMA MEMBRANE " +allEndosomes);
+//		return allEndosomes;
+//	}
 
 	public static void endosomeShape(Endosome end) {
 		double s = end.area;

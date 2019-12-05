@@ -24,12 +24,17 @@ public class EndosomeMove {
 		 * Direction in Repast 0 to the right 180 to the left -90 down +90 up
 		 * Move with random speed inversely proportional to the radius of an sphere with the endosome
 		 * volume.  The speed of a small organelle of radius 20 nm is taken as unit.  
-		To move, three situations are considered
+		To move, four situations are considered
 		1- Near the borders, the movement is: speed random between 0 and a value that depends on the endosome size
 		heading, the original heading plus a random number that depends on the momentum
 		2- Away of microtubules is the same than near borders
 		3- Near MT, the speed is fixed and the heading is in the direction of the Mt or 180 that of the Mt
+		4- If it is a cistern and it is a Golgi structure, structure goes to a fixed position.
 		 */
+		if (endosome.a > 4* endosome.c){
+			moveCistern(endosome);
+			return;
+		}
 
 		NdPoint myPoint = space.getLocation(endosome);
 //		NdPoint myPoint = endosome.getEndosomeLocation(endosome);
@@ -62,10 +67,10 @@ public class EndosomeMove {
 			* endosome.speed*Cell.orgScale/Cell.timeScale;
 		    double yy = y + Math.sin(endosome.heading * Math.PI / 180d)
 			* endosome.speed * Cell.orgScale/Cell.timeScale;	
-//		    if (yy >= 50-cellLimit) yy = 50 -cellLimit;
-//			if (yy <= 0+cellLimit) yy = cellLimit;
-//		    if move near the botom or top, do not move
-		    if (yy >= 50-cellLimit || yy <= 0+cellLimit) return;
+		    if (yy >= 50-cellLimit) yy = 50 -cellLimit-cellLimit*Math.random();
+			if (yy <= 0+cellLimit) yy = cellLimit+cellLimit*Math.random();
+//		    if move near the bottom or top, move out of the limits with a random spep
+//		    if (yy >= 50-cellLimit || yy <= 0+cellLimit) return;
 		space.moveTo(endosome, xx, yy);
 		grid.moveTo(endosome, (int) xx, (int) yy);
 	}
@@ -186,8 +191,8 @@ public class EndosomeMove {
 				NdPoint pt = space.getLocation(endosome);
 				double xpt = pt.getX()-xx;
 				double ypt = pt.getY()-yy;
-			    if (ypt >= 50-cellLimit) ypt = 50 -cellLimit;
-				if (ypt <= 0+cellLimit) ypt = cellLimit;
+			    if (ypt >= 50-cellLimit) ypt = 50 -cellLimit-cellLimit*Math.random();
+				if (ypt <= 0+cellLimit) ypt = cellLimit+cellLimit*Math.random();
 				space.moveTo(endosome, xpt, ypt);
 				grid.moveTo(endosome, (int) xpt, (int) ypt);
 				dist = distance(endosome, mt);
@@ -253,4 +258,52 @@ public class EndosomeMove {
 //		The distance has a sign that it is used to move the organelle to the position in the Mt
 		return distance;
 	}
+
+	public static void moveCistern(Endosome endosome){
+		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+		double yrnd = 1;//Math.random();
+		switch (maxRab) {
+		case "RabA": {
+			endosome.heading = -90;
+			space.moveTo(endosome, 25, yrnd*1);
+			grid.moveTo(endosome, 25, (int)yrnd*1);
+			break;
+		}
+		case "RabB": {
+			endosome.heading = -90;
+			space.moveTo(endosome, 25, yrnd*2);
+			grid.moveTo(endosome, 25, (int)yrnd*2);
+			break;
+		}
+		case "RabC": {
+			endosome.heading = -90;
+			space.moveTo(endosome, 25, yrnd*3);
+			grid.moveTo(endosome, 25, (int)(yrnd*3));
+			break;
+		}
+		case "RabD": {
+			endosome.heading = -90;
+			space.moveTo(endosome, 25, yrnd*4);
+			grid.moveTo(endosome, 25, (int)yrnd*4);
+			break;
+		}
+		case "RabE": {
+			endosome.heading = -90;
+			space.moveTo(endosome, 25, yrnd*5);
+			grid.moveTo(endosome, 25, (int)yrnd*5);
+			break;
+		}
+		
+		}
+		NdPoint myPoint = space.getLocation(endosome);
+//		NdPoint myPoint = endosome.getEndosomeLocation(endosome);
+		
+		double x = myPoint.getX();
+		endosome.setXcoor(x);
+		double y = myPoint.getY();
+		endosome.setYcoor(y);
+		
+
+	}
+
 }
