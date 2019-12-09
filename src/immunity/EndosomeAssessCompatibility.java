@@ -5,18 +5,18 @@ public class EndosomeAssessCompatibility {
 	public static double compatibles(Endosome endosome1, Endosome endosome2) {
 		double sum = 0;
 		if (!endosome2.initOrgProp.containsKey("empty")){
-			endosome2.initOrgProp.put("empty", 0d);	
+			endosome2.initOrgProp.put("empty", 0d);	// empty = false
 		}
 		double empty = endosome2.initOrgProp.get("empty");
 		for (String key1 : endosome1.rabContent.keySet()) {
 			for (String key2 : endosome2.rabContent.keySet()) {
-				if (empty ==0){
+				if (empty ==0){ // empty is false so it has content and should fuse forward
 				double comp = getCompatibility(key1, key2)
 						* endosome1.rabContent.get(key1) / endosome1.area
 						* endosome2.rabContent.get(key2) / endosome2.area;
 				sum = sum + comp;
 				}
-				else {
+				else { // empty is true so it has  no content and should fuse backward
 				double comp = getCompatibility(key2, key1)
 							* endosome1.rabContent.get(key1) / endosome1.area
 							* endosome2.rabContent.get(key2) / endosome2.area;
@@ -28,7 +28,7 @@ public class EndosomeAssessCompatibility {
 		// compatibility is a value between 0 and 1. Fusion
 		// occurs with a probability proportional to the compatibility
 
-//		if (isCompatible) System.out.println(sum +" "+endosome1.rabContent + " "+ endosome2.rabContent);
+//	System.out.println("COMBATIBILIDAD  "+sum +" "+endosome1.rabContent + " "+ endosome2.rabContent);
 		return sum;
 	}
 

@@ -72,13 +72,14 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
         double a=object.a; //ancho, 
         double c=object.c; // largo, length
         if (a<=c){// if it is a tubule and not a cistern
+//     		System.out.println("a  "+ a+" c  "+c);
         Shape ellypse = new Ellipse2D.Double(-c/2, -a/2, c, a);
         shape = this.factory.createShape(ellypse);
         }
         else{
          Shape rec = new RoundRectangle2D.Double(-c/2, -a/2, c, a,  50, 50);
 //        arguments x, y, ancho, largo, corner angle (small sharp), side curvature (small, straight)
-// 		System.out.println("a  "+ a+"c  "+c);
+// 		System.out.println("a  "+ a+" c  "+c);
          shape = this.factory.createShape(rec);
 		}
 //		else{

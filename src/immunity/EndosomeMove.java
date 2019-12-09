@@ -43,7 +43,7 @@ public class EndosomeMove {
 		endosome.rabContent.put(maxRab, endosome.area);			
 		}
 
-		double yrnd = Math.random();
+		double yrnd = 3;
 		switch (maxRab) {
 		case "RabA": {
 			endosome.heading = -90;
@@ -119,7 +119,7 @@ public class EndosomeMove {
 		else
 //			if not near the borders.  Notice less random near the nucleous
 		{
-			boolean onMt = false;
+//			boolean onMt = false;
 			changeDirectionMt(endosome);
 
 		}
@@ -134,10 +134,10 @@ public class EndosomeMove {
 			* endosome.speed*Cell.orgScale/Cell.timeScale;
 		    double yy = y + Math.sin(endosome.heading * Math.PI / 180d)
 			* endosome.speed * Cell.orgScale/Cell.timeScale;	
-//		    if (yy >= 50-cellLimit) yy = 50 -cellLimit;
-//			if (yy <= 0+cellLimit) yy = cellLimit;
+		    if (yy >= 50-cellLimit) yy = 50 -cellLimit-Math.random()*cellLimit;
+			if (yy <= 0+cellLimit) yy = cellLimit+Math.random()*cellLimit;
 //		    if move near the botom or top, do not move
-		    if (yy >= 50-cellLimit || yy <= 0+cellLimit) return;
+//		    if (yy >= 50-cellLimit || yy <= 0+cellLimit) return;
 		space.moveTo(endosome, xx, yy);
 		grid.moveTo(endosome, (int) xx, (int) yy);
 	}

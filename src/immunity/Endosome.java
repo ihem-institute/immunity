@@ -30,6 +30,7 @@ import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.environment.RunState;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.essentials.RepastEssentials;
+import repast.simphony.parameter.Parameter;
 import repast.simphony.parameter.Parameters;
 import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.query.space.grid.GridCellNgh;
@@ -147,7 +148,7 @@ public class Endosome {
 	public final void setXcoor(double xcoor) {
 		this.xcoor = xcoor;
 	}
-	
+//	 @Parameter(usageName="ycoor", displayName="Agent ycoor")
 	public final double getYcoor() {
 		return ycoor;
 	}
@@ -184,12 +185,12 @@ public class Endosome {
 		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
 //		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
 //		if (Math.random()<p_EndosomeKissRunStep) EndosomeKissRunStep.kissRun(this);
-		p_EndosomeFusionStep = 1/50d;
+		p_EndosomeFusionStep = 1/10d;
 		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
-		p_EndosomeSplitStep = 1/50d;
+		p_EndosomeSplitStep = 1/10d;
 		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
 		double p_EndosomeSwelling = 1/50d;
-		if (Math.random()<p_EndosomeSwelling) EndosomeSwelling.endosomeSwell(this);
+//		if (Math.random()<p_EndosomeSwelling) EndosomeSwelling.endosomeSwell(this);
 //		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%100 ==0) 
@@ -197,7 +198,7 @@ public class Endosome {
 		// rabConversionN();
 		String name =  CellProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
 		if (Math.random() < 1 && name.endsWith(".cps"))EndosomeCopasiStep.antPresTimeSeriesLoad(this);
-		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);
+//		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);
 		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%1000 == 0)EndosomeFusionStep.fusion(this);
 //		if (tick%60 == 0) EndosomeSplitStep.split(this);

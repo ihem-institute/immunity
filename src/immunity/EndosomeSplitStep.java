@@ -83,30 +83,31 @@ public class EndosomeSplitStep {
 		if (CellProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi"))
 		{// Golgi domain
 			double probFission = 1;
-//			probFission = (endosome.a - Cell.rcyl)/(900-Cell.rcyl);
-//			if (endosome.c>=endosome.a){// it is a cistern.  Probability proportional to radius.  Max 500 nm, Min rcyl 
-//				
-//				probFission = (endosome.c - Cell.rcyl)/(500-Cell.rcyl);
-//			}
-//			else {// it is not a cistern.  Probability proportional to the length
-//				probFission = 0.5;//(endosome.a - Cell.rcyl)/(500-Cell.rcyl);
-//			}
-//			double probFission = 
+			//			probFission = (endosome.a - Cell.rcyl)/(900-Cell.rcyl);
+			//			if (endosome.c>=endosome.a){// it is a cistern.  Probability proportional to radius.  Max 500 nm, Min rcyl 
+			//				
+			//				probFission = (endosome.c - Cell.rcyl)/(500-Cell.rcyl);
+			//			}
+			//			else {// it is not a cistern.  Probability proportional to the length
+			//				probFission = 0.5;//(endosome.a - Cell.rcyl)/(500-Cell.rcyl);
+			//			}
+			//			double probFission = 
 			if ( Math.random()<1-probFission){
-//		SET TO 0.9. TO BE ADJUSTED.  IF SMALLER, THE CISTERNS FRACTIONATE IF LARGER, LARGE CISTERNS
-//				0.5 works great when MT direction of tubules is set to the nucleus
+				//		SET TO 0.9. TO BE ADJUSTED.  IF SMALLER, THE CISTERNS FRACTIONATE IF LARGER, LARGE CISTERNS
+				//				0.5 works great when MT direction of tubules is set to the nucleus
 				return;
 			} 
-			else
+			else 
 			{
 				double[] areaVolume = areaVolumeCistern(endosome, rabInTube);
+//				System.out.println("areaVolume[0], [1] "+ areaVolume[0] +"  "+ areaVolume[1] );	
 				scylinder = areaVolume[0];
 				vcylinder = areaVolume[1];
 				int value = 1;
 				if (nroVesicles.containsKey(rabInTube)) {
 					value = nroVesicles.get(rabInTube)+1;
 				}
-				
+
 				nroVesicles.put(rabInTube, value);
 				System.out.println("NUMERO DE VESÍCULAS POR RAB "+ nroVesicles);
 
@@ -241,7 +242,7 @@ public class EndosomeSplitStep {
 
 		double y = myPoint.getY()+ deltay;
 		if (y < cellLimit){
-			y= cellLimit;
+			y= cellLimit+Math.random()*cellLimit;
 //			specific for Golgi transport.  To increase TGN volume, when split a pure TGN (RabE) tubule, near the nucleus, increase the volume in a random
 //			way between 0 and the maximal volume (the volume of a sphere with the area of the tubule
 //			if (rabInTube.equals("RabE")){
@@ -252,7 +253,7 @@ public class EndosomeSplitStep {
 //			}
 		}
 		
-		if (y > 50 - cellLimit)y = 50-cellLimit;
+		if (y > 50 - cellLimit)y = 50-cellLimit-Math.random()*cellLimit;
 		space.moveTo(b, x, y);
 		grid.moveTo(b, (int) x, (int) y);
 
@@ -299,7 +300,7 @@ public class EndosomeSplitStep {
 		
 		if (Math.random()<2){// standard 0.9
 // high probability of forming a single vesicle.  SET TO 0.9.  SET to <1 for membraneFlux Luini
-			return new double[] {Cell.mincyl, 2 * Math.PI * Math.pow(Cell.rcyl, 3)};
+			return new double[] {4*Math.PI * Math.pow(Cell.rcyl,2) , 4/3*Math.PI * Math.pow(Cell.rcyl,3)};
 		}
 		else
 		{
