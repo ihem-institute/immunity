@@ -97,7 +97,7 @@ public class EndosomeSplitStep {
 				double[] areaVolume = areaVolumeCistern(endosome, rabInTube);
 				scylinder = areaVolume[0];
 				vcylinder = areaVolume[1];
-				int value = 0;
+				int value = 1;
 				if (nroVesicles.containsKey(rabInTube)) {
 					value = nroVesicles.get(rabInTube)+1;
 				}
@@ -158,7 +158,7 @@ public class EndosomeSplitStep {
 //			System.out.println(endosome.rabContent);
 		}
 		endosome.rabContent.put(rabInTube, rabLeft);
-		
+//		here it is sent for membrane and soluble distribution
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
 		membraneContentSplit(endosome, rabInTube, so, sVesicle);
@@ -230,7 +230,7 @@ public class EndosomeSplitStep {
 
 		double y = myPoint.getY()+ deltay;
 		if (y < cellLimit){
-			y= cellLimit;
+			y= cellLimit+Math.random()*cellLimit;
 //			specific for Golgi transport.  To increase TGN volume, when split a pure TGN (RabE) tubule, near the nucleus, increase the volume in a random
 //			way between 0 and the maximal volume (the volume of a sphere with the area of the tubule
 //			if (rabInTube.equals("RabE")){
@@ -241,7 +241,7 @@ public class EndosomeSplitStep {
 //			}
 		}
 		
-		if (y > 50 - cellLimit)y = 50-cellLimit;
+		if (y > 50 - cellLimit)y = 50-cellLimit-Math.random()*cellLimit;
 		space.moveTo(b, x, y);
 		grid.moveTo(b, (int) x, (int) y);
 
@@ -441,7 +441,9 @@ public class EndosomeSplitStep {
 				splitPropSurface(endosome, content, so, sVesicle, propSurf);	
 			}
 			// if tropism to tubule, the content goes to tubule			
-			else if (rabTropism.get(content).contains("tub") || (content.contains("enzyme") && rabInTube.equals("RabD"))){
+			else if (rabTropism.get(content).contains("tub"))
+//					|| (content.contains("enzyme") && rabInTube.equals("RabD"))
+			{
 				splitToTubule(endosome, content, so, sVesicle);
 			}
 			// if tropism to sphere, the content goes to the vesicle		
@@ -601,7 +603,7 @@ public class EndosomeSplitStep {
 		
 //		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 //				CellProperties.getInstance().getRabTropism());
-		double concentrate = 2d;
+		double concentrate = 7d;
 		double scylinder = so - sVesicle;
 		double value = (copyMembrane.get(content)/so)*concentrate*scylinder;
 //		if(copyMembrane.get(content)> scylinder){
