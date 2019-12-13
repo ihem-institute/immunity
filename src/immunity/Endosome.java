@@ -184,12 +184,12 @@ public class Endosome {
 		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
 //		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
 //		if (Math.random()<p_EndosomeKissRunStep) EndosomeKissRunStep.kissRun(this);
-		p_EndosomeFusionStep = 1/500d;
+		p_EndosomeFusionStep = 1/50d;
 		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
 		p_EndosomeSplitStep = 1/40d;
 		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
 		double p_EndosomeSwelling = 1/50d;
-		if (Math.random()<p_EndosomeSwelling) EndosomeSwelling.endosomeSwell(this);
+//		if (Math.random()<p_EndosomeSwelling) EndosomeSwelling.endosomeSwell(this);
 //		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%100 ==0) 

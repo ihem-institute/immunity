@@ -83,8 +83,8 @@ public class MaturationStep {
 		double value = endosome.rabContent.get(maxRab);
 		switch (maxRab) {
 		case "RabA": {
-			endosome.rabContent.put("RabA", 0d);
-			endosome.rabContent.put("RabB", value);
+//			endosome.rabContent.put("RabA", 0d);
+//			endosome.rabContent.put("RabB", value);
 			break;
 		}
 		case "RabB": {
@@ -103,8 +103,8 @@ public class MaturationStep {
 			break;
 		}
 		case "RabE": {
-			Context<Object> context = ContextUtils.getContext(endosome);
-			context.remove(endosome);
+//			Context<Object> context = ContextUtils.getContext(endosome);
+//			context.remove(endosome);
 			break;
 		}
 		

@@ -236,7 +236,7 @@ public class EndosomeSplitStep {
 
 		double y = myPoint.getY()+ deltay;
 		if (y < cellLimit){
-			y= cellLimit;
+			y= cellLimit+Math.random()*cellLimit;
 //			specific for Golgi transport.  To increase TGN volume, when split a pure TGN (RabE) tubule, near the nucleus, increase the volume in a random
 //			way between 0 and the maximal volume (the volume of a sphere with the area of the tubule
 //			if (rabInTube.equals("RabE")){
@@ -247,7 +247,7 @@ public class EndosomeSplitStep {
 //			}
 		}
 		
-		if (y > 50 - cellLimit)y = 50-cellLimit;
+		if (y > 50 - cellLimit)y = 50-cellLimit-Math.random()*cellLimit;
 		space.moveTo(b, x, y);
 		grid.moveTo(b, (int) x, (int) y);
 
@@ -294,7 +294,8 @@ public class EndosomeSplitStep {
 		
 		if (Math.random()<2){// standard 0.9
 // high probability of forming a single vesicle.  SET TO 0.9.  SET to <1 for membraneFlux Luini
-			return new double[] {Cell.mincyl, 2 * Math.PI * Math.pow(Cell.rcyl, 3)};
+			return new double[] {4 * Math.PI*Math.pow(Cell.rcyl,2), 4/3 * Math.PI * Math.pow(Cell.rcyl, 3)};
+
 		}
 		else
 		{

@@ -75,7 +75,7 @@ public class EndosomeRecycleStep {
 
 				HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance()
 						.getSolubleRecycle();
-				double endopH = endosome.solubleContent.get("proton");
+				double endopH = 0.001;//endosome.solubleContent.get("proton");
 				for (String key1 : endosome.solubleContent.keySet()) {
 					if (solubleRecycle.containsKey(key1)) {
 						double sum = solubleRecycle.get(key1)
