@@ -20,6 +20,7 @@ public class EndosomeMove {
 	public static double cellLimit = 3 * Cell.orgScale;
 
 	public static void moveTowards(Endosome endosome) {
+//		System.out.println(CellProperties.getInstance().cellK);
 		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux");
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		String organelleName = CellProperties.getInstance().rabOrganelle.get(maxRab);
@@ -43,7 +44,7 @@ public class EndosomeMove {
 		endosome.rabContent.put(maxRab, endosome.area);			
 		}
 
-		double yrnd = 3;
+		double yrnd = 1;
 		switch (maxRab) {
 		case "RabA": {
 			endosome.heading = -90;

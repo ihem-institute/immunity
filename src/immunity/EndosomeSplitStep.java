@@ -413,7 +413,7 @@ public class EndosomeSplitStep {
 											// be larger than 50% of the total
 											// area
 				&& ((vo - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))>4 * Math.PI * Math.pow(Cell.rcyl, 3))
-				&& Math.random()< 0.9 //cut the tubule with a 10% probability in each step.  Prevent too long tubules
+				&& Math.random()< 1 //cut the tubule with a 10% probability in each step (0.9).  Prevent too long tubules
 				) {
 //			/ ((so - scylinder - 4 * Math.PI
 //					* Math.pow(Cell.rcyl, 2)) - 2 * Math.PI
