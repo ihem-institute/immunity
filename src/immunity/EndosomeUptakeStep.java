@@ -37,11 +37,11 @@ public class EndosomeUptakeStep {
 			double maturationTrigger = CellProperties.getInstance().cellK.get("maturationTrigger");
 			double totalRabA = Results.getInstance().getTotalRabs().get("RabA");
 			double initialTotalRabA = Results.getInstance().getInitialTotalRabs().get("RabA");
-			//		System.out.println("totalRabs  "+totalRabs);
-//			if (totalRabA > maturationTrigger * initialTotalRabA) {// new RabA cistern only if 50% has matured
-//				return;
-//			}
-//			else
+					System.out.println("totalRabs  "+totalRabA);
+			if (totalRabA > maturationTrigger * initialTotalRabA) {// new RabA cistern only if 50% has matured
+				return;
+			}
+			else
 			{
 			String selectedRab = "RabA";
 			newOrganelle(endosome, selectedRab, rabCode, membraneFlux);

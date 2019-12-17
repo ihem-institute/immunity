@@ -66,6 +66,7 @@ public class Cell {
 
 			// eventual use for cell metabolism
 		}
+		
 	}
 
 	@ScheduledMethod(start = 1, interval = 3000)

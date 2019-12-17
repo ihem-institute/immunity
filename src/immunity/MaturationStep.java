@@ -13,14 +13,24 @@ public class MaturationStep {
 		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux");
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		String organelleName = CellProperties.getInstance().rabOrganelle.get(maxRab);
-		if (membraneFlux == 1d 
-				&& endosome.area > 1E5
-				&& organelleName.contains("Golgi")){
+		if (membraneFlux != 1d) return; // if not membrane flux, no maturation
+		if (endosome.area > 2*4*Math.PI*Cell.rcyl // if large enough (twice a vesicle)
+				&& organelleName.contains("Golgi")) // and if it is the prevalent domain is a Golgi structure
+		{			
+//			System.out.println("GOLGI MATURATION  "+endosome.rabContent +endosome.xcoor+endosome.ycoor);
+
 			membraneFluxMatureSyn(endosome, maxRab);
 
 		}
-		else {
-			specialMature(endosome);
+		else if (organelleName.contains("ERGIC")){// if ERGIC, mature to cisGolgi near the bottom
+//			System.out.println("ERGIC MATURATION  "+endosome.rabContent +endosome.xcoor+endosome.ycoor);
+			matureERGIC(endosome);
+		}
+		else if (organelleName == "TGN"){// not specified yet
+			return;
+		}
+		else{
+			return;
 		}
 	}
 	
@@ -31,7 +41,7 @@ public class MaturationStep {
 		case "RabA": {
 			double totalRab = Results.getInstance().getTotalRabs().get("RabB");
 			double initialTotalRabA = Results.getInstance().getInitialTotalRabs().get("RabA");
-			System.out.println(endosome.rabContent + "  totalRabB  "+totalRab);
+//			System.out.println(endosome.rabContent + "  totalRabB  "+totalRab);
 			if (totalRab < maturationTrigger * initialTotalRabA) {
 			endosome.rabContent.put("RabA", 0d);
 			endosome.rabContent.put("RabB", value);}
@@ -141,8 +151,27 @@ public class MaturationStep {
 	}
 	else return;
 	}
+
+
+	private static void matureERGIC(Endosome endosome) {
+		/*
+		 * Specific maturation for ERIGIC
+		 * When near the cisGolgi (xcoor in the center and ycoor near the bottom), mature to cisGolgi
+		 */	
+		if (endosome.xcoor < 10
+				|| endosome.xcoor > 40
+				|| endosome.ycoor > 5)
+		{
+			return;
+		}
+		else{
+			System.out.println("ERGICCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC MATURATION  "+endosome.rabContent +endosome.xcoor+"   "+endosome.ycoor);
+			endosome.rabContent.clear();
+			endosome.rabContent.put("RabB", endosome.area);
+			return;
+		}
+	}
 }
-	
 //	if (rabContent.containsKey("RabE"))
 //	{
 //		if (!rabContent.containsKey("RabD")) rabContent.put("RabD", 0d); 

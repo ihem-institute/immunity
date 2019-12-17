@@ -10,6 +10,7 @@ import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.media.opengl.GL2;
 
@@ -210,17 +211,19 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 //		color code = 1.  Select the more aboundant Rab
 		else {
 			HashMap<String, Double> rabContent = new HashMap<String, Double>(object.getRabContent());
-			Double rabMax = 0d;
-			String rabColor = null;
-			for (String rab : rabContent.keySet())
-			{
-				if (rabContent.get(rab)> rabMax) {
-					rabMax = rabContent.get(rab);
-					rabColor = rab;
-
-				}
-			}
-			//			System.out.println(rabColor+rabContent);
+			String rabColor = Collections.max(object.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+//			String rabColor = CellProperties.getInstance().rabOrganelle.get(maxRab);
+//			Double rabMax = 0d;
+//			String rabColor = null;
+//			for (String rab : rabContent.keySet())
+//			{
+//				if (rabContent.get(rab)> rabMax) {
+//					rabMax = rabContent.get(rab);
+//					rabColor = rab;
+//
+//				}
+//			}
+						System.out.println(rabColor+rabContent);
 			if (rabColor.equals("RabA"))	return new Color (0,0,255);
 			else if (rabColor.equals("RabB"))	return new Color (0,255,255);
 			else if (rabColor.equals("RabC"))	return new Color (0,255,0);

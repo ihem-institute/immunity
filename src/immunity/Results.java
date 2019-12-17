@@ -304,7 +304,7 @@ public class Results {
 					//System.out.println("SOLUBLE"+sol + "Rab" +rab);
 				}
 			for (String mem : membraneContent.keySet()) {
-				System.out.println(" membrane "+mem + " Rab " +rab);
+//				System.out.println(" membrane "+mem + " Rab " +rab);
 					double value = contentDist.get(mem + rab)
 							+ membraneContent.get(mem) * rabContent.get(rab)
 							/ area;
@@ -345,7 +345,7 @@ public class Results {
 		if (tick == 1) initialTotalRabs.putAll(totalRabs);
 		
 //		sum in cytosol
-		System.out.println(" TOTAL RABS      "+totalRabs);
+//		System.out.println(" TOTAL RABS      "+totalRabs);
 
 
 	}
