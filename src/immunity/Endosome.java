@@ -186,7 +186,7 @@ public class Endosome {
 //		if (Math.random()<p_EndosomeKissRunStep) EndosomeKissRunStep.kissRun(this);
 		p_EndosomeFusionStep = 1/50d;
 		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
-		p_EndosomeSplitStep = 1/40d;
+		p_EndosomeSplitStep = 1/50d;
 		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
 		double p_EndosomeSwelling = 1/50d;
 //		if (Math.random()<p_EndosomeSwelling) EndosomeSwelling.endosomeSwell(this);
@@ -202,7 +202,7 @@ public class Endosome {
 //		if (tick%1000 == 0)EndosomeFusionStep.fusion(this);
 //		if (tick%60 == 0) EndosomeSplitStep.split(this);
 //		EndosomeSwelling.endosomeSwell(this);
-		if (tick%3000 ==0) {
+		if (tick%300 ==0) {
 			MaturationStep.mature(this);
 			boolean scheduledUptake = Cell.getInstance().isScheduledUptake();
 			if (scheduledUptake){

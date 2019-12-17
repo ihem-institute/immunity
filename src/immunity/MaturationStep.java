@@ -98,18 +98,21 @@ public class MaturationStep {
 			break;
 		}
 		case "RabB": {
-			endosome.rabContent.put("RabB", 0d);
-			endosome.rabContent.put("RabC", value);
+			if(Math.random()<0.9) break;
+			endosome.rabContent.clear();//put("RabB", 0d);
+			endosome.rabContent.put("RabC", endosome.area);
 			break;
 		}
 		case "RabC": {
-			endosome.rabContent.put("RabC", 0d);
-			endosome.rabContent.put("RabD", value);
+			if(Math.random()<0.9) break;
+			endosome.rabContent.clear();//put("RabC", 0d);
+			endosome.rabContent.put("RabD", endosome.area);
 			break;
 		}
 		case "RabD": {
-			endosome.rabContent.put("RabD", 0d);
-			endosome.rabContent.put("RabE", value);
+			if(Math.random()<0.9) break;
+			endosome.rabContent.clear(); //put("RabD", 0d);
+			endosome.rabContent.put("RabE", endosome.area);
 			break;
 		}
 		case "RabE": {
@@ -159,8 +162,8 @@ public class MaturationStep {
 		 * When near the cisGolgi (xcoor in the center and ycoor near the bottom), mature to cisGolgi
 		 */	
 		if (endosome.xcoor < 10
-				|| endosome.xcoor > 40
-				|| endosome.ycoor > 5)
+			|| endosome.xcoor > 40
+			|| endosome.ycoor > 5)
 		{
 			return;
 		}

@@ -415,8 +415,9 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 			bud.speed = 0d;
 			bud.heading = -90;// heading down
 			// NdPoint myPoint = space.getLocation(bud);
-			endosome.getSpace().moveTo(bud, 25, 2);
-			endosome.getGrid().moveTo(bud, 25, 2);		
+			double rnd = Math.random();
+			endosome.getSpace().moveTo(bud, 25, 5*rnd);
+			endosome.getGrid().moveTo(bud, 25, (int)(5*rnd));		
 		}
 		else{
 		bud.speed = 1d / bud.size;
