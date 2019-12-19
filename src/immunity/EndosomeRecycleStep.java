@@ -29,24 +29,24 @@ public class EndosomeRecycleStep {
 //			So, I am assuming that there is a Rab4 tubule getting Tf that goes to the PM
 //			leaving the rest of the early endosome (RabA) in place
 			
-			if (endosome.rabContent.containsKey("RabA")
-					&& Math.random() <= endosome.rabContent.get("RabA")/endosome.area 
-					&& endosome.membraneContent.containsKey("Tf")){
-								
-				
-				double tfValue = endosome.membraneContent.get("Tf");
-				HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance()
-						.getMembraneRecycle();
-				if (membraneRecycle.containsKey("Tf")) {
-					double sum = membraneRecycle.get("Tf")
-							+ tfValue;
-					membraneRecycle.put("Tf", sum);
-				} else {
-					membraneRecycle.put("Tf", tfValue);}
-				
-				endosome.membraneContent.put("Tf", 0d);				
-				return;
-			}
+//			if (endosome.rabContent.containsKey("RabA")
+//					&& Math.random() <= endosome.rabContent.get("RabA")/endosome.area 
+//					&& endosome.membraneContent.containsKey("Tf")){
+//								
+//				
+//				double tfValue = endosome.membraneContent.get("Tf");
+//				HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance()
+//						.getMembraneRecycle();
+//				if (membraneRecycle.containsKey("Tf")) {
+//					double sum = membraneRecycle.get("Tf")
+//							+ tfValue;
+//					membraneRecycle.put("Tf", sum);
+//				} else {
+//					membraneRecycle.put("Tf", tfValue);}
+//				
+//				endosome.membraneContent.put("Tf", 0d);				
+//				return;
+//			}
 			double recyProb = 0.0;
 			for (String rab: endosome.rabContent.keySet()){
 				recyProb = recyProb + endosome.rabContent.get(rab) / endosome.area 
@@ -95,8 +95,8 @@ public class EndosomeRecycleStep {
 				endosome.volume = Math.PI*rcyl*rcyl*h; // new volume of the endosome, now converted in a tubule.
 				endosome.heading = -90; //moving in the nucleus direction
 //				to delete the recycled endosome.
-//				Context<Object> context = ContextUtils.getContext(endosome);
-//				context.remove(endosome);
+				Context<Object> context = ContextUtils.getContext(endosome);
+				context.remove(endosome);
 
 			}
 		}

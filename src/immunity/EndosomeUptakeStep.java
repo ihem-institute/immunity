@@ -22,8 +22,8 @@ public class EndosomeUptakeStep {
 	private static Object membreneMet;
 	private static HashMap<String, Double> rabContent;
 	public static void uptake(Endosome endosome) {
-		//		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-		//		if (tick < 100) return;
+		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+		if (tick < 100) return;
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
 		HashMap<String, String> rabCode = new HashMap<String, String>();
@@ -35,6 +35,8 @@ public class EndosomeUptakeStep {
 		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux"); // if on then a cistern is formed from zero for membrane flux model
 		if (membraneFlux == 1d){
 			double maturationTrigger = CellProperties.getInstance().cellK.get("maturationTrigger");
+//
+//			System.out.println("QWUW PA  "+Results.getInstance().getTotalRabs());
 			double totalRabA = Results.getInstance().getTotalRabs().get("RabA");
 			double initialTotalRabA = Results.getInstance().getInitialTotalRabs().get("RabA");
 					System.out.println("totalRabs  "+totalRabA);
@@ -411,7 +413,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 //		bud.size = initOrgProp.get("maxRadius");// radius of a sphere with the volume of the
 		// cylinder
 		
-		if (membraneFlux == 1d){
+		if (membraneFlux == 2d){
 			bud.speed = 0d;
 			bud.heading = -90;// heading down
 			// NdPoint myPoint = space.getLocation(bud);

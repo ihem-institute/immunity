@@ -24,7 +24,7 @@ public class EndosomeMove {
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		String organelleName = CellProperties.getInstance().rabOrganelle.get(maxRab);
 		if (membraneFlux == 1d 
-				&& endosome.area > 1E5
+				&& endosome.area >= 1E5
 				&& organelleName.contains("Golgi")){
 			moveCistern(endosome, maxRab);
 		}

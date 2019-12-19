@@ -179,16 +179,17 @@ public class Endosome {
 //		EndosomeMove.changeDirection(this);
 		EndosomeMove.moveTowards(this);
 //		if (this.solubleContent.containsKey("mvb")) this.membraneContent.put("chol", 0d);
-//		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
+		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
 //		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
 		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
 //		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
 //		if (Math.random()<p_EndosomeKissRunStep) EndosomeKissRunStep.kissRun(this);
-		p_EndosomeFusionStep = 1/50d;
+		p_EndosomeFusionStep = 1/5d;
 		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
-		p_EndosomeSplitStep = 1/50d;
+		p_EndosomeSplitStep = 1/10d;
 		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
 		double p_EndosomeSwelling = 1/50d;
+		if (Math.random()<p_MaturationStep) MaturationStep.mature(this);
 //		if (Math.random()<p_EndosomeSwelling) EndosomeSwelling.endosomeSwell(this);
 //		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
@@ -202,21 +203,17 @@ public class Endosome {
 //		if (tick%1000 == 0)EndosomeFusionStep.fusion(this);
 //		if (tick%60 == 0) EndosomeSplitStep.split(this);
 //		EndosomeSwelling.endosomeSwell(this);
-		if (tick%300 ==0) {
-			MaturationStep.mature(this);
-			boolean scheduledUptake = Cell.getInstance().isScheduledUptake();
-			if (scheduledUptake){
-				EndosomeUptakeStep.uptake(this);
-				scheduledUptake = false;
-				Cell.getInstance().setScheduledUptake(scheduledUptake);
-			}
-
-
-		}
+//		if (tick%300 ==0) {
+//			MaturationStep.mature(this);
+//			boolean scheduledUptake = Cell.getInstance().isScheduledUptake();
+//			if (scheduledUptake){
+//				EndosomeUptakeStep.uptake(this);
+//				scheduledUptake = false;
+//				Cell.getInstance().setScheduledUptake(scheduledUptake);
+//			}
+//		}
 //		if (Math.random()<1/3000d){MaturationStep.mature(this);}
-		
 //		if (Math.random()<p_MaturationStep)MaturationStep.mature(this);
-		
 
 	}
 //	public List<Endosome> getAllEndosomes(){

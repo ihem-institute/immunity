@@ -241,6 +241,7 @@ public class Results {
 	public void contentDistribution(HashMap<String, Double> totalRabs, HashMap<String, Double> initialTotalRabs) {
 //		initialize all contents to zero
 		content();
+		
 // 		first include the content of PM (soluble and membrane associated) and cytosol
 		HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
 		// include in the contentDistribution all the recycled components, soluble and membrane
