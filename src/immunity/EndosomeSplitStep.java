@@ -40,7 +40,7 @@ public class EndosomeSplitStep {
 		double volMincyl = 2 * Math.PI * Cell.rcyl * Cell.rcyl * Cell.rcyl;
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux");
-		if (membraneFlux == 1d && maxRab.equals("RabA")) return;
+//		if (membraneFlux == 1d && maxRab.equals("RabA")) return;
 //		System.out.println("NO LO AGGARROO Y FORMA VESÍCULAS "+maxRab + membraneFlux);	
 		if (vo < 2 * volMincyl)
 			return; // if too small to form two mincyl do not split. Volume of a cylinder of 2

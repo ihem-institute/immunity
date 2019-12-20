@@ -1,5 +1,5 @@
-endosome164u,initOrgProp,area,80336.433629866,volume,1962571.3031449122,xcoor,25.160347865185244,ycoor,1.778591662493454,
-endosome164u,initRabContent,RabA,80336.433629866
+endosome164u,initOrgProp,area,1.1E06,volume,16E06,xcoor,25.160347865185244,ycoor,1.778591662493454,
+endosome164u,initRabContent,RabA,1.1E06
 endosome164u,initMembraneContent,enzyme,8033,enzymeG55,8033,enzymeGo3,8033,G55,8033,Go3,8033,membraneMarker,1
 endosome164u,initSolubleContent,ProC,196257,albumin,196257,solubleMarker,1
 endosome1T,initOrgProp,area,1969778.594,volume,19006635.55,xcoor,25.0,ycoor,0.0809050413905601,

@@ -23,13 +23,10 @@ public class MaturationStep {
 		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux");
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		String organelleName = CellProperties.getInstance().rabOrganelle.get(maxRab);
-		if (membraneFlux != 1d) return; // if not membrane flux, no maturation
-		if (endosome.area > 2*4*Math.PI*Cell.rcyl // if large enough (twice a vesicle)
-				&& !organelleName.contains("Golllgi")) // and if it is the prevalent domain is a Golgi structure
-		{			
-
-
-			matureAmount(endosome, maxRab);
+		if (membraneFlux == 1d 
+				&& endosome.area > 1E5
+				&& organelleName.contains("Golgi")){
+			membraneFluxMatureSyn(endosome, maxRab);
 
 		}
 		else if (organelleName.contains("ERGIC")){// if ERGIC, mature to cisGolgi near the bottom
@@ -103,25 +100,28 @@ public class MaturationStep {
 		double value = endosome.rabContent.get(maxRab);
 		switch (maxRab) {
 		case "RabA": {
-//			endosome.rabContent.put("RabA", 0d);
-//			endosome.rabContent.put("RabB", value);
+			endosome.rabContent.clear();  //put("RabA", 0d);
+			endosome.rabContent.put("RabB", endosome.area);
 			break;
 		}
 		case "RabB": {
-			if(Math.random()<0.9) break;
-			endosome.rabContent.clear();//put("RabB", 0d);
+//			endosome.rabContent.put("RabB", 0d);
+//			endosome.rabContent.put("RabC", value);
+			endosome.rabContent.clear();  //put("RabA", 0d);
 			endosome.rabContent.put("RabC", endosome.area);
 			break;
 		}
 		case "RabC": {
-			if(Math.random()<0.9) break;
-			endosome.rabContent.clear();//put("RabC", 0d);
+//			endosome.rabContent.put("RabC", 0d);
+//			endosome.rabContent.put("RabD", value);
+			endosome.rabContent.clear();  //put("RabA", 0d);
 			endosome.rabContent.put("RabD", endosome.area);
 			break;
 		}
 		case "RabD": {
-			if(Math.random()<0.9) break;
-			endosome.rabContent.clear(); //put("RabD", 0d);
+//			endosome.rabContent.put("RabD", 0d);
+//			endosome.rabContent.put("RabE", value);
+			endosome.rabContent.clear();  //put("RabA", 0d);
 			endosome.rabContent.put("RabE", endosome.area);
 			break;
 		}
@@ -173,12 +173,17 @@ public class MaturationStep {
 		 */	
 		if (endosome.xcoor < 10
 			|| endosome.xcoor > 40
-			|| endosome.ycoor > 5)
+			|| endosome.ycoor > 5
+			|| endosome.area< 1E05)
 		{
 			return;
 		}
 		else{
 			System.out.println("ERGICCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC MATURATION  "+endosome.rabContent +endosome.xcoor+"   "+endosome.ycoor);
+			// change the area and volume to a cistern
+			// 500 nm radius, 20 nm high.  OJO NO CONSIDERO ESCALA, HABRIA QUE MEJORAR
+			endosome.area = 2*Math.PI*Math.pow(500, 2)+ 2 * Math.PI * 500 * 20; 
+			endosome.volume = Math.PI*Math.pow(500, 2)*20; 
 			endosome.rabContent.clear();
 			endosome.rabContent.put("RabB", endosome.area);
 			return;
