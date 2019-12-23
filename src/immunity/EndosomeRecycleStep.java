@@ -20,7 +20,7 @@ public class EndosomeRecycleStep {
 //		System.out.println("TEST  ADENTRO RECYCLE TEST  "+endosome.area +rabContent );
 		NdPoint myPoint = endosome.getSpace().getLocation(endosome);
 //		NdPoint myPoint = space.getLocation(endosome);
-//		System.out.println("TEST  ADENTRO coor  "+myPoint.toString()+ (50 -cellLimit));
+//		System.out.println("TEST  ADENTRO coor  "+endosome+ (50 -cellLimit));
 			double y = myPoint.getY();
 //			if far from the PM no recycling
 			if (y < 50-2*cellLimit)

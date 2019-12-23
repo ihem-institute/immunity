@@ -83,7 +83,8 @@ public class EndosomeSplitStep {
 		if (CellProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi"))
 		{// Golgi domain
 			double probFission = 1;
-//			probFission = (endosome.a - Cell.rcyl)/(900-Cell.rcyl);
+			
+			probFission = (endosome.a - 250)/(500-250);
 //			if (endosome.c>=endosome.a){// it is a cistern.  Probability proportional to radius.  Max 500 nm, Min rcyl 
 //				
 //				probFission = (endosome.c - Cell.rcyl)/(500-Cell.rcyl);

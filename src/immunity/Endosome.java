@@ -203,15 +203,15 @@ public class Endosome {
 //		if (tick%1000 == 0)EndosomeFusionStep.fusion(this);
 //		if (tick%60 == 0) EndosomeSplitStep.split(this);
 //		EndosomeSwelling.endosomeSwell(this);
-		if (tick%3000 ==0) {
-			MaturationStep.mature(this);
-			boolean scheduledUptake = Cell.getInstance().isScheduledUptake();
-			if (scheduledUptake){
-				EndosomeUptakeStep.uptake(this);
-				scheduledUptake = false;
-				Cell.getInstance().setScheduledUptake(scheduledUptake);
-			}
-		}
+//		if (tick%3000 ==0) {
+//			MaturationStep.mature(this);
+//			boolean scheduledUptake = Cell.getInstance().isScheduledUptake();
+//			if (scheduledUptake){
+//				EndosomeUptakeStep.uptake(this);
+//				scheduledUptake = false;
+//				Cell.getInstance().setScheduledUptake(scheduledUptake);
+//			}
+//		}
 //		if (Math.random()<1/3000d){MaturationStep.mature(this);}
 //		if (Math.random()<p_MaturationStep)MaturationStep.mature(this);
 
