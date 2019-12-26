@@ -69,6 +69,7 @@ public class Endosome {
 															// should change
 	double a = 0; // width of the ellipsoid representing the endosome
 	double c = 0; // length;
+	double birthday = 0;// birthday in ticks from the maturation
 	double size;// = Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
 	double speed;// = 5d / size; // initial value, but should change
 	double heading = 0;// = Math.random() * 360d; // initial value, but should
@@ -135,6 +136,8 @@ public class Endosome {
 		size = Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
 		speed = Cell.orgScale / size; // initial value, but should change
 		heading = Math.random() * 360d - 180; // initial value, but should change
+		birthday  = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+;
 		double mvb = 0; // number of internal vesicles
 
 
@@ -186,7 +189,7 @@ public class Endosome {
 //		if (Math.random()<p_EndosomeKissRunStep) EndosomeKissRunStep.kissRun(this);
 		p_EndosomeFusionStep = 1/50d;
 		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
-		p_EndosomeSplitStep = 1/50d;
+		p_EndosomeSplitStep = 1/5d;
 		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
 		double p_EndosomeSwelling = 1/50d;
 		if (Math.random()<p_MaturationStep) MaturationStep.mature(this);
@@ -294,7 +297,9 @@ public class Endosome {
 	public double getArea() {
 		return area;
 	}
-
+	public double getBirthday() {
+		return birthday;
+	}
 	public double getVolume() {
 		if (volume < 1.0) {
 			return volume;

@@ -112,6 +112,7 @@ public class EndosomeSplitStep {
 				System.out.println("NUMERO DE VESÍCULAS POR RAB "+ nroVesicles);
 
 			}
+
 		}
 		else if (CellProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Gollgi"))
 		{// Golgi domain with BrfA.  No fission
@@ -293,7 +294,7 @@ public class EndosomeSplitStep {
 //		    System.out.println("Second root is:"+root2);
 		//}   
 		
-		if (Math.random()<2){// standard 0.9
+		if (Math.random()<1){// standard 0.9
 // high probability of forming a single vesicle.  SET TO 0.9.  SET to <1 for membraneFlux Luini
 			return new double[] {4 * Math.PI*Math.pow(Cell.rcyl,2), 4/3 * Math.PI * Math.pow(Cell.rcyl, 3)};
 
@@ -448,7 +449,9 @@ public class EndosomeSplitStep {
 				splitPropSurface(endosome, content, so, sVesicle, propSurf);	
 			}
 			// if tropism to tubule, the content goes to tubule			
-			else if (rabTropism.get(content).contains("tub") || (content.contains("enzyme") && rabInTube.equals("RabD"))){
+			else if (rabTropism.get(content).contains("tub") 
+//					|| (content.contains("enzyme") && rabInTube.equals("RabD")) // específico para modelo de Luini
+					){
 				splitToTubule(endosome, content, so, sVesicle);
 			}
 			// if tropism to sphere, the content goes to the vesicle		
@@ -609,7 +612,7 @@ public class EndosomeSplitStep {
 		
 //		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 //				CellProperties.getInstance().getRabTropism());
-		double concentrate = 7d;
+		double concentrate = 100d;
 		double scylinder = so - sVesicle;
 		double value = (copyMembrane.get(content)/so)*concentrate*scylinder;
 //		if(copyMembrane.get(content)> scylinder){
@@ -688,7 +691,7 @@ public class EndosomeSplitStep {
 		if (copyMap.size() < 2) {
 
 			for (String rab1 : copyMap.keySet()) {
-				System.out.println("UNICO RAB " + copyMap);
+//				System.out.println("UNICO RAB " + copyMap);
 				return rab1;
 			}
 		}

@@ -409,7 +409,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 			if (row.getRowNum() > 0) {
 
 				String id = row.getCell(1).getStringCellValue();
-				int age = (int) row.getCell(2).getNumericCellValue();
+				int birthday = (int) row.getCell(2).getNumericCellValue();
 				double energy = row.getCell(3).getNumericCellValue();
 				Endosome endosome = new Endosome(space, grid, null, null, null, null);
 				context.add(endosome);

@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import repast.simphony.context.Context;
+import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.query.space.grid.GridCellNgh;
 import repast.simphony.space.continuous.ContinuousSpace;
@@ -25,7 +26,7 @@ public class MaturationStep {
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		String organelleName = CellProperties.getInstance().rabOrganelle.get(maxRab);
 		if (membraneFlux == 1d 
-				&& endosome.area > 1E5
+				&& endosome.area >= 4.5E5
 				&& organelleName.contains("Golgi")){
 	//		membraneFluxMatureSyn(endosome, maxRab);
 			maturePush(endosome, maxRab);
@@ -185,17 +186,35 @@ public class MaturationStep {
 			return;
 		}
 		else{
+			System.out.println("ERGICCCCCCCfffffffffffffffffffffffffffusion  "+endosome.rabContent +endosome.area);
 			EndosomeFusionStep.fusion(endosome);
+			System.out.println("ERGICCCCCCCAAAAAAAfterffffffffffusion  "+endosome.rabContent +endosome.area);
 
-			// change the area and volume to a cistern
+//			try {
+//			TimeUnit.SECONDS.sleep(3);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+
+
+
+
+			// After fusion with other endosomes, if large enough matures and returns
 			// 500 nm radius, 20 nm high.  OJO NO CONSIDERO ESCALA, HABRIA QUE MEJORAR
-			if (endosome.area > 2*Math.PI*Math.pow(500, 2)+ 2 * Math.PI * 500 * 20)
+			if (endosome.area >0.1* (2*Math.PI*Math.pow(500, 2)+ 2 * Math.PI * 500 * 20))
 			{
 				System.out.println("ERGICCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC MATURATION  "+endosome.rabContent +endosome.xcoor+"   "+endosome.ycoor);
 
 				//			endosome.volume = Math.PI*Math.pow(500, 2)*20; 
 				endosome.rabContent.clear();
 				endosome.rabContent.put("RabB", endosome.area);
+//				try {
+//				TimeUnit.SECONDS.sleep(2);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			}
 			return;
 		}
@@ -216,37 +235,45 @@ public class MaturationStep {
 				break;
 		}
 		case "RabB": {
-//			System.out.println(endosome.area+"GOLGI MATURATION INICIA B"+endosome+endosome.rabContent +endosome.xcoor+endosome.ycoor);
+			//			System.out.println(endosome.area+"GOLGI MATURATION INICIA B"+endosome+endosome.rabContent +endosome.xcoor+endosome.ycoor);
 			GridPoint pt = grid.getLocation(endosome);
-			List<Endosome> allEndosomes = new ArrayList<Endosome>();
+			List<Endosome> allEndosomesHere = new ArrayList<Endosome>();
 			for (Object obj : grid.getObjectsAt(pt.getX(), pt.getY())) {
 				if (obj instanceof Endosome) {
-					allEndosomes.add((Endosome) obj);
+					allEndosomesHere.add((Endosome) obj);
 				}
 			}
-//			System.out.println("LISTA DE TODOS LOS ENDOSOMAS"+ allEndosomes);
-//			try {
-//				TimeUnit.SECONDS.sleep(3);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-			for (Endosome end : allEndosomes) {
-				
+						System.out.println("LISTA DE TODOS LOS ENDOSOMAS"+ allEndosomesHere + endosome.area);
+//						try {
+//							TimeUnit.SECONDS.sleep(3);
+//						} catch (InterruptedException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
+			for (Endosome end : allEndosomesHere) {
+
 				String maxRab2 = Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
-//				System.out.println("ENDOSOMA A EVALUAR "+ maxRab2 + end.rabContent+ end.area);
+								System.out.println("ENDOSOMA A EVALUAR "+ maxRab2 + end.rabContent+ end.area);
 
 				if (end != endosome
 						&& maxRab2.equals("RabB")
-						&& end.area >= 1E6){
+						&& end.area >= 4.5E5){//(2*Math.PI*Math.pow(500, 2)+ 2 * Math.PI * 500 * 20)){					
 					endosome.rabContent.clear();//put("RabB", 0d);
 					endosome.rabContent.put("RabC", endosome.area);
-					System.out.println("GOLGI MATURATION aqui madura BB"+endosome.rabContent +endosome.xcoor+endosome.ycoor);
+					System.out.println("GOLGI MATURATION aqui madura BB"+endosome.rabContent +endosome.membraneContent+endosome.solubleContent);
+					try {
+					TimeUnit.SECONDS.sleep(3);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 					break;
 				}
+				
 				else if(end != endosome
 						&& maxRab2.equals("RabB")
-						&& end.area < 1E6){
+//						&& end.area < 1.6E6)
+				){
 					endosome.volume = endosome.volume + end.volume;
 					endosome.area = endosome.area + end.area;
 					// System.out.println(endosome.area+"  AREAS FINAL");
@@ -255,19 +282,20 @@ public class MaturationStep {
 					endosome.solubleContent = sumSolubleContent(endosome, end);
 					Context<Object> context = ContextUtils.getContext(endosome);
 					context.remove(end);
-					System.out.println("GOLGI FUSION  BB"+endosome.rabContent +endosome.xcoor+endosome.ycoor);
-//					try {
-//						TimeUnit.SECONDS.sleep(1000);
-//					} catch (InterruptedException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
+					System.out.println("GOLGI FUSION  BB "+endosome.rabContent +endosome.membraneContent+endosome.solubleContent);
+//										try {
+//											TimeUnit.SECONDS.sleep(3);
+//										} catch (InterruptedException e) {
+//											// TODO Auto-generated catch block
+//											e.printStackTrace();
+//										}
 				}
 			}
 
 			break;
 		}
 		case "RabC": {
+//			if( 4>3) break;
 			System.out.println("GOLGI MATURATION  C"+endosome.rabContent +endosome.xcoor+endosome.ycoor);
 			GridPoint pt = grid.getLocation(endosome);
 			List<Endosome> allEndosomes = new ArrayList<Endosome>();
@@ -280,7 +308,7 @@ public class MaturationStep {
 				String maxRab2 = Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 				if (end != endosome
 						&& maxRab2.equals("RabC")
-						&& end.area >= 1E6){
+						&& end.area >= 4.5E5){
 					endosome.rabContent.clear();//put("RabB", 0d);
 					endosome.rabContent.put("RabD", endosome.area);
 					System.out.println("GOLGI MATURATION  CC"+endosome.rabContent +endosome.xcoor+endosome.ycoor);
@@ -305,7 +333,8 @@ public class MaturationStep {
 				break;
 			}
 		case "RabD": {
-			System.out.println(endosome.area+"GOLGI MATURATION INICIA D"+endosome+endosome.rabContent +endosome.xcoor+endosome.ycoor);
+//			if( 4>3) break;
+			System.out.println(endosome.area+"GOLGI MATURATION INICIA D"+endosome+endosome.rabContent +endosome.birthday);
 			GridPoint pt = grid.getLocation(endosome);
 			List<Endosome> allEndosomes = new ArrayList<Endosome>();
 			for (Object obj : grid.getObjectsAt(pt.getX(), pt.getY())) {
@@ -322,10 +351,10 @@ public class MaturationStep {
 //			}
 			for (Endosome end : allEndosomes) {
 				String maxRab2 = Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
-				System.out.println("ENDOSOMA A EVALUAR "+ maxRab2 + end.rabContent+ end.area);
+				System.out.println("ENDOSOMA A EVALUAR "+ maxRab2 + end.rabContent+ end.birthday);
 				if (end != endosome
 						&& maxRab2.equals("RabD")
-						&& end.area >= 1E6){
+						&& end.area >= 4.5E5){
 					endosome.rabContent.clear();//put("RabB", 0d);
 					endosome.rabContent.put("RabE", endosome.area);
 					System.out.println("GOLGI aqui madura  DD"+endosome.rabContent +endosome.xcoor+endosome.ycoor);
