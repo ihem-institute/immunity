@@ -83,7 +83,7 @@ public class EndosomeSplitStep {
 		if (CellProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi"))
 		{// Golgi domain
 			double probFission = 1;
-			
+//	Fission probability proportional to the radius.  1 for radius>500 0 for radius < 250		
 			probFission = (endosome.a - 250)/(500-250);
 //			if (endosome.c>=endosome.a){// it is a cistern.  Probability proportional to radius.  Max 500 nm, Min rcyl 
 //				
@@ -450,7 +450,7 @@ public class EndosomeSplitStep {
 			}
 			// if tropism to tubule, the content goes to tubule			
 			else if (rabTropism.get(content).contains("tub") 
-//					|| (content.contains("enzyme") && rabInTube.equals("RabD")) // específico para modelo de Luini
+					|| (content.contains("enzyme") && rabInTube.equals("RabC")) // específico para modelo de Luini
 					){
 				splitToTubule(endosome, content, so, sVesicle);
 			}

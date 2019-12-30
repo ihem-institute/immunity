@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import repast.simphony.context.Context;
 import repast.simphony.query.space.grid.GridCell;
@@ -69,7 +70,7 @@ public class EndosomeFusionStep {
 				boolean isCistern2 = (ss * ss * ss / (vv * vv) < 36.01 * Math.PI);
 				if (isGolgi){
 					if (end != endosome  // it is not itself
-							&& (end.volume < 4/3 * Math.PI*Math.pow(Cell.rcyl, 3))// use to be endosome.volume) // the other is smaller
+							&& (end.volume <= 4/3 * Math.PI*Math.pow(Cell.rcyl, 3))// use to be endosome.volume) // the other is smaller
 //							&& ((!isCistern || !isCistern2)) // at list one is not cistern
 //									|| // or they share the same maximal Rab domain
 //									(Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey() ==
@@ -77,8 +78,14 @@ public class EndosomeFusionStep {
 
 							&& (Math.random() < EndosomeAssessCompatibility.compatibles(endosome, end))) {
 						//						if (EndosomeAssessCompatibility.compatibles(endosome, end)==0d){
-						//							System.out.println("OJO FUSION "+endosome.rabContent + " "+ end.rabContent);
-						//						}
+//												System.out.println("OJO FUSION "+end.volume + " "+ (4/3 * Math.PI*Math.pow(Cell.rcyl, 3)));
+//												try {
+//												TimeUnit.SECONDS.sleep(3);
+//											} catch (InterruptedException e) {
+//												// TODO Auto-generated catch block
+//												e.printStackTrace();
+//											}
+												//						}
 						endosomes_to_delete.add(end);
 					}
 				}

@@ -192,7 +192,7 @@ public class Endosome {
 		p_EndosomeSplitStep = 1/5d;
 		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
 		double p_EndosomeSwelling = 1/50d;
-		if (Math.random()<p_MaturationStep) MaturationStep.mature(this);
+		if (Math.random()<p_MaturationStep/10) MaturationStep.mature(this);
 //		if (Math.random()<p_EndosomeSwelling) EndosomeSwelling.endosomeSwell(this);
 //		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();

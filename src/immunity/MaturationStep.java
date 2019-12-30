@@ -257,12 +257,17 @@ public class MaturationStep {
 
 				if (end != endosome
 						&& maxRab2.equals("RabB")
-						&& end.area >= 4.5E5){//(2*Math.PI*Math.pow(500, 2)+ 2 * Math.PI * 500 * 20)){					
-					endosome.rabContent.clear();//put("RabB", 0d);
-					endosome.rabContent.put("RabC", endosome.area);
-					System.out.println("GOLGI MATURATION aqui madura BB"+endosome.rabContent +endosome.membraneContent+endosome.solubleContent);
+						&& end.area >= 4E5){//(2*Math.PI*Math.pow(500, 2)+ 2 * Math.PI * 500 * 20)){					
+					Endosome endosomeToMature = endosome;
+					if(endosome.birthday > end.birthday) {
+						endosomeToMature = end;
+					}
+					endosomeToMature.rabContent.clear();//put("RabB", 0d);
+					endosomeToMature.rabContent.put("RabC", endosomeToMature.area);
+					endosomeToMature.birthday = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+					System.out.println("GOLGI MATURATION aqui madura BB"+endosomeToMature.rabContent +endosomeToMature.membraneContent+endosomeToMature.solubleContent);
 					try {
-					TimeUnit.SECONDS.sleep(3);
+					TimeUnit.SECONDS.sleep(1);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -309,14 +314,20 @@ public class MaturationStep {
 				if (end != endosome
 						&& maxRab2.equals("RabC")
 						&& end.area >= 4.5E5){
-					endosome.rabContent.clear();//put("RabB", 0d);
-					endosome.rabContent.put("RabD", endosome.area);
-					System.out.println("GOLGI MATURATION  CC"+endosome.rabContent +endosome.xcoor+endosome.ycoor);
+					Endosome endosomeToMature = endosome;
+					if(endosome.birthday > end.birthday) {
+						endosomeToMature = end;
+					}
+					endosomeToMature.rabContent.clear();//put("RabB", 0d);
+					endosomeToMature.rabContent.put("RabD", endosomeToMature.area);
+					endosomeToMature.birthday = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+					System.out.println("GOLGI MATURATION aqui madura C"+endosomeToMature.rabContent +endosomeToMature.membraneContent+endosomeToMature.solubleContent);
 					break;
 				}
 				else if(end != endosome
 						&& maxRab2.equals("RabC")
-						&& end.area < 1E6){
+//						&& end.area < 1E6)
+						){
 					endosome.volume = endosome.volume + end.volume;
 					endosome.area = endosome.area + end.area;
 					// System.out.println(endosome.area+"  AREAS FINAL");
@@ -355,9 +366,14 @@ public class MaturationStep {
 				if (end != endosome
 						&& maxRab2.equals("RabD")
 						&& end.area >= 4.5E5){
-					endosome.rabContent.clear();//put("RabB", 0d);
-					endosome.rabContent.put("RabE", endosome.area);
-					System.out.println("GOLGI aqui madura  DD"+endosome.rabContent +endosome.xcoor+endosome.ycoor);
+					Endosome endosomeToMature = endosome;
+					if(endosome.birthday > end.birthday) {
+						endosomeToMature = end;
+					}
+					endosomeToMature.rabContent.clear();//put("RabB", 0d);
+					endosomeToMature.rabContent.put("RabE", endosomeToMature.area);
+					endosomeToMature.birthday = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+					System.out.println("GOLGI MATURATION aqui madura D"+endosomeToMature.rabContent +endosomeToMature.membraneContent+endosomeToMature.solubleContent);
 					break;
 				}
 				else if(end != endosome
@@ -375,6 +391,12 @@ public class MaturationStep {
 					System.out.println("GOLGI aqui se FUSIONA  DD"+endosome.rabContent +endosome.xcoor+endosome.ycoor);
 
 				}
+//				try {
+//				TimeUnit.SECONDS.sleep(3);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			}
 
 				break;
