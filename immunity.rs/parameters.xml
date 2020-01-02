@@ -6,10 +6,16 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="soluble" displayName="Soluble" type="java.lang.String" 
-						defaultValue="dextran" 
+				<parameter name="ninguni" displayName="ninguno" type="java.lang.String" 
+						defaultValue="nada" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+									
+		/>
+				<parameter name="stopTick" displayName="stopTick" type="int" 
+						defaultValue="50" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
 		</parameters>

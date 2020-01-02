@@ -126,8 +126,9 @@ public class FreezeDryEndosomes {
 
 		Scanner scanner = new Scanner(new File(
 				"inputFrozenEndosomes.csv"));
+//		ESTO ES PARA BATCH.  LEE LOS ENDOSOMAS DE UN FOLDER DATA RELATIVO
+//				".//data//inputFrozenEndosomes.csv"));
 		scanner.useDelimiter(",");
-
 //		ObjectMapper objectMapper = new ObjectMapper();
 //		try {
 //			frozenEndosomes config = objectMapper.readValue(new File(frozenEndosomes.configFilename), frozenEndosomes.class);

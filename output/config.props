@@ -1,0 +1,9 @@
+model.archive = C:/Users/lmayo/workspace/immunity/output/complete_model.jar
+batch.params.file = scenario.rs/batch_params.xml
+ssh.key_dir = C:/Users/lmayo/.ssh
+poll.frequency = 30.0
+model.output = C:/Users/lmayo/workspace/immunity/output
+
+vm.arguments = 
+local.0.instances = 2
+local.0.working_directory = C:/Users/lmayo/AppData/Local/Temp/

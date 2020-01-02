@@ -1,0 +1,2 @@
+"run","randomSeed","ninguni","stopTick"
+1,1,"nada",115

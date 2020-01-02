@@ -107,6 +107,7 @@ public class Results {
 		}
 	}
 // PART OF THE RUTINE TO GENERATE THE EXCELL WITH ALL AGENTS
+// DID NOT WORKED WITH BATCH
 	public void log(){
 	    double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 	    Context<Object> context = RunState.getInstance().getMasterContext();
@@ -161,6 +162,8 @@ public class Results {
 		Writer output;
 		//CAMBIO
 		output = new BufferedWriter(new FileWriter(ITResultsPath, false));		
+//		output = new BufferedWriter(new FileWriter(".//ResultsIntrTransp3.txt", false));
+//		PARA BATCH
 //		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
 		output.append(line);
 		output.close();	
@@ -174,7 +177,9 @@ public class Results {
 		Writer output;
 		//CAMBIO
 		output = new BufferedWriter(new FileWriter(ITResultsPath, true));
+// ABSOLUTE PATH PARA BATCH
 //		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
+//		output = new BufferedWriter(new FileWriter(".//ResultsIntrTransp3.txt", true));
 		output.append(line);
 		output.close();
 	}
@@ -304,7 +309,7 @@ public class Results {
 					//System.out.println("SOLUBLE"+sol + "Rab" +rab);
 				}
 			for (String mem : membraneContent.keySet()) {
-				System.out.println(" membrane "+mem + " Rab " +rab);
+//				System.out.println(" membrane "+mem + " Rab " +rab);
 					double value = contentDist.get(mem + rab)
 							+ membraneContent.get(mem) * rabContent.get(rab)
 							/ area;

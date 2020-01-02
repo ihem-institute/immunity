@@ -1,0 +1,102 @@
+git-lfs/2.4.2 (GitHub; windows amd64; go 1.8.3; git 6f4b2e98)
+
+
+$ git-lfs smudge -- 'immunity.rs/repast.simphony.action.display_3.xml'
+Error downloading object: 'immunity.rs/repast.simphony.action.display_3.xml' (2f7229e): Smudge error: Error downloading 'immunity.rs/repast.simphony.action.display_3.xml' (2f7229e0ae44c6e963f464fbb97df98ec31da46b0f5822b7aea98a74bce3047b): batch request: missing protocol: ""
+
+missing protocol: ""
+batch request
+github.com/git-lfs/git-lfs/errors.newWrappedError
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/errors/types.go:170
+github.com/git-lfs/git-lfs/errors.Wrap
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/errors/errors.go:74
+github.com/git-lfs/git-lfs/tq.(*tqClient).Batch
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/tq/api.go:62
+github.com/git-lfs/git-lfs/tq.Batch
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/tq/api.go:44
+github.com/git-lfs/git-lfs/tq.(*TransferQueue).enqueueAndCollectRetriesFor
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/tq/transfer_queue.go:432
+github.com/git-lfs/git-lfs/tq.(*TransferQueue).collectBatches.func1
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/tq/transfer_queue.go:354
+runtime.goexit
+	C:/Go/src/runtime/asm_amd64.s:2197
+Error downloading 'immunity.rs/repast.simphony.action.display_3.xml' (2f7229e0ae44c6e963f464fbb97df98ec31da46b0f5822b7aea98a74bce3047b)
+github.com/git-lfs/git-lfs/errors.newWrappedError
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/errors/types.go:170
+github.com/git-lfs/git-lfs/errors.Wrapf
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/errors/errors.go:85
+github.com/git-lfs/git-lfs/lfs.(*GitFilter).downloadFile
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/lfs/gitfilter_smudge.go:98
+github.com/git-lfs/git-lfs/lfs.(*GitFilter).Smudge
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/lfs/gitfilter_smudge.go:59
+github.com/git-lfs/git-lfs/commands.smudge
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/commands/command_smudge.go:127
+github.com/git-lfs/git-lfs/commands.smudgeCommand
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/commands/command_smudge.go:161
+github.com/git-lfs/git-lfs/vendor/github.com/spf13/cobra.(*Command).execute
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/vendor/github.com/spf13/cobra/command.go:477
+github.com/git-lfs/git-lfs/vendor/github.com/spf13/cobra.(*Command).Execute
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/vendor/github.com/spf13/cobra/command.go:551
+github.com/git-lfs/git-lfs/commands.Run
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/commands/run.go:77
+main.main
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/git-lfs.go:35
+runtime.main
+	C:/Go/src/runtime/proc.go:185
+runtime.goexit
+	C:/Go/src/runtime/asm_amd64.s:2197
+Smudge error
+github.com/git-lfs/git-lfs/errors.newWrappedError
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/errors/types.go:170
+github.com/git-lfs/git-lfs/errors.NewSmudgeError
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/errors/types.go:256
+github.com/git-lfs/git-lfs/lfs.(*GitFilter).Smudge
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/lfs/gitfilter_smudge.go:68
+github.com/git-lfs/git-lfs/commands.smudge
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/commands/command_smudge.go:127
+github.com/git-lfs/git-lfs/commands.smudgeCommand
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/commands/command_smudge.go:161
+github.com/git-lfs/git-lfs/vendor/github.com/spf13/cobra.(*Command).execute
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/vendor/github.com/spf13/cobra/command.go:477
+github.com/git-lfs/git-lfs/vendor/github.com/spf13/cobra.(*Command).Execute
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/vendor/github.com/spf13/cobra/command.go:551
+github.com/git-lfs/git-lfs/commands.Run
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/src/github.com/git-lfs/git-lfs/commands/run.go:77
+main.main
+	C:/Users/ttaylorr/go/src/github.com/git-lfs/git-lfs/git-lfs.go:35
+runtime.main
+	C:/Go/src/runtime/proc.go:185
+runtime.goexit
+	C:/Go/src/runtime/asm_amd64.s:2197
+
+Current time in UTC: 
+2018-07-04 19:06:16
+
+ENV:
+LocalWorkingDir=
+LocalGitDir=
+LocalGitStorageDir=
+LocalMediaDir=lfs\objects
+LocalReferenceDir=
+TempDir=lfs\tmp
+ConcurrentTransfers=3
+TusTransfers=false
+BasicTransfersOnly=false
+SkipDownloadErrors=false
+FetchRecentAlways=false
+FetchRecentRefsDays=7
+FetchRecentCommitsDays=0
+FetchRecentRefsIncludeRemotes=true
+PruneOffsetDays=3
+PruneVerifyRemoteAlways=false
+PruneRemoteName=origin
+LfsStorageDir=lfs
+AccessDownload=none
+AccessUpload=none
+DownloadTransfers=basic
+UploadTransfers=basic
+GIT_DIR=C:\Users\lmayo\workspace\immunity\.git
+GIT_LFS_PATH=C:\Program Files\Git LFS
+
+Client IP addresses:
+fe80::142c:7b08:144c:63ac 172.23.5.150

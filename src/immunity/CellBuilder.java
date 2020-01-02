@@ -64,6 +64,10 @@ public class CellBuilder implements ContextBuilder<Object> {
 		NetworkBuilder<Object> netBuilder = new NetworkBuilder<Object>(
 				"infection network", context, true);
 		netBuilder.buildNetwork();
+// ESTO ES PARA LEER PARAMETROS DE XML FILE DE REPAST
+//		Parameters parm = RunEnvironment.getInstance().getParameters();
+//		int stopTick = (Integer)parm.getValue("stopTick");
+//		RunEnvironment.getInstance().endAt(stopTick);// this is to stop the run at a specific tick
 
 		ContinuousSpaceFactory spaceFactory = ContinuousSpaceFactoryFinder
 				.createContinuousSpaceFactory(null);

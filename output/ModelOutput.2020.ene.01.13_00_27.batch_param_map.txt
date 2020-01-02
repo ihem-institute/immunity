@@ -1,0 +1,4 @@
+"run","randomSeed","ninguni"
+1,1641394688,"nada"
+3,1641397439,"nada"
+2,1641395158,"nada"
