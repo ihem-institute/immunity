@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="lib" path="lib/com.springsource.org.codehaus.jackson-1.4.3.jar"/>
+	<classpathentry kind="lib" path="lib/com.springsource.org.codehaus.jackson.mapper-1.4.3.jar"/>
+	<classpathentry kind="lib" path="lib/copasi.jar"/>
+	<classpathentry kind="lib" path="output/complete_model.jar"/>
+	<classpathentry kind="con" path="GROOVY_SUPPORT"/>
+	<classpathentry exported="true" kind="con" path="GROOVY_DSL_SUPPORT"/>
+	<classpathentry kind="con" path="REPAST_SIMPHONY_SUPPORT"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
