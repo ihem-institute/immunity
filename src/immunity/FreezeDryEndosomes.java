@@ -125,9 +125,9 @@ public class FreezeDryEndosomes {
 	public static void loadFromCsv(FreezeDryEndosomes frozenEndosomes) throws IOException {
 
 		Scanner scanner = new Scanner(new File(
-				"inputFrozenEndosomes.csv"));
+//				"inputFrozenEndosomes.csv"));
 //		ESTO ES PARA BATCH.  LEE LOS ENDOSOMAS DE UN FOLDER DATA RELATIVO
-//				".//data//inputFrozenEndosomes.csv"));
+				".//data//inputFrozenEndosomes.csv"));
 		scanner.useDelimiter(",");
 //		ObjectMapper objectMapper = new ObjectMapper();
 //		try {

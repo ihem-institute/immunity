@@ -15,7 +15,7 @@ Caused by: java.lang.reflect.InvocationTargetException
 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
 	... 7 more
 Caused by: java.lang.NoClassDefFoundError: repast/simphony/ui/table/AgentTableFactory
-	at immunity.Results.log(Results.java:120)
+	at immunity.Results.log(Results.java:121)
 	at immunity.Results.stepTable(Results.java:99)
 	... 10 more
 Caused by: java.lang.ClassNotFoundException: repast.simphony.ui.table.AgentTableFactory

@@ -129,9 +129,9 @@ public class CellProperties {
 	public static void loadFromCsv(CellProperties cellProperties) throws IOException {
 
 		Scanner scanner = new Scanner(new File(
-				"inputIntrTransp3.csv"));
+		//		"inputIntrTransp3.csv"));
 		// PARA BATCH MODE.  LEE DE UN FOLDER DATA RELATIVO
-				//				".//data//inputIntrTransp3.csv")); 
+								".//data//inputIntrTransp3.csv")); 
 		scanner.useDelimiter(",");
 
 //		ObjectMapper objectMapper = new ObjectMapper();

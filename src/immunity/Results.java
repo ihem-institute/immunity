@@ -94,7 +94,7 @@ public class Results {
 //		}
 //	}
 // STORE ALL AGENTS OF THE SIMULATION EVERY 5000 TICKS AS AN EXCEL FILE
-	@ScheduledMethod(start = 1, interval = 5000)
+	@ScheduledMethod(start = 1000, interval = 5000)
 	public void stepTable() {
 		log();
 //		freeze endosome set
