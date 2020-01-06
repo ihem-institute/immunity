@@ -50,7 +50,7 @@ public class EndosomeUptakeStep {
 			return;
 			}
 		}
-
+		else {
 		Cell cell = Cell.getInstance();
 		HashMap<String, Double> totalRabs = new HashMap<String, Double>(Results.getInstance().getTotalRabs());
 		HashMap<String, Double> initialTotalRabs = new HashMap<String, Double>(Results.getInstance().getInitialTotalRabs());
@@ -80,8 +80,9 @@ public class EndosomeUptakeStep {
 		if (selectedRab.equals("RabA")){ 
 			newUptake(endosome, selectedRab);}
 		else {newOrganelle(endosome, selectedRab, rabCode, membraneFlux);}
-
+		}
 	}
+		
 		
 	private static void newUptake(Endosome endosome, String selectedRab) {
 		space = endosome.getSpace();

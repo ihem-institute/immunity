@@ -22,10 +22,20 @@ public class EndosomeMove {
 	public static void moveTowards(Endosome endosome) {
 		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux");
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+		double areaGolgi = 0d;
+		for (String rab : endosome.rabContent.keySet()){
+			String name = CellProperties.getInstance().rabOrganelle.get(rab);
+			if (name.contains("Golgi")) {areaGolgi = areaGolgi + endosome.rabContent.get(rab);} 
+		}
+		boolean isGolgi = false;
+		if (areaGolgi/endosome.area >= 0.5) {
+			isGolgi = true;
+		}
 		String organelleName = CellProperties.getInstance().rabOrganelle.get(maxRab);
-		if (membraneFlux == 1d 
-				&& endosome.area >= 1E5
-				&& organelleName.contains("Golgi")){
+		if ( 
+				endosome.area >= 4E5// minimal cistern Golgi absolute Scale
+//				&& membraneFlux == 1d // now is for all Golgi models
+				&& isGolgi){
 			moveCistern(endosome, maxRab);
 		}
 		else {

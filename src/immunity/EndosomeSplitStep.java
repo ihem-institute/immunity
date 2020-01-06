@@ -38,7 +38,7 @@ public class EndosomeSplitStep {
 		double vo = endosome.volume;
 		double so = endosome.area;
 		double volMincyl = 2 * Math.PI * Cell.rcyl * Cell.rcyl * Cell.rcyl;
-		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+//		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux");
 //		if (membraneFlux == 1d && maxRab.equals("RabA")) return;
 //		System.out.println("NO LO AGGARROO Y FORMA VESÍCULAS "+maxRab + membraneFlux);	
