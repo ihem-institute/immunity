@@ -61,6 +61,7 @@ public class Results {
 	String ITResultsPath = mainpath.getPathResultsIT(); 	
 	String MarkerResultsPath =mainpath.getPathResultsMarkers();
 	String TotalRabs = mainpath.getPathTotalRabs();
+	String cisternsAreaPath = mainpath.getPathCisternsArea();
 //	
 	public static Results getInstance() {
 		return instance;

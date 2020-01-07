@@ -60,4 +60,9 @@
 			mypath5=mypath+"/totalRabs.csv";
 			return this.mypath5; 
 			}
+		public String getPathCisternsArea(){ 
+			
+			mypath6=mypath+"/cisternsArea.csv";
+			return this.mypath6; 
+			}
 	}
