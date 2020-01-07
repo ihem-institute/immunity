@@ -201,7 +201,7 @@ public class Endosome {
 		// rabConversionN();
 		String name =  CellProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
 		if (Math.random() < 1 && name.endsWith(".cps"))EndosomeCopasiStep.antPresTimeSeriesLoad(this);
-		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);
+//		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);
 		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%1000 == 0)EndosomeFusionStep.fusion(this);
 //		if (tick%60 == 0) EndosomeSplitStep.split(this);

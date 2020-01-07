@@ -84,7 +84,7 @@ public class EndosomeSplitStep {
 		{// Golgi domain
 			double probFission = 1;
 //	Fission probability proportional to the radius.  1 for radius>500 0 for radius < 250		
-			probFission = (endosome.a - 250)/(500-250);
+			probFission = (endosome.area - Cell.minCistern)/(Cell.maxCistern-Cell.minCistern);// hacer constante
 //			if (endosome.c>=endosome.a){// it is a cistern.  Probability proportional to radius.  Max 500 nm, Min rcyl 
 //				
 //				probFission = (endosome.c - Cell.rcyl)/(500-Cell.rcyl);
@@ -294,7 +294,7 @@ public class EndosomeSplitStep {
 //		    System.out.println("Second root is:"+root2);
 		//}   
 		
-		if (Math.random()<1){// standard 0.9
+		if (Math.random()<0.9999){// standard 0.9
 // high probability of forming a single vesicle.  SET TO 0.9.  SET to <1 for membraneFlux Luini
 			return new double[] {4 * Math.PI*Math.pow(Cell.rcyl,2), 4/3 * Math.PI * Math.pow(Cell.rcyl, 3)};
 
@@ -450,7 +450,7 @@ public class EndosomeSplitStep {
 			}
 			// if tropism to tubule, the content goes to tubule			
 			else if (rabTropism.get(content).contains("tub") 
-					|| (content.contains("enzyme") && rabInTube.equals("RabC")) // específico para modelo de Luini
+					|| (content.contains("memLS") && rabInTube.equals("RabC")) // específico para modelo de Luini
 					){
 				splitToTubule(endosome, content, so, sVesicle);
 			}

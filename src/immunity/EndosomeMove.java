@@ -33,7 +33,7 @@ public class EndosomeMove {
 		}
 		String organelleName = CellProperties.getInstance().rabOrganelle.get(maxRab);
 		if ( 
-				endosome.area >= 4E5// minimal cistern Golgi absolute Scale
+				endosome.area >= 1E5// minimal cistern Golgi absolute Scale hacer constante
 //				&& membraneFlux == 1d // now is for all Golgi models
 				&& isGolgi){
 			moveCistern(endosome, maxRab);
