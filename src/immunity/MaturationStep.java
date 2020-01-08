@@ -26,10 +26,10 @@ public class MaturationStep {
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		String organelleName = CellProperties.getInstance().rabOrganelle.get(maxRab);
 		if (membraneFlux == 1d 
-				&& endosome.area >= Cell.minCistern // hacer constante
+				&& endosome.area >= 0.8*Cell.minCistern // hacer constante
 				&& organelleName.contains("Golgi")){
-	//		membraneFluxMatureSyn(endosome, maxRab);
-			maturePush(endosome, maxRab);
+			membraneFluxMatureSyn(endosome, maxRab);
+	//		maturePush(endosome, maxRab);
 
 		}
 		else if (organelleName.contains("ERGIC")){// if ERGIC, mature to cisGolgi near the bottom
@@ -132,8 +132,33 @@ public class MaturationStep {
 			break;
 		}
 		case "RabE": {
-//			Context<Object> context = ContextUtils.getContext(endosome);
-//			context.remove(endosome);
+			// RECYCLE
+			// Recycle membrane content
+			HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance()
+					.getMembraneRecycle();
+			for (String key1 : endosome.membraneContent.keySet()) {
+				if (membraneRecycle.containsKey(key1)) {
+					double sum = membraneRecycle.get(key1)
+							+ endosome.membraneContent.get(key1);
+					membraneRecycle.put(key1, sum);
+				} else {
+					membraneRecycle.put(key1, endosome.membraneContent.get(key1));
+				}
+			}
+
+			HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance()
+					.getSolubleRecycle();
+			for (String key1 : endosome.solubleContent.keySet()) {
+				if (solubleRecycle.containsKey(key1)) {
+					double sum = solubleRecycle.get(key1)
+							+ endosome.solubleContent.get(key1);
+					solubleRecycle.put(key1, sum);
+				} else {
+					solubleRecycle.put(key1, endosome.solubleContent.get(key1));
+				}
+			}
+			Context<Object> context = ContextUtils.getContext(endosome);
+			context.remove(endosome);
 			break;
 		}
 		
@@ -228,10 +253,13 @@ public class MaturationStep {
 		 * cisGolgi matures when another cisGolgi cistern is in the same grid spot and so on
 		 * 
 		 */	
-//		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+		//		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		double value = endosome.rabContent.get(maxRab);
 		switch (maxRab) {
 		case "RabA": {
+			String organelleName = CellProperties.getInstance().rabOrganelle.get(maxRab);
+			if(CellProperties.getInstance().rabOrganelle.keySet().contains("ERGIC")) return;
+
 			//			System.out.println(endosome.area+"GOLGI MATURATION INICIA B"+endosome+endosome.rabContent +endosome.xcoor+endosome.ycoor);
 			GridPoint pt = grid.getLocation(endosome);
 			List<Endosome> allEndosomesHere = new ArrayList<Endosome>();
@@ -240,21 +268,15 @@ public class MaturationStep {
 					allEndosomesHere.add((Endosome) obj);
 				}
 			}
-						System.out.println("LISTA DE TODOS LOS ENDOSOMAS"+ allEndosomesHere + endosome.area);
-//						try {
-//							TimeUnit.SECONDS.sleep(3);
-//						} catch (InterruptedException e) {
-//							// TODO Auto-generated catch block
-//							e.printStackTrace();
-//						}
+			System.out.println("LISTA DE TODOS LOS ENDOSOMAS"+ allEndosomesHere + endosome.area);
 			for (Endosome end : allEndosomesHere) {
 
 				String maxRab2 = Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
-								System.out.println("ENDOSOMA A EVALUAR "+ maxRab2 + end.rabContent+ end.area);
+				System.out.println("ENDOSOMA A EVALUAR "+ maxRab2 + end.rabContent+ end.area);
 
 				if (end != endosome
 						&& maxRab2.equals("RabA")
-						&& end.area >= Cell.minCistern){//(2*Math.PI*Math.pow(500, 2)+ 2 * Math.PI * 500 * 20)){					
+						&& end.area >= 0.8*Cell.minCistern){//(2*Math.PI*Math.pow(500, 2)+ 2 * Math.PI * 500 * 20)){					
 					Endosome endosomeToMature = endosome;
 					if(endosome.birthday > end.birthday) {
 						endosomeToMature = end;
@@ -263,19 +285,20 @@ public class MaturationStep {
 					endosomeToMature.rabContent.put("RabB", endosomeToMature.area);
 					endosomeToMature.birthday = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 					System.out.println("GOLGI MATURATION aqui madura AA"+endosomeToMature.rabContent +endosomeToMature.membraneContent+endosomeToMature.solubleContent);
-//					try {
-//					TimeUnit.SECONDS.sleep(1);
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
+					//					try {
+					//					TimeUnit.SECONDS.sleep(1);
+					//				} catch (InterruptedException e) {
+					//					// TODO Auto-generated catch block
+					//					e.printStackTrace();
+					//				}
 					break;
 				}
-				
+
 				else if(end != endosome
 						&& maxRab2.equals("RabA")
-//						&& end.area < 1.6E6)
-				){
+//						&& Math.random()<0.01
+						//						&& end.area < 1.6E6)
+						){
 					endosome.volume = endosome.volume + end.volume;
 					endosome.area = endosome.area + end.area;
 					// System.out.println(endosome.area+"  AREAS FINAL");
@@ -285,12 +308,13 @@ public class MaturationStep {
 					Context<Object> context = ContextUtils.getContext(endosome);
 					context.remove(end);
 					System.out.println("GOLGI FUSION  AA "+endosome.rabContent +endosome.membraneContent+endosome.solubleContent);
-//										try {
-//											TimeUnit.SECONDS.sleep(3);
-//										} catch (InterruptedException e) {
-//											// TODO Auto-generated catch block
-//											e.printStackTrace();
-//										}
+					//										try {
+					//											TimeUnit.SECONDS.sleep(3);
+					//										} catch (InterruptedException e) {
+					//											// TODO Auto-generated catch block
+					//											e.printStackTrace();
+					//										}
+					break;
 				}
 			}
 
@@ -305,21 +329,21 @@ public class MaturationStep {
 					allEndosomesHere.add((Endosome) obj);
 				}
 			}
-						System.out.println("LISTA DE TODOS LOS ENDOSOMAS"+ allEndosomesHere + endosome.area);
-//						try {
-//							TimeUnit.SECONDS.sleep(3);
-//						} catch (InterruptedException e) {
-//							// TODO Auto-generated catch block
-//							e.printStackTrace();
-//						}
+			System.out.println("LISTA DE TODOS LOS ENDOSOMAS"+ allEndosomesHere + endosome.area);
+			//						try {
+			//							TimeUnit.SECONDS.sleep(3);
+			//						} catch (InterruptedException e) {
+			//							// TODO Auto-generated catch block
+			//							e.printStackTrace();
+			//						}
 			for (Endosome end : allEndosomesHere) {
 
 				String maxRab2 = Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
-								System.out.println("ENDOSOMA A EVALUAR "+ maxRab2 + end.rabContent+ end.area);
+				System.out.println("ENDOSOMA A EVALUAR "+ maxRab2 + end.rabContent+ end.area);
 
 				if (end != endosome
 						&& maxRab2.equals("RabB")
-						&& end.area >= Cell.minCistern){//(2*Math.PI*Math.pow(500, 2)+ 2 * Math.PI * 500 * 20)){					
+						&& end.area >= 0.8*Cell.minCistern){//(2*Math.PI*Math.pow(500, 2)+ 2 * Math.PI * 500 * 20)){					
 					Endosome endosomeToMature = endosome;
 					if(endosome.birthday > end.birthday) {
 						endosomeToMature = end;
@@ -329,18 +353,19 @@ public class MaturationStep {
 					endosomeToMature.birthday = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 					System.out.println("GOLGI MATURATION aqui madura BB"+endosomeToMature.rabContent +endosomeToMature.membraneContent+endosomeToMature.solubleContent);
 					try {
-					TimeUnit.SECONDS.sleep(1);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+						TimeUnit.SECONDS.sleep(1);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					break;
 				}
-				
+
 				else if(end != endosome
 						&& maxRab2.equals("RabB")
+//						&& Math.random()<0.01
 //						&& end.area < 1.6E6)
-				){
+						){
 					endosome.volume = endosome.volume + end.volume;
 					endosome.area = endosome.area + end.area;
 					// System.out.println(endosome.area+"  AREAS FINAL");
@@ -350,19 +375,20 @@ public class MaturationStep {
 					Context<Object> context = ContextUtils.getContext(endosome);
 					context.remove(end);
 					System.out.println("GOLGI FUSION  BB "+endosome.rabContent +endosome.membraneContent+endosome.solubleContent);
-//										try {
-//											TimeUnit.SECONDS.sleep(3);
-//										} catch (InterruptedException e) {
-//											// TODO Auto-generated catch block
-//											e.printStackTrace();
-//										}
+					//										try {
+					//											TimeUnit.SECONDS.sleep(3);
+					//										} catch (InterruptedException e) {
+					//											// TODO Auto-generated catch block
+					//											e.printStackTrace();
+					//										}
+					break;
 				}
 			}
 
 			break;
 		}
 		case "RabC": {
-//			if( 4>3) break;
+			//			if( 4>3) break;
 			System.out.println("GOLGI MATURATION  C"+endosome.rabContent +endosome.xcoor+endosome.ycoor);
 			GridPoint pt = grid.getLocation(endosome);
 			List<Endosome> allEndosomes = new ArrayList<Endosome>();
@@ -375,7 +401,7 @@ public class MaturationStep {
 				String maxRab2 = Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 				if (end != endosome
 						&& maxRab2.equals("RabC")
-						&& end.area >= Cell.minCistern){ // hacer constante
+						&& end.area >= 0.8*Cell.minCistern){ // hacer constante
 					Endosome endosomeToMature = endosome;
 					if(endosome.birthday > end.birthday) {
 						endosomeToMature = end;
@@ -388,7 +414,8 @@ public class MaturationStep {
 				}
 				else if(end != endosome
 						&& maxRab2.equals("RabC")
-//						&& end.area < 1E6)
+//						&& Math.random()<0.01
+						//						&& end.area < 1E6)
 						){
 					endosome.volume = endosome.volume + end.volume;
 					endosome.area = endosome.area + end.area;
@@ -399,14 +426,14 @@ public class MaturationStep {
 					Context<Object> context = ContextUtils.getContext(endosome);
 					context.remove(end);
 					System.out.println("GOLGI FUSION  CC"+endosome.rabContent +endosome.xcoor+endosome.ycoor);
-
+					break;
 				}
 			}
 
-				break;
-			}
+			break;
+		}
 		case "RabD": {
-//			if( 4>3) break;
+			//			if( 4>3) break;
 			System.out.println(endosome.area+"GOLGI MATURATION INICIA D"+endosome+endosome.rabContent +endosome.birthday);
 			GridPoint pt = grid.getLocation(endosome);
 			List<Endosome> allEndosomes = new ArrayList<Endosome>();
@@ -416,18 +443,18 @@ public class MaturationStep {
 				}
 			}
 			System.out.println("LISTA DE TODOS LOS ENDOSOMAS"+ allEndosomes);
-//			try {
-//				TimeUnit.SECONDS.sleep(3);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+			//			try {
+			//				TimeUnit.SECONDS.sleep(3);
+			//			} catch (InterruptedException e) {
+			//				// TODO Auto-generated catch block
+			//				e.printStackTrace();
+			//			}
 			for (Endosome end : allEndosomes) {
 				String maxRab2 = Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 				System.out.println("ENDOSOMA A EVALUAR "+ maxRab2 + end.rabContent+ end.birthday);
 				if (end != endosome
 						&& maxRab2.equals("RabD")
-						&& end.area >= Cell.minCistern){
+						&& end.area >= 0.8*Cell.minCistern){
 					Endosome endosomeToMature = endosome;
 					if(endosome.birthday > end.birthday) {
 						endosomeToMature = end;
@@ -440,7 +467,8 @@ public class MaturationStep {
 				}
 				else if(end != endosome
 						&& maxRab2.equals("RabD")
-//						&& end.area < 1E6
+//						&& Math.random()<0.01
+						//						&& end.area < 1E6
 						){
 					endosome.volume = endosome.volume + end.volume;
 					endosome.area = endosome.area + end.area;
@@ -451,54 +479,96 @@ public class MaturationStep {
 					Context<Object> context = ContextUtils.getContext(endosome);
 					context.remove(end);
 					System.out.println("GOLGI aqui se FUSIONA  DD"+endosome.rabContent +endosome.xcoor+endosome.ycoor);
-
+					break;
 				}
-//				try {
-//				TimeUnit.SECONDS.sleep(3);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+				//				try {
+				//				TimeUnit.SECONDS.sleep(3);
+				//			} catch (InterruptedException e) {
+				//				// TODO Auto-generated catch block
+				//				e.printStackTrace();
+				//			}
 			}
 
-				break;
-			}
-		case "RabE": {
-			{
-				// RECYCLE
-				// Recycle membrane content
-				HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance()
-						.getMembraneRecycle();
-				for (String key1 : endosome.membraneContent.keySet()) {
-					if (membraneRecycle.containsKey(key1)) {
-						double sum = membraneRecycle.get(key1)
-								+ endosome.membraneContent.get(key1);
-						membraneRecycle.put(key1, sum);
-					} else {
-						membraneRecycle.put(key1, endosome.membraneContent.get(key1));
-					}
-				}
-
-				HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance()
-						.getSolubleRecycle();
-				double endopH = 0.001;//endosome.solubleContent.get("proton");
-				for (String key1 : endosome.solubleContent.keySet()) {
-					if (solubleRecycle.containsKey(key1)) {
-						double sum = solubleRecycle.get(key1)
-								+ endosome.solubleContent.get(key1);
-						solubleRecycle.put(key1, sum);
-					} else {
-						solubleRecycle.put(key1, endosome.solubleContent.get(key1));
-					}
-				}
-			}
-
-			Context<Object> context = ContextUtils.getContext(endosome);
-			context.remove(endosome);
 			break;
 		}
+		case "RabE": {
+			if(CellProperties.getInstance().rabOrganelle.get("RabE").contains("TGN")) return;
+			GridPoint pt = grid.getLocation(endosome);
+			List<Endosome> allEndosomes = new ArrayList<Endosome>();
+			for (Object obj : grid.getObjectsAt(pt.getX(), pt.getY())) {
+				if (obj instanceof Endosome) {
+					allEndosomes.add((Endosome) obj);
+				}
+			}
+			for (Endosome end : allEndosomes) {
+				String maxRab2 = Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+				if (end != endosome
+						&& maxRab2.equals("RabE")
+						&& end.area >= 0.8*Cell.minCistern)// hacer constante
+				{ 
+					Endosome endosomeToMature = endosome;
+					if(endosome.birthday > end.birthday) {
+						endosomeToMature = end;	}				
+					// RECYCLE
+					// Recycle membrane content
+					HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance()
+							.getMembraneRecycle();
+					for (String key1 : endosomeToMature.membraneContent.keySet()) {
+						if (membraneRecycle.containsKey(key1)) {
+							double sum = membraneRecycle.get(key1)
+									+ endosomeToMature.membraneContent.get(key1);
+							membraneRecycle.put(key1, sum);
+						} else {
+							membraneRecycle.put(key1, endosomeToMature.membraneContent.get(key1));
+						}
+					}
+
+					HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance()
+							.getSolubleRecycle();
+					for (String key1 : endosomeToMature.solubleContent.keySet()) {
+						if (solubleRecycle.containsKey(key1)) {
+							double sum = solubleRecycle.get(key1)
+									+ endosomeToMature.solubleContent.get(key1);
+							solubleRecycle.put(key1, sum);
+						} else {
+							solubleRecycle.put(key1, endosomeToMature.solubleContent.get(key1));
+						}
+					}
+
+					Context<Object> context = ContextUtils.getContext(endosomeToMature);
+					context.remove(endosomeToMature);
+					break;
+				}
+				else if(end != endosome
+						&& maxRab2.equals("RabE")
+	//					&& Math.random()<0.01
+						//						&& end.area < 1E6
+						){
+					endosome.volume = endosome.volume + end.volume;
+					endosome.area = endosome.area + end.area;
+					// System.out.println(endosome.area+"  AREAS FINAL");
+					endosome.rabContent = sumRabContent(endosome, end);
+					endosome.membraneContent = sumMembraneContent(endosome, end);
+					endosome.solubleContent = sumSolubleContent(endosome, end);
+					Context<Object> context = ContextUtils.getContext(endosome);
+					context.remove(end);
+					System.out.println("GOLGI aqui se FUSIONA  EE"+endosome.rabContent +endosome.xcoor+endosome.ycoor);
+					break;
+				}
+				//				try {
+				//				TimeUnit.SECONDS.sleep(3);
+				//			} catch (InterruptedException e) {
+				//				// TODO Auto-generated catch block
+				//				e.printStackTrace();
+				//			}
+			}
+
+			break;
+			}
+			
 		}
-	}
+		}
+
 	
 	private static HashMap<String, Double> sumRabContent(Endosome endosome1,
 			Endosome endosome2) {

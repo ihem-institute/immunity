@@ -289,27 +289,9 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		double volume = 0d;
 		if (membraneFlux == 1d){
 			// if membraneFlux is ON then a new ERGIC like structure is formed as a kind1 organelle
-			
-//			To conditionate the size of the new organelle to the total area of the system
-//			for (String rab : initialTotalRab.keySet()){
-//				initialTotalArea = initialTotalArea + initialTotalRab.get(rab);
-//			}
-//			for (String rab : totalRab.keySet()){
-//				totalArea = totalArea + totalRab.get(rab);
-//			}
-//			area = initialTotalArea - totalArea;
+// It is a cistern 500 nm of radius and 20 nm high RabA with no membrane or soluble content 			
+
 			double maxRadius = initOrgProp.get("maxRadius");
-////			To find the radius of a cistern 20nm high from the area
-////			area = 2*PI*radius^2 + 2*PI*radius*20
-////			quadratic equation 0 = a x^2 + b x + c
-////			solution x = (-b+/- sqr(b^2 - 4*a*c)/2*a
-////			quadratic equation 0 = 2*PI* r^2 + 2*PI*20* r - area
-//			double aq = 2d*Math.PI;
-//			double bq = 40*Math.PI;
-//			double cq = -area;
-//			double dq =  bq * bq - 4 * aq * cq;
-//			double root1 = (-bq + Math.sqrt(dq))/(2*aq);
-//			System.out.println("RADIO UPTAKE"+root1);
 			area = Math.PI*Math.pow(maxRadius, 2)*2d + 2d*maxRadius*Math.PI*20d; //area of a cistern as a flat cylinder 20 nm high with a radius of maxRadius
 //			volume = Math.PI*Math.pow(root1, 2)* 20d;// volume of the cylinder
 			volume = Math.PI*Math.pow(maxRadius, 2)* 20d;

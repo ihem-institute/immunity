@@ -38,8 +38,9 @@ public class EndosomeSplitStep {
 		double vo = endosome.volume;
 		double so = endosome.area;
 		double volMincyl = 2 * Math.PI * Cell.rcyl * Cell.rcyl * Cell.rcyl;
-//		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux");
+//		First Cistern or any cistern with RabA as a maxRab cannot form vesicles. 
 //		if (membraneFlux == 1d && maxRab.equals("RabA")) return;
 //		System.out.println("NO LO AGGARROO Y FORMA VESÍCULAS "+maxRab + membraneFlux);	
 		if (vo < 2 * volMincyl)
@@ -75,6 +76,8 @@ public class EndosomeSplitStep {
 
 		rabInTube = rabInTube(endosome); // select a rab for the tubule
 		if (rabInTube == null) return; // if non is selected, no fission
+//		First cistern vesicles cannot form because the cannot fuse with a previous cistern
+		if (rabInTube.equals("RabA") && CellProperties.rabOrganelle.get("RabA").contains("Golgi")) return;
 		if (endosome.rabContent.get(rabInTube)<= Cell.mincyl) return; // the rab area is too small		
 		double scylinder = Cell.mincyl; // surface minimum cylinder 2*radius
 		// cylinder high
@@ -197,6 +200,7 @@ public class EndosomeSplitStep {
 			newSolubleContent.put(content, copySoluble.get(content)
 					- endosome.solubleContent.get(content));
 		}
+//		First cistern form vesicles that are destroied (because they will accumultate. Cannot fuse with previous cistern
 //		if (membraneFlux == 1d && maxRab.equals("RabA")) return;
 		Endosome b = new Endosome(endosome.getSpace(), endosome.getGrid(), newRabContent,
 				newMembraneContent, newSolubleContent, newInitOrgProp);

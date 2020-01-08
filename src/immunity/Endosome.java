@@ -192,7 +192,7 @@ public class Endosome {
 		p_EndosomeSplitStep = 1/5d;
 		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
 		double p_EndosomeSwelling = 1/50d;
-		if (Math.random()<p_MaturationStep/10) MaturationStep.mature(this);
+//		if (Math.random()<p_MaturationStep/10) MaturationStep.mature(this);
 //		if (Math.random()<p_EndosomeSwelling) EndosomeSwelling.endosomeSwell(this);
 //		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
@@ -206,15 +206,15 @@ public class Endosome {
 //		if (tick%1000 == 0)EndosomeFusionStep.fusion(this);
 //		if (tick%60 == 0) EndosomeSplitStep.split(this);
 //		EndosomeSwelling.endosomeSwell(this);
-//		if (tick%3000 ==0) {
-//			MaturationStep.mature(this);
-//			boolean scheduledUptake = Cell.getInstance().isScheduledUptake();
-//			if (scheduledUptake){
-//				EndosomeUptakeStep.uptake(this);
-//				scheduledUptake = false;
-//				Cell.getInstance().setScheduledUptake(scheduledUptake);
-//			}
-//		}
+		if (tick%3000 ==0) {
+			MaturationStep.mature(this);
+			boolean scheduledUptake = Cell.getInstance().isScheduledUptake();
+			if (scheduledUptake){
+				EndosomeUptakeStep.uptake(this);
+				scheduledUptake = false;
+				Cell.getInstance().setScheduledUptake(scheduledUptake);
+			}
+		}
 //		if (Math.random()<1/3000d){MaturationStep.mature(this);}
 //		if (Math.random()<p_MaturationStep)MaturationStep.mature(this);
 
