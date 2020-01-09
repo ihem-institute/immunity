@@ -33,7 +33,7 @@ public class EndosomeMove {
 		}
 		String organelleName = CellProperties.getInstance().rabOrganelle.get(maxRab);
 		if ( 
-				endosome.area >= Cell.minCistern/4// minimal cistern Golgi absolute Scale hacer constante
+				endosome.area >= Cell.minCistern// minimal cistern Golgi absolute Scale hacer constante
 //				&& membraneFlux == 1d // now is for all Golgi models
 				&& isGolgi){
 			moveCistern(endosome, maxRab);
@@ -46,39 +46,40 @@ public class EndosomeMove {
 	public static void moveCistern(Endosome endosome, String maxRab){
 		space = endosome.getSpace();
 		grid = endosome.getGrid();		
-//		if (Math.random()<0.01){
-//		endosome.rabContent.clear();
-//		endosome.rabContent.put(maxRab, endosome.area);			
-//		}
-
 		double yrnd = 1;//Math.random();
+		endosome.heading = -90;
 		switch (maxRab) {
 		case "RabA": {
-			endosome.heading = -90;
+			yrnd = Math.random();
+//			endosome.heading = -90;
 			space.moveTo(endosome, 25, yrnd*2);
 			grid.moveTo(endosome, 25, (int)yrnd*2);
 			break;
 		}
 		case "RabB": {
-			endosome.heading = -90;
+			yrnd = Math.random();
+//			endosome.heading = -90;
 			space.moveTo(endosome, 25, yrnd*3);
 			grid.moveTo(endosome, 25, (int)yrnd*3);
 			break;
 		}
 		case "RabC": {
-			endosome.heading = -90;
+			yrnd = Math.random();
+//			endosome.heading = -90;
 			space.moveTo(endosome, 25, yrnd*4);
 			grid.moveTo(endosome, 25, (int)yrnd*4);
 			break;
 		}
 		case "RabD": {
-			endosome.heading = -90;
+			yrnd = Math.random();
+//			endosome.heading = -90;
 			space.moveTo(endosome, 25, yrnd*5);
 			grid.moveTo(endosome, 25, (int)yrnd*5);
 			break;
 		}
 		case "RabE": {
-			endosome.heading = -90;
+			yrnd = Math.random();
+//			endosome.heading = -90;
 			space.moveTo(endosome, 25, yrnd*6);
 			grid.moveTo(endosome, 25, (int)yrnd*6);
 			break;

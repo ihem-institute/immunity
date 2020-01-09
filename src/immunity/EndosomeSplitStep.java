@@ -87,7 +87,7 @@ public class EndosomeSplitStep {
 		{// Golgi domain
 			double probFission = 1;
 //	Fission probability proportional to the radius.  1 for radius>500 0 for radius < 250		
-			probFission = (endosome.area - Cell.minCistern)/(Cell.maxCistern-Cell.minCistern);// hacer constante
+			probFission = (endosome.area - Cell.minCistern)/(2*Cell.maxCistern-Cell.minCistern);// hacer constante
 //			if (endosome.c>=endosome.a){// it is a cistern.  Probability proportional to radius.  Max 500 nm, Min rcyl 
 //				
 //				probFission = (endosome.c - Cell.rcyl)/(500-Cell.rcyl);
@@ -298,7 +298,7 @@ public class EndosomeSplitStep {
 //		    System.out.println("Second root is:"+root2);
 		//}   
 		
-		if (Math.random()<0.9999){// standard 0.9
+		if (Math.random()<1){// standard 0.9
 // high probability of forming a single vesicle.  SET TO 0.9.  SET to <1 for membraneFlux Luini
 			return new double[] {4 * Math.PI*Math.pow(Cell.rcyl,2), 4/3 * Math.PI * Math.pow(Cell.rcyl, 3)};
 
@@ -616,7 +616,7 @@ public class EndosomeSplitStep {
 		
 //		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 //				CellProperties.getInstance().getRabTropism());
-		double concentrate = 100d;
+		double concentrate = 1E10d;
 		double scylinder = so - sVesicle;
 		double value = (copyMembrane.get(content)/so)*concentrate*scylinder;
 //		if(copyMembrane.get(content)> scylinder){

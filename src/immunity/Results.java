@@ -322,7 +322,7 @@ public class Results {
 			totalVolumeRabs.put(rab, 0.0);
 			cisternsArea.put(rab, 0.0);
 		}
-		
+		double cisternsNumber = 0d;
 		for (Endosome endosome : allEndosomes) {
 			Double area = endosome.area;
 			Double volume = endosome.volume;
@@ -333,7 +333,8 @@ public class Results {
 					.getSolubleContent();
 			
 			String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
-			if (area >= Cell.minCistern/4) {
+			if (area >= Cell.minCistern) {
+				cisternsNumber = cisternsNumber +1d;
 				double value = cisternsArea.get(maxRab) + area;
 				cisternsArea.put(maxRab, value);
 			}
@@ -391,6 +392,7 @@ public class Results {
 			totalCisternsArea = totalCisternsArea + cisternsArea.get(rab);
 		}
 		HashMap<String, Double> relativeCisternsArea = new HashMap<String, Double>();
+		cisternsArea.put("cisterns#", cisternsNumber);
 		double entropy = 0d;
 		for (String rab : cisternsArea.keySet()) {
 			double value = cisternsArea.get(rab)/totalCisternsArea;

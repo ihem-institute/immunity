@@ -21,8 +21,10 @@ public class EndosomeFusionStep {
 	public static void fusion (Endosome endosome) {
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 // Solo fucionan cisternas.  Esto evita fusión entre vesíclas pequeñas
-		if ((endosome.volume <= 4/3 * Math.PI*Math.pow(Cell.rcyl, 3)
-				|| endosome.area <= 1.1*(2*Math.PI*Math.pow(Cell.rcyl, 2)+2*Math.PI*Cell.rcyl*20))
+		if ((	
+				endosome.area < Cell.minCistern)
+//				endosome.volume <= 4/3 * Math.PI*Math.pow(Cell.rcyl, 3)
+//				|| endosome.area <= 1.1*(2*Math.PI*Math.pow(Cell.rcyl, 2)+2*Math.PI*Cell.rcyl*20))
 //				&& !maxRab.equals("RabA")
 				) return;
 		HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());

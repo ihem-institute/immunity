@@ -104,7 +104,7 @@ public class Endosome {
 //	At time scale 0.5, I move the endosome 60 nm (30/timeScale)
 //	
 	double p_EndosomeRecycleStep = 1d/(10d/0.03*Cell.timeScale);
-	double p_EndosomeUptakeStep = 1d/(12d/0.03*Cell.timeScale);
+	double p_EndosomeUptakeStep = 1d/(12d/0.03*Cell.timeScale);//era 1/12
 //	double p_EndosomeNewFromERStep = 1d/(60d/0.03*Cell.timeScale);
 	double p_EndosomeInternalVesicleStep = 1d/(5d/0.03*Cell.timeScale);// change from 2 to .1
 	double p_EndosomeFusionStep =1d/(5d/0.03*Cell.timeScale);//used to be 60d
@@ -192,7 +192,7 @@ public class Endosome {
 		p_EndosomeSplitStep = 1/5d;
 		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
 		double p_EndosomeSwelling = 1/50d;
-//		if (Math.random()<p_MaturationStep/10) MaturationStep.mature(this);
+		if (Math.random()<p_MaturationStep/4) MaturationStep.mature(this); //viejo /10
 //		if (Math.random()<p_EndosomeSwelling) EndosomeSwelling.endosomeSwell(this);
 //		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
@@ -206,15 +206,15 @@ public class Endosome {
 //		if (tick%1000 == 0)EndosomeFusionStep.fusion(this);
 //		if (tick%60 == 0) EndosomeSplitStep.split(this);
 //		EndosomeSwelling.endosomeSwell(this);
-		if (tick%3000 ==0) {
-			MaturationStep.mature(this);
-			boolean scheduledUptake = Cell.getInstance().isScheduledUptake();
-			if (scheduledUptake){
-				EndosomeUptakeStep.uptake(this);
-				scheduledUptake = false;
-				Cell.getInstance().setScheduledUptake(scheduledUptake);
-			}
-		}
+//		if (tick%3000 ==0) {
+//			MaturationStep.mature(this);
+//			boolean scheduledUptake = Cell.getInstance().isScheduledUptake();
+//			if (scheduledUptake){
+//				EndosomeUptakeStep.uptake(this);
+//				scheduledUptake = false;
+//				Cell.getInstance().setScheduledUptake(scheduledUptake);
+//			}
+//		}
 //		if (Math.random()<1/3000d){MaturationStep.mature(this);}
 //		if (Math.random()<p_MaturationStep)MaturationStep.mature(this);
 

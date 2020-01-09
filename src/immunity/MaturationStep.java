@@ -28,8 +28,8 @@ public class MaturationStep {
 		if (membraneFlux == 1d 
 				&& endosome.area >= 0.8*Cell.minCistern // hacer constante
 				&& organelleName.contains("Golgi")){
-			membraneFluxMatureSyn(endosome, maxRab);
-	//		maturePush(endosome, maxRab);
+	//		membraneFluxMatureSyn(endosome, maxRab);
+			maturePush(endosome, maxRab);
 
 		}
 		else if (organelleName.contains("ERGIC")){// if ERGIC, mature to cisGolgi near the bottom
@@ -296,7 +296,7 @@ public class MaturationStep {
 
 				else if(end != endosome
 						&& maxRab2.equals("RabA")
-//						&& Math.random()<0.01
+						&& Math.random()<0.0
 						//						&& end.area < 1.6E6)
 						){
 					endosome.volume = endosome.volume + end.volume;
@@ -363,7 +363,7 @@ public class MaturationStep {
 
 				else if(end != endosome
 						&& maxRab2.equals("RabB")
-//						&& Math.random()<0.01
+						&& Math.random()<0.0
 //						&& end.area < 1.6E6)
 						){
 					endosome.volume = endosome.volume + end.volume;
@@ -414,7 +414,7 @@ public class MaturationStep {
 				}
 				else if(end != endosome
 						&& maxRab2.equals("RabC")
-//						&& Math.random()<0.01
+						&& Math.random()<0.0
 						//						&& end.area < 1E6)
 						){
 					endosome.volume = endosome.volume + end.volume;
@@ -467,7 +467,7 @@ public class MaturationStep {
 				}
 				else if(end != endosome
 						&& maxRab2.equals("RabD")
-//						&& Math.random()<0.01
+						&& Math.random()<0.0
 						//						&& end.area < 1E6
 						){
 					endosome.volume = endosome.volume + end.volume;
@@ -541,7 +541,7 @@ public class MaturationStep {
 				}
 				else if(end != endosome
 						&& maxRab2.equals("RabE")
-	//					&& Math.random()<0.01
+						&& Math.random()<0.0
 						//						&& end.area < 1E6
 						){
 					endosome.volume = endosome.volume + end.volume;
