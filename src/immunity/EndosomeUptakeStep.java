@@ -4,9 +4,12 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.collections.map.HashedMap;
 
 import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;
@@ -386,11 +389,25 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		solubleContent.put("solubleMarker", 0d);
 		}
 		Context<Object> context = ContextUtils.getContext(endosome);
+		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+		if (tick == 30000) {
+			double memValue = 8033;
+			membraneContent.put("memL",memValue);
+			membraneContent.put("memLS",memValue);
+			membraneContent.put("memS",memValue);
+//			"memS",8033, "memERGIC",8033,"memGolgiMedial",8033,"memTGN",8033, "membraneMarker",1,"memTub",8033,"memLS",8033);
+//			endosome164u,initSolubleContent,solL,196257,solS,196257,solubleMarker,1,proton,1000
+			
+		}
+		
+		
+		
+		
 		Endosome bud = new Endosome(endosome.getSpace(), endosome.getGrid(), rabContent, membraneContent,
 				solubleContent, initOrgProp);
 		System.out.println(bud.xcoor + " POSICIÓN "+bud.ycoor);
 		System.out.println(space.toString() + grid.toString() + rabContent + membraneContent + solubleContent + initOrgProp);
-		context.add(bud);
+		context.add(bud);		
 		bud.area = area;// initOrgProp.get("area");
 		bud.volume = volume; //initOrgProp.get("volume");
 //		bud.size = initOrgProp.get("maxRadius");// radius of a sphere with the volume of the

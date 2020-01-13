@@ -77,7 +77,7 @@ public class EndosomeSplitStep {
 		rabInTube = rabInTube(endosome); // select a rab for the tubule
 		if (rabInTube == null) return; // if non is selected, no fission
 //		First cistern vesicles cannot form because the cannot fuse with a previous cistern
-		if (rabInTube.equals("RabA") && CellProperties.rabOrganelle.get("RabA").contains("Golgi")) return;
+//		if (rabInTube.equals("RabA") && CellProperties.rabOrganelle.get("RabA").contains("Golgi")) return;
 		if (endosome.rabContent.get(rabInTube)<= Cell.mincyl) return; // the rab area is too small		
 		double scylinder = Cell.mincyl; // surface minimum cylinder 2*radius
 		// cylinder high
@@ -86,7 +86,9 @@ public class EndosomeSplitStep {
 		if (CellProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi"))
 		{// Golgi domain
 			double probFission = 1;
-//	Fission probability proportional to the radius.  1 for radius>500 0 for radius < 250		
+//	Fission probability proportional to the radius.  1 for radius>500 0 for radius < 250
+//			probFission = (endosome.area - 0)/(2*Cell.maxCistern-0);// hacer constante
+			
 			probFission = (endosome.area - Cell.minCistern)/(2*Cell.maxCistern-Cell.minCistern);// hacer constante
 //			if (endosome.c>=endosome.a){// it is a cistern.  Probability proportional to radius.  Max 500 nm, Min rcyl 
 //				
@@ -168,6 +170,17 @@ public class EndosomeSplitStep {
 //			System.out.println(endosome.rabContent);
 		}
 		endosome.rabContent.put(rabInTube, rabLeft);
+		endosome.size = Math.pow(endosome.volume * 3d / 4d / Math.PI, (1d / 3d));
+		endosome.speed = 1d / endosome.size;
+//		Time series are re calculated in the next tick
+		endosome.getRabTimeSeries().clear();
+		endosome.getEndosomeTimeSeries().clear();
+		
+//		First cistern form vesicles that are destroyed (because they will accumulate. Cannot fuse with previous cistern
+//		If they are destroyed here, they have no cargo
+		if (membraneFlux == 1d 
+				&& rabInTube.equals("RabA")
+				&& CellProperties.rabOrganelle.get("RabA").contains("Golgi")) return;
 		
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
@@ -200,8 +213,9 @@ public class EndosomeSplitStep {
 			newSolubleContent.put(content, copySoluble.get(content)
 					- endosome.solubleContent.get(content));
 		}
-//		First cistern form vesicles that are destroied (because they will accumultate. Cannot fuse with previous cistern
-//		if (membraneFlux == 1d && maxRab.equals("RabA")) return;
+//		First cistern form vesicles that are destroyed (because they will accumulate. Cannot fuse with previous cistern
+//		If they are destroyed here, their cargo is destroyed
+//		if (membraneFlux == 1d && rabInTube.equals("RabA")) return;
 		Endosome b = new Endosome(endosome.getSpace(), endosome.getGrid(), newRabContent,
 				newMembraneContent, newSolubleContent, newInitOrgProp);
 		Context<Object> context = ContextUtils.getContext(endosome);

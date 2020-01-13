@@ -28,8 +28,8 @@ public class MaturationStep {
 		if (membraneFlux == 1d 
 				&& endosome.area >= 0.8*Cell.minCistern // hacer constante
 				&& organelleName.contains("Golgi")){
-	//		membraneFluxMatureSyn(endosome, maxRab);
-			maturePush(endosome, maxRab);
+			membraneFluxMatureSyn(endosome, maxRab);
+//			maturePush(endosome, maxRab);
 
 		}
 		else if (organelleName.contains("ERGIC")){// if ERGIC, mature to cisGolgi near the bottom
@@ -255,6 +255,7 @@ public class MaturationStep {
 		 */	
 		//		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		double value = endosome.rabContent.get(maxRab);
+		double factorSize = 0.5;
 		switch (maxRab) {
 		case "RabA": {
 			String organelleName = CellProperties.getInstance().rabOrganelle.get(maxRab);
@@ -276,7 +277,7 @@ public class MaturationStep {
 
 				if (end != endosome
 						&& maxRab2.equals("RabA")
-						&& end.area >= 0.8*Cell.minCistern){//(2*Math.PI*Math.pow(500, 2)+ 2 * Math.PI * 500 * 20)){					
+						&& end.area >= factorSize*Cell.minCistern){//(2*Math.PI*Math.pow(500, 2)+ 2 * Math.PI * 500 * 20)){					
 					Endosome endosomeToMature = endosome;
 					if(endosome.birthday > end.birthday) {
 						endosomeToMature = end;
@@ -343,7 +344,7 @@ public class MaturationStep {
 
 				if (end != endosome
 						&& maxRab2.equals("RabB")
-						&& end.area >= 0.8*Cell.minCistern){//(2*Math.PI*Math.pow(500, 2)+ 2 * Math.PI * 500 * 20)){					
+						&& end.area >= factorSize*Cell.minCistern){//(2*Math.PI*Math.pow(500, 2)+ 2 * Math.PI * 500 * 20)){					
 					Endosome endosomeToMature = endosome;
 					if(endosome.birthday > end.birthday) {
 						endosomeToMature = end;
@@ -401,7 +402,7 @@ public class MaturationStep {
 				String maxRab2 = Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 				if (end != endosome
 						&& maxRab2.equals("RabC")
-						&& end.area >= 0.8*Cell.minCistern){ // hacer constante
+						&& end.area >= factorSize*Cell.minCistern){ // hacer constante
 					Endosome endosomeToMature = endosome;
 					if(endosome.birthday > end.birthday) {
 						endosomeToMature = end;
@@ -454,7 +455,7 @@ public class MaturationStep {
 				System.out.println("ENDOSOMA A EVALUAR "+ maxRab2 + end.rabContent+ end.birthday);
 				if (end != endosome
 						&& maxRab2.equals("RabD")
-						&& end.area >= 0.8*Cell.minCistern){
+						&& end.area >= factorSize*Cell.minCistern){
 					Endosome endosomeToMature = endosome;
 					if(endosome.birthday > end.birthday) {
 						endosomeToMature = end;
@@ -504,7 +505,7 @@ public class MaturationStep {
 				String maxRab2 = Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 				if (end != endosome
 						&& maxRab2.equals("RabE")
-						&& end.area >= 0.8*Cell.minCistern)// hacer constante
+						&& end.area >= factorSize*Cell.minCistern)// hacer constante
 				{ 
 					Endosome endosomeToMature = endosome;
 					if(endosome.birthday > end.birthday) {

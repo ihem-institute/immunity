@@ -72,11 +72,8 @@ public class EndosomeFusionStep {
 				if (isGolgi){
 					if (end != endosome  // it is not itself
 							&& (end.volume <= 4/3 * Math.PI*Math.pow(Cell.rcyl, 3))// use to be endosome.volume) // the other is smaller
-//							&& ((!isCistern || !isCistern2)) // at list one is not cistern
-//									|| // or they share the same maximal Rab domain
-//									(Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey() ==
+//							 (Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey() ==
 //									Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey()))
-
 							&& (Math.random() < EndosomeAssessCompatibility.compatibles(endosome, end))) {
 						//						if (EndosomeAssessCompatibility.compatibles(endosome, end)==0d){
 //												System.out.println("OJO FUSION "+end.volume + " "+ (4/3 * Math.PI*Math.pow(Cell.rcyl, 3)));
