@@ -392,7 +392,9 @@ public class Results {
 			totalCisternsArea = totalCisternsArea + cisternsArea.get(rab);
 		}
 		HashMap<String, Double> relativeCisternsArea = new HashMap<String, Double>();
-		cisternsArea.put("cisterns#", cisternsNumber);
+		int endosomeNumber = allEndosomes.size();
+		cisternsArea.put("#cisterns#", cisternsNumber);
+		cisternsArea.put("#vesicles#", endosomeNumber - cisternsNumber);
 		double entropy = 0d;
 		for (String rab : cisternsArea.keySet()) {
 			double value = cisternsArea.get(rab)/totalCisternsArea;
