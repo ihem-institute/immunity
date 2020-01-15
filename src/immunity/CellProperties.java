@@ -51,7 +51,7 @@ public class CellProperties {
 	public HashMap<String, String> colorContent = new HashMap<String, String>();
 	public HashMap<String, String> copasiFiles = new HashMap<String, String>();
 	public HashMap<String, Double> uptakeRate = new HashMap<String, Double>();
-	public HashMap<String, String> rabOrganelle = new HashMap<String, String>();
+	public static HashMap<String, String> rabOrganelle = new HashMap<String, String>();
 
 	public Set<String> solubleMet = new HashSet<String>();
 	public Set<String> membraneMet = new HashSet<String>();

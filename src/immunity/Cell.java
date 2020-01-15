@@ -20,6 +20,8 @@ public class Cell {
 
 //	Cell characteristics
 	public static double rcyl = CellProperties.getInstance().getCellK().get("rcyl");//20.0; // radius tubule
+	public static double minCistern = 4E5;
+	public static double maxCistern = 1.6E6;
 	public static double mincyl = 6 * Math.PI * rcyl * rcyl; // surface minimum cylinder
 // two radius large (almost a sphere)
 	public static double rIV = rcyl; //Internal vesicle radius similar to tubule radius 

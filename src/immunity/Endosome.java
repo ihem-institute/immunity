@@ -30,7 +30,6 @@ import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.environment.RunState;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.essentials.RepastEssentials;
-import repast.simphony.parameter.Parameter;
 import repast.simphony.parameter.Parameters;
 import repast.simphony.query.space.grid.GridCell;
 import repast.simphony.query.space.grid.GridCellNgh;
@@ -70,6 +69,7 @@ public class Endosome {
 															// should change
 	double a = 0; // width of the ellipsoid representing the endosome
 	double c = 0; // length;
+	double birthday = 0;// birthday in ticks from the maturation
 	double size;// = Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
 	double speed;// = 5d / size; // initial value, but should change
 	double heading = 0;// = Math.random() * 360d; // initial value, but should
@@ -104,7 +104,7 @@ public class Endosome {
 //	At time scale 0.5, I move the endosome 60 nm (30/timeScale)
 //	
 	double p_EndosomeRecycleStep = 1d/(10d/0.03*Cell.timeScale);
-	double p_EndosomeUptakeStep = 1d/(12d/0.03*Cell.timeScale);
+	double p_EndosomeUptakeStep = 1d/(12d/0.03*Cell.timeScale);//era 1/12
 //	double p_EndosomeNewFromERStep = 1d/(60d/0.03*Cell.timeScale);
 	double p_EndosomeInternalVesicleStep = 1d/(5d/0.03*Cell.timeScale);// change from 2 to .1
 	double p_EndosomeFusionStep =1d/(5d/0.03*Cell.timeScale);//used to be 60d
@@ -136,6 +136,8 @@ public class Endosome {
 		size = Math.pow(volume * 3d / 4d / Math.PI, (1d / 3d));
 		speed = Cell.orgScale / size; // initial value, but should change
 		heading = Math.random() * 360d - 180; // initial value, but should change
+		birthday  = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+;
 		double mvb = 0; // number of internal vesicles
 
 
@@ -148,7 +150,7 @@ public class Endosome {
 	public final void setXcoor(double xcoor) {
 		this.xcoor = xcoor;
 	}
-//	 @Parameter(usageName="ycoor", displayName="Agent ycoor")
+	
 	public final double getYcoor() {
 		return ycoor;
 	}
@@ -180,16 +182,17 @@ public class Endosome {
 //		EndosomeMove.changeDirection(this);
 		EndosomeMove.moveTowards(this);
 //		if (this.solubleContent.containsKey("mvb")) this.membraneContent.put("chol", 0d);
-//		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
+		if (Math.random()<p_EndosomeUptakeStep/20)EndosomeUptakeStep.uptake(this);
 //		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
 		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
 //		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
 //		if (Math.random()<p_EndosomeKissRunStep) EndosomeKissRunStep.kissRun(this);
-		p_EndosomeFusionStep = 1/10d;
+		p_EndosomeFusionStep = 1/50d;
 		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
-		p_EndosomeSplitStep = 1/10d;
+		p_EndosomeSplitStep = 1/25d;
 		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
 		double p_EndosomeSwelling = 1/50d;
+//		if (Math.random()<p_MaturationStep/10) MaturationStep.mature(this); //viejo /10
 //		if (Math.random()<p_EndosomeSwelling) EndosomeSwelling.endosomeSwell(this);
 //		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
@@ -204,20 +207,18 @@ public class Endosome {
 //		if (tick%60 == 0) EndosomeSplitStep.split(this);
 //		EndosomeSwelling.endosomeSwell(this);
 //		if (tick%3000 ==0) {
-//			MaturationStep.mature(this);
 //			boolean scheduledUptake = Cell.getInstance().isScheduledUptake();
 //			if (scheduledUptake){
 //				EndosomeUptakeStep.uptake(this);
 //				scheduledUptake = false;
 //				Cell.getInstance().setScheduledUptake(scheduledUptake);
 //			}
+//			MaturationStep.mature(this);
 //
 //
 //		}
 //		if (Math.random()<1/3000d){MaturationStep.mature(this);}
-		
 //		if (Math.random()<p_MaturationStep)MaturationStep.mature(this);
-		
 
 	}
 //	public List<Endosome> getAllEndosomes(){
@@ -298,7 +299,9 @@ public class Endosome {
 	public double getArea() {
 		return area;
 	}
-
+	public double getBirthday() {
+		return birthday;
+	}
 	public double getVolume() {
 		if (volume < 1.0) {
 			return volume;

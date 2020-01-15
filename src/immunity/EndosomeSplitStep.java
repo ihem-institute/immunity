@@ -40,7 +40,8 @@ public class EndosomeSplitStep {
 		double volMincyl = 2 * Math.PI * Cell.rcyl * Cell.rcyl * Cell.rcyl;
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux");
-		if (membraneFlux == 1d && maxRab.equals("RabA")) return;
+//		First Cistern or any cistern with RabA as a maxRab cannot form vesicles. 
+//		if (membraneFlux == 1d && maxRab.equals("RabA")) return;
 //		System.out.println("NO LO AGGARROO Y FORMA VESÍCULAS "+maxRab + membraneFlux);	
 		if (vo < 2 * volMincyl)
 			return; // if too small to form two mincyl do not split. Volume of a cylinder of 2
@@ -75,6 +76,8 @@ public class EndosomeSplitStep {
 
 		rabInTube = rabInTube(endosome); // select a rab for the tubule
 		if (rabInTube == null) return; // if non is selected, no fission
+//		First cistern vesicles cannot form because the cannot fuse with a previous cistern
+//		if (rabInTube.equals("RabA") && CellProperties.rabOrganelle.get("RabA").contains("Golgi")) return;
 		if (endosome.rabContent.get(rabInTube)<= Cell.mincyl) return; // the rab area is too small		
 		double scylinder = Cell.mincyl; // surface minimum cylinder 2*radius
 		// cylinder high
@@ -92,6 +95,18 @@ public class EndosomeSplitStep {
 			//				probFission = 0.5;//(endosome.a - Cell.rcyl)/(500-Cell.rcyl);
 			//			}
 			//			double probFission = 
+//	Fission probability proportional to the radius.  1 for radius>500 0 for radius < 250
+//			probFission = (endosome.area - 0)/(2*Cell.maxCistern-0);// hacer constante
+			
+			probFission = (endosome.area - Cell.minCistern)/(2*Cell.maxCistern-Cell.minCistern);// hacer constante
+//			if (endosome.c>=endosome.a){// it is a cistern.  Probability proportional to radius.  Max 500 nm, Min rcyl 
+//				
+//				probFission = (endosome.c - Cell.rcyl)/(500-Cell.rcyl);
+//			}
+//			else {// it is not a cistern.  Probability proportional to the length
+//				probFission = 0.5;//(endosome.a - Cell.rcyl)/(500-Cell.rcyl);
+//			}
+//			double probFission = 
 			if ( Math.random()<1-probFission){
 				//		SET TO 0.9. TO BE ADJUSTED.  IF SMALLER, THE CISTERNS FRACTIONATE IF LARGER, LARGE CISTERNS
 				//				0.5 works great when MT direction of tubules is set to the nucleus
@@ -165,9 +180,15 @@ public class EndosomeSplitStep {
 		}
 		endosome.rabContent.put(rabInTube, rabLeft);
 //		here it is sent for membrane and soluble distribution
+//		First cistern form vesicles that are destroyed (because they will accumulate. Cannot fuse with previous cistern
+//		If they are destroyed here, they have no cargo
+		boolean empty = Math.random()<0.5;
+		if (empty ==true 
+				&& rabInTube.equals("RabA")
+				&& CellProperties.rabOrganelle.get("RabA").contains("Golgi")) return;
+		
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
-		boolean empty = Math.random()<0.5;
 		membraneContentSplit(endosome, rabInTube, so, sVesicle, empty);
 		
 		HashMap<String, Double> copySoluble = new HashMap<String, Double>(
@@ -200,7 +221,13 @@ public class EndosomeSplitStep {
 			newSolubleContent.put(content, copySoluble.get(content)
 					- endosome.solubleContent.get(content));
 		}
-//		if (membraneFlux == 1d && maxRab.equals("RabA")) return;
+//		Last cistern form vesicles that are destroyed (because they will accumulate. Cannot fuse with next cistern
+//		If they are destroyed here, their cargo is sent to recycling	
+		if (empty == false 
+				&& rabInTube.equals("RabE")) {
+			recycle(newMembraneContent, newSolubleContent);
+			return;
+		}
 		Endosome b = new Endosome(endosome.getSpace(), endosome.getGrid(), newRabContent,
 				newMembraneContent, newSolubleContent, newInitOrgProp);
 		System.out.println(newRabContent.toString() + newMembraneContent + newSolubleContent + newInitOrgProp);
@@ -260,6 +287,36 @@ public class EndosomeSplitStep {
 
 	}
 	
+	private static void recycle(HashMap<String,Double>membraneContent, HashMap<String,Double>solubleContent) {
+		// TODO Auto-generated method stub
+		// RECYCLE
+		// Recycle membrane content
+		HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance()
+				.getMembraneRecycle();
+		for (String key1 : membraneContent.keySet()) {
+			if (membraneRecycle.containsKey(key1)) {
+				double sum = membraneRecycle.get(key1)
+						+ membraneContent.get(key1);
+				membraneRecycle.put(key1, sum);
+			} else {
+				membraneRecycle.put(key1, membraneContent.get(key1));
+			}
+		}
+
+		HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance()
+				.getSolubleRecycle();
+		for (String key1 : solubleContent.keySet()) {
+			if (solubleRecycle.containsKey(key1)) {
+				double sum = solubleRecycle.get(key1)
+						+ solubleContent.get(key1);
+				solubleRecycle.put(key1, sum);
+			} else {
+				solubleRecycle.put(key1, solubleContent.get(key1));
+			}
+		}
+		
+	}
+
 	private static double[] areaVolumeCistern(Endosome endosome, String rabInTube)
 	{
 		/*
@@ -593,6 +650,7 @@ public class EndosomeSplitStep {
 		if (content.equals("solubleMarker")
 				&& (endosome.solubleContent.get("solubleMarker") > 0.9)) {
 			if (Math.random() < vVesicle / vo) endosome.solubleContent.put(content, 1d);
+			else {endosome.solubleContent.put("solubleMarker", 0d);}
 			} 
 		else 
 		{
