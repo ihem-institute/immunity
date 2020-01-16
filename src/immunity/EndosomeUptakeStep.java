@@ -24,6 +24,8 @@ public class EndosomeUptakeStep {
 	private static Grid<Object> grid;
 	private static Object membreneMet;
 	private static HashMap<String, Double> rabContent;
+	public static boolean loadUptake = true;
+	
 	public static void uptake(Endosome endosome) {
 		//		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		//		if (tick < 100) return;
@@ -35,6 +37,7 @@ public class EndosomeUptakeStep {
 		rabCode.put("RabC", "kind3");
 		rabCode.put("RabD", "kind4");
 		rabCode.put("RabE", "kind5");
+
 		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux"); // if on then a cistern is formed from zero for membrane flux model
 		if (membraneFlux == 1d){
 			double maturationTrigger = CellProperties.getInstance().cellK.get("maturationTrigger");
@@ -509,11 +512,11 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
 		HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
-
+		
 		double area = 0d;
 		double volume = 0d;
 		double maxRadius = initOrgProp.get("maxRadius");
-		area = Math.PI*Math.pow(maxRadius, 2)*2d + 2d*maxRadius*Math.PI*20d; //area of a cistern as a flat cylinder 20 nm high with a radius of maxRadius
+		area = Math.PI*Math.pow(maxRadius, 2)*2d; //+ 2d*maxRadius*Math.PI*20d; //area of a cistern as a flat cylinder 20 nm high with a radius of maxRadius
 		volume = Math.PI*Math.pow(maxRadius, 2)* 20d;
 		double value = Results.instance.getTotalRabs().get(selectedRab);
 		value = value + area;
@@ -524,16 +527,18 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 			double rr = rabContent.get(rab);
 			rabContent.put(rab, rr*area);
 		}
-		for (String mem : membraneContent.keySet()){
-			double mm = membraneContent.get(mem);
-			membraneContent.put(mem, mm*area);
-		}
-
-//		System.out.println(selectedRab + InitialOrganelles.getInstance().getInitMembraneContent().get(kind)+ " membraneFlux	iniciales " +membraneContent);
-		for (String sol : solubleContent.keySet()){
-			double ss = solubleContent.get(sol);
-			solubleContent.put(sol, ss*volume);
-		}
+//		CARGO DIRECTAMENTE LO QUE QUIERO QUE SE INCORPORE A LA CISTERNA GRANDE.  ESTO ES DIFERENTE
+//		A UPTAKE.  EN CSV, HAY QUE CARGAR LA CANTIDAD 
+//		for (String mem : membraneContent.keySet()){
+//			double mm = membraneContent.get(mem);
+//			membraneContent.put(mem, mm*area);
+//		}
+//
+////		System.out.println(selectedRab + InitialOrganelles.getInstance().getInitMembraneContent().get(kind)+ " membraneFlux	iniciales " +membraneContent);
+//		for (String sol : solubleContent.keySet()){
+//			double ss = solubleContent.get(sol);
+//			solubleContent.put(sol, ss*volume);
+//		}
 		Endosome bud = new Endosome(endosome.getSpace(), endosome.getGrid(), rabContent, membraneContent,
 				solubleContent, initOrgProp);
 		bud.area = area;// initOrgProp.get("area");
@@ -550,19 +555,29 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		Endosome selectedEnd = null;
 		for (Endosome end : allEndosomes) {
 			String maxRab = Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
-			if (maxRab.equals(selectedRab)
-					&& end.rabContent.get(selectedRab) > maxArea) {
+			if (end.rabContent.containsKey(selectedRab) &&
+					//maxRab.equals(selectedRab) &&
+					end.rabContent.get(selectedRab) > maxArea) {
 				maxArea = end.rabContent.get(selectedRab);
 				selectedEnd = end;			
 			}
 		}
-System.out.println("Endosome" + allEndosomes);
-System.out.println("selectedEndosome" + selectedEnd);
+//System.out.println("Endosome" + allEndosomes);
+//System.out.println("selectedEndosome" + selectedEnd);
 		selectedEnd.volume = selectedEnd.volume + bud.volume;
 		selectedEnd.area = selectedEnd.area + bud.area;
 		selectedEnd.rabContent = sumRabContent(selectedEnd, bud);
-		selectedEnd.membraneContent = sumMembraneContent(selectedEnd, bud);
-		selectedEnd.solubleContent = sumSolubleContent(selectedEnd, bud);
+		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+		if (tick >30000
+				&& loadUptake) {
+			selectedEnd.membraneContent = sumMembraneContent(selectedEnd, bud);
+			selectedEnd.solubleContent = sumSolubleContent(selectedEnd, bud);
+			if (selectedRab.equals("RabA")){
+				loadUptake = false;
+			}
+			
+		}
+
 		
 	}
 	private static HashMap<String, Double> sumRabContent(Endosome endosome1,

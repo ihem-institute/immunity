@@ -346,7 +346,7 @@ public class Results {
 			for (String rab : rabContent.keySet()) {
 				for (String sol : solubleContent.keySet()) {
 					System.out.println(" soluble "+ sol + " Rab " +rab);
-				System.out.println(" FALTA " + contentDist.get(sol + rab));
+	//			System.out.println(" FALTA " + contentDist.get(sol + rab));
 					double value = contentDist.get(sol + rab)
 							+ solubleContent.get(sol) * rabContent.get(rab)
 							/ area;

@@ -182,14 +182,14 @@ public class Endosome {
 //		EndosomeMove.changeDirection(this);
 		EndosomeMove.moveTowards(this);
 //		if (this.solubleContent.containsKey("mvb")) this.membraneContent.put("chol", 0d);
-		if (Math.random()<p_EndosomeUptakeStep/20)EndosomeUptakeStep.uptake(this);
+		if (Math.random()<p_EndosomeUptakeStep/5d)EndosomeUptakeStep.uptake(this);
 //		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
 		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
 //		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
 //		if (Math.random()<p_EndosomeKissRunStep) EndosomeKissRunStep.kissRun(this);
 		p_EndosomeFusionStep = 1/50d;
 		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
-		p_EndosomeSplitStep = 1/25d;
+		p_EndosomeSplitStep = 1/5d;
 		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
 		double p_EndosomeSwelling = 1/50d;
 //		if (Math.random()<p_MaturationStep/10) MaturationStep.mature(this); //viejo /10
