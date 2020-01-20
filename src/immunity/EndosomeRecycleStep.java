@@ -1,6 +1,10 @@
 package immunity;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import repast.simphony.context.Context;
@@ -13,6 +17,104 @@ public class EndosomeRecycleStep {
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 	public static void recycle(Endosome endosome) {
+//		recycleEndocytosis(endosome);
+		recycleGolgi(endosome);
+		}
+	private static void recycleGolgi(Endosome endosome) {
+		HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
+		HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
+		HashMap<String, Double> solubleContent = new HashMap<String, Double>(endosome.getSolubleContent());
+		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+			
+			if (maxRab.equals("RabA")
+					&& rabContent.get(maxRab) == endosome.area 
+					&& endosome.area <= 4 * Math.PI * Cell.rcyl * Cell.rcyl)
+			{
+				
+//				SELECT THE LARGEST ENDOSOME WITH THE SELECTED KIND AND FUSE THE NEW BUD TO THIS ENDOSOME
+				List<Endosome> allEndosomes = new ArrayList<Endosome>();
+				Context<Object> context = ContextUtils.getContext(endosome);
+				for (Object obj : context) {	
+					if (obj instanceof Endosome) {
+						allEndosomes.add((Endosome) obj);
+					}
+				}
+				double maxArea = 0d;
+				Endosome selectedEnd = null;
+				for (Endosome end : allEndosomes) {
+					String maxRabend = Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+					if (end.rabContent.containsKey("RabA") &&
+							//maxRab.equals(selectedRab) &&
+							end.rabContent.get("RabA") > maxArea) {
+						maxArea = end.rabContent.get("RabA");
+						selectedEnd = end;			
+					}
+	
+				}
+				HashMap<String, Double> membranePresent = selectedEnd.membraneContent;
+				for (String key1 : endosome.membraneContent.keySet()) {
+					if (membranePresent.containsKey(key1)) {
+						double sum = membranePresent.get(key1)
+								+ membraneContent.get(key1);
+						membranePresent.put(key1, sum);
+					} else {
+						membranePresent.put(key1, membraneContent.get(key1));
+					}
+				}
+
+				HashMap<String, Double> solublePresent = selectedEnd.solubleContent;
+				for (String key1 : endosome.solubleContent.keySet()) {
+					if (solublePresent.containsKey(key1)) {
+						double sum = solublePresent.get(key1)
+								+ solubleContent.get(key1);
+						solublePresent.put(key1, sum);
+					} else {
+						solublePresent.put(key1, solubleContent.get(key1));
+					}
+				}
+//				Context<Object> context = ContextUtils.getContext(endosome);
+				context.remove(endosome);
+			}
+			else if (maxRab.equals("RabE") 
+					&& Math.random()> (endosome.area - 4 * Math.PI * Cell.rcyl * Cell.rcyl)/2/Cell.minCistern)
+			{
+
+				HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance()
+						.getMembraneRecycle();
+				for (String key1 : endosome.membraneContent.keySet()) {
+					if (membraneRecycle.containsKey(key1)) {
+						double sum = membraneRecycle.get(key1)
+								+ membraneContent.get(key1);
+						membraneRecycle.put(key1, sum);
+					} else {
+						membraneRecycle.put(key1, membraneContent.get(key1));
+					}
+				}
+
+				endosome.membraneContent.clear();
+
+				HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance()
+						.getSolubleRecycle();
+	//			double endopH = endosome.solubleContent.get("proton");
+				for (String key1 : endosome.solubleContent.keySet()) {
+					if (solubleRecycle.containsKey(key1)) {
+						double sum = solubleRecycle.get(key1)
+								+ solubleContent.get(key1);
+						solubleRecycle.put(key1, sum);
+					} else {
+						solubleRecycle.put(key1, solubleContent.get(key1));
+					}
+				}
+				PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
+				Context<Object> context = ContextUtils.getContext(endosome);
+				context.remove(endosome);
+			}
+
+			}
+	
+	
+	private static void recycleEndocytosis(Endosome endosome) {
+		// TODO Auto-generated method stub
 		HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>(endosome.getSolubleContent());
@@ -98,8 +200,8 @@ public class EndosomeRecycleStep {
 //				Context<Object> context = ContextUtils.getContext(endosome);
 //				context.remove(endosome);
 
-			}
-		}
+			}		
+	}
 
 	}
 

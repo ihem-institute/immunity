@@ -44,7 +44,6 @@ public class InitialOrganelles {
 
 	public HashMap<String, HashMap<String, Double>> getInitMembraneContent() {
 		return initMembraneContent;
-//		return new HashMap<String, HashMap<String, Double>>(initMembraneContent);
 	}
 
 	public String getInitialSolubleContent() {

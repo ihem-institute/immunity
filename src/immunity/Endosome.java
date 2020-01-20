@@ -179,7 +179,7 @@ public class Endosome {
 //		EndosomeMove.changeDirection(this);
 		EndosomeMove.moveTowards(this);
 //		if (this.solubleContent.containsKey("mvb")) this.membraneContent.put("chol", 0d);
-//		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
+		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
 //		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
 		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
 //		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
@@ -193,7 +193,7 @@ public class Endosome {
 		// rabConversionN();
 		String name =  CellProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
 		if (Math.random() < 1 && name.endsWith(".cps"))EndosomeCopasiStep.antPresTimeSeriesLoad(this);
-//		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);
+		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);
 //		if (Math.random()<0.01)MaturationStep.mature(this);
 
 	}

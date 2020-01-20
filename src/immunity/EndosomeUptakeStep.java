@@ -1,13 +1,16 @@
 package immunity;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
-
+import org.apache.commons.collections.map.HashedMap;
 import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.random.RandomHelper;
@@ -20,24 +23,44 @@ public class EndosomeUptakeStep {
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 	private static Object membreneMet;
+	private static HashMap<String, Double> rabContent;
+	public static boolean loadUptake = true;
+	
 	public static void uptake(Endosome endosome) {
 		//		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		//		if (tick < 100) return;
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
-
-		Cell cell = Cell.getInstance();
-		HashMap<String, Double> totalRabs = new HashMap<String, Double>(Results.getInstance().getTotalRabs());
-		HashMap<String, Double> initialTotalRabs = new HashMap<String, Double>(Results.getInstance().getInitialTotalRabs());
-		//		System.out.println("totalRabs  "+totalRabs);
-
-		HashMap<String, Double> deltaRabs = new HashMap<String, Double>();  
 		HashMap<String, String> rabCode = new HashMap<String, String>();
 		rabCode.put("RabA", "kind1");
 		rabCode.put("RabB", "kind2");
 		rabCode.put("RabC", "kind3");
 		rabCode.put("RabD", "kind4");
 		rabCode.put("RabE", "kind5");
+
+		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux"); // if on then a cistern is formed from zero for membrane flux model
+		if (membraneFlux == 1d){
+			double maturationTrigger = CellProperties.getInstance().cellK.get("maturationTrigger");
+			double totalRabA = Results.getInstance().getTotalRabs().get("RabA");
+			double initialTotalRabA = Results.getInstance().getInitialTotalRabs().get("RabA");
+			//		System.out.println("totalRabs  "+totalRabs);
+//			if (totalRabA > maturationTrigger * initialTotalRabA) {// new RabA cistern only if 50% has matured
+//				return;
+//			}
+//			else
+			{
+			String selectedRab = "RabA";
+			newOrganelle(endosome, selectedRab, rabCode, membraneFlux);
+			return;
+			}
+		}
+
+		Cell cell = Cell.getInstance();
+		HashMap<String, Double> totalRabs = new HashMap<String, Double>(Results.getInstance().getTotalRabs());
+		HashMap<String, Double> initialTotalRabs = new HashMap<String, Double>(Results.getInstance().getInitialTotalRabs());
+		//		System.out.println("totalRabs  "+totalRabs);
+		HashMap<String, Double> deltaRabs = new HashMap<String, Double>();  
+
 
 		for (String rab : totalRabs.keySet()){
 			//			System.out.println("ErrorRabs  "+ rab + "   " +initialTotalRabs.get(rab) +"     "+ totalRabs.get(rab));
@@ -58,13 +81,13 @@ public class EndosomeUptakeStep {
 		//		If no rab was selected or the surface required is small (less than a sphere of 60 nm radius, 
 		//		no uptake is required
 		if (selectedRab.equals("")|| deltaRabs.get(selectedRab)<45000) return;
-		if (selectedRab.equals("RabA")){ 
-			newUptake(endosome, selectedRab);}
-		else {newOrganelle(endosome, selectedRab, rabCode);}
+		enlargeOrganelleGolgiVesicular(endosome, selectedRab, rabCode, membraneFlux);
 
 	}
 		
 	private static void newUptake(Endosome endosome, String selectedRab) {
+		space = endosome.getSpace();
+		grid = endosome.getGrid();
 		double cellLimit = 3d * Cell.orgScale;
 		System.out.println("UPTAKE INITIAL ORGANELLES " +	InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
 		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
@@ -253,12 +276,90 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		
 	}
 
-	private static void newOrganelle(Endosome endosome, String selectedRab, HashMap<String, String> rabCode) {
+	private static void newOrganelle(Endosome endosome, String selectedRab, HashMap<String, String> rabCode, double membraneFlux) {
 		String kind = rabCode.get(selectedRab);
-		System.out.println(kind + " UPTAKE INITIAL ORGANELLES " +	InitialOrganelles.getInstance().getInitOrgProp().get(kind));
+		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
+		HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
+		HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
+		HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
+//		HashMap<String, Double> initialTotalRab = new HashMap<String, Double>(Results.initialTotalRabs);
+//		HashMap<String, Double> totalRab = new HashMap<String, Double>(Results.totalRabs);
+//		double initialTotalArea = 0d;
+//		double totalArea = 0d;
+		double area = 0d;
+		double volume = 0d;
+		if (membraneFlux == 1d){
+			// if membraneFlux is ON then a new ERGIC like structure is formed as a kind1 organelle
+			
+//			To conditionate the size of the new organelle to the total area of the system
+//			for (String rab : initialTotalRab.keySet()){
+//				initialTotalArea = initialTotalArea + initialTotalRab.get(rab);
+//			}
+//			for (String rab : totalRab.keySet()){
+//				totalArea = totalArea + totalRab.get(rab);
+//			}
+//			area = initialTotalArea - totalArea;
+			double maxRadius = initOrgProp.get("maxRadius");
+////			To find the radius of a cistern 20nm high from the area
+////			area = 2*PI*radius^2 + 2*PI*radius*20
+////			quadratic equation 0 = a x^2 + b x + c
+////			solution x = (-b+/- sqr(b^2 - 4*a*c)/2*a
+////			quadratic equation 0 = 2*PI* r^2 + 2*PI*20* r - area
+//			double aq = 2d*Math.PI;
+//			double bq = 40*Math.PI;
+//			double cq = -area;
+//			double dq =  bq * bq - 4 * aq * cq;
+//			double root1 = (-bq + Math.sqrt(dq))/(2*aq);
+//			System.out.println("RADIO UPTAKE"+root1);
+			area = Math.PI*Math.pow(maxRadius, 2)*2d + 2d*maxRadius*Math.PI*20d; //area of a cistern as a flat cylinder 20 nm high with a radius of maxRadius
+//			volume = Math.PI*Math.pow(root1, 2)* 20d;// volume of the cylinder
+			volume = Math.PI*Math.pow(maxRadius, 2)* 20d;
+			double value = Results.instance.getTotalRabs().get(selectedRab);
+			value = value + area;
+			Results.instance.getTotalRabs().put(selectedRab, value);
+			initOrgProp.put("area", area);
+			initOrgProp.put("volume", volume);
+			
+						for (String rab : rabContent.keySet()){
+							double rr = rabContent.get(rab);
+							rabContent.put(rab, rr*area);
+						}
+//						HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
+						for (String mem : membraneContent.keySet()){
+//							if (membraneContent.get(mem) == 0) {
+//								InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove(mem);
+//								//membraneContent.remove(mem);
+//								}
+//							else if (mem.equals("membraneMarker")){
+//								membraneContent.put(mem, 1d);
+//								InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove("membraneMarker");
+//							}
+//							else {
+							double mm = membraneContent.get(mem);
+							membraneContent.put(mem, mm*area);
+							}
+						
+			System.out.println(selectedRab + InitialOrganelles.getInstance().getInitMembraneContent().get(kind)+ " membraneFlux	iniciales " +membraneContent);
+//						HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
+						for (String sol : solubleContent.keySet()){
+//							if (solubleContent.get(sol).equals(0d)) {
+//								InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove(sol);
+//								//solubleContent.remove(sol);
+//								}
+//							else if (sol.equals("solubleMarker") ){
+//								solubleContent.put(sol, 1d);
+//								InitialOrganelles.getInstance().getInitSolubleContent().get(kind).remove("solubleMarker");
+//							}
+//							else {
+								double ss = solubleContent.get(sol);
+							solubleContent.put(sol, ss*volume);
+							}
+						
 
-		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
-				InitialOrganelles.getInstance().getInitOrgProp().get(kind));
+			
+		}
+		else {
+
 		//		double tMembrane = Cell.getInstance().gettMembrane();
 		double maxRadius = initOrgProp.get("maxRadius");
 		double maxAsym = initOrgProp.get("maxAsym");
@@ -268,18 +369,17 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		double f = 1.6075;
 		double af= Math.pow(a, f);
 		double cf= Math.pow(c, f);
-		double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
-		double volume = 4d/3d*Math.PI*a*a*c;
+		area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
+		volume = 4d/3d*Math.PI*a*a*c;
 		double value = Results.instance.getTotalRabs().get(selectedRab);
 		value = value + area;
 		Results.instance.getTotalRabs().put(selectedRab, value);
 		initOrgProp.put("area", area);
 		initOrgProp.put("volume", volume);	
-		HashMap<String, Double> rabContent = new HashMap<String, Double>();
+//		HashMap<String, Double> rabContent = new HashMap<String, Double>();
 		rabContent.put(selectedRab, area);
-		
-		HashMap<String, Double> membraneContent = new HashMap<String, Double>();
-		HashMap<String, Double> solubleContent = new HashMap<String, Double>();
+// If membraneFlux is not ON
+
 		HashSet<String> solubleMet = new HashSet<String>(CellProperties.getInstance().getSolubleMet());
 		HashSet<String> membraneMet = new HashSet<String>(CellProperties.getInstance().getMembraneMet());
 //	This is getting the keyset of the membrane metabolisms
@@ -303,21 +403,280 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		}
 		solubleContent.put("mvb", 0d);
 		solubleContent.put("solubleMarker", 0d);
+		}
 		Context<Object> context = ContextUtils.getContext(endosome);
-
-		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
+		Endosome bud = new Endosome(endosome.getSpace(), endosome.getGrid(), rabContent, membraneContent,
 				solubleContent, initOrgProp);
+		System.out.println(bud.xcoor + " POSICIÓN "+bud.ycoor);
+		System.out.println(space.toString() + grid.toString() + rabContent + membraneContent + solubleContent + initOrgProp);
 		context.add(bud);
-		bud.area = area; initOrgProp.get("area");
-		bud.volume = volume; initOrgProp.get("volume");
+		bud.area = area;// initOrgProp.get("area");
+		bud.volume = volume; //initOrgProp.get("volume");
 //		bud.size = initOrgProp.get("maxRadius");// radius of a sphere with the volume of the
 		// cylinder
+		
+		if (membraneFlux == 1d){
+			bud.speed = 0d;
+			bud.heading = -90;// heading down
+			// NdPoint myPoint = space.getLocation(bud);
+			endosome.getSpace().moveTo(bud, 25, 2);
+			endosome.getGrid().moveTo(bud, 25, 2);		
+		}
+		else{
 		bud.speed = 1d / bud.size;
 		bud.heading = -90;// heading down
 		// NdPoint myPoint = space.getLocation(bud);
 		double rnd = Math.random();
 		endosome.getSpace().moveTo(bud, rnd * 50, 10 + rnd* 30);
 		endosome.getGrid().moveTo(bud, (int) rnd * 50, (int) (10 + rnd* 30));
+		}
 	}
+	
+	private static void newOrganelleGolgiVesicular(Endosome endosome, String selectedRab, HashMap<String, String> rabCode, double membraneFlux) {
+		String kind = rabCode.get(selectedRab);
+		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
+		HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
+		HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
+		HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
+
+		double area = 0d;
+		double volume = 0d;
+		double maxRadius = initOrgProp.get("maxRadius");
+		area = Math.PI*Math.pow(maxRadius, 2)*2d + 2d*maxRadius*Math.PI*20d; //area of a cistern as a flat cylinder 20 nm high with a radius of maxRadius
+		volume = Math.PI*Math.pow(maxRadius, 2)* 20d;
+		double value = Results.instance.getTotalRabs().get(selectedRab);
+		value = value + area;
+		Results.instance.getTotalRabs().put(selectedRab, value);
+		initOrgProp.put("area", area);
+		initOrgProp.put("volume", volume);			
+		for (String rab : rabContent.keySet()){
+			double rr = rabContent.get(rab);
+			rabContent.put(rab, rr*area);
+		}
+		for (String mem : membraneContent.keySet()){
+			//							if (membraneContent.get(mem) == 0) {
+			//								InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove(mem);
+			//								//membraneContent.remove(mem);
+			//								}
+			//							else if (mem.equals("membraneMarker")){
+			//								membraneContent.put(mem, 1d);
+			//								InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove("membraneMarker");
+			//							}
+			//							else {
+			double mm = membraneContent.get(mem);
+			membraneContent.put(mem, mm*area);
+		}
+
+		System.out.println(selectedRab + InitialOrganelles.getInstance().getInitMembraneContent().get(kind)+ " membraneFlux	iniciales " +membraneContent);
+		//						HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
+		for (String sol : solubleContent.keySet()){
+			//							if (solubleContent.get(sol).equals(0d)) {
+			//								InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove(sol);
+			//								//solubleContent.remove(sol);
+			//								}
+			//							else if (sol.equals("solubleMarker") ){
+			//								solubleContent.put(sol, 1d);
+			//								InitialOrganelles.getInstance().getInitSolubleContent().get(kind).remove("solubleMarker");
+			//							}
+			//							else {
+			double ss = solubleContent.get(sol);
+			solubleContent.put(sol, ss*volume);
+		}
+
+
+
+		Context<Object> context = ContextUtils.getContext(endosome);
+		Endosome bud = new Endosome(endosome.getSpace(), endosome.getGrid(), rabContent, membraneContent,
+				solubleContent, initOrgProp);
+		System.out.println(bud.xcoor + " POSICIÓN "+bud.ycoor);
+		System.out.println(space.toString() + grid.toString() + rabContent + membraneContent + solubleContent + initOrgProp);
+		context.add(bud);
+		bud.area = area;// initOrgProp.get("area");
+		bud.volume = volume; //initOrgProp.get("volume");
+		//		bud.size = initOrgProp.get("maxRadius");// radius of a sphere with the volume of the
+		// cylinder
+
+
+		bud.speed = 0d;
+		bud.heading = -90;// heading down
+		// NdPoint myPoint = space.getLocation(bud);
+		endosome.getSpace().moveTo(bud, 25, 2);
+		endosome.getGrid().moveTo(bud, 25, 2);		
+
+
+	}	
+	
+	private static void enlargeOrganelleGolgiVesicular(Endosome endosome, String selectedRab, HashMap<String, String> rabCode, double membraneFlux) {
+		String kind = rabCode.get(selectedRab);
+		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
+
+		HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
+		HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
+		System.out.println(kind + " POSICIÓN " + initOrgProp + rabContent + solubleContent);
+		HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
 		
+		double area = 0d;
+		double volume = 0d;
+		double maxRadius = initOrgProp.get("maxRadius");
+		area = Math.PI*Math.pow(maxRadius, 2)*2d + 2d*maxRadius*Math.PI*20d; //area of a cistern as a flat cylinder 20 nm high with a radius of maxRadius
+		volume = Math.PI*Math.pow(maxRadius, 2)* 20d;//4/3 * maxRadius;//;
+		double value = Results.instance.getTotalRabs().get(selectedRab);
+		value = value + area;
+		Results.instance.getTotalRabs().put(selectedRab, value);
+		initOrgProp.put("area", area);
+		initOrgProp.put("volume", volume);			
+		for (String rab : rabContent.keySet()){
+			double rr = rabContent.get(rab);
+			rabContent.put(rab, rr*area);
+		}
+//		CARGO DIRECTAMENTE LO QUE QUIERO QUE SE INCORPORE A LA CISTERNA GRANDE.  ESTO ES DIFERENTE
+//		A UPTAKE.  EN CSV, HAY QUE CARGAR LA CANTIDAD 
+//		for (String mem : membraneContent.keySet()){
+//			double mm = membraneContent.get(mem);
+//			membraneContent.put(mem, mm*area);
+//		}
+//
+////		System.out.println(selectedRab + InitialOrganelles.getInstance().getInitMembraneContent().get(kind)+ " membraneFlux	iniciales " +membraneContent);
+//		for (String sol : solubleContent.keySet()){
+//			double ss = solubleContent.get(sol);
+//			solubleContent.put(sol, ss*volume);
+//		}
+		Endosome bud = new Endosome(endosome.getSpace(), endosome.getGrid(), rabContent, membraneContent,
+				solubleContent, initOrgProp);
+		bud.area = area;// initOrgProp.get("area");
+		bud.volume = volume; //initOrgProp.get("volume");
+//		SELECT THE LARGEST ENDOSOME WITH THE SELECTED KIND AND FUSE THE NEW BUD TO THIS ENDOSOME
+		List<Endosome> allEndosomes = new ArrayList<Endosome>();
+		Context<Object> context = ContextUtils.getContext(endosome);
+		for (Object obj : context) {	
+			if (obj instanceof Endosome) {
+				allEndosomes.add((Endosome) obj);
+			}
+		}
+		double maxArea = 0d;
+		Endosome selectedEnd = null;
+		for (Endosome end : allEndosomes) {
+//			String maxRab = Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+			if (end.rabContent.containsKey(selectedRab) &&
+					//maxRab.equals(selectedRab) &&
+					end.rabContent.get(selectedRab) > maxArea) {
+				maxArea = end.rabContent.get(selectedRab);
+				selectedEnd = end;			
+			}
+		}
+System.out.println(selectedRab + "Endosome" + allEndosomes);
+System.out.println("selectedEndosome" + selectedEnd);
+
+		if (selectedEnd == null) {
+			newOrganelleGolgiVesicular(endosome, selectedRab,  rabCode, membraneFlux);
+//			initOrgProp = new HashMap<String, Double>(endosome.getInitOrgProp());
+//			membraneContent = new HashMap<String, Double>();
+//			membraneContent.put("solM", 0d);
+//			solubleContent = new HashMap<String, Double>();
+//			solubleContent.put("memS", 0d);
+//			rabContent = new HashMap<String, Double>();
+//			rabContent.put("RabE", bud.area);
+//			Endosome b = new Endosome(endosome.getSpace(), endosome.getGrid(), rabContent,
+//					membraneContent, solubleContent, initOrgProp);
+////			Context<Object> context = ContextUtils.getContext(endosome);
+//			context.add(b);
+//			bud.speed = 0d;
+//			bud.heading = -90;// heading down
+//			// NdPoint myPoint = space.getLocation(bud);
+//			endosome.getSpace().moveTo(bud, 25, 2);
+//			endosome.getGrid().moveTo(bud, 25, 2);		
+//
+		}
+		else {
+		selectedEnd.volume = selectedEnd.volume + bud.volume;
+		selectedEnd.area = selectedEnd.area + bud.area;
+		selectedEnd.rabContent = sumRabContent(selectedEnd, bud);
+		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+		if (tick >30000
+				&& loadUptake) {
+			selectedEnd.membraneContent = sumMembraneContent(selectedEnd, bud);
+			selectedEnd.solubleContent = sumSolubleContent(selectedEnd, bud);
+			if (selectedRab.equals("RabA")){
+				loadUptake = false;
+			}
+		}
+			
+		}
+
+		
+	}
+	private static HashMap<String, Double> sumRabContent(Endosome endosome1,
+			Endosome endosome2) {
+		// HashMap<String, Double> map3 = new HashMap<String, Double>();
+		// map3.putAll(endosome1.rabContent);
+		// map3.forEach((k, v) -> endosome2.rabContent.merge(k, v, (v1, v2) ->
+		// v1 + v2));
+		// return map3;
+
+		HashMap<String, Double> rabSum = new HashMap<String, Double>();
+		for (String key1 : endosome1.rabContent.keySet()) {
+			if (endosome2.rabContent.containsKey(key1)) {
+				double sum = endosome1.rabContent.get(key1)
+						+ endosome2.rabContent.get(key1);
+				rabSum.put(key1, sum);
+			} else
+				rabSum.put(key1, endosome1.rabContent.get(key1));
+		}
+		for (String key2 : endosome2.rabContent.keySet()) {
+			if (!endosome1.rabContent.containsKey(key2)) {
+				rabSum.put(key2, endosome2.rabContent.get(key2));
+			}
+		}
+
+		// System.out.println("rabContentSum" + endosome1.rabContent);
+		return rabSum;
+	}
+
+	private static HashMap<String, Double> sumMembraneContent(Endosome endosome1,
+			Endosome endosome2) {
+		HashMap<String, Double> memSum = new HashMap<String, Double>();
+		for (String key1 : endosome1.membraneContent.keySet()) {
+			if (endosome2.membraneContent.containsKey(key1)) {
+				double sum = endosome1.membraneContent.get(key1)
+						+ endosome2.membraneContent.get(key1);
+				memSum.put(key1, sum);
+			} else
+				memSum.put(key1, endosome1.membraneContent.get(key1));
+		}
+		for (String key2 : endosome2.membraneContent.keySet()) {
+			if (!endosome1.membraneContent.containsKey(key2)) {
+				double sum = endosome2.membraneContent.get(key2);
+				memSum.put(key2, sum);
+			}
+		}
+//		// endosome1.membraneContent = memSum;
+//		
+//		System.out.println("MemEnd 1" +endosome1.membraneContent +
+//				"\n MemEnd 2"+ endosome2.membraneContent+ 
+//				" \n MemSum" + memSum);
+		return memSum;
+	}
+
+	private static HashMap<String, Double> sumSolubleContent(Endosome endosome1,
+			Endosome endosome2) {
+		HashMap<String, Double> solSum = new HashMap<String, Double>();
+		for (String key1 : endosome1.solubleContent.keySet()) {
+			if (endosome2.solubleContent.containsKey(key1)) {
+				double sum = endosome1.solubleContent.get(key1)
+						+ endosome2.solubleContent.get(key1);
+				solSum.put(key1, sum);
+			} else
+				solSum.put(key1, endosome1.solubleContent.get(key1));
+		}
+		for (String key2 : endosome2.solubleContent.keySet()) {
+			if (!endosome1.solubleContent.containsKey(key2)) {
+				double sum = endosome2.solubleContent.get(key2);
+				solSum.put(key2, sum);
+			}
+		}
+		// endosome1.solubleContent = solSum;
+		// System.out.println("solubleContentSum" + endosome1.solubleContent);
+		return solSum;
+	}
+
 }

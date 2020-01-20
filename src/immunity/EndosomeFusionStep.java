@@ -26,7 +26,29 @@ public class EndosomeFusionStep {
 //				|| endosome.area <= 2*(2*Math.PI*Math.pow(Cell.rcyl, 2)+2*Math.PI*Cell.rcyl*2))
 ////				&& !maxRab.equals("RabA")
 //				) return;
+		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+// Solo fucionan cisternas.  Esto evita fusión entre vesíclas pequeñas
+		if ((endosome.volume <= 4/3 * Math.PI*Math.pow(Cell.rcyl, 3)
+				|| endosome.area <= 1.1*(2*Math.PI*Math.pow(Cell.rcyl, 2)+2*Math.PI*Cell.rcyl*20))
+//				&& !maxRab.equals("RabA")
+				) return;
+//		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+//// Solo fucionan cisternas con vesículas.  Esto evita fusión entre vesíclas pequeñas (menore a dos veces el volumen o
+////		o menores a al área de un cilindro de 20 veces el rcyl de largo)
+//		if ((endosome.volume <= 4 * Math.PI*Math.pow(Cell.rcyl, 3)
+//				|| endosome.area <= 2*(2*Math.PI*Math.pow(Cell.rcyl, 2)+2*Math.PI*Cell.rcyl*2))
+////				&& !maxRab.equals("RabA")
+//				) return;
 		HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
+		double areaGolgi = 0d;
+		for (String rab : rabContent.keySet()){
+			String name = CellProperties.getInstance().rabOrganelle.get(rab);
+			if (name.contains("Golgi")) {areaGolgi = areaGolgi + rabContent.get(rab);} 
+		}
+		boolean isGolgi = false;
+		if (areaGolgi/endosome.area >= 0.5) {
+			isGolgi = true;
+		}
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>(endosome.getSolubleContent());
 		space = endosome.getSpace();
@@ -55,17 +77,24 @@ public class EndosomeFusionStep {
 				vv = end.volume;
 				ss = end.area;
 				boolean isCistern2 = (ss * ss * ss / (vv * vv) < 36.01 * Math.PI);
+//				if (!(EndosomeAssessCompatibility.compatibles(endosome, end) == 0d)){
+//					System.out.println("DEBE FUSION "+endosome.rabContent + " "+ end.rabContent);
+//				}
+				vv = end.volume;
+				ss = end.area;
+//				DISTILLATION TRANSPORT DIC20
+				double sizeFactor = 2*(end.area-4*Math.PI*Cell.rcyl)/Cell.maxCistern;
 				if (end != endosome  // it is not itself
-						&& (end.volume <= endosome.volume) // the other is smaller
+					&& (Math.random()> sizeFactor)//endosome.volume)//4 * Math.PI*Math.pow(Cell.rcyl, 3))// use to be endosome.volume) // the other is smaller
 						&& ((!isCistern || !isCistern2) // at list one is not cistern
-							|| // or they share the same maximal Rab domain
-						(Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey() ==
-						Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey()))
+						|| // or they share the same maximal Rab domain
+						(Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey().equals
+						(Collections.max(end.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey())))
 						
 						&& (Math.random() < EndosomeAssessCompatibility.compatibles(endosome, end))) {
-						if (EndosomeAssessCompatibility.compatibles(endosome, end)==0d){
-							System.out.println("OJO FUSION "+endosome.rabContent + " "+ end.rabContent);
-						}
+//						if (EndosomeAssessCompatibility.compatibles(endosome, end)==0d){
+//							System.out.println("OJO FUSION "+endosome.rabContent + " "+ end.rabContent);
+//						}
 					endosomes_to_delete.add(end);
 				}
 				// System.out.println(endosomes_to_delete);
