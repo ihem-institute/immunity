@@ -189,7 +189,7 @@ public class Endosome {
 //		if (Math.random()<p_EndosomeKissRunStep) EndosomeKissRunStep.kissRun(this);
 		p_EndosomeFusionStep = 1/50d;
 		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
-		p_EndosomeSplitStep = 1/5d;
+		p_EndosomeSplitStep = 1/25d;
 		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
 		double p_EndosomeSwelling = 1/50d;
 //		if (Math.random()<p_MaturationStep/10) MaturationStep.mature(this); //viejo /10

@@ -327,6 +327,8 @@ public class Results {
 			cisternsArea.put(rab, 0.0);
 		}
 		double cisternsNumber = 0d;
+		double totalIndividualEntropy = 0d;
+		double totalArea = 0d;
 		for (Endosome endosome : allEndosomes) {
 			Double area = endosome.area;
 			Double volume = endosome.volume;
@@ -345,8 +347,8 @@ public class Results {
 
 			for (String rab : rabContent.keySet()) {
 				for (String sol : solubleContent.keySet()) {
-					System.out.println(" soluble "+ sol + " Rab " +rab);
-	//			System.out.println(" FALTA " + contentDist.get(sol + rab));
+//					System.out.println(" soluble "+ sol + " Rab " +rab);
+//					System.out.println(" FALTA " + contentDist.get(sol + rab));
 					double value = contentDist.get(sol + rab)
 							+ solubleContent.get(sol) * rabContent.get(rab)
 							/ area;
@@ -364,15 +366,24 @@ public class Results {
 			}
 // CONTROL OF RAB LOST
 // sum Rabs in all endosomes
+// for all endosomes calculate a individual entropy for the rab distribution
+		double individualEntropy = 0d;
 		for (String rab : rabContent.keySet()){
 			double sum = totalRabs.get(rab)+ rabContent.get(rab);
 			totalRabs.put(rab, sum);
+			individualEntropy = individualEntropy - rabContent.get(rab)/area * Math.log(rabContent.get(rab)/area + 1E-30);
 		}
+		
+		totalArea = totalArea + area;
+		totalIndividualEntropy = totalIndividualEntropy + individualEntropy* area;
 // Sum all the organelle volume surrounded by a rab domain
+
 		for (String rab : rabContent.keySet()){
 			double sum = totalVolumeRabs.get(rab)+ volume*rabContent.get(rab)/area;
 			totalVolumeRabs.put(rab, sum);
+			
 		}
+
 //
 // If the endosome contains a MARKER, print info in a Results file		
 
@@ -390,22 +401,29 @@ public class Results {
 				e.printStackTrace();
 			}
 		}
+
 		}
+
 		double totalCisternsArea = 0d;
 		for (String rab : cisternsArea.keySet()) {
 			totalCisternsArea = totalCisternsArea + cisternsArea.get(rab);
 		}
 		HashMap<String, Double> relativeCisternsArea = new HashMap<String, Double>();
-		int endosomeNumber = allEndosomes.size();
-		cisternsArea.put("#cisterns#", cisternsNumber);
-		cisternsArea.put("#vesicles#", endosomeNumber - cisternsNumber);
+
 		double entropy = 0d;
 		for (String rab : cisternsArea.keySet()) {
 			double value = cisternsArea.get(rab)/totalCisternsArea;
 			relativeCisternsArea.put(rab, value);
-			entropy = entropy - value * Math.log(value+ 1E-30);
+			entropy = entropy - value * Math.log(value + 1E-30);
 		}
+		cisternsArea.clear();
+		cisternsArea.putAll(relativeCisternsArea);
 		cisternsArea.put("entropy", entropy);
+		cisternsArea.put("entropyInd", totalIndividualEntropy/totalArea);
+		int endosomeNumber = allEndosomes.size();
+		cisternsArea.put("#cisterns#", cisternsNumber);
+		cisternsArea.put("#vesicles#", endosomeNumber - cisternsNumber);
+		
 		
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		if (tick == 1) initialTotalRabs.putAll(totalRabs);
