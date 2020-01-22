@@ -54,6 +54,8 @@ public class Results {
 	static HashMap<String, Double> totalRabs = new HashMap<String, Double>();	
 	static HashMap<String, Double> totalVolumeRabs = new HashMap<String, Double>();
 	static HashMap<String, Double> initialTotalRabs = new HashMap<String, Double>();
+//	static HashMap<String, Double> initialTotalSolubleCargo = new HashMap<String, Double>();
+//	static HashMap<String, Double> initialTotalMembraneCargo = new HashMap<String, Double>();
 	static HashMap<String, Double> cisternsArea = new HashMap<String, Double>();
 	public TreeMap<String, Double> singleEndosomeContent = new TreeMap<String, Double>();
 	
@@ -73,6 +75,13 @@ public class Results {
 	public Results(ContinuousSpace<Object> sp, Grid<Object> gr, HashMap<String, Double> totalRabs, HashMap<String, Double> initialTotalRabs) {
 		this.space = sp;
 		this.grid = gr;
+//		for (String mem :CellProperties.getInstance().getMembraneMet()) {
+//			initialTotalMembraneCargo.put(mem, 0d);
+//		}
+//		for (String sol :CellProperties.getInstance().getSolubleMet()) {
+//			initialTotalSolubleCargo.put(sol, 0d);
+//		}
+
 		// Generate a file with the header of the variables that are going to be followed
 		//along the simulation.  Up to now= content distribution according to rabs contents.
 
@@ -99,7 +108,7 @@ public class Results {
 // STORE ALL AGENTS OF THE SIMULATION EVERY 5000 TICKS AS AN EXCEL FILE
 	@ScheduledMethod(start = 1, interval = 5000)
 	public void stepTable() {
-		log();
+//		log();
 //		freeze endosome set
 		FreezeDryEndosomes.getInstance();
 		try {
@@ -283,6 +292,7 @@ public class Results {
 	public void contentDistribution(HashMap<String, Double> totalRabs, HashMap<String, Double> initialTotalRabs, HashMap<String, Double> cisternsArea) {
 //		initialize all contents to zero
 		content();
+		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 // 		first include the content of PM (soluble and membrane associated) and cytosol
 		HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
 		// include in the contentDistribution all the recycled components, soluble and membrane
@@ -313,6 +323,19 @@ public class Results {
 				allEndosomes.add((Endosome) obj);
 			}
 		}
+//		if (tick == 1) {
+//			for (Endosome end : allEndosomes) {
+//
+//				for (String mem : end.membraneContent.keySet()) {
+//					double value = initialTotalMembraneCargo.get(mem) + end.membraneContent.get(mem);
+//					initialTotalMembraneCargo.put(mem, value);
+//				}
+//				for (String sol : end.solubleContent.keySet()) {
+//					double value = initialTotalSolubleCargo.get(sol) + end.solubleContent.get(sol);
+//					initialTotalSolubleCargo.put(sol, value);
+//				}
+//			}
+//		}
 //		for the set of all endosomes, calculate the content distribution among the different
 //		rab-containing compartments.  This is calculated as the sum of all the soluble and
 //		membrane components multiplied by the area ratio corresponding to the endosome
@@ -344,6 +367,15 @@ public class Results {
 				double value = cisternsArea.get(maxRab) + area;
 				cisternsArea.put(maxRab, value);
 			}
+//			if (tick == 1) {
+//				for (String mem : membraneContent.keySet()) {
+//				double value = initialTotalMembraneCargo.get(mem) + membraneContent.get(mem);
+//				initialTotalMembraneCargo.put(mem, value);
+//				}
+//				for (String sol : solubleContent.keySet()) {
+//				double value = initialTotalSolubleCargo.get(sol) + solubleContent.get(sol);
+//				initialTotalSolubleCargo.put(sol, value);
+//			}
 
 			for (String rab : rabContent.keySet()) {
 				for (String sol : solubleContent.keySet()) {
@@ -352,6 +384,7 @@ public class Results {
 					double value = contentDist.get(sol + rab)
 							+ solubleContent.get(sol) * rabContent.get(rab)
 							/ area;
+//					value = value/initialTotalSolubleCargo.get(sol);
 					contentDist.put(sol + rab, value);
 					//System.out.println("SOLUBLE"+sol + "Rab" +rab);
 				}
@@ -425,7 +458,7 @@ public class Results {
 		cisternsArea.put("#vesicles#", endosomeNumber - cisternsNumber);
 		
 		
-		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+//		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		if (tick == 1) initialTotalRabs.putAll(totalRabs);
 		
 //		sum in cytosol
