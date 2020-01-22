@@ -630,7 +630,7 @@ public class EndosomeSplitStep {
 		
 //		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 //				CellProperties.getInstance().getRabTropism());
-		double concentrate = 1E10d;
+		double concentrate = 50d;
 		double scylinder = so - sVesicle;
 		double value = (copyMembrane.get(content)/so)*concentrate*scylinder;
 //		if(copyMembrane.get(content)> scylinder){
@@ -641,7 +641,7 @@ public class EndosomeSplitStep {
 //		}
 //		
 		if (value >= scylinder) {value = scylinder;} 
-		if (value >= copyMembrane.get(content)){ value = copyMembrane.get(content);}
+//		if (value >= copyMembrane.get(content)){ value = copyMembrane.get(content);}
 
 		endosome.membraneContent.put(content, copyMembrane.get(content) - value);
 //		System.out.println(content +" content  existente "+copyMembrane.get(content)+" a restar "+value);
