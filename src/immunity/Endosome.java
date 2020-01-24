@@ -175,7 +175,7 @@ public class Endosome {
 		double p_EndosomeInternalVesicleStep = 1d/(5d/0.03*Cell.timeScale);// change from 2 to .1
 		double p_EndosomeFusionStep =1d/(50d/0.03*Cell.timeScale);//used to be 60d
 		double p_EndosomeKissRunStep =1d/(10d/0.03*Cell.timeScale);	// used to be 60
-		double p_EndosomeSplitStep = 1d/(5d/0.03*Cell.timeScale); // use to be 0.4
+		double p_EndosomeSplitStep = 0.05;//1d/(5d/0.03*Cell.timeScale); // use to be 0.4
 		double p_EndosomeTetherStep = 1d/(1d/0.03*Cell.timeScale);
 		double p_EndosomeLysosomalDigestionStep = 1d/(10d/0.03*Cell.timeScale);
 		double p_MaturationStep = 1d/(120d/0.03*Cell.timeScale);
@@ -186,7 +186,7 @@ public class Endosome {
 //		if (this.solubleContent.containsKey("mvb")) this.membraneContent.put("chol", 0d);
 //		if (Math.random()<p_EndosomeUptakeStep/20)EndosomeUptakeStep.uptake(this);
 //		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
-		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
+//		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
 //		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
 //		if (Math.random()<p_EndosomeKissRunStep) EndosomeKissRunStep.kissRun(this);
 //		p_EndosomeFusionStep = 1/50d;
