@@ -516,8 +516,8 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		double area = 0d;
 		double volume = 0d;
 		double maxRadius = initOrgProp.get("maxRadius");
-		area = Math.PI*Math.pow(maxRadius, 2)*2d; //+ 2d*maxRadius*Math.PI*20d; //area of a cistern as a flat cylinder 20 nm high with a radius of maxRadius
-		volume = Math.PI*Math.pow(maxRadius, 2)* 20d;
+		area = Math.PI*Math.pow(maxRadius, 2)*2d + 2d*maxRadius*Math.PI * 20d; //area of a cistern as a flat cylinder 20 nm high with a radius of maxRadius
+		volume = Math.PI*Math.pow(maxRadius, 2)* 20d; // ojo este volumen no lo puedo agregar para enlarge. El volumen final debe calcularse del área de la cisterna
 		double value = Results.instance.getTotalRabs().get(selectedRab);
 		value = value + area;
 		Results.instance.getTotalRabs().put(selectedRab, value);
@@ -542,7 +542,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		Endosome bud = new Endosome(endosome.getSpace(), endosome.getGrid(), rabContent, membraneContent,
 				solubleContent, initOrgProp);
 		bud.area = area;// initOrgProp.get("area");
-		bud.volume = volume; //initOrgProp.get("volume");
+//		bud.volume = volume; //initOrgProp.get("volume");
 //		SELECT THE LARGEST ENDOSOME WITH THE SELECTED KIND AND FUSE THE NEW BUD TO THIS ENDOSOME
 		List<Endosome> allEndosomes = new ArrayList<Endosome>();
 		Context<Object> context = ContextUtils.getContext(endosome);
@@ -564,8 +564,19 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		}
 //System.out.println("Endosome" + allEndosomes);
 //System.out.println("selectedEndosome" + selectedEnd);
-		selectedEnd.volume = selectedEnd.volume + bud.volume;
 		selectedEnd.area = selectedEnd.area + bud.area;
+//		selectedEnd.volume = selectedEnd.volume + bud.volume; This is incorrect.  The volume must be estimated from the area of the cistern
+////	To find the radius of a cistern 20nm high from the area
+////	area = 2*PI*radius^2 + 2*PI*radius*20
+////	quadratic equation 0 = a x^2 + b x + c
+////	solution x = (-b+/- sqr(b^2 - 4*a*c)/2*a
+////	quadratic equation 0 = 2*PI* r^2 + 2*PI*20* r - area
+	double aq = 2d*Math.PI;
+	double bq = 40*Math.PI;
+	double cq = -selectedEnd.area;
+	double dq =  bq * bq - 4 * aq * cq;
+	double root1 = (-bq + Math.sqrt(dq))/(2*aq);
+	selectedEnd.volume = Math.PI*root1*root1*20; // volume or a flat cistern 20 nm high from the radius		
 		selectedEnd.rabContent = sumRabContent(selectedEnd, bud);
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		if (tick >30000
