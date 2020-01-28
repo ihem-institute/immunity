@@ -31,7 +31,8 @@ public class EndosomeRecycleStep {
 					&& endosome.area <= 4 * Math.PI * Cell.rcyl * Cell.rcyl)
 			{
 				
-//				SELECT THE LARGEST ENDOSOME WITH THE SELECTED KIND AND FUSE THE NEW BUD TO THIS ENDOSOME
+//				SELECT THE LARGEST ENDOSOME WITH THE SELECTED KIND AND TRANSFER THE CONTENT
+//				OF THE RABA VESICLE TO BE DELETED
 				List<Endosome> allEndosomes = new ArrayList<Endosome>();
 				Context<Object> context = ContextUtils.getContext(endosome);
 				for (Object obj : context) {	
@@ -75,6 +76,7 @@ public class EndosomeRecycleStep {
 //				Context<Object> context = ContextUtils.getContext(endosome);
 				context.remove(endosome);
 			}
+//			HERE THE RABE ORGANELLE IS SENDING THE CONTENT TO RECYCLING BEFORE BEING DELETED
 			else if (maxRab.equals("RabE") 
 					&& Math.random()> (endosome.area - 4 * Math.PI * Cell.rcyl * Cell.rcyl)/2/Cell.minCistern)
 			{

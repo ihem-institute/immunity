@@ -102,15 +102,15 @@ public class Endosome {
 //	one tick is equivalent to 0.03 seconds
 //	At time scale 0.5, I move the endosome 60 nm (30/timeScale)
 //	
-	double p_EndosomeRecycleStep = 1d/(10d/0.03*Cell.timeScale);
-	double p_EndosomeUptakeStep = 1d/(60d/0.03*Cell.timeScale);
-//	double p_EndosomeNewFromERStep = 1d/(60d/0.03*Cell.timeScale);
-	double p_EndosomeInternalVesicleStep = 1d/(5d/0.03*Cell.timeScale);// change from 2 to .1
-	double p_EndosomeFusionStep =1d/(10d/0.03*Cell.timeScale);//used to be 60d
-	double p_EndosomeKissRunStep =1d/(10d/0.03*Cell.timeScale);	// used to be 60
-	double p_EndosomeSplitStep = 1d/(0.4/0.03*Cell.timeScale); // use to be 0.4
-	double p_EndosomeTetherStep = 1d/(1d/0.03*Cell.timeScale);
-	double p_EndosomeLysosomalDigestionStep = 1d/(10d/0.03*Cell.timeScale);
+//	double p_EndosomeRecycleStep = 1d/(10d/0.03*Cell.timeScale);
+//	double p_EndosomeUptakeStep = 1d/(60d/0.03*Cell.timeScale);
+////	double p_EndosomeNewFromERStep = 1d/(60d/0.03*Cell.timeScale);
+//	double p_EndosomeInternalVesicleStep = 1d/(5d/0.03*Cell.timeScale);// change from 2 to .1
+//	double p_EndosomeFusionStep =1d/(10d/0.03*Cell.timeScale);//used to be 60d
+//	double p_EndosomeKissRunStep =1d/(10d/0.03*Cell.timeScale);	// used to be 60
+//	double p_EndosomeSplitStep = 1d/(0.4/0.03*Cell.timeScale); // use to be 0.4
+//	double p_EndosomeTetherStep = 1d/(1d/0.03*Cell.timeScale);
+//	double p_EndosomeLysosomalDigestionStep = 1d/(10d/0.03*Cell.timeScale);
 
 	// constructor of endosomes with grid, space and a set of Rabs, membrane
 	// contents,
@@ -174,14 +174,22 @@ public class Endosome {
 //		if (logger.isDebugEnabled()) {
 //			logger.debug(message);			
 //		}
-
+		double p_EndosomeRecycleStep = 1d/(10d/0.03*Cell.timeScale);
+		double p_EndosomeUptakeStep = 1d/(60d/0.03*Cell.timeScale);
+//		double p_EndosomeNewFromERStep = 1d/(60d/0.03*Cell.timeScale);
+		double p_EndosomeInternalVesicleStep = 1d/(5d/0.03*Cell.timeScale);// change from 2 to .1
+		double p_EndosomeFusionStep =1d/(10d/0.03*Cell.timeScale);//used to be 60d
+		double p_EndosomeKissRunStep =1d/(10d/0.03*Cell.timeScale);	// used to be 60
+		double p_EndosomeSplitStep = 1d/(0.04/0.03*Cell.timeScale); // use to be 0.4
+		double p_EndosomeTetherStep = 1d/(1d/0.03*Cell.timeScale);
+		double p_EndosomeLysosomalDigestionStep = 1d/(10d/0.03*Cell.timeScale);
 		endosomeShape(this);
 //		EndosomeMove.changeDirection(this);
 		EndosomeMove.moveTowards(this);
 //		if (this.solubleContent.containsKey("mvb")) this.membraneContent.put("chol", 0d);
 		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
 //		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
-		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
+//		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
 //		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
 		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
 //		if (Math.random()<p_EndosomeKissRunStep) EndosomeKissRunStep.kissRun(this);

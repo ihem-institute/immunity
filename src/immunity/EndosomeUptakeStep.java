@@ -587,9 +587,19 @@ System.out.println("selectedEndosome" + selectedEnd);
 //			endosome.getGrid().moveTo(bud, 25, 2);		
 //
 		}
-		else {
-		selectedEnd.volume = selectedEnd.volume + bud.volume;
 		selectedEnd.area = selectedEnd.area + bud.area;
+//		selectedEnd.volume = selectedEnd.volume + bud.volume; This is incorrect.  The volume must be estimated from the area of the cistern
+////	To find the radius of a cistern 20nm high from the area
+////	area = 2*PI*radius^2 + 2*PI*radius*20
+////	quadratic equation 0 = a x^2 + b x + c
+////	solution x = (-b+/- sqr(b^2 - 4*a*c)/2*a
+////	quadratic equation 0 = 2*PI* r^2 + 2*PI*20* r - area
+	double aq = 2d*Math.PI;
+	double bq = 40*Math.PI;
+	double cq = -selectedEnd.area;
+	double dq =  bq * bq - 4 * aq * cq;
+	double root1 = (-bq + Math.sqrt(dq))/(2*aq);
+	selectedEnd.volume = Math.PI*root1*root1*20; 
 		selectedEnd.rabContent = sumRabContent(selectedEnd, bud);
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		if (tick >30000
@@ -604,7 +614,6 @@ System.out.println("selectedEndosome" + selectedEnd);
 		}
 
 		
-	}
 	private static HashMap<String, Double> sumRabContent(Endosome endosome1,
 			Endosome endosome2) {
 		// HashMap<String, Double> map3 = new HashMap<String, Double>();

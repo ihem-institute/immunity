@@ -83,7 +83,12 @@ public class EndosomeFusionStep {
 				vv = end.volume;
 				ss = end.area;
 //				DISTILLATION TRANSPORT DIC20
-				double sizeFactor = 2*(end.area-4*Math.PI*Cell.rcyl)/Cell.maxCistern;
+//				Fusion tuve que meter posibilidad de fusión proporcional al área (más chica, más probable)
+//				double sizeFactor = 2*(end.area-4*Math.PI*Cell.rcyl)/Cell.maxCistern;
+//				Con esto las vesículas (mínima área) tienen sizeFactor = 0 y lo más grande  valores que llegan a 1 cuando el tamaño es dos veces a cisterna máxima (500 nm radius).
+//				Para fusionar pongo un rnd> sizeFactor
+
+				double sizeFactor = 2*(end.area-4*Math.PI*Cell.rcyl*Cell.rcyl)/Cell.maxCistern;
 				if (end != endosome  // it is not itself
 					&& (Math.random()> sizeFactor)//endosome.volume)//4 * Math.PI*Math.pow(Cell.rcyl, 3))// use to be endosome.volume) // the other is smaller
 						&& ((!isCistern || !isCistern2) // at list one is not cistern

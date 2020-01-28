@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import repast.simphony.context.Context;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.grid.Grid;
+import repast.simphony.util.ContextUtils;
 
 public class EndosomeMove {
 
@@ -16,25 +18,99 @@ public class EndosomeMove {
 	private static Grid<Object> grid;
 	private static List<MT> mts;
 	public static double cellLimit = 3 * Cell.orgScale;
-	
+
 	public static void moveTowards(Endosome endosome) {
+		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux");
+		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+		double areaGolgi = 0d;
+		for (String rab : endosome.rabContent.keySet()){
+			String name = CellProperties.getInstance().rabOrganelle.get(rab);
+			if (name.contains("Golgi")) {areaGolgi = areaGolgi + endosome.rabContent.get(rab);} 
+		}
+		boolean isGolgi = false;
+		if (areaGolgi/endosome.area >= 0.5) {
+			isGolgi = true;
+		}
+		String organelleName = CellProperties.getInstance().rabOrganelle.get(maxRab);
+		if ( 
+				endosome.area >= Cell.minCistern// minimal cistern Golgi absolute Scale hacer constante
+//				&& membraneFlux == 1d // now is for all Golgi models
+				&& isGolgi){
+			moveCistern(endosome, maxRab);
+		}
+		else {
+			moveNormal(endosome);
+		}
+	}
+
+	public static void moveCistern(Endosome endosome, String maxRab){
+		space = endosome.getSpace();
+		grid = endosome.getGrid();		
+		double yrnd = 1;//Math.random();
+		endosome.heading = -90;
+		switch (maxRab) {
+		case "RabA": {
+			yrnd = Math.random();
+//			endosome.heading = -90;
+			space.moveTo(endosome, 25, yrnd*2);
+			grid.moveTo(endosome, 25, (int)yrnd*2);
+			break;
+		}
+		case "RabB": {
+			yrnd = Math.random();
+//			endosome.heading = -90;
+			space.moveTo(endosome, 25, yrnd*3);
+			grid.moveTo(endosome, 25, (int)yrnd*3);
+			break;
+		}
+		case "RabC": {
+			yrnd = Math.random();
+//			endosome.heading = -90;
+			space.moveTo(endosome, 25, yrnd*4);
+			grid.moveTo(endosome, 25, (int)yrnd*4);
+			break;
+		}
+		case "RabD": {
+			yrnd = Math.random();
+//			endosome.heading = -90;
+			space.moveTo(endosome, 25, yrnd*5);
+			grid.moveTo(endosome, 25, (int)yrnd*5);
+			break;
+		}
+		case "RabE": {
+			yrnd = Math.random();
+//			endosome.heading = -90;
+			space.moveTo(endosome, 25, yrnd*6);
+			grid.moveTo(endosome, 25, (int)yrnd*6);
+			break;
+		}
+		
+		}
+		NdPoint myPoint = space.getLocation(endosome);
+//		NdPoint myPoint = endosome.getEndosomeLocation(endosome);
+		
+		double x = myPoint.getX();
+		endosome.setXcoor(x);
+		double y = myPoint.getY();
+		endosome.setYcoor(y);
+		
+
+	}
+
+	
+	public static void moveNormal(Endosome endosome) {
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
 		/*
 		 * Direction in Repast 0 to the right 180 to the left -90 down +90 up
 		 * Move with random speed inversely proportional to the radius of an sphere with the endosome
 		 * volume.  The speed of a small organelle of radius 20 nm is taken as unit.  
-		To move, four situations are considered
+		To move, three situations are considered
 		1- Near the borders, the movement is: speed random between 0 and a value that depends on the endosome size
 		heading, the original heading plus a random number that depends on the momentum
 		2- Away of microtubules is the same than near borders
 		3- Near MT, the speed is fixed and the heading is in the direction of the Mt or 180 that of the Mt
-		4- If it is a cistern and it is a Golgi structure, structure goes to a fixed position.
 		 */
-		if (endosome.a > 4* endosome.c){
-			moveCistern(endosome);
-			return;
-		}
 
 		NdPoint myPoint = space.getLocation(endosome);
 //		NdPoint myPoint = endosome.getEndosomeLocation(endosome);
@@ -52,7 +128,7 @@ public class EndosomeMove {
 		else
 //			if not near the borders.  Notice less random near the nucleous
 		{
-			boolean onMt = false;
+//			boolean onMt = false;
 			changeDirectionMt(endosome);
 
 		}
@@ -70,6 +146,10 @@ public class EndosomeMove {
 		    if (yy >= 50-cellLimit) yy = 50 -cellLimit-cellLimit*Math.random();
 			if (yy <= 0+cellLimit) yy = cellLimit+cellLimit*Math.random();
 //		    if move near the bottom or top, move out of the limits with a random spep
+//		    if (yy >= 50-cellLimit || yy <= 0+cellLimit) return;
+		    if (yy >= 50-cellLimit) yy = 50 -cellLimit-Math.random()*cellLimit;
+			if (yy <= 0+cellLimit) yy = cellLimit+Math.random()*cellLimit;
+//		    if move near the botom or top, do not move
 //		    if (yy >= 50-cellLimit || yy <= 0+cellLimit) return;
 		space.moveTo(endosome, xx, yy);
 		grid.moveTo(endosome, (int) xx, (int) yy);
@@ -258,52 +338,4 @@ public class EndosomeMove {
 //		The distance has a sign that it is used to move the organelle to the position in the Mt
 		return distance;
 	}
-
-	public static void moveCistern(Endosome endosome){
-		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
-		double yrnd = 1;//Math.random();
-		switch (maxRab) {
-		case "RabA": {
-			endosome.heading = -90;
-			space.moveTo(endosome, 25, yrnd*1);
-			grid.moveTo(endosome, 25, (int)yrnd*1);
-			break;
-		}
-		case "RabB": {
-			endosome.heading = -90;
-			space.moveTo(endosome, 25, yrnd*2);
-			grid.moveTo(endosome, 25, (int)yrnd*2);
-			break;
-		}
-		case "RabC": {
-			endosome.heading = -90;
-			space.moveTo(endosome, 25, yrnd*3);
-			grid.moveTo(endosome, 25, (int)(yrnd*3));
-			break;
-		}
-		case "RabD": {
-			endosome.heading = -90;
-			space.moveTo(endosome, 25, yrnd*4);
-			grid.moveTo(endosome, 25, (int)yrnd*4);
-			break;
-		}
-		case "RabE": {
-			endosome.heading = -90;
-			space.moveTo(endosome, 25, yrnd*5);
-			grid.moveTo(endosome, 25, (int)yrnd*5);
-			break;
-		}
-		
-		}
-		NdPoint myPoint = space.getLocation(endosome);
-//		NdPoint myPoint = endosome.getEndosomeLocation(endosome);
-		
-		double x = myPoint.getX();
-		endosome.setXcoor(x);
-		double y = myPoint.getY();
-		endosome.setYcoor(y);
-		
-
-	}
-
 }
