@@ -625,6 +625,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 			if (endosome2.membraneContent.containsKey(key1)) {
 				double sum = endosome1.membraneContent.get(key1)
 						+ endosome2.membraneContent.get(key1);
+				if (sum > endosome1.area) sum = endosome1.area;
 				memSum.put(key1, sum);
 			} else
 				memSum.put(key1, endosome1.membraneContent.get(key1));
@@ -632,6 +633,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		for (String key2 : endosome2.membraneContent.keySet()) {
 			if (!endosome1.membraneContent.containsKey(key2)) {
 				double sum = endosome2.membraneContent.get(key2);
+				if (sum > endosome1.area) sum = endosome1.area;
 				memSum.put(key2, sum);
 			}
 		}
@@ -650,6 +652,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 			if (endosome2.solubleContent.containsKey(key1)) {
 				double sum = endosome1.solubleContent.get(key1)
 						+ endosome2.solubleContent.get(key1);
+				if (sum > endosome1.volume) sum = endosome1.volume;
 				solSum.put(key1, sum);
 			} else
 				solSum.put(key1, endosome1.solubleContent.get(key1));
@@ -657,6 +660,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		for (String key2 : endosome2.solubleContent.keySet()) {
 			if (!endosome1.solubleContent.containsKey(key2)) {
 				double sum = endosome2.solubleContent.get(key2);
+				if (sum > endosome1.volume) sum = endosome1.volume;
 				solSum.put(key2, sum);
 			}
 		}

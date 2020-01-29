@@ -1,7 +1,7 @@
 endosome164u,initOrgProp,area,1969778.594,volume,19006635.55,xcoor,25.0,ycoor,0.0809050413905601,
 endosome164u,initRabContent,RabA,1969778.594
-endosome164u,initMembraneContent,memL,8033,memS,8033,memERGIC,8033,memGolgiMedial,8033,memTGN,8033,membraneMarker,1,memTub,8033,memLS,8033
-endosome164u,initSolubleContent,solL,196257,solS,196257,solubleMarker,1,proton,1000
+endosome164u,initMembraneContent,memL,1969778,memS,1969778,memERGIC,1969778,memGolgiMedial,1969778,memTGN,1969778,membraneMarker,1,memTub,1969778,memLS,1969778
+endosome164u,initSolubleContent,solL,19006635,solS,19006635,solubleMarker,1,proton,1000
 endosome2T,initOrgProp,area,1969778.594,volume,19006635.55,xcoor,25.0,ycoor,0.0809050413905601,
 endosome2T,initRabContent,RabB,1969778.594
 endosome2T,initMembraneContent,
