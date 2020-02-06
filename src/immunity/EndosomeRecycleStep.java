@@ -21,6 +21,10 @@ public class EndosomeRecycleStep {
 		recycleGolgi(endosome);
 		}
 	private static void recycleGolgi(Endosome endosome) {
+		/*
+		 * cisGogli vesicles fuse with ERGIC and are deleted, but its content goes to the largest cisGolgi cistern
+		 * transGogli vesicles fuse with postGolgi elements and are deleted. Its content is added to postGolgi (called recycling)
+		 */
 		HashMap<String, Double> rabContent = new HashMap<String, Double>(endosome.getRabContent());
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>(endosome.getMembraneContent());
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>(endosome.getSolubleContent());
@@ -75,8 +79,13 @@ public class EndosomeRecycleStep {
 				}
 //				Context<Object> context = ContextUtils.getContext(endosome);
 				context.remove(endosome);
+				
+				selectedEnd.getEndosomeTimeSeries().clear();
+				selectedEnd.getRabTimeSeries().clear();
 			}
 //			HERE THE RABE ORGANELLE IS SENDING THE CONTENT TO RECYCLING BEFORE BEING DELETED
+//			THE CISTERN IS DELETED WITH A PROBABILITY THAT IS INVERSE TO A FUNCTION OF THE AREA
+//			IT IS ZERO FOR CISTERNS LARGER THAN TWICE THE MINCISTERN.  IT IS 1 FOR CISTERNS SMALLER THAN A VESICLE
 			else if (maxRab.equals("RabE") 
 					&& Math.random()> (endosome.area - 4 * Math.PI * Cell.rcyl * Cell.rcyl)/2/Cell.minCistern)
 			{

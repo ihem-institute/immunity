@@ -54,8 +54,8 @@ public class Results {
 	static HashMap<String, Double> totalRabs = new HashMap<String, Double>();	
 	static HashMap<String, Double> totalVolumeRabs = new HashMap<String, Double>();
 	static HashMap<String, Double> initialTotalRabs = new HashMap<String, Double>();
-//	static HashMap<String, Double> initialTotalSolubleCargo = new HashMap<String, Double>();
-//	static HashMap<String, Double> initialTotalMembraneCargo = new HashMap<String, Double>();
+	static HashMap<String, Double> initialTotalSolubleCargo = new HashMap<String, Double>();
+	static HashMap<String, Double> initialTotalMembraneCargo = new HashMap<String, Double>();
 	static HashMap<String, Double> cisternsArea = new HashMap<String, Double>();
 	public TreeMap<String, Double> singleEndosomeContent = new TreeMap<String, Double>();
 	
@@ -291,22 +291,55 @@ public class Results {
 	
 	public void contentDistribution(HashMap<String, Double> totalRabs, HashMap<String, Double> initialTotalRabs, HashMap<String, Double> cisternsArea) {
 //		initialize all contents to zero
-		content();
+		List<Endosome> allEndosomes = new ArrayList<Endosome>();
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+		if (tick == 1) {
+			for (String mem : CellProperties.getInstance().getMembraneMet()) {
+			initialTotalMembraneCargo.put(mem, 0d);	
+			}
+			for (String sol : CellProperties.getInstance().getSolubleMet()) {
+			initialTotalSolubleCargo.put(sol, 0d);	
+			}
+			for (Object obj : grid.getObjects()) {
+				if (obj instanceof Endosome) {
+					allEndosomes.add((Endosome) obj);
+				}
+			}
+			for (Endosome end : allEndosomes) {
+				for (String mem : end.membraneContent.keySet()) {
+					double value = initialTotalMembraneCargo.get(mem) + end.membraneContent.get(mem);
+					initialTotalMembraneCargo.put(mem, value);
+				}
+				for (String sol : end.solubleContent.keySet()) {
+					double value = initialTotalSolubleCargo.get(sol) + end.solubleContent.get(sol);
+					initialTotalSolubleCargo.put(sol, value);
+				}
+			}
+		}
+		content();
 // 		first include the content of PM (soluble and membrane associated) and cytosol
 		HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
 		// include in the contentDistribution all the recycled components, soluble and membrane
 		HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
 		HashMap<String, Double> solubleCell = Cell.getInstance().getSolubleCell();
+
+
+		
+		
+//	System.out.println(initialTotalMembraneCargo + "  INITIAL TOTALS  "+ initialTotalSolubleCargo);	
+		
+		
+		
+		
 		for (String sol : solubleRecycle.keySet()) {
 //			System.out.println(" soluble "+ sol);
-			double value = solubleRecycle.get(sol);
+			double value = solubleRecycle.get(sol)/initialTotalSolubleCargo.get(sol);
 			contentDist.put(sol, value);
 //			System.out.println("SOLUBLE  PM"+ sol + value );
 		}
 		for (String mem : membraneRecycle.keySet()) {
-			//System.out.println(" soluble "+ sol + " Rab " +rab);
-			double value = membraneRecycle.get(mem);
+//			System.out.println(" membrane "+ mem + " no hay " +mem);
+			double value = membraneRecycle.get(mem)/initialTotalMembraneCargo.get(mem);
 			contentDist.put(mem , value);
 //			System.out.println("MEMBRANE PM  "+ mem + value);
 		}			
@@ -317,7 +350,7 @@ public class Results {
 //			System.out.println("SOLUBLE CELL  "+ sol + value );
 		}
 //		now the content of the organelles is added, classified according to the membrane domains of each organelle
-		List<Endosome> allEndosomes = new ArrayList<Endosome>();
+		allEndosomes.clear();
 		for (Object obj : grid.getObjects()) {
 			if (obj instanceof Endosome) {
 				allEndosomes.add((Endosome) obj);
@@ -360,22 +393,13 @@ public class Results {
 					.getMembraneContent();
 			HashMap<String, Double> solubleContent = endosome
 					.getSolubleContent();
-			
+// Store the number of cisterns for each Rab			
 			String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 			if (area >= Cell.minCistern) {
 				cisternsNumber = cisternsNumber +1d;
 				double value = cisternsArea.get(maxRab) + area;
 				cisternsArea.put(maxRab, value);
 			}
-//			if (tick == 1) {
-//				for (String mem : membraneContent.keySet()) {
-//				double value = initialTotalMembraneCargo.get(mem) + membraneContent.get(mem);
-//				initialTotalMembraneCargo.put(mem, value);
-//				}
-//				for (String sol : solubleContent.keySet()) {
-//				double value = initialTotalSolubleCargo.get(sol) + solubleContent.get(sol);
-//				initialTotalSolubleCargo.put(sol, value);
-//			}
 
 			for (String rab : rabContent.keySet()) {
 				for (String sol : solubleContent.keySet()) {
@@ -383,16 +407,15 @@ public class Results {
 //					System.out.println(" FALTA " + contentDist.get(sol + rab));
 					double value = contentDist.get(sol + rab)
 							+ solubleContent.get(sol) * rabContent.get(rab)
-							/ area;
-//					value = value/initialTotalSolubleCargo.get(sol);
+							/ area/initialTotalSolubleCargo.get(sol);
 					contentDist.put(sol + rab, value);
 					//System.out.println("SOLUBLE"+sol + "Rab" +rab);
 				}
 			for (String mem : membraneContent.keySet()) {
-//				System.out.println(" membrane "+mem + " Rab " +rab);
+				System.out.println(" membrane "+mem + " Rab " +rab);
 					double value = contentDist.get(mem + rab)
 							+ membraneContent.get(mem) * rabContent.get(rab)
-							/ area;
+							/ area/initialTotalMembraneCargo.get(mem);
 					contentDist.put(mem + rab, value);
 				}
 
@@ -463,7 +486,7 @@ public class Results {
 		
 //		sum in cytosol
 //		System.out.println(" TOTAL RABS      "+totalRabs);
-
+		
 
 	}
 // Send information about the endosome that contains a membrane or a soluble MARKER
@@ -524,12 +547,15 @@ public class Results {
 
 	// generate the set of all combinations between contents 
 	//(soluble or membrane) with all Rabs and sets the initial values to zero
+	// same for initial contents (soluble and membrane)
 	public TreeMap<String, Double> content() {
 		for (String sol : solubleMet) {
 			contentDist.put(sol, 0d);
+		
 		} 
 		for (String mem : membraneMet) {
 			contentDist.put(mem, 0d);
+
 		}
 		for (String sol : Cell.getInstance().getSolubleCell().keySet()) {
 			contentDist.put("Cy"+sol, 0d);
