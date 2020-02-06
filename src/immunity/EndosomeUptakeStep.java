@@ -48,7 +48,7 @@ public class EndosomeUptakeStep {
 //				return;
 //			}
 //			else
-			{
+			{// if membrane flux is 1, then is maturation and
 			String selectedRab = "RabA";
 			newOrganelle(endosome, selectedRab, rabCode, membraneFlux);
 			return;
@@ -564,10 +564,21 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 				selectedEnd = end;			
 			}
 		}
-System.out.println(selectedRab + "Endosome" + allEndosomes);
-System.out.println("selectedEndosome" + selectedEnd);
-
+//System.out.println(selectedRab + "Endosome" + allEndosomes);
+//System.out.println("selectedEndosome" + selectedEnd);
+		/*
+		 * En maturation, puede que se elimine todos las cisternas con un determinado
+		 * dominio y entonces no hay ninguno para agregar En este caso hace falta
+		 * generar uno nuevo
+		 */
 		if (selectedEnd == null) {
+//			System.out.println("bud memra  "+bud.membraneContent);
+//			try {
+//				Thread.sleep(4000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			newOrganelleGolgiVesicular(endosome, selectedRab,  rabCode, membraneFlux);
 //			initOrgProp = new HashMap<String, Double>(endosome.getInitOrgProp());
 //			membraneContent = new HashMap<String, Double>();
@@ -610,7 +621,8 @@ System.out.println("selectedEndosome" + selectedEnd);
 				loadUptake = false;
 			}
 		}
-			
+		selectedEnd.getEndosomeTimeSeries().clear();
+		selectedEnd.getRabTimeSeries().clear();
 		}
 
 		
@@ -648,6 +660,7 @@ System.out.println("selectedEndosome" + selectedEnd);
 			if (endosome2.membraneContent.containsKey(key1)) {
 				double sum = endosome1.membraneContent.get(key1)
 						+ endosome2.membraneContent.get(key1);
+				if (sum > endosome1.area) sum = endosome1.area;
 				memSum.put(key1, sum);
 			} else
 				memSum.put(key1, endosome1.membraneContent.get(key1));
@@ -655,6 +668,7 @@ System.out.println("selectedEndosome" + selectedEnd);
 		for (String key2 : endosome2.membraneContent.keySet()) {
 			if (!endosome1.membraneContent.containsKey(key2)) {
 				double sum = endosome2.membraneContent.get(key2);
+				if (sum > endosome1.area) sum = endosome1.area;
 				memSum.put(key2, sum);
 			}
 		}
@@ -673,6 +687,7 @@ System.out.println("selectedEndosome" + selectedEnd);
 			if (endosome2.solubleContent.containsKey(key1)) {
 				double sum = endosome1.solubleContent.get(key1)
 						+ endosome2.solubleContent.get(key1);
+				if (sum > endosome1.volume) sum = endosome1.volume;
 				solSum.put(key1, sum);
 			} else
 				solSum.put(key1, endosome1.solubleContent.get(key1));
@@ -680,6 +695,7 @@ System.out.println("selectedEndosome" + selectedEnd);
 		for (String key2 : endosome2.solubleContent.keySet()) {
 			if (!endosome1.solubleContent.containsKey(key2)) {
 				double sum = endosome2.solubleContent.get(key2);
+				if (sum > endosome1.volume) sum = endosome1.volume;
 				solSum.put(key2, sum);
 			}
 		}
