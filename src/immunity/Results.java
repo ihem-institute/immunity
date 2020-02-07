@@ -338,8 +338,16 @@ public class Results {
 //			System.out.println("SOLUBLE  PM"+ sol + value );
 		}
 		for (String mem : membraneRecycle.keySet()) {
-//			System.out.println(" membrane "+ mem + " no hay " +mem);
-			double value = membraneRecycle.get(mem)/initialTotalMembraneCargo.get(mem);
+//			System.out.println(" membrane "+ mem + " no hay " +mem);		
+			double value = 0d;
+			if (mem.equals("memS1")
+					|| mem.equals("memS2")
+					||mem.equals("memS3")) {
+				value = membraneRecycle.get(mem)/initialTotalMembraneCargo.get("memS");
+			}
+			else {
+				value = membraneRecycle.get(mem)/initialTotalMembraneCargo.get(mem);
+				}
 			contentDist.put(mem , value);
 //			System.out.println("MEMBRANE PM  "+ mem + value);
 		}			
@@ -412,10 +420,20 @@ public class Results {
 					//System.out.println("SOLUBLE"+sol + "Rab" +rab);
 				}
 			for (String mem : membraneContent.keySet()) {
-				System.out.println(" membrane "+mem + " Rab " +rab);
-					double value = contentDist.get(mem + rab)
+//				System.out.println(" membrane "+mem + " Rab " +rab);
+				double value = 0d;
+				if (mem.equals("memS1")
+						|| mem.equals("memS2")
+						||mem.equals("memS3")) {
+					value = contentDist.get(mem + rab)
+							+ membraneContent.get(mem) * rabContent.get(rab)
+							/ area/initialTotalMembraneCargo.get("memS");}
+				else {
+					value = contentDist.get(mem + rab)
 							+ membraneContent.get(mem) * rabContent.get(rab)
 							/ area/initialTotalMembraneCargo.get(mem);
+					}
+				
 					contentDist.put(mem + rab, value);
 				}
 
