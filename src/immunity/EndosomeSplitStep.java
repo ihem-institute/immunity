@@ -640,8 +640,8 @@ public class EndosomeSplitStep {
 //			endosome.membraneContent.put(content, 0d);
 //		}
 //		
-		if (value >= scylinder) {value = scylinder;} 
-//		if (value >= copyMembrane.get(content)){ value = copyMembrane.get(content);}
+		if (value > scylinder) {value = scylinder;} 
+		if (value > copyMembrane.get(content)){ value = copyMembrane.get(content);}
 
 		endosome.membraneContent.put(content, copyMembrane.get(content) - value);
 //		System.out.println(content +" content  existente "+copyMembrane.get(content)+" a restar "+value);
