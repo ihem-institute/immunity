@@ -1,14 +1,10 @@
-<repast.simphony.visualization.engine.CartesianDisplayDescriptor>
-  <name>Space Display</name>
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.7.0">
+  <name>Display</name>
   <type>2D</type>
   <styles>
     <entry>
       <string>immunity.PlasmaMembrane</string>
       <string>immunity.PlasmaMembraneStyle</string>
-    </entry>
-    <entry>
-      <string>immunity.Cytosol</string>
-      <string>immunity.CytosolStyle</string>
     </entry>
     <entry>
       <string>immunity.Endosome</string>
@@ -26,10 +22,6 @@
   <editedStyles>
     <entry>
       <string>immunity.PlasmaMembrane</string>
-      <null/>
-    </entry>
-    <entry>
-      <string>immunity.Cytosol</string>
       <null/>
     </entry>
     <entry>
@@ -60,12 +52,12 @@
   <frequency>ON_MOVE</frequency>
   <schedParams>
     <start>1.0</start>
-    <interval>10.0</interval>
+    <interval>1.0</interval>
     <priority>-Infinity</priority>
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>384985210</hashCode>
+    <hashCode>-1206857290</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>space</layoutProjection>
@@ -73,10 +65,6 @@
   <layerOrder>
     <entry>
       <string>immunity.PlasmaMembrane</string>
-      <int>1</int>
-    </entry>
-    <entry>
-      <string>immunity.Cytosol</string>
       <int>0</int>
     </entry>
     <entry>
@@ -89,7 +77,7 @@
     </entry>
     <entry>
       <string>immunity.Scale</string>
-      <int>4</int>
+      <int>1</int>
     </entry>
   </layerOrder>
   <projections>
@@ -97,6 +85,11 @@
       <id>space</id>
       <attributes/>
       <type>continuous space</type>
+    </repast.simphony.scenario.data.ProjectionData>
+    <repast.simphony.scenario.data.ProjectionData>
+      <id>grid</id>
+      <attributes/>
+      <type>grid</type>
     </repast.simphony.scenario.data.ProjectionData>
     <repast.simphony.scenario.data.ProjectionData>
       <id>infection network</id>
@@ -111,9 +104,34 @@
     <entry>
       <string>infection network</string>
       <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
-        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[2]"/>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[3]"/>
         <props/>
       </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+    </entry>
+    <entry>
+      <string>grid</string>
+      <repast.simphony.visualization.grid.GridProjectionDescriptor>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[2]"/>
+        <props>
+          <entry>
+            <string>repast.simphony.visualization.grid.GridDecorator</string>
+            <map>
+              <entry>
+                <string>COLOR</string>
+                <int>-16777216</int>
+              </entry>
+              <entry>
+                <string>UNIT_SIZE</string>
+                <float>15.0</float>
+              </entry>
+              <entry>
+                <string>SHOW</string>
+                <boolean>false</boolean>
+              </entry>
+            </map>
+          </entry>
+        </props>
+      </repast.simphony.visualization.grid.GridProjectionDescriptor>
     </entry>
     <entry>
       <string>space</string>
@@ -125,7 +143,7 @@
             <map>
               <entry>
                 <string>COLOR</string>
-                <int>-16777216</int>
+                <int>-1</int>
               </entry>
               <entry>
                 <string>UNIT_SIZE</string>
