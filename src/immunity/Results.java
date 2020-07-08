@@ -325,7 +325,7 @@ public class Results {
 //			System.out.println("SOLUBLE  PM"+ sol + value );
 		}
 		for (String mem : membraneRecycle.keySet()) {
-//			System.out.println(" membrane "+ mem + " no hay " +mem);
+			System.out.println(" membrane "+ mem + " no hay " +mem);
 			double value = membraneRecycle.get(mem)/initialTotalMembraneCargo.get(mem);
 			contentDist.put(mem , value);
 //			System.out.println("MEMBRANE PM  "+ mem + value);
