@@ -30,7 +30,7 @@ public class MoleculePM {
 		this.type = type;
 	}
 
-	@ScheduledMethod(start = 1, interval = 1000)
+	@ScheduledMethod(start = 1, interval = 10)
 	public void step() {
 		if (Math.random() <1) changePosition(this);
 		if (Math.random() <1 && this.type.equals("lipid")) tether(this);

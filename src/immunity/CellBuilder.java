@@ -43,20 +43,13 @@ import repast.simphony.util.collections.IndexedIterable;
 
 public class CellBuilder implements ContextBuilder<Object> {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * repast.simphony.dataLoader.ContextBuilder#build(repast.simphony.context
-	 * .Context)
-	 */
 	public static IndexedIterable collection = null;
 
 	public static final IndexedIterable getCollection() {
 		return collection;
 	}
 
-
+// Create two spaces, one for PM where Agents are molecules and other for the Intracellular transport.  
 	@Override
 	public Context build(Context<Object> context) {
 		context.setId("immunity");
@@ -78,6 +71,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 				new GridBuilderParameters<Object>(new WrapAroundBorders(),
 						new SimpleGridAdder<Object>(), true, 50, 50));
 		
+// PM space
 		ContinuousSpace<Object> spacePM = spaceFactory.createContinuousSpace(
 				"spacePM", context, new RandomCartesianAdder<Object>(),
 				new repast.simphony.space.continuous.WrapAroundBorders(), 50,
@@ -87,9 +81,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 				new GridBuilderParameters<Object>(new WrapAroundBorders(),
 						new SimpleGridAdder<Object>(), true, 50, 100));
 
-
-
-
+//  introduce the agents in the space
 		CellProperties cellProperties = CellProperties.getInstance();
 //		System.out.println(" builder CellProperties cargado");
 		context.add(cellProperties);	
@@ -97,38 +89,10 @@ public class CellBuilder implements ContextBuilder<Object> {
 		context.add(cell);
 		context.add(new Results(space, grid, null, null));// 
 		context.add(new UpdateParameters());
-		context.add(new PlasmaMembrane(space, grid));
-		
+		context.add(new PlasmaMembrane(space, grid));	
 		context.add(new Scale(space, grid));
-
-//		System.out.println(" builder CELL BUILDER CARGADO");
-//		System.out.println("builder VALOR "+ cellProperties.getCellK());
-//		System.out.println(cellProperties.initRabCell);
-//		System.out.println(cellProperties.initPMmembraneRecycle);
-//		System.out.println(cellProperties.rabCompatibility);
-//		System.out.println(cellProperties.membraneMet);
-//		System.out.println(cellProperties.solubleMet);
-//		System.out.println(cellProperties.tubuleTropism);
-//		System.out.println("builder hasta aquí llegamos");
-//		System.out.println(cellProperties.rabTropism);
-//		// correct
-//		System.out.println("builder hasta aquí llegamos");
-//		System.out.println("builder VALOR mtTrop" + cellProperties.mtTropism);
-
-//			InitialOrganelles inOr = InitialOrganelles.getInstance();
 		InitialOrganelles initialOrganelles  = InitialOrganelles.getInstance();
-		context.add(initialOrganelles);
-//		System.out.println(InitialOrganelles.getInstance().getInitOrgProp());
-//		System.out.println(InitialOrganelles.getInstance()
-//				.getInitRabContent());		
-//		System.out.println(InitialOrganelles.getInstance()
-//				.getInitMembraneContent());
-//		System.out.println(InitialOrganelles.getInstance()
-//				.getInitSolubleContent());
-
-		
-//		Cell and recycled contents.  Total initial free membrane 
-		
+		context.add(initialOrganelles);		
 		// Microtubules
 
 		for (int i = 0; i < (int) 10/Cell.orgScale; i++) {// change the number of MT 3 for 6 MT
@@ -152,11 +116,11 @@ public class CellBuilder implements ContextBuilder<Object> {
 			spacePM.moveTo(molecule, x, y);
 			gridPM.moveTo(molecule,(int) x, (int)y);
 		}
-		// ENDOSOMES ENDOSOMES ENDOSOMES
+		// ENDOSOMES
 		
 		if (CellProperties.getInstance().getCellK().get("freezeDry").equals(0d))
-			// RabA is Rab5.  Organelles are constructed with a given radius that depend on the type (EE, LE, Lys) and with a 
-			// total surface.  These values were obtained of simulations that progressed by 40000 steps
+// RabA is Rab5.  Organelles are constructed with a given radius that depend on the type (EE, LE, Lys) and with a 
+// total surface.  These values were obtained of simulations that progressed by 40000 steps
 		{
 			Set<String> diffOrganelles = InitialOrganelles.getInstance().getDiffOrganelles();
 			System.out.println(diffOrganelles);
@@ -304,19 +268,6 @@ public class CellBuilder implements ContextBuilder<Object> {
 					}	
 				}
 			
-			
-		
-//		this is used for standard starting
-//			for (int i = 0; i < initOrgProp.get("number")/Cell.orgScale; i++) {
-//				HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
-//				HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
-//				HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
-//				Endosome end = new Endosome(space, grid, rabContent, membraneContent,
-//						solubleContent, initOrgProp);
-//				context.add(end);
-//				Endosome.endosomeShape(end);
-//				System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
-//		}
 		
 		// Cytosol (NOT USED IN PRESENT BRANCH)
 //		for (int i = 0; i < 50; i++) {
@@ -328,7 +279,6 @@ public class CellBuilder implements ContextBuilder<Object> {
 		// Cell
 		//context.add(Cell.getInstance());
 		//context.add(CellProperties.getInstance());
-
 
 		// Locate the object in the space and grid
 		for (Object obj : context) {
@@ -366,28 +316,6 @@ public class CellBuilder implements ContextBuilder<Object> {
 //					space.moveTo(obj, x, y);
 //					grid.moveTo(obj, (int) x, (int) y);					
 //					}
-//				if(((Endosome) obj).getRabContent().containsKey("RabC")){
-////					NdPoint pt = space.getLocation(obj);
-//					double x = RandomHelper.nextDoubleFromTo(5d, 45d);
-//					double y = RandomHelper.nextDoubleFromTo(5d, 25d);
-//					space.moveTo(obj, x, y);
-//					grid.moveTo(obj, (int) x, (int) y);					
-//					}
-//				if(((Endosome) obj).getRabContent().containsKey("RabD")){
-////					NdPoint pt = space.getLocation(obj);
-//					double x = RandomHelper.nextDoubleFromTo(5d, 45d);
-//					double y = RandomHelper.nextDoubleFromTo(5d, 25d);
-//					space.moveTo(obj, x, y);
-//					grid.moveTo(obj, (int) x, (int) y);					
-//					}
-//				if(((Endosome) obj).getRabContent().containsKey("RabE")){
-////					NdPoint pt = space.getLocation(obj);
-//					double x = RandomHelper.nextDoubleFromTo(5d, 45d);
-//					double y = RandomHelper.nextDoubleFromTo(5d, 25d);
-//					space.moveTo(obj, x, y);
-//					grid.moveTo(obj, (int) x, (int) y);					
-//					}
-
 			}
 		}
 
@@ -398,7 +326,6 @@ public class CellBuilder implements ContextBuilder<Object> {
 
 		collection = context.getObjects(Endosome.class);
 	
-		
 		return context;	
 		
 	}
