@@ -68,32 +68,9 @@ public class EndosomeFusionStep {
 //		
 
 	}
-//	public static void endosomeShape(Endosome end) {
-//		double s = end.area;
-//		double v = end.volume;
-//		double rsphere = Math.pow((v * 3) / (4 * Math.PI), (1 / 3d));
-//		double svratio = s / v; // ratio surface volume
-//		double aa = rsphere; // initial a from the radius of a sphere of volume
-//								// v
-//		double cc = aa;// initially, c=a
-//		// calculation from s/v for a cylinder that it is more or less the same than for an
-//		// ellipsoid
-//		// s= 2PIa^2+2PIa*2c and v = PIa^2*2c hence s/v =(1/c)+(2/a)
-//		for (int i = 1; i < 5; i++) {// just two iterations yield an acceptable
-//										// a-c ratio for plotting
-//			aa = 2 / (svratio - 1 / cc);// from s/v ratio
-//			cc = v * 3 / (4 * Math.PI * aa * aa);// from v ellipsoid
-//		}
-//		end.a = aa;
-//		end.c = cc;
-//	}
+
 	private static HashMap<String, Double> sumRabContent(Endosome endosome1,
 			Endosome endosome2) {
-		// HashMap<String, Double> map3 = new HashMap<String, Double>();
-		// map3.putAll(endosome1.rabContent);
-		// map3.forEach((k, v) -> endosome2.rabContent.merge(k, v, (v1, v2) ->
-		// v1 + v2));
-		// return map3;
 
 		HashMap<String, Double> rabSum = new HashMap<String, Double>();
 		for (String key1 : endosome1.rabContent.keySet()) {
@@ -131,11 +108,7 @@ public class EndosomeFusionStep {
 				memSum.put(key2, sum);
 			}
 		}
-//		// endosome1.membraneContent = memSum;
-//		
-//		System.out.println("MemEnd 1" +endosome1.membraneContent +
-//				"\n MemEnd 2"+ endosome2.membraneContent+ 
-//				" \n MemSum" + memSum);
+
 		return memSum;
 	}
 
@@ -156,7 +129,7 @@ public class EndosomeFusionStep {
 				solSum.put(key2, sum);
 			}
 		}
-		// endosome1.solubleContent = solSum;
+
 		// System.out.println("solubleContentSum" + endosome1.solubleContent);
 		return solSum;
 	}

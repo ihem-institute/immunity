@@ -93,13 +93,7 @@ public class CellCopasi {
             nameMetabs.put(metab.getObjectName(), metab);
             System.out.println(metab.getObjectName());
         }
-        // SET INITIAL CONCENTRATIONS
-        // SET INITIAL CONCENTRATIONS
-        // SET INITIAL CONCENTRATIONS
-        // SET INITIAL CONCENTRATIONS
-        //Endosome endosome = Endosome.getEndosome();
-        //setInitialConcentration("RabA", 0);//
-        //setInitialConcentration("RabB", 0);
+
         
         for (String s : nameMetabs.keySet()) {
         	CMetab metab = nameMetabs.get(s);
@@ -242,17 +236,7 @@ public class CellCopasi {
 	public void runTimeCourse() {
 		// reapply the initial values
 		model.applyInitialValues();
-		
-/*        System.out.println("Starting ...");
-        
-        for (int i = 0; i < (int) model.getMetabolites().size(); ++i)
-        {
-            CMetab metab = model.getMetabolite(i);
-            assert metab != null;
-            
-            System.out.println(metab.getObjectName() + " : " + metab.getConcentration());
-        }*/
-		
+				
 		boolean result=true;
         String processError = "";
 		String processWarning = "";

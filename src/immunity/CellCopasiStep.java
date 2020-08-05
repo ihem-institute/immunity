@@ -119,16 +119,6 @@ public class CellCopasiStep {
 			localM.put("proton", 1e-04);
 		}
 
-		//		
-		//		System.out.println("QQQQQQQQQQQQQQQQQQQQ "+ localM + solCell);
-		//		try {
-		//			TimeUnit.SECONDS.sleep(1);
-		//		} catch (InterruptedException e) {
-		//			// TODO Auto-generated catch block
-		//			e.printStackTrace();
-		//		}
-
-
 
 		cellCopasi.runTimeCourse();
 
