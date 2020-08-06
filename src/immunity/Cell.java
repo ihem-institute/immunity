@@ -12,13 +12,15 @@ public class Cell {
 	private static Cell instance;
 	public static Cell getInstance() {
 		if (instance == null) {
-			instance = new Cell();
+			instance = new Cell(space, grid);
 		}
 		return instance;
 	}
 	
 
 //	Cell characteristics
+	private static ContinuousSpace<Object> space;
+	private static Grid<Object> grid;
 	public static double rcyl = CellProperties.getInstance().getCellK().get("rcyl");//20.0; // radius tubule
 	public static double mincyl = 6 * Math.PI * rcyl * rcyl; // surface minimum cylinder
 // two radius large (almost a sphere)
@@ -44,10 +46,12 @@ public class Cell {
 	private double cellArea;
 
 	// Constructor
-	public Cell() {
+	public Cell(ContinuousSpace<Object> space, Grid<Object> grid) {
 // Contains factors that are in the cell without specifying organelle or position.
 // It is modified by Endosome that uses and changes cytosolic Rabs
 // contents.	tMembranes, membrane and soluble content recycling,
+		this.space = space;
+		this.grid = grid;
 		cellArea = CellProperties.getInstance().getCellAgentProperties().get("cellArea");// 
 		cellVolume = CellProperties.getInstance().getCellAgentProperties().get("cellVolume");//
 
@@ -63,6 +67,15 @@ public class Cell {
 			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
 			CellCopasiStep.antPresTimeSeriesLoad(this);
 		}
+			
+// eventual use for cell metabolism
+	}
+	@ScheduledMethod(start = 1, interval = 1)
+	public void uptake() {
+		if (Math.random() < 0.1){
+			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
+			UptakeStep2.uptake(this);
+			}
 			
 // eventual use for cell metabolism
 	}
@@ -99,6 +112,14 @@ public class Cell {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
+	public ContinuousSpace<Object> getSpace() {
+		// TODO Auto-generated method stub
+		return space;
+	}
+	public Grid<Object> getGrid() {
+		// TODO Auto-generated method stub
+		return grid;
+	}
 
 
 }
