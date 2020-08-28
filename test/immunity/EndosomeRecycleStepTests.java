@@ -68,7 +68,7 @@ public class EndosomeRecycleStepTests {
 			NdPoint myPoint = this.endosome.getSpace().getLocation(this.endosome);
 			System.out.println("\nTEST   antes  "+this.endosome.rabContent
 					+this.endosome.membraneContent+this.endosome.solubleContent);
-			EndosomeRecycleStep.recycle(this.endosome);
+			RecycleStep.recycle(this.endosome);
 			System.out.println("TEST   despues "+this.endosome.rabContent
 					+this.endosome.membraneContent+this.endosome.solubleContent);
 			assertSame(this.endosome.solubleContent, this.endosome.solubleContent);
@@ -84,7 +84,7 @@ public class EndosomeRecycleStepTests {
 //			NdPoint myPoint = this.endosome.getSpace().getLocation(this.endosome);
 //			System.out.println("\nTEST   antes  "+this.endosome.rabContent
 //					+this.endosome.membraneContent+this.endosome.solubleContent);
-//			EndosomeRecycleStep.recycle(this.endosome);
+//			RecycleStep.recycle(this.endosome);
 //			System.out.println("TEST   despues "+this.endosome.rabContent
 //					+this.endosome.membraneContent+this.endosome.solubleContent);
 //			 assertNull("el soluble deberia cambiar", this.endosome.solubleContent.get("ova"));
@@ -96,7 +96,7 @@ public class EndosomeRecycleStepTests {
 //	@Test
 //	public void testRecyclerEnNoSuperficie() {
 //		// this.endosome....
-//		EndosomeRecycleStep.recycle(this.endosome);
+//		RecycleStep.recycle(this.endosome);
 ////		assertEquals("uno deberia ser 1", this.endosome.area, this.endosome.size);
 //		
 //	}

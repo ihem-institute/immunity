@@ -25,7 +25,20 @@ public class EndosomeUptakeStep {
 		//		if (tick < 100) return;
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
-
+		/* ?
+		 * Old logic.  The amount of domains of each Rab is compared with the initial value
+		 * The domain with more difference is selected to generate a new organelle
+		 * 	If the Rab selected is RabA, the new organelle is generated from 
+		 *  plasma membrane. If not, the new organelle is generated according to the "kind" 
+		 *  specified in the csv file for the initial organelles
+		 *  
+		 *  New logic.  The EE are created according to the PM membrane disponibility
+		 * that is maintained by recycling of tubular EE. The maturation of EE is compensated by the
+		 * membrane of the internal vesicles that are added to the PM (thinking in synthesis of membrane)
+		 * The maturation also generate LE membrane that should be compensated by the reduction of the limiting
+		 * membrane also by the generation of internal vesicles
+		 * The old logic will be maintained until the system is stable
+		 *  */
 		Cell cell = Cell.getInstance();
 		HashMap<String, Double> totalRabs = new HashMap<String, Double>(Results.getInstance().getTotalRabs());
 		HashMap<String, Double> initialTotalRabs = new HashMap<String, Double>(Results.getInstance().getInitialTotalRabs());
@@ -94,6 +107,8 @@ public class EndosomeUptakeStep {
 		double af= Math.pow(a, f);
 		double cf= Math.pow(c, f);
 		double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
+		double plasmaMembrane = endosome.area + PlasmaMembrane.getInstance().getPlasmaMembraneArea();
+		PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
 		double volume = 4d/3d*Math.PI*a*a*c;
 		initOrgProp.put("area", area);
 		double value = Results.instance.getTotalRabs().get("RabA");

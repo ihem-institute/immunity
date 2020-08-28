@@ -20,6 +20,7 @@ public class EndosomeLysosomalDigestionStep {
 		double finalSolMark = 0d;
 		double finalMemMark = 0d;
 //		double finalvATPase = 0d;
+//		Internal vesicles are digested proportional to the RabD content and to the number of internal vesicles
 		if (endosome.solubleContent.containsKey("mvb")) {
 			initialMvb = endosome.solubleContent.get("mvb");
 			if (Math.random() < 0.01 * rabDratio * initialMvb) {
@@ -35,6 +36,7 @@ public class EndosomeLysosomalDigestionStep {
 //			finalMemMark = 1d;
 //		}
 //		finalvATPase = endosome.membraneContent.get("vATPase");
+//		Soluble component are digested proportional to the RabD content
 		for (String sol : endosome.solubleContent.keySet()) {
 				double solDigested = endosome.solubleContent.get(sol) * 0.001
 						* rabDratio;
@@ -46,10 +48,8 @@ public class EndosomeLysosomalDigestionStep {
 			endosome.solubleContent.put("solubleMarker", 1d);
 
 		for (String mem : endosome.membraneContent.keySet()) {
-				double memDigested = endosome.membraneContent.get(mem) * 0.001
-						* rabDratio;
-				endosome.membraneContent
-						.put(mem, endosome.membraneContent.get(mem) - memDigested);
+				double memDigested = endosome.membraneContent.get(mem) * 0.001 * rabDratio;
+				endosome.membraneContent.put(mem, endosome.membraneContent.get(mem) - memDigested);
 			}
 		if (endosome.membraneContent.containsKey("membraneMarker") && endosome.membraneContent.get("membraneMarker")>0.9){
 			endosome.membraneContent.put("membraneMarker", 1d);}

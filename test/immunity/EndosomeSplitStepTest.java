@@ -55,7 +55,7 @@ public class EndosomeSplitStepTest {
 				System.out.println("\nTEST   antes   area "+ endosome.area+ "volume "+endosome.volume +
 				"\n "+this.endosome.getSolubleContent()+ " membrane content "+this.endosome.getMembraneContent()
 				+"\n "+this.endosome.getRabContent());
-				EndosomeSplitStep.split(endosome);
+				FissionStep.split(endosome);
 				System.out.println("\nTEST   despues  area "+ endosome.area+ "volume "+endosome.volume +
 				"\n "+this.endosome.getSolubleContent()+ " membrane content "+this.endosome.getMembraneContent()
 				+"\n "+this.endosome.getRabContent());

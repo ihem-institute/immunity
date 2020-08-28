@@ -11,6 +11,8 @@
 	private String mypath2;
 	private String mypath3;
 	private String mypath4;
+	private String mypath5;
+	private String mypath6;
 
 		
 		File myDir = new File (".");
@@ -54,4 +56,15 @@
 			return this.mypath4; 
 			} 
 			
+		public String getPathTotalRabs(){ 
+			
+			mypath5=mypath+"/totalRabs.csv";
+			return this.mypath5; 
+			}
+
+		public String getPathCisternsArea() {
+			
+			mypath6 = mypath+"/cisternsArea.csv";
+			return this.mypath6; 
+		}
 	}

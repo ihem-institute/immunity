@@ -79,7 +79,7 @@ public class MoleculePM {
 			Random r = new Random();
 			double rr = r.nextGaussian();
 			mol.heading = rr * 1d + largest.heading;
-	//		EndosomeMove.moveTowards(end);
+	//		OrganelleMove.moveTowards(end);
 		}
 	}
 		

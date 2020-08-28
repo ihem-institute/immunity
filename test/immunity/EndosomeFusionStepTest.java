@@ -60,7 +60,7 @@ public class EndosomeFusionStepTest {
 			this.endosome.getGrid().moveTo(this.endosome, 25, (int)yPosition);
 			System.out.println("\nTEST   antes  "+this.endosome.solubleContent+"  "
 			+this.endosome.membraneContent+"  ");
-			EndosomeFusionStep.fusion(endosome);
+			FusionStep.fusion(endosome);
 			System.out.println("TEST   despues "+this.endosome.solubleContent+"  "
 					+this.endosome.membraneContent+"  ");
 //			assertSame(this.endosome.solubleContent, this.endosome.solubleContent);

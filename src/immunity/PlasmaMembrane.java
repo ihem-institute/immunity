@@ -67,6 +67,7 @@ public class PlasmaMembrane {
 //		}
 //		System.out.println("solubleRecycle "+solubleRecycle);		
 	}
+
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
 		changeColor();
@@ -74,7 +75,7 @@ public class PlasmaMembrane {
 		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
 		this.plasmaMembraneTimeSeries=PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries();
 		String name =  CellProperties.getInstance().getCopasiFiles().get("plasmaMembraneCopasi");
-		if (Math.random() < 1 && !name.equals("null"))PlasmaMembraneCopasiStep.antPresTimeSeriesLoad(PlasmaMembrane.getInstance());
+		if (Math.random() < 0 && !name.equals("null"))PlasmaMembraneCopasiStep.antPresTimeSeriesLoad(PlasmaMembrane.getInstance());
 //		this.changeColor();
 
 		}
@@ -124,9 +125,10 @@ public class PlasmaMembrane {
 	public final TreeMap<Integer, HashMap<String, Double>> getPlasmaMembraneTimeSeries() {
 		return plasmaMembraneTimeSeries;
 	}
-
-
-
+	
+	public final void setPlasmaMembraneArea(double plasmaMembraneArea) {
+		this.plasmaMembraneArea = plasmaMembraneArea;
+	}
 
 
 }

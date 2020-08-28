@@ -140,8 +140,12 @@ public class EndosomeInternalVesicleStep {
 		}
 	}
 	// Free membrane is added to the cell
-	double cellMembrane = Cell.getInstance().gettMembrane() + sIV;
-	Cell.getInstance().settMembrane(cellMembrane);
+//	double cellMembrane = Cell.getInstance().gettMembrane() + sIV;
+//	Cell.getInstance().settMembrane(cellMembrane);
+	
+	// Free membrane is added to PM
+	double plasmaMembrane = PlasmaMembrane.getInstance().getPlasmaMembraneArea() + sIV;
+	PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
 	}
 	}
 

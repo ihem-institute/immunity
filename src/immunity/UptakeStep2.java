@@ -25,7 +25,20 @@ public class UptakeStep2 {
 		//		if (tick < 100) return;
 		space = cell.getSpace();
 		grid = cell.getGrid();
-
+		/* ?
+		 * Old logic.  The amount of domains of each Rab is compared with the initial value
+		 * The domain with more difference is selected to generate a new organelle
+		 * 	If the Rab selected is RabA, the new organelle is generated from 
+		 *  plasma membrane. If not, the new organelle is generated according to the "kind" 
+		 *  specified in the csv file for the initial organelles
+		 *  
+		 *  New logic.  The EE are created according to the PM membrane disponibility
+		 * that is maintained by recycling of tubular EE. The maturation of EE is compensated by the
+		 * membrane of the internal vesicles that are added to the PM (thinking in synthesis of membrane)
+		 * The maturation also generate LE membrane that should be compensated by the reduction of the limiting
+		 * membrane also by the generation of internal vesicles
+		 * The old logic will be maintained until the system is stable
+		 *  */
 
 //		Cell cell = Cell.getInstance();
 		HashMap<String, Double> totalRabs = new HashMap<String, Double>(Results.getInstance().getTotalRabs());
@@ -59,7 +72,9 @@ public class UptakeStep2 {
 		//		If no rab was selected or the surface required is small (less than a sphere of 60 nm radius, 
 		//		no uptake is required
 		if (selectedRab.equals("")|| deltaRabs.get(selectedRab)<45000) return;
-		if (selectedRab.equals("RabA")){ 
+		//if the selected Rab correspond to Early Endosomes, new uptake
+		String selectedOrganelle = CellProperties.getInstance().getRabOrganelle().get(selectedRab);
+		if (selectedOrganelle.equals("EE")){ 
 			newUptake(cell,selectedRab);}
 		else {newOrganelle(cell, selectedRab, rabCode);}
 
@@ -77,7 +92,8 @@ public class UptakeStep2 {
 
 		if (!rabCell.containsKey("RabA") || Math.random()>rabCell.get("RabA")){
 			return;}
-	//			double rabCellA = rabCell.get("RabA");
+	//	double rabCellA = rabCell.get("RabA");
+	// OJO I AM ASSUMING THAT RABA IS EE AND THIS CANNOT BE ALWAYS TRUE
 	// cytosolic RabA is always provided by the -> RabAc reaction.  Only in a KD will go down
 	//		Then no uptake if no RabA in cyto.  The uptake is proportional to the amount of RabA	
 	//		Uptake generate a new RabA organelle.  The size is the radius in the csv file for RabA
@@ -95,6 +111,8 @@ public class UptakeStep2 {
 		double af= Math.pow(a, f);
 		double cf= Math.pow(c, f);
 		double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
+		double plasmaMembrane = PlasmaMembrane.getInstance().getPlasmaMembraneArea() - area;
+		PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
 		double volume = 4d/3d*Math.PI*a*a*c;
 		initOrgProp.put("area", area);
 		double value = Results.instance.getTotalRabs().get("RabA");
@@ -113,8 +131,17 @@ public class UptakeStep2 {
 		HashMap<String, Double> rabContent = new HashMap<String, Double>();
 	//			UPTAKE ENDOSOME JUST RABA
 		rabContent.put("RabA", area);
-
-	// 		Soluble and membrane content of the kind1, but cMHCI and mHCI depends now on PM content
+		
+		/* Soluble and membrane content of the kind1
+		 * To model molecules that cycle between PM and endosomes, such as cMHCI and mHCI
+		 * the new endosome incorporates metabolites that are present in the PM.
+		 * Each species has its own rate for internalization (uptake rate).
+		 * Also, the new endosome cannot incorporate more than a given amount of PM metabolites
+		 * In area units, no more than its surface (about 1 mM)
+		 * 
+		 * 
+		 * */
+		
 		HashMap<String, Double> membraneContent = new HashMap<String,Double>();
 		Set<String> membraneMet = new HashSet<String>(CellProperties.getInstance().getMembraneMet());
 		for (String mem : membraneMet){
@@ -127,29 +154,21 @@ public class UptakeStep2 {
 				double valuePM = PlasmaMembrane.getInstance().getMembraneRecycle().get(mem);
 				valueInPM = valuePM * CellProperties.getInstance().getUptakeRate().get(mem) * area/ PlasmaMembrane.getInstance().getPlasmaMembraneArea();	
 
-				if (valueInPM >= area) 
-				{
-					membraneContent.put(mem, area);
-					// decrease PM content
-					PlasmaMembrane.getInstance().getMembraneRecycle().put(mem, valuePM - area);
-					//			System.out.println(mem + valuePM + "   UPTAKE DECREASE 1111  " + valueInPM);
-					continue;
-				}
+				if (valueInPM >= area) valueInPM = area; // cannot incorporate more metabolite than its area
+				membraneContent.put(mem, valueInPM);
+				//	System.out.println(mem + valuePM + "   UPTAKE DECREASE 1111  " + valueInPM);
 				// decrease PM content
 				PlasmaMembrane.getInstance().getMembraneRecycle().put(mem, valuePM-valueInPM);
-				//			System.out.println(mem+valuePM +"           UPTAKE DECREASE 2222222222222222222222222222  " + valueInPM);
-				valueInTotal = valueInPM;
 			}
-			if (InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").containsKey(mem))
-			{
-				valueInEn = InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").get(mem)*area;
-				valueInTotal = valueInEn + valueInPM;
-			}
-			if (valueInTotal >= area) 	
-			{
-				valueInTotal= area;
-			}
-			membraneContent.put(mem, valueInTotal);	
+			/* FOR UPTAKE LOADING IN NEW ENDOSOMES
+			 * if (InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").
+			 * containsKey(mem)) { valueInEn =
+			 * InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").get(mem
+			 * )*area; valueInTotal = valueInEn + valueInPM; } if (valueInTotal >= area)
+			 * valueInTotal= area;
+			 */
+			
+
 
 		}
 //	System.out.println("RRRRRRRRRRRRRRRRRRRRRREEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSS "+ membraneContent);
@@ -164,24 +183,18 @@ public class UptakeStep2 {
 				double valuePM = PlasmaMembrane.getInstance().getSolubleRecycle().get(sol);
 				valueInPM = valuePM * volume/ PlasmaMembrane.getInstance().getPlasmaMembraneVolume();	
 
-				if (valueInPM >= volume) 
-				{
-				solubleContent.put(sol, volume);
+				if (valueInPM >= volume) valueInPM = volume;
+				solubleContent.put(sol, valueInPM);
 				// decrease PM content
-				PlasmaMembrane.getInstance().getSolubleRecycle().put(sol, valuePM - volume);
-				continue;
-				}
-				// decrease PM content
-				PlasmaMembrane.getInstance().getSolubleRecycle().put(sol, valuePM-valueInPM);
+				PlasmaMembrane.getInstance().getSolubleRecycle().put(sol, valuePM - valueInPM);
 			}
-			if (InitialOrganelles.getInstance().getInitSolubleContent().get("kind1").containsKey(sol))
-			{
-				valueInEn = InitialOrganelles.getInstance().getInitSolubleContent().get("kind1").get(sol)*volume;
-				valueInEn = valueInEn + valueInPM;
-			}
-			if (valueInEn >= volume) 	valueInEn= volume;
-			solubleContent.put(sol, valueInEn);	
-
+			/*
+			 * if (InitialOrganelles.getInstance().getInitSolubleContent().get("kind1").
+			 * containsKey(sol)) { valueInEn =
+			 * InitialOrganelles.getInstance().getInitSolubleContent().get("kind1").get(sol)
+			 * *volume; valueInEn = valueInEn + valueInPM; } if (valueInEn >= volume)
+			 * valueInEn= volume; solubleContent.put(sol, valueInEn);
+			 */
 		}
 //		HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get("kind1"));
 //		for (String sol : solubleContent.keySet()){
@@ -231,14 +244,8 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
 				solubleContent, initOrgProp);
 		context.add(bud);
-		//			tMembrane = tMembrane - bud.initOrgProp.get("area");
-//		bud.area = initOrgProp.get("area");
-//		bud.volume = initOrgProp.get("volume");
-//		bud.size = initOrgProp.get("maxRadius");// radius of a sphere with the volume of the
-		// cylinder
 		bud.speed = 1d / bud.size;
 		bud.heading = -90;// heading down
-		// NdPoint myPoint = space.getLocation(bud);
 		double rnd = Math.random();
 		double upPosition = 25 + rnd* (25 - 4 * cellLimit);
 		space.moveTo(bud, rnd * 50, upPosition);
@@ -313,8 +320,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		context.add(bud);
 		bud.area = area; initOrgProp.get("area");
 		bud.volume = volume; initOrgProp.get("volume");
-//		bud.size = initOrgProp.get("maxRadius");// radius of a sphere with the volume of the
-		// cylinder
+
 		bud.speed = 1d / bud.size;
 		bud.heading = -90;// heading down
 		// NdPoint myPoint = space.getLocation(bud);

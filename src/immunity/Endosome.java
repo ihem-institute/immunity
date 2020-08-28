@@ -175,15 +175,15 @@ public class Endosome {
 //		}
 
 		endosomeShape(this);
-//		EndosomeMove.changeDirection(this);
-		EndosomeMove.moveTowards(this);
+//		OrganelleMove.changeDirection(this);
+		OrganelleMove.moveTowards(this);
 //		if (this.solubleContent.containsKey("mvb")) this.membraneContent.put("chol", 0d);
 //		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
 //		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
 		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
 		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
-		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
-		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
+		if (Math.random()<p_EndosomeFusionStep) FusionStep.fusion(this);
+		if (Math.random()<p_EndosomeSplitStep) FissionStep.split(this);
 		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%100 ==0) 
@@ -191,7 +191,7 @@ public class Endosome {
 		// rabConversionN();
 		String name =  CellProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
 		if (Math.random() < 1 && !name.equals("null"))EndosomeCopasiStep.antPresTimeSeriesLoad(this);
-		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);
+		if (Math.random()<p_EndosomeRecycleStep)RecycleStep.recycle(this);
 		
 
 	}
