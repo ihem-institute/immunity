@@ -302,7 +302,7 @@ public class CellProperties {
 //					NEED TO IMPROVE THIS
 			}
 			// INITIAL ORGANELLES kind Large is for phagosomes
-			case "kind1": case "kind2": case "kind3": case "kind4": case "kind5": case "kind6": case "kindLarge":
+			case "kind1": case "kind2": case "kind3": case "kind4": case "kind5": case "kind6":case "kind7": case "kind8": case "kind9": case "kindLarge":
 			{
 				InitialOrganelles inOr = InitialOrganelles.getInstance();
 				inOr.getDiffOrganelles().add(b[0]);

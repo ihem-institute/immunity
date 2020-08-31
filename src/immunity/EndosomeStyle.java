@@ -224,6 +224,10 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 			else if (rabColor.equals("RabC"))	return new Color (0,255,0);
 			else if (rabColor.equals("RabD"))	return new Color (255,0,0);
 			else if (rabColor.equals("RabE"))	return new Color (255,255,0);
+			else if (rabColor.equals("RabF"))	return new Color (200,200,0);
+			else if (rabColor.equals("RabG"))	return new Color (150,150,0);
+			else if (rabColor.equals("RabH"))	return new Color (100,100,0);
+			else if (rabColor.equals("RabI"))	return new Color (50,50,0);
 			else	return new Color (0,0,0);
 		}
 

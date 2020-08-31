@@ -52,7 +52,10 @@ public class UptakeStep2 {
 		rabCode.put("RabC", "kind3");
 		rabCode.put("RabD", "kind4");
 		rabCode.put("RabE", "kind5");
-
+		rabCode.put("RabF", "kind6");
+		rabCode.put("RabG", "kind7");
+		rabCode.put("RabH", "kind8");
+		rabCode.put("RabI", "kind9");
 		for (String rab : totalRabs.keySet()){
 			//			System.out.println("ErrorRabs  "+ rab + "   " +initialTotalRabs.get(rab) +"     "+ totalRabs.get(rab));
 			double value = initialTotalRabs.get(rab) - totalRabs.get(rab);
@@ -264,10 +267,74 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 
 	private static void newOrganelle(Cell cell, String selectedRab, HashMap<String, String> rabCode) {
 		String kind = rabCode.get(selectedRab);
+		boolean isNewGolgi = CellProperties.getInstance().getRabOrganelle().get(selectedRab).contains("Golgi");
+		if(isNewGolgi) {// new Golgi organelle
+			HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
+			double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
+			double maxRadius = initOrgProp.get("maxRadius");
+			double maxAsym = initOrgProp.get("maxAsym");
+			double minRadius = Cell.rcyl*1.1;
+			double a = RandomHelper.nextDoubleFromTo(minRadius,maxRadius);// radius cylinder Gogli cisterna				
+			double c = minRadius; //cylinder height
+			double area = 2* Math.PI*Math.pow(a, 2)+ 2*Math.PI*a*c;
+			double volume =Math.PI*Math.pow(a, 2)* c;
+			initOrgProp.put("area", area);
+			initOrgProp.put("volume", volume);
+			double value = Results.instance.getTotalRabs().get(selectedRab);
+			value = value + area;
+			Results.instance.getTotalRabs().put(selectedRab, value);
+			HashMap<String, Double> rabContent = new HashMap<String, Double>();
+			rabContent.put(selectedRab, area);
+			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
+			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
+			HashSet<String> solubleMet = new HashSet<String>(CellProperties.getInstance().getSolubleMet());
+			HashSet<String> membraneMet = new HashSet<String>(CellProperties.getInstance().getMembraneMet());
+//				This is getting the keyset of the membrane metabolisms
+			// MEMBRANE CONTENT.  For a new organelle, with the Rab that was selected to compensate lost, the membrane content is taken from the total
+			// membrane content associated to this rab/total area of the rab.  This is an average of the membrane content associated to the specific
+			// Rab.  Marker is set to zero.
+					for (String mem : membraneMet){
+						//				System.out.println(mem + "  MMEEMM " + selectedRab + "\n " + Results.getInstance().getContentDist());
+						value = Results.getInstance().getContentDist().get(mem+selectedRab)
+								/Results.getInstance().getTotalRabs().get(selectedRab);
+						membraneContent.put(mem, value * area);
+					}
+					membraneContent.put("membraneMarker", 0d);
+			// SOLUBLE CONTENT.  For a new organelle, with the Rab that was selected to compensate lost, the soluble content is taken from the total
+			// soluble content associated to this rab/total volume surrounded by the rab.  This is an average of the soluble content associated to the specific
+			// Rab.  Marker and mvb is set to zero
+					for (String sol : solubleMet){
+						value = Results.getInstance().getContentDist().get(sol+selectedRab)
+								/Results.getInstance().getTotalVolumeRabs().get(selectedRab);
+						solubleContent.put(sol, value * volume);
+					}
+					solubleContent.put("mvb", 0d);
+					solubleContent.put("solubleMarker", 0d);
+					Context<Object> context = ContextUtils.getContext(cell);
+					ContinuousSpace<Object> space = cell.getSpace();
+					Grid<Object> grid = cell.getGrid();
+					Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
+							solubleContent, initOrgProp);
+					context.add(bud);
+					bud.area = area; 
+					bud.volume = volume; 
+					bud.speed = 1d / bud.size;
+					bud.heading = -90;// heading down
+					// NdPoint myPoint = space.getLocation(bud);
+					double rnd = Math.random();
+					space.moveTo(bud, rnd * 50, 5d);
+					grid.moveTo(bud, (int) rnd * 50, (int) (5));
+
+
+//					System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
+	
+		}
+		else {// new non Golgi organelles
 		System.out.println(kind + " UPTAKE INITIAL ORGANELLES " +	InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 
 		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
 				InitialOrganelles.getInstance().getInitOrgProp().get(kind));
+		
 		//		double tMembrane = Cell.getInstance().gettMembrane();
 		double maxRadius = initOrgProp.get("maxRadius");
 		double maxAsym = initOrgProp.get("maxAsym");
@@ -318,15 +385,15 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
 				solubleContent, initOrgProp);
 		context.add(bud);
-		bud.area = area; initOrgProp.get("area");
-		bud.volume = volume; initOrgProp.get("volume");
-
+		bud.area = area; 
+		bud.volume = volume;
 		bud.speed = 1d / bud.size;
 		bud.heading = -90;// heading down
 		// NdPoint myPoint = space.getLocation(bud);
 		double rnd = Math.random();
 		space.moveTo(bud, rnd * 50, 10 + rnd* 30);
 		grid.moveTo(bud, (int) rnd * 50, (int) (10 + rnd* 30));
+		}
 	}
 		
 }

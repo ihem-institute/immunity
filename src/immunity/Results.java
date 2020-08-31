@@ -316,19 +316,19 @@ public class Results {
 		for (String sol : solubleRecycle.keySet()) {
 //			System.out.println(" soluble "+ sol);
 			double value = solubleRecycle.get(sol);
-			contentDist.put("Pm"+sol, value);
+			contentDist.put(sol+"Pm", value);
 //			System.out.println("SOLUBLE  PM"+ sol + value );
 		}
 		for (String mem : membraneRecycle.keySet()) {
 			//System.out.println(" soluble "+ sol + " Rab " +rab);
 			double value = membraneRecycle.get(mem);
-			contentDist.put("Pm"+mem , value);
+			contentDist.put(mem+"Pm" , value);
 //			System.out.println("MEMBRANE PM  "+ mem + value);
 		}			
 		for (String sol : solubleCell.keySet()) {
 //			System.out.println(" soluble "+ sol);
 			double value = solubleCell.get(sol);
-			contentDist.put("Cy"+sol, value);
+			contentDist.put(sol+"Cy", value);
 //			System.out.println("SOLUBLE CELL  "+ sol + value );
 		}
 		
@@ -482,13 +482,13 @@ public class Results {
 	//(soluble or membrane) with all Rabs and sets the initial values to zero
 	public TreeMap<String, Double> content() {
 		for (String sol : solubleMet) {
-			contentDist.put("Pm"+sol, 0d);
+			contentDist.put(sol+"Pm", 0d);
 		} 
 		for (String mem : membraneMet) {
-			contentDist.put("Pm"+mem, 0d);
+			contentDist.put(mem+"Pm", 0d);
 		}
 		for (String sol : Cell.getInstance().getSolubleCell().keySet()) {
-			contentDist.put("Cy"+sol, 0d);
+			contentDist.put(sol+"Cy", 0d);
 		}
 		for (String rab : rabSet) {
 			for (String sol : solubleMet) {

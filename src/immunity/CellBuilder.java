@@ -125,7 +125,63 @@ public class CellBuilder implements ContextBuilder<Object> {
 			Set<String> diffOrganelles = InitialOrganelles.getInstance().getDiffOrganelles();
 			System.out.println(diffOrganelles);
 			for (String kind : diffOrganelles){
-				if (!kind.equals("kindLarge")){
+				HashMap<String, Double> rabKindContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
+				if(isGolgi(rabKindContent)) {
+					HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
+					double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
+					double maxRadius = initOrgProp.get("maxRadius");
+					double maxAsym = initOrgProp.get("maxAsym");
+					double minRadius = Cell.rcyl*1.1;
+					while (totalArea > 32d*Math.PI*minRadius*minRadius){
+
+						double a = RandomHelper.nextDoubleFromTo(minRadius,maxRadius);// radius cylinder Gogli cisterna				
+						double c = minRadius; //cylinder height
+						double area = 2* Math.PI*Math.pow(a, 2)+ 2*Math.PI*a*c;
+						double volume =Math.PI*Math.pow(a, 2)* c;
+						initOrgProp.put("area", area);
+						initOrgProp.put("volume", volume);
+						totalArea = totalArea-area;
+
+						HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
+						for (String rab : rabContent.keySet()){
+							double rr = rabContent.get(rab);
+							rabContent.put(rab, rr*area);
+						}
+						HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
+						for (String mem : membraneContent.keySet()){
+							if (mem.equals("membraneMarker")){
+								membraneContent.put(mem, 1d);
+								InitialOrganelles.getInstance().getInitMembraneContent().get(kind).remove("membraneMarker");
+							}
+							else {double mm = membraneContent.get(mem);
+							membraneContent.put(mem, mm*area);
+							}
+						}
+
+						HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
+						for (String sol : solubleContent.keySet()){
+							if (sol.equals("solubleMarker")){
+								solubleContent.put(sol, 1d);
+								InitialOrganelles.getInstance().getInitSolubleContent().get(kind).remove("solubleMarker");
+							}
+							else {double ss = solubleContent.get(sol);
+							solubleContent.put(sol, ss*volume);
+							}
+						}
+
+
+						Endosome end = new Endosome(space, grid, rabContent, membraneContent,
+								solubleContent, initOrgProp);
+						context.add(end);
+						Endosome.endosomeShape(end);
+
+//						System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
+
+					}	
+
+					
+				}
+				else if (!kind.equals("kindLarge")){// all non Golgi organelles
 					HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 					double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
 					double maxRadius = initOrgProp.get("maxRadius");
@@ -330,7 +386,18 @@ public class CellBuilder implements ContextBuilder<Object> {
 		
 	}
 	
-	
+	private static boolean isGolgi(HashMap<String, Double> rabContent) {
+		double areaGolgi = 0d;
+		for (String rab : rabContent.keySet()){
+			String name = CellProperties.getInstance().rabOrganelle.get(rab);
+			if (name.contains("Golgi")) {areaGolgi = areaGolgi + rabContent.get(rab);} 
+		}
+		boolean isGolgi = false;
+		if (areaGolgi >= 0.5) {
+			isGolgi = true;
+		}
+		return isGolgi;
+	}	
 
 /*	private void loadFromExcel(Context<Endosome> context, ContinuousSpace<Object> space, Grid<Object> grid)
 
