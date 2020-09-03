@@ -61,7 +61,7 @@ public class EndosomeRecycleStepTests {
 			this.endosome.rabContent.clear();
 			this.endosome.rabContent.put("RabA", 5026.548);
 			this.endosome.solubleContent.put("ova", 1000d);
-			CellProperties.getInstance().rabRecyProb.put("RabA", 1d);
+			ModelProperties.getInstance().rabRecyProb.put("RabA", 1d);
 //			HashMap<String,Double> initial = new HashMap<String,Double>(this.endosome.solubleContent);
 			double yPosition = 49.999-i;
 			this.endosome.getSpace().moveTo(this.endosome, 25, yPosition);

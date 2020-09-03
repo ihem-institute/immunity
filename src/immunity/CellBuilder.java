@@ -82,8 +82,8 @@ public class CellBuilder implements ContextBuilder<Object> {
 						new SimpleGridAdder<Object>(), true, 50, 100));
 
 //  introduce the agents in the space
-		CellProperties cellProperties = CellProperties.getInstance();
-//		System.out.println(" builder CellProperties cargado");
+		ModelProperties cellProperties = ModelProperties.getInstance();
+//		System.out.println(" builder ModelProperties cargado");
 		context.add(cellProperties);	
 //		Cell cell = Cell.getInstance();
 		context.add(new Cell(space, grid));
@@ -118,7 +118,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 		}
 		// ENDOSOMES
 		
-		if (CellProperties.getInstance().getCellK().get("freezeDry").equals(0d))
+		if (ModelProperties.getInstance().getCellK().get("freezeDry").equals(0d))
 // RabA is Rab5.  Organelles are constructed with a given radius that depend on the type (EE, LE, Lys) and with a 
 // total surface.  These values were obtained of simulations that progressed by 40000 steps
 		{
@@ -126,18 +126,20 @@ public class CellBuilder implements ContextBuilder<Object> {
 			System.out.println(diffOrganelles);
 			for (String kind : diffOrganelles){
 				HashMap<String, Double> rabKindContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
-				if(isGolgi(rabKindContent)) {
+				if(isGolgi(rabKindContent)) {// create a single cistern with all the available area. 2*rcyl high
 					HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
-					double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
-					double maxRadius = initOrgProp.get("maxRadius");
-					double maxAsym = initOrgProp.get("maxAsym");
-					double minRadius = Cell.rcyl*1.1;
-					while (totalArea > 32d*Math.PI*minRadius*minRadius){
-
-						double a = RandomHelper.nextDoubleFromTo(minRadius,maxRadius);// radius cylinder Gogli cisterna				
-						double c = minRadius; //cylinder height
-						double area = 2* Math.PI*Math.pow(a, 2)+ 2*Math.PI*a*c;
-						double volume =Math.PI*Math.pow(a, 2)* c;
+					double totalArea = initOrgProp.get("area")/ModelProperties.getInstance().getCellK().get("orgScale");
+//					double maxRadius = initOrgProp.get("maxRadius");
+//					double maxAsym = initOrgProp.get("maxAsym");
+//					double minRadius = maxRadius*0.5;
+//					while (totalArea > 32d*Math.PI*minRadius*minRadius){
+						double aq = 2d*Math.PI;
+						double bq = 4*Math.PI*Cell.rcyl;
+						double cq = -totalArea;
+						double dq =  bq * bq - 4 * aq * cq;
+						double radius = ( - bq + Math.sqrt(dq))/(2*aq);
+						double area = totalArea;
+						double volume =Math.PI*Math.pow(radius, 2)* 2 * Cell.rcyl;
 						initOrgProp.put("area", area);
 						initOrgProp.put("volume", volume);
 						totalArea = totalArea-area;
@@ -178,12 +180,9 @@ public class CellBuilder implements ContextBuilder<Object> {
 //						System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
 
 					}	
-
-					
-				}
 				else if (!kind.equals("kindLarge")){// all non Golgi organelles
 					HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
-					double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
+					double totalArea = initOrgProp.get("area")/ModelProperties.getInstance().getCellK().get("orgScale");
 					double maxRadius = initOrgProp.get("maxRadius");
 					double maxAsym = initOrgProp.get("maxAsym");
 					double minRadius = Cell.rcyl*1.1;
@@ -240,7 +239,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 				else {
 					//				create a phagosome
 					HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
-					double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
+					double totalArea = initOrgProp.get("area")/ModelProperties.getInstance().getCellK().get("orgScale");
 					double maxRadius = initOrgProp.get("maxRadius");
 					double maxAsym = initOrgProp.get("maxAsym");
 					double minRadius = Cell.rcyl*1.1;
@@ -298,7 +297,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 		}
 		else
 //			if endosomes are loadaed from a freezeDry csv file
-//			CellProperties.getInstance().getCellK().get("freezeDry").equals(1d)
+//			ModelProperties.getInstance().getCellK().get("freezeDry").equals(1d)
 			
 		{
 			
@@ -334,7 +333,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 //		}
 		// Cell
 		//context.add(Cell.getInstance());
-		//context.add(CellProperties.getInstance());
+		//context.add(ModelProperties.getInstance());
 
 		// Locate the object in the space and grid
 		for (Object obj : context) {
@@ -357,7 +356,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 				((MT) obj).changePosition((MT)obj);
 			} 
 // Find new position for endosomes unless they are coming from a freezeDry file
-			if (obj instanceof Endosome && CellProperties.getInstance().getCellK().get("freezeDry").equals(0d) ) {
+			if (obj instanceof Endosome && ModelProperties.getInstance().getCellK().get("freezeDry").equals(0d) ) {
 			double position = ((Endosome) obj).getInitOrgProp().get("position");
 //				NdPoint pt = space.getLocation(obj);
 				double y = 5d + 40d * position + RandomHelper.nextDoubleFromTo(-4d, 4d);
@@ -389,7 +388,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 	private static boolean isGolgi(HashMap<String, Double> rabContent) {
 		double areaGolgi = 0d;
 		for (String rab : rabContent.keySet()){
-			String name = CellProperties.getInstance().rabOrganelle.get(rab);
+			String name = ModelProperties.getInstance().rabOrganelle.get(rab);
 			if (name.contains("Golgi")) {areaGolgi = areaGolgi + rabContent.get(rab);} 
 		}
 		boolean isGolgi = false;

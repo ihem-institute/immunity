@@ -18,17 +18,17 @@ public class EndosomeAssessCompatibility {
 	}
 
 	private static double getCompatibility(String rabX, String rabY) {
-		if (!CellProperties.getInstance().rabCompatibility.containsKey(rabX + rabY)
-				&& !CellProperties.getInstance().rabCompatibility.containsKey(rabY + rabX))
+		if (!ModelProperties.getInstance().rabCompatibility.containsKey(rabX + rabY)
+				&& !ModelProperties.getInstance().rabCompatibility.containsKey(rabY + rabX))
 			return 0;
-		if (CellProperties.getInstance().rabCompatibility.containsKey(rabX + rabY)) {
+		if (ModelProperties.getInstance().rabCompatibility.containsKey(rabX + rabY)) {
 			// System.out.println("COMPATIB");
 			// System.out.println(rabCompatibility.get(rabX+rabY));
-			return CellProperties.getInstance().rabCompatibility.get(rabX + rabY);
+			return ModelProperties.getInstance().rabCompatibility.get(rabX + rabY);
 
 		} else {
 
-			return CellProperties.getInstance().rabCompatibility.get(rabY + rabX);
+			return ModelProperties.getInstance().rabCompatibility.get(rabY + rabX);
 		}
 	}
 

@@ -70,7 +70,7 @@ public class FissionStep {
 		// cylinder high
 		double vcylinder = volMincyl; // volume	
 		// minimum cylinder
-		if (CellProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi"))
+		if (ModelProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi"))
 		{ // Golgi domain
 			double probFission = (endosome.area - Cell.minCistern)/(2*Cell.maxCistern-Cell.minCistern);// hacer constante
 			if ( Math.random() > probFission){
@@ -393,11 +393,11 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 	private static void membraneContentSplit(Endosome endosome, String rabInTube, Double so, Double sVesicle) {
 		// MEMBRANE CONTENT IS DISTRIBUTED according rabTropism
 		// new with a copy of endosome.membraneContent;
-		// copy rabTropism from CellProperties
+		// copy rabTropism from ModelProperties
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
 		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
-				CellProperties.getInstance().getRabTropism());
+				ModelProperties.getInstance().getRabTropism());
 		for (String content : copyMembrane.keySet()) {
 // if no especification, even distribution proportional to the area
 			if (!rabTropism.containsKey(content)){
@@ -473,7 +473,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 		HashMap<String, Double> copySoluble = new HashMap<String, Double>(
 						endosome.solubleContent);
 		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
-						CellProperties.getInstance().getRabTropism());
+						ModelProperties.getInstance().getRabTropism());
 				
 		for (String content : copySoluble.keySet()) {
 			if (!rabTropism.containsKey(content)) 
@@ -508,7 +508,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 		HashMap<String, Double> copySoluble = new HashMap<String, Double>(
 				endosome.solubleContent);
 //		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
-//				CellProperties.getInstance().getRabTropism());
+//				ModelProperties.getInstance().getRabTropism());
 		if (content.equals("solubleMarker")
 				&& (endosome.solubleContent.get("solubleMarker") > 0.9)) {
 			if (Math.random() < vVesicle / vo) endosome.solubleContent.put(content, 1d);
@@ -524,7 +524,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 		HashMap<String, Double> copySoluble = new HashMap<String, Double>(
 				endosome.solubleContent);
 //		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
-//				CellProperties.getInstance().getRabTropism());
+//				ModelProperties.getInstance().getRabTropism());
 		
 		
 //		if (copySoluble.get(content) > vVesicle) {
@@ -538,7 +538,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 		HashMap<String, Double> copySoluble = new HashMap<String, Double>(
 				endosome.solubleContent);
 //		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
-//				CellProperties.getInstance().getRabTropism());
+//				ModelProperties.getInstance().getRabTropism());
 		double vcylinder = vo - vVesicle;
 		if (copySoluble.get(content) > vcylinder) {
 			endosome.solubleContent.put(content,
@@ -552,7 +552,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
 //		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
-//				CellProperties.getInstance().getRabTropism());
+//				ModelProperties.getInstance().getRabTropism());
 		double scylinder = so - sVesicle;
 		if (copyMembrane.get(content) > scylinder) {
 			endosome.membraneContent.put(content,
@@ -567,7 +567,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
 //		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
-//				CellProperties.getInstance().getRabTropism());
+//				ModelProperties.getInstance().getRabTropism());
 		if (copyMembrane.get(content) > sVesicle) {
 			endosome.membraneContent.put(content, sVesicle);
 		} else
@@ -631,7 +631,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 				double totalTubuleTropism = 0d;
 //				add all the tubule tropisms of the rab domains
 				for (String rab1 : keys) {
-					totalTubuleTropism = totalTubuleTropism + CellProperties.getInstance().getTubuleTropism().get(rab1);
+					totalTubuleTropism = totalTubuleTropism + ModelProperties.getInstance().getTubuleTropism().get(rab1);
 				}
 
 // 				select a random number between 0 and total tubule tropism.  Notice that it can be zero
@@ -639,7 +639,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 				double tubuleTropism = 0d;
 //				select a rab domain with a probability proportional to its tubule tropism
 				for (String rab1 : keys){
-				tubuleTropism = tubuleTropism + CellProperties.getInstance().getTubuleTropism().get(rab1);
+				tubuleTropism = tubuleTropism + ModelProperties.getInstance().getTubuleTropism().get(rab1);
 					if (rnd <= tubuleTropism){
 						System.out.println(copyMap + " RabInTubeSelected " + rab1);
 						return rab1;
@@ -657,7 +657,7 @@ System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+" 
 //			while (rab == null) {
 //				for (Object rab1 : keys) {
 ////					System.out.println(rab1 + " "+ tubuleTropism);
-//					if (Math.random() < CellProperties.getInstance().getTubuleTropism().get(rab1)) {
+//					if (Math.random() < ModelProperties.getInstance().getTubuleTropism().get(rab1)) {
 //						System.out.println(copyMap + "RabInTubeSelected" + rab1);
 //						return (String) rab1;
 //					}

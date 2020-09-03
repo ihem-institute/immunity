@@ -31,7 +31,7 @@ public class RecycleStep {
  * and PM membrane.
  */
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
-		String organelle = CellProperties.getInstance().getRabOrganelle().get(maxRab);    
+		String organelle = ModelProperties.getInstance().getRabOrganelle().get(maxRab);    
 		if (organelle.equals("EE")) recycleEE(endosome, maxRab);
 		if (organelle.equals("RE")) recycleRE(endosome, maxRab);
 		else return;
@@ -50,7 +50,7 @@ public class RecycleStep {
 		 * endosome.membraneContent.put("Tf", 0d); return; } double recyProb = 0.0; for
 		 * (String rab: endosome.rabContent.keySet()){ recyProb = recyProb +
 		 * endosome.rabContent.get(rab) / endosome.area
-		 * CellProperties.getInstance().rabRecyProb.get(rab); } if (Math.random() >=
+		 * ModelProperties.getInstance().rabRecyProb.get(rab); } if (Math.random() >=
 		 * recyProb){ return;} // if not near the PM // or without a recycling Rab
 		 * return // recycling Rabs are RabA and RabC (Rab11) else { // RECYCLE //
 		 * Recycle membrane content HashMap<String, Double> membraneRecycle =
@@ -72,7 +72,7 @@ public class RecycleStep {
 		 * endosome.solubleContent.clear(); endosome.solubleContent.put("proton",
 		 * endopH); endosome.getEndosomeTimeSeries().clear();
 		 * PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear(); double
-		 * rcyl = CellProperties.getInstance().getCellK().get("rcyl");// radius tubule
+		 * rcyl = ModelProperties.getInstance().getCellK().get("rcyl");// radius tubule
 		 * double h = (endosome.area-2*Math.PI*rcyl*rcyl)/(2*Math.PI*rcyl);// length of
 		 * a tubule with the area of the recycled endosome endosome.volume =
 		 * Math.PI*rcyl*rcyl*h; // new volume of the endosome, now converted in a
@@ -127,7 +127,7 @@ public class RecycleStep {
 			endosome.solubleContent.put("proton", endopH);
 			endosome.getEndosomeTimeSeries().clear();
 			PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
-			double rcyl = CellProperties.getInstance().getCellK().get("rcyl");// radius tubule
+			double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");// radius tubule
 			double h = (endosome.area-2*Math.PI*rcyl*rcyl)/(2*Math.PI*rcyl);// length of a tubule with the area of the recycled endosome
 			endosome.volume = Math.PI*rcyl*rcyl*h; // new volume of the endosome, now converted in a tubule.
 			endosome.heading = -90; //moving in the nucleus direction
@@ -189,7 +189,7 @@ public class RecycleStep {
 			PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
 			System.out.println("RECYCLING OF EE  " + plasmaMembrane);
 			/*
-			 * double rcyl = CellProperties.getInstance().getCellK().get("rcyl");// radius
+			 * double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");// radius
 			 * tubule double h = (endosome.area-2*Math.PI*rcyl*rcyl)/(2*Math.PI*rcyl);//
 			 * length of a tubule with the area of the recycled endosome endosome.volume =
 			 * Math.PI*rcyl*rcyl*h; // new volume of the endosome, now converted in a

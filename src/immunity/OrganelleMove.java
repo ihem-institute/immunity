@@ -19,7 +19,7 @@ public class OrganelleMove {
 	
 	public static void moveTowards(Endosome endosome) {
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
-		String organelleName = CellProperties.getInstance().rabOrganelle.get(maxRab);
+		String organelleName = ModelProperties.getInstance().rabOrganelle.get(maxRab);
 		if ( 
 				endosome.area >= Cell.minCistern// minimal cistern Golgi absolute Scale hacer constante
 				&& isGolgi(endosome)){ // test if it is Golgi
@@ -34,7 +34,7 @@ public class OrganelleMove {
 	private static boolean isGolgi(Endosome endosome) {
 		double areaGolgi = 0d;
 		for (String rab : endosome.rabContent.keySet()){
-			String name = CellProperties.getInstance().rabOrganelle.get(rab);
+			String name = ModelProperties.getInstance().rabOrganelle.get(rab);
 			if (name.contains("Golgi")) {areaGolgi = areaGolgi + endosome.rabContent.get(rab);} 
 		}
 		boolean isGolgi = false;
@@ -149,7 +149,7 @@ public class OrganelleMove {
 			Random fRandom = new Random();
 			double finalh = 0;
 			finalh = finalh + fRandom.nextGaussian() * 45d/endosome.size;// inertial depending size
-			finalh = finalh + fRandom.nextGaussian() * 1d * 800d/momentum;// inertial depending momentum
+//			finalh = finalh + fRandom.nextGaussian() * 1d * 800d/momentum;// inertial depending momentum
 			finalh = initialh + finalh;
 
 // The speed is random between 0 and a value inversely proportional to the endosome size
@@ -201,7 +201,7 @@ public class OrganelleMove {
 				if (isTubule)
 					{
 //					System.out.println("IS TUBULE"+ rabDir);
-					mtDir = CellProperties.getInstance().mtTropismTubule.get(rabDir);
+					mtDir = ModelProperties.getInstance().mtTropismTubule.get(rabDir);
 					if (Math.random()<Math.abs(mtDir)) {
 // 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
 						if (Math.signum(mtDir)>=0) {mtDir = 0;} else {mtDir = 1;}
@@ -213,7 +213,7 @@ public class OrganelleMove {
 					} // if no a tubule
 				else
 					{
-					mtDir = CellProperties.getInstance().mtTropismRest.get(rabDir);
+					mtDir = ModelProperties.getInstance().mtTropismRest.get(rabDir);
 //					System.out.println("IS NOT TUBULE"+ mtDir);
 					if (Math.random()< Math.abs(mtDir)) {
 // 0 means to plus end of MT (to PM); +1 means to the minus end of MT (to nucleus)

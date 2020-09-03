@@ -36,7 +36,7 @@ public class Results {
 	private static Grid<Object> grid;
 
 
-	CellProperties cellProperties = CellProperties.getInstance();
+	ModelProperties cellProperties = ModelProperties.getInstance();
 
 	public HashMap<String, Double> cellK = cellProperties.getCellK();
 	public Set<String> solubleMet = cellProperties.getSolubleMet();
@@ -286,10 +286,10 @@ public class Results {
 		List<Endosome> allEndosomes = new ArrayList<Endosome>();
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		if (tick == 1) {
-			for (String mem : CellProperties.getInstance().getMembraneMet()) {
+			for (String mem : ModelProperties.getInstance().getMembraneMet()) {
 			initialTotalMembraneCargo.put(mem, 0d);	
 			}
-			for (String sol : CellProperties.getInstance().getSolubleMet()) {
+			for (String sol : ModelProperties.getInstance().getSolubleMet()) {
 			initialTotalSolubleCargo.put(sol, 0d);	
 			}
 			for (Object obj : grid.getObjects()) {

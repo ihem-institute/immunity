@@ -130,7 +130,7 @@ public class EndosomeUptakeStep {
 
 	// 		Soluble and membrane content of the kind1, but cMHCI and mHCI depends now on PM content
 		HashMap<String, Double> membraneContent = new HashMap<String,Double>();
-		Set<String> membraneMet = new HashSet<String>(CellProperties.getInstance().getMembraneMet());
+		Set<String> membraneMet = new HashSet<String>(ModelProperties.getInstance().getMembraneMet());
 		for (String mem : membraneMet){
 			double valueInEn = 0d;
 			double valueInPM =0d;
@@ -139,7 +139,7 @@ public class EndosomeUptakeStep {
 			if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey(mem))
 			{
 				double valuePM = PlasmaMembrane.getInstance().getMembraneRecycle().get(mem);
-				valueInPM = valuePM * CellProperties.getInstance().getUptakeRate().get(mem) * area/ PlasmaMembrane.getInstance().getPlasmaMembraneArea();	
+				valueInPM = valuePM * ModelProperties.getInstance().getUptakeRate().get(mem) * area/ PlasmaMembrane.getInstance().getPlasmaMembraneArea();	
 
 				if (valueInPM >= area) 
 				{
@@ -168,7 +168,7 @@ public class EndosomeUptakeStep {
 		}
 //	System.out.println("RRRRRRRRRRRRRRRRRRRRRREEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSS "+ membraneContent);
 		HashMap<String, Double> solubleContent = new HashMap<String,Double>();
-		Set<String> solubleMet = new HashSet<String>(CellProperties.getInstance().getSolubleMet());
+		Set<String> solubleMet = new HashSet<String>(ModelProperties.getInstance().getSolubleMet());
 		for (String sol : solubleMet){
 			double valueInEn = 0d;
 			double valueInPM =0d;
@@ -295,8 +295,8 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>();
-		HashSet<String> solubleMet = new HashSet<String>(CellProperties.getInstance().getSolubleMet());
-		HashSet<String> membraneMet = new HashSet<String>(CellProperties.getInstance().getMembraneMet());
+		HashSet<String> solubleMet = new HashSet<String>(ModelProperties.getInstance().getSolubleMet());
+		HashSet<String> membraneMet = new HashSet<String>(ModelProperties.getInstance().getMembraneMet());
 //	This is getting the keyset of the membrane metabolisms
 // MEMBRANE CONTENT.  For a new organelle, with the Rab that was selected to compensate lost, the membrane content is taken from the total
 // membrane content associated to this rab/total area of the rab.  This is an average of the membrane content associated to the specific

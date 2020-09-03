@@ -56,6 +56,21 @@ public class UptakeStep2 {
 		rabCode.put("RabG", "kind7");
 		rabCode.put("RabH", "kind8");
 		rabCode.put("RabI", "kind9");
+//		NEW UPTAKE EVENT
+		double areaPM = PlasmaMembrane.getInstance().getPlasmaMembraneArea();
+		double initialAreaPM = PlasmaMembrane.getInstance().getInitialPlasmaMembraneArea();
+
+		if(areaPM > initialAreaPM) {
+		System.out.println(" 	NEW UPTAKE    " + areaPM + "    "+initialAreaPM);
+		newUptake(cell,"RabA");
+		System.out.println(" 	NEW UPTAKE    " + PlasmaMembrane.getInstance().getPlasmaMembraneArea() + "    "+initialAreaPM);}
+//		NEW SECRETORY EVENT
+		if (true)
+		newSecretion(cell,"RabI");
+		
+//		COMPENSATORY NEW ORGANELLE
+
+
 		for (String rab : totalRabs.keySet()){
 			//			System.out.println("ErrorRabs  "+ rab + "   " +initialTotalRabs.get(rab) +"     "+ totalRabs.get(rab));
 			double value = initialTotalRabs.get(rab) - totalRabs.get(rab);
@@ -76,13 +91,20 @@ public class UptakeStep2 {
 		//		no uptake is required
 		if (selectedRab.equals("")|| deltaRabs.get(selectedRab)<45000) return;
 		//if the selected Rab correspond to Early Endosomes, new uptake
-		String selectedOrganelle = CellProperties.getInstance().getRabOrganelle().get(selectedRab);
+		String selectedOrganelle = ModelProperties.getInstance().getRabOrganelle().get(selectedRab);
 		if (selectedOrganelle.equals("EE")){ 
 			newUptake(cell,selectedRab);}
+		if (selectedOrganelle.equals("ERGIC")){ 
+			newSecretion(cell,selectedRab);}
 		else {newOrganelle(cell, selectedRab, rabCode);}
 
 	}
 		
+	private static void newSecretion(Cell cell, String selectedRab) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private static void newUptake(Cell cell, String selectedRab) {
 		double cellLimit = 3d * Cell.orgScale;
 		System.out.println("UPTAKE INITIAL ORGANELLES " +	InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
@@ -106,7 +128,7 @@ public class UptakeStep2 {
 	//		membrane and there is RabA in the cell
 
 		double maxRadius = initOrgProp.get("maxRadius");
-		double minRadius = Cell.rcyl*1.1;
+		double minRadius = maxRadius/2;
 		double a = RandomHelper.nextDoubleFromTo(minRadius,maxRadius);				
 		double c = a + a  * Math.random() * initOrgProp.get("maxAsym");
 
@@ -115,6 +137,7 @@ public class UptakeStep2 {
 		double cf= Math.pow(c, f);
 		double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
 		double plasmaMembrane = PlasmaMembrane.getInstance().getPlasmaMembraneArea() - area;
+//		System.out.println("LUETO DE UPTAKE  "+ plasmaMembrane);
 		PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
 		double volume = 4d/3d*Math.PI*a*a*c;
 		initOrgProp.put("area", area);
@@ -146,7 +169,7 @@ public class UptakeStep2 {
 		 * */
 		
 		HashMap<String, Double> membraneContent = new HashMap<String,Double>();
-		Set<String> membraneMet = new HashSet<String>(CellProperties.getInstance().getMembraneMet());
+		Set<String> membraneMet = new HashSet<String>(ModelProperties.getInstance().getMembraneMet());
 		for (String mem : membraneMet){
 			double valueInEn = 0d;
 			double valueInPM =0d;
@@ -155,7 +178,7 @@ public class UptakeStep2 {
 			if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey(mem))
 			{
 				double valuePM = PlasmaMembrane.getInstance().getMembraneRecycle().get(mem);
-				valueInPM = valuePM * CellProperties.getInstance().getUptakeRate().get(mem) * area/ PlasmaMembrane.getInstance().getPlasmaMembraneArea();	
+				valueInPM = valuePM * ModelProperties.getInstance().getUptakeRate().get(mem) * area/ PlasmaMembrane.getInstance().getPlasmaMembraneArea();	
 
 				if (valueInPM >= area) valueInPM = area; // cannot incorporate more metabolite than its area
 				membraneContent.put(mem, valueInPM);
@@ -170,13 +193,9 @@ public class UptakeStep2 {
 			 * )*area; valueInTotal = valueInEn + valueInPM; } if (valueInTotal >= area)
 			 * valueInTotal= area;
 			 */
-			
-
-
 		}
-//	System.out.println("RRRRRRRRRRRRRRRRRRRRRREEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSS "+ membraneContent);
 		HashMap<String, Double> solubleContent = new HashMap<String,Double>();
-		Set<String> solubleMet = new HashSet<String>(CellProperties.getInstance().getSolubleMet());
+		Set<String> solubleMet = new HashSet<String>(ModelProperties.getInstance().getSolubleMet());
 		for (String sol : solubleMet){
 			double valueInEn = 0d;
 			double valueInPM =0d;
@@ -199,28 +218,23 @@ public class UptakeStep2 {
 			 * valueInEn= volume; solubleContent.put(sol, valueInEn);
 			 */
 		}
-//		HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get("kind1"));
-//		for (String sol : solubleContent.keySet()){
-//			double ss = solubleContent.get(sol);
-//			solubleContent.put(sol, ss*volume);
-//		}
+
 		solubleContent.put("proton", 3.98E-5*volume); //pH 7.4
-	// new endosome incorporate PM components in a proportion area new/area PM
-	//					"Fully conformed MHC-I proteins internalize with the
-	//					rate 0.002–0.004 min−1 (0.2–0.4% loss of initially surface expressed
-	//					molecules per minute, i.e. 12–24% per hour) which is 5–8-fold slower
-	//					than IR of their open forms (0.011–0.022 min−1), 
-	//					Molecular Immunology 55 (2013) 149– 152 (Pero Lucin)"
-	//One 60 radius endosomes has an area of about 45000 nm.  This is about 7.5% of the 1500 x 400 nm of
-	//the PM considered at the 1 organelle scale.  So to internalize 0.3%. a factor of 0.04 (0.3%/7.5%) is applied.
-	//Hence, factor = endosome area/ PM area * 0.04 for cMHCIa and pept-mHCI, and endosome area/ PM area * 0.2 for mHCI
-	/*				
+	/*		
+	 new endosome incorporate PM components in a proportion area new/area PM
+						"Fully conformed MHC-I proteins internalize with the
+						rate 0.002–0.004 min−1 (0.2–0.4% loss of initially surface expressed
+						molecules per minute, i.e. 12–24% per hour) which is 5–8-fold slower
+					than IR of their open forms (0.011–0.022 min−1), 
+						Molecular Immunology 55 (2013) 149– 152 (Pero Lucin)"
+	One 60 radius endosomes has an area of about 45000 nm.  This is about 7.5% of the 1500 x 400 nm of
+	the PM considered at the 1 organelle scale.  So to internalize 0.3%. a factor of 0.04 (0.3%/7.5%) is applied.
+	Hence, factor = endosome area/ PM area * 0.04 for cMHCIa and pept-mHCI, and endosome area/ PM area * 0.2 for mHCI
+				
 My problem is that I do not know the rate of uptake that depends on how much Kind1(Rab5) organelles are 
 switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 for open MHCI and 0.15 for closed.
-
-
-	 */					
-	/*			double cMHCIvalueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get("cMHCI");
+	
+				double cMHCIvalueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get("cMHCI");
 		double cMHCIvalue = cMHCIvalueIn * 0.4 * area/ (double) PlasmaMembrane.getInstance().area;
 		membraneContent.put("cMHCI", cMHCIvalue);
 		PlasmaMembrane.getInstance().getMembraneRecycle().put("cMHCI", cMHCIvalueIn - cMHCIvalue);
@@ -228,19 +242,13 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		double mHCIvalueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get("mHCI");
 		double mHCIvalue = mHCIvalueIn * 1 * area/ (double) PlasmaMembrane.getInstance().area;
 		membraneContent.put("mHCI", mHCIvalue);
-		PlasmaMembrane.getInstance().getMembraneRecycle().put("mHCI", mHCIvalueIn - mHCIvalue);
-	 *///			
-	//			for (String met : PlasmaMembrane.getInstance().getMembraneRecycle().keySet()){
-	//				double valueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get(met);
-	//				value = 0.001 * valueIn * initOrgProp.get("area")/PlasmaMembrane.getInstance().area;
-	//				if (value > area) {value = area;}
+		PlasmaMembrane.getInstance().getMembraneRecycle().put("mHCI", mHCIvalueIn - mHCIvalue);		
+					for (String met : PlasmaMembrane.getInstance().getMembraneRecycle().keySet()){
+					double valueIn = PlasmaMembrane.getInstance().getMembraneRecycle().get(met);
+					value = 0.001 * valueIn * initOrgProp.get("area")/PlasmaMembrane.getInstance().area;
+					if (value > area) {value = area;}
+	 */		
 
-
-//		System.out.println("PLASMA MEMBRANE "+PlasmaMembrane.getInstance().getMembraneRecycle());
-
-		//			Cell.getInstance().settMembrane(tMembrane);
-
-		// Cell.getInstance().setRabCell(rabCell);
 		Context<Object> context = ContextUtils.getContext(cell);
 		ContinuousSpace<Object> space = cell.getSpace();
 		Grid<Object> grid = cell.getGrid();
@@ -267,10 +275,10 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 
 	private static void newOrganelle(Cell cell, String selectedRab, HashMap<String, String> rabCode) {
 		String kind = rabCode.get(selectedRab);
-		boolean isNewGolgi = CellProperties.getInstance().getRabOrganelle().get(selectedRab).contains("Golgi");
+		boolean isNewGolgi = ModelProperties.getInstance().getRabOrganelle().get(selectedRab).contains("Golgi");
 		if(isNewGolgi) {// new Golgi organelle
 			HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
-			double totalArea = initOrgProp.get("area")/CellProperties.getInstance().getCellK().get("orgScale");
+			double totalArea = initOrgProp.get("area")/ModelProperties.getInstance().getCellK().get("orgScale");
 			double maxRadius = initOrgProp.get("maxRadius");
 			double maxAsym = initOrgProp.get("maxAsym");
 			double minRadius = Cell.rcyl*1.1;
@@ -287,8 +295,8 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 			rabContent.put(selectedRab, area);
 			HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 			HashMap<String, Double> solubleContent = new HashMap<String, Double>();
-			HashSet<String> solubleMet = new HashSet<String>(CellProperties.getInstance().getSolubleMet());
-			HashSet<String> membraneMet = new HashSet<String>(CellProperties.getInstance().getMembraneMet());
+			HashSet<String> solubleMet = new HashSet<String>(ModelProperties.getInstance().getSolubleMet());
+			HashSet<String> membraneMet = new HashSet<String>(ModelProperties.getInstance().getMembraneMet());
 //				This is getting the keyset of the membrane metabolisms
 			// MEMBRANE CONTENT.  For a new organelle, with the Rab that was selected to compensate lost, the membrane content is taken from the total
 			// membrane content associated to this rab/total area of the rab.  This is an average of the membrane content associated to the specific
@@ -356,8 +364,8 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 		HashMap<String, Double> solubleContent = new HashMap<String, Double>();
-		HashSet<String> solubleMet = new HashSet<String>(CellProperties.getInstance().getSolubleMet());
-		HashSet<String> membraneMet = new HashSet<String>(CellProperties.getInstance().getMembraneMet());
+		HashSet<String> solubleMet = new HashSet<String>(ModelProperties.getInstance().getSolubleMet());
+		HashSet<String> membraneMet = new HashSet<String>(ModelProperties.getInstance().getMembraneMet());
 //	This is getting the keyset of the membrane metabolisms
 // MEMBRANE CONTENT.  For a new organelle, with the Rab that was selected to compensate lost, the membrane content is taken from the total
 // membrane content associated to this rab/total area of the rab.  This is an average of the membrane content associated to the specific

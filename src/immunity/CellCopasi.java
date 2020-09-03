@@ -54,7 +54,7 @@ public class CellCopasi {
 		dataModel = CCopasiRootContainer.addDatamodel();
         assert CCopasiRootContainer.getDatamodelList().size() == 1;
         
-        String modelFileName = CellProperties.getInstance().getCopasiFiles().get("cellCopasi");
+        String modelFileName = ModelProperties.getInstance().getCopasiFiles().get("cellCopasi");
         
         try
         {

@@ -35,7 +35,7 @@ public class FusionStep {
 		
 // The organelle selected must be larger than a vesicles
 // rendo is the radius of a new endosome from PM and also of a new ERGIC from ER 
-		double rendo = CellProperties.getInstance().getCellK().get("rendo");//35.0; // radius vesicle/ 15393,804
+		double rendo = ModelProperties.getInstance().getCellK().get("rendo");//35.0; // radius vesicle/ 15393,804
 		if ((endosome.area <= 4 * Math.PI*Math.pow(rendo, 2))){return;};
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
@@ -109,7 +109,7 @@ public class FusionStep {
 			// include all endosomes
 			for (Endosome end : gr.items()) {
 				if (end.equals(endosome)) continue;// if it is itself 
-				double rendo = CellProperties.getInstance().getCellK().get("rendo");//35.0; // radius vesicle/ 15393,804
+				double rendo = ModelProperties.getInstance().getCellK().get("rendo");//35.0; // radius vesicle/ 15393,804
 				boolean isGolgi2 = isGolgi(end);				
 //If the second organelle is Golgi and it is large (cistern) only fuse if it is homotypic fusion
 				if (isGolgi2 // it is a Golgi structure
@@ -221,7 +221,7 @@ public class FusionStep {
 	private static boolean isGolgi(Endosome endosome) {
 		double areaGolgi = 0d;
 		for (String rab : endosome.getRabContent().keySet()){
-			String name = CellProperties.getInstance().rabOrganelle.get(rab);
+			String name = ModelProperties.getInstance().rabOrganelle.get(rab);
 			if (name.contains("Golgi")) {areaGolgi = areaGolgi + endosome.getRabContent().get(rab);} 
 		}
 		boolean isGolgi = false;

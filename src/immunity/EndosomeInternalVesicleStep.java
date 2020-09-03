@@ -17,7 +17,7 @@ public class EndosomeInternalVesicleStep {
 		
 //	Organelles with Rabs corresponding to EE, SE and LE can form internal vesicles
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
-		String organelle = CellProperties.getInstance().getRabOrganelle().get(maxRab);
+		String organelle = ModelProperties.getInstance().getRabOrganelle().get(maxRab);
 //		System.out.println("ORGANELLE  " + organelle);
 		if (!organelle.equals("EE")
 				&& !organelle.equals("SE")
@@ -37,7 +37,7 @@ public class EndosomeInternalVesicleStep {
 		 */
 //	lysSurface will allow large structures to form several internal vesicles
 // Other organelles form a single vesicle (notice that the for loop run at least once)
-		double rIV = CellProperties.getInstance().cellK.get("rcyl"); // Internal vesicle radius
+		double rIV = ModelProperties.getInstance().cellK.get("rcyl"); // Internal vesicle radius
 		double vIV = 4 / 3 * Math.PI * Math.pow(rIV, 3); // volume 33510
 		double sIV = 4 * Math.PI * Math.pow(rIV, 2);// surface 5026
 		int lysSurface = 0;
@@ -72,7 +72,7 @@ public class EndosomeInternalVesicleStep {
 				// volume
 	}
 	 HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
-	 CellProperties.getInstance().getRabTropism());
+	 ModelProperties.getInstance().getRabTropism());
 	endosome.area = endosome.area - sIV;
 	endosome.volume = endosome.volume + vIV;
 	Endosome.endosomeShape(endosome);

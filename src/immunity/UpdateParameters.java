@@ -70,23 +70,25 @@ public class UpdateParameters {
 //			System.out.println("lastAccessTime: " + attr.lastAccessTime());
 //			System.out.println("lastModifiedTime: " + attr.lastModifiedTime());
 			try {
-				loadFromCsv();
+				ModelProperties modelProperties = ModelProperties.getInstance();
+				ModelProperties.getInstance().loadFromCsv(modelProperties);
+//				loadFromCsv();
 				
-				CellProperties cellProperties = CellProperties.getInstance();
+//				ModelProperties modelProperties = ModelProperties.getInstance();
 				
-// The CellProperties are changed, but for parameters that are actualized only at the  				
+// The ModelProperties are changed, but for parameters that are actualized only at the  				
 //	beginning, I need to re-load values.  This is the case of initial rabs content in the 
 //	Cell. This maight be useful for knocking down a Rab in the middle of an experiment
-				Cell.getInstance().getRabCell().putAll(cellProperties.getInitRabCell());
+				Cell.getInstance().getRabCell().putAll(modelProperties.getInitRabCell());
 				
-//				System.out.println(cellProperties.cellK);
-//				System.out.println(cellProperties.initRabCell);
-//				System.out.println(cellProperties.rabCompatibility);
-//				System.out.println(cellProperties.membraneMet);
-//				System.out.println(cellProperties.solubleMet);
-//				System.out.println(cellProperties.tubuleTropism);
-//				System.out.println(cellProperties.rabTropism);
-//				System.out.println(cellProperties.mtTropism);
+//				System.out.println(modelProperties.cellK);
+//				System.out.println(modelProperties.initRabCell);
+//				System.out.println(modelProperties.rabCompatibility);
+//				System.out.println(modelProperties.membraneMet);
+//				System.out.println(modelProperties.solubleMet);
+//				System.out.println(modelProperties.tubuleTropism);
+//				System.out.println(modelProperties.rabTropism);
+//				System.out.println(modelProperties.mtTropism);
 				
 				
 
@@ -119,7 +121,6 @@ public class UpdateParameters {
 		
 	}
 	
-
 	
 	public void loadFromCsv() throws FileNotFoundException {
 		//CAMBIO
@@ -128,7 +129,7 @@ public class UpdateParameters {
 //				"C:/Users/lmayo/workspace/immunity/inputIntrTransp3.csv"));	
 		scanner.useDelimiter(",");
 
-		CellProperties cellProperties = CellProperties.getInstance();
+		ModelProperties modelProperties = ModelProperties.getInstance();
 		freezeDryOption: // this names the WHILE loop, so I can break from the loop when I want.  
 			//Something I did not know that it could be done
 		while (scanner.hasNextLine()) {
@@ -137,72 +138,72 @@ public class UpdateParameters {
 			switch (b[0]) {
 			case "cellK": {
 				for (int i = 1; i < b.length; i = i + 2) {
-				cellProperties.getCellK().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getCellK());
+				modelProperties.getCellK().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(modelProperties.getCellK());
 				}
 				
 				break;
 			}
-			case "cellProperties": {
+			case "modelProperties": {
 				for (int i = 1; i < b.length; i = i + 2) {
-				cellProperties.getCellAgentProperties().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getCellK());
+				modelProperties.getCellAgentProperties().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(modelProperties.getCellK());
 				}
 				
 				break;
 			}
 			case "plasmaMembraneProperties": {
 				for (int i = 1; i < b.length; i = i + 2) {
-				cellProperties.getPlasmaMembraneProperties().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getCellK());
+				modelProperties.getPlasmaMembraneProperties().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(modelProperties.getCellK());
 				}
 				
 				break;
 			}
 			case "cellCopasi": case "plasmaMembraneCopasi" : case "endosomeCopasi": case "rabCopasi":{
-					cellProperties.getCopasiFiles().put(b[0], b[1]);
+					modelProperties.getCopasiFiles().put(b[0], b[1]);
 
 				break;
 			}
 			case "initRabCell": {
 				for (int i = 1; i < b.length; i = i + 2) {
-				cellProperties.getInitRabCell().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getInitRabCell());
+				modelProperties.getInitRabCell().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(modelProperties.getInitRabCell());
 				}
 				break;
 			}
 			case "initPMmembraneRecycle": {
 				for (int i = 1; i < b.length; i = i + 2) {
-				cellProperties.getInitPMmembraneRecycle().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getMembraneRecycle());
+				modelProperties.getInitPMmembraneRecycle().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(modelProperties.getMembraneRecycle());
 				}
 				break;
 			}
 			case "initPMsolubleRecycle": {
 				for (int i = 1; i < b.length; i = i + 2) {
-				cellProperties.getInitPMsolubleRecycle().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getMembraneRecycle());
+				modelProperties.getInitPMsolubleRecycle().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(modelProperties.getMembraneRecycle());
 				}
 				break;
 			}
 			case "solubleCell": {
 				for (int i = 1; i < b.length; i = i + 2) {
-				cellProperties.getSolubleCell().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getSolubleCell());
+				modelProperties.getSolubleCell().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(modelProperties.getSolubleCell());
 				}
 				break;
 			}
 			case "rabCompatibility": {
 				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getRabCompatibility().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getRabCompatibility());
+					modelProperties.getRabCompatibility().put(b[i], Double.parseDouble(b[i+1]));
+					//System.out.println(modelProperties.getRabCompatibility());
 					}
 				break;
 			}
 			case "tubuleTropism": {
 				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getTubuleTropism().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getTubuleTropism()); 
+					modelProperties.getTubuleTropism().put(b[i], Double.parseDouble(b[i+1]));
+					//System.out.println(modelProperties.getTubuleTropism()); 
 					}
 				break;
 			}
@@ -214,70 +215,70 @@ public class UpdateParameters {
 						rabT.add(b[i]);
 					}
 				}
-				cellProperties.getRabTropism().put(b[1], rabT);
+				modelProperties.getRabTropism().put(b[1], rabT);
 				break;
 			}
 			case "mtTropismTubule": {
 				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getMtTropismTubule().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getMtTropism());
+					modelProperties.getMtTropismTubule().put(b[i], Double.parseDouble(b[i+1]));
+					//System.out.println(modelProperties.getMtTropism());
 					}
 				break;
 			}
 			case "mtTropismRest": {
 				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getMtTropismRest().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getMtTropism());
+					modelProperties.getMtTropismRest().put(b[i], Double.parseDouble(b[i+1]));
+					//System.out.println(modelProperties.getMtTropism());
 					}
 				break;
 			}
 			case "rabRecyProb": {
 				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getRabRecyProb().put(b[i], Double.parseDouble(b[i+1]));
+					modelProperties.getRabRecyProb().put(b[i], Double.parseDouble(b[i+1]));
 					}
 				break;
 			}
 			
 			case "organelle": {
 				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getRabOrganelle().put(b[i], b[i+1]);
+					modelProperties.getRabOrganelle().put(b[i], b[i+1]);
 					}
 				break;
 			}
 			case "uptakeRate": {
 				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getUptakeRate().put(b[i], Double.parseDouble(b[i+1]));
+					modelProperties.getUptakeRate().put(b[i], Double.parseDouble(b[i+1]));
 				}
 				break;
 			}
 			case "solubleMet": {
 				for (int i = 1; i < b.length; i++) {
-					cellProperties.getSolubleMet().add(b[i]);
+					modelProperties.getSolubleMet().add(b[i]);
 				}
 				break;
 			}
 			case "membraneMet": {
 				for (int i = 1; i < b.length; i++) {
-					cellProperties.getMembraneMet().add(b[i]);
+					modelProperties.getMembraneMet().add(b[i]);
 				}
 				break;
 			}
 			case "rabSet": {
 				for (int i = 1; i < b.length; i++) {
-					cellProperties.getRabSet().add(b[i]);
+					modelProperties.getRabSet().add(b[i]);
 				}
 				break;
 			}
 			
 			case "colorRab": {
 				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getColorRab().put(b[i], b[i + 1]);
+					modelProperties.getColorRab().put(b[i], b[i + 1]);
 				}
 				break;
 			}
 			case "colorContent": {
 				for (int i = 1; i < b.length; i = i + 2) {
-					cellProperties.getColorContent().put(b[i], b[i + 1]);
+					modelProperties.getColorContent().put(b[i], b[i + 1]);
 				}
 				break;
 			}

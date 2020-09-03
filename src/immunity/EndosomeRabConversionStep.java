@@ -144,9 +144,9 @@ public class EndosomeRabConversionStep {
 			if (met.equals("zero"))
 				rabConversion.setInitialConcentration(met, 0);
 			if (met.equals("area")){
-				if (CellProperties.getInstance().getCellK().get("kineticsArea") == 1d)
+				if (ModelProperties.getInstance().getCellK().get("kineticsArea") == 1d)
 				{
-					double rcyl = CellProperties.getInstance().getCellK().get("rcyl");
+					double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");
 					double radius = Math.sqrt(endosome.getArea()/(4d * Math.PI));
 					rabConversion.setInitialConcentration(met, radius*radius/rcyl/rcyl);
 					//				System.out.println("RELATIVE RADIUS  "+ radius/rcyl); in a normal run, between 1 and 13

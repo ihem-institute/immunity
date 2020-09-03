@@ -92,14 +92,14 @@ public class EndosomeCopasiStep {
 //			Ask if the metabolite is soluble or membrane associated.  If is not in PM set to zero the metabolite
 //			Since the endosome is releasing PM metabolites at each tick, what must be incorporated is the delta with respect to the previous tick.
 //			At tick = 0, nothing is released (pastValues = presentValues)
-			else if (met.endsWith("Pm") && CellProperties.getInstance().getSolubleMet().contains(met1)) {
+			else if (met.endsWith("Pm") && ModelProperties.getInstance().getSolubleMet().contains(met1)) {
 				 if (!PlasmaMembrane.getInstance().getSolubleRecycle().containsKey(met1))PlasmaMembrane.getInstance().getSolubleRecycle().put(met1, 0.0);
 				 double delta =  presentValues.get(met) - pastValues.get(met);
 				 double metValue = PlasmaMembrane.getInstance().getSolubleRecycle().get(met1)
 						+ delta * endosome.volume;
 				PlasmaMembrane.getInstance().getSolubleRecycle().put(met1, metValue);
 			}
-			else if (met.endsWith("Pm") && CellProperties.getInstance().getMembraneMet().contains(met1)) {
+			else if (met.endsWith("Pm") && ModelProperties.getInstance().getMembraneMet().contains(met1)) {
 				 if (!PlasmaMembrane.getInstance().getMembraneRecycle().containsKey(met1))PlasmaMembrane.getInstance().getMembraneRecycle().put(met1, 0.0);
 				 double delta =  presentValues.get(met) - pastValues.get(met);
 				 double metValue = PlasmaMembrane.getInstance().getMembraneRecycle().get(met1)

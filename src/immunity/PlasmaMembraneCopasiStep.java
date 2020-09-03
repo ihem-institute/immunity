@@ -71,11 +71,11 @@ public class PlasmaMembraneCopasiStep {
 								Cell.getInstance().getSolubleCell().put(met1, metValue);
 			}
 			
-			else if (StringUtils.endsWith(met, "Pm") && CellProperties.getInstance().getSolubleMet().contains(met1)){
+			else if (StringUtils.endsWith(met, "Pm") && ModelProperties.getInstance().getSolubleMet().contains(met1)){
 				double metValue = presentValues.get(met)* PlasmaMembrane.getInstance().getPlasmaMembraneVolume();
 				plasmaMembrane.getSolubleRecycle().put(met1, metValue);
 			}
-			else if (StringUtils.endsWith(met, "Pm") && CellProperties.getInstance().getMembraneMet().contains(met1)) {
+			else if (StringUtils.endsWith(met, "Pm") && ModelProperties.getInstance().getMembraneMet().contains(met1)) {
 				double metValue = presentValues.get(met)* PlasmaMembrane.getInstance().getPlasmaMembraneArea();
 				plasmaMembrane.getMembraneRecycle().put(met1, metValue);
 			}

@@ -1,6 +1,6 @@
 package immunity.config;
 
-import immunity.CellProperties;
+import immunity.ModelProperties;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -77,10 +77,10 @@ public class ImmunityConfigApp {
 		        d.setLocationRelativeTo(frame);
 		        d.setVisible(true);
 		        
-		        CellProperties cellProperties = CellProperties.getInstance();
+		        ModelProperties cellProperties = ModelProperties.getInstance();
 		        cellProperties.getCellK().put("rcyl", rcyl);
 		        try {
-					objectMapper.writeValue(new File(CellProperties.configFilename), cellProperties);
+					objectMapper.writeValue(new File(ModelProperties.configFilename), cellProperties);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -91,7 +91,7 @@ public class ImmunityConfigApp {
 		textField = new JTextField();
 		ObjectMapper objectMapper = new ObjectMapper();
 		try {
-			CellProperties cellProperties = objectMapper.readValue(new File(CellProperties.configFilename), CellProperties.class);
+			ModelProperties cellProperties = objectMapper.readValue(new File(ModelProperties.configFilename), ModelProperties.class);
 			textField.setText(Double.toString(cellProperties.getCellK().get("rcyl")));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block

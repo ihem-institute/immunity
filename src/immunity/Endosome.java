@@ -61,7 +61,7 @@ public class Endosome {
 	public double ycoor = 0d;
 	
 	// Endosomal
-	CellProperties cellProperties = CellProperties.getInstance();
+	ModelProperties cellProperties = ModelProperties.getInstance();
 	HashMap<String, Double> cellK = cellProperties.getCellK();
 
 	double area = 4d * Math.PI * 30d * 30d; // initial value, but should change
@@ -189,7 +189,7 @@ public class Endosome {
 //		if (tick%100 ==0) 
 		if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
 		// rabConversionN();
-		String name =  CellProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
+		String name =  ModelProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
 		if (Math.random() < 1 && !name.equals("null"))EndosomeCopasiStep.antPresTimeSeriesLoad(this);
 		if (Math.random()<p_EndosomeRecycleStep)RecycleStep.recycle(this);
 		
@@ -225,7 +225,7 @@ public class Endosome {
 		double golgiArea = 0;
 		for (String rab : end.rabContent.keySet())
 		{
-			if (CellProperties.getInstance().getRabOrganelle().get(rab).contains("Golgi"))
+			if (ModelProperties.getInstance().getRabOrganelle().get(rab).contains("Golgi"))
 			{
 				golgiArea = golgiArea + end.rabContent.get(rab);
 			}
@@ -333,7 +333,7 @@ public class Endosome {
 
 	public double getRed() {
 		// double red = 0.0;
-		String contentPlot = CellProperties.getInstance().getColorContent()
+		String contentPlot = ModelProperties.getInstance().getColorContent()
 				.get("red");
 
 		if (membraneContent.containsKey(contentPlot)) {
@@ -356,7 +356,7 @@ public class Endosome {
 
 	public double getGreen() {
 		// double red = 0.0;
-		String contentPlot = CellProperties.getInstance().getColorContent()
+		String contentPlot = ModelProperties.getInstance().getColorContent()
 				.get("green");
 
 		if (membraneContent.containsKey(contentPlot)) {
@@ -374,7 +374,7 @@ public class Endosome {
 
 	public double getBlue() {
 		// double red = 0.0;
-		String contentPlot = CellProperties.getInstance().getColorContent()
+		String contentPlot = ModelProperties.getInstance().getColorContent()
 				.get("blue");
 
 		if (membraneContent.containsKey(contentPlot)) {
@@ -402,7 +402,7 @@ public class Endosome {
 
 
 	public double getEdgeRed() {
-		String edgePlot = CellProperties.getInstance().getColorRab().get("red");
+		String edgePlot = ModelProperties.getInstance().getColorRab().get("red");
 
 		if (rabContent.containsKey(edgePlot)) {
 			double red = rabContent.get(edgePlot)/area;
@@ -412,7 +412,7 @@ public class Endosome {
 	}
 
 	public double getEdgeGreen() {
-		String edgePlot = CellProperties.getInstance().getColorRab()
+		String edgePlot = ModelProperties.getInstance().getColorRab()
 			.get("green");
 		if (rabContent.containsKey(edgePlot)) {
 			double green = rabContent.get(edgePlot)/ area;
@@ -422,7 +422,7 @@ public class Endosome {
 	}
 
 	public double getEdgeBlue() {
-		String edgePlot = CellProperties.getInstance().getColorRab()
+		String edgePlot = ModelProperties.getInstance().getColorRab()
 			.get("blue");
 		if (rabContent.containsKey(edgePlot)) {
 			double blue = rabContent.get(edgePlot)/area;

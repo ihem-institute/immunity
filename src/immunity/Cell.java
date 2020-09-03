@@ -21,8 +21,8 @@ public class Cell {
 //	Cell characteristics
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
-	public static double rcyl = CellProperties.getInstance().getCellK().get("rcyl");//20.0; // radius tubule
-	public static double rendo = CellProperties.getInstance().getCellK().get("rendo");//20.0; // radius tubule
+	public static double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");//20.0; // radius tubule
+	public static double rendo = ModelProperties.getInstance().getCellK().get("rendo");//20.0; // radius tubule
 	public static double mincyl = 6 * Math.PI * rcyl * rcyl; // surface minimum cylinder
 // two radius large (almost a sphere)
 	public static double minCistern = 4E5;
@@ -31,10 +31,10 @@ public class Cell {
 //	public static double vEndo = 4d / 3d * Math.PI * Math.pow(rEndo, 3); //volume new endosome
 //	public static double sEndo = 4d * Math.PI * Math.pow(rEndo, 2); // surface new endosome
 // mincyl surface (20 nm rcy= 6*PI*rcyl^2) = 7539.82 volume (2*PI*rcyl^3)= 50265.48
-	public static double orgScale = CellProperties.getInstance().getCellK().get("orgScale");
-	public static double timeScale = CellProperties.getInstance().getCellK().get("timeScale");
-//	public static int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); //CellProperties.getInstance().getCellAgentProperties().get("cellArea");// 
-//	public static int volume = (int) (1500*400*1000*(1/Cell.orgScale)*(1/Cell.orgScale)*(1/Cell.orgScale)); //CellProperties.getInstance().getCellAgentProperties().get("cellVolume");//
+	public static double orgScale = ModelProperties.getInstance().getCellK().get("orgScale");
+	public static double timeScale = ModelProperties.getInstance().getCellK().get("timeScale");
+//	public static int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); //ModelProperties.getInstance().getCellAgentProperties().get("cellArea");// 
+//	public static int volume = (int) (1500*400*1000*(1/Cell.orgScale)*(1/Cell.orgScale)*(1/Cell.orgScale)); //ModelProperties.getInstance().getCellAgentProperties().get("cellVolume");//
 //	public static double volume = 1500*1500*400/(Math.pow(orgScale,3));//900*10^6, scale 1; 7200 *10^6, scale 0.5
 //	public static double area = 1500*1500/(Math.pow(orgScale,2));//2.25 *10^6, scale 1
 //  When orgScale=1 zoom =0, when > 1 zoom in , when <1 zoom out.
@@ -55,17 +55,17 @@ public class Cell {
 // contents.	tMembranes, membrane and soluble content recycling,
 		this.space = space;
 		this.grid = grid;
-		cellArea = CellProperties.getInstance().getCellAgentProperties().get("cellArea");// 
-		cellVolume = CellProperties.getInstance().getCellAgentProperties().get("cellVolume");//
+		cellArea = ModelProperties.getInstance().getCellAgentProperties().get("cellArea");// 
+		cellVolume = ModelProperties.getInstance().getCellAgentProperties().get("cellVolume");//
 
-		solubleCell.putAll(CellProperties.getInstance().getSolubleCell());
-		rabCell.putAll(CellProperties.getInstance().getInitRabCell());
-		tMembrane = 10000000;//CellProperties.getInstance().cellK.get("tMembrane");
+		solubleCell.putAll(ModelProperties.getInstance().getSolubleCell());
+		rabCell.putAll(ModelProperties.getInstance().getInitRabCell());
+		tMembrane = 10000000;//ModelProperties.getInstance().cellK.get("tMembrane");
 //		cellTimeSeries = null;
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
-		String name = CellProperties.getInstance().getCopasiFiles().get("cellCopasi");
+		String name = ModelProperties.getInstance().getCopasiFiles().get("cellCopasi");
 		if (Math.random() < 0.1 && !name.equals("null")){
 			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
 			CellCopasiStep.antPresTimeSeriesLoad(this);
