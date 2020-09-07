@@ -37,10 +37,13 @@ public class ModelProperties {
 	public HashMap<String, Double> cellK = new HashMap<String, Double>();
 	public HashMap<String, Double> cellAgentProperties = new HashMap<String, Double>();
 	public HashMap<String, Double> plasmaMembraneProperties = new HashMap<String, Double>();
+	public HashMap<String, Double> endoplasmicReticulumProperties = new HashMap<String, Double>();
 	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
 	public HashMap<String, Double> solubleCell = new HashMap<String, Double>();
 	public HashMap<String, Double> initPMmembraneRecycle = new HashMap<String, Double>();
 	public HashMap<String, Double> initPMsolubleRecycle = new HashMap<String, Double>();
+	public HashMap<String, Double> initERmembraneRecycle = new HashMap<String, Double>();
+	public HashMap<String, Double> initERsolubleRecycle = new HashMap<String, Double>();
 	public HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
 	public HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
 	public HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>();
@@ -51,6 +54,7 @@ public class ModelProperties {
 	public HashMap<String, String> colorContent = new HashMap<String, String>();
 	public HashMap<String, String> copasiFiles = new HashMap<String, String>();
 	public HashMap<String, Double> uptakeRate = new HashMap<String, Double>();
+	public HashMap<String, Double> secretionRate = new HashMap<String, Double>();
 	public HashMap<String, String> rabOrganelle = new HashMap<String, String>();
 
 	public Set<String> solubleMet = new HashSet<String>();
@@ -64,6 +68,9 @@ public class ModelProperties {
 		return cellAgentProperties;
 	}
 	public HashMap<String, Double> getPlasmaMembraneProperties() {
+		return plasmaMembraneProperties;
+	}
+	public HashMap<String, Double> getEndoplasmicReticulumProperties() {
 		return plasmaMembraneProperties;
 	}
 	public HashMap<String, String> getCopasiFiles() {
@@ -109,6 +116,9 @@ public class ModelProperties {
 	public HashMap<String, Double> getUptakeRate() {
 		return uptakeRate;
 	}
+	public HashMap<String, Double> getSecretionRate() {
+		return secretionRate;
+	}
 	public Set<String> getSolubleMet() {
 		return solubleMet;
 	}
@@ -123,6 +133,12 @@ public class ModelProperties {
 	}
 	public HashMap<String, Double> getInitPMsolubleRecycle() {
 		return initPMsolubleRecycle;
+	}
+	public HashMap<String, Double> getInitERmembraneRecycle() {
+		return initERmembraneRecycle;
+	}
+	public HashMap<String, Double> getInitERsolubleRecycle() {
+		return initERsolubleRecycle;
 	}
 
 	
@@ -170,6 +186,14 @@ public class ModelProperties {
 				
 				break;
 			}
+			case "endoplasmicReticulumProperties": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				modelProperties.getEndoplasmicReticulumProperties().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(modelProperties.getEndoplasmicReticulumProperties());
+				}
+				
+				break;
+			}
 			case "cellCopasi": case "plasmaMembraneCopasi" : case "endosomeCopasi": case "rabCopasi":{
 					modelProperties.getCopasiFiles().put(b[0], b[1]);
 
@@ -192,6 +216,20 @@ public class ModelProperties {
 			case "initPMsolubleRecycle": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				modelProperties.getInitPMsolubleRecycle().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(modelProperties.getMembraneRecycle());
+				}
+				break;
+			}
+			case "initERmembraneRecycle": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				modelProperties.getInitERmembraneRecycle().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println(modelProperties.getMembraneRecycle());getInitERmembraneRecycle
+				}
+				break;
+			}
+			case "initERsolubleRecycle": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				modelProperties.getInitERsolubleRecycle().put(b[i], Double.parseDouble(b[i+1]));
 //				System.out.println(modelProperties.getMembraneRecycle());
 				}
 				break;
@@ -258,6 +296,12 @@ public class ModelProperties {
 			case "uptakeRate": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					modelProperties.getUptakeRate().put(b[i], Double.parseDouble(b[i+1]));
+				}
+				break;
+			}
+			case "secretionRate": {
+				for (int i = 1; i < b.length; i = i + 2) {
+					modelProperties.getSecretionRate().put(b[i], Double.parseDouble(b[i+1]));
 				}
 				break;
 			}

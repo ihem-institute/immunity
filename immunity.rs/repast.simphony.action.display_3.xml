@@ -1,4 +1,4 @@
-<repast.simphony.visualization.engine.CartesianDisplayDescriptor>
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.7.0">
   <name>Space Display</name>
   <type>2D</type>
   <styles>
@@ -13,6 +13,10 @@
     <entry>
       <string>immunity.Endosome</string>
       <string>immunity.EndosomeStyle</string>
+    </entry>
+    <entry>
+      <string>immunity.EndoplasmicReticulum</string>
+      <string>immunity.EndoplasmicReticulumStyle</string>
     </entry>
     <entry>
       <string>immunity.MT</string>
@@ -34,6 +38,10 @@
     </entry>
     <entry>
       <string>immunity.Endosome</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>immunity.EndoplasmicReticulum</string>
       <null/>
     </entry>
     <entry>
@@ -65,7 +73,7 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-1633063677</hashCode>
+    <hashCode>-1626245082</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>space</layoutProjection>
@@ -73,7 +81,7 @@
   <layerOrder>
     <entry>
       <string>immunity.PlasmaMembrane</string>
-      <int>1</int>
+      <int>2</int>
     </entry>
     <entry>
       <string>immunity.Cytosol</string>
@@ -81,15 +89,19 @@
     </entry>
     <entry>
       <string>immunity.Endosome</string>
-      <int>3</int>
+      <int>4</int>
+    </entry>
+    <entry>
+      <string>immunity.EndoplasmicReticulum</string>
+      <int>1</int>
     </entry>
     <entry>
       <string>immunity.MT</string>
-      <int>2</int>
+      <int>3</int>
     </entry>
     <entry>
       <string>immunity.Scale</string>
-      <int>4</int>
+      <int>5</int>
     </entry>
   </layerOrder>
   <projections>

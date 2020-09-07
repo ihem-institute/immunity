@@ -90,6 +90,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 		context.add(new Results(space, grid, null, null));// 
 		context.add(new UpdateParameters());
 		context.add(new PlasmaMembrane(space, grid));	
+		context.add(new EndoplasmicReticulum(space, grid));
 		context.add(new Scale(space, grid));
 		InitialOrganelles initialOrganelles  = InitialOrganelles.getInstance();
 		context.add(initialOrganelles);		
@@ -346,6 +347,10 @@ public class CellBuilder implements ContextBuilder<Object> {
 			if (obj instanceof PlasmaMembrane) {
 				space.moveTo(obj, 24.5, 49.5);
 				grid.moveTo(obj, (int) 24, (int) 49);
+			}
+			if (obj instanceof EndoplasmicReticulum) {
+				space.moveTo(obj, 24.5, 0.5);
+				grid.moveTo(obj, (int) 24, (int) 0.5);
 			}
 			if (obj instanceof Scale) {
 				space.moveTo(obj, Scale.getScale500nm()/2d-(0.4), 49.9);

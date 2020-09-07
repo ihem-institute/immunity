@@ -1,4 +1,4 @@
-<repast.simphony.visualization.engine.CartesianDisplayDescriptor>
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.7.0">
   <name>PlasmaMembrane</name>
   <type>2D</type>
   <styles>

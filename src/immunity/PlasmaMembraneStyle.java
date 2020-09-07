@@ -26,10 +26,10 @@ public class PlasmaMembraneStyle implements StyleOGL2D<PlasmaMembrane> {
 	@Override
 	public VSpatial getVSpatial(PlasmaMembrane object, VSpatial spatial) {
 		// 15 measure the size of the grid.  Each point is 50*15X50*15
-		
-		VSpatial createRectangle = this.factory.createRectangle(750, (int) (20d*Cell.orgScale));
+		double initialAreaPM = PlasmaMembrane.getInstance().getInitialPlasmaMembraneArea();
+		double areaPM = PlasmaMembrane.getInstance().getPlasmaMembraneArea();		
+		VSpatial createRectangle = this.factory.createRectangle((int) (areaPM/initialAreaPM*750), (int) (20d*Cell.orgScale));
 		return createRectangle;
-
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class PlasmaMembraneStyle implements StyleOGL2D<PlasmaMembrane> {
 
 	@Override
 	public Color getBorderColor(PlasmaMembrane object) {
-		return new Color(100);
+		return new Color(50,50,50);
 	}
 
 	@Override

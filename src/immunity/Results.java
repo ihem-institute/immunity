@@ -309,9 +309,12 @@ public class Results {
 			}
 		}
 		content();// initialize all contents to zero
+// include in the contentDistribution all the recycled components, soluble and membrane
 		HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
-		// include in the contentDistribution all the recycled components, soluble and membrane
 		HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
+// include in the contentDistribution all the recycled components, soluble and membrane		
+		HashMap<String, Double> solubleSecretion = EndoplasmicReticulum.getInstance().getSolubleRecycle();
+		HashMap<String, Double> membraneSecretion = EndoplasmicReticulum.getInstance().getMembraneRecycle();
 		HashMap<String, Double> solubleCell = Cell.getInstance().getSolubleCell();
 		for (String sol : solubleRecycle.keySet()) {
 //			System.out.println(" soluble "+ sol);
@@ -325,6 +328,18 @@ public class Results {
 			contentDist.put(mem+"Pm" , value);
 //			System.out.println("MEMBRANE PM  "+ mem + value);
 		}			
+		for (String sol : solubleSecretion.keySet()) {
+//			System.out.println(" soluble "+ sol);
+			double value = solubleSecretion.get(sol);
+			contentDist.put(sol+"Er", value);
+//			System.out.println("SOLUBLE  ER "+ sol + value );
+		}
+		for (String mem : membraneSecretion.keySet()) {
+			//System.out.println(" soluble "+ sol + " Rab " +rab);
+			double value = membraneSecretion.get(mem);
+			contentDist.put(mem+"Er" , value);
+			System.out.println("MEMBRANE ER  "+ mem + value);
+		}
 		for (String sol : solubleCell.keySet()) {
 //			System.out.println(" soluble "+ sol);
 			double value = solubleCell.get(sol);
@@ -486,6 +501,14 @@ public class Results {
 		} 
 		for (String mem : membraneMet) {
 			contentDist.put(mem+"Pm", 0d);
+			
+		}
+		for (String sol : solubleMet) {
+			contentDist.put(sol+"Er", 0d);
+		} 
+		for (String mem : membraneMet) {
+			contentDist.put(mem+"Er", 0d);
+			
 		}
 		for (String sol : Cell.getInstance().getSolubleCell().keySet()) {
 			contentDist.put(sol+"Cy", 0d);

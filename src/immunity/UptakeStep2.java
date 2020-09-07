@@ -64,8 +64,12 @@ public class UptakeStep2 {
 		System.out.println(" 	NEW UPTAKE    " + areaPM + "    "+initialAreaPM);
 		newUptake(cell,"RabA");
 		System.out.println(" 	NEW UPTAKE    " + PlasmaMembrane.getInstance().getPlasmaMembraneArea() + "    "+initialAreaPM);}
-//		NEW SECRETORY EVENT
-		if (true)
+
+		//		NEW SECRETORY EVENT
+		double areaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
+		double initialAreaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
+
+		if (areaER > initialAreaER)
 		newSecretion(cell,"RabI");
 		
 //		COMPENSATORY NEW ORGANELLE
@@ -101,8 +105,132 @@ public class UptakeStep2 {
 	}
 		
 	private static void newSecretion(Cell cell, String selectedRab) {
-		// TODO Auto-generated method stub
+		double cellLimit = 3d * Cell.orgScale;
+		System.out.println("secretion " +	InitialOrganelles.getInstance().getInitOrgProp().get("kind9"));
+		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(
+				InitialOrganelles.getInstance().getInitOrgProp().get("kind9"));
+		HashMap<String, Double> rabCell = cell.getRabCell();
+
+		if (!rabCell.containsKey("RabI") || Math.random()>rabCell.get("RabI")){
+			return;}
+	//	double rabCellA = rabCell.get("RabA");
+	// OJO I AM ASSUMING THAT RABI IS ERGIC AND THIS CANNOT BE ALWAYS TRUE
+	// cytosolic RabI is always provided by the -> RabAc reaction.  Only in a KD will go down
+	//		Then no new ERGIC if no RabI in cyto.  The uptake is proportional to the amount of RabI	
+	//		Secretion generate a new RabI organelle.  The size is the radius in the csv file for maxRadius in kind9
+	//		initial organelles.  The content is specified in concentration. One (1) is approx 1 mM.
+	//		This units are converted to membrane or volume units by multiplying by the area (rabs and
+	//		membrane content) or volume (soluble content).  For secretion it is controlled that there is enough
+	//		membrane and there is RabI in the cell
+
+		double maxRadius = initOrgProp.get("maxRadius");
+		double minRadius = maxRadius/2;
+		double a = RandomHelper.nextDoubleFromTo(minRadius,maxRadius);				
+		double c = a + a  * Math.random() * initOrgProp.get("maxAsym");
+
+		double f = 1.6075;
+		double af= Math.pow(a, f);
+		double cf= Math.pow(c, f);
+		double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
+		double endoplasmicReticulum = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea() - area;
+//		System.out.println("LUETO DE UPTAKE  "+ endoplasmicReticulum);
+		EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(endoplasmicReticulum);
+		double volume = 4d/3d*Math.PI*a*a*c;
+		initOrgProp.put("area", area);
+		double value = Results.instance.getTotalRabs().get("RabI");
+		value = value + area;
+		Results.instance.getTotalRabs().put("RabI", value);
+		initOrgProp.put("volume", volume);
+		HashMap<String, Double> rabContent = new HashMap<String, Double>();
+	//			NEW ERGIC JUST RABI
+		rabContent.put("RabI", area);
 		
+		/* Soluble and membrane content of the kind9
+		 * To model molecules that cycle between ER and endosomes, such as cMHCI and mHCI
+		 * the new endosome incorporates metabolites that are present in the ER.
+		 * Each species has its own rate for internalization (secretion rate).
+		 * Also, the new ERGIC cannot incorporate more than a given amount of ER metabolites
+		 * In area units, no more than its surface (about 1 mM)
+		 * 
+		 * 
+		 * */
+		
+		HashMap<String, Double> membraneContent = new HashMap<String,Double>();
+		Set<String> membraneMet = new HashSet<String>(ModelProperties.getInstance().getMembraneMet());
+		for (String mem : membraneMet){
+			double valueInEn = 0d;
+			double valueInER =0d;
+			double valueInTotal = 0d;
+		System.out.println(mem + ModelProperties.getInstance().getSecretionRate().get(mem) + "   UPTAKE DECREASE 1111  " + valueInER);
+			if (EndoplasmicReticulum.getInstance().getMembraneRecycle().containsKey(mem))
+			{
+				double valueER = EndoplasmicReticulum.getInstance().getMembraneRecycle().get(mem);
+				valueInER = valueER * ModelProperties.getInstance().getSecretionRate().get(mem) * area/ EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();	
+
+				if (valueInER >= area) valueInER = area; // cannot incorporate more metabolite than its area
+				membraneContent.put(mem, valueInER);
+				//	System.out.println(mem + valueER + "   UPTAKE DECREASE 1111  " + valueInER);
+				// decrease ER content
+				EndoplasmicReticulum.getInstance().getMembraneRecycle().put(mem, valueER-valueInER);
+			}
+			/* FOR UPTAKE LOADING IN NEW ENDOSOMES
+			 * if (InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").
+			 * containsKey(mem)) { valueInEn =
+			 * InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").get(mem
+			 * )*area; valueInTotal = valueInEn + valueInER; } if (valueInTotal >= area)
+			 * valueInTotal= area;
+			 */
+		}
+		HashMap<String, Double> solubleContent = new HashMap<String,Double>();
+		Set<String> solubleMet = new HashSet<String>(ModelProperties.getInstance().getSolubleMet());
+		for (String sol : solubleMet){
+			double valueInEn = 0d;
+			double valueInER =0d;
+			
+			if (EndoplasmicReticulum.getInstance().getSolubleRecycle().containsKey(sol))
+			{
+				double valueER = EndoplasmicReticulum.getInstance().getSolubleRecycle().get(sol);
+				valueInER = valueER * volume/ EndoplasmicReticulum.getInstance().getendoplasmicReticulumVolume();	
+
+				if (valueInER >= volume) valueInER = volume;
+				solubleContent.put(sol, valueInER);
+				// decrease ER content
+				EndoplasmicReticulum.getInstance().getSolubleRecycle().put(sol, valueER - valueInER);
+			}
+			/*
+			 * if (InitialOrganelles.getInstance().getInitSolubleContent().get("kind1").
+			 * containsKey(sol)) { valueInEn =
+			 * InitialOrganelles.getInstance().getInitSolubleContent().get("kind1").get(sol)
+			 * *volume; valueInEn = valueInEn + valueInER; } if (valueInEn >= volume)
+			 * valueInEn= volume; solubleContent.put(sol, valueInEn);
+			 */
+		}
+
+		solubleContent.put("proton", 3.98E-5*volume); //pH 7.4
+	/*		
+	 new ERGIC incorporate ER components in a proportion area new/area ER
+	 */		
+		Context<Object> context = ContextUtils.getContext(cell);
+		ContinuousSpace<Object> space = cell.getSpace();
+		Grid<Object> grid = cell.getGrid();
+		Endosome bud = new Endosome(space, grid, rabContent, membraneContent,
+				solubleContent, initOrgProp);
+		context.add(bud);
+		bud.speed = 1d / bud.size;
+		bud.heading = 90;// heading up
+		double rnd = Math.random();
+		double upPosition = rnd* (4 * cellLimit);
+		space.moveTo(bud, rnd * 50, upPosition);
+		grid.moveTo(bud, (int) rnd * 50, (int) upPosition);
+		
+		//			System.out.println(area + "NEW UPTAKE" + bud.membraneContent);
+		//			try {
+		//			TimeUnit.SECONDS.sleep(5);
+		//		} catch (InterruptedException e) {
+		//			// TODO Auto-generated catch block
+		//			e.printStackTrace();
+		//		}
+	EndoplasmicReticulum.getInstance().getendoplasmicReticulumTimeSeries().clear();
 	}
 
 	private static void newUptake(Cell cell, String selectedRab) {
