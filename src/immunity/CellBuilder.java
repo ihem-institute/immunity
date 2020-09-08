@@ -74,9 +74,10 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 //  introduce the agents in the space
 		
 //		System.out.println(" builder CellProperties cargado");
-//			context.add(cellProperties);	
+//			context.add(ModelProperties);	
 		//Cell cell = Cell.getInstance();
 		context.add(new Cell(space, grid));
+		context.add(new EndoplasmicReticulum(space, grid));
 		context.add(new Results(space, grid, null, null));// 
 		context.add(new UpdateParameters());
 		context.add(new PlasmaMembrane(space, grid));	
@@ -108,17 +109,17 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 		}
 		
 		// ENDOSOMES
-		CellProperties cellProperties = CellProperties.getInstance();
+		ModelProperties modelProperties = ModelProperties.getInstance();
 		Set<String> diffOrganelles = initialOrganelles.getDiffOrganelles();
 		String name;
 		int ite=0;
-		if (cellProperties.getCellK().get("freezeDry").equals(0d)) {
+		if (modelProperties.getCellK().get("freezeDry").equals(0d)) {
 		// RabA is Rab5.  Organelles are constructed with a given radius that depend on the type (EE, LE, Lys) and with a 
 		// total surface.  These values were obtained of simulations that progressed by 40000 steps
 			for (String kind : diffOrganelles){
 				
 					HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(initialOrganelles.getInitOrgProp().get(kind));
-					double totalArea = initOrgProp.get("area")/cellProperties.getCellK().get("orgScale");
+					double totalArea = initOrgProp.get("area")/modelProperties.getCellK().get("orgScale");
 					double maxRadius = initOrgProp.get("maxRadius");
 					double maxAsym = initOrgProp.get("maxAsym");
 					double minRadius = Cell.rcyl*1.1;
@@ -129,10 +130,13 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 						HashMap<String, Double> rabKindContent = new HashMap<String, Double>(initialOrganelles.getInitRabContent().get(kind));
 						
 						if(isGolgi(rabKindContent)) {
-							a = RandomHelper.nextDoubleFromTo(minRadius,maxRadius);// radius cylinder Gogli cisterna				
-							c = minRadius; //cylinder height
-							area = 2* Math.PI*Math.pow(a, 2)+ 2*Math.PI*a*c;
-							volume =Math.PI*Math.pow(a, 2)* c;
+							double aq = 2d*Math.PI;
+							double bq = 4*Math.PI*Cell.rcyl;
+							double cq = -totalArea;
+							double dq =  bq * bq - 4 * aq * cq;
+							double radius = ( - bq + Math.sqrt(dq))/(2*aq);
+							area = totalArea;
+							volume =Math.PI*Math.pow(radius, 2)* 2 * Cell.rcyl;
 						}
 						else { // if (!kind.equals("kindLarge")){		
 							c = a + a  * Math.random()* maxAsym;
@@ -176,8 +180,8 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 
 						Endosome end = new Endosome(space, grid, rabContent, membraneContent,
 													solubleContent, initOrgProp);
-						ite+=1;
-						end.setName(kind+" "+Integer.toString(ite)) ;
+//						ite+=1;
+//						end.setName(kind+" "+Integer.toString(ite)) ;
 						context.add(end);
 						Endosome.endosomeShape(end);
 						//System.out.println(end.getName()+ " " +membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);				
@@ -230,6 +234,10 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 				space.moveTo(obj, 24.5, 49.5);
 				grid.moveTo(obj, (int) 24, (int) 49);
 			}
+			if (obj instanceof EndoplasmicReticulum) {
+				space.moveTo(obj, 24.5, .5);
+				grid.moveTo(obj, (int) 24, (int) 0);
+			}
 			if (obj instanceof Scale) {
 				space.moveTo(obj, Scale.getScale500nm()/2d-(0.4), 49.9);
 //				System.out.println ("SCALE SCALE "+Scale.getScale500nm()/2d);
@@ -239,7 +247,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 				((MT) obj).changePosition((MT)obj);
 			} 
 // Find new position for endosomes unless they are coming from a freezeDry file
-			if (obj instanceof Endosome && CellProperties.getInstance().getCellK().get("freezeDry").equals(0d) ) {
+			if (obj instanceof Endosome && ModelProperties.getInstance().getCellK().get("freezeDry").equals(0d) ) {
 			double position = ((Endosome) obj).getInitOrgProp().get("position");
 //				NdPoint pt = space.getLocation(obj);
 				double y = 5d + 40d * position + RandomHelper.nextDoubleFromTo(-4d, 4d);
@@ -273,7 +281,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 	private static boolean isGolgi(HashMap<String, Double> rabContent) {
 		double areaGolgi = 0d;
 		for (String rab : rabContent.keySet()){
-			String name = CellProperties.getInstance().rabOrganelle.get(rab);
+			String name = ModelProperties.getInstance().rabOrganelle.get(rab);
 			if (name.contains("Golgi")) {areaGolgi = areaGolgi + rabContent.get(rab);} 
 		}
 		boolean isGolgi = false;
