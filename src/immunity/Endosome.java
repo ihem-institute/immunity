@@ -61,7 +61,7 @@ public class Endosome {
 	public double ycoor = 0d;
 	
 	// Endosomal
-	ModelProperties cellProperties = ModelProperties.getInstance();
+	CellProperties cellProperties = CellProperties.getInstance();
 	HashMap<String, Double> cellK = cellProperties.getCellK();
 
 	double area = 4d * Math.PI * 30d * 30d; // initial value, but should change
@@ -83,8 +83,7 @@ public class Endosome {
 	HashMap<String, Double> rabCell = new HashMap<String, Double>();
 	private List<MT> mts;
 	// HashMap<String, Double> membraneMet = cellProperties.membraneMet();
-	HashMap<String, Double> rabCompatibility = cellProperties
-			.getRabCompatibility();
+	HashMap<String, Double> rabCompatibility = cellProperties.getRabCompatibility();
 	HashMap<String, Double> tubuleTropism = cellProperties.getTubuleTropism();
 	HashMap<String, Set<String>> rabTropism = cellProperties.getRabTropism();
 	HashMap<String, Double> mtTropismTubule = cellProperties.getMtTropismTubule();
@@ -101,7 +100,7 @@ public class Endosome {
 //	the tick duration. At time scale 1, I move the endosome 30 nm in a tick (50 ticks to travel 1500 nm). Hence
 //	one tick is equivalent to 0.03 seconds
 //	At time scale 0.5, I move the endosome 60 nm (30/timeScale)
-//	
+ 	
 	double p_EndosomeRecycleStep = 1d/(10d/0.03*Cell.timeScale);
 	double p_EndosomeUptakeStep = 1d/(60d/0.03*Cell.timeScale);
 //	double p_EndosomeNewFromERStep = 1d/(60d/0.03*Cell.timeScale);
@@ -110,7 +109,13 @@ public class Endosome {
 	double p_EndosomeSplitStep = 1d/(0.4/0.03*Cell.timeScale); // use to be 0.4
 	double p_EndosomeTetherStep = 1d/(1d/0.03*Cell.timeScale);
 	double p_EndosomeLysosomalDigestionStep = 1d/(10d/0.03*Cell.timeScale);
+	double p_EndosomeMaturationStep= 1d/(10d/0.03*Cell.timeScale); //tengo que hacer uno con 
+	public int tickCount;
+										//  de rab en relacion a la sup end
 
+	public String nameee;
+	
+	
 	// constructor of endosomes with grid, space and a set of Rabs, membrane
 	// contents,
 	// and volume contents.
@@ -119,6 +124,9 @@ public class Endosome {
 			HashMap<String, Double> membraneContent,
 			HashMap<String, Double> solubleContent,
 			HashMap<String, Double> initOrgProp) {
+		
+		this.tickCount=0;
+		
 		this.space = sp;
 		this.grid = gr;
 		this.rabContent = rabContent;
@@ -138,7 +146,8 @@ public class Endosome {
 
 
 	}
-
+	
+	
 	public final double getXcoor() {
 		return xcoor;
 	}
@@ -173,25 +182,27 @@ public class Endosome {
 //		if (logger.isDebugEnabled()) {
 //			logger.debug(message);			
 //		}
-
+		//System.out.println(Cell.timeScale);
 		endosomeShape(this);
-//		OrganelleMove.changeDirection(this);
-		OrganelleMove.moveTowards(this);
+//		EndosomeMove.changeDirection(this);
+		EndosomeMove.moveTowards(this);
 //		if (this.solubleContent.containsKey("mvb")) this.membraneContent.put("chol", 0d);
-//		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
+		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
 //		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
 		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
 		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
-		if (Math.random()<p_EndosomeFusionStep) FusionStep.fusion(this);
-		if (Math.random()<p_EndosomeSplitStep) FissionStep.split(this);
+		if (Math.random()<p_EndosomeFusionStep) EndosomeFusionStep.fusion(this);
+		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
 		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%100 ==0) 
 		if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
 		// rabConversionN();
-		String name =  ModelProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
+		String name =  CellProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
 		if (Math.random() < 1 && !name.equals("null"))EndosomeCopasiStep.antPresTimeSeriesLoad(this);
-		if (Math.random()<p_EndosomeRecycleStep)RecycleStep.recycle(this);
+		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);
+		
+		EndosomeMaturationStep.matureCheck(this);
 		
 
 	}
@@ -225,7 +236,7 @@ public class Endosome {
 		double golgiArea = 0;
 		for (String rab : end.rabContent.keySet())
 		{
-			if (ModelProperties.getInstance().getRabOrganelle().get(rab).contains("Golgi"))
+			if (CellProperties.getInstance().getRabOrganelle().get(rab).contains("Golgi"))
 			{
 				golgiArea = golgiArea + end.rabContent.get(rab);
 			}
@@ -273,6 +284,27 @@ public class Endosome {
 			end.c = cc;
 		}
 	}
+	
+	public int getTickCount() {
+		return tickCount;
+	}
+
+
+	public void setTickCount(int tickCount) {
+		this.tickCount = tickCount;
+	}
+
+
+	public String getName() {
+		return nameee;
+	}
+
+
+	public void setName(String name) {
+		this.nameee = name;
+	}
+
+
 	public double getArea() {
 		return area;
 	}
@@ -333,7 +365,7 @@ public class Endosome {
 
 	public double getRed() {
 		// double red = 0.0;
-		String contentPlot = ModelProperties.getInstance().getColorContent()
+		String contentPlot = CellProperties.getInstance().getColorContent()
 				.get("red");
 
 		if (membraneContent.containsKey(contentPlot)) {
@@ -356,7 +388,7 @@ public class Endosome {
 
 	public double getGreen() {
 		// double red = 0.0;
-		String contentPlot = ModelProperties.getInstance().getColorContent()
+		String contentPlot = CellProperties.getInstance().getColorContent()
 				.get("green");
 
 		if (membraneContent.containsKey(contentPlot)) {
@@ -374,7 +406,7 @@ public class Endosome {
 
 	public double getBlue() {
 		// double red = 0.0;
-		String contentPlot = ModelProperties.getInstance().getColorContent()
+		String contentPlot = CellProperties.getInstance().getColorContent()
 				.get("blue");
 
 		if (membraneContent.containsKey(contentPlot)) {
@@ -402,7 +434,7 @@ public class Endosome {
 
 
 	public double getEdgeRed() {
-		String edgePlot = ModelProperties.getInstance().getColorRab().get("red");
+		String edgePlot = CellProperties.getInstance().getColorRab().get("red");
 
 		if (rabContent.containsKey(edgePlot)) {
 			double red = rabContent.get(edgePlot)/area;
@@ -412,7 +444,7 @@ public class Endosome {
 	}
 
 	public double getEdgeGreen() {
-		String edgePlot = ModelProperties.getInstance().getColorRab()
+		String edgePlot = CellProperties.getInstance().getColorRab()
 			.get("green");
 		if (rabContent.containsKey(edgePlot)) {
 			double green = rabContent.get(edgePlot)/ area;
@@ -422,7 +454,7 @@ public class Endosome {
 	}
 
 	public double getEdgeBlue() {
-		String edgePlot = ModelProperties.getInstance().getColorRab()
+		String edgePlot = CellProperties.getInstance().getColorRab()
 			.get("blue");
 		if (rabContent.containsKey(edgePlot)) {
 			double blue = rabContent.get(edgePlot)/area;
