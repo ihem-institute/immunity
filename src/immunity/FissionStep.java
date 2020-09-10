@@ -255,7 +255,7 @@ public class FissionStep {
 //		    System.out.println("Second root is:"+root2);
 		//}   
 		
-		if (Math.random()<0.9){// standard 0.9
+		if (Math.random()<0.1){// standard 0.9
 // high probability of forming a single vesicle.  SET TO 0.9
 			return new double[] {Cell.mincyl, 2 * Math.PI * Math.pow(Cell.rcyl, 3)};
 		}
@@ -275,7 +275,7 @@ public class FissionStep {
 				// add a minimal volume
 				double aradius =Math.sqrt(vcylinder /(2*Math.PI*Cell.rcyl)); // from vcylinder = PI*aradius^2 * cistern height (2 rcyl)
 				scylinder = 2*Math.PI*aradius*aradius + 4*Math.PI*aradius*Cell.rcyl;//from Scyl = 2*PI*aradius^2+4*PI*aradius*rcyl
-System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+"  scylinder "+ scylinder);
+//System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+"  scylinder "+ scylinder);
 							
 				// System.out.println(scylinder +"surface and volume"+ vcylinder);
 			}

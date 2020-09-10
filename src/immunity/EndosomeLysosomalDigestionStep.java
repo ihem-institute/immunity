@@ -1,5 +1,9 @@
 package immunity;
 
+import cern.jet.random.Poisson;
+import cern.jet.random.engine.DRand;
+import cern.jet.random.engine.RandomEngine;
+
 public class EndosomeLysosomalDigestionStep {
 
 	
@@ -13,18 +17,26 @@ public class EndosomeLysosomalDigestionStep {
 		// volume is decreased proportional to the initial volume and also
 		// considering the mvb that are digested
 		double rabDratio = endosome.rabContent.get("RabD") / endosome.area;
-		double volIV = 4 / 3 * Math.PI * Math.pow(Cell.rIV, 3.d);
+		double volIV = 4 / 3 * Math.PI * Math.pow(Cell.rIV, 3d);
+		double areaIV = 4 * Math.PI * Math.pow(Cell.rIV, 2d);
 		double deltaV = 0d;
 		double initialMvb = 0d;
 		double finalMvb = 0d;
 		double finalSolMark = 0d;
 		double finalMemMark = 0d;
+//		RandomEngine engine = new DRand();
+//		Poisson poisson = new Poisson(2000, engine);
+//		int poissonObs = poisson.nextInt();
+//		System.out.println("                   POISSON DE 2000 "+poissonObs);
 //		double finalvATPase = 0d;
 //		Internal vesicles are digested proportional to the RabD content and to the number of internal vesicles
 		if (endosome.solubleContent.containsKey("mvb")) {
 			initialMvb = endosome.solubleContent.get("mvb");
 			if (Math.random() < 0.01 * rabDratio * initialMvb) {
-				finalMvb = initialMvb - 1;
+				finalMvb = initialMvb*0.99;
+//				Area of the internal area digested is added to the plasma membrane (synthesis is assumed)
+				double plasmaMembrane = PlasmaMembrane.getInstance().getPlasmaMembraneArea() + areaIV;
+				PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
 			} else {
 				finalMvb = initialMvb;
 			}
