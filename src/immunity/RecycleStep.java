@@ -36,6 +36,7 @@ public class RecycleStep {
 		String organelle = ModelProperties.getInstance().getRabOrganelle().get(maxRab);    
 			if (organelle.equals("EE")) recycleEE(endosome, maxRab);
 			if (organelle.equals("RE")) recycleRE(endosome, maxRab);
+			if (organelle.equals("TGN")) recycleRE(endosome, maxRab); //same rules than for RE
 			else return;
 		}
 		

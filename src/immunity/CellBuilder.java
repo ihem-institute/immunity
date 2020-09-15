@@ -1,6 +1,7 @@
 package immunity;
 
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -207,8 +208,18 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 						grid.moveTo(end, (int) x, (int) y);	
 						Endosome.endosomeShape(end);
 
-					}	
-				}
+			}
+//			After loading the frozen organelles, the properties of KIND... organelles need to be loaded to generate
+//			new organelles during UPTAKE  or SECRETION .....
+
+			try {
+				ModelProperties.getInstance().loadOrganellePropertiesFromCsv(ModelProperties.getInstance());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
 			
 		
 		// Cytosol (NOT USED IN PRESENT BRANCH)

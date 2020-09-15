@@ -86,10 +86,10 @@ public class PlasmaMembrane {
 	public void changeColor() {
 		double c1 = 0d;
 		{
-		c1 = membraneRecycle.get("chol");
+//		c1 = membraneRecycle.get("chol");
 		c1 = c1/plasmaMembraneArea;
 //		if (c1>1) c1=1;
-		pmcolor = (int) (c1*255);
+//		pmcolor = (int) (c1*255);
 		}
 
 //		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + pmcolor+" " + pmcolor);

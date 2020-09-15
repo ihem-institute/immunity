@@ -161,7 +161,7 @@ public class UptakeStep2 {
 			double valueInEn = 0d;
 			double valueInER =0d;
 			double valueInTotal = 0d;
-		System.out.println(mem + ModelProperties.getInstance().getSecretionRate().get(mem) + "   UPTAKE DECREASE 1111  " + valueInER);
+		System.out.println(mem + ModelProperties.getInstance().getSecretionRate().get(mem) + "   secretion 1111  " + valueInER+membraneContent);
 			if (EndoplasmicReticulum.getInstance().getMembraneRecycle().containsKey(mem))
 			{
 				double valueER = EndoplasmicReticulum.getInstance().getMembraneRecycle().get(mem);
@@ -173,6 +173,7 @@ public class UptakeStep2 {
 				// decrease ER content
 				EndoplasmicReticulum.getInstance().getMembraneRecycle().put(mem, valueER-valueInER);
 			}
+			
 			/* FOR UPTAKE LOADING IN NEW ENDOSOMES
 			 * if (InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").
 			 * containsKey(mem)) { valueInEn =
@@ -310,7 +311,7 @@ public class UptakeStep2 {
 
 				if (valueInPM >= area) valueInPM = area; // cannot incorporate more metabolite than its area
 				membraneContent.put(mem, valueInPM);
-				//	System.out.println(mem + valuePM + "   UPTAKE DECREASE 1111  " + valueInPM);
+				System.out.println(mem + valuePM + "   UPTAKE FROM PM 1111  " + valueInPM+membraneContent);
 				// decrease PM content
 				PlasmaMembrane.getInstance().getMembraneRecycle().put(mem, valuePM-valueInPM);
 			}

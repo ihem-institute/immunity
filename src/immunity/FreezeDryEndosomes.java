@@ -41,7 +41,8 @@ public class FreezeDryEndosomes {
 		if( instance == null ) {
 			instance = new  FreezeDryEndosomes();
 			try {
-				FreezeDryEndosomes.loadFromCsv(instance);
+				loadFromCsv(instance);
+//				loadOrganellePropertiesFromCsv(ModelProperties.getInstance());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -270,5 +271,12 @@ public class FreezeDryEndosomes {
 		output.close();
 	}
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 }

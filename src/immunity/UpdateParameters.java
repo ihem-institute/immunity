@@ -78,11 +78,16 @@ public class UpdateParameters {
 				
 // The ModelProperties are changed, but for parameters that are actualized only at the  				
 //	beginning, I need to re-load values.  This is the case of initial rabs content in the 
-//	Cell. This maight be useful for knocking down a Rab in the middle of an experiment
+//	Cell. This might be useful for knocking down a Rab in the middle of an experiment
+//	Also for uptake chase simulations changing the .csv file			
 				Cell.getInstance().getRabCell().putAll(modelProperties.getInitRabCell());
-				
-//				System.out.println(modelProperties.cellK);
-//				System.out.println(modelProperties.initRabCell);
+				PlasmaMembrane.getInstance().getMembraneRecycle().putAll(modelProperties.getInitPMmembraneRecycle());
+				PlasmaMembrane.getInstance().getSolubleRecycle().putAll(modelProperties.getInitPMsolubleRecycle());				
+				EndoplasmicReticulum.getInstance().getMembraneRecycle().putAll(modelProperties.getInitERmembraneRecycle());
+				EndoplasmicReticulum.getInstance().getSolubleRecycle().putAll(modelProperties.getInitERsolubleRecycle());				
+
+				System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle());
+				System.out.println(EndoplasmicReticulum.getInstance().getMembraneRecycle());
 //				System.out.println(modelProperties.rabCompatibility);
 //				System.out.println(modelProperties.membraneMet);
 //				System.out.println(modelProperties.solubleMet);

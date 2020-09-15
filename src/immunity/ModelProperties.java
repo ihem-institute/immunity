@@ -412,5 +412,85 @@ public class ModelProperties {
 //		System.out.println(modelProperties.rabTropism);
 //		System.out.println("CP VALOR cellProp" + modelProperties.mtTropism);
 //		System.out.println("CP PARA RAB A UPTAKE" +InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
+		
+		///////////////////////////////////////////////////////
+	}
+
+	public static void loadOrganellePropertiesFromCsv(ModelProperties modelProperties) throws IOException {
+
+
+		Scanner scanner = new Scanner(new File(
+				"inputIntrTransp3.csv"));
+		scanner.useDelimiter(",");
+
+//		freezeDryOption: // this names the WHILE loop, so I can break from the loop when I want.  
+			//Something I did not know that it could be done
+			while (scanner.hasNextLine()) {
+				String line = scanner.nextLine();
+				String[] b = line.split(",");
+				switch (b[0]) {
+				//				case "freezeDry":
+				//					{
+				//						FreezeDryEndosomes.getInstance();
+				//						break freezeDryOption; // if freezeDry then exit because the initial organelles will be loaded in a 
+				//						// different way.  HOWEVER, THE KIND1-KIND6 PROPERTIES NEED TO BE LOADED BECAUSE THEY ARE
+				////						USED FOR NEW ORGANELLES (UPTAKE). JUST BY CHANCE THIS IS DONE FOR THE UPDATE CLASS
+				////						NEED TO IMPROVE THIS
+				//				}
+				//				// INITIAL ORGANELLES kind Large is for phagosomes
+				case "kind1": case "kind2": case "kind3": case "kind4": case "kind5": case "kind6":case "kind7": case "kind8": case "kind9": case "kindLarge":
+				{
+					InitialOrganelles inOr = InitialOrganelles.getInstance();
+					inOr.getDiffOrganelles().add(b[0]);
+					switch (b[1]) {
+					case "initOrgProp": {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+							value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitOrgProp().put(b[0], value);
+						break;
+					}
+					case "initRabContent": {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+							value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitRabContent().put(b[0], value);
+						break;
+					}
+					case "initSolubleContent": {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+							value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitSolubleContent().put(b[0], value);
+						//						System.out.println("Proton is there?" + inOr.getInitialSolubleContent());
+						break;
+					}
+					case "initMembraneContent": {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+							//						System.out.println("VALOR MALO" + b[i] + "" + b[i+1]);
+							value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitMembraneContent().put(b[0], value);
+						break;
+					}
+					default: {
+						System.out.println("no a valid entry");
+					}
+					}
+					break;
+				}
+
+
+				default: {
+					System.out.println("no a valid entry");
+				}
+
+				}
+			}
+			System.out.println("  FREEZE DRY INITIAL ORGANELLES FOR UPTAKE " + InitialOrganelles.getInstance().initOrgProp);
 	}
 }
