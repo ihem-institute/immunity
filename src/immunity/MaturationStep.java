@@ -28,7 +28,9 @@ public class MaturationStep {
 		if (membraneFlux == 1d 
 				&& endosome.area >= 0.8*Cell.minCistern // hacer constante
 				&& organelleName.contains("Golgi")){
-			membraneFluxMatureSyn(endosome, maxRab);
+//			membraneFluxMatureSyn(endosome, maxRab); // rule of cistern maturation
+			membraneDomainMatureSyn(endosome, maxRab); // New rule of domain maturation
+			
 //			maturePush(endosome, maxRab);
 
 		}
@@ -165,6 +167,72 @@ public class MaturationStep {
 		}
 
 	}
+	private static void membraneDomainMatureSyn(Endosome endosome, String maxRab) {
+		//		If the cistern is a C5 cistern, it sends the content to TGN and is deleted
+		if (maxRab.equals("RabE"))
+		{ 
+			// RECYCLE
+			// Recycle membrane content
+			HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance()
+					.getMembraneRecycle();
+			for (String key1 : endosome.membraneContent.keySet()) {
+				if (membraneRecycle.containsKey(key1)) {
+					double sum = membraneRecycle.get(key1)
+							+ endosome.membraneContent.get(key1);
+					membraneRecycle.put(key1, sum);
+				} else {
+					membraneRecycle.put(key1, endosome.membraneContent.get(key1));
+				}
+			}
+
+			HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance()
+					.getSolubleRecycle();
+			for (String key1 : endosome.solubleContent.keySet()) {
+				if (solubleRecycle.containsKey(key1)) {
+					double sum = solubleRecycle.get(key1)
+							+ endosome.solubleContent.get(key1);
+					solubleRecycle.put(key1, sum);
+				} else {
+					solubleRecycle.put(key1, endosome.solubleContent.get(key1));
+				}
+			}
+			Context<Object> context = ContextUtils.getContext(endosome);
+			context.remove(endosome);
+		}
+		//		If it is not a C5 cistern, then all the domains mature.  Notice that the RabE domain
+		//		is preserved
+		else {
+			HashMap<String, Double> endosomeRabCopy = new HashMap<String, Double>(endosome.rabContent);
+			endosome.rabContent.put("RabA", 0d);
+			for (String rab : endosomeRabCopy.keySet()) {
+				switch (rab) {
+				case "RabA": {
+					double value = endosomeRabCopy.get("RabA");
+					endosome.rabContent.put("RabB", value);
+					break;
+				}
+				case "RabB": {
+					double value = endosomeRabCopy.get("RabB");
+					endosome.rabContent.put("RabC", value);
+					break;
+				}
+				case "RabC": {
+					double value = endosomeRabCopy.get("RabC");
+					endosome.rabContent.put("RabD", value);
+					break;
+				}
+				case "RabD": {
+					double value = endosomeRabCopy.get("RabD");
+					if (endosomeRabCopy.containsKey("RabE")) value = value + endosomeRabCopy.get("RabE");
+					endosome.rabContent.put("RabE", value);
+					break;
+				}
+
+				}
+			}
+		}
+	}
+
 
 	private static void specialMature(Endosome endosome) {
 /*
