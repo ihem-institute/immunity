@@ -230,14 +230,15 @@ public class Endosome {
 //						MaturationStep.mature(this);	
 //			}
 		if (tick%3000 ==0) {
-			boolean scheduledUptake = Cell.getInstance().isScheduledUptake();
-			if (scheduledUptake){
-				EndosomeUptakeStep.uptake(this);
-				scheduledUptake = false;
-				Cell.getInstance().setScheduledUptake(scheduledUptake);
-			}
 			MaturationStep.mature(this);	
 		}
+//			boolean scheduledUptake = Cell.getInstance().isScheduledUptake();
+//			if (scheduledUptake){
+//	//			EndosomeUptakeStep.uptake(this);
+//				scheduledUptake = false;
+//				Cell.getInstance().setScheduledUptake(scheduledUptake);
+//			}
+
 //		if (Math.random()<1/3000d){MaturationStep.mature(this);}
 //		if (Math.random()<p_MaturationStep)MaturationStep.mature(this);
 

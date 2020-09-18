@@ -8,11 +8,13 @@ import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.grid.Grid;
 
 public class Cell {
-	// a single Cell is created
+	private static ContinuousSpace<Object> space;
+	private static Grid<Object> grid;
+
 	private static Cell instance;
 	public static Cell getInstance() {
 		if (instance == null) {
-			instance = new Cell();
+			instance = new Cell(space, grid);
 		}
 		return instance;
 	}
@@ -45,11 +47,14 @@ public class Cell {
 	private double cellArea;
 	private boolean scheduledUptake;
 
+
 	// Constructor
-	public Cell() {
+	public Cell(ContinuousSpace<Object> space, Grid<Object> grid) {
 // Contains factors that are in the cell without specifying organelle or position.
 // It is modified by Endosome that uses and changes cytosolic Rabs
 // contents.	tMembranes, membrane and soluble content recycling,
+		this.space = space;
+		this.grid = grid;
 		cellArea = CellProperties.getInstance().getCellAgentProperties().get("cellArea");// 
 		cellVolume = CellProperties.getInstance().getCellAgentProperties().get("cellVolume");//
 
@@ -72,7 +77,8 @@ public class Cell {
 
 	@ScheduledMethod(start = 1, interval = 3000)
 	public void uptake() {
-		scheduledUptake = true;
+		UptakeStep2.uptake(this);
+//		scheduledUptake = true;
 
 	}
 	// GETTERS AND SETTERS (to get and set Cell contents)
@@ -110,10 +116,15 @@ public class Cell {
 	public final TreeMap<Integer, HashMap<String, Double>> getCellTimeSeries() {
 		return cellTimeSeries;
 	}
-//	public HashMap<String, Double> getcellTimeSeries() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+
+	public ContinuousSpace<Object> getSpace() {
+		// TODO Auto-generated method stub
+		return space;
+	}
+	public Grid<Object> getGrid() {
+		// TODO Auto-generated method stub
+		return grid;
+	}
 
 
 }

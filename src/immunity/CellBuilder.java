@@ -83,8 +83,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 		CellProperties cellProperties = CellProperties.getInstance();
 //		System.out.println(" builder CellProperties cargado");
 		context.add(cellProperties);	
-		Cell cell = Cell.getInstance();
-		context.add(cell);
+		context.add(new Cell(space, grid));
 		context.add(new Results(space, grid, null, null));// 
 		context.add(new UpdateParameters());
 		context.add(new PlasmaMembrane(space, grid));

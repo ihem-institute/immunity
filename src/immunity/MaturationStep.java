@@ -30,8 +30,7 @@ public class MaturationStep {
 				&& organelleName.contains("Golgi")){
 //			membraneFluxMatureSyn(endosome, maxRab); // rule of cistern maturation
 			membraneDomainMatureSyn(endosome, maxRab); // New rule of domain maturation
-			
-//			maturePush(endosome, maxRab);
+//			maturePush(endosome, maxRab);// New cisterna push the maturation of the next cisterna
 
 		}
 		else if (organelleName.contains("ERGIC")){// if ERGIC, mature to cisGolgi near the bottom
@@ -48,61 +47,8 @@ public class MaturationStep {
 			return;
 		}
 	}
-	
-	private static void membraneFluxMature(Endosome endosome, String maxRab) {
-		double maturationTrigger = CellProperties.getInstance().cellK.get("maturationTrigger");
-		double value = endosome.rabContent.get(maxRab);
-		switch (maxRab) {
-		case "RabA": {
-			double totalRab = Results.getInstance().getTotalRabs().get("RabB");
-			double initialTotalRabA = Results.getInstance().getInitialTotalRabs().get("RabA");
-//			System.out.println(endosome.rabContent + "  totalRabB  "+totalRab);
-			if (totalRab < maturationTrigger * initialTotalRabA) {
-			endosome.rabContent.put("RabA", 0d);
-			endosome.rabContent.put("RabB", value);}
-			break;
-		}
-		case "RabB": {
-			double totalRab = Results.getInstance().getTotalRabs().get("RabC");
-			double initialTotalRabA = Results.getInstance().getInitialTotalRabs().get("RabA");
-			//		System.out.println("totalRabs  "+totalRabs);
-			if (totalRab < maturationTrigger * initialTotalRabA) {
-			endosome.rabContent.put("RabB", 0d);
-			endosome.rabContent.put("RabC", value);}
-			break;
-		}
-		case "RabC": {
-			double totalRab = Results.getInstance().getTotalRabs().get("RabD");
-			double initialTotalRabA = Results.getInstance().getInitialTotalRabs().get("RabA");
-			//		System.out.println("totalRabs  "+totalRabs);
-			if (totalRab < maturationTrigger * initialTotalRabA) {
-			endosome.rabContent.put("RabC", 0d);
-			endosome.rabContent.put("RabD", value);}
-			break;
-		}
-		case "RabD": {
-			double totalRab = Results.getInstance().getTotalRabs().get("RabE");
-			double initialTotalRabA = Results.getInstance().getInitialTotalRabs().get("RabA");
-			//		System.out.println("totalRabs  "+totalRabs);
-			if (totalRab <= initialTotalRabA) {
-			endosome.rabContent.put("RabD", 0d);
-			endosome.rabContent.put("RabE", value);}
-			break;
-		}
-		case "RabE": {
-			double totalRab = Results.getInstance().getTotalRabs().get("RabE");
-			double initialTotalRabA = Results.getInstance().getInitialTotalRabs().get("RabA");
-			//		System.out.println("totalRabs  "+totalRabs);
-			if (totalRab > initialTotalRabA) {
-			Context<Object> context = ContextUtils.getContext(endosome);
-			context.remove(endosome);}
-			break;
-		}
-		
-		}
-
-	}
-	
+	// DIFFERENT MATURATION RULES
+//	Maturation of all the cisterna to a single domain
 	private static void membraneFluxMatureSyn(Endosome endosome, String maxRab) {
 		double maturationTrigger = CellProperties.getInstance().cellK.get("maturationTrigger");
 		double value = endosome.rabContent.get(maxRab);
@@ -167,6 +113,7 @@ public class MaturationStep {
 		}
 
 	}
+	//Maturation of domains in the cisterna
 	private static void membraneDomainMatureSyn(Endosome endosome, String maxRab) {
 		//		If the cistern is a C5 cistern, it sends the content to TGN and is deleted
 		if (maxRab.equals("RabE"))
@@ -232,6 +179,62 @@ public class MaturationStep {
 			}
 		}
 	}
+
+	
+	private static void membraneFluxMature(Endosome endosome, String maxRab) {
+		double maturationTrigger = CellProperties.getInstance().cellK.get("maturationTrigger");
+		double value = endosome.rabContent.get(maxRab);
+		switch (maxRab) {
+		case "RabA": {
+			double totalRab = Results.getInstance().getTotalRabs().get("RabB");
+			double initialTotalRabA = Results.getInstance().getInitialTotalRabs().get("RabA");
+//			System.out.println(endosome.rabContent + "  totalRabB  "+totalRab);
+			if (totalRab < maturationTrigger * initialTotalRabA) {
+			endosome.rabContent.put("RabA", 0d);
+			endosome.rabContent.put("RabB", value);}
+			break;
+		}
+		case "RabB": {
+			double totalRab = Results.getInstance().getTotalRabs().get("RabC");
+			double initialTotalRabA = Results.getInstance().getInitialTotalRabs().get("RabA");
+			//		System.out.println("totalRabs  "+totalRabs);
+			if (totalRab < maturationTrigger * initialTotalRabA) {
+			endosome.rabContent.put("RabB", 0d);
+			endosome.rabContent.put("RabC", value);}
+			break;
+		}
+		case "RabC": {
+			double totalRab = Results.getInstance().getTotalRabs().get("RabD");
+			double initialTotalRabA = Results.getInstance().getInitialTotalRabs().get("RabA");
+			//		System.out.println("totalRabs  "+totalRabs);
+			if (totalRab < maturationTrigger * initialTotalRabA) {
+			endosome.rabContent.put("RabC", 0d);
+			endosome.rabContent.put("RabD", value);}
+			break;
+		}
+		case "RabD": {
+			double totalRab = Results.getInstance().getTotalRabs().get("RabE");
+			double initialTotalRabA = Results.getInstance().getInitialTotalRabs().get("RabA");
+			//		System.out.println("totalRabs  "+totalRabs);
+			if (totalRab <= initialTotalRabA) {
+			endosome.rabContent.put("RabD", 0d);
+			endosome.rabContent.put("RabE", value);}
+			break;
+		}
+		case "RabE": {
+			double totalRab = Results.getInstance().getTotalRabs().get("RabE");
+			double initialTotalRabA = Results.getInstance().getInitialTotalRabs().get("RabA");
+			//		System.out.println("totalRabs  "+totalRabs);
+			if (totalRab > initialTotalRabA) {
+			Context<Object> context = ContextUtils.getContext(endosome);
+			context.remove(endosome);}
+			break;
+		}
+		
+		}
+
+	}
+	
 
 
 	private static void specialMature(Endosome endosome) {
@@ -715,18 +718,6 @@ public class MaturationStep {
 
 	
 }
-//	if (rabContent.containsKey("RabE"))
-//	{
-//		if (!rabContent.containsKey("RabD")) rabContent.put("RabD", 0d); 
-//		Double rabEmatur = rabContent.get("RabE")*0.1;
-//		Double valueRabE = rabContent.get("RabE") - rabEmatur;
-//		endosome.rabContent.put("RabE", valueRabE);
-//		Double valueRabD = rabContent.get("RabD") + rabEmatur;
-//		endosome.rabContent.put("RabD", valueRabD);
-//		return;
-//	}
-//	else return;	
-//		
-//	}
+
 
 
