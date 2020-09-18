@@ -160,7 +160,7 @@ public class Endosome {
 ////		System.out.println(" RAB TROPISMS " + cellProperties.getInstance().getRabTropism());
 //	}
 
-	
+
 	
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
@@ -208,6 +208,27 @@ public class Endosome {
 //		if (tick%1000 == 0)EndosomeFusionStep.fusion(this);
 //		if (tick%60 == 0) EndosomeSplitStep.split(this);
 //		EndosomeSwelling.endosomeSwell(this);
+		Random random = new Random();
+		double rnd = random.nextGaussian();
+		double intrnd= rnd*100+3000;
+		intrnd = 3000;
+		double lastTick = CellProperties.getInstance().cellK.get("lastTick");
+		
+//		if (tick == lastTick) {	
+//
+//			System.out.println(tick + "  TTTTTTTTTTTTTTTTTTTTIIIIIIIIIIIIIIICCCCCCCCCCCCCCCCCKKKKKKKKKKKKK" + lastTick + intrnd);
+//			lastTick = tick+intrnd;	
+//			CellProperties.getInstance().cellK.put("lastTick", lastTick);
+//			System.out.println(tick + "  TTTTTTTTTTTTTTTTTTTTIIIIIIIIIIIIIIICCCCCCCCCCCCCCCCCKKKK" + lastTick + intrnd);
+//			boolean scheduledUptake = Cell.getInstance().isScheduledUptake();
+//			if (scheduledUptake){
+//				EndosomeUptakeStep.uptake(this);
+//				scheduledUptake = false;
+//				Cell.getInstance().setScheduledUptake(scheduledUptake);
+//			}
+//			
+//						MaturationStep.mature(this);	
+//			}
 		if (tick%3000 ==0) {
 			boolean scheduledUptake = Cell.getInstance().isScheduledUptake();
 			if (scheduledUptake){
@@ -215,9 +236,7 @@ public class Endosome {
 				scheduledUptake = false;
 				Cell.getInstance().setScheduledUptake(scheduledUptake);
 			}
-			MaturationStep.mature(this);
-
-
+			MaturationStep.mature(this);	
 		}
 //		if (Math.random()<1/3000d){MaturationStep.mature(this);}
 //		if (Math.random()<p_MaturationStep)MaturationStep.mature(this);

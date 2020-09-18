@@ -3,19 +3,15 @@
   <hashtable>
     <default>
       <loadFactor>0.75</loadFactor>
-      <threshold>6</threshold>
+      <threshold>3</threshold>
     </default>
-    <int>9</int>
     <int>5</int>
+    <int>3</int>
+    <string>SettingsFileName</string>
+    <string>Repast.settings</string>
     <string>SettingsRegistryId</string>
     <string>Repast.registry</string>
     <string>LastLoadedScenario</string>
     <string>C:\Users\lmayo\workspace\immunity\immunity.rs</string>
-    <string>Pajek.home</string>
-    <string>C:\Pajek\Pajek.exe</string>
-    <string>SettingsFileName</string>
-    <string>Repast.settings</string>
-    <string>Pajek.licenseAccepted</string>
-    <boolean>true</boolean>
   </hashtable>
 </simphony.settings.SettingsRegistry>

@@ -1,5 +1,5 @@
 MODEL PROPERTIES,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-cellK,rcyl,35,orgScale,.5,timeScale,.5,freezeDry,1,,,,,,,,,,,,,,,,,,,,,,,
+cellK,rcyl,35,orgScale,.5,timeScale,.5,freezeDry,1,lastTick,0,,,,,,,,,,,,,,,,,,,,,
 cellK,kineticsArea,1,membraneFlux,1,maturationTrigger,.5,,,,,,,,,,,,,,,,,,,,,,,,,
 CELL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 cellAgentProperties,cellArea,9000000,cellVolume,7200000000,,,,,,,,,,,,,,,,,,,,,,,,,,,
