@@ -383,7 +383,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 
 			}
 		}
-		RunEnvironment.getInstance().endAt(60000);
+		RunEnvironment.getInstance().endAt(30000);
 		
 		if (RunEnvironment.getInstance().isBatch()) {
 			RunEnvironment.getInstance().endAt(20);

@@ -320,13 +320,13 @@ public class Results {
 		HashMap<String, Double> solubleCell = Cell.getInstance().getSolubleCell();
 		for (String sol : solubleRecycle.keySet()) {
 //			System.out.println(" soluble "+ sol);
-			double value = solubleRecycle.get(sol)/initialTotalSolubleCargo.get(sol);
+			double value = solubleRecycle.get(sol);//initialTotalSolubleCargo.get(sol);
 			contentDist.put(sol, value);
 //			System.out.println("SOLUBLE  PM"+ sol + value );
 		}
 		for (String mem : membraneRecycle.keySet()) {
 			System.out.println(" membrane "+ mem + " no hay " +mem);
-			double value = membraneRecycle.get(mem)/initialTotalMembraneCargo.get(mem);
+			double value = membraneRecycle.get(mem);//initialTotalMembraneCargo.get(mem);
 			contentDist.put(mem , value);
 //			System.out.println("MEMBRANE PM  "+ mem + value);
 		}			
@@ -381,7 +381,7 @@ public class Results {
 //					System.out.println(" FALTA " + contentDist.get(sol + rab));
 					double value = contentDist.get(sol + rab)
 							+ solubleContent.get(sol) * rabContent.get(rab)
-							/ area/initialTotalSolubleCargo.get(sol);
+							/ area;//initialTotalSolubleCargo.get(sol);
 					contentDist.put(sol + rab, value);
 					//System.out.println("SOLUBLE"+sol + "Rab" +rab);
 				}
@@ -389,7 +389,7 @@ public class Results {
 //				System.out.println(" membrane "+mem + " Rab " +rab);
 					double value = contentDist.get(mem + rab)
 							+ membraneContent.get(mem) * rabContent.get(rab)
-							/ area/initialTotalMembraneCargo.get(mem);
+							/ area;//initialTotalMembraneCargo.get(mem);
 					contentDist.put(mem + rab, value);
 				}
 

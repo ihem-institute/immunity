@@ -182,8 +182,8 @@ public class EndosomeSplitStep {
 //		here it is sent for membrane and soluble distribution
 //		First cistern form vesicles that are destroyed (because they will accumulate. Cannot fuse with previous cistern
 //		If they are destroyed here, they have no cargo
-//		boolean empty = Math.random()<0.5; // probability of forming a BW empty vesicle
-		boolean empty = Math.random()<0.0; // no BW empty vesicle are formed
+		boolean empty = Math.random()<0.5; // probability of forming a BW empty vesicle
+//		boolean empty = Math.random()<0.0; // no BW empty vesicle are formed
 		if (empty ==true 
 				&& rabInTube.equals("RabA")
 				&& CellProperties.rabOrganelle.get("RabA").contains("Golgi")) return;
