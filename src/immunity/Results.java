@@ -333,7 +333,7 @@ public class Results {
 		}
 		for (String mem : membraneRecycle.keySet()) {
 //			System.out.println(" membrane "+ mem + " no hay " +mem);
-			double value = membraneRecycle.get(mem)/initialTotalMembraneCargo.get(mem);
+			double value = membraneRecycle.get(mem);//initialTotalMembraneCargo.get(mem);
 			contentDist.put(mem , value);
 //			System.out.println("MEMBRANE PM  "+ mem + value);
 		}			
@@ -418,7 +418,7 @@ public class Results {
 //				System.out.println(" membrane "+mem + " Rab " +rab);
 					double value = contentDist.get(mem + rab)
 							+ membraneContent.get(mem) * rabContent.get(rab)
-							/ area/initialTotalMembraneCargo.get(mem);
+							/ area;//initialTotalMembraneCargo.get(mem);
 					contentDist.put(mem + rab, value);
 				}
 

@@ -468,7 +468,9 @@ public class EndosomeSplitStep {
 			}
 			// if tropism to tubule, the content goes to tubule			
 			else if (rabTropism.get(content).contains("tub") 
-					|| (content.contains("memLS") && rabInTube.equals("RabC")) // específico para modelo de Luini
+					|| (content.contains("memC1") && rabInTube.equals("RabB"))// for maturation and glycosilation
+					|| (content.contains("memC2") && rabInTube.equals("RabC"))
+					|| (content.contains("memC3") && rabInTube.equals("RabD"))// específico para modelo de Luini
 					){
 				splitToTubule(endosome, content, so, sVesicle);
 			}

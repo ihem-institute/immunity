@@ -28,8 +28,8 @@ public class MaturationStep {
 		if (membraneFlux == 1d 
 				&& endosome.area >= 0.8*Cell.minCistern // hacer constante
 				&& organelleName.contains("Golgi")){
-//			membraneFluxMatureSyn(endosome, maxRab); // rule of cistern maturation
-			membraneDomainMatureSyn(endosome, maxRab); // New rule of domain maturation
+			membraneFluxMatureSyn(endosome, maxRab); // rule of cistern maturation
+//			membraneDomainMatureSyn(endosome, maxRab); // New rule of domain maturation
 //			maturePush(endosome, maxRab);// New cisterna push the maturation of the next cisterna
 
 		}
