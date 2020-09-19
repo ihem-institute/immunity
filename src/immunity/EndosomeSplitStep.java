@@ -342,7 +342,8 @@ public class EndosomeSplitStep {
 //		    System.out.println("Second root is:"+root2);
 		//}   
 		
-		if (Math.random()<0.9){// standard 0.9
+		if (Math.random()<0.9){// standard 0.9  PARAMETER ADJUSTED IN THE GOLGI PAPER (1 NO TRANSPORT)
+//			0.9 GOOD, 0.5 TOO MUCH (PAPER IS EXPRESSED AS 1-)
 // high probability of forming a single vesicle.  SET TO 0.9
 			return new double[] {4 * Math.PI*Math.pow(Cell.rcyl,2), 4/3 * Math.PI * Math.pow(Cell.rcyl, 3)};
 

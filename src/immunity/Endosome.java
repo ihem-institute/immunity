@@ -195,11 +195,11 @@ public class Endosome {
 //		if (Math.random()<p_EndosomeKissRunStep) EndosomeKissRunStep.kissRun(this);
 		if (Math.random()<p_EndosomeSplitStep) EndosomeSplitStep.split(this);
 //		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
-//		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-//		if (tick%100 ==0) 
+		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+//		if (tick%3000 ==0) MaturationStep.mature(this);
 //		if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
 		// rabConversionN();
-		if (Math.random()<0.0005)MaturationStep.mature(this);
+//		if (Math.random()<0.0005)MaturationStep.mature(this);
 		String name =  CellProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
 		if (Math.random() < 1 && name.endsWith(".cps"))EndosomeCopasiStep.antPresTimeSeriesLoad(this);
 		if (Math.random()<p_EndosomeRecycleStep)EndosomeRecycleStep.recycle(this);

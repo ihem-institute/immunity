@@ -432,7 +432,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		}
 	}
 	
-	private static void newOrganelleGolgiVesicular(Endosome endosome, String selectedRab, HashMap<String, String> rabCode, double membraneFlux) {
+	private static Endosome newOrganelleGolgiVesicular(Endosome endosome, String selectedRab, HashMap<String, String> rabCode, double membraneFlux) {
 		String kind = rabCode.get(selectedRab);
 		HashMap<String, Double> initOrgProp = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 		HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
@@ -501,7 +501,8 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		bud.heading = -90;// heading down
 		// NdPoint myPoint = space.getLocation(bud);
 		endosome.getSpace().moveTo(bud, 25, 2);
-		endosome.getGrid().moveTo(bud, 25, 2);		
+		endosome.getGrid().moveTo(bud, 25, 2);
+		return bud;		
 
 
 	}	
@@ -580,6 +581,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 //				e.printStackTrace();
 //			}
 			newOrganelleGolgiVesicular(endosome, selectedRab,  rabCode, membraneFlux);
+			selectedEnd = bud;
 //			initOrgProp = new HashMap<String, Double>(endosome.getInitOrgProp());
 //			membraneContent = new HashMap<String, Double>();
 //			membraneContent.put("solM", 0d);
@@ -598,6 +600,8 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 //			endosome.getGrid().moveTo(bud, 25, 2);		
 //
 		}
+		System.out.println("  electedEnd.area + bud.area " + bud.area);
+		System.out.println(selectedEnd.area+"  electedEnd.area + bud.area " + bud.area);
 		selectedEnd.area = selectedEnd.area + bud.area;
 //		selectedEnd.volume = selectedEnd.volume + bud.volume; This is incorrect.  The volume must be estimated from the area of the cistern
 ////	To find the radius of a cistern 20nm high from the area
