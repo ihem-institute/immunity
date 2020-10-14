@@ -5,7 +5,7 @@ endosome0e,initSolubleContent,solS,0.0,solubleMarker,0.0,solL,0.0,proton,46.6744
 endosome1x,initOrgProp,area,1808143.6519728275,volume,1.741976704231596E7,xcoor,25.0,ycoor,2.0,
 endosome1x,initRabContent,RabE,15393.804002589986,RabC,15393.804002589986,RabD,15393.804002589986,RabA,1731174.6319598774,RabB,30787.60800518002
 endosome1x,initMembraneContent,membraneMarker,1.0,memC3,378.2342794585886,memS3,0.0,memC2,201.8603255333343,memS2,0.0,memC1,7325.315531101659,memS1,0.0,memS,8033
-endosome1x,initSolubleContent,solS,0.0,solubleMarker,0.0,solL,0.0,proton,109.19914571434227
+endosome1x,initSolubleContent,solS,8033.0,solubleMarker,0.0,solL,8033.0,proton,109.19914571434227
 endosome2T,initOrgProp,area,1892809.57398705,volume,1.8333156624886695E7,xcoor,25.0,ycoor,3.0,
 endosome2T,initRabContent,RabE,15393.804002589986,RabC,46181.412007770006,RabD,15393.80400258999,RabA,15393.804002590034,RabB,1800446.74997151
 endosome2T,initMembraneContent,membraneMarker,0.0,memC3,18.11343299342449,memS3,0.0,memC2,6895.001730905387,memS2,0.0,memC1,401.12059386373096,memS1,0.0,memS,0.0

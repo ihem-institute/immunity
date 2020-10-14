@@ -403,6 +403,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		}
 		solubleContent.put("mvb", 0d);
 		solubleContent.put("solubleMarker", 0d);
+//		solubleContent.clear();
 		}
 		Context<Object> context = ContextUtils.getContext(endosome);
 		Endosome bud = new Endosome(endosome.getSpace(), endosome.getGrid(), rabContent, membraneContent,
@@ -484,7 +485,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		}
 
 
-
+//		membraneContent.clear();solubleContent.clear();
 		Context<Object> context = ContextUtils.getContext(endosome);
 		Endosome bud = new Endosome(endosome.getSpace(), endosome.getGrid(), rabContent, membraneContent,
 				solubleContent, initOrgProp);

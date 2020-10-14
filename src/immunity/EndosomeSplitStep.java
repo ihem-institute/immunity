@@ -107,10 +107,18 @@ public class EndosomeSplitStep {
 //				probFission = 0.5;//(endosome.a - Cell.rcyl)/(500-Cell.rcyl);
 //			}
 //			double probFission = 
-			if ( Math.random()<1-probFission){
-				//		SET TO 0.9. TO BE ADJUSTED.  IF SMALLER, THE CISTERNS FRACTIONATE IF LARGER, LARGE CISTERNS
-				//				0.5 works great when MT direction of tubules is set to the nucleus
-				return;
+			//		SET TO 0.9. TO BE ADJUSTED.  IF SMALLER, THE CISTERNS FRACTIONATE IF LARGER, LARGE CISTERNS
+			//				0.5 works great when MT direction of tubules is set to the nucleus
+/* Considering the vesicular transport, if the rabInTube is RabA and it is a BW vesicle (empty) 
+* no vesicle should form because it will not be able to fuse with any structure
+*/
+			boolean empty = Math.random()<0.5; // probability of forming a BW empty vesicle	
+			if (( Math.random()<1-probFission)
+					||
+					(empty ==true 
+					&& rabInTube.equals("RabA")
+					&& CellProperties.rabOrganelle.get("RabA").contains("Golgi"))){ 
+				 return;
 			} 
 			else 
 			{
@@ -184,9 +192,12 @@ public class EndosomeSplitStep {
 //		If they are destroyed here, they have no cargo
 		boolean empty = Math.random()<0.5; // probability of forming a BW empty vesicle
 //		boolean empty = Math.random()<0.0; // no BW empty vesicle are formed
-		if (empty ==true 
-				&& rabInTube.equals("RabA")
-				&& CellProperties.rabOrganelle.get("RabA").contains("Golgi")) return;
+		/* the probability of an empty Rab vesicle was considered above and it is 
+		 * excluded in this instance where empty vesicle will form.  
+		 * 	THE PROBLEM WITH GLYCO WAS HERE
+		 */
+		if (rabInTube.equals("RabA")
+				&& CellProperties.rabOrganelle.get("RabA").contains("Golgi")) empty = false;
 		
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);

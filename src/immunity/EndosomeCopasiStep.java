@@ -14,6 +14,7 @@ import repast.simphony.engine.environment.RunEnvironment;
 public class EndosomeCopasiStep {
 	
 	public static void antPresTimeSeriesLoad(Endosome endosome){
+		
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 
 		if (endosome.getEndosomeTimeSeries().isEmpty()){			
@@ -126,7 +127,7 @@ public class EndosomeCopasiStep {
 //			for endosomes and other organelles, all the metabolites participate in the reaction
 			if (met.endsWith("En") && endosome.membraneContent.containsKey(met1)) {
 				double metValue = endosome.membraneContent.get(met1)/endosome.area;
-				lipidMetabolism.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
+				lipidMetabolism.setInitialConcentration(met, Math.round(metValue*1E20d)/1E20d);
 				localM.put(met, metValue);
 			} else if (met.endsWith("En") && endosome.solubleContent.containsKey(met1)) {
 				double metValue = Math.abs(endosome.solubleContent.get(met1))/endosome.volume;
@@ -173,7 +174,7 @@ public class EndosomeCopasiStep {
 //			localM.put("protonEn", 1e-04);
 //		}
 
-
+//System.out.println(localM);
 		lipidMetabolism.runTimeCourse();
 		
 
@@ -188,7 +189,7 @@ public class EndosomeCopasiStep {
 				endosome.getEndosomeTimeSeries().put((int) (tick+time*Cell.timeScale/0.03),value);
 			}
 		}
-		
+//		System.out.println(endosome.getEndosomeTimeSeries());
 		}
 	
 }
