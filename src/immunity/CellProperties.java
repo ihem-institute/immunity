@@ -13,10 +13,6 @@ import java.util.Set;
 // CSV file  used for the inital organelles.  It is updated by the UpdateParameters class.
 public class CellProperties {
 	
-//	public CellProperties() {
-//		super();
-//		// TODO Auto-generated constructor stub
-//	}
 	public static final String configFilename = "config.json";
 	
 	private static CellProperties instance;
@@ -127,21 +123,11 @@ public class CellProperties {
 
 	
 	public static void loadFromCsv(CellProperties cellProperties) throws IOException {
-
-		Scanner scanner = new Scanner(new File(
-				"inputIntrTransp3.csv"));
+		System.out.println(1);
+		Scanner scanner = new Scanner(new File("inputIntrTransp3.csv"));
 		scanner.useDelimiter(",");
-
-//		ObjectMapper objectMapper = new ObjectMapper();
-//		try {
-//			CellProperties config = objectMapper.readValue(new File(CellProperties.configFilename), CellProperties.class);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
 		
-		// InitialOrganelles InOr = InitialOrganelles.getInstance();
 		freezeDryOption: // this names the WHILE loop, so I can break from the loop when I want.  
-			//Something I did not know that it could be done
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
 			String[] b = line.split(",");
@@ -149,7 +135,6 @@ public class CellProperties {
 			case "cellK": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getCellK().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getCellK());
 				}
 				
 				break;
@@ -157,7 +142,6 @@ public class CellProperties {
 			case "cellAgentProperties": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getCellAgentProperties().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getCellK());
 				}
 				
 				break;
@@ -165,7 +149,6 @@ public class CellProperties {
 			case "plasmaMembraneProperties": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getPlasmaMembraneProperties().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getCellK());
 				}
 				
 				break;
@@ -178,49 +161,42 @@ public class CellProperties {
 			case "initRabCell": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getInitRabCell().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getInitRabCell());
 				}
 				break;
 			}
 			case "initPMmembraneRecycle": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getInitPMmembraneRecycle().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getMembraneRecycle());
 				}
 				break;
 			}
 			case "initPMsolubleRecycle": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getInitPMsolubleRecycle().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getMembraneRecycle());
 				}
 				break;
 			}
 			case "solubleCell": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getSolubleCell().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getSolubleCell());
 				}
 				break;
 			}
 			case "rabCompatibility": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					cellProperties.getRabCompatibility().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getRabCompatibility());
 					}
 				break;
 			}
 			case "tubuleTropism": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					cellProperties.getTubuleTropism().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getTubuleTropism()); 
 					}
 				break;
 			}
 			case "rabTropism": {
 				Set<String> rabT = new HashSet<String>();
 				for (int i = 2; i < b.length; i++) {
-					//System.out.println(b[i]);
 					if (b[i].length()>0) {
 						rabT.add(b[i]);
 					}
@@ -231,14 +207,12 @@ public class CellProperties {
 			case "mtTropismTubule": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					cellProperties.getMtTropismTubule().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getMtTropism());
 					}
 				break;
 			}
 			case "mtTropismRest": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					cellProperties.getMtTropismRest().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getMtTropism());
 					}
 				break;
 			}
@@ -296,10 +270,10 @@ public class CellProperties {
 			case "freezeDry":
 				{
 					FreezeDryEndosomes.getInstance();
-					break freezeDryOption; // if freezeDry then exit because the initial organelles will be loaded in a 
-					// different way.  HOWEVER, THE KIND1-KIND6 PROPERTIES NEED TO BE LOADED BECAUSE THEY ARE
-//					USED FOR NEW ORGANELLES (UPTAKE). JUST BY CHANCE THIS IS DONE FOR THE UPDATE CLASS
-//					NEED TO IMPROVE THIS
+					break freezeDryOption; //organelles will be loaded in a different way.  HOWEVER 
+										   //THE KIND1-KIND6 PROPERTIES NEED TO BE LOADED BECAUSE THEY ARE
+									       //USED FOR NEW ORGANELLES (UPTAKE). JUST BY CHANCE THIS IS DONE FOR THE UPDATE CLASS
+										   //NEED TO IMPROVE THIS
 			}
 			// INITIAL ORGANELLES kind Large is for phagosomes
 			case "kind1": case "kind2": case "kind3": case "kind4": case "kind5": case "kind6": case "kindLarge":
@@ -307,66 +281,49 @@ public class CellProperties {
 				InitialOrganelles inOr = InitialOrganelles.getInstance();
 				inOr.getDiffOrganelles().add(b[0]);
 				switch (b[1]) {
-				case "initOrgProp": {
-					HashMap<String, Double> value = new HashMap<String, Double>();
-					for (int i = 2; i < b.length; i = i + 2) {
-						value.put(b[i], Double.parseDouble(b[i + 1]));
+					case "initOrgProp": {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+							value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitOrgProp().put(b[0], value);
+						break;
 					}
-					inOr.getInitOrgProp().put(b[0], value);
-					break;
-				}
-				case "initRabContent": {
-					HashMap<String, Double> value = new HashMap<String, Double>();
-					for (int i = 2; i < b.length; i = i + 2) {
-						value.put(b[i], Double.parseDouble(b[i + 1]));
+					case "initRabContent": {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+							value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitRabContent().put(b[0], value);
+						break;
 					}
-					inOr.getInitRabContent().put(b[0], value);
-					break;
-				}
-				case "initSolubleContent": {
-					HashMap<String, Double> value = new HashMap<String, Double>();
-					for (int i = 2; i < b.length; i = i + 2) {
-						value.put(b[i], Double.parseDouble(b[i + 1]));
+					case "initSolubleContent": {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+							value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitSolubleContent().put(b[0], value);
+						break;
 					}
-					inOr.getInitSolubleContent().put(b[0], value);
-//					System.out.println("Proton is there?" + inOr.getInitialSolubleContent());
-					break;
-				}
-				case "initMembraneContent": {
-					HashMap<String, Double> value = new HashMap<String, Double>();
-					for (int i = 2; i < b.length; i = i + 2) {
-//					System.out.println("VALOR MALO" + b[i] + "" + b[i+1]);
-						value.put(b[i], Double.parseDouble(b[i + 1]));
+					case "initMembraneContent": {
+						HashMap<String, Double> value = new HashMap<String, Double>();
+						for (int i = 2; i < b.length; i = i + 2) {
+							value.put(b[i], Double.parseDouble(b[i + 1]));
+						}
+						inOr.getInitMembraneContent().put(b[0], value);
+						break;
 					}
-					inOr.getInitMembraneContent().put(b[0], value);
+					default: {
+						System.out.println("no a valid entry");
+					}
+					}
 					break;
-				}
-				default: {
-					System.out.println("no a valid entry");
-				}
-				}
-				break;
 			}
-
-
 			default: {
 				System.out.println("no a valid entry");
 			}
 			}
-
 		}
 		scanner.close();
-//		System.out.println("CP INITIAL cellProp"+ InitialOrganelles.getInstance().initRabContent.toString());
-//		System.out.println("CP CELL PROPERITES CARGADO");
-//		System.out.println("CP VALOR "+ cellProperties.cellK);
-//		System.out.println(cellProperties.initRabCell);
-//		System.out.println(cellProperties.initPMmembraneRecycle);
-//		System.out.println(cellProperties.rabCompatibility);
-//		System.out.println(cellProperties.membraneMet);
-//		System.out.println(cellProperties.solubleMet);
-//		System.out.println(cellProperties.tubuleTropism);
-//		System.out.println(cellProperties.rabTropism);
-//		System.out.println("CP VALOR cellProp" + cellProperties.mtTropism);
-		System.out.println("CP PARA RAB A UPTAKE" +InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
 	}
 }

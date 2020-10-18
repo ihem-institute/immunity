@@ -7,9 +7,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -43,19 +40,11 @@ public class Results {
 	public Set<String> solubleMet = cellProperties.getSolubleMet();
 	public Set<String> membraneMet = cellProperties.getMembraneMet();
 	public Set<String> rabSet = cellProperties.getRabSet();
-//	public List<String> allMet = new ArrayList<String>();
-//	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
-//	public HashMap<String, Double> rabCompatibility = new HashMap<String, Double>();
-//	public HashMap<String, Double> tubuleTropism = new HashMap<String, Double>();
-//	public HashMap<String, List<String>> rabTropism = new HashMap<String, List<String>>();
-//	public HashMap<String, Double> mtTropism = new HashMap<String, Double>();
 	static TreeMap<String, Double> contentDist = new TreeMap<String, Double>((String.CASE_INSENSITIVE_ORDER));
 
 	static HashMap<String, Double> totalRabs = new HashMap<String, Double>();	
 	static HashMap<String, Double> totalVolumeRabs = new HashMap<String, Double>();
 	static HashMap<String, Double> initialTotalRabs = new HashMap<String, Double>();
-//	static HashMap<String, Double> initialTotalSolubleCargo = new HashMap<String, Double>();
-//	static HashMap<String, Double> initialTotalMembraneCargo = new HashMap<String, Double>();
 	static HashMap<String, Double> cisternsArea = new HashMap<String, Double>();
 	static HashMap<String, Double> initialTotalSolubleCargo = new HashMap<String, Double>();
 	static HashMap<String, Double> initialTotalMembraneCargo = new HashMap<String, Double>();
@@ -77,41 +66,12 @@ public class Results {
 	public Results(ContinuousSpace<Object> sp, Grid<Object> gr, HashMap<String, Double> totalRabs, HashMap<String, Double> initialTotalRabs) {
 		this.space = sp;
 		this.grid = gr;
-//		for (String mem :CellProperties.getInstance().getMembraneMet()) {
-//			initialTotalMembraneCargo.put(mem, 0d);
-//		}
-//		for (String sol :CellProperties.getInstance().getSolubleMet()) {
-//			initialTotalSolubleCargo.put(sol, 0d);
-//		}
-
-		// Generate a file with the header of the variables that are going to be followed
-		//along the simulation.  Up to now= content distribution according to rabs contents.
 
 	}
-// FILE HEADERS/  not used.  Now it is added by the same methods that load the values	
-//	@ScheduledMethod(start = 1)
-//	public void header(){
-//		TreeMap<String, Double> header = new TreeMap<String, Double>(String.CASE_INSENSITIVE_ORDER);
-//		header.putAll(content());
-//		try {
-//			writeToCsvHeader(header);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		TreeMap<String, Double> singleEndosomeHeader = new TreeMap<String, Double>(endosomeContent());
-//		try {
-//			writeToCsvHeadSingleEndosomeHeader(singleEndosomeHeader);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+
 // STORE ALL AGENTS OF THE SIMULATION EVERY 5000 TICKS AS AN EXCEL FILE
 	@ScheduledMethod(start = 1, interval = 5000)
 	public void stepTable() {
-//		log();
-//		freeze endosome set
 		FreezeDryEndosomes.getInstance();
 		try {
 			FreezeDryEndosomes.getInstance().writeToCsv();
@@ -147,8 +107,8 @@ public class Results {
 	@ScheduledMethod(start = 1, interval = 100)
 	public void step() {
 		contentDistribution(totalRabs, initialTotalRabs, cisternsArea); // Gets an hash map with all the 
-		//possible combinations of contents and Rabs
-		// a new line is added every 100 ticks
+																		//possible combinations of contents and Rabs
+																		// a new line is added every 100 ticks
 		TreeMap<String, Double> orderContDist = new TreeMap<String, Double>(contentDist);
 		TreeMap<String, Double> orderTotalRabs = new TreeMap<String, Double>((String.CASE_INSENSITIVE_ORDER));
 		orderTotalRabs.putAll(totalRabs);
@@ -178,9 +138,6 @@ public class Results {
 		Writer output;
 		//CAMBIO
 		output = new BufferedWriter(new FileWriter(ITResultsPath, false));		
-//		output = new BufferedWriter(new FileWriter(".//ResultsIntrTransp3.txt", false));
-//		PARA BATCH
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
 		output.append(line);
 		output.close();	
 		
@@ -193,9 +150,6 @@ public class Results {
 		Writer output;
 		//CAMBIO
 		output = new BufferedWriter(new FileWriter(ITResultsPath, true));
-// ABSOLUTE PATH PARA BATCH
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
-//		output = new BufferedWriter(new FileWriter(".//ResultsIntrTransp3.txt", true));
 		output.append(line);
 		output.close();
 	}
@@ -210,7 +164,6 @@ public class Results {
 		Writer output;
 		//CAMBIO
 		output = new BufferedWriter(new FileWriter(TotalRabs, false));		
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
 		output.append(line);
 		output.close();	
 		
@@ -223,41 +176,10 @@ public class Results {
 		Writer output;
 		//CAMBIO
 		output = new BufferedWriter(new FileWriter(TotalRabs, true));
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 		output.append(line);
 		output.close();
 	}
-	// to generate the file and add the headers in the first row
-//	private void writeToCsvHeader(TreeMap<String, Double> orderContDist) throws IOException {
-//		
-//		String line = "";
-//		for (String key : orderContDist.keySet()) {
-//            line = line+ key + ",";
-//		}
-//		line = line + "\n";
-//		Writer output;
-//		//CAMBIO
-//		output = new BufferedWriter(new FileWriter(ITResultsPath, false));		
-////		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
-//		output.append(line);
-//		output.close();	
-//	}
-//	private void writeToCsvHeadSingleEndosomeHeader (TreeMap<String, Double> orderSingleEndHead) throws IOException {
-//		
-//		String line = "";
-//		for (String key : orderSingleEndHead.keySet()) {
-//            line = line+ key + ",";
-//		}
-//		line = line + "\n";
-//		Writer output;
-//		//CAMBIO
-//		output = new BufferedWriter(new FileWriter(MarkerResultsPath, false));
-////		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsMarker.csv", false));
-//		output.append(line);
-//		output.close();	
-//		// TODO Auto-generated method stub
-//		
-//	}
+
 	// sum the content in all endosomes weighted by the rab content of each endosome
 	
 	private void writeToCsvCisternsArea(TreeMap<String, Double> orderCisternsArea) throws IOException {
@@ -271,7 +193,6 @@ public class Results {
 			Writer output;
 			//CAMBIO
 			output = new BufferedWriter(new FileWriter(cisternsAreaPath, false));		
-//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
 			output.append(line);
 			output.close();	
 			
@@ -284,7 +205,6 @@ public class Results {
 			Writer output;
 			//CAMBIO
 			output = new BufferedWriter(new FileWriter(cisternsAreaPath, true));
-//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
 			output.append(line);
 			output.close();
 		}
@@ -319,29 +239,22 @@ public class Results {
 			}
 		}
 		content();
-//		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 // 		first include the content of PM (soluble and membrane associated) and cytosol
 		HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
 		// include in the contentDistribution all the recycled components, soluble and membrane
 		HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
 		HashMap<String, Double> solubleCell = Cell.getInstance().getSolubleCell();
 		for (String sol : solubleRecycle.keySet()) {
-//			System.out.println(" soluble "+ sol);
 			double value = solubleRecycle.get(sol)/initialTotalSolubleCargo.get(sol);
 			contentDist.put(sol, value);
-//			System.out.println("SOLUBLE  PM"+ sol + value );
 		}
 		for (String mem : membraneRecycle.keySet()) {
-//			System.out.println(" membrane "+ mem + " no hay " +mem);
 			double value = membraneRecycle.get(mem)/initialTotalMembraneCargo.get(mem);
 			contentDist.put(mem , value);
-//			System.out.println("MEMBRANE PM  "+ mem + value);
 		}			
 		for (String sol : solubleCell.keySet()) {
-//			System.out.println(" soluble "+ sol);
 			double value = solubleCell.get(sol);
 			contentDist.put("Cy"+sol, value);
-//			System.out.println("SOLUBLE CELL  "+ sol + value );
 		}
 //		now the content of the organelles is added, classified according to the membrane domains of each organelle
 		allEndosomes.clear();
@@ -350,19 +263,7 @@ public class Results {
 				allEndosomes.add((Endosome) obj);
 			}
 		}
-//		if (tick == 1) {
-//			for (Endosome end : allEndosomes) {
-//
-//				for (String mem : end.membraneContent.keySet()) {
-//					double value = initialTotalMembraneCargo.get(mem) + end.membraneContent.get(mem);
-//					initialTotalMembraneCargo.put(mem, value);
-//				}
-//				for (String sol : end.solubleContent.keySet()) {
-//					double value = initialTotalSolubleCargo.get(sol) + end.solubleContent.get(sol);
-//					initialTotalSolubleCargo.put(sol, value);
-//				}
-//			}
-//		}
+		
 //		for the set of all endosomes, calculate the content distribution among the different
 //		rab-containing compartments.  This is calculated as the sum of all the soluble and
 //		membrane components multiplied by the area ratio corresponding to the endosome
@@ -394,28 +295,15 @@ public class Results {
 				double value = cisternsArea.get(maxRab) + area;
 				cisternsArea.put(maxRab, value);
 			}
-//			if (tick == 1) {
-//				for (String mem : membraneContent.keySet()) {
-//				double value = initialTotalMembraneCargo.get(mem) + membraneContent.get(mem);
-//				initialTotalMembraneCargo.put(mem, value);
-//				}
-//				for (String sol : solubleContent.keySet()) {
-//				double value = initialTotalSolubleCargo.get(sol) + solubleContent.get(sol);
-//				initialTotalSolubleCargo.put(sol, value);
-//			}
 
 			for (String rab : rabContent.keySet()) {
 				for (String sol : solubleContent.keySet()) {
-//					System.out.println(" soluble "+ sol + " Rab " +rab);
-//					System.out.println(" FALTA " + contentDist.get(sol + rab));
 					double value = contentDist.get(sol + rab)
 							+ solubleContent.get(sol) * rabContent.get(rab)
 							/ area/initialTotalSolubleCargo.get(sol);
 					contentDist.put(sol + rab, value);
-					//System.out.println("SOLUBLE"+sol + "Rab" +rab);
 				}
 			for (String mem : membraneContent.keySet()) {
-//				System.out.println(" membrane "+mem + " Rab " +rab);
 					double value = contentDist.get(mem + rab)
 							+ membraneContent.get(mem) * rabContent.get(rab)
 							/ area/initialTotalMembraneCargo.get(mem);
@@ -442,11 +330,7 @@ public class Results {
 			totalVolumeRabs.put(rab, sum);
 			
 		}
-
-//
-// If the endosome contains a MARKER, print info in a Results file		
-
-		
+// If the endosome contains a MARKER, print info in a Results file
 		if((endosome.getMembraneContent().containsKey("membraneMarker") && 
 				endosome.getMembraneContent().get("membraneMarker") > 0.9)
 				||
@@ -483,14 +367,7 @@ public class Results {
 		cisternsArea.put("#cisterns#", cisternsNumber);
 		cisternsArea.put("#vesicles#", endosomeNumber - cisternsNumber);
 		
-		
-//		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		if (tick == 1) initialTotalRabs.putAll(totalRabs);
-		
-//		sum in cytosol
-//		System.out.println(" TOTAL RABS      "+totalRabs);
-
-
 	}
 // Send information about the endosome that contains a membrane or a soluble MARKER
 	private void printEndosome(Endosome endosome) throws IOException {
@@ -516,7 +393,6 @@ public class Results {
 			}
 			else {singleEndosomeContent.put(mem, 0.0);}
 		}
-//		TreeMap<String, Double> orderSingleEndosome = new TreeMap<String, Double>(singleEndosomeContent);
 		double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		if (tick <10)// HEADER
 		{
@@ -529,7 +405,6 @@ public class Results {
 		Writer output;
 		//CAMBIO
 		output = new BufferedWriter(new FileWriter(MarkerResultsPath, false));
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsMarker.csv", false));
 		output.append(line);
 		output.close();	
 		}
@@ -541,13 +416,10 @@ public class Results {
 		Writer output;
 		//CAMBIO
 		output = new BufferedWriter(new FileWriter(MarkerResultsPath, true));
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsMarker.csv", true));
 		output.append(line);
 		output.close();
 	}
 	
-
-
 	// generate the set of all combinations between contents 
 	//(soluble or membrane) with all Rabs and sets the initial values to zero
 	public TreeMap<String, Double> content() {

@@ -1,11 +1,7 @@
 package immunity;
-import java.util.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Set;
 import java.util.Collections;
-import org.COPASI.CModel;
 import org.COPASI.CTimeSeries;
 import org.apache.commons.lang3.StringUtils;
 
@@ -30,7 +26,6 @@ public class PlasmaMembraneCopasiStep {
 			return;
 			}
 		if (!plasmaMembrane.getPlasmaMembraneTimeSeries().containsKey(tick)) {
-//			System.out.println("Return without UPDATED");
 			return;
 		}else {
 			timeSeriesLoadintoPlasmaMembrane(plasmaMembrane);
@@ -63,8 +58,7 @@ public class PlasmaMembraneCopasiStep {
 //			At tick = 0, nothing is released (pastValues = presentValues)
 			if (StringUtils.endsWith(met, "Cy")){
 				 if (!Cell.getInstance().getSolubleCell().containsKey(met1)){Cell.getInstance().getSolubleCell().put(met1, 0.0);}
-					//			 System.out.println("TICK " + met+tick + "\n " + pastTick + "\n " + presentValues.get(met) + "\n " + pastValues.get(met) + "\n" + endosome
-					//			 );
+				
 					double delta =  presentValues.get(met) - pastValues.get(met);
 					double metValue = Cell.getInstance().getSolubleCell().get(met1)
 										+ delta * PlasmaMembrane.getInstance().getPlasmaMembraneArea()/Cell.getInstance().getCellArea();
@@ -95,7 +89,6 @@ public class PlasmaMembraneCopasiStep {
 		System.out.println("PM MEMBRENE RECYCLE " + plasmaMembrane.getMembraneRecycle());
 		
 		for (String met : metabolites) {
-//			System.out.println("metabolito que no anda" + met);
 			String met1 = met.substring(0, met.length()-2);
 
 			 if (met.endsWith("Pm") && plasmaMembrane.getMembraneRecycle().containsKey(met1)) {
@@ -125,10 +118,6 @@ public class PlasmaMembraneCopasiStep {
 			localM.put("protonEn", 1e-04);
 		}
 		
-		
-	
-//System.out.println("LOCAL MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM " + localM);
-
 		receptorDynamics.runTimeCourse();
 		
 
@@ -143,10 +132,6 @@ public class PlasmaMembraneCopasiStep {
 				plasmaMembrane.getPlasmaMembraneTimeSeries().put((int) (tick+time*Cell.timeScale/0.03),value);
 			}
 		}
-		
-			
-
-			
 
 		}
 	
