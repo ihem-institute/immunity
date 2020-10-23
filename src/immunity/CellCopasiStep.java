@@ -1,12 +1,7 @@
 package immunity;
-import java.util.*;
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import java.util.Collections;
-import org.COPASI.CModel;
 import org.COPASI.CTimeSeries;
 import org.apache.commons.lang3.StringUtils;
 

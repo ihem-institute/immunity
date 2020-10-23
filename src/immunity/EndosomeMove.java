@@ -6,11 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import repast.simphony.context.Context;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.grid.Grid;
-import repast.simphony.util.ContextUtils;
 
 public class EndosomeMove {
 
@@ -49,42 +47,40 @@ public class EndosomeMove {
 		double yrnd = 1;//Math.random();
 		endosome.heading = -90;
 		switch (maxRab) {
-		case "RabA": {
-			yrnd = Math.random();
-//			endosome.heading = -90;
-			space.moveTo(endosome, 25, yrnd*2);
-			grid.moveTo(endosome, 25, (int)yrnd*2);
-			break;
-		}
-		case "RabB": {
-			yrnd = Math.random();
-//			endosome.heading = -90;
-			space.moveTo(endosome, 25, yrnd*3);
-			grid.moveTo(endosome, 25, (int)yrnd*3);
-			break;
-		}
-		case "RabC": {
-			yrnd = Math.random();
-//			endosome.heading = -90;
-			space.moveTo(endosome, 25, yrnd*4);
-			grid.moveTo(endosome, 25, (int)yrnd*4);
-			break;
-		}
-		case "RabD": {
-			yrnd = Math.random();
-//			endosome.heading = -90;
-			space.moveTo(endosome, 25, yrnd*5);
-			grid.moveTo(endosome, 25, (int)yrnd*5);
-			break;
-		}
-		case "RabE": {
-			yrnd = Math.random();
-//			endosome.heading = -90;
-			space.moveTo(endosome, 25, yrnd*6);
-			grid.moveTo(endosome, 25, (int)yrnd*6);
-			break;
-		}
-		
+			case "RabA": {
+				yrnd = Math.random();
+				space.moveTo(endosome, 25, yrnd*2);
+				grid.moveTo(endosome, 25, (int)yrnd*2);
+				break;
+			}
+			case "RabB": {
+				yrnd = Math.random();
+	//			endosome.heading = -90;
+				space.moveTo(endosome, 25, yrnd*3);
+				grid.moveTo(endosome, 25, (int)yrnd*3);
+				break;
+			}
+			case "RabC": {
+				yrnd = Math.random();
+	//			endosome.heading = -90;
+				space.moveTo(endosome, 25, yrnd*4);
+				grid.moveTo(endosome, 25, (int)yrnd*4);
+				break;
+			}
+			case "RabD": {
+				yrnd = Math.random();
+	//			endosome.heading = -90;
+				space.moveTo(endosome, 25, yrnd*5);
+				grid.moveTo(endosome, 25, (int)yrnd*5);
+				break;
+			}
+			case "RabE": {
+				yrnd = Math.random();
+	//			endosome.heading = -90;
+				space.moveTo(endosome, 25, yrnd*6);
+				grid.moveTo(endosome, 25, (int)yrnd*6);
+				break;
+			}
 		}
 		NdPoint myPoint = space.getLocation(endosome);
 //		NdPoint myPoint = endosome.getEndosomeLocation(endosome);
@@ -113,7 +109,7 @@ public class EndosomeMove {
 		 */
 
 		NdPoint myPoint = space.getLocation(endosome);
-//		NdPoint myPoint = endosome.getEndosomeLocation(endosome);
+		//NdPoint myPoint = endosome.getEndosomeLocation(endosome);
 		
 		double x = myPoint.getX();
 		endosome.setXcoor(x);
@@ -121,7 +117,7 @@ public class EndosomeMove {
 		endosome.setYcoor(y);
 		
 
-//	If near the borders, move random (only with 10% probability)
+		//	If near the borders, move random (only with 10% probability)
 		if (y > 50-2*cellLimit || y < 0.5*cellLimit) { // near the nucleus non random
 			changeDirectionRnd(endosome);
 		}
@@ -160,17 +156,17 @@ public class EndosomeMove {
 		double initialh = endosome.heading;
 //		Endosome.endosomeShape(endosome);
 
-// when near the borders or no MT is nearby, the organelle rotates randomly
-// according with i) its present heading, ii) a gaussian random number (0+- 30degree/momentum) 
-//	As unit momentum I take that of a sphere of radius 20.
-//	Momentum of a ellipsoid = volume*(large radius^2 + small radius^2)/5.  For the sphere or radius 20
-//	4/3*PI*r^3*(20^2+20^2)/5 = 26808257/5 = 5.361.651.
-//		To prevent the tubules to move, I did not consider the volume in the calculation
-//		then a 20 nm sphere has a "pseudo" momentum of 800
-//NEW RULE FOR RANDOM CHANGE OF HEADING
-//A free rnd movement 360.  The probability decrease with size
-//An inertial movement.  Gaussian arround 0 with an angle that decreases with size
-//An inertial movement depending on the momentum.  Gaussian around 0 or 180
+		// when near the borders or no MT is nearby, the organelle rotates randomly
+		// according with i) its present heading, ii) a gaussian random number (0+- 30degree/momentum) 
+		//	As unit momentum I take that of a sphere of radius 20.
+		//	Momentum of a ellipsoid = volume*(large radius^2 + small radius^2)/5.  For the sphere or radius 20
+		//	4/3*PI*r^3*(20^2+20^2)/5 = 26808257/5 = 5.361.651.
+		//		To prevent the tubules to move, I did not consider the volume in the calculation
+		//		then a 20 nm sphere has a "pseudo" momentum of 800
+		//NEW RULE FOR RANDOM CHANGE OF HEADING
+		//A free rnd movement 360.  The probability decrease with size
+		//An inertial movement.  Gaussian arround 0 with an angle that decreases with size
+		//An inertial movement depending on the momentum.  Gaussian around 0 or 180
 
 			double momentum = (endosome.a * endosome.a + endosome.c * endosome.c)/800;
 				// if (momentum < 0.5 && c>21) System.out.println("momentum  " +
@@ -186,9 +182,9 @@ public class EndosomeMove {
 //			if (finalh > 180) endosome.heading = finalh- 360d;
 					
 
-				// if (initial - heading >
-				// 90)System.out.println("GIRO sin MT "+initial+"  "+heading+"  "+momentum);
-// The speed is random between 0 and a value inversely proportional to the endosome size
+			// if (initial - heading >
+			// 90)System.out.println("GIRO sin MT "+initial+"  "+heading+"  "+momentum);
+			// The speed is random between 0 and a value inversely proportional to the endosome size
 			endosome.speed = 20d/endosome.size*Math.random()* Cell.orgScale/Cell.timeScale;
 			return;
 		}
@@ -200,27 +196,27 @@ public class EndosomeMove {
 		}
 		double mtDir = 0;
 		String rabDir = "";
-/*
- * mtDirection decides if the endosome is going to move to the (-) end
- * of the MT (dyneine like or to the plus end (kinesine like). -1 goes
- * to the nucleus, 1 to the PM
- * 
- */
+		/*
+		 * mtDirection decides if the endosome is going to move to the (-) end
+		 * of the MT (dyneine like or to the plus end (kinesine like). -1 goes
+		 * to the nucleus, 1 to the PM
+		 * 
+		 */
 
 		Collections.shuffle(mts);
 		for (MT mt : mts) {
 			double dist = distance(endosome, mt);
-//			System.out.println("distance BEFORE "+ dist+"  " +mt.getMtheading());
-//			The distance is in space units from 0 to 50. At scale 1, the space is 1500 nm.  At 
-//			scale 0.5 it is 3000 nm.
-//			Hence to convert to nm, I must multiply by 45 (2250/50) and divide by scale. An organelle will sense MT
-//			at a distance less than its size.
+			//System.out.println("distance BEFORE "+ dist+"  " +mt.getMtheading());
+			//The distance is in space units from 0 to 50. At scale 1, the space is 1500 nm.  At 
+			//scale 0.5 it is 3000 nm.
+			//Hence to convert to nm, I must multiply by 45 (2250/50) and divide by scale. An organelle will sense MT
+			//at a distance less than its size.
 			if (Math.abs(dist*30d/Cell.orgScale) < endosome.size) {
-// Each domain has a moving rule specified by two numbers (mtDir) that go from -1 to +1
-// Tubules and no-tubules can move to different ends of the MT.  The sign indicate the direction
-// -1 to the nucleous and +1 to the PM.  The absolute number is the probability of taking the 
-// MT direction or to move randomly.  1 is that it always move on MT 0 it is always random.
-// 
+				// Each domain has a moving rule specified by two numbers (mtDir) that go from -1 to +1
+				// Tubules and no-tubules can move to different ends of the MT.  The sign indicate the direction
+				// -1 to the nucleous and +1 to the PM.  The absolute number is the probability of taking the 
+				// MT direction or to move randomly.  1 is that it always move on MT 0 it is always random.
+				// 
 				boolean isCistern = endosome.a > endosome.c;
 				boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2);
 				rabDir = mtDirection(endosome);
@@ -231,14 +227,14 @@ public class EndosomeMove {
 //				if (isCistern) {
 //					mtDir = 1;	// to the nucleous		
 //				}
-// select a mtDir according with the domains present in the endosome.  Larger probability for the more aboundant domain
-// 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
+				// select a mtDir according with the domains present in the endosome.  Larger probability for the more aboundant domain
+				// 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
 				if (isTubule && !isCistern)
 				{
 //					System.out.println("IS TUBULE"+ rabDir);
 					mtDir = CellProperties.getInstance().mtTropismTubule.get(rabDir);
 					if (Math.random()<Math.abs(mtDir)) {
-// 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
+						// 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
 						if (Math.signum(mtDir)>=0) {mtDir = 0;} else {mtDir = 1;}
 					}
 					else {

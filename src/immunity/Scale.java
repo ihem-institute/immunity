@@ -1,6 +1,6 @@
 package immunity;
 
-import java.util.HashMap;
+
 
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ScheduledMethod;
@@ -19,8 +19,6 @@ public class Scale {
 		instance = new Scale(space, grid);
 	}
 	
-
-
 	// Constructor
 	public Scale (ContinuousSpace<Object> space, Grid<Object> grid) {
 		scale500nm = (int)(50d*500d/1500d*Cell.orgScale);

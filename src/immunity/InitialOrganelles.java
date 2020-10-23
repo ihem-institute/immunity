@@ -1,10 +1,7 @@
 package immunity;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 //	This class contains the properties of the initial organelles.  It is modified
 // by the CellProperties that gets the values from a CSV file 
 
@@ -44,11 +41,9 @@ public class InitialOrganelles {
 
 	public HashMap<String, HashMap<String, Double>> getInitMembraneContent() {
 		return initMembraneContent;
-//		return new HashMap<String, HashMap<String, Double>>(initMembraneContent);
 	}
 
 	public String getInitialSolubleContent() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

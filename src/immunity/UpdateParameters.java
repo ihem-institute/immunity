@@ -6,17 +6,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.TreeMap;
 
 import repast.simphony.engine.schedule.ScheduledMethod;
-import repast.simphony.space.continuous.ContinuousSpace;
-import repast.simphony.space.grid.Grid;
 
 public class UpdateParameters {
 
@@ -52,23 +47,17 @@ public class UpdateParameters {
 			try {
 		testNewFile();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 }
 	public void testNewFile() throws IOException {
 		//CAMBIO
 		File file = new File(InputPath);
-//		File file = new File("C:/Users/lmayo/workspace/immunity/inputIntrTransp3.csv");
 		Path filePath = file.toPath();		
 		BasicFileAttributes attr = Files.readAttributes(filePath, BasicFileAttributes.class);
 		String newFile = attr.lastModifiedTime().toString();
 		if (newFile.equals(oldFile)){return;}
 		else{
-//			System.out.println("newFile " + newFile+ "oldFile "+ oldFile);
-//			System.out.println("creationTime: " + attr.creationTime());
-//			System.out.println("lastAccessTime: " + attr.lastAccessTime());
-//			System.out.println("lastModifiedTime: " + attr.lastModifiedTime());
 			try {
 				loadFromCsv();
 				
@@ -78,22 +67,7 @@ public class UpdateParameters {
 //	beginning, I need to re-load values.  This is the case of initial rabs content in the 
 //	Cell. This maight be useful for knocking down a Rab in the middle of an experiment
 				Cell.getInstance().getRabCell().putAll(cellProperties.getInitRabCell());
-				
-//				System.out.println(cellProperties.cellK);
-//				System.out.println(cellProperties.initRabCell);
-//				System.out.println(cellProperties.rabCompatibility);
-//				System.out.println(cellProperties.membraneMet);
-//				System.out.println(cellProperties.solubleMet);
-//				System.out.println(cellProperties.tubuleTropism);
-//				System.out.println(cellProperties.rabTropism);
-//				System.out.println(cellProperties.mtTropism);
-				
-				
-
-//				InitialOrganelles inOr = InitialOrganelles.getInstance();
-				System.out
-						.println("A VER?" +  InitialOrganelles.getInstance().getInitOrgProp());
-				
+											
 				try {
 					Thread.sleep(4000);
 				} catch (InterruptedException e) {
@@ -101,12 +75,6 @@ public class UpdateParameters {
 					e.printStackTrace();
 				}
 				
-//				System.out.println(InitialOrganelles.getInstance()
-//						.getInitRabContent());
-//				System.out.println(InitialOrganelles.getInstance()
-//						.getInitMembraneContent());
-//				System.out.println(InitialOrganelles.getInstance()
-//						.getInitSolubleContent());
 
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
@@ -124,13 +92,10 @@ public class UpdateParameters {
 	public void loadFromCsv() throws FileNotFoundException {
 		//CAMBIO
 		Scanner scanner = new Scanner(new File(InputPath));
-//		Scanner scanner = new Scanner(new File(
-//				"C:/Users/lmayo/workspace/immunity/inputIntrTransp3.csv"));	
 		scanner.useDelimiter(",");
 
 		CellProperties cellProperties = CellProperties.getInstance();
 		freezeDryOption: // this names the WHILE loop, so I can break from the loop when I want.  
-			//Something I did not know that it could be done
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
 			String[] b = line.split(",");
@@ -138,7 +103,6 @@ public class UpdateParameters {
 			case "cellK": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getCellK().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getCellK());
 				}
 				
 				break;
@@ -146,7 +110,6 @@ public class UpdateParameters {
 			case "cellProperties": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getCellAgentProperties().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getCellK());
 				}
 				
 				break;
@@ -154,7 +117,6 @@ public class UpdateParameters {
 			case "plasmaMembraneProperties": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getPlasmaMembraneProperties().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getCellK());
 				}
 				
 				break;
@@ -167,49 +129,42 @@ public class UpdateParameters {
 			case "initRabCell": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getInitRabCell().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getInitRabCell());
 				}
 				break;
 			}
 			case "initPMmembraneRecycle": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getInitPMmembraneRecycle().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getMembraneRecycle());
 				}
 				break;
 			}
 			case "initPMsolubleRecycle": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getInitPMsolubleRecycle().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getMembraneRecycle());
 				}
 				break;
 			}
 			case "solubleCell": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				cellProperties.getSolubleCell().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(cellProperties.getSolubleCell());
 				}
 				break;
 			}
 			case "rabCompatibility": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					cellProperties.getRabCompatibility().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getRabCompatibility());
 					}
 				break;
 			}
 			case "tubuleTropism": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					cellProperties.getTubuleTropism().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getTubuleTropism()); 
 					}
 				break;
 			}
 			case "rabTropism": {
 				Set<String> rabT = new HashSet<String>();
 				for (int i = 2; i < b.length; i++) {
-					//System.out.println(b[i]);
 					if (b[i].length()>0) {
 						rabT.add(b[i]);
 					}
@@ -220,14 +175,12 @@ public class UpdateParameters {
 			case "mtTropismTubule": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					cellProperties.getMtTropismTubule().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getMtTropism());
 					}
 				break;
 			}
 			case "mtTropismRest": {
 				for (int i = 1; i < b.length; i = i + 2) {
 					cellProperties.getMtTropismRest().put(b[i], Double.parseDouble(b[i+1]));
-					//System.out.println(cellProperties.getMtTropism());
 					}
 				break;
 			}
@@ -282,12 +235,6 @@ public class UpdateParameters {
 				break;
 			}
 			
-//			case "freezeDry":
-//				{
-//					FreezeDryEndosomes.getInstance();
-//					break freezeDryOption; // if freezeDry then exit because the initial organelles will be loaded in a 
-//					// different way
-//			}
 			// INITIAL ORGANELLES kind 7 is for phagosomes
 			case "kind1": case "kind2": case "kind3": case "kind4": case "kind5": case "kind6": case "kindLarge":
 			{

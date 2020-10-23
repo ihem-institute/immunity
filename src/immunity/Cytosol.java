@@ -82,8 +82,6 @@ public class Cytosol {
 			
 		}
 
-
-
 		//GETTERS AND SETTERS
 		public double getXcoor() {
 				return xcoor;
@@ -94,9 +92,6 @@ public class Cytosol {
 		public double getYcoor() {
 			return ycoor;
 		}
-
-
-
 		public HashMap<String, Double> getCytoContent() {
 			return cytoContent;
 		}

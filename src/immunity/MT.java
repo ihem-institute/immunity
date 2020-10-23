@@ -1,10 +1,5 @@
 package immunity;
 
-import java.io.FileWriter;
-import java.io.IOException;
-
-import com.thoughtworks.xstream.XStream;
-
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.space.continuous.ContinuousSpace;
@@ -34,14 +29,11 @@ public class MT {
 	}
 
 	public void changePosition(MT mt) {
-		//if (Math.random() < 0.1) return;
 		// move the origin and the end of the MT
 		xorigin = RandomHelper.nextDoubleFromTo(5, 45);
 		if (xorigin <= 25) {xend = xorigin -RandomHelper.nextDoubleFromTo(0, xorigin);}
 		else {xend = xorigin + RandomHelper.nextDoubleFromTo(0, 50-xorigin);}
 		double mth = Math.atan((50) / (xend - xorigin));
-		System.out.println("a-tang");
-		System.out.println(mth * 180 / Math.PI);
 		if (mth < 0) {
 			mth = 180 + (mth * 180 / Math.PI);
 		} else
@@ -51,16 +43,6 @@ public class MT {
 		double x = xorigin + 25 * Math.cos(mtheading * Math.PI / 180);
 		space.moveTo(mt, x, y);
 		grid.moveTo(mt, (int) x, (int) y);
-//		writing to a xml file.  It works, but I will not be able to use to strart a simulation
-//		XStream xstream = new XStream();
-//		String file = "C:/Users/lmayo/Desktop/pruebaXML.xml";
-//		try {
-//			xstream.toXML(mt, new FileWriter(file));
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
 	}
 	// GETTERS AND SETTERS
 	public double getXorigin() {

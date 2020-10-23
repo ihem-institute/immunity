@@ -114,7 +114,7 @@ public class EndosomeSplitStep {
 				}
 				
 				nroVesicles.put(rabInTube, value);
-				System.out.println("NUMERO DE VESÍCULAS POR RAB "+ nroVesicles);
+				//System.out.println("NUMERO DE VESÍCULAS POR RAB "+ nroVesicles);
 
 			}
 
