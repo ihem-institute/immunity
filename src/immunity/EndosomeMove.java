@@ -48,34 +48,34 @@ public class EndosomeMove {
 		endosome.heading = -90;
 		switch (maxRab) {
 			case "RabA": {
-				yrnd = Math.random();
+	//			yrnd = Math.random();
 				space.moveTo(endosome, 25, yrnd*2);
 				grid.moveTo(endosome, 25, (int)yrnd*2);
 				break;
 			}
 			case "RabB": {
-				yrnd = Math.random();
+	//			yrnd = Math.random();
 	//			endosome.heading = -90;
 				space.moveTo(endosome, 25, yrnd*3);
 				grid.moveTo(endosome, 25, (int)yrnd*3);
 				break;
 			}
 			case "RabC": {
-				yrnd = Math.random();
+	//			yrnd = Math.random();
 	//			endosome.heading = -90;
 				space.moveTo(endosome, 25, yrnd*4);
 				grid.moveTo(endosome, 25, (int)yrnd*4);
 				break;
 			}
 			case "RabD": {
-				yrnd = Math.random();
+	//			yrnd = Math.random();
 	//			endosome.heading = -90;
 				space.moveTo(endosome, 25, yrnd*5);
 				grid.moveTo(endosome, 25, (int)yrnd*5);
 				break;
 			}
 			case "RabE": {
-				yrnd = Math.random();
+	//			yrnd = Math.random();
 	//			endosome.heading = -90;
 				space.moveTo(endosome, 25, yrnd*6);
 				grid.moveTo(endosome, 25, (int)yrnd*6);
