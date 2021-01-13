@@ -19,6 +19,10 @@
 	    try {
 	      
 	      mypath=myDir.getCanonicalPath().replace('\\','/');
+//	      FOR BATCH, THE PATH MUST BE ABSOLUTE BECAUSE THE BATCH IS RUN FROM A
+//	      TEMPORARY FOLDER THAT IS DELETED. SO IF RELATIVE, THE OUTPUT IS LOST
+//	      SAME FOR INPUT, THE FILE MUST BE IN THE "data" FOLDER
+	      mypath="C:/Users/lmayo/workspace/immunity/output";
 	      
 	      }
 	    catch(Exception e) {

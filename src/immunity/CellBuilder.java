@@ -386,7 +386,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 
 		
 		if (RunEnvironment.getInstance().isBatch()) {
-			RunEnvironment.getInstance().endAt(20);
+			RunEnvironment.getInstance().endAt(200);
 		}
 
 		collection = context.getObjects(Endosome.class);
