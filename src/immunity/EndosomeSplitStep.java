@@ -634,9 +634,19 @@ public class EndosomeSplitStep {
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
 		
-//		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
-//				CellProperties.getInstance().getRabTropism());
-		double concentrate = 7d;
+		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
+				CellProperties.getInstance().getRabTropism());
+		System.out.println(rabTropism);
+		double	tubuleTrop = 1d;
+		for (String rabTrop : rabTropism.get(content)){
+			if (rabTrop.contains("tub")) {
+				System.out.println(rabTrop);
+			tubuleTrop = Double.parseDouble(rabTrop.substring(3,5));
+			}
+		}
+		
+		double concentrate = tubuleTrop;
+				
 		double scylinder = so - sVesicle;
 		double value = (copyMembrane.get(content)/so)*concentrate*scylinder;
 //		if(copyMembrane.get(content)> scylinder){

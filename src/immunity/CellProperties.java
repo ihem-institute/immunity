@@ -367,7 +367,7 @@ public class CellProperties {
 //		System.out.println(cellProperties.membraneMet);
 //		System.out.println(cellProperties.solubleMet);
 //		System.out.println(cellProperties.tubuleTropism);
-//		System.out.println(cellProperties.rabTropism);
+		System.out.println(cellProperties.rabTropism);
 //		System.out.println("CP VALOR cellProp" + cellProperties.mtTropism);
 		System.out.println("CP PARA RAB A UPTAKE" +InitialOrganelles.getInstance().getInitOrgProp().get("kind1"));
 	}

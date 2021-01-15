@@ -1,316 +1,198 @@
-INFO  [Thread-0] 2021-01-14 19:29:32,448 repast.simphony.batch.ssh.LocalSession - {RabE=5772.676500971245}{}{proton=0.0012759538471787402}{area=5772.676500971245, volume=33673.94625566559, empty=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:32,450 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=17, RabD=22, RabB=20}
-INFO  [Thread-0] 2021-01-14 19:29:32,451 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:32,454 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1900506.475988347}
-INFO  [Thread-0] 2021-01-14 19:29:32,455 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=17, RabD=22, RabB=21}
-INFO  [Thread-0] 2021-01-14 19:29:32,455 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:32,577 repast.simphony.batch.ssh.LocalSession - java.nio.file.FileAlreadyExistsException: C:\Users\lmayo\workspace\immunity\output\2021-01-14-19-2932
-INFO  [Thread-0] 2021-01-14 19:29:32,578 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:87)
-INFO  [Thread-0] 2021-01-14 19:29:32,578 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
-INFO  [Thread-0] 2021-01-14 19:29:32,578 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
-INFO  [Thread-0] 2021-01-14 19:29:32,579 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileSystemProvider.createDirectory(WindowsFileSystemProvider.java:505)
-INFO  [Thread-0] 2021-01-14 19:29:32,579 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.nio.file.Files.createDirectory(Files.java:689)
-INFO  [Thread-0] 2021-01-14 19:29:32,579 repast.simphony.batch.ssh.LocalSession - 	at immunity.LocalPath.<init>(LocalPath.java:37)
-INFO  [Thread-0] 2021-01-14 19:29:32,579 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters.<init>(UpdateParameters.java:25)
-INFO  [Thread-0] 2021-01-14 19:29:32,579 repast.simphony.batch.ssh.LocalSession - 	at immunity.CellBuilder.build(CellBuilder.java:93)
-INFO  [Thread-0] 2021-01-14 19:29:32,580 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
-INFO  [Thread-0] 2021-01-14 19:29:32,580 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
-INFO  [Thread-0] 2021-01-14 19:29:32,580 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
-INFO  [Thread-0] 2021-01-14 19:29:32,580 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
-INFO  [Thread-0] 2021-01-14 19:29:32,580 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
-INFO  [Thread-0] 2021-01-14 19:29:32,581 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-INFO  [Thread-0] 2021-01-14 19:29:32,581 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-INFO  [Thread-0] 2021-01-14 19:29:32,581 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
-INFO  [Thread-0] 2021-01-14 19:29:32,581 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
-INFO  [Thread-0] 2021-01-14 19:29:32,582 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
-INFO  [Thread-0] 2021-01-14 19:29:32,586 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
-INFO  [Thread-0] 2021-01-14 19:29:32,587 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
-INFO  [Thread-0] 2021-01-14 19:29:32,587 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
-INFO  [Thread-0] 2021-01-14 19:29:32,587 repast.simphony.batch.ssh.LocalSession - PM membraneRecycle {enzyme=0.0, G55=0.0, enzymeM=0.0, Gpli=0.0, Go3=0.0, Spli=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:32,589 repast.simphony.batch.ssh.LocalSession - PM solubleRecycle {}
-INFO  [Thread-0] 2021-01-14 19:29:32,590 repast.simphony.batch.ssh.LocalSession - FREEZE DRY METHOD   [endosome111a, endosome58U, endosome73n, endosome17y, endosome45t, endosome85p, endosome50H, endosome29u, endosome148B, endosome99E, endosome4o, endosome90W, endosome135X, endosome22c, endosome118p, endosome123J, endosome74Z, endosome62Z, endosome61s, endosome97S, endosome112c, endosome149G, endosome140b, endosome5K, endosome57O, endosome44i, endosome69L, endosome125C, endosome98C, endosome33g, endosome124W, endosome21b, endosome72y, endosome96u, endosome84u, endosome60t, endosome23u, endosome75t, endosome133f, endosome19z, endosome51n, endosome80J, endosome48M, endosome24L, endosome120o, endosome36h, endosome89F, endosome105Y, endosome91y, endosome104n, endosome144j, endosome88X, endosome92Q, endosome76Y, endosome119J, endosome134c, endosome87U, endosome147F, endosome34q, endosome59T, endosome46n, endosome107A, endosome6k, endosome18u, endosome47R, endosome7G, endosome64B, endosome146T, endosome11f, endosome106Y, endosome110R, endosome121r, endosome122T, endosome12D, endosome129s, endosome35Z, endosome10x, endosome63W, endosome86y, endosome65s, endosome103f, endosome25s, endosome139n, endosome78M, endosome1g, endosome37q, endosome81f, endosome143Z, endosome30L, endosome0o, endosome114v, endosome95C, endosome67A, endosome14d, endosome82V, endosome115M, endosome1T, endosome93r, endosome94T, endosome41w, endosome127U, endosome77U, endosome117I, endosome9C, endosome49V, endosome52n, endosome128l, endosome53Q, endosome145I, endosome40e, endosome8W, endosome116W, endosome13b, endosome132H, endosome56U, endosome102E, endosome101e, endosome109n, endosome28X, endosome68J, endosome136t, endosome100s, endosome3O, endosome164u, endosome16a, endosome31v, endosome113O, endosome108v, endosome3T, endosome43y, endosome32Z, endosome66t, endosome70n, endosome26z, endosome130b, endosome71L, endosome131E, endosome142W, endosome141w, endosome54m, endosome38p, endosome39Q, endosome42i, endosome20C, endosome2N, endosome138Y, endosome137z, endosome15g, endosome79e, endosome27b, endosome126N, endosome83Z, endosome55X, endosome2T]
-INFO  [Thread-0] 2021-01-14 19:29:32,597 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,598 repast.simphony.batch.ssh.LocalSession - 82.06416991660608
-INFO  [Thread-0] 2021-01-14 19:29:32,598 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,598 repast.simphony.batch.ssh.LocalSession - 79.51189223242287
-INFO  [Thread-0] 2021-01-14 19:29:32,598 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,599 repast.simphony.batch.ssh.LocalSession - -85.40423503584627
-INFO  [Thread-0] 2021-01-14 19:29:32,599 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,599 repast.simphony.batch.ssh.LocalSession - 89.57216127883821
-INFO  [Thread-0] 2021-01-14 19:29:32,599 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,600 repast.simphony.batch.ssh.LocalSession - -89.46993877040961
-INFO  [Thread-0] 2021-01-14 19:29:32,600 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,600 repast.simphony.batch.ssh.LocalSession - 79.39503454573284
-INFO  [Thread-0] 2021-01-14 19:29:32,600 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,601 repast.simphony.batch.ssh.LocalSession - 76.4384665858889
-INFO  [Thread-0] 2021-01-14 19:29:32,601 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,601 repast.simphony.batch.ssh.LocalSession - 69.60306549376426
-INFO  [Thread-0] 2021-01-14 19:29:32,601 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,602 repast.simphony.batch.ssh.LocalSession - 81.79356315881236
-INFO  [Thread-0] 2021-01-14 19:29:32,602 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,602 repast.simphony.batch.ssh.LocalSession - 85.49135045046447
-INFO  [Thread-0] 2021-01-14 19:29:32,602 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,603 repast.simphony.batch.ssh.LocalSession - -88.54268365678978
-INFO  [Thread-0] 2021-01-14 19:29:32,603 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,604 repast.simphony.batch.ssh.LocalSession - -73.83276646106634
-INFO  [Thread-0] 2021-01-14 19:29:32,604 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,604 repast.simphony.batch.ssh.LocalSession - 89.67727307544487
-INFO  [Thread-0] 2021-01-14 19:29:32,604 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,604 repast.simphony.batch.ssh.LocalSession - 87.66580348062305
-INFO  [Thread-0] 2021-01-14 19:29:32,605 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,605 repast.simphony.batch.ssh.LocalSession - -87.19707361498997
-INFO  [Thread-0] 2021-01-14 19:29:32,605 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,605 repast.simphony.batch.ssh.LocalSession - -83.60246000858508
-INFO  [Thread-0] 2021-01-14 19:29:32,606 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,606 repast.simphony.batch.ssh.LocalSession - 89.27653194902878
-INFO  [Thread-0] 2021-01-14 19:29:32,607 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,607 repast.simphony.batch.ssh.LocalSession - 75.49152666029389
-INFO  [Thread-0] 2021-01-14 19:29:32,607 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,607 repast.simphony.batch.ssh.LocalSession - -82.09124889062147
-INFO  [Thread-0] 2021-01-14 19:29:32,607 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:32,608 repast.simphony.batch.ssh.LocalSession - 82.86785534356403
-INFO  [Thread-0] 2021-01-14 19:29:32,635 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabC=1919748.730991584}
-INFO  [Thread-0] 2021-01-14 19:29:32,635 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=19, RabD=13, RabB=12}
-INFO  [Thread-0] 2021-01-14 19:29:32,646 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.047941389134138035}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:32,652 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1935142.5349941736}
-INFO  [Thread-0] 2021-01-14 19:29:32,652 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=19, RabD=13, RabB=13}
-INFO  [Thread-0] 2021-01-14 19:29:32,653 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.047728136562419365}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:32,656 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=19, RabD=14, RabB=13}
-INFO  [Thread-0] 2021-01-14 19:29:32,659 repast.simphony.batch.ssh.LocalSession - {RabD=3848.4510006474966}{}{proton=0.047812663049057846}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:32,661 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabC=1915900.2799909366}
-INFO  [Thread-0] 2021-01-14 19:29:32,662 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=20, RabD=14, RabB=13}
-INFO  [Thread-0] 2021-01-14 19:29:32,662 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:32,664 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1931294.0839935262}
-INFO  [Thread-0] 2021-01-14 19:29:32,664 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=20, RabD=14, RabB=14}
-INFO  [Thread-0] 2021-01-14 19:29:32,665 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:32,666 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabC=1912051.8289902892}
-INFO  [Thread-0] 2021-01-14 19:29:32,666 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=21, RabD=14, RabB=14}
-INFO  [Thread-0] 2021-01-14 19:29:32,666 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:32,668 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabA=44632.952456463114}
-INFO  [Thread-0] 2021-01-14 19:29:32,670 repast.simphony.batch.ssh.LocalSession - {RabA=5772.676500971245}{}{proton=0.0}{area=5772.676500971245, volume=33673.94625566559, empty=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:32,674 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabC=1908203.3779896419}
-INFO  [Thread-0] 2021-01-14 19:29:32,675 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=22, RabD=14, RabB=14}
-INFO  [Thread-0] 2021-01-14 19:29:32,675 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.04802754779028362}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:32,680 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1927445.6329928788}
-INFO  [Thread-0] 2021-01-14 19:29:32,681 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=22, RabD=14, RabB=15}
-INFO  [Thread-0] 2021-01-14 19:29:32,681 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.047770794276267736}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:32,720 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1923597.1819922314}
-INFO  [Thread-0] 2021-01-14 19:29:32,720 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=22, RabD=14, RabB=16}
-INFO  [Thread-0] 2021-01-14 19:29:32,720 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.04777079427627484}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:32,730 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1919748.730991584}
-INFO  [Thread-0] 2021-01-14 19:29:32,730 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=22, RabD=14, RabB=17}
-INFO  [Thread-0] 2021-01-14 19:29:32,730 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:32,775 repast.simphony.batch.ssh.LocalSession - java.nio.file.NoSuchFileException: C:\Users\lmayo\workspace\immunity\output\2021-01-14-19-2932\inputIntrTransp3.csv
-INFO  [Thread-0] 2021-01-14 19:29:32,776 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
-INFO  [Thread-0] 2021-01-14 19:29:32,776 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
-INFO  [Thread-0] 2021-01-14 19:29:32,776 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
-INFO  [Thread-0] 2021-01-14 19:29:32,776 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:53)
-INFO  [Thread-0] 2021-01-14 19:29:32,777 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:38)
-INFO  [Thread-0] 2021-01-14 19:29:32,777 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileSystemProvider.readAttributes(WindowsFileSystemProvider.java:194)
-INFO  [Thread-0] 2021-01-14 19:29:32,777 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.nio.file.Files.readAttributes(Files.java:1763)
-INFO  [Thread-0] 2021-01-14 19:29:32,777 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters.testNewFile(UpdateParameters.java:64)
-INFO  [Thread-0] 2021-01-14 19:29:32,777 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters.step(UpdateParameters.java:53)
-INFO  [Thread-0] 2021-01-14 19:29:32,778 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters$$FastClassByCGLIB$$3716e415.invoke(<generated>)
-INFO  [Thread-0] 2021-01-14 19:29:32,778 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-INFO  [Thread-0] 2021-01-14 19:29:32,778 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-INFO  [Thread-0] 2021-01-14 19:29:32,778 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-INFO  [Thread-0] 2021-01-14 19:29:32,779 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-INFO  [Thread-0] 2021-01-14 19:29:32,788 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-INFO  [Thread-0] 2021-01-14 19:29:32,788 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-INFO  [Thread-0] 2021-01-14 19:29:32,788 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-INFO  [Thread-0] 2021-01-14 19:29:32,789 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
-INFO  [Thread-0] 2021-01-14 19:29:32,790 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
-INFO  [Thread-0] 2021-01-14 19:29:32,794 repast.simphony.batch.ssh.LocalSession -  TOTAL RABS      {RabE=3876773.9104671, RabC=1969778.594, RabD=1969778.594, RabA=1691160.0483923785, RabB=1969778.594}
-INFO  [Thread-0] 2021-01-14 19:29:32,938 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1915900.2799909366}
-INFO  [Thread-0] 2021-01-14 19:29:32,961 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=22, RabD=14, RabB=18}
-INFO  [Thread-0] 2021-01-14 19:29:32,982 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.047813604903929274}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,013 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1912051.8289902892}
-INFO  [Thread-0] 2021-01-14 19:29:33,013 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=22, RabD=14, RabB=19}
-INFO  [Thread-0] 2021-01-14 19:29:33,019 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,033 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=23, RabD=14, RabB=19}
-INFO  [Thread-0] 2021-01-14 19:29:33,034 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,038 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=24, RabD=14, RabB=19}
-INFO  [Thread-0] 2021-01-14 19:29:33,039 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,047 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1908203.3779896419}
-INFO  [Thread-0] 2021-01-14 19:29:33,048 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=24, RabD=14, RabB=20}
-INFO  [Thread-0] 2021-01-14 19:29:33,049 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.047856530834714306}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,053 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1904354.9269889945}
-INFO  [Thread-0] 2021-01-14 19:29:33,054 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=24, RabD=14, RabB=21}
-INFO  [Thread-0] 2021-01-14 19:29:33,054 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,147 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabC=1904354.9269889945}
-INFO  [Thread-0] 2021-01-14 19:29:33,158 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=25, RabD=14, RabB=21}
-INFO  [Thread-0] 2021-01-14 19:29:33,159 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,160 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=26, RabD=14, RabB=21}
-INFO  [Thread-0] 2021-01-14 19:29:33,160 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.04789726281622819}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,177 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=26, RabD=14, RabB=22}
-INFO  [Thread-0] 2021-01-14 19:29:33,177 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.04751748250696153}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,216 repast.simphony.batch.ssh.LocalSession - java.nio.file.FileAlreadyExistsException: C:\Users\lmayo\workspace\immunity\output\2021-01-14-19-2933
-INFO  [Thread-0] 2021-01-14 19:29:33,228 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:87)
-INFO  [Thread-0] 2021-01-14 19:29:33,229 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
-INFO  [Thread-0] 2021-01-14 19:29:33,229 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
-INFO  [Thread-0] 2021-01-14 19:29:33,229 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileSystemProvider.createDirectory(WindowsFileSystemProvider.java:505)
-INFO  [Thread-0] 2021-01-14 19:29:33,229 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.nio.file.Files.createDirectory(Files.java:689)
-INFO  [Thread-0] 2021-01-14 19:29:33,230 repast.simphony.batch.ssh.LocalSession - 	at immunity.LocalPath.<init>(LocalPath.java:37)
-INFO  [Thread-0] 2021-01-14 19:29:33,230 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters.<init>(UpdateParameters.java:25)
-INFO  [Thread-0] 2021-01-14 19:29:33,230 repast.simphony.batch.ssh.LocalSession - 	at immunity.CellBuilder.build(CellBuilder.java:93)
-INFO  [Thread-0] 2021-01-14 19:29:33,230 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
-INFO  [Thread-0] 2021-01-14 19:29:33,230 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
-INFO  [Thread-0] 2021-01-14 19:29:33,231 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
-INFO  [Thread-0] 2021-01-14 19:29:33,231 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
-INFO  [Thread-0] 2021-01-14 19:29:33,231 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
-INFO  [Thread-0] 2021-01-14 19:29:33,231 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-INFO  [Thread-0] 2021-01-14 19:29:33,231 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-INFO  [Thread-0] 2021-01-14 19:29:33,232 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
-INFO  [Thread-0] 2021-01-14 19:29:33,233 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
-INFO  [Thread-0] 2021-01-14 19:29:33,233 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
-INFO  [Thread-0] 2021-01-14 19:29:33,233 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
-INFO  [Thread-0] 2021-01-14 19:29:33,234 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
-INFO  [Thread-0] 2021-01-14 19:29:33,234 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
-INFO  [Thread-0] 2021-01-14 19:29:33,234 repast.simphony.batch.ssh.LocalSession - PM membraneRecycle {enzyme=0.0, G55=0.0, enzymeM=0.0, Gpli=0.0, Go3=0.0, Spli=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,234 repast.simphony.batch.ssh.LocalSession - PM solubleRecycle {}
-INFO  [Thread-0] 2021-01-14 19:29:33,235 repast.simphony.batch.ssh.LocalSession - FREEZE DRY METHOD   [endosome111a, endosome58U, endosome73n, endosome17y, endosome45t, endosome85p, endosome50H, endosome29u, endosome148B, endosome99E, endosome4o, endosome90W, endosome135X, endosome22c, endosome118p, endosome123J, endosome74Z, endosome62Z, endosome61s, endosome97S, endosome112c, endosome149G, endosome140b, endosome5K, endosome57O, endosome44i, endosome69L, endosome125C, endosome98C, endosome33g, endosome124W, endosome21b, endosome72y, endosome96u, endosome84u, endosome60t, endosome23u, endosome75t, endosome133f, endosome19z, endosome51n, endosome80J, endosome48M, endosome24L, endosome120o, endosome36h, endosome89F, endosome105Y, endosome91y, endosome104n, endosome144j, endosome88X, endosome92Q, endosome76Y, endosome119J, endosome134c, endosome87U, endosome147F, endosome34q, endosome59T, endosome46n, endosome107A, endosome6k, endosome18u, endosome47R, endosome7G, endosome64B, endosome146T, endosome11f, endosome106Y, endosome110R, endosome121r, endosome122T, endosome12D, endosome129s, endosome35Z, endosome10x, endosome63W, endosome86y, endosome65s, endosome103f, endosome25s, endosome139n, endosome78M, endosome1g, endosome37q, endosome81f, endosome143Z, endosome30L, endosome0o, endosome114v, endosome95C, endosome67A, endosome14d, endosome82V, endosome115M, endosome1T, endosome93r, endosome94T, endosome41w, endosome127U, endosome77U, endosome117I, endosome9C, endosome49V, endosome52n, endosome128l, endosome53Q, endosome145I, endosome40e, endosome8W, endosome116W, endosome13b, endosome132H, endosome56U, endosome102E, endosome101e, endosome109n, endosome28X, endosome68J, endosome136t, endosome100s, endosome3O, endosome164u, endosome16a, endosome31v, endosome113O, endosome108v, endosome3T, endosome43y, endosome32Z, endosome66t, endosome70n, endosome26z, endosome130b, endosome71L, endosome131E, endosome142W, endosome141w, endosome54m, endosome38p, endosome39Q, endosome42i, endosome20C, endosome2N, endosome138Y, endosome137z, endosome15g, endosome79e, endosome27b, endosome126N, endosome83Z, endosome55X, endosome2T]
-INFO  [Thread-0] 2021-01-14 19:29:33,246 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,246 repast.simphony.batch.ssh.LocalSession - 72.4950383574547
-INFO  [Thread-0] 2021-01-14 19:29:33,247 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,247 repast.simphony.batch.ssh.LocalSession - 81.71716839996087
-INFO  [Thread-0] 2021-01-14 19:29:33,247 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,247 repast.simphony.batch.ssh.LocalSession - 74.5930616484415
-INFO  [Thread-0] 2021-01-14 19:29:33,247 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,247 repast.simphony.batch.ssh.LocalSession - -79.59516943156963
-INFO  [Thread-0] 2021-01-14 19:29:33,247 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,247 repast.simphony.batch.ssh.LocalSession - 89.7485658813152
-INFO  [Thread-0] 2021-01-14 19:29:33,247 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,248 repast.simphony.batch.ssh.LocalSession - -83.41126951327243
-INFO  [Thread-0] 2021-01-14 19:29:33,248 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,248 repast.simphony.batch.ssh.LocalSession - 76.90760031481359
-INFO  [Thread-0] 2021-01-14 19:29:33,248 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,248 repast.simphony.batch.ssh.LocalSession - 84.01356817813308
-INFO  [Thread-0] 2021-01-14 19:29:33,248 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,248 repast.simphony.batch.ssh.LocalSession - -82.09800142543835
-INFO  [Thread-0] 2021-01-14 19:29:33,248 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,248 repast.simphony.batch.ssh.LocalSession - -84.5914717044341
-INFO  [Thread-0] 2021-01-14 19:29:33,248 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - 86.66192873991199
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - -88.35881363796643
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - -82.69497059362958
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - 74.56851599024515
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - 88.24921446993325
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - 70.63090158744153
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - 89.72115378090132
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - 72.92076442446741
-INFO  [Thread-0] 2021-01-14 19:29:33,249 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,250 repast.simphony.batch.ssh.LocalSession - -79.43962745857289
-INFO  [Thread-0] 2021-01-14 19:29:33,250 repast.simphony.batch.ssh.LocalSession - a-tang
-INFO  [Thread-0] 2021-01-14 19:29:33,250 repast.simphony.batch.ssh.LocalSession - -84.14936876184179
-INFO  [Thread-0] 2021-01-14 19:29:33,355 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabD=1969778.594}
-INFO  [Thread-0] 2021-01-14 19:29:33,371 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=17, RabD=23, RabB=21}
-INFO  [Thread-0] 2021-01-14 19:29:33,372 repast.simphony.batch.ssh.LocalSession - {RabD=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,396 repast.simphony.batch.ssh.LocalSession - java.nio.file.NoSuchFileException: C:\Users\lmayo\workspace\immunity\output\2021-01-14-19-2933\inputIntrTransp3.csv
-INFO  [Thread-0] 2021-01-14 19:29:33,397 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
-INFO  [Thread-0] 2021-01-14 19:29:33,397 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
-INFO  [Thread-0] 2021-01-14 19:29:33,397 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
-INFO  [Thread-0] 2021-01-14 19:29:33,397 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:53)
-INFO  [Thread-0] 2021-01-14 19:29:33,397 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:38)
-INFO  [Thread-0] 2021-01-14 19:29:33,397 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileSystemProvider.readAttributes(WindowsFileSystemProvider.java:194)
-INFO  [Thread-0] 2021-01-14 19:29:33,397 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.nio.file.Files.readAttributes(Files.java:1763)
-INFO  [Thread-0] 2021-01-14 19:29:33,397 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters.testNewFile(UpdateParameters.java:64)
-INFO  [Thread-0] 2021-01-14 19:29:33,397 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters.step(UpdateParameters.java:53)
-INFO  [Thread-0] 2021-01-14 19:29:33,397 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters$$FastClassByCGLIB$$3716e415.invoke(<generated>)
-INFO  [Thread-0] 2021-01-14 19:29:33,398 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-INFO  [Thread-0] 2021-01-14 19:29:33,398 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-INFO  [Thread-0] 2021-01-14 19:29:33,398 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-INFO  [Thread-0] 2021-01-14 19:29:33,398 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-INFO  [Thread-0] 2021-01-14 19:29:33,399 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-INFO  [Thread-0] 2021-01-14 19:29:33,400 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-INFO  [Thread-0] 2021-01-14 19:29:33,400 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-INFO  [Thread-0] 2021-01-14 19:29:33,400 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
-INFO  [Thread-0] 2021-01-14 19:29:33,401 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
-INFO  [Thread-0] 2021-01-14 19:29:33,404 repast.simphony.batch.ssh.LocalSession -  TOTAL RABS      {RabE=3876773.9104671, RabC=1969778.594, RabD=1969778.594, RabA=1691160.0483923787, RabB=1969778.594}
-INFO  [Thread-0] 2021-01-14 19:29:33,414 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabD=1969778.594}
-INFO  [Thread-0] 2021-01-14 19:29:33,414 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=26, RabD=15, RabB=22}
-INFO  [Thread-0] 2021-01-14 19:29:33,414 repast.simphony.batch.ssh.LocalSession - {RabD=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,415 repast.simphony.batch.ssh.LocalSession -  TOTAL RABS      {RabE=3876773.9104671, RabC=1969778.594, RabD=1969778.594, RabA=1691160.0483923785, RabB=1969778.594}
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - java.nio.file.NoSuchFileException: C:\Users\lmayo\workspace\immunity\output\2021-01-14-19-2932\inputIntrTransp3.csv
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:53)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:38)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileSystemProvider.readAttributes(WindowsFileSystemProvider.java:194)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.nio.file.Files.readAttributes(Files.java:1763)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters.testNewFile(UpdateParameters.java:64)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters.step(UpdateParameters.java:53)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters$$FastClassByCGLIB$$3716e415.invoke(<generated>)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
-INFO  [Thread-0] 2021-01-14 19:29:33,419 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
-INFO  [Thread-0] 2021-01-14 19:29:33,531 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1969778.594}
-INFO  [Thread-0] 2021-01-14 19:29:33,544 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=17, RabD=23, RabB=22}
-INFO  [Thread-0] 2021-01-14 19:29:33,549 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,628 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1969778.594}
-INFO  [Thread-0] 2021-01-14 19:29:33,628 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=26, RabD=15, RabB=23}
-INFO  [Thread-0] 2021-01-14 19:29:33,628 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0477279486291593}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,663 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1965930.1429993527}
-INFO  [Thread-0] 2021-01-14 19:29:33,668 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=17, RabD=23, RabB=23}
-INFO  [Thread-0] 2021-01-14 19:29:33,668 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,673 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabD=1969778.594}
-INFO  [Thread-0] 2021-01-14 19:29:33,673 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=17, RabD=24, RabB=23}
-INFO  [Thread-0] 2021-01-14 19:29:33,674 repast.simphony.batch.ssh.LocalSession - {RabD=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,706 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabD=1965930.1429993527}
-INFO  [Thread-0] 2021-01-14 19:29:33,706 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=26, RabD=16, RabB=23}
-INFO  [Thread-0] 2021-01-14 19:29:33,706 repast.simphony.batch.ssh.LocalSession - {RabD=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,723 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabD=1962081.6919987053}
-INFO  [Thread-0] 2021-01-14 19:29:33,723 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=26, RabD=17, RabB=23}
-INFO  [Thread-0] 2021-01-14 19:29:33,723 repast.simphony.batch.ssh.LocalSession - {RabD=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,724 repast.simphony.batch.ssh.LocalSession - java.nio.file.NoSuchFileException: C:\Users\lmayo\workspace\immunity\output\2021-01-14-19-2933\inputIntrTransp3.csv
-INFO  [Thread-0] 2021-01-14 19:29:33,725 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
-INFO  [Thread-0] 2021-01-14 19:29:33,725 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
-INFO  [Thread-0] 2021-01-14 19:29:33,725 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
-INFO  [Thread-0] 2021-01-14 19:29:33,725 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:53)
-INFO  [Thread-0] 2021-01-14 19:29:33,725 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:38)
-INFO  [Thread-0] 2021-01-14 19:29:33,726 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileSystemProvider.readAttributes(WindowsFileSystemProvider.java:194)
-INFO  [Thread-0] 2021-01-14 19:29:33,726 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.nio.file.Files.readAttributes(Files.java:1763)
-INFO  [Thread-0] 2021-01-14 19:29:33,726 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters.testNewFile(UpdateParameters.java:64)
-INFO  [Thread-0] 2021-01-14 19:29:33,726 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters.step(UpdateParameters.java:53)
-INFO  [Thread-0] 2021-01-14 19:29:33,727 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters$$FastClassByCGLIB$$3716e415.invoke(<generated>)
-INFO  [Thread-0] 2021-01-14 19:29:33,727 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-INFO  [Thread-0] 2021-01-14 19:29:33,727 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-INFO  [Thread-0] 2021-01-14 19:29:33,728 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-INFO  [Thread-0] 2021-01-14 19:29:33,728 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-INFO  [Thread-0] 2021-01-14 19:29:33,728 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-INFO  [Thread-0] 2021-01-14 19:29:33,729 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-INFO  [Thread-0] 2021-01-14 19:29:33,729 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-INFO  [Thread-0] 2021-01-14 19:29:33,729 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
-INFO  [Thread-0] 2021-01-14 19:29:33,729 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
-INFO  [Thread-0] 2021-01-14 19:29:33,731 repast.simphony.batch.ssh.LocalSession -  TOTAL RABS      {RabE=3876773.9104671, RabC=1969778.594, RabD=1969778.594, RabA=1691160.0483923787, RabB=1969778.594}
-INFO  [Thread-0] 2021-01-14 19:29:33,784 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabA=80336.433629866}
-INFO  [Thread-0] 2021-01-14 19:29:33,784 repast.simphony.batch.ssh.LocalSession - {RabA=5772.676500971245}{memLS=0.0, memL=0.0, memTGN=0.0, memERGIC=0.0, membraneMarker=0.0, memGolgiMedial=0.0, memS=0.0, memTub=0.0}{solS=0.0, solubleMarker=0.0, solL=0.0, proton=0.0}{area=5772.676500971245, volume=33673.94625566559, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,795 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabC=1969778.594}
-INFO  [Thread-0] 2021-01-14 19:29:33,795 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=27, RabD=17, RabB=23}
-INFO  [Thread-0] 2021-01-14 19:29:33,795 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [Thread-0] 2021-01-14 19:29:33,865 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1969778.594}
-INFO  [Thread-0] 2021-01-14 19:29:33,865 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=27, RabD=17, RabB=24}
-INFO  [Thread-0] 2021-01-14 19:29:33,865 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
-INFO  [pool-3-thread-1] 2021-01-14 19:30:12,495 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\lmayo\AppData\Local\Temp\simphony_model_1610663349266 for DONE:  yes
-INFO  [SwingWorker-pool-2-thread-1] 2021-01-14 19:30:12,510 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,0100
-INFO  [SwingWorker-pool-2-thread-1] 2021-01-14 19:30:12,533 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\lmayo\AppData\Local\Temp\simphony_model_1610663349266
-WARN  [SwingWorker-pool-2-thread-1] 2021-01-14 19:30:12,544 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}ModelOutput*.batch_param_map.txt in C:\Users\lmayo\AppData\Local\Temp\simphony_model_1610663349266\instance_1
-WARN  [SwingWorker-pool-2-thread-1] 2021-01-14 19:30:12,544 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}ModelOutput*.txt in C:\Users\lmayo\AppData\Local\Temp\simphony_model_1610663349266\instance_1
-WARN  [SwingWorker-pool-2-thread-1] 2021-01-14 19:30:12,545 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}ModelOutput*.batch_param_map.txt in C:\Users\lmayo\AppData\Local\Temp\simphony_model_1610663349266\instance_2
-WARN  [SwingWorker-pool-2-thread-1] 2021-01-14 19:30:12,546 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}ModelOutput*.txt in C:\Users\lmayo\AppData\Local\Temp\simphony_model_1610663349266\instance_2
-INFO  [SwingWorker-pool-2-thread-1] 2021-01-14 19:30:12,546 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into C:/Users/lmayo/workspace/immunity/output
-INFO  [SwingWorker-pool-2-thread-1] 2021-01-14 19:30:12,552 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0007
-INFO  [SwingWorker-pool-2-thread-1] 2021-01-14 19:30:12,552 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1,0549
+INFO  [Thread-0] 2021-01-15 15:29:43,712 repast.simphony.batch.ssh.LocalSession - {RabD=3848.4510006474966}{}{proton=0.04777007831545177}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,723 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabA=44632.952456463114}
+INFO  [Thread-0] 2021-01-15 15:29:43,724 repast.simphony.batch.ssh.LocalSession - {RabA=5772.676500971245}{}{proton=0.0}{area=5772.676500971245, volume=33673.94625566559, empty=1.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,750 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=10, RabD=13, RabB=16}
+INFO  [Thread-0] 2021-01-15 15:29:43,751 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,758 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=10, RabD=14, RabB=16}
+INFO  [Thread-0] 2021-01-15 15:29:43,759 repast.simphony.batch.ssh.LocalSession - {RabD=3848.4510006474966}{}{proton=0.001327703656126139}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,760 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=10, RabD=14, RabB=17}
+INFO  [Thread-0] 2021-01-15 15:29:43,762 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,788 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=10, RabD=15, RabB=17}
+INFO  [Thread-0] 2021-01-15 15:29:43,790 repast.simphony.batch.ssh.LocalSession - {RabD=3848.4510006474966}{}{proton=0.04777007831545177}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,822 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabC=1962081.6919987053}
+INFO  [Thread-0] 2021-01-15 15:29:43,822 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=11, RabD=15, RabB=17}
+INFO  [Thread-0] 2021-01-15 15:29:43,823 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.04773005157941412}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,826 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1919748.730991584}
+INFO  [Thread-0] 2021-01-15 15:29:43,826 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=11, RabD=15, RabB=18}
+INFO  [Thread-0] 2021-01-15 15:29:43,827 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.048026591378956596}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,830 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabC=1958233.2409980579}
+INFO  [Thread-0] 2021-01-15 15:29:43,831 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=12, RabD=15, RabB=18}
+INFO  [Thread-0] 2021-01-15 15:29:43,857 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,893 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabC=1954384.7899974105}
+INFO  [Thread-0] 2021-01-15 15:29:43,897 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=13, RabD=15, RabB=18}
+INFO  [Thread-0] 2021-01-15 15:29:43,898 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.04777244577187645}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,907 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=14, RabD=15, RabB=18}
+INFO  [Thread-0] 2021-01-15 15:29:43,907 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,917 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1915900.2799909366}
+INFO  [Thread-0] 2021-01-15 15:29:43,920 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=14, RabD=15, RabB=19}
+INFO  [Thread-0] 2021-01-15 15:29:43,923 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.048026591378956596}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,930 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabC=1950536.338996763}
+INFO  [Thread-0] 2021-01-15 15:29:43,931 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=15, RabD=15, RabB=19}
+INFO  [Thread-0] 2021-01-15 15:29:43,931 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,933 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabD=1958233.2409980579}
+INFO  [Thread-0] 2021-01-15 15:29:43,933 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=15, RabD=16, RabB=19}
+INFO  [Thread-0] 2021-01-15 15:29:43,933 repast.simphony.batch.ssh.LocalSession - {RabD=3848.4510006474966}{}{proton=0.047771256545360075}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,938 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=16, RabD=16, RabB=19}
+INFO  [Thread-0] 2021-01-15 15:29:43,942 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.04768803187063497}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,975 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=16, RabD=16, RabB=20}
+INFO  [Thread-0] 2021-01-15 15:29:43,975 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.04768803187063497}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,978 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1912051.8289902892}
+INFO  [Thread-0] 2021-01-15 15:29:43,978 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=16, RabD=16, RabB=21}
+INFO  [Thread-0] 2021-01-15 15:29:43,979 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,980 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabC=1962081.6919987053}
+INFO  [Thread-0] 2021-01-15 15:29:43,981 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=17, RabD=16, RabB=21}
+INFO  [Thread-0] 2021-01-15 15:29:43,981 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.04768803187063497}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:43,991 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabD=1954384.7899974105}
+INFO  [Thread-0] 2021-01-15 15:29:43,992 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=17, RabD=17, RabB=21}
+INFO  [Thread-0] 2021-01-15 15:29:43,992 repast.simphony.batch.ssh.LocalSession - {RabD=3848.4510006474966}{}{proton=0.047771256545360075}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:44,009 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabE=60813.852746360404}
+INFO  [Thread-0] 2021-01-15 15:29:44,009 repast.simphony.batch.ssh.LocalSession - {RabE=5772.676500971245}{}{proton=0.0}{area=5772.676500971245, volume=33673.94625566559, empty=1.0}
+INFO  [Thread-0] 2021-01-15 15:29:44,015 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1958233.2409980579}
+INFO  [Thread-0] 2021-01-15 15:29:44,015 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=17, RabD=17, RabB=22}
+INFO  [Thread-0] 2021-01-15 15:29:44,015 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.04768653105242038}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:44,023 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabD=1950536.338996763}
+INFO  [Thread-0] 2021-01-15 15:29:44,024 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=17, RabD=18, RabB=22}
+INFO  [Thread-0] 2021-01-15 15:29:44,024 repast.simphony.batch.ssh.LocalSession - {RabD=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
+INFO  [Thread-0] 2021-01-15 15:29:44,025 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabC=1958233.2409980579}
+INFO  [Thread-0] 2021-01-15 15:29:44,025 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=18, RabD=18, RabB=22}
+INFO  [Thread-0] 2021-01-15 15:29:44,026 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
+INFO  [Thread-0] 2021-01-15 15:29:44,043 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabA=66739.45887864324}
+INFO  [Thread-0] 2021-01-15 15:29:44,044 repast.simphony.batch.ssh.LocalSession - {RabA=5772.676500971245}{}{proton=0.0}{area=5772.676500971245, volume=33673.94625566559, empty=1.0}
+INFO  [Thread-0] 2021-01-15 15:29:44,075 repast.simphony.batch.ssh.LocalSession - java.nio.file.FileAlreadyExistsException: C:\Users\lmayo\workspace\immunity\output\2021-01-15-15-2944
+INFO  [Thread-0] 2021-01-15 15:29:44,080 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:87)
+INFO  [Thread-0] 2021-01-15 15:29:44,080 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+INFO  [Thread-0] 2021-01-15 15:29:44,080 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+INFO  [Thread-0] 2021-01-15 15:29:44,080 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileSystemProvider.createDirectory(WindowsFileSystemProvider.java:505)
+INFO  [Thread-0] 2021-01-15 15:29:44,080 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.nio.file.Files.createDirectory(Files.java:689)
+INFO  [Thread-0] 2021-01-15 15:29:44,081 repast.simphony.batch.ssh.LocalSession - 	at immunity.LocalPath.<init>(LocalPath.java:38)
+INFO  [Thread-0] 2021-01-15 15:29:44,081 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters.<init>(UpdateParameters.java:25)
+INFO  [Thread-0] 2021-01-15 15:29:44,082 repast.simphony.batch.ssh.LocalSession - 	at immunity.CellBuilder.build(CellBuilder.java:93)
+INFO  [Thread-0] 2021-01-15 15:29:44,082 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+INFO  [Thread-0] 2021-01-15 15:29:44,082 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+INFO  [Thread-0] 2021-01-15 15:29:44,082 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+INFO  [Thread-0] 2021-01-15 15:29:44,083 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+INFO  [Thread-0] 2021-01-15 15:29:44,083 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+INFO  [Thread-0] 2021-01-15 15:29:44,083 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2021-01-15 15:29:44,085 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+INFO  [Thread-0] 2021-01-15 15:29:44,086 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+INFO  [Thread-0] 2021-01-15 15:29:44,087 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+INFO  [Thread-0] 2021-01-15 15:29:44,088 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+INFO  [Thread-0] 2021-01-15 15:29:44,088 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
+INFO  [Thread-0] 2021-01-15 15:29:44,089 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
+INFO  [Thread-0] 2021-01-15 15:29:44,089 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
+INFO  [Thread-0] 2021-01-15 15:29:44,089 repast.simphony.batch.ssh.LocalSession - PM membraneRecycle {enzyme=0.0, G55=0.0, enzymeM=0.0, Gpli=0.0, Go3=0.0, Spli=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:44,089 repast.simphony.batch.ssh.LocalSession - PM solubleRecycle {}
+INFO  [Thread-0] 2021-01-15 15:29:44,090 repast.simphony.batch.ssh.LocalSession - FREEZE DRY METHOD   [endosome111a, endosome58U, endosome73n, endosome17y, endosome45t, endosome85p, endosome50H, endosome29u, endosome148B, endosome99E, endosome4o, endosome90W, endosome135X, endosome22c, endosome118p, endosome123J, endosome74Z, endosome62Z, endosome61s, endosome97S, endosome112c, endosome149G, endosome140b, endosome5K, endosome57O, endosome44i, endosome69L, endosome125C, endosome98C, endosome33g, endosome124W, endosome21b, endosome72y, endosome96u, endosome84u, endosome60t, endosome23u, endosome75t, endosome133f, endosome19z, endosome51n, endosome80J, endosome48M, endosome24L, endosome120o, endosome36h, endosome89F, endosome105Y, endosome91y, endosome104n, endosome144j, endosome88X, endosome92Q, endosome76Y, endosome119J, endosome134c, endosome87U, endosome147F, endosome34q, endosome59T, endosome46n, endosome107A, endosome6k, endosome18u, endosome47R, endosome7G, endosome64B, endosome146T, endosome11f, endosome106Y, endosome110R, endosome121r, endosome122T, endosome12D, endosome129s, endosome35Z, endosome10x, endosome63W, endosome86y, endosome65s, endosome103f, endosome25s, endosome139n, endosome78M, endosome1g, endosome37q, endosome81f, endosome143Z, endosome30L, endosome0o, endosome114v, endosome95C, endosome67A, endosome14d, endosome82V, endosome115M, endosome1T, endosome93r, endosome94T, endosome41w, endosome127U, endosome77U, endosome117I, endosome9C, endosome49V, endosome52n, endosome128l, endosome53Q, endosome145I, endosome40e, endosome8W, endosome116W, endosome13b, endosome132H, endosome56U, endosome102E, endosome101e, endosome109n, endosome28X, endosome68J, endosome136t, endosome100s, endosome3O, endosome164u, endosome16a, endosome31v, endosome113O, endosome108v, endosome3T, endosome43y, endosome32Z, endosome66t, endosome70n, endosome26z, endosome130b, endosome71L, endosome131E, endosome142W, endosome141w, endosome54m, endosome38p, endosome39Q, endosome42i, endosome20C, endosome2N, endosome138Y, endosome137z, endosome15g, endosome79e, endosome27b, endosome126N, endosome83Z, endosome55X, endosome2T]
+INFO  [Thread-0] 2021-01-15 15:29:44,100 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,101 repast.simphony.batch.ssh.LocalSession - 79.41293271022435
+INFO  [Thread-0] 2021-01-15 15:29:44,105 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,105 repast.simphony.batch.ssh.LocalSession - 81.84365839128996
+INFO  [Thread-0] 2021-01-15 15:29:44,106 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,106 repast.simphony.batch.ssh.LocalSession - -68.30276187910054
+INFO  [Thread-0] 2021-01-15 15:29:44,107 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,108 repast.simphony.batch.ssh.LocalSession - 85.44266447173635
+INFO  [Thread-0] 2021-01-15 15:29:44,110 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,110 repast.simphony.batch.ssh.LocalSession - 89.70525530298059
+INFO  [Thread-0] 2021-01-15 15:29:44,111 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,111 repast.simphony.batch.ssh.LocalSession - 75.92038732263919
+INFO  [Thread-0] 2021-01-15 15:29:44,112 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,112 repast.simphony.batch.ssh.LocalSession - 83.72868789855663
+INFO  [Thread-0] 2021-01-15 15:29:44,112 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,113 repast.simphony.batch.ssh.LocalSession - 88.81372994187561
+INFO  [Thread-0] 2021-01-15 15:29:44,114 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,114 repast.simphony.batch.ssh.LocalSession - 75.49839179159564
+INFO  [Thread-0] 2021-01-15 15:29:44,114 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,115 repast.simphony.batch.ssh.LocalSession - 87.95335358077159
+INFO  [Thread-0] 2021-01-15 15:29:44,115 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,115 repast.simphony.batch.ssh.LocalSession - 80.0805355995744
+INFO  [Thread-0] 2021-01-15 15:29:44,116 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,116 repast.simphony.batch.ssh.LocalSession - -86.32581535051298
+INFO  [Thread-0] 2021-01-15 15:29:44,117 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,117 repast.simphony.batch.ssh.LocalSession - 87.72943054637065
+INFO  [Thread-0] 2021-01-15 15:29:44,117 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,117 repast.simphony.batch.ssh.LocalSession - 79.71149586054932
+INFO  [Thread-0] 2021-01-15 15:29:44,118 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,120 repast.simphony.batch.ssh.LocalSession - 83.43690973789991
+INFO  [Thread-0] 2021-01-15 15:29:44,126 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,126 repast.simphony.batch.ssh.LocalSession - 89.05227843785573
+INFO  [Thread-0] 2021-01-15 15:29:44,126 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,127 repast.simphony.batch.ssh.LocalSession - 85.84150634752177
+INFO  [Thread-0] 2021-01-15 15:29:44,127 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,128 repast.simphony.batch.ssh.LocalSession - -86.371948334711
+INFO  [Thread-0] 2021-01-15 15:29:44,128 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,128 repast.simphony.batch.ssh.LocalSession - 86.45865107062721
+INFO  [Thread-0] 2021-01-15 15:29:44,128 repast.simphony.batch.ssh.LocalSession - a-tang
+INFO  [Thread-0] 2021-01-15 15:29:44,129 repast.simphony.batch.ssh.LocalSession - 78.97715133306232
+INFO  [Thread-0] 2021-01-15 15:29:44,142 repast.simphony.batch.ssh.LocalSession - java.nio.file.NoSuchFileException: C:\Users\lmayo\AppData\Local\Temp\simphony_model_1610735357816\instance_2\inputIntrTransp3.csv
+INFO  [Thread-0] 2021-01-15 15:29:44,143 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+INFO  [Thread-0] 2021-01-15 15:29:44,143 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+INFO  [Thread-0] 2021-01-15 15:29:44,143 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+INFO  [Thread-0] 2021-01-15 15:29:44,144 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:53)
+INFO  [Thread-0] 2021-01-15 15:29:44,144 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:38)
+INFO  [Thread-0] 2021-01-15 15:29:44,145 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileSystemProvider.readAttributes(WindowsFileSystemProvider.java:194)
+INFO  [Thread-0] 2021-01-15 15:29:44,145 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.nio.file.Files.readAttributes(Files.java:1763)
+INFO  [Thread-0] 2021-01-15 15:29:44,147 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters.testNewFile(UpdateParameters.java:64)
+INFO  [Thread-0] 2021-01-15 15:29:44,147 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters.step(UpdateParameters.java:53)
+INFO  [Thread-0] 2021-01-15 15:29:44,148 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters$$FastClassByCGLIB$$3716e415.invoke(<generated>)
+INFO  [Thread-0] 2021-01-15 15:29:44,148 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-0] 2021-01-15 15:29:44,148 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-0] 2021-01-15 15:29:44,148 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-0] 2021-01-15 15:29:44,193 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-0] 2021-01-15 15:29:44,193 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-0] 2021-01-15 15:29:44,194 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-0] 2021-01-15 15:29:44,194 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-0] 2021-01-15 15:29:44,195 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-0] 2021-01-15 15:29:44,195 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-0] 2021-01-15 15:29:44,205 repast.simphony.batch.ssh.LocalSession -  TOTAL RABS      {RabE=3876773.9104671003, RabC=1969778.594, RabD=1969778.594, RabA=1691160.0483923794, RabB=1969778.594}
+INFO  [Thread-0] 2021-01-15 15:29:44,228 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabD=1969778.594}
+INFO  [Thread-0] 2021-01-15 15:29:44,228 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=18, RabD=19, RabB=22}
+INFO  [Thread-0] 2021-01-15 15:29:44,228 repast.simphony.batch.ssh.LocalSession - {RabD=3848.4510006474966}{}{proton=0.0477279486291593}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:44,352 repast.simphony.batch.ssh.LocalSession -  TOTAL RABS      {RabE=3876773.9104671003, RabC=1969778.594, RabD=1969778.594, RabA=1691160.0483923794, RabB=1969778.594}
+INFO  [Thread-0] 2021-01-15 15:29:44,358 repast.simphony.batch.ssh.LocalSession - java.nio.file.NoSuchFileException: C:\Users\lmayo\AppData\Local\Temp\simphony_model_1610735357816\instance_2\inputIntrTransp3.csv
+INFO  [Thread-0] 2021-01-15 15:29:44,359 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+INFO  [Thread-0] 2021-01-15 15:29:44,359 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+INFO  [Thread-0] 2021-01-15 15:29:44,360 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+INFO  [Thread-0] 2021-01-15 15:29:44,360 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:53)
+INFO  [Thread-0] 2021-01-15 15:29:44,360 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(WindowsFileAttributeViews.java:38)
+INFO  [Thread-0] 2021-01-15 15:29:44,360 repast.simphony.batch.ssh.LocalSession - 	at java.base/sun.nio.fs.WindowsFileSystemProvider.readAttributes(WindowsFileSystemProvider.java:194)
+INFO  [Thread-0] 2021-01-15 15:29:44,361 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.nio.file.Files.readAttributes(Files.java:1763)
+INFO  [Thread-0] 2021-01-15 15:29:44,361 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters.testNewFile(UpdateParameters.java:64)
+INFO  [Thread-0] 2021-01-15 15:29:44,361 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters.step(UpdateParameters.java:53)
+INFO  [Thread-0] 2021-01-15 15:29:44,361 repast.simphony.batch.ssh.LocalSession - 	at immunity.UpdateParameters$$FastClassByCGLIB$$3716e415.invoke(<generated>)
+INFO  [Thread-0] 2021-01-15 15:29:44,362 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-0] 2021-01-15 15:29:44,362 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-0] 2021-01-15 15:29:44,362 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-0] 2021-01-15 15:29:44,363 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-0] 2021-01-15 15:29:44,363 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-0] 2021-01-15 15:29:44,363 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-0] 2021-01-15 15:29:44,364 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-0] 2021-01-15 15:29:44,364 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-0] 2021-01-15 15:29:44,364 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-0] 2021-01-15 15:29:44,366 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabC=1969778.594}
+INFO  [Thread-0] 2021-01-15 15:29:44,366 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=19, RabD=19, RabB=22}
+INFO  [Thread-0] 2021-01-15 15:29:44,366 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.0477279486291593}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:44,426 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1969778.594}
+INFO  [Thread-0] 2021-01-15 15:29:44,426 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=19, RabD=19, RabB=23}
+INFO  [Thread-0] 2021-01-15 15:29:44,426 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0477279486291593}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:44,436 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1965930.1429993527}
+INFO  [Thread-0] 2021-01-15 15:29:44,436 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=19, RabD=19, RabB=24}
+INFO  [Thread-0] 2021-01-15 15:29:44,438 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.047727948629166406}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:44,438 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabC=1965930.1429993527}
+INFO  [Thread-0] 2021-01-15 15:29:44,438 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=20, RabD=19, RabB=24}
+INFO  [Thread-0] 2021-01-15 15:29:44,438 repast.simphony.batch.ssh.LocalSession - {RabC=3848.4510006474966}{}{proton=0.047727948629166406}{area=3848.4510006474966, volume=16836.973127832796, empty=0.0}
+INFO  [Thread-0] 2021-01-15 15:29:44,446 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1969778.594}
+INFO  [Thread-0] 2021-01-15 15:29:44,458 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=20, RabD=19, RabB=25}
+INFO  [Thread-0] 2021-01-15 15:29:44,458 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
+INFO  [Thread-0] 2021-01-15 15:29:44,520 repast.simphony.batch.ssh.LocalSession - UNICO RAB {RabB=1965930.1429993527}
+INFO  [Thread-0] 2021-01-15 15:29:44,524 repast.simphony.batch.ssh.LocalSession - NUMERO DE VESÍCULAS POR RAB {RabC=20, RabD=19, RabB=26}
+INFO  [Thread-0] 2021-01-15 15:29:44,524 repast.simphony.batch.ssh.LocalSession - {RabB=3848.4510006474966}{}{proton=0.0}{area=3848.4510006474966, volume=16836.973127832796, empty=1.0}
+INFO  [pool-3-thread-1] 2021-01-15 15:30:21,095 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\lmayo\AppData\Local\Temp\simphony_model_1610735357816 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2021-01-15 15:30:21,102 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,0096
+INFO  [SwingWorker-pool-2-thread-1] 2021-01-15 15:30:21,133 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\lmayo\AppData\Local\Temp\simphony_model_1610735357816
+WARN  [SwingWorker-pool-2-thread-1] 2021-01-15 15:30:21,149 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}ModelOutput*.batch_param_map.txt in C:\Users\lmayo\AppData\Local\Temp\simphony_model_1610735357816\instance_1
+WARN  [SwingWorker-pool-2-thread-1] 2021-01-15 15:30:21,149 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}ModelOutput*.txt in C:\Users\lmayo\AppData\Local\Temp\simphony_model_1610735357816\instance_1
+WARN  [SwingWorker-pool-2-thread-1] 2021-01-15 15:30:21,153 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}ModelOutput*.batch_param_map.txt in C:\Users\lmayo\AppData\Local\Temp\simphony_model_1610735357816\instance_2
+WARN  [SwingWorker-pool-2-thread-1] 2021-01-15 15:30:21,153 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}ModelOutput*.txt in C:\Users\lmayo\AppData\Local\Temp\simphony_model_1610735357816\instance_2
+INFO  [SwingWorker-pool-2-thread-1] 2021-01-15 15:30:21,153 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into C:/Users/lmayo/workspace/immunity/output
+INFO  [SwingWorker-pool-2-thread-1] 2021-01-15 15:30:21,160 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0010
+INFO  [SwingWorker-pool-2-thread-1] 2021-01-15 15:30:21,160 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1,0559
