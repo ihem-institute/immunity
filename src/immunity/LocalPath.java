@@ -42,7 +42,7 @@ import javax.print.attribute.DateTimeSyntax;
 	      }
 
 		}
-		
+//		NOT USED BATCH
 		public String getPath(){ 
 			return this.mypath; 
 			} 
