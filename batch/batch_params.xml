@@ -1,1 +1,1 @@
-<?xml version="1.0" ?><sweep runs="1"><parameter name="randomSeed" type="constant" constant_type="int" value="1"></parameter><parameter name="ninguni" type="constant" constant_type="java.lang.String" value="nada"></parameter><parameter name="stopTick" type="constant" constant_type="int" value="500"></parameter></sweep>
+<?xml version="1.0" ?><sweep runs="1"><parameter name="p_EndosomeSplitStep" type="list" value_type="double" values="0.1 0.01"><parameter name="replicates" type="number" number_type="int" start="1" end="2" step="1"></parameter></parameter></sweep>

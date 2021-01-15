@@ -3,6 +3,13 @@
 	package immunity;
 
 	import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.print.attribute.DateTimeSyntax;
 
 	public class LocalPath {
 		
@@ -19,10 +26,16 @@
 	    try {
 	      
 	      mypath=myDir.getCanonicalPath().replace('\\','/');
-//	      FOR BATCH, THE PATH MUST BE ABSOLUTE BECAUSE THE BATCH IS RUN FROM A
+//	      FOR BATCH, THE PATH MUST BE ABSOLUTE BECAUSE THE BATCH RUNS FROM A
 //	      TEMPORARY FOLDER THAT IS DELETED. SO IF RELATIVE, THE OUTPUT IS LOST
 //	      SAME FOR INPUT, THE FILE MUST BE IN THE "data" FOLDER
-	      mypath="C:/Users/lmayo/workspace/immunity/output";
+//	      to get the results from the batch in different folders, the directory must be created
+//	      Cannot stores de files in a non existing directory
+	      String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mmss").format(new Date());
+	      mypath="C:/Users/lmayo/workspace/immunity/output/"+folderName+"/";
+	      Path path = Paths.get(mypath);
+	      Files.createDirectory(path);
+
 	      
 	      }
 	    catch(Exception e) {

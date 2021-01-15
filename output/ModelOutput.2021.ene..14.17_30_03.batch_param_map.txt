@@ -1,0 +1,4 @@
+"run","randomSeed","p_EndosomeSplitStep"
+1,1,0.1
+3,1,0.001
+2,1,0.01
