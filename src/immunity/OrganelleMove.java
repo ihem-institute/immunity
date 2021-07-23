@@ -170,14 +170,22 @@ public class OrganelleMove {
  * 
  */
 
-		Collections.shuffle(mts);
-		for (MT mt : mts) {
-			double dist = distance(endosome, mt);
+//		Collections.shuffle(mts); 19-7-21 No need to shuffle because the closest MT will be selected
+		double dist = 1000;
+		MT mt = null;
+//		RULE 19-7-2021.  The organelle will sense the MT around it and select the closest one (minimal absolute distance)
+		for (MT mmt : mts) {
+			double ndist = distance(endosome, mmt);
 //			The distance is in space units from 0 to 50. At scale 1, the space is 1500 nm.  At 
 //			scale 0.5 it is 3000 nm.
 //			Hence to convert to nm, I must multiply by 45 (2250/50) and divide by scale. An organelle will sense MT
 //			at a distance less than its size.
-			if (Math.abs(dist*30d/Cell.orgScale) < endosome.size) {
+			if (Math.abs(ndist) <= Math.abs(dist)) {
+				dist = ndist; 
+				mt = mmt;
+			}
+		}	
+		if (Math.abs(dist*30d/Cell.orgScale) < endosome.size) {
 // Each domain has a moving rule specified by a number (mtDir) that goes from -1 to +1
 // This number is used in the following way
 // FOR TUBULES
@@ -242,7 +250,7 @@ public class OrganelleMove {
 				endosome.heading = -(mtDir * 180f + mt.getMtheading());
 				return;
 			}
-		}
+		
 //		If no Mts, then random
 		changeDirectionRnd(endosome);
 		return ;

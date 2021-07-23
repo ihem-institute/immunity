@@ -414,7 +414,8 @@ public class FissionStep {
 			else 
 // finally, if tropism it to a Rab membrane domain, the decision about where to go
 // requires to calculate the tropism to the vesicle (SUM of the content tropism to all the
-//	membrane domains in the vesicle.  The tropism is indicated by a string (e.g. RabA10) where
+//	membrane domains in the vesicle(notice that at this point the rabContent of the endosome is the one
+//	left after the tubule budding).  The tropism is indicated by a string (e.g. RabA10) where
 //	the last two digits indicate the affinity for the Rab domain in a scale of 00 to 10.			
 			{
 			double sphereTrop = 0;
@@ -438,7 +439,18 @@ public class FissionStep {
 			}
 //			System.out.println("sphere tubule " + sphereTrop +" "+ tubuleTrop+ " " +(tubuleTrop-sphereTrop));
 // the tropismo is to vesicle or to tubule according to the following rules
-// if not clear tropism to tubule or sphere, even distribution			
+// if not clear tropism to tubule or sphere, even distribution	
+
+			double totalTrop = sVesicle * sphereTrop + (so-sVesicle)* tubuleTrop;
+			if (totalTrop == 0) {
+				splitPropSurface(endosome, content, so, sVesicle);
+				continue;
+			}
+			double proportionVesicle = sVesicle * sphereTrop / totalTrop;
+			System.out.println(content + " FISSION " + sphereTrop +" FISSION " + tubuleTrop +" FISSION " + totalTrop +" FISSION " + proportionVesicle);
+	//		if (proportionVesicle * content >= sVesicle) {}
+			splitPropSurfaceAndTropism(endosome, content, so, sVesicle, proportionVesicle);
+/*			
 			if (tubuleTrop < 2d && sphereTrop < 2d ) 
 				{	
 //				System.out.println("to even ");
@@ -461,12 +473,15 @@ public class FissionStep {
 //				System.out.println("to even even ");
 				splitPropSurface(endosome, content, so, sVesicle);}
 			}
-	}
-					
+
+*/			
+			}
+			}
+	}				
 					
 
 		
-	}
+	
 
 	private static void solubleContentSplit(Endosome endosome, String rabInTube, double vo, double vVesicle){
 		// SOLUBLE CONTENT IS DISTRIBUTED according rabTropism
@@ -592,6 +607,37 @@ public class FissionStep {
 						* (sVesicle) / so);	
 		}
 			
+	
+	}
+	
+	private static void splitPropSurfaceAndTropism(Endosome endosome, String content, Double so, Double sVesicle, Double proportionVesicle) {
+		
+		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
+				endosome.membraneContent);
+
+		if (content.equals("membraneMarker")
+				&& (endosome.membraneContent.get("membraneMarker") > 0.9)) {
+			if (Math.random() < proportionVesicle)
+				endosome.membraneContent.put("membraneMarker", 1d);
+			else {endosome.membraneContent.put("membraneMarker", 0d);}
+		} 
+//		if too much content to fit in the sphere, include only the surface of the sphere
+		else {
+			if (copyMembrane.get(content)* proportionVesicle > sVesicle) {
+				endosome.membraneContent.put(content, sVesicle);
+			} 
+//			if too much content to fit into the tubule, include only the surface of the tubule
+			else if (copyMembrane.get(content)* (1-proportionVesicle) > (so-sVesicle)) { 
+				endosome.membraneContent.put(content, copyMembrane.get(content)-(so-sVesicle));
+			}
+			else
+			{
+				endosome.membraneContent.put(content, copyMembrane.get(content)
+						* proportionVesicle);
+			}
+
+		}
+
 	
 	}
 

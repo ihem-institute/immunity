@@ -219,15 +219,15 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 				}
 			}
 			//			System.out.println(rabColor+rabContent);
-			if (rabColor.equals("RabA"))	return new Color (0,0,255);
-			else if (rabColor.equals("RabB"))	return new Color (0,255,255);
-			else if (rabColor.equals("RabC"))	return new Color (0,255,0);
-			else if (rabColor.equals("RabD"))	return new Color (255,0,0);
-			else if (rabColor.equals("RabE"))	return new Color (255,255,0);
-			else if (rabColor.equals("RabF"))	return new Color (220,220,0);
-			else if (rabColor.equals("RabG"))	return new Color (190,190,0);
-			else if (rabColor.equals("RabH"))	return new Color (160,160,0);
-			else if (rabColor.equals("RabI"))	return new Color (130,130,0);
+			if (rabColor.equals("RabA"))	return new Color (0,0,255);//EE
+			else if (rabColor.equals("RabB"))	return new Color (0,255,255);//SE
+			else if (rabColor.equals("RabC"))	return new Color (0,255,0);//RE
+			else if (rabColor.equals("RabD"))	return new Color (255,0,0);//LE
+			else if (rabColor.equals("RabE"))	return new Color (255,255,0);//TGN
+			else if (rabColor.equals("RabF"))	return new Color (100,100,100);//transG
+			else if (rabColor.equals("RabG"))	return new Color (150,150,150);//medialG
+			else if (rabColor.equals("RabH"))	return new Color (200,200,200);//cisG
+			else if (rabColor.equals("RabI"))	return new Color (255,100,255);//ERGIC
 			else	return new Color (0,0,0);
 		}
 

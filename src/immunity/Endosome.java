@@ -181,6 +181,7 @@ public class Endosome {
 //		OrganelleMove.changeDirection(this);
 		OrganelleMove.moveTowards(this);
 //		if (this.solubleContent.containsKey("mvb")) this.membraneContent.put("chol", 0d);
+//		Uptake and new organelles is a procedure of Cell and is not performed by endosomes		
 //		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
 //		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
 		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
@@ -190,7 +191,7 @@ public class Endosome {
 		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%100 ==0) 
-		if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
+		//if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
 		// rabConversionN();
 		String name =  ModelProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
 		if (Math.random() < 1 && !name.equals("null"))EndosomeCopasiStep.antPresTimeSeriesLoad(this);
