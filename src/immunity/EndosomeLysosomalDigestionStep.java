@@ -8,10 +8,31 @@ public class EndosomeLysosomalDigestionStep {
 
 	
 	public static void lysosomalDigestion(Endosome endosome) {
-		// if low percentage of the membrane is RabD return
-		if (!endosome.rabContent.containsKey("RabD")
-				|| Math.random() > endosome.rabContent.get("RabD") / endosome.area)
-			return;
+		double so = endosome.area;
+		double vo = endosome.volume;
+		// if high percentage of the membrane is RabD (LateEndosome) digest lysosome
+		if (endosome.rabContent.containsKey("RabD")
+				&& Math.random() < endosome.rabContent.get("RabD") / endosome.area)
+			{
+			digestLysosome(endosome);
+			}
+		// All organelles with a s/v similar to the sphere undergoes a loss of volume
+		else if (so*so*so/(vo*vo) > 0.99*36*Math.PI// small surface/volume ration
+				&& endosome.a <= endosome.c)// it is not Golgi
+			{
+			squeezeOrganelle(endosome);
+			}
+
+	}
+
+	private static void squeezeOrganelle(Endosome endosome) {		
+//The Organelle volume is decreased
+		endosome.volume = endosome.volume * 0.99;			
+		Endosome.endosomeShape(endosome);		
+	}
+
+	private static void digestLysosome(Endosome endosome) {
+		
 		// soluble and membrane content is digested in a low percentage
 		// (0.0001* proportion of RabD in the membrane)
 		// volume is decreased proportional to the initial volume and also
@@ -69,13 +90,14 @@ public class EndosomeLysosomalDigestionStep {
 		
 			// volume is decreased
 		if (endosome.solubleContent.containsKey("mvb")) {
-				deltaV = (initialMvb - finalMvb) * volIV + endosome.volume * 0.001
+				deltaV = (initialMvb - finalMvb) * volIV + endosome.volume * 0.01
 						* rabDratio;
 			} else {
-				deltaV = endosome.volume * 0.001 * rabDratio;
+				deltaV = endosome.volume * 0.01 * rabDratio;
 			}
 		endosome.volume = endosome.volume - deltaV;
-		if (deltaV > 40000) EndosomeInternalVesicleStep.internalVesicle(endosome);
+//		if (deltaV > 40000) EndosomeInternalVesicleStep.internalVesicle(endosome);
 		Endosome.endosomeShape(endosome);
+		
 	}
 }

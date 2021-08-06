@@ -107,7 +107,7 @@ public class Endosome {
 //	double p_EndosomeNewFromERStep = 1d/(60d/0.03*Cell.timeScale);
 	double p_EndosomeInternalVesicleStep = 1d/(5d/0.03*Cell.timeScale);// change from 2 to .1
 	double p_EndosomeFusionStep =1d/(60d/0.03*Cell.timeScale);
-	double p_EndosomeSplitStep = 1d/(0.4/0.03*Cell.timeScale); // use to be 0.4
+	double p_EndosomeSplitStep = 1d/(1d/0.03*Cell.timeScale); // use to be 0.4
 	double p_EndosomeTetherStep = 1d/(1d/0.03*Cell.timeScale);
 	double p_EndosomeLysosomalDigestionStep = 1d/(10d/0.03*Cell.timeScale);
 	double p_EndosomeMaturationStep= 1d/(60d/0.03*Cell.timeScale); //FRANCO 10-> 60
@@ -176,7 +176,7 @@ public class Endosome {
 //		if (logger.isDebugEnabled()) {
 //			logger.debug(message);			
 //		}
-		this.tickCount+=1;
+		this.tickCount=this.tickCount + 1;
 		endosomeShape(this);
 //		OrganelleMove.changeDirection(this);
 		OrganelleMove.moveTowards(this);
@@ -196,18 +196,18 @@ public class Endosome {
 		String name =  ModelProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
 		if (Math.random() < 1 && !name.equals("null"))EndosomeCopasiStep.antPresTimeSeriesLoad(this);
 		if (Math.random()<p_EndosomeRecycleStep)RecycleStep.recycle(this);
-		if (Math.random()<p_EndosomeMaturationStep)EndosomeMaturationStep.matureCheck(this); //FRANCO	
+		if (Math.random()<p_EndosomeMaturationStep)EndosomeMaturationStep.matureCheck(this); //	
 	}
-	public List<Endosome> getAllEndosomes(){
-		List<Endosome> allEndosomes = new ArrayList<Endosome>();
-		for (Object obj : grid.getObjects()) {
-			if (obj instanceof Endosome) {
-				allEndosomes.add((Endosome) obj);
-			}
-		}
-//		System.out.println("ALL ENDOSOMES FORM PLASMA MEMBRANE " +allEndosomes);
-		return allEndosomes;
-	}
+//	public List<Endosome> getAllEndosomes(){
+//		List<Endosome> allEndosomes = new ArrayList<Endosome>();
+//		for (Object obj : grid.getObjects()) {
+//			if (obj instanceof Endosome) {
+//				allEndosomes.add((Endosome) obj);
+//			}
+//		}
+////		System.out.println("ALL ENDOSOMES FORM PLASMA MEMBRANE " +allEndosomes);
+//		return allEndosomes;
+//	}
 
 	public static void endosomeShape(Endosome end) {
 		double s = end.area;

@@ -64,15 +64,17 @@ public class FissionStep {
 		}
 
 		rabInTube = rabInTube(endosome); // select a rab for the tubule
+		boolean isGolgi = isGolgi(endosome);
 		if (rabInTube == null) return; // if non is selected, no fission
 		if (endosome.rabContent.get(rabInTube)<= Cell.mincyl) return; // the rab area is too small		
 		double scylinder = Cell.mincyl; // surface minimum cylinder 2*radius
 		// cylinder high
 		double vcylinder = volMincyl; // volume	
 		// minimum cylinder
-		if (ModelProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi"))
-		{ // Golgi domain
-			double probFission = (endosome.area - Cell.minCistern)/(2*Cell.maxCistern-Cell.minCistern);// hacer constante
+		if (ModelProperties.getInstance().getRabOrganelle().get(rabInTube).contains("Golgi")
+				&& isGolgi)
+		{ // Golgi domain from a Golgi organelle
+			double probFission = (endosome.area - Cell.minCistern)/(2*Cell.maxCistern-Cell.minCistern);// (endosome.area - Cell.minCistern)/(2*Cell.maxCistern-Cell.minCistern);hacer constante
 			if ( Math.random() > probFission){
 //		SET TO 0.9. TO BE ADJUSTED.  Small cisterns has lower probability of forming vesicles
 				return;
@@ -85,7 +87,7 @@ public class FissionStep {
 
 			}
 		}
-		else //non Golgi domain
+		else //non Golgi domain or Golgi domain budding from a non Golgi organelle
 		{
 			double[] areaVolume = areaVolumeTubule(endosome, rabInTube);
 			scylinder = areaVolume[0];
@@ -186,6 +188,7 @@ public class FissionStep {
 		b.getRabTimeSeries().clear();
 		
 		b.heading = endosome.heading + rd.nextGaussian() * 30d;
+		b.tickCount = endosome.tickCount;
 		// change the													// heading
 		// of the old vesicle heading with a normal distribution
 //		scale 750 nm is the 50 size space. Size in nm/15 is the size in the space scale
@@ -248,15 +251,15 @@ public class FissionStep {
 
 
 		//{
-//		    System.out.println("Roots are real and unequal");
-//		    root1 = ( - b + Math.sqrt(d))/(2*a);
-//		    root2 = (-b - Math.sqrt(d))/(2*a);
-//		    System.out.println("First root is:"+root1);
-//		    System.out.println("Second root is:"+root2);
+		//		    System.out.println("Roots are real and unequal");
+		//		    root1 = ( - b + Math.sqrt(d))/(2*a);
+		//		    root2 = (-b - Math.sqrt(d))/(2*a);
+		//		    System.out.println("First root is:"+root1);
+		//		    System.out.println("Second root is:"+root2);
 		//}   
-		
-		if (Math.random()<0.1){// standard 0.9
-// high probability of forming a single vesicle.  SET TO 0.9
+
+		if (Math.random()<0.9){// standard 0.9
+			// high probability of forming a single vesicle.  SET TO 0.9
 			return new double[] {Cell.mincyl, 2 * Math.PI * Math.pow(Cell.rcyl, 3)};
 		}
 		else
@@ -266,8 +269,8 @@ public class FissionStep {
 			double rsphere = Math.pow((vo * 3) / (4 * Math.PI), (1 / 3d));// calculate
 			// the radius of the sphere with a given volume
 			double ssphere = (4 * Math.PI * rsphere * rsphere);// area of a sphere
-																// containing the
-																// volume
+			// containing the
+			// volume
 			double scylinder = 0; 
 			double vcylinder = 0;	
 			do{
@@ -275,8 +278,8 @@ public class FissionStep {
 				// add a minimal volume
 				double aradius =Math.sqrt(vcylinder /(2*Math.PI*Cell.rcyl)); // from vcylinder = PI*aradius^2 * cistern height (2 rcyl)
 				scylinder = 2*Math.PI*aradius*aradius + 4*Math.PI*aradius*Cell.rcyl;//from Scyl = 2*PI*aradius^2+4*PI*aradius*rcyl
-//System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+"  scylinder "+ scylinder);
-							
+				//System.out.println("SPLIT CISTERN vo"+vo+"  so  "+so+"  vcylinder "+vcylinder+"  scylinder "+ scylinder);
+
 				// System.out.println(scylinder +"surface and volume"+ vcylinder);
 			}
 			while (
@@ -287,65 +290,66 @@ public class FissionStep {
 					&&(endosome.rabContent.get(rabInTube) - scylinder > 4 * Math.PI * Math.pow(Cell.rcyl, 2))// the Rab area should b enough
 					// to cover the minimum cylinder and to elongate a two r cylinder
 					&& ((vo - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))>4 * Math.PI * Math.pow(Cell.rcyl, 3))
-					&& ((vo - vcylinder)/((so-scylinder)-2*Math.PI*Cell.rcyl*Cell.rcyl)>Cell.rcyl/2)); 
-// volume left cannot be smaller than the volume of the mincyl and cannot be less than the volume of a tubule with the remaining area
-//				 * while there is enough membrane and enough rab surface, the tubule grows
+					&& ((vo - vcylinder)/((so-scylinder)-2*Math.PI*Cell.rcyl*Cell.rcyl)>Cell.rcyl/2)
+					); 
+			// volume left cannot be smaller than the volume of the mincyl and cannot be less than the volume of a tubule with the remaining area
+			//				 * while there is enough membrane and enough rab surface, the tubule grows
 
-			
-//			double area = endosome.getRabContent().get(rabInTube);
-//			if (endosome.area - area < Cell.mincyl) area = area - Cell.mincyl; 
-//			{
-////				 * AREA (to find a (radius cylinder, r half height of cistern)
-////				 * cistern 2*PI* x^2 + 2*PI*r*2*r x  +  (-area) = 0
-//				double aq = 2d*Math.PI;
-//				double bq = 4*Math.PI*Cell.rcyl;
-//				double cq = -area;
-//				double dq =  bq * bq - 4 * aq * cq;
-//				double root1 = ( - bq + Math.sqrt(dq))/(2*aq);
-////			    root2 = (-b - Math.sqrt(d))/(2*a);
-////			    VOLUME
-//				double volume = Math.PI*root1*root1*2*Cell.rcyl;
-//System.out.println("SPLIT CISTERN vo "+ vo +"  so  "+so+"  vcylinder "+vcylinder+"  scylinder "+ scylinder);
-				return new double[] {scylinder, vcylinder};		
-			}
 
-//		return new double[] {Cell.mincyl, 2 * Math.PI * Math.pow(Cell.rcyl, 3)};
+			//			double area = endosome.getRabContent().get(rabInTube);
+			//			if (endosome.area - area < Cell.mincyl) area = area - Cell.mincyl; 
+			//			{
+			////				 * AREA (to find a (radius cylinder, r half height of cistern)
+			////				 * cistern 2*PI* x^2 + 2*PI*r*2*r x  +  (-area) = 0
+			//				double aq = 2d*Math.PI;
+			//				double bq = 4*Math.PI*Cell.rcyl;
+			//				double cq = -area;
+			//				double dq =  bq * bq - 4 * aq * cq;
+			//				double root1 = ( - bq + Math.sqrt(dq))/(2*aq);
+			////			    root2 = (-b - Math.sqrt(d))/(2*a);
+			////			    VOLUME
+			//				double volume = Math.PI*root1*root1*2*Cell.rcyl;
+			//System.out.println("SPLIT CISTERN vo "+ vo +"  so  "+so+"  vcylinder "+vcylinder+"  scylinder "+ scylinder);
+			return new double[] {scylinder, vcylinder};		
 		}
 
-	
-	
+		//		return new double[] {Cell.mincyl, 2 * Math.PI * Math.pow(Cell.rcyl, 3)};
+	}
+
+
+
 	private static double[] areaVolumeTubule(Endosome endosome, String rabInTube)
 	{
-//		the organelles is assessed to be a tubule for the vo/so relationship. If it is a 
-//		tubule, the rules for splitting are different
+		//		the organelles is assessed to be a tubule for the vo/so relationship. If it is a 
+		//		tubule, the rules for splitting are different
 		double vo = endosome.volume;
 		double so = endosome.area;
 		double rsphere = Math.pow((vo * 3) / (4 * Math.PI), (1 / 3d));// calculate
 		// the radius of the sphere with a given volume
 
 		double ssphere = (4 * Math.PI * rsphere * rsphere);// area of a sphere
-															// containing the
-															// volume
+		// containing the
+		// volume
 		double scylinder = Cell.mincyl; // surface minimum cylinder 2*radius
 		// cylinder high
 		double vcylinder = 2 * Math.PI * Math.pow(Cell.rcyl, 3); // volume	
 
-		
+
 		if (vo / (so - 2 * Math.PI * Cell.rcyl * Cell.rcyl) <= Cell.rcyl / 2) {// should be 2
-//			if it is a tubule
+			//			if it is a tubule
 			if (endosome.rabContent.get(rabInTube)>= endosome.area/2){
-//				if it is a tubule and the rab selected has enough area, divide in two
+				//				if it is a tubule and the rab selected has enough area, divide in two
 				vcylinder = endosome.volume/2;
 				scylinder = endosome.area/2;
 
 				System.out.println("tubule cut in two");
-				 return new double[] {scylinder, vcylinder};
+				return new double[] {scylinder, vcylinder};
 			}
 			else {
-//				if it is a tubule and the Rab selected is not enough, generate a tubule with the 
-//				available Rab area
+				//				if it is a tubule and the Rab selected is not enough, generate a tubule with the 
+				//				available Rab area
 				scylinder = endosome.rabContent.get(rabInTube);
-//				vcylinder = vo* endosome.rabContent.get(rabInTube)/endosome.area;
+				//				vcylinder = vo* endosome.rabContent.get(rabInTube)/endosome.area;
 				double ss = scylinder - 2*Math.PI*Cell.rcyl*Cell.rcyl;//available surface without the two caps
 				double h = ss/(2*Math.PI*Cell.rcyl);// height of the cylinder from the available surface
 				vcylinder = Math.PI*Cell.rcyl*Cell.rcyl*h; // volume of the cylinder from the height
@@ -356,38 +360,38 @@ public class FissionStep {
 		}
 		else // following rules are for an organelle that is not a tubule
 		{
-		while ((so - ssphere - scylinder > 4 * Math.PI * Math.pow(Cell.rcyl, 2))
-				// organelle area should be enough to cover the volume (ssphere)
-				// to cover the cylinder already formed (scylinder) and to
-				// elongate a two r cylinder (without caps)
-				&& (endosome.rabContent.get(rabInTube) - scylinder > 4 * Math.PI
-						* Math.pow(Cell.rcyl, 2))// the Rab area should b enough
-				// to cover the minimum cylinder and to elongate a two r cylider
-				&& (scylinder < 0.5 * so) // the area of the cylinder must not
-											// be larger than 50% of the total
-											// area
-				&& ((vo - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))>4 * Math.PI * Math.pow(Cell.rcyl, 3))
-				&& Math.random()< 0.9 //cut the tubule with a 10% probability in each step.  Prevent too long tubules
-				) {
-//			/ ((so - scylinder - 4 * Math.PI
-//					* Math.pow(Cell.rcyl, 2)) - 2 * Math.PI
-//					* Cell.rcyl * Cell.rcyl) > Cell.rcyl / 2
-			// volume left cannot be smaller than the volume
-			// of the mincyl
-			/*
-			 * while there is enough membrane and enough rab surface, the tubule
-			 * grows
-			 */
+			while ((so - ssphere - scylinder > 4 * Math.PI * Math.pow(Cell.rcyl, 2))
+					// organelle area should be enough to cover the volume (ssphere)
+					// to cover the cylinder already formed (scylinder) and to
+					// elongate a two r cylinder (without caps)
+					&& (endosome.rabContent.get(rabInTube) - scylinder > 4 * Math.PI
+							* Math.pow(Cell.rcyl, 2))// the Rab area should b enough
+					// to cover the minimum cylinder and to elongate a two r cylider
+					&& (scylinder < 0.5 * so) // the area of the cylinder must not
+					// be larger than 50% of the total
+					// area
+					&& ((vo - vcylinder - 2 * Math.PI * Math.pow(Cell.rcyl, 3))>4 * Math.PI * Math.pow(Cell.rcyl, 3))
+					&& Math.random()< 0.9 //cut the tubule with a 10% probability in each step.  Prevent too long tubules
+					) {
+				//			/ ((so - scylinder - 4 * Math.PI
+				//					* Math.pow(Cell.rcyl, 2)) - 2 * Math.PI
+				//					* Cell.rcyl * Cell.rcyl) > Cell.rcyl / 2
+				// volume left cannot be smaller than the volume
+				// of the mincyl
+				/*
+				 * while there is enough membrane and enough rab surface, the tubule
+				 * grows
+				 */
 
-			scylinder = scylinder + 4 * Math.PI * Math.pow(Cell.rcyl, 2);
-			// add a cylinder without caps (the caps were considered in
-			// the mincyl
-			vcylinder = vcylinder + 2 * Math.PI * Math.pow(Cell.rcyl, 3);
-			// add a volume
-			// System.out.println(scylinder +"surface and volume"+ vcylinder);
+				scylinder = scylinder + 4 * Math.PI * Math.pow(Cell.rcyl, 2);
+				// add a cylinder without caps (the caps were considered in
+				// the mincyl
+				vcylinder = vcylinder + 2 * Math.PI * Math.pow(Cell.rcyl, 3);
+				// add a volume
+				// System.out.println(scylinder +"surface and volume"+ vcylinder);
+			}
+			return new double[] {scylinder, vcylinder};	
 		}
-		}
-		return new double[] {scylinder, vcylinder};	
 	}
 
 	private static void membraneContentSplit(Endosome endosome, String rabInTube, Double so, Double sVesicle) {
@@ -438,19 +442,22 @@ public class FissionStep {
 				}
 			}
 //			System.out.println("sphere tubule " + sphereTrop +" "+ tubuleTrop+ " " +(tubuleTrop-sphereTrop));
-// the tropismo is to vesicle or to tubule according to the following rules
-// if not clear tropism to tubule or sphere, even distribution	
+// OLD COMMENTED the tropismo is to vesicle or to tubule according to the following rules
 
+// NEW 23/7/2021 if no tropism, (totaltrop = 0) proportional to surface
 			double totalTrop = sVesicle * sphereTrop + (so-sVesicle)* tubuleTrop;
 			if (totalTrop == 0) {
 				splitPropSurface(endosome, content, so, sVesicle);
-				continue;
 			}
+			else {
+// NEW 23/7/2021  else, proportional to the surface and to the tropism to sphere and tubule			
 			double proportionVesicle = sVesicle * sphereTrop / totalTrop;
-			System.out.println(content + " FISSION " + sphereTrop +" FISSION " + tubuleTrop +" FISSION " + totalTrop +" FISSION " + proportionVesicle);
+//			System.out.println(content + " FISSION " + sphereTrop +" FISSION " + tubuleTrop +" FISSION " + totalTrop +" FISSION " + proportionVesicle);
 	//		if (proportionVesicle * content >= sVesicle) {}
 			splitPropSurfaceAndTropism(endosome, content, so, sVesicle, proportionVesicle);
-/*			
+			}
+/*
+ * // if not clear tropism to tubule or sphere, even distribution				
 			if (tubuleTrop < 2d && sphereTrop < 2d ) 
 				{	
 //				System.out.println("to even ");
@@ -476,7 +483,7 @@ public class FissionStep {
 
 */			
 			}
-			}
+		}
 	}				
 					
 
@@ -712,6 +719,18 @@ public class FissionStep {
 //		}
 //
 //		return null;
+	}
+	private static boolean isGolgi(Endosome endosome) {
+		double areaGolgi = 0d;
+		for (String rab : endosome.getRabContent().keySet()){
+			String name = ModelProperties.getInstance().rabOrganelle.get(rab);
+			if (name.contains("Golgi")) {areaGolgi = areaGolgi + endosome.getRabContent().get(rab);} 
+		}
+		boolean isGolgi = false;
+		if (areaGolgi/endosome.area >= 0.5) {
+			isGolgi = true;
+		}
+		return isGolgi;	
 	}
 
 }

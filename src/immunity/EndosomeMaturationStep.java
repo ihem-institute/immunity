@@ -1,35 +1,66 @@
 package immunity;
 
+import java.util.Collections;
+import java.util.Map;
 
 public class EndosomeMaturationStep {
 	
 	public static void matureCheck (Endosome endosome) {
-		if (!endosome.rabContent.containsKey("RabA")) {return;}
-		double relativeRabA=endosome.rabContent.get("RabA")/endosome.area;
-		if(relativeRabA>0.9
-				&& Math.random()< endosome.tickCount / 5000) mature(endosome);
-//			endosome.tickCount+=1;
-			//System.out.println("NOMBRE "+this.getName()+" Relative RabA  "+relativeRabA+" Cuenta  "+this.getTickCount());
+//		if too young return
+		if (Math.random() > endosome.tickCount / 3000) {return;}
+		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+//		if the maxRab is not prevalent, return
+		if (endosome.rabContent.get(maxRab)/endosome.area < 0.5) return; //LUIS ERA 0.9
+//		Maturation according to the maxRab. First argument (oldRab) is the Rab that matures to the second argument (newRab)
+		switch (maxRab)
+		{
+		case "RabA":
+			if (Math.random()<0.9)
+			mature(endosome, "RabA", "RabB", 0.1);// EE to SE
+			else
+			mature(endosome, "RabA", "RabD", 0.9);// EE to LE
+			break;
+		case "RabI":
+			mature(endosome, "RabI", "RabH", 0.9);//ERGIC to cisG
+			break;
+		case "RabH":
+			mature(endosome, "RabH", "RabG", 0.9);//cisG to medialG
+			break;
+		case "RabG":
+			mature(endosome, "RabG", "RabF", 0.9);//medialG to transG
+			break;
+		case "RabF":
+			mature(endosome, "RabF", "RabE", 0.9);//transG to TGN
+			break;
+		case "RabB":
+			mature(endosome, "RabB", "RabC", 0.05);//SE to RE
+			break;			
+			
+		 default: return;
 		}
-//		if (endosome.tickCount>1000) {
-////			double z=Math.random();
-////			if (z<endosome.p_EndosomeMaturationStep) {
-//
-////			}
-//		}
-//	}
-	
-	public static void mature (Endosome endosome) {
-		//System.out.println("MADUROOOOO");
-		//System.out.println("NOMBRE "+endosome.getName()+" Cuenta  "+endosome.getTickCount()+" Area  "+endosome.getArea());
-		//System.out.println(endosome.getRabContent());
-		double raba=endosome.getRabContent().get("RabA");
-		double rabd = 0;
-		if (!endosome.rabContent.containsKey("RabD")) rabd = 0d;
-		else rabd=endosome.getRabContent().get("RabD");
-		endosome.getRabContent().put("RabD", raba+rabd);
-		endosome.getRabContent().put("RabA", 0d);
-		endosome.setTickCount(0);
-		//System.out.println(endosome.getRabContent());
+		
+//		double relativeRabA=endosome.rabContent.get("RabA")/endosome.area;
+//		if(relativeRabA>0.9
+//				&& Math.random()< endosome.tickCount / 5000) mature(endosome);
+////			endosome.tickCount+=1;
+//			//System.out.println("NOMBRE "+this.getName()+" Relative RabA  "+relativeRabA+" Cuenta  "+this.getTickCount());
+		}
+
+	public static void mature (Endosome endosome, String rabOldName, String rabNewName, double propMature) {
+	//	System.out.println("MADUROOOOO");
+	//	System.out.println("NOMBRE "+ rabOldName+rabNewName+" Cuenta  "+endosome.getTickCount()+" Area  "+endosome.getArea());
+	//	System.out.println(endosome.getRabContent());
+		double rabOld=endosome.getRabContent().get(rabOldName);
+		double rabNew = 0;
+		if (!endosome.rabContent.containsKey(rabNewName)) rabNew = 0d;
+		else rabNew=endosome.getRabContent().get(rabNewName);
+		endosome.getRabContent().put(rabNewName, rabOld*propMature+rabNew);
+		endosome.getRabContent().put(rabOldName, rabOld*(1-propMature));
+//		The tickCount is reset to a certain value considering the the proportion of the 
+//		maturation of the major domain.  This prevent that a small area maturation will reset the
+//		tickCount to zero
+		endosome.setTickCount((int) (endosome.tickCount*(1-propMature)));
+//		System.out.println(endosome.getRabContent());
 	}
+	
 }

@@ -21,7 +21,7 @@ public class OrganelleMove {
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		String organelleName = ModelProperties.getInstance().rabOrganelle.get(maxRab);
 		if ( 
-				endosome.area >= Cell.minCistern// minimal cistern Golgi absolute Scale hacer constante
+				endosome.area >= Cell.minCistern/5// minimal cistern Golgi absolute Scale hacer constante
 				&& isGolgi(endosome)){ // test if it is Golgi
 			moveCistern(endosome, organelleName);
 		}
@@ -48,19 +48,20 @@ public class OrganelleMove {
 	private static void moveCistern(Endosome endosome, String organelleName) {
 		space = endosome.getSpace();
 		grid = endosome.getGrid();		
-		double yrnd = 1;//Math.random();
+		double between = 2;//distance between cisterna Math.random();
+		double high = 10;//distance from the bottom
 		endosome.heading = -90;
 		if (organelleName.contains("cisGolgi")) {
-			space.moveTo(endosome, 25, yrnd*1);
-			grid.moveTo(endosome, 25, (int)yrnd*1);
+			space.moveTo(endosome, 25, between*1+high);
+			grid.moveTo(endosome, 25, (int)(between*1+high));
 		}
 		if (organelleName.contains("medialGolgi")) {
-			space.moveTo(endosome, 25, yrnd*2);
-			grid.moveTo(endosome, 25, (int)yrnd*2);
+			space.moveTo(endosome, 25, between*2+high);
+			grid.moveTo(endosome, 25, (int)(between*2+high));
 		}
 		if (organelleName.contains("transGolgi")) {
-			space.moveTo(endosome, 25, yrnd*3);
-			grid.moveTo(endosome, 25, (int)yrnd*3);
+			space.moveTo(endosome, 25, between*3+high);
+			grid.moveTo(endosome, 25, (int)(between*3+high));
 		}
 		
 		NdPoint myPoint = space.getLocation(endosome);
@@ -95,20 +96,21 @@ public class OrganelleMove {
 		
 
 //	If near the borders, move random (only with 10% probability)
-		if (y > 50-2*cellLimit || y < 0.5*cellLimit) { // near the nucleus non random
+		if (y > 50-2*cellLimit || y < 5*cellLimit) { // near the nucleus non random
 			changeDirectionRnd(endosome);
 		}
 		else
 //			if not near the borders.  Notice less random near the nucleous
 		{
-			boolean onMt = false;
+//			boolean onMt = false;
 			changeDirectionMt(endosome);
 
 		}
 		
 //		Having the heading and speed, make the movement.  If out of the space, limit
 //		the movement
-			if (endosome.speed == 0) return;// random movement 90% of the time return speed=0
+			if (endosome.speed == 0
+					|| endosome.area > 200000) return;// random movement 90% of the time return speed=0
 			myPoint = space.getLocation(endosome);
 			x = myPoint.getX();
 			y = myPoint.getY();
@@ -173,7 +175,7 @@ public class OrganelleMove {
 //		Collections.shuffle(mts); 19-7-21 No need to shuffle because the closest MT will be selected
 		double dist = 1000;
 		MT mt = null;
-//		RULE 19-7-2021.  The organelle will sense the MT around it and select the closest one (minimal absolute distance)
+//NEW		RULE 19-7-2021.  The organelle will sense the MT around it and select the closest one (minimal absolute distance)
 		for (MT mmt : mts) {
 			double ndist = distance(endosome, mmt);
 //			The distance is in space units from 0 to 50. At scale 1, the space is 1500 nm.  At 

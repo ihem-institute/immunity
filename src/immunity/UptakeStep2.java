@@ -20,11 +20,13 @@ public class UptakeStep2 {
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 	private static Object membreneMet;
+	public static 	double uptakeArea = 0d;
 	public static void uptake(Cell cell) {
 		//		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		//		if (tick < 100) return;
 		space = cell.getSpace();
 		grid = cell.getGrid();
+
 		/* ?
 		 * Old logic.  The amount of domains of each Rab is compared with the initial value
 		 * The domain with more difference is selected to generate a new organelle
@@ -61,19 +63,21 @@ public class UptakeStep2 {
 		double initialAreaPM = PlasmaMembrane.getInstance().getInitialPlasmaMembraneArea();
 
 		if(areaPM > initialAreaPM) {
-		System.out.println(" 	NEW UPTAKE    " + areaPM + "    "+initialAreaPM);
+		System.out.println(" 	NEW UPTAKE PM   " + areaPM + "    "+initialAreaPM);
 		newUptake(cell,"RabA");
-		System.out.println(" 	NEW UPTAKE    " + PlasmaMembrane.getInstance().getPlasmaMembraneArea() + "    "+initialAreaPM);}
-
+	//	System.out.println(" 	NEW NEW UPTAKE    " + PlasmaMembrane.getInstance().getPlasmaMembraneArea() + "    "+initialAreaPM);}
+		}
 		//		NEW SECRETORY EVENT
 		double areaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
-		double initialAreaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
+		double initialAreaER = EndoplasmicReticulum.getInstance().getInitialendoplasmicReticulumArea();
 
-		if (areaER > initialAreaER)
-		newSecretion(cell,"RabI");
+		if (areaER > initialAreaER) {
+			System.out.println(" 	NEW UPTAKE ER   " + areaER + "    "+initialAreaER);
 		
+		newSecretion(cell,"RabI");
+		}
 //		COMPENSATORY NEW ORGANELLE
-
+		
 
 		for (String rab : totalRabs.keySet()){
 			//			System.out.println("ErrorRabs  "+ rab + "   " +initialTotalRabs.get(rab) +"     "+ totalRabs.get(rab));
@@ -93,16 +97,19 @@ public class UptakeStep2 {
 		//		System.out.println("selected Rab for uptake "+ selectedRab);
 		//		If no rab was selected or the surface required is small (less than a sphere of 60 nm radius, 
 		//		no uptake is required
-		if (selectedRab.equals("")|| deltaRabs.get(selectedRab)<45000) return;
+		if (selectedRab.equals("")|| deltaRabs.get(selectedRab)<450000000) return;
 		//if the selected Rab correspond to Early Endosomes, new uptake
 		String selectedOrganelle = ModelProperties.getInstance().getRabOrganelle().get(selectedRab);
+		System.out.println(" 	NEW UPTAKE OTHER   " + selectedRab + "  " + deltaRabs);
 		if (selectedOrganelle.equals("EE")){ 
 			newUptake(cell,selectedRab);}
-		if (selectedOrganelle.equals("ERGIC")){ 
+		else if (selectedOrganelle.equals("ERGIC")){ 
 			newSecretion(cell,selectedRab);}
-		else {newOrganelle(cell, selectedRab, rabCode);}
+		else {newOrganelle(cell, selectedRab, rabCode);
+		}
+		}
 
-	}
+	
 		
 	private static void newSecretion(Cell cell, String selectedRab) {
 		double cellLimit = 3d * Cell.orgScale;
@@ -133,7 +140,7 @@ public class UptakeStep2 {
 		double cf= Math.pow(c, f);
 		double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
 		double endoplasmicReticulum = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea() - area;
-//		System.out.println("LUETO DE UPTAKE  "+ endoplasmicReticulum);
+		System.out.println("LUEGO DE UPTAKE  "+ endoplasmicReticulum);
 		EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(endoplasmicReticulum);
 		double volume = 4d/3d*Math.PI*a*a*c;
 		initOrgProp.put("area", area);
@@ -158,7 +165,7 @@ public class UptakeStep2 {
 		HashMap<String, Double> membraneContent = new HashMap<String,Double>();
 		Set<String> membraneMet = new HashSet<String>(ModelProperties.getInstance().getMembraneMet());
 		for (String mem : membraneMet){
-			double valueInEn = 0d;
+//			double valueInEn = 0d;
 			double valueInER =0d;
 			double valueInTotal = 0d;
 		System.out.println(mem + ModelProperties.getInstance().getSecretionRate().get(mem) + "   secretion 1111  " + valueInER+membraneContent);
@@ -219,6 +226,7 @@ public class UptakeStep2 {
 		context.add(bud);
 		bud.speed = 1d / bud.size;
 		bud.heading = 90;// heading up
+		bud.tickCount = 1;
 		double rnd = Math.random();
 		double upPosition = rnd* (4 * cellLimit);
 		space.moveTo(bud, rnd * 50, upPosition);
@@ -266,7 +274,10 @@ public class UptakeStep2 {
 		double cf= Math.pow(c, f);
 		double area = 4d* Math.PI*Math.pow((af*af+af*cf+af*cf)/3, 1/f);
 		double plasmaMembrane = PlasmaMembrane.getInstance().getPlasmaMembraneArea() - area;
-//		System.out.println("LUETO DE UPTAKE  "+ plasmaMembrane);
+		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+//		if (tick == 1) uptakeArea = 0d;
+		uptakeArea = uptakeArea + area;
+		System.out.println(uptakeArea + " TOTAL UPTAKE UPTAKE "+ plasmaMembrane + "  "+ tick);
 		PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
 		double volume = 4d/3d*Math.PI*a*a*c;
 		initOrgProp.put("area", area);
@@ -386,6 +397,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		context.add(bud);
 		bud.speed = 1d / bud.size;
 		bud.heading = -90;// heading down
+		bud.tickCount =1;
 		double rnd = Math.random();
 		double upPosition = 25 + rnd* (25 - 4 * cellLimit);
 		space.moveTo(bud, rnd * 50, upPosition);
@@ -524,6 +536,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		context.add(bud);
 		bud.area = area; 
 		bud.volume = volume;
+		bud.tickCount = 1;
 		bud.speed = 1d / bud.size;
 		bud.heading = -90;// heading down
 		// NdPoint myPoint = space.getLocation(bud);

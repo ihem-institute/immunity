@@ -75,8 +75,10 @@ public class Cell {
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void uptake() {
-		if (Math.random() < 0.1){
-			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
+		if (Math.random() < 0.01/1d){// era /3
+//			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
+			double areaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
+			EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(areaER*1.005);
 			UptakeStep2.uptake(this);
 			}
 			
