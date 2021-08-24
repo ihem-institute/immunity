@@ -71,7 +71,7 @@ public class EndosomeLysosomalDigestionStep {
 //		finalvATPase = endosome.membraneContent.get("vATPase");
 //		Soluble component are digested proportional to the RabD content
 		for (String sol : endosome.solubleContent.keySet()) {
-				double solDigested = endosome.solubleContent.get(sol) * 0.001
+				double solDigested = endosome.solubleContent.get(sol) * 0.00001
 						* rabDratio;
 				endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
 			}
@@ -81,7 +81,7 @@ public class EndosomeLysosomalDigestionStep {
 			endosome.solubleContent.put("solubleMarker", 1d);
 
 		for (String mem : endosome.membraneContent.keySet()) {
-				double memDigested = endosome.membraneContent.get(mem) * 0.001 * rabDratio;
+				double memDigested = endosome.membraneContent.get(mem) * 0.00001 * rabDratio;
 				endosome.membraneContent.put(mem, endosome.membraneContent.get(mem) - memDigested);
 			}
 		if (endosome.membraneContent.containsKey("membraneMarker") && endosome.membraneContent.get("membraneMarker")>0.9){

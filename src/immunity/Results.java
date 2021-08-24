@@ -106,6 +106,8 @@ public class Results {
 		FreezeDryEndosomes.getInstance();
 		try {
 			FreezeDryEndosomes.getInstance().writeToCsv();
+			FreezeDryEndosomes.getInstance().writeToCsvPM();
+			FreezeDryEndosomes.getInstance().writeToCsvER();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -303,6 +305,7 @@ public class Results {
 					initialTotalMembraneCargo.put(mem, value);
 				}
 				for (String sol : end.solubleContent.keySet()) {
+//					System.out.println(sol +" soluble");
 					double value = initialTotalSolubleCargo.get(sol) + end.solubleContent.get(sol);
 					initialTotalSolubleCargo.put(sol, value);
 				}

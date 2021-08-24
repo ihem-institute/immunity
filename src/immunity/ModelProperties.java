@@ -71,7 +71,7 @@ public class ModelProperties {
 		return plasmaMembraneProperties;
 	}
 	public HashMap<String, Double> getEndoplasmicReticulumProperties() {
-		return plasmaMembraneProperties;
+		return endoplasmicReticulumProperties;
 	}
 	public HashMap<String, String> getCopasiFiles() {
 		return copasiFiles;

@@ -77,7 +77,7 @@ public class UptakeStep2 {
 		newSecretion(cell,"RabI");
 		}
 //		COMPENSATORY NEW ORGANELLE
-		
+		if (3>1) return;
 
 		for (String rab : totalRabs.keySet()){
 			//			System.out.println("ErrorRabs  "+ rab + "   " +initialTotalRabs.get(rab) +"     "+ totalRabs.get(rab));
@@ -214,7 +214,7 @@ public class UptakeStep2 {
 			 */
 		}
 
-		solubleContent.put("proton", 3.98E-5*volume); //pH 7.4
+		solubleContent.put("protonEn", 3.98E-5*volume); //pH 7.4
 	/*		
 	 new ERGIC incorporate ER components in a proportion area new/area ER
 	 */		
@@ -319,47 +319,48 @@ public class UptakeStep2 {
 			{
 				double valuePM = PlasmaMembrane.getInstance().getMembraneRecycle().get(mem);
 				valueInPM = valuePM * ModelProperties.getInstance().getUptakeRate().get(mem) * area/ PlasmaMembrane.getInstance().getPlasmaMembraneArea();	
-
-				if (valueInPM >= area) valueInPM = area; // cannot incorporate more metabolite than its area
-				membraneContent.put(mem, valueInPM);
-				System.out.println(mem + valuePM + "   UPTAKE FROM PM 1111  " + valueInPM+membraneContent);
+//				System.out.println(mem + valuePM + "   UPTAKE FROM PM 1111  " + valueInPM+membraneContent);
 				// decrease PM content
 				PlasmaMembrane.getInstance().getMembraneRecycle().put(mem, valuePM-valueInPM);
 			}
-			/* FOR UPTAKE LOADING IN NEW ENDOSOMES
-			 * if (InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").
-			 * containsKey(mem)) { valueInEn =
-			 * InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").get(mem
-			 * )*area; valueInTotal = valueInEn + valueInPM; } if (valueInTotal >= area)
-			 * valueInTotal= area;
-			 */
+//			 FOR UPTAKE LOADING IN NEW ENDOSOMES
+			  if (InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").
+			  containsKey(mem)) 
+			  { 
+				  valueInEn =InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").get(mem)*area; 
+				  valueInTotal = valueInEn + valueInPM; 
+				  } 
+			 if (valueInTotal >= area) valueInTotal= area;// cannot incorporate more metabolite than its area
+				membraneContent.put(mem, valueInTotal);
+			 			 
 		}
 		HashMap<String, Double> solubleContent = new HashMap<String,Double>();
 		Set<String> solubleMet = new HashSet<String>(ModelProperties.getInstance().getSolubleMet());
 		for (String sol : solubleMet){
 			double valueInEn = 0d;
 			double valueInPM =0d;
-			
+			double valueInTotal;
+
 			if (PlasmaMembrane.getInstance().getSolubleRecycle().containsKey(sol))
 			{
 				double valuePM = PlasmaMembrane.getInstance().getSolubleRecycle().get(sol);
 				valueInPM = valuePM * volume/ PlasmaMembrane.getInstance().getPlasmaMembraneVolume();	
-
-				if (valueInPM >= volume) valueInPM = volume;
-				solubleContent.put(sol, valueInPM);
 				// decrease PM content
 				PlasmaMembrane.getInstance().getSolubleRecycle().put(sol, valuePM - valueInPM);
 			}
-			/*
-			 * if (InitialOrganelles.getInstance().getInitSolubleContent().get("kind1").
-			 * containsKey(sol)) { valueInEn =
-			 * InitialOrganelles.getInstance().getInitSolubleContent().get("kind1").get(sol)
-			 * *volume; valueInEn = valueInEn + valueInPM; } if (valueInEn >= volume)
-			 * valueInEn= volume; solubleContent.put(sol, valueInEn);
-			 */
+			// FOR UPTAKE LOADING IN NEW ENDOSOMES
+			if (InitialOrganelles.getInstance().getInitSolubleContent().get("kind1").containsKey(sol)) 
+			{ 
+				valueInEn =InitialOrganelles.getInstance().getInitSolubleContent().get("kind1").get(sol)*volume; 
+				valueInTotal = valueInEn + valueInPM; 
+
+				if (valueInTotal >= volume) valueInTotal= volume;// cannot incorporate more metabolite than its volume
+				solubleContent.put(sol, valueInTotal);
+			}
+
 		}
 
-		solubleContent.put("proton", 3.98E-5*volume); //pH 7.4
+		solubleContent.put("protonEn", 3.98E-5*volume); //pH 7.4
 	/*		
 	 new endosome incorporate PM components in a proportion area new/area PM
 						"Fully conformed MHC-I proteins internalize with the

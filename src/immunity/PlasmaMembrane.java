@@ -127,7 +127,9 @@ public class PlasmaMembrane {
 	public final void setPlasmaMembraneArea(double plasmaMembraneArea) {
 		this.plasmaMembraneArea = plasmaMembraneArea;
 	}
-
+	public final void setPlasmaMembraneVolume(double plasmaMembraneVolume) {
+		this.plasmaMembraneVolume = plasmaMembraneVolume;
+	}
 	public final double getInitialPlasmaMembraneVolume() {
 		return initialPlasmaMembraneVolume;
 	}

@@ -180,7 +180,7 @@ public class RecycleStep {
 
 			HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance()
 					.getSolubleRecycle();
-			double endopH = endosome.solubleContent.get("proton");
+			double endopH = endosome.solubleContent.get("protonEn");
 			for (String key1 : endosome.solubleContent.keySet()) {
 				if (solubleRecycle.containsKey(key1)) {
 					double sum = solubleRecycle.get(key1)
@@ -192,7 +192,7 @@ public class RecycleStep {
 			}
 
 			endosome.solubleContent.clear();
-			endosome.solubleContent.put("proton", endopH);
+			endosome.solubleContent.put("protonEn", endopH);
 			endosome.getEndosomeTimeSeries().clear();
 			PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
 			double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");// radius tubule

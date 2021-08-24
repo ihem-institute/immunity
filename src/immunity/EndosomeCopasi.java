@@ -46,7 +46,7 @@ public class EndosomeCopasi {
 	
 	protected EndosomeCopasi() {
 
-		System.out.println("Instantiation Once");
+		System.out.println("Instantiation Once " + ModelProperties.getInstance().getCopasiFiles().get("endosomeCopasi"));
 		
 		// to defeat instantiation
 		assert CCopasiRootContainer.getRoot() != null;
@@ -236,6 +236,7 @@ public class EndosomeCopasi {
 			CMetab m = nameMetabs.get(name);
 			m.setInitialConcentration(value);
 			m.refreshInitialValue();
+//			System.out.println(name + "******" + value);
 		}
 	}
 		
@@ -243,15 +244,14 @@ public class EndosomeCopasi {
 		// reapply the initial values
 		model.applyInitialValues();
 		
-/*        System.out.println("Starting ...");
+//        System.out.println("Starting ...");
         
         for (int i = 0; i < (int) model.getMetabolites().size(); ++i)
         {
             CMetab metab = model.getMetabolite(i);
-            assert metab != null;
-            
-            System.out.println(metab.getObjectName() + " : " + metab.getConcentration());
-        }*/
+            assert metab != null;          
+//            System.out.println(metab.getObjectName() + " : " + metab.getConcentration());
+        }
 		
 		boolean result=true;
         String processError = "";
@@ -259,7 +259,7 @@ public class EndosomeCopasi {
 		try
         {
             // now we run the actual trajectory
-        	System.out.println("trajectoryTask.process LIPID");
+//        	System.out.println("trajectoryTask.process LIPID");
             result=trajectoryTask.process(true);
             processError = trajectoryTask.getProcessError();
             processWarning = trajectoryTask.getProcessWarning();

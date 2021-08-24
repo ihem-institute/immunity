@@ -114,10 +114,10 @@ public class CellCopasiStep {
 		cellCopasi.setInitialConcentration("protonCy", 1e-04);
 		localM.put("protonCy", 1e-04);
 
-		if (localM.get("proton")==null||localM.get("proton") < 1e-05){
-			cellCopasi.setInitialConcentration("proton", 1e-04);
-			localM.put("proton", 1e-04);
-		}
+//		if (localM.get("proton")==null||localM.get("proton") < 1e-05){
+//			cellCopasi.setInitialConcentration("proton", 1e-04);
+//			localM.put("proton", 1e-04);
+//		}
 
 
 		cellCopasi.runTimeCourse();

@@ -122,7 +122,7 @@ public class EndosomeCopasiStep {
 				.getMetabolites();
 		HashMap<String, Double> localM = new HashMap<String, Double>();
 		for (String met : metabolites) {
-			String met1 = met.substring(0, met.length()-2);
+			String met1 = met;//met.substring(0, met.length()-2);
 //			for endosomes and other organelles, all the metabolites participate in the reaction
 			if (met.endsWith("En") && endosome.membraneContent.containsKey(met1)) {
 				double metValue = endosome.membraneContent.get(met1)/endosome.area;
@@ -167,11 +167,12 @@ public class EndosomeCopasiStep {
 		}
 		lipidMetabolism.setInitialConcentration("protonCy", 1e-04);
 		localM.put("protonCy", 1e-04);
+		System.out.println("METABOLITES IN "+ localM);
 
-		if (localM.get("proton")==null||localM.get("proton") < 1e-05){
-			lipidMetabolism.setInitialConcentration("proton", 1e-04);
-			localM.put("proton", 1e-04);
-		}
+//		if (localM.get("proton")==null||localM.get("proton") < 1e-05){
+//			lipidMetabolism.setInitialConcentration("proton", 1e-04);
+//			localM.put("proton", 1e-04);
+//		}
 
 
 		lipidMetabolism.runTimeCourse();

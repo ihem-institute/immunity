@@ -50,6 +50,10 @@ public class EndosomeMaturationStep {
 	//	System.out.println("MADUROOOOO");
 	//	System.out.println("NOMBRE "+ rabOldName+rabNewName+" Cuenta  "+endosome.getTickCount()+" Area  "+endosome.getArea());
 	//	System.out.println(endosome.getRabContent());
+		
+//		The logic is that a percentage (propMature) of the major domain matures
+//		the rest is preserved. The remaining domain can prevent miss targeting of membrane cargoes
+//		The tickCount is reset but not to zero.
 		double rabOld=endosome.getRabContent().get(rabOldName);
 		double rabNew = 0;
 		if (!endosome.rabContent.containsKey(rabNewName)) rabNew = 0d;

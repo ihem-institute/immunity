@@ -62,11 +62,11 @@ public class EndoplasmicReticulum {
 		double value = modelProperties.initERmembraneRecycle.get(met)*endoplasmicReticulumArea;
 		membraneRecycle.put(met, value);
 		}
-		System.out.println("ER membraneRecycle "+ membraneRecycle + endoplasmicReticulumArea);
+//		System.out.println("ER membraneRecycle "+ membraneRecycle + endoplasmicReticulumArea);
 		for (String met : modelProperties.initERsolubleRecycle.keySet() ){
 		solubleRecycle.put(met, modelProperties.initERsolubleRecycle.get(met)*endoplasmicReticulumVolume);
 		}
-		System.out.println("ER solubleRecycle "+ solubleRecycle);		
+//		System.out.println("ER solubleRecycle "+ solubleRecycle);		
 //		for (String met : modelProperties.solubleMet ){
 //		solubleRecycle.put(met,  0.0);
 //		}
@@ -87,7 +87,7 @@ public class EndoplasmicReticulum {
 	public void changeColor() {
 		double c1 = 0d;
 		{
-		c1 = membraneRecycle.get("Tf");
+//		c1 = membraneRecycle.get("Tf");
 		c1 = 20*c1/endoplasmicReticulumArea;
 		if (c1>1) c1=1;
 		ercolor = (int) (c1*255);
@@ -121,7 +121,11 @@ public class EndoplasmicReticulum {
 		this.endoplasmicReticulumArea = endoplasmicReticulumArea;
 		
 	}
-
+	
+	public void setEndoplasmicReticulumVolume(double endoplasmicReticulumVolume) {
+		this.endoplasmicReticulumVolume = endoplasmicReticulumVolume;
+		
+	}
 
 	public double getendoplasmicReticulumVolume() {
 		return endoplasmicReticulumVolume;
