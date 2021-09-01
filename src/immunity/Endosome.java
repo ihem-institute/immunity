@@ -76,19 +76,21 @@ public class Endosome {
 	
 	double cellLimit = 3 * Cell.orgScale;
 	double mvb;// = 0; // number of internal vesices
-	double cellMembrane;// = 0;
-	Set<String> membraneMet = cellProperties.getMembraneMet();
-	Set<String> solubleMet = cellProperties.getSolubleMet();
-	Set<String> rabSet = cellProperties.getRabSet();
-	HashMap<String, Double> rabCell = new HashMap<String, Double>();
-	private List<MT> mts;
+	double complexMHC = 0d;
+	double assembleMHC= 0d;
+	double pH = 11;
+//	double cellMembrane;// = 0;
+//	Set<String> membraneMet = cellProperties.getMembraneMet();
+//	Set<String> solubleMet = cellProperties.getSolubleMet();
+//	Set<String> rabSet = cellProperties.getRabSet();
+//	HashMap<String, Double> rabCell = new HashMap<String, Double>();
+//	private List<MT> mts;
 	// HashMap<String, Double> membraneMet = cellProperties.membraneMet();
-	HashMap<String, Double> rabCompatibility = cellProperties
-			.getRabCompatibility();
-	HashMap<String, Double> tubuleTropism = cellProperties.getTubuleTropism();
-	HashMap<String, Set<String>> rabTropism = cellProperties.getRabTropism();
-	HashMap<String, Double> mtTropismTubule = cellProperties.getMtTropismTubule();
-	HashMap<String, Double> mtTropismRest = cellProperties.getMtTropismRest();
+//	HashMap<String, Double> rabCompatibility = cellProperties.getRabCompatibility();
+//	HashMap<String, Double> tubuleTropism = cellProperties.getTubuleTropism();
+//	HashMap<String, Set<String>> rabTropism = cellProperties.getRabTropism();
+//	HashMap<String, Double> mtTropismTubule = cellProperties.getMtTropismTubule();
+//	HashMap<String, Double> mtTropismRest = cellProperties.getMtTropismRest();
 	HashMap<String, Double> rabContent = new HashMap<String, Double>();
 	HashMap<String, Double> membraneContent = new HashMap<String, Double>();
 	HashMap<String, Double> solubleContent = new HashMap<String, Double>();
@@ -129,6 +131,7 @@ public class Endosome {
 		this.membraneContent = membraneContent;
 		this.solubleContent = solubleContent;
 		this.initOrgProp = initOrgProp;
+		this.pH = this.getpH();
 		area = initOrgProp.get("area");// 4d * Math.PI * 30d * 30d; // initial
 										// value, but should change
 //		System.out.println("area" + area + " "+initOrgProp);
@@ -138,8 +141,6 @@ public class Endosome {
 		speed = Cell.orgScale / size; // initial value, but should change
 		heading = Math.random() * 360d - 180; // initial value, but should change
 		double mvb = 0; // number of internal vesicles
-
-
 	}
 
 	public final double getXcoor() {
@@ -161,6 +162,19 @@ public class Endosome {
 	}
 	public void setSpace(ContinuousSpace<Object> value) {
 		space = value;
+	}
+	public final double getComplexMHC() {
+		return complexMHC;
+	}
+	public final double getAssemleMHC() {
+		return assembleMHC;
+	}
+	public final double getpH() {
+		if (this.solubleContent.containsKey("protonEn"))
+		{
+			return (-Math.log10((this.solubleContent.get("protonEn")+1)/this.volume * 1E-3));// concentration in mM
+		}
+		else return 10;
 	}
 
 	@ScheduledMethod(start = 1, interval = 1000)

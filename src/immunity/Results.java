@@ -181,7 +181,7 @@ public class Results {
 	}
 		String line = "";
 		for (String key : orderContDist.keySet()) {
-            line = line+ Math.round(orderContDist.get(key)*100000d)/100000d + ",";
+            line = line+ sigFigs(orderContDist.get(key),4) + ",";
 		}
 		line = line + "\n";
 		Writer output;
@@ -240,7 +240,7 @@ public class Results {
 	}
 		String line = "";
 		for (String key : totalRabs2.keySet()) {
-            line = line+ Math.round(totalRabs2.get(key)*100000d)/100000d + ",";
+            line = line+ sigFigs(totalRabs2.get(key),4) + ",";
 		}
 		line = line + "\n";
 		Writer output;
@@ -269,7 +269,7 @@ public class Results {
 		}
 			String line = "";
 			for (String key : orderCisternsArea.keySet()) {
-	            line = line+ Math.round(orderCisternsArea.get(key)*100000d)/100000d + ",";
+	            line = line+ sigFigs(orderCisternsArea.get(key),4) + ",";
 			}
 			line = line + "\n";
 			Writer output;
@@ -483,7 +483,7 @@ public class Results {
 		TreeMap<String, Double> orderSingleEndosome = new TreeMap<String, Double>(singleEndosomeContent);
 		String line = "";
 		for (String key : orderSingleEndosome.keySet()) {
-            line = line+ Math.round(orderSingleEndosome.get(key)*100d)/100d + ",";
+            line = line+ sigFigs(orderSingleEndosome.get(key),2) + ",";
 		}
 		line = line + "\n";
 		Writer output;
@@ -559,5 +559,9 @@ public class Results {
 
 	public final HashMap<String, Double> getTotalVolumeRabs() {
 		return totalVolumeRabs;
+	}
+	public static double sigFigs(double n, int sig) {
+	    double mult = Math.pow(10, sig - Math.floor(Math.log(n) / Math.log(10) + 1));
+	    return Math.round(n * mult) / mult;
 	}
 }

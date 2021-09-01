@@ -12,6 +12,8 @@ public class EndosomeMaturationStep {
 //		if the maxRab is not prevalent, return
 		if (endosome.rabContent.get(maxRab)/endosome.area < 0.5) return; //LUIS ERA 0.9
 //		Maturation according to the maxRab. First argument (oldRab) is the Rab that matures to the second argument (newRab)
+//		The third argument is the proportion of the total domain that matures.  Most for Rab5-Rab7 and the Golgi domains.  Only
+//		10% for Rab5-Rab22).5% for RabB-RabC
 		switch (maxRab)
 		{
 		case "RabA":
@@ -56,7 +58,7 @@ public class EndosomeMaturationStep {
 //		The tickCount is reset but not to zero.
 		double rabOld=endosome.getRabContent().get(rabOldName);
 		double rabNew = 0;
-		if (!endosome.rabContent.containsKey(rabNewName)) rabNew = 0d;
+		if (!endosome.rabContent.containsKey(rabNewName)) rabNew = 0d;// checks if the organelle already has the new domain
 		else rabNew=endosome.getRabContent().get(rabNewName);
 		endosome.getRabContent().put(rabNewName, rabOld*propMature+rabNew);
 		endosome.getRabContent().put(rabOldName, rabOld*(1-propMature));

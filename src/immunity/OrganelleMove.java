@@ -21,7 +21,7 @@ public class OrganelleMove {
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		String organelleName = ModelProperties.getInstance().rabOrganelle.get(maxRab);
 		if ( 
-				endosome.area >= Cell.minCistern/5// minimal cistern Golgi absolute Scale hacer constante
+				endosome.area >= Cell.minCistern/20// minimal cistern Golgi absolute Scale hacer constante
 				&& isGolgi(endosome)){ // test if it is Golgi
 			moveCistern(endosome, organelleName);
 		}

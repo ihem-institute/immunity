@@ -18,7 +18,7 @@ public class EndosomeLysosomalDigestionStep {
 			}
 		// All organelles with a s/v similar to the sphere undergoes a loss of volume
 		else if (so*so*so/(vo*vo) > 0.99*36*Math.PI// small surface/volume ration
-				&& endosome.a <= endosome.c)// it is not Golgi
+				)//&& endosome.a <= endosome.c)// it is not Golgi
 			{
 			squeezeOrganelle(endosome);
 			}
@@ -27,7 +27,7 @@ public class EndosomeLysosomalDigestionStep {
 
 	private static void squeezeOrganelle(Endosome endosome) {		
 //The Organelle volume is decreased
-		endosome.volume = endosome.volume * 0.99;			
+		endosome.volume = endosome.volume * 0.992;	//era 0.99		
 		Endosome.endosomeShape(endosome);		
 	}
 
@@ -71,7 +71,7 @@ public class EndosomeLysosomalDigestionStep {
 //		finalvATPase = endosome.membraneContent.get("vATPase");
 //		Soluble component are digested proportional to the RabD content
 		for (String sol : endosome.solubleContent.keySet()) {
-				double solDigested = endosome.solubleContent.get(sol) * 0.00001
+				double solDigested = endosome.solubleContent.get(sol) * 0.000001
 						* rabDratio;
 				endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
 			}
@@ -81,7 +81,7 @@ public class EndosomeLysosomalDigestionStep {
 			endosome.solubleContent.put("solubleMarker", 1d);
 
 		for (String mem : endosome.membraneContent.keySet()) {
-				double memDigested = endosome.membraneContent.get(mem) * 0.00001 * rabDratio;
+				double memDigested = endosome.membraneContent.get(mem) * 0.000001 * rabDratio;
 				endosome.membraneContent.put(mem, endosome.membraneContent.get(mem) - memDigested);
 			}
 		if (endosome.membraneContent.containsKey("membraneMarker") && endosome.membraneContent.get("membraneMarker")>0.9){

@@ -34,9 +34,8 @@ public class Cytosol {
 
 		// In the future, the cytosol will have a more active role.
 		//solute diffusion etc.
-		@ScheduledMethod(start = 1, interval = 1)
+		@ScheduledMethod(start = 1, interval = 100)
 		public void step() {
-//			this.changeColor();
 //			if (Math.random()<0.01) this.diffusion();
 
 			}
