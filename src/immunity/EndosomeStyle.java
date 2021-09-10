@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-import javax.media.opengl.GL2;
+//import javax.media.opengl.GL2;
 
 import org.apache.commons.math3.geometry.euclidean.twod.Line;
 
@@ -76,8 +76,8 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
         shape = this.factory.createShape(ellypse);
         }
         else{
-
-//    		System.out.println("a  "+a+"  c  "+ c);
+//        	object.heading = -90;
+//  		System.out.println("a  "+a+"  c  "+ c);
          Shape rec = new RoundRectangle2D.Double(-c/2, -a/2, c, a,  0, 0);
 //        arguments x, y, ancho, largo, corner angle (small sharp), side curvature (small, straight)
         shape = this.factory.createShape(rec);
@@ -240,7 +240,8 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 		// set in a way that object move along its large axis
 //		if(endosome.heading > 0 && endosome.heading <180) {return (float) -(180+endosome.heading);}		
 //		else {	
-		return (float) -endosome.heading;
+		if(endosome.area >= Cell.minCistern/20 && endosome.a > endosome.c) return (float) 90;
+		else return (float) -(endosome.getHeading());
 
 	}
 	

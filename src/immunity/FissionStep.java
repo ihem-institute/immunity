@@ -117,6 +117,7 @@ public class FissionStep {
 		 */
 		endosome.area = sVesicle;
 		endosome.volume = vVesicle;
+		
 		Endosome.endosomeShape(endosome);
 
 		/*
@@ -186,9 +187,13 @@ public class FissionStep {
 //		Time series will be recalculated in the next tick
 		b.getEndosomeTimeSeries().clear();
 		b.getRabTimeSeries().clear();
-		
+//		if(ModelProperties.getInstance().rabOrganelle.get(rabInTube).contains("Golgi"))
+//		{b.heading = -90;}
 		b.heading = endosome.heading + rd.nextGaussian() * 30d;
-		b.tickCount = endosome.tickCount;
+//		The tickCount is reset to a certain value considering the the proportion of the 
+//		area of the newly formed organelle.  Did not like it.  Better keep the same tickCount
+		b.tickCount = endosome.tickCount;//1 + (int) (endosome.tickCount * b.area/(endosome.area + b.area));
+//		if (b.getRabContent().containsKey("RabH"))System.out.println(b.area + "  "+b.tickCount +" TICKCOUNT RABH "+endosome.tickCount+ " "+endosome.area);
 		// change the													// heading
 		// of the old vesicle heading with a normal distribution
 //		scale 750 nm is the 50 size space. Size in nm/15 is the size in the space scale
@@ -349,10 +354,10 @@ public class FissionStep {
 				//				if it is a tubule and the Rab selected is not enough, generate a tubule with the 
 				//				available Rab area
 				scylinder = endosome.rabContent.get(rabInTube);
-				//				vcylinder = vo* endosome.rabContent.get(rabInTube)/endosome.area;
-				double ss = scylinder - 2*Math.PI*Cell.rcyl*Cell.rcyl;//available surface without the two caps
-				double h = ss/(2*Math.PI*Cell.rcyl);// height of the cylinder from the available surface
-				vcylinder = Math.PI*Cell.rcyl*Cell.rcyl*h; // volume of the cylinder from the height
+				vcylinder = vo* endosome.rabContent.get(rabInTube)/endosome.area;
+//				double ss = scylinder - 2*Math.PI*Cell.rcyl*Cell.rcyl;//available surface without the two caps
+//				double h = ss/(2*Math.PI*Cell.rcyl);// height of the cylinder from the available surface
+//				vcylinder = Math.PI*Cell.rcyl*Cell.rcyl*h; // volume of the cylinder from the height
 				System.out.println("tubule cut assymetric" + scylinder +" "+ vcylinder
 						+" "+ vo);
 				return new double[] {scylinder, vcylinder};

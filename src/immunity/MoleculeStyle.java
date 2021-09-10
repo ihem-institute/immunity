@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-import javax.media.opengl.GL2;
+//import javax.media.opengl.GL2;
 
 import org.apache.commons.math3.geometry.euclidean.twod.Line;
 

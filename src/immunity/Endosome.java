@@ -191,7 +191,7 @@ public class Endosome {
 //			logger.debug(message);			
 //		}
 		this.tickCount=this.tickCount + 1;
-		endosomeShape(this);
+//		endosomeShape(this);
 //		OrganelleMove.changeDirection(this);
 		OrganelleMove.moveTowards(this);
 //		if (this.solubleContent.containsKey("mvb")) this.membraneContent.put("chol", 0d);
@@ -248,46 +248,30 @@ public class Endosome {
 			}
 		}
 		if (golgiArea/end.area > 0.5){
-			for (int i = 0; i < 4; i++) {
-//				for flat ellipsoid (Golgi cisternae)
-////			 * AREA (to find a (radius cylinder, r half height of cistern)
-////			 * cistern 2*PI* x^2 + 2*PI*r*2*r x  +  (-area) = 0
-			double aq = 2d*Math.PI;
-			double bq = 4*Math.PI*Cell.rcyl;
-			double cq = -s;
-			double dq =  bq * bq - 4 * aq * cq;
-			aa = ( - bq + Math.sqrt(dq))/(2*aq);
-////		    root2 = (-b - Math.sqrt(d))/(2*a);
-////		    VOLUME
-//			double volume = Math.PI*root1*root1*2*Cell.rcyl;			
-			cc = v / (2d * Math.PI * aa * aa);// from volume of cylinder of aa radius v = PI*(aa^2)*2*cc			
-//				//					APPROX NOT USED aa = 2d / (svratio - 1d / cc);// from s/v ratio
-//				//				for elongated ellipsoid (tubule), from area of ellipsoid
-//				cc=Math.pow((Math.pow((s/4/Math.PI),p)*3 - Math.pow(aa, 2*p))/(2*Math.pow(aa, p)),(1/p));
-//				//				double cc= (s*3/(4*Math.PI*aa)-aa)/2; Aprox from DOI: 10.2307/3608515
-//				aa = Math.sqrt(v*3d/(4d*Math.PI*cc));			
-//				//					APPROX NOT USEDcc = 1d/(svratio-1d/aa);
-//				//				System.out.println("FORMA s/v " + s/v +" c "+ cc +" a " + aa);
-			}
-//			System.out.println("FLAT FLAT  c  a  " + cc +" " + aa);
-			end.a = aa;
-			end.c = cc;
+			if (end.area >= Cell.minCistern/20) end.heading = -90d; // is a cistern
+			double[] radiusHeight = radiusHeightCistern(end.area, end.volume);
+			end.a = radiusHeight[0];
+			end.c = radiusHeight[1];
+		if (end.a <=0) System.out.println("FLAT FLAT  a    " + end.a +" c " + end.c);
 		}
 		else 	
 		{
-			for (int i = 0; i < 4; i++) {
-				//				APPROX NOT USED aa = 2d / (svratio - 1d / cc);// from s/v ratio
-				//			for elongated ellipsoid (tubule), from area of ellipsoid
-				cc=Math.pow((Math.pow((s/4/Math.PI),p)*3 - Math.pow(aa, 2*p))/(2*Math.pow(aa, p)),(1/p));
-				//			double cc= (s*3/(4*Math.PI*aa)-aa)/2; Aprox from DOI: 10.2307/3608515
-				aa = Math.sqrt(v*3d/(4d*Math.PI*cc));			
-				//				APPROX NOT USEDcc = 1d/(svratio-1d/aa);
-				//			System.out.println("FORMA s/v " + s/v +" c "+ cc +" a " + aa);
-			}
-//			System.out.println("LONG LONG  c  a  " + cc +" " + aa);
-			//		if (aa<=0)System.out.println("PROBLEMA FORMA " + s +" "+v+"");
-			end.a = aa;
-			end.c = cc;
+			double[] radiusHeight = radiusHeightTubule(end.area, end.volume);
+			end.a = radiusHeight[0];
+			end.c = radiusHeight[1];
+//			for (int i = 0; i < 4; i++) {
+//				//				APPROX NOT USED aa = 2d / (svratio - 1d / cc);// from s/v ratio
+//				//			for elongated ellipsoid (tubule), from area of ellipsoid
+//				cc=Math.pow((Math.pow((s/4/Math.PI),p)*3 - Math.pow(aa, 2*p))/(2*Math.pow(aa, p)),(1/p));
+//				//			double cc= (s*3/(4*Math.PI*aa)-aa)/2; Aprox from DOI: 10.2307/3608515
+//				aa = Math.sqrt(v*3d/(4d*Math.PI*cc));			
+//				//				APPROX NOT USEDcc = 1d/(svratio-1d/aa);
+//				//			System.out.println("FORMA s/v " + s/v +" c "+ cc +" a " + aa);
+//			}
+////			System.out.println("LONG LONG  c  a  " + cc +" " + aa);
+			if (end.a <=0)System.out.println("PROBLEMA FORMA " + s +" "+v+"");
+//			end.a = aa;
+//			end.c = cc;
 		}
 	}
 	public int getTickCount() {       //FRANCO
@@ -295,6 +279,9 @@ public class Endosome {
 	}
 	public void setTickCount(int tickCount) {	//FRANCO
 		this.tickCount = tickCount;				//FRANCO
+	}
+	public void setHeading(double heading) {
+		this.heading = heading;				
 	}
 	public double getArea() {
 		return area;
@@ -492,6 +479,7 @@ public class Endosome {
 //		Double rc = null;
 //		if (solCont != null && rab != null) {
 //			if (solubleContent.containsKey(solCont)) {
+	
 //				sc = solubleContent.get(solCont);
 //			} else
 //				return 0;
@@ -540,7 +528,63 @@ public class Endosome {
 		return initOrgProp;
 	}
 
+	public static double[] radiusHeightCistern (double area, double volume) {
+		double s = area;
+		double v = volume;
+		double p = 1.6075;
+//		double s1 = s0;
 
+//		double r = 0;
+//		double h = 0;
+//		for (int i = 1; i<4; i = i+1) {
+//			r = Math.sqrt(s1/2/Math.PI);
+//			h = 2*v0/s1;
+//			double s2 = 2*Math.PI*r*r+ 2*Math.PI*r*h;
+//			s1 = s1-(s2-s0);	
+////			System.out.println("FLAT pasos  c  a  " + r +" " + h);
+		double aa = Math.pow(s/Math.PI/4d, (1d/2d));
+		double cc = aa;
+		for (int i = 0; i < 4; i++) {
+//			System.out.println("initial  " + aa +" c " + cc);
+			cc = v*3/4/Math.PI/aa/aa;	
+//			form ellipsoid area s = 4*PI*[(ap*bp+ap*cp+bp*cp)/3]^1/p where ap = a^p ....
+//			Since in the spheroid a = b
+//			s = 4*PI*[(ap^2+2ap*cp)/3]^1/p where ap = a^p ....
+//			I can get the cuadratic function 
+//			ap^2 + 2ap*cp - (s/4/PI)^p*3 = 0
+
+			double aq = 1;
+			double bq = 2*Math.pow(cc, 1/p);
+			double cq = -Math.pow(s/4/Math.PI, p)*3d;
+			double dq =  bq * bq - 4 * aq * cq;
+			double root1 = (- bq + Math.sqrt(dq))/(2*aq);
+			//			    root2 = (-b - Math.sqrt(d))/(2*a);			
+			aa = Math.pow(root1, 1/p);
+//			cc=Math.pow((Math.pow((s/4/Math.PI),p)*3 - Math.pow(aa, 2*p))/(2*Math.pow(aa, p)),(1/p));	
+
+//			System.out.println("LONG LONG  c  a  " + aa +" c " + cc);
+		}
+
+		if (aa<=0)System.out.println("PROBLEMA FORMA cistern" + s +" "+v+"");
+		return new double[] {aa, cc};
+		
+	}
+	public static double[] radiusHeightTubule(double area, double volume) {
+		double s = area;
+		double v = volume;
+		double p = 1.6075;
+		double aa = Math.pow(s/Math.PI/4d, (1d/2d));
+		double cc = aa;
+		for (int i = 0; i < 4; i++) {
+			cc=Math.pow((Math.pow((s/4/Math.PI),p)*3 - Math.pow(aa, 2*p))/(2*Math.pow(aa, p)),(1/p));
+			aa = Math.sqrt(v*3d/(4d*Math.PI*cc));			
+		}
+//		System.out.println("LONG LONG  c  a  " + cc +" " + aa);
+		if (aa<=0)System.out.println("PROBLEMA FORMA tube " + s +" "+v+"");
+		return new double[] {aa, cc};
+	}
+	
+}
 	
 
-}
+

@@ -99,7 +99,7 @@ public class Results {
 //		}
 //	}
 
-	@ScheduledMethod(start = 1, interval = 5000)
+	@ScheduledMethod(start = 30000, interval = 10000)
 	public void stepTable() {
 		log();
 //		freeze endosome set

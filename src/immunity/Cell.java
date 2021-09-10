@@ -80,7 +80,7 @@ public class Cell {
 		if (Math.random() < 0.01/1d){// era /3
 //			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
 			double areaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
-			EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(areaER*1.005);
+			EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(areaER*1.005);//1.005
 			UptakeStep2.uptake(this);
 			}
 			

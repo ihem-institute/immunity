@@ -227,6 +227,7 @@ public class UptakeStep2 {
 		bud.speed = 1d / bud.size;
 		bud.heading = 90;// heading up
 		bud.tickCount = 1;
+		Endosome.endosomeShape(bud);
 		double rnd = Math.random();
 		double upPosition = rnd* (4 * cellLimit);
 		space.moveTo(bud, rnd * 50, upPosition);
@@ -399,6 +400,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		bud.speed = 1d / bud.size;
 		bud.heading = -90;// heading down
 		bud.tickCount =1;
+		Endosome.endosomeShape(bud);
 		double rnd = Math.random();
 		double upPosition = 25 + rnd* (25 - 4 * cellLimit);
 		space.moveTo(bud, rnd * 50, upPosition);
@@ -470,6 +472,8 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 					bud.volume = volume; 
 					bud.speed = 1d / bud.size;
 					bud.heading = -90;// heading down
+					Endosome.endosomeShape(bud);
+					bud.tickCount = 1;
 					// NdPoint myPoint = space.getLocation(bud);
 					double rnd = Math.random();
 					space.moveTo(bud, rnd * 50, 5d);
@@ -538,6 +542,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		bud.area = area; 
 		bud.volume = volume;
 		bud.tickCount = 1;
+		Endosome.endosomeShape(bud);
 		bud.speed = 1d / bud.size;
 		bud.heading = -90;// heading down
 		// NdPoint myPoint = space.getLocation(bud);

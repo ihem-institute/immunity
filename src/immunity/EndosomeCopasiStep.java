@@ -205,8 +205,12 @@ public class EndosomeCopasiStep {
 		}		
 		}
 	public static double sigFigs(double n, int sig) {
-	    double mult = Math.pow(10, sig - Math.floor(Math.log(n) / Math.log(10) + 1));
+//		if (Math.abs(n) < 1E-20) return 0d;
+//		else 
+//		{
+		double mult = Math.pow(10, sig - Math.floor(Math.log(n) / Math.log(10) + 1));
 	    return Math.round(n * mult) / mult;
+//	    }
 	}
 	
 	

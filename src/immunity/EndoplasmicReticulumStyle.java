@@ -3,7 +3,7 @@ package immunity;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.media.opengl.GL2;
+//import javax.media.opengl.GL2;
 
 import repast.simphony.visualizationOGL2D.StyleOGL2D;
 import saf.v3d.ShapeFactory2D;

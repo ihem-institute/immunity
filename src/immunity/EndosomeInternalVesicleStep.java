@@ -79,8 +79,8 @@ public class EndosomeInternalVesicleStep {
 				ModelProperties.getInstance().getRabTropism());
 		endosome.area = endosome.area - nroVesicles * sIV;
 		endosome.volume = endosome.volume + nroVesicles * vIV;
-		System.out.println("Nro Vesicles " + nroVesicles +"  "+ endosome.area +"  "+ endosome.volume);
-//		Endosome.endosomeShape(endosome);
+//		System.out.println("Nro Vesicles " + nroVesicles +"  "+ endosome.area +"  "+ endosome.volume);
+		Endosome.endosomeShape(endosome);
 		if (endosome.solubleContent.containsKey("mvb")) {
 			double content = endosome.solubleContent.get("mvb") + nroVesicles;
 			endosome.solubleContent.put("mvb", content);

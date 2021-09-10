@@ -18,12 +18,12 @@ public class OrganelleMove {
 	public static double cellLimit = 3 * Cell.orgScale;
 	
 	public static void moveTowards(Endosome endosome) {
-		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
-		String organelleName = ModelProperties.getInstance().rabOrganelle.get(maxRab);
-		if ( 
-				endosome.area >= Cell.minCistern/20// minimal cistern Golgi absolute Scale hacer constante
-				&& isGolgi(endosome)){ // test if it is Golgi
-			moveCistern(endosome, organelleName);
+
+		if ( endosome.area >= Cell.minCistern/20// minimal cistern Golgi absolute Scale hacer constante
+				&& isGolgi(endosome))
+		{ // test if it is Golgi
+//			System.out.println(endosome.heading + " INITIAL HEADING");
+			moveCistern(endosome);
 		}
 		else {
 			moveNormal(endosome);
@@ -45,12 +45,16 @@ public class OrganelleMove {
 	}
 
 
-	private static void moveCistern(Endosome endosome, String organelleName) {
+	private static void moveCistern(Endosome endosome) {
 		space = endosome.getSpace();
 		grid = endosome.getGrid();		
+		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+		String organelleName = ModelProperties.getInstance().rabOrganelle.get(maxRab);
 		double between = 2;//distance between cisterna Math.random();
 		double high = 10;//distance from the bottom
-		endosome.heading = -90;
+//		endosome.setHeading(-90d);// = -90d;			
+//		System.out.println(endosome.heading + " final HEADING");
+		
 		if (organelleName.contains("cisGolgi")) {
 			space.moveTo(endosome, 25, between*1+high);
 			grid.moveTo(endosome, 25, (int)(between*1+high));
@@ -73,6 +77,7 @@ public class OrganelleMove {
 
 
 	public static void moveNormal(Endosome endosome) {
+		if (endosome.area > 200000) return;
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
 		/*
@@ -109,8 +114,7 @@ public class OrganelleMove {
 		
 //		Having the heading and speed, make the movement.  If out of the space, limit
 //		the movement
-			if (endosome.speed == 0
-					|| endosome.area > 200000) return;// random movement 90% of the time return speed=0
+			if (endosome.speed == 0) return;// random movement 90% of the time return speed=0
 			myPoint = space.getLocation(endosome);
 			x = myPoint.getX();
 			y = myPoint.getY();
@@ -132,7 +136,7 @@ public class OrganelleMove {
 			endosome.speed = 0;
 			return;
 		}
-		double initialh = endosome.heading;
+//		double initialh = endosome.heading;
 //		Endosome.endosomeShape(endosome);
 
 // when near the borders or no MT is nearby, the organelle rotates randomly
@@ -147,12 +151,12 @@ public class OrganelleMove {
 //An inertial movement.  Gaussian arround 0 with an angle that decreases with size
 //An inertial movement depending on the momentum.  Gaussian around 0 or 180
 
-			double momentum = (endosome.a * endosome.a + endosome.c * endosome.c)/800;
-			Random fRandom = new Random();
-			double finalh = 0;
-			finalh = finalh + fRandom.nextGaussian() * 45d/endosome.size;// inertial depending size
-//			finalh = finalh + fRandom.nextGaussian() * 1d * 800d/momentum;// inertial depending momentum
-			finalh = initialh + finalh;
+//			double momentum = (endosome.a * endosome.a + endosome.c * endosome.c)/800;
+//			Random fRandom = new Random();
+//			double finalh = 0;
+//			finalh = finalh + fRandom.nextGaussian() * 45d/endosome.size;// inertial depending size
+////			finalh = finalh + fRandom.nextGaussian() * 1d * 800d/momentum;// inertial depending momentum
+//			finalh = initialh + finalh;
 
 // The speed is random between 0 and a value inversely proportional to the endosome size
 			endosome.speed = 20d/endosome.size*Math.random()* Cell.orgScale/Cell.timeScale;
@@ -203,7 +207,7 @@ public class OrganelleMove {
 //non-tubules		rnd		0.5PM 0.5rnd	PM			N		0.5N 0.5rnd		rnd
 				
 // tubules and non-tubules goes to opposite directions
-				
+				if (endosome.a >endosome.c) {moveGolgiVesicles(endosome);}
 				boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2); // should be /2
 // select a mtDir according with the domains present in the endosome.  Larger probability for the more aboundant domain
 // 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
@@ -213,7 +217,7 @@ public class OrganelleMove {
 //					System.out.println("IS TUBULE"+ rabDir);
 					mtDir = ModelProperties.getInstance().mtTropismTubule.get(rabDir);
 					if (Math.random()<Math.abs(mtDir)) {
-// 0 means to plus endo of MT (to PM); +1 means to the minus end of MT (to nucleus)
+//+1 means to plus endo of MT (to PM); -1 means to the minus end of MT (to nucleus)
 						if (Math.signum(mtDir)>=0) {mtDir = 0;} else {mtDir = 1;}
 						}
 						else {
@@ -254,9 +258,29 @@ public class OrganelleMove {
 			}
 		
 //		If no Mts, then random
-		changeDirectionRnd(endosome);
-		return ;
+		else 
+		{changeDirectionRnd(endosome);
+		return;
+		}
 	}
+	private static void moveGolgiVesicles(Endosome endosome) {
+		space = endosome.getSpace();
+		grid = endosome.getGrid();		
+		double deltaX = Math.random()*10-5;//when near MT rnd en zona Golgi
+		double deltaY = Math.random()*6-3;//when near MT rnd en zona Golgi
+
+			space.moveTo(endosome, 25 + deltaX, 14 + deltaY);
+			grid.moveTo(endosome, (int) (25 + deltaX), (int)(14 + deltaY));
+			
+		NdPoint myPoint = space.getLocation(endosome);
+		double x = myPoint.getX();
+		endosome.setXcoor(x);
+		double y = myPoint.getY();
+		endosome.setYcoor(y);
+		
+	}
+
+
 	public static String mtDirection(Endosome endosome) {
 //		Picks a Rab domain according to the relative area of the domains in the organelle
 //		More abundant Rabs have more probability of being selected
