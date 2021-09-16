@@ -450,13 +450,20 @@ public class FissionStep {
 // OLD COMMENTED the tropismo is to vesicle or to tubule according to the following rules
 
 // NEW 23/7/2021 if no tropism, (totaltrop = 0) proportional to surface
+//NEW 15/9/2021			Or if shereTrop = tubuleTrop proportional to surface
+
 			double totalTrop = sVesicle * sphereTrop + (so-sVesicle)* tubuleTrop;
-			if (totalTrop == 0) {
+			if (totalTrop == 0
+					|| sphereTrop == tubuleTrop) {
 				splitPropSurface(endosome, content, so, sVesicle);
 			}
 			else {
-// NEW 23/7/2021  else, proportional to the surface and to the tropism to sphere and tubule			
-			double proportionVesicle = sVesicle * sphereTrop / totalTrop;
+// NEW 23/7/2021  else, proportional to the surface and to the tropism to sphere and tubule	
+//NEW 15/9/2021.  To make the value of the tropism important when the cargo has no tropism for one
+//	of the compartments, a small amount is added to avoid zero tropisms. 
+// Hence, a new totalTropism needs to be calculated	
+			totalTrop = sVesicle * (sphereTrop + 0.1) + (so-sVesicle)* (tubuleTrop + 0.1);
+			double proportionVesicle = sVesicle * (sphereTrop + 0.1)/ totalTrop;
 //			System.out.println(content + " FISSION " + sphereTrop +" FISSION " + tubuleTrop +" FISSION " + totalTrop +" FISSION " + proportionVesicle);
 	//		if (proportionVesicle * content >= sVesicle) {}
 			splitPropSurfaceAndTropism(endosome, content, so, sVesicle, proportionVesicle);

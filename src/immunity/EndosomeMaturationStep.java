@@ -18,7 +18,7 @@ public class EndosomeMaturationStep {
 		{
 		case "RabA":
 			if (Math.random()<0.9)
-			mature(endosome, "RabA", "RabB", 0.1);// EE to SE
+			mature(endosome, "RabA", "RabB", 0.05);// EE to SE era 0.1
 			else
 			mature(endosome, "RabA", "RabD", 0.9);// EE to LE
 			break;
@@ -35,7 +35,7 @@ public class EndosomeMaturationStep {
 			mature(endosome, "RabF", "RabE", 0.9);//transG to TGN
 			break;
 		case "RabB":
-			mature(endosome, "RabB", "RabC", 0.05);//SE to RE
+			mature(endosome, "RabB", "RabC", 0.015);//SE to RE era 0.05
 			break;			
 			
 		 default: return;

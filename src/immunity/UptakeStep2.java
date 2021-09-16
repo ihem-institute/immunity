@@ -167,8 +167,8 @@ public class UptakeStep2 {
 		for (String mem : membraneMet){
 //			double valueInEn = 0d;
 			double valueInER =0d;
-			double valueInTotal = 0d;
-		System.out.println(mem + ModelProperties.getInstance().getSecretionRate().get(mem) + "   secretion 1111  " + valueInER+membraneContent);
+//			double valueInTotal = 0d;
+//		System.out.println(mem + ModelProperties.getInstance().getSecretionRate().get(mem) + "   secretion 1111  " + valueInER+membraneContent);
 			if (EndoplasmicReticulum.getInstance().getMembraneRecycle().containsKey(mem))
 			{
 				double valueER = EndoplasmicReticulum.getInstance().getMembraneRecycle().get(mem);
@@ -320,20 +320,22 @@ public class UptakeStep2 {
 			{
 				double valuePM = PlasmaMembrane.getInstance().getMembraneRecycle().get(mem);
 				valueInPM = valuePM * ModelProperties.getInstance().getUptakeRate().get(mem) * area/ PlasmaMembrane.getInstance().getPlasmaMembraneArea();	
-//				System.out.println(mem + valuePM + "   UPTAKE FROM PM 1111  " + valueInPM+membraneContent);
+				//				System.out.println(mem + valuePM + "   UPTAKE FROM PM 1111  " + valueInPM+membraneContent);
 				// decrease PM content
 				PlasmaMembrane.getInstance().getMembraneRecycle().put(mem, valuePM-valueInPM);
 			}
-//			 FOR UPTAKE LOADING IN NEW ENDOSOMES
-			  if (InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").
-			  containsKey(mem)) 
-			  { 
-				  valueInEn =InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").get(mem)*area; 
-				  valueInTotal = valueInEn + valueInPM; 
-				  } 
-			 if (valueInTotal >= area) valueInTotal= area;// cannot incorporate more metabolite than its area
-				membraneContent.put(mem, valueInTotal);
-			 			 
+			//			 FOR UPTAKE LOADING IN NEW ENDOSOMES
+			if (InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").
+					containsKey(mem)) 
+			{ 
+				valueInEn =InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").get(mem)*area; 
+			} 
+			valueInTotal = valueInEn + valueInPM; 
+			if (valueInTotal >= area) valueInTotal= area;// cannot incorporate more metabolite than its area
+			membraneContent.put(mem, valueInTotal);
+			System.out.println(mem + valueInTotal + "   UPTAKE FROM PM 1111  " + valueInPM+membraneContent);
+
+
 		}
 		HashMap<String, Double> solubleContent = new HashMap<String,Double>();
 		Set<String> solubleMet = new HashSet<String>(ModelProperties.getInstance().getSolubleMet());
@@ -353,13 +355,12 @@ public class UptakeStep2 {
 			if (InitialOrganelles.getInstance().getInitSolubleContent().get("kind1").containsKey(sol)) 
 			{ 
 				valueInEn =InitialOrganelles.getInstance().getInitSolubleContent().get("kind1").get(sol)*volume; 
-				valueInTotal = valueInEn + valueInPM; 
-
-				if (valueInTotal >= volume) valueInTotal= volume;// cannot incorporate more metabolite than its volume
-				solubleContent.put(sol, valueInTotal);
 			}
+			valueInTotal = valueInEn + valueInPM; 
 
-		}
+			if (valueInTotal >= volume) valueInTotal= volume;// cannot incorporate more metabolite than its volume
+			solubleContent.put(sol, valueInTotal);
+			}
 
 		solubleContent.put("protonEn", 3.98E-5*volume); //pH 7.4
 	/*		

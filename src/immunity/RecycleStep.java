@@ -30,7 +30,7 @@ public class RecycleStep {
 /* I will test the posibility of recycling of the membrane and having a balance of EE
  * and PM membrane.
  */		
-		if (y >= 50-2*cellLimit)
+			else if (y >= 50-2*cellLimit)
 		{
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		String organelle = ModelProperties.getInstance().getRabOrganelle().get(maxRab);    
@@ -42,7 +42,7 @@ public class RecycleStep {
 		
 //		if near the Nucleus and larger domain is ERGIC and it is a tubule, fuse back with ER 
 
-		if (y <= 2*cellLimit)
+			else if (y <= 2*cellLimit)
 		{
 		String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
 		String organelle = ModelProperties.getInstance().getRabOrganelle().get(maxRab);    
@@ -105,8 +105,9 @@ public class RecycleStep {
 		
 		boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2); // should be /2
 		if (!isTubule) return;// if it is not a tubule no recycling
-		double recyProb = endosome.rabContent.get(maxRab) / endosome.area; 
-		if (Math.random() >= recyProb){
+		double recyProb = ModelProperties.getInstance().getRabRecyProb().get(maxRab) * endosome.rabContent.get(maxRab) / endosome.area; 
+		if (Math.random() >= recyProb
+				|| endosome.tickCount < 3000){
 			return;}
 		else {
 // ER back transport
@@ -159,7 +160,7 @@ public class RecycleStep {
 	private static void recycleRE(Endosome endosome, String maxRab) {
 		//NEW RULES
 //		if near the PM and it is a Recycling Endosome, kiss and run exocytosis (recycle all but the endosome is preserved
-		double recyProb = endosome.rabContent.get(maxRab) / endosome.area; 
+		double recyProb = ModelProperties.getInstance().getRabRecyProb().get(maxRab) * endosome.rabContent.get(maxRab) / endosome.area; 
 		if (Math.random() >= recyProb){
 			return;}
 		else {
@@ -224,8 +225,9 @@ public class RecycleStep {
 */
 		boolean isTubule = (endosome.volume/(endosome.area - 2*Math.PI*Cell.rcyl*Cell.rcyl) <=Cell.rcyl/2); // should be /2
 		if (!isTubule) return;// if it is not a tubule no recycling
-		double recyProb = endosome.rabContent.get(maxRab) / endosome.area; 
-		if (Math.random() >= recyProb){
+		double recyProb = ModelProperties.getInstance().getRabRecyProb().get(maxRab)*endosome.rabContent.get(maxRab) / endosome.area; 
+		if (Math.random() >= recyProb
+				|| endosome.tickCount>3000){
 			return;}
 		else {
 // EE RECYCLING

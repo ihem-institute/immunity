@@ -65,6 +65,7 @@ public class Cell {
 	}
 	@ScheduledMethod(start = 1, interval = 100)
 	public void step() {
+//		System.gc();
 		this.solubleCell.put("protonCy", 1E-4);
 //		this.changeColor();
 		String name = ModelProperties.getInstance().getCopasiFiles().get("cellCopasi");
