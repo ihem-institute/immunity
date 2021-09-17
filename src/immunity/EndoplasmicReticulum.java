@@ -16,10 +16,10 @@ public class EndoplasmicReticulum {
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 
-	// a single Cell is created
+//	 a single Cell is created
 	private static EndoplasmicReticulum instance;
 	static {
-		instance = new EndoplasmicReticulum(space, grid);
+		instance = new EndoplasmicReticulum();
 	}
 	
 
@@ -41,7 +41,7 @@ public class EndoplasmicReticulum {
 //	in 2D
 
 
-
+/*
 
 	// Constructor
 	public EndoplasmicReticulum(ContinuousSpace<Object> space, Grid<Object> grid) {
@@ -96,11 +96,11 @@ public class EndoplasmicReticulum {
 //		System.out.println(endoplasmicReticulum.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + ERcolor+" " + ercolor);
 	}
 	
-
+*/
 	// GETTERS AND SETTERS (to get and set Cell contents)
-	public static EndoplasmicReticulum getInstance() {
-		return instance;
-	}
+//	public static EndoplasmicReticulum getInstance() {
+//		return instance;
+//	}
 		public HashMap<String, Double> getMembraneRecycle() {
 		return membraneRecycle;
 	}

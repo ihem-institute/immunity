@@ -17,7 +17,7 @@ public class EndosomeMaturationStep {
 		switch (maxRab)
 		{
 		case "RabA":
-			if (Math.random()<0.9)
+			if (Math.random()<0.85)
 			mature(endosome, "RabA", "RabB", 0.05);// EE to SE era 0.1
 			else
 			mature(endosome, "RabA", "RabD", 0.9);// EE to LE

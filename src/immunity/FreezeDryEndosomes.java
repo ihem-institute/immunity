@@ -219,38 +219,38 @@ public class FreezeDryEndosomes {
 				}
 				break;
 			}
-			case "ER":
-			{
-				switch (b[1]) {
-				case "initOrgProp": {
-					EndoplasmicReticulum.getInstance().setEndoplasmicReticulumArea(Double.parseDouble(b[3]));
-					EndoplasmicReticulum.getInstance().setEndoplasmicReticulumVolume(Double.parseDouble(b[5]));
-					break;
-				}
-				case "initSolubleContent": {
-					HashMap<String, Double> value = new HashMap<String, Double>();
-					for (int i = 2; i < b.length; i = i + 2) {
-//						System.out.println("VALOR MALO ER " + b[i] + " " + b[i+1]);
-						value.put(b[i], Double.parseDouble(b[i + 1]));
-					}
-					EndoplasmicReticulum.getInstance().getSolubleRecycle().putAll(value);
-					break;
-				}
-				case "initMembraneContent": {
-					HashMap<String, Double> value = new HashMap<String, Double>();
-					for (int i = 2; i < b.length; i = i + 2) {
-//						System.out.println("VALOR MALO " + b[i] + " " + b[i+1]);
-						value.put(b[i], Double.parseDouble(b[i + 1]));
-					}
-					EndoplasmicReticulum.getInstance().getMembraneRecycle().putAll(value);
-					break;
-				}
-				default: {
-					System.out.println("no a valid entry");
-				}
-				}
-				break;
-			}
+//			case "ER":
+//			{
+//				switch (b[1]) {
+//				case "initOrgProp": {
+//					EndoplasmicReticulum.getInstance().setEndoplasmicReticulumArea(Double.parseDouble(b[3]));
+//					EndoplasmicReticulum.getInstance().setEndoplasmicReticulumVolume(Double.parseDouble(b[5]));
+//					break;
+//				}
+//				case "initSolubleContent": {
+//					HashMap<String, Double> value = new HashMap<String, Double>();
+//					for (int i = 2; i < b.length; i = i + 2) {
+////						System.out.println("VALOR MALO ER " + b[i] + " " + b[i+1]);
+//						value.put(b[i], Double.parseDouble(b[i + 1]));
+//					}
+//					EndoplasmicReticulum.getInstance().getSolubleRecycle().putAll(value);
+//					break;
+//				}
+//				case "initMembraneContent": {
+//					HashMap<String, Double> value = new HashMap<String, Double>();
+//					for (int i = 2; i < b.length; i = i + 2) {
+////						System.out.println("VALOR MALO " + b[i] + " " + b[i+1]);
+//						value.put(b[i], Double.parseDouble(b[i + 1]));
+//					}
+//					EndoplasmicReticulum.getInstance().getMembraneRecycle().putAll(value);
+//					break;
+//				}
+//				default: {
+//					System.out.println("no a valid entry");
+//				}
+//				}
+//				break;
+//			}
 			default: {
 				System.out.println("no a valid entry");
 			}
@@ -386,7 +386,7 @@ public class FreezeDryEndosomes {
 			output.append(line);
 			output.close();
 		}	
-		public void writeToCsvER() throws IOException {
+/*		public void writeToCsvER() throws IOException {
 			
 			EndoplasmicReticulum endoplasmicReticulum = EndoplasmicReticulum.getInstance();
 //			System.out.println("ALL ENDOSOMES"+collection);
@@ -444,6 +444,7 @@ public class FreezeDryEndosomes {
 			output.append(line);
 			output.close();
 		}
+		*/
 	}
 	
 	

@@ -78,14 +78,14 @@ public class Cell {
 	}
 	@ScheduledMethod(start = 1, interval = 1)
 	public void uptake() {
-		if (Math.random() < 0.01/1d){// era /3
+		if (Math.random() < 0.005){// era 0.01
 //			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
-			double areaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
-			EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(areaER*1.005);//1.005
+			double areaPM = PlasmaMembrane.getInstance().getPlasmaMembraneArea();
+			PlasmaMembrane.getInstance().setPlasmaMembraneArea(areaPM*1.005);//1.005
 			UptakeStep2.uptake(this);
 			}
 			
-// eventual use for cell metabolism
+// eventual use for ER
 	}
 	// GETTERS AND SETTERS (to get and set Cell contents)
 

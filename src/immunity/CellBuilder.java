@@ -60,15 +60,15 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 							50, 50));
 		
 // PM space
-		ContinuousSpace<Object> spacePM = spaceFactory.createContinuousSpace(
-										"spacePM", context, new RandomCartesianAdder<Object>(),
-										new repast.simphony.space.continuous.WrapAroundBorders(), 
-										50,100);
-
-		Grid<Object> gridPM = gridFactory.createGrid("gridPM", context,
-							  new GridBuilderParameters<Object>(new WrapAroundBorders(),
-						   	  new SimpleGridAdder<Object>(), true,
-						   	  50, 100));
+//		ContinuousSpace<Object> spacePM = spaceFactory.createContinuousSpace(
+//										"spacePM", context, new RandomCartesianAdder<Object>(),
+//										new repast.simphony.space.continuous.WrapAroundBorders(), 
+//										50,100);
+//
+//		Grid<Object> gridPM = gridFactory.createGrid("gridPM", context,
+//							  new GridBuilderParameters<Object>(new WrapAroundBorders(),
+//						   	  new SimpleGridAdder<Object>(), true,
+//						   	  50, 100));
 		
 		Parameters p = RunEnvironment.getInstance().getParameters();
 		
@@ -78,7 +78,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 //			context.add(ModelProperties);	
 		//Cell cell = Cell.getInstance();
 		context.add(new Cell(space, grid));
-		context.add(new EndoplasmicReticulum(space, grid));
+//		context.add(new EndoplasmicReticulum(space, grid));
 		context.add(new Results(space, grid, null, null));// 
 		context.add(new UpdateParameters());
 		context.add(new PlasmaMembrane(space, grid));	
@@ -91,23 +91,23 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 			context.add(new MT(space, grid));
 		}
 
-//		MOLECULES IN THE PLASMA MEMBRANE SPACE
-		for (int i = 0; i < (int) 10/Cell.orgScale; i++) {// change the number of MT 3 for 6 MT
-			MoleculePM molecule = new MoleculePM(spacePM, gridPM, "receptor");
-			context.add(molecule);
-			double y = 100* Math.random();
-			double x =  50* Math.random();
-			spacePM.moveTo(molecule, x, y);
-			gridPM.moveTo(molecule,(int) x, (int)y);
-		}
-		for (int i = 0; i < (int) 1000/Cell.orgScale; i++) {// change the number of MT 3 for 6 MT
-			MoleculePM molecule = new MoleculePM(spacePM, gridPM, "lipid");
-			context.add(molecule);
-			double y = 100* Math.random();
-			double x =  50* Math.random();
-			spacePM.moveTo(molecule, x, y);
-			gridPM.moveTo(molecule,(int) x, (int)y);
-		}
+////		MOLECULES IN THE PLASMA MEMBRANE SPACE
+//		for (int i = 0; i < (int) 10/Cell.orgScale; i++) {// change the number of MT 3 for 6 MT
+//			MoleculePM molecule = new MoleculePM(spacePM, gridPM, "receptor");
+//			context.add(molecule);
+//			double y = 100* Math.random();
+//			double x =  50* Math.random();
+//			spacePM.moveTo(molecule, x, y);
+//			gridPM.moveTo(molecule,(int) x, (int)y);
+//		}
+//		for (int i = 0; i < (int) 1000/Cell.orgScale; i++) {// change the number of MT 3 for 6 MT
+//			MoleculePM molecule = new MoleculePM(spacePM, gridPM, "lipid");
+//			context.add(molecule);
+//			double y = 100* Math.random();
+//			double x =  50* Math.random();
+//			spacePM.moveTo(molecule, x, y);
+//			gridPM.moveTo(molecule,(int) x, (int)y);
+//		}
 		
 		// ENDOSOMES
 		ModelProperties modelProperties = ModelProperties.getInstance();
@@ -192,7 +192,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 		else {
 //			if endosomes are loadaed from a freezeDry csv file
 //			CellProperties.getInstance().getCellK().get("freezeDry").equals(1d)
-			//System.out.println("FREEZE DRY METHOD   "+diffOrganelles);
+			System.out.println("FREEZE DRY METHOD   "+diffOrganelles);
 			for (String kind : diffOrganelles){
 				HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 				HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
@@ -245,10 +245,10 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 				space.moveTo(obj, 24.5, 49.5);
 				grid.moveTo(obj, (int) 24, (int) 49);
 			}
-			if (obj instanceof EndoplasmicReticulum) {
-				space.moveTo(obj, 24.5, .5);
-				grid.moveTo(obj, (int) 24, (int) 0);
-			}
+//			if (obj instanceof EndoplasmicReticulum) {
+//				space.moveTo(obj, 24.5, .5);
+//				grid.moveTo(obj, (int) 24, (int) 0);
+//			}
 			if (obj instanceof Scale) {
 				space.moveTo(obj, Scale.getScale500nm()/2d-(0.4), 49.9);
 //				System.out.println ("SCALE SCALE "+Scale.getScale500nm()/2d);

@@ -37,7 +37,7 @@ public class ModelProperties {
 	public HashMap<String, Double> cellK = new HashMap<String, Double>();
 	public HashMap<String, Double> cellAgentProperties = new HashMap<String, Double>();
 	public HashMap<String, Double> plasmaMembraneProperties = new HashMap<String, Double>();
-	public HashMap<String, Double> endoplasmicReticulumProperties = new HashMap<String, Double>();
+//	public HashMap<String, Double> endoplasmicReticulumProperties = new HashMap<String, Double>();
 	public HashMap<String, Double> initRabCell = new HashMap<String, Double>();
 	public HashMap<String, Double> solubleCell = new HashMap<String, Double>();
 	public HashMap<String, Double> initPMmembraneRecycle = new HashMap<String, Double>();
@@ -70,9 +70,9 @@ public class ModelProperties {
 	public HashMap<String, Double> getPlasmaMembraneProperties() {
 		return plasmaMembraneProperties;
 	}
-	public HashMap<String, Double> getEndoplasmicReticulumProperties() {
-		return endoplasmicReticulumProperties;
-	}
+//	public HashMap<String, Double> getEndoplasmicReticulumProperties() {
+//		return endoplasmicReticulumProperties;
+//	}
 	public HashMap<String, String> getCopasiFiles() {
 		return copasiFiles;
 	}
@@ -186,14 +186,14 @@ public class ModelProperties {
 				
 				break;
 			}
-			case "endoplasmicReticulumProperties": {
-				for (int i = 1; i < b.length; i = i + 2) {
-				modelProperties.getEndoplasmicReticulumProperties().put(b[i], Double.parseDouble(b[i+1]));
-//				System.out.println(modelProperties.getEndoplasmicReticulumProperties());
-				}
-				
-				break;
-			}
+//			case "endoplasmicReticulumProperties": {
+//				for (int i = 1; i < b.length; i = i + 2) {
+//				modelProperties.getEndoplasmicReticulumProperties().put(b[i], Double.parseDouble(b[i+1]));
+////				System.out.println(modelProperties.getEndoplasmicReticulumProperties());
+//				}
+//				
+//				break;
+//			}
 			case "cellCopasi": case "plasmaMembraneCopasi" : case "endosomeCopasi": case "rabCopasi":{
 					modelProperties.getCopasiFiles().put(b[0], b[1]);
 

@@ -83,11 +83,11 @@ public class UpdateParameters {
 				Cell.getInstance().getRabCell().putAll(modelProperties.getInitRabCell());
 				PlasmaMembrane.getInstance().getMembraneRecycle().putAll(modelProperties.getInitPMmembraneRecycle());
 				PlasmaMembrane.getInstance().getSolubleRecycle().putAll(modelProperties.getInitPMsolubleRecycle());				
-				EndoplasmicReticulum.getInstance().getMembraneRecycle().putAll(modelProperties.getInitERmembraneRecycle());
-				EndoplasmicReticulum.getInstance().getSolubleRecycle().putAll(modelProperties.getInitERsolubleRecycle());				
+//				EndoplasmicReticulum.getInstance().getMembraneRecycle().putAll(modelProperties.getInitERmembraneRecycle());
+//				EndoplasmicReticulum.getInstance().getSolubleRecycle().putAll(modelProperties.getInitERsolubleRecycle());				
 
 				System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle());
-				System.out.println(EndoplasmicReticulum.getInstance().getMembraneRecycle());
+//				System.out.println(EndoplasmicReticulum.getInstance().getMembraneRecycle());
 //				System.out.println(modelProperties.rabCompatibility);
 //				System.out.println(modelProperties.membraneMet);
 //				System.out.println(modelProperties.solubleMet);

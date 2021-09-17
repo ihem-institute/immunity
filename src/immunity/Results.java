@@ -99,15 +99,15 @@ public class Results {
 //		}
 //	}
 
-	@ScheduledMethod(start = 30000, interval = 10000)
+	@ScheduledMethod(start = 5000, interval = 10000)
 	public void stepTable() {
 		log();
 //		freeze endosome set
-		FreezeDryEndosomes.getInstance();
+//		FreezeDryEndosomes.getInstance();
 		try {
 			FreezeDryEndosomes.getInstance().writeToCsv();
 			FreezeDryEndosomes.getInstance().writeToCsvPM();
-			FreezeDryEndosomes.getInstance().writeToCsvER();
+//			FreezeDryEndosomes.getInstance().writeToCsvER();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -316,8 +316,8 @@ public class Results {
 		HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
 		HashMap<String, Double> membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
 // include in the contentDistribution all the recycled components, soluble and membrane		
-		HashMap<String, Double> solubleSecretion = EndoplasmicReticulum.getInstance().getSolubleRecycle();
-		HashMap<String, Double> membraneSecretion = EndoplasmicReticulum.getInstance().getMembraneRecycle();
+//		HashMap<String, Double> solubleSecretion = EndoplasmicReticulum.getInstance().getSolubleRecycle();
+//		HashMap<String, Double> membraneSecretion = EndoplasmicReticulum.getInstance().getMembraneRecycle();
 		HashMap<String, Double> solubleCell = Cell.getInstance().getSolubleCell();
 		for (String sol : solubleRecycle.keySet()) {
 //			System.out.println(" soluble "+ sol);
@@ -331,18 +331,18 @@ public class Results {
 			contentDist.put(mem+"Pm" , value);
 //			System.out.println("MEMBRANE PM  "+ mem + value);
 		}			
-		for (String sol : solubleSecretion.keySet()) {
-//			System.out.println(" soluble "+ sol);
-			double value = solubleSecretion.get(sol);
-			contentDist.put(sol+"Er", value);
-//			System.out.println("SOLUBLE  ER "+ sol + value );
-		}
-		for (String mem : membraneSecretion.keySet()) {
-			//System.out.println(" soluble "+ sol + " Rab " +rab);
-			double value = membraneSecretion.get(mem);
-			contentDist.put(mem+"Er" , value);
-			System.out.println("MEMBRANE ER  "+ mem + value);
-		}
+//		for (String sol : solubleSecretion.keySet()) {
+////			System.out.println(" soluble "+ sol);
+//			double value = solubleSecretion.get(sol);
+//			contentDist.put(sol+"Er", value);
+////			System.out.println("SOLUBLE  ER "+ sol + value );
+//		}
+//		for (String mem : membraneSecretion.keySet()) {
+//			//System.out.println(" soluble "+ sol + " Rab " +rab);
+//			double value = membraneSecretion.get(mem);
+//			contentDist.put(mem+"Er" , value);
+//			System.out.println("MEMBRANE ER  "+ mem + value);
+//		}
 		for (String sol : solubleCell.keySet()) {
 //			System.out.println(" soluble "+ sol);
 			double value = solubleCell.get(sol);

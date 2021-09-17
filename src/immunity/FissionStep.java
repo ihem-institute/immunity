@@ -462,8 +462,8 @@ public class FissionStep {
 //NEW 15/9/2021.  To make the value of the tropism important when the cargo has no tropism for one
 //	of the compartments, a small amount is added to avoid zero tropisms. 
 // Hence, a new totalTropism needs to be calculated	
-			totalTrop = sVesicle * (sphereTrop + 0.1) + (so-sVesicle)* (tubuleTrop + 0.1);
-			double proportionVesicle = sVesicle * (sphereTrop + 0.1)/ totalTrop;
+			totalTrop = sVesicle * (sphereTrop + 0) + (so-sVesicle)* (tubuleTrop + 0);
+			double proportionVesicle = sVesicle * (sphereTrop + 0)/ totalTrop;
 //			System.out.println(content + " FISSION " + sphereTrop +" FISSION " + tubuleTrop +" FISSION " + totalTrop +" FISSION " + proportionVesicle);
 	//		if (proportionVesicle * content >= sVesicle) {}
 			splitPropSurfaceAndTropism(endosome, content, so, sVesicle, proportionVesicle);
