@@ -207,6 +207,7 @@ public class RecycleStep {
 				double plasmaMembrane = endosome.area + PlasmaMembrane.getInstance().getPlasmaMembraneArea();
 				PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
 				System.out.println("SECRETION TGN  " + plasmaMembrane);
+				endosome.endosomeTimeSeries = null;
 			Context<Object> context = ContextUtils.getContext(endosome);
 			context.remove(endosome);
 			}

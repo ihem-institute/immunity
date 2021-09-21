@@ -138,6 +138,7 @@ public class FusionStep {
 			endosome.membraneContent = sumMembraneContent(endosome, endosome2);
 			endosome.solubleContent = sumSolubleContent(endosome, endosome2);
 			Context<Object> context = ContextUtils.getContext(endosome);
+			endosome2.endosomeTimeSeries = null;
 			context.remove(endosome2);
 		}
 		double rsphere = Math.pow(endosome.volume * 3d / 4d / Math.PI, (1d / 3d));

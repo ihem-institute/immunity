@@ -119,8 +119,7 @@ public class EndosomeCopasiStep {
 		EndosomeCopasi lipidMetabolism = EndosomeCopasi
 				.getInstance();
 
-		Set<String> metabolites = lipidMetabolism.getInstance()
-				.getMetabolites();
+		Set<String> metabolites = lipidMetabolism.getMetabolites();
 		HashMap<String, Double> localM = new HashMap<String, Double>();
 		for (String met : metabolites) {
 			String met1 = met;//met.substring(0, met.length()-2);
