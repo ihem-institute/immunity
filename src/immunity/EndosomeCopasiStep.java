@@ -167,8 +167,8 @@ public class EndosomeCopasiStep {
 				localM.put(met, 0.0);
 			}
 		}
-		lipidMetabolism.setInitialConcentration("protonCy", 1e-04);
-		localM.put("protonCy", 1e-04);
+//		lipidMetabolism.setInitialConcentration("protonCy", 1e-04);
+//		localM.put("protonCy", 1e-04);
 //		System.out.println("METABOLITES IN "+ localM);
 
 //		if (localM.get("proton")==null||localM.get("proton") < 1e-05){
