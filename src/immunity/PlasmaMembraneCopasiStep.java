@@ -96,9 +96,9 @@ public class PlasmaMembraneCopasiStep {
 		
 		for (String met : metabolites) {
 //			System.out.println("metabolito que no anda" + met);
-			String met1 = met.substring(0, met.length()-2);
+			String met1 = met; //.substring(0, met.length()-2);COPASI uses metabolite names  with the substring incorporated
 
-			 if (met.endsWith("Pm") && plasmaMembrane.getMembraneRecycle().containsKey(met1)) {
+			if (met.endsWith("Pm") && plasmaMembrane.getMembraneRecycle().containsKey(met1)) {
 				double metValue = plasmaMembrane.getMembraneRecycle().get(met1)/PlasmaMembrane.getInstance().getPlasmaMembraneArea();
 				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
@@ -106,6 +106,14 @@ public class PlasmaMembraneCopasiStep {
 				double metValue = Math.abs(plasmaMembrane.getSolubleRecycle().get(met1))/PlasmaMembrane.getInstance().getPlasmaMembraneVolume();
 				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
+			} else if (met.endsWith("En") && plasmaMembrane.getMembraneRecycle().containsKey(met1)) {
+				double metValue = plasmaMembrane.getMembraneRecycle().get(met1)/PlasmaMembrane.getInstance().getPlasmaMembraneArea();
+				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
+				localM.put(met, metValue);
+			} else if (met.endsWith("En") && plasmaMembrane.getSolubleRecycle().containsKey(met1)) {
+				double metValue = Math.abs(plasmaMembrane.getSolubleRecycle().get(met1))/PlasmaMembrane.getInstance().getPlasmaMembraneVolume();
+				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
+				localM.put(met, metValue);				
 			} else if (met.endsWith("Cy") && Cell.getInstance().getSolubleCell().containsKey(met1)) {
 				double metValue = Cell.getInstance().getSolubleCell().get(met1);
 				double metLeft = metValue*(Cell.getInstance().getCellVolume() - PlasmaMembrane.getInstance().getPlasmaMembraneVolume())/(Cell.getInstance().getCellVolume());
@@ -120,10 +128,10 @@ public class PlasmaMembraneCopasiStep {
 		receptorDynamics.setInitialConcentration("protonCy", 1e-04);
 		localM.put("protonCy", 1e-04);
 
-		if (localM.get("protonEn")==null||localM.get("protonEn") < 1e-05){
-			receptorDynamics.setInitialConcentration("protonEn", 1e-04);
-			localM.put("protonEn", 1e-04);
-		}
+	//	if (localM.get("protonEn")==null||localM.get("protonEn") < 1e-05){
+			receptorDynamics.setInitialConcentration("protonEn", 3.98e-5);
+			localM.put("protonEn", 3.98e-05);
+	//	}
 		
 		
 	

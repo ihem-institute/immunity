@@ -62,7 +62,7 @@ public class EndosomeCopasiStep {
 		for (String met :presentValues.keySet()){
 			// if the content is cytosolic, increase the cell pull proportinal to the volume.  The content is
 			//			eliminated from endosome
-			String met1 = met;//.substring(0, met.length()-2);
+			String met1 = met;//.substring(0, met.length()-2); COPASI uses metabolite names  with the substring incorporated
 			if (met.endsWith("En") && ModelProperties.getInstance().solubleMet.contains(met1)) {
 				double metValue = presentValues.get(met)* endosome.volume;
 				endosome.solubleContent.put(met1, metValue);
@@ -168,7 +168,7 @@ public class EndosomeCopasiStep {
 				localM.put(met, 0.0);
 			}
 		}
-		lipidMetabolism.setInitialConcentration("protonCy", 1e-04);
+		lipidMetabolism.setInitialConcentration("protonCy", 1e-04); // pH 7
 		localM.put("protonCy", 1e-04);
 //		System.out.println("METABOLITES IN "+ localM);
 

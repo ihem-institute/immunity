@@ -60,17 +60,17 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 							50, 50));
 		
 // PM space
-		ContinuousSpace<Object> spacePM = spaceFactory.createContinuousSpace(
-										"spacePM", context, new RandomCartesianAdder<Object>(),
-										new repast.simphony.space.continuous.WrapAroundBorders(), 
-										50,100);
-
-		Grid<Object> gridPM = gridFactory.createGrid("gridPM", context,
-							  new GridBuilderParameters<Object>(new WrapAroundBorders(),
-						   	  new SimpleGridAdder<Object>(), true,
-						   	  50, 100));
-		
-		Parameters p = RunEnvironment.getInstance().getParameters();
+//		ContinuousSpace<Object> spacePM = spaceFactory.createContinuousSpace(
+//										"spacePM", context, new RandomCartesianAdder<Object>(),
+//										new repast.simphony.space.continuous.WrapAroundBorders(), 
+//										50,100);
+//
+//		Grid<Object> gridPM = gridFactory.createGrid("gridPM", context,
+//							  new GridBuilderParameters<Object>(new WrapAroundBorders(),
+//						   	  new SimpleGridAdder<Object>(), true,
+//						   	  50, 100));
+//		
+//		Parameters p = RunEnvironment.getInstance().getParameters();
 		
 //  introduce the agents in the space
 		
@@ -91,24 +91,24 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 			context.add(new MT(space, grid));
 		}
 
-//		MOLECULES IN THE PLASMA MEMBRANE SPACE
-		for (int i = 0; i < (int) 10/Cell.orgScale; i++) {// change the number of MT 3 for 6 MT
-			MoleculePM molecule = new MoleculePM(spacePM, gridPM, "receptor");
-			context.add(molecule);
-			double y = 100* Math.random();
-			double x =  50* Math.random();
-			spacePM.moveTo(molecule, x, y);
-			gridPM.moveTo(molecule,(int) x, (int)y);
-		}
-		for (int i = 0; i < (int) 1000/Cell.orgScale; i++) {// change the number of MT 3 for 6 MT
-			MoleculePM molecule = new MoleculePM(spacePM, gridPM, "lipid");
-			context.add(molecule);
-			double y = 100* Math.random();
-			double x =  50* Math.random();
-			spacePM.moveTo(molecule, x, y);
-			gridPM.moveTo(molecule,(int) x, (int)y);
-		}
-		
+////		MOLECULES IN THE PLASMA MEMBRANE SPACE
+//		for (int i = 0; i < (int) 10/Cell.orgScale; i++) {// change the number of MT 3 for 6 MT
+//			MoleculePM molecule = new MoleculePM(spacePM, gridPM, "receptor");
+//			context.add(molecule);
+//			double y = 100* Math.random();
+//			double x =  50* Math.random();
+//			spacePM.moveTo(molecule, x, y);
+//			gridPM.moveTo(molecule,(int) x, (int)y);
+//		}
+//		for (int i = 0; i < (int) 1000/Cell.orgScale; i++) {// change the number of MT 3 for 6 MT
+//			MoleculePM molecule = new MoleculePM(spacePM, gridPM, "lipid");
+//			context.add(molecule);
+//			double y = 100* Math.random();
+//			double x =  50* Math.random();
+//			spacePM.moveTo(molecule, x, y);
+//			gridPM.moveTo(molecule,(int) x, (int)y);
+//		}
+//		
 		// ENDOSOMES
 		ModelProperties modelProperties = ModelProperties.getInstance();
 		Set<String> diffOrganelles = initialOrganelles.getDiffOrganelles();

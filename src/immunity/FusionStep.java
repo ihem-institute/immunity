@@ -87,6 +87,7 @@ public class FusionStep {
 		Endosome.endosomeShape(endosome);
 		endosome.getEndosomeTimeSeries().clear();
 		endosome.getRabTimeSeries().clear();
+		endosomes_to_delete.clear();
 //		The time series will be re-calculated by COPASI call in the next tick
 //				
 	}

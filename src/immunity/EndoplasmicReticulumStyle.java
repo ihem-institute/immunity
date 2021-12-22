@@ -1,5 +1,4 @@
 package immunity;
-
 import java.awt.Color;
 import java.awt.Font;
 
@@ -11,7 +10,6 @@ import saf.v3d.render.RenderState;
 import saf.v3d.scene.Position;
 import saf.v3d.scene.VShape;
 import saf.v3d.scene.VSpatial;
-
 public class EndoplasmicReticulumStyle implements StyleOGL2D<EndoplasmicReticulum> {
 
 	ShapeFactory2D factory;
@@ -93,5 +91,6 @@ public class EndoplasmicReticulumStyle implements StyleOGL2D<EndoplasmicReticulu
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
+
+	
