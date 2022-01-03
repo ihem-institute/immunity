@@ -11,8 +11,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+
+import javax.swing.JPanel;
+import javax.swing.table.TableModel;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -30,6 +34,8 @@ import repast.simphony.context.space.grid.GridFactory;
 import repast.simphony.context.space.grid.GridFactoryFinder;
 import repast.simphony.dataLoader.ContextBuilder;
 import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.engine.environment.RunState;
+import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.parameter.Parameters;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.space.continuous.ContinuousSpace;
@@ -40,6 +46,10 @@ import repast.simphony.space.grid.GridBuilderParameters;
 import repast.simphony.space.grid.SimpleGridAdder;
 import repast.simphony.space.grid.WrapAroundBorders;
 import repast.simphony.util.collections.IndexedIterable;
+
+import repast.simphony.ui.table.AgentTableFactory;
+import repast.simphony.ui.table.SpreadsheetUtils;
+import repast.simphony.ui.table.TablePanel;
 
 public class CellBuilder implements ContextBuilder<Object> {
 
@@ -86,7 +96,6 @@ public class CellBuilder implements ContextBuilder<Object> {
 
 		CellProperties cellProperties = CellProperties.getInstance();
 //		System.out.println(" builder CellProperties cargado");
-		context.add(cellProperties);	
 		Cell cell = Cell.getInstance();
 		context.add(cell);
 		context.add(new Results(space, grid, null, null));// 
@@ -386,7 +395,7 @@ public class CellBuilder implements ContextBuilder<Object> {
 
 		
 		if (RunEnvironment.getInstance().isBatch()) {
-			RunEnvironment.getInstance().endAt(200);
+			RunEnvironment.getInstance().endAt(20000);
 		}
 
 		collection = context.getObjects(Endosome.class);
@@ -428,7 +437,5 @@ public class CellBuilder implements ContextBuilder<Object> {
 
 
 	}*/
-
-
 	
 }

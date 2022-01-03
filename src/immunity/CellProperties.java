@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+
+import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.parameter.Parameters;
 // This class contains the properties of the cell.  It is loaded with the same
 // CSV file  used for the inital organelles.  It is updated by the UpdateParameters class.
 public class CellProperties {
@@ -127,11 +130,13 @@ public class CellProperties {
 
 	
 	public static void loadFromCsv(CellProperties cellProperties) throws IOException {
-
+		Parameters parm = RunEnvironment.getInstance().getParameters();
+		String inputFile =(String) parm.getValue("inputFile");
 		Scanner scanner = new Scanner(new File(
 		//		"inputIntrTransp3.csv"));
 		// PARA BATCH MODE.  LEE DE UN FOLDER DATA RELATIVO
-								".//data//inputIntrTransp3.csv")); 
+				
+								".//data//"+inputFile)); 
 		scanner.useDelimiter(",");
 
 //		ObjectMapper objectMapper = new ObjectMapper();

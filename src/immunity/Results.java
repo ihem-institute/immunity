@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,6 +59,7 @@ public class Results {
 	
 	static Results	instance = new Results(space, grid, totalRabs, initialTotalRabs);
 	LocalPath mainpath=new LocalPath(); 
+	String myPathOut = mainpath.getMyPathOut(); 		
 	String ITResultsPath = mainpath.getPathResultsIT(); 	
 	String MarkerResultsPath =mainpath.getPathResultsMarkers();
 	String TotalRabs = mainpath.getPathTotalRabs();
@@ -94,7 +96,7 @@ public class Results {
 //		}
 //	}
 // STORE ALL AGENTS OF THE SIMULATION EVERY 5000 TICKS AS AN EXCEL FILE
-	@ScheduledMethod(start = 1000, interval = 5000)
+	@ScheduledMethod(start = 1, interval = 5000)
 	public void stepTable() {
 		log();
 //		freeze endosome set
@@ -107,7 +109,7 @@ public class Results {
 		}
 	}
 // PART OF THE RUTINE TO GENERATE THE EXCELL WITH ALL AGENTS
-// DID NOT WORKED WITH BATCH
+ //DID NOT WORKED WITH BATCH
 	public void log(){
 	    double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 	    Context<Object> context = RunState.getInstance().getMasterContext();
@@ -126,8 +128,11 @@ public class Results {
 
 	        }
 	    }
-
-	    SpreadsheetUtils.saveTablesAsExcel(models, new File("out-"+tick+".xlsx"));
+//	    Path path = Paths.get(myPathOut);
+	    File file = new File("C://Users//lmayo//workspace//immunity//output//" + Math.random()+"out-" + tick + ".xlsx"); 
+//	    File file2 = new File(path.toAbsolutePath().toString()+"prueba"+tick);
+	    SpreadsheetUtils.saveTablesAsExcel(models, file);
+//	    SpreadsheetUtils.saveTablesAsExcel(models, file2);
 	}
 // STORE THE CONTENT DISTRIBUTION IN THE CELL (IN ENDOSOMES/ GOLGI/ CYTO/ RECYCLED)
 	@ScheduledMethod(start = 1, interval = 100)

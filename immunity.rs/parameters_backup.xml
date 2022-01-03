@@ -12,6 +12,12 @@
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
+				<parameter name="replicates" displayName="replicates" type="int" 
+						defaultValue="1" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
 		</parameters>
 
 

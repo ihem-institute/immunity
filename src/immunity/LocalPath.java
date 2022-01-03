@@ -46,6 +46,9 @@ import javax.print.attribute.DateTimeSyntax;
 		public String getPath(){ 
 			return this.mypath; 
 			} 
+		public String getMyPathOut(){ 
+			return this.mypathOut; 
+			} 
 		
 		public String getPathResultsIT(){ 
 			

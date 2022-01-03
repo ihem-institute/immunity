@@ -6,6 +6,12 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
+				<parameter name="inputFile" displayName="inputFile" type="java.lang.String" 
+						defaultValue="inputIntrTransp3.csv" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+									
+		/>
 				<parameter name="p_EndosomeSplitStep" displayName="p_EndosomeSplitStep" type="double" 
 						defaultValue="0.01" 
 						isReadOnly="false" 
