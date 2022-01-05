@@ -61,11 +61,13 @@ public class Results {
 	
 	
 	static Results	instance = new Results(space, grid, totalRabs, initialTotalRabs);
-	LocalPath mainpath=new LocalPath(); 
+	LocalPath mainpath=LocalPath.getInstance(); 
 	String ITResultsPath = mainpath.getPathResultsIT(); 	
 	String MarkerResultsPath =mainpath.getPathResultsMarkers();
 	String TotalRabs = mainpath.getPathTotalRabs();
 	String cisternsAreaPath = mainpath.getPathCisternsArea();
+	String mypathTable = mainpath.getMyPathOut();// agregado para que el output del excel no creara nuevos folders
+//	Puede ser esto la falla en batch de la generación de estos archivos?
 //	
 	public static Results getInstance() {
 		return instance;
@@ -99,9 +101,9 @@ public class Results {
 //		}
 //	}
 
-	@ScheduledMethod(start = 30000, interval = 10000)
+	@ScheduledMethod(start = 0, interval = 5000)
 	public void stepTable() {
-		log();
+//	log();
 //		freeze endosome set
 		FreezeDryEndosomes.getInstance();
 		try {
@@ -119,7 +121,6 @@ public class Results {
 	    Context<Object> context = RunState.getInstance().getMasterContext();
 
 	    Map<String,TableModel> models = new HashMap<String,TableModel>();
-
 	    // Create a tab panel for each agent layer
 	    for (Object agentType : context.getAgentTypes()){
 	        Class agentClass = (Class)agentType;
@@ -133,7 +134,7 @@ public class Results {
 	        }
 	    }
 
-	    SpreadsheetUtils.saveTablesAsExcel(models, new File("out-"+tick+".xlsx"));
+	    SpreadsheetUtils.saveTablesAsExcel(models, new File(mypathTable + "out-"+tick+".xlsx"));
 	}
 
 	@ScheduledMethod(start = 1, interval = 100)

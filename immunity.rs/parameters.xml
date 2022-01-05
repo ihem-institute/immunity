@@ -6,8 +6,8 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="soluble" displayName="Soluble" type="java.lang.String" 
-						defaultValue="dextran" 
+				<parameter name="inputFile" displayName="inputFile" type="java.lang.String" 
+						defaultValue="InputIntrTransp3.csv" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
 									

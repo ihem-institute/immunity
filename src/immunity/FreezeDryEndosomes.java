@@ -30,14 +30,14 @@ public class FreezeDryEndosomes {
 	
 	private static FreezeDryEndosomes instance;
 	//CAMBIO
-	LocalPath mainpath=new LocalPath(); 
+	LocalPath mainpath=LocalPath.getInstance(); 
 	String FreezeOutputPath = mainpath.getPathOutputFE(); 	
 	
 	public static FreezeDryEndosomes getInstance() {
 		if( instance == null ) {
 			instance = new  FreezeDryEndosomes();
 			try {
-				loadFromCsv(instance);
+				loadFromCsv();
 //				loadOrganellePropertiesFromCsv(ModelProperties.getInstance());
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -119,10 +119,14 @@ public class FreezeDryEndosomes {
 //		return null;
 //	}
 	
-	public static void loadFromCsv(FreezeDryEndosomes frozenEndosomes) throws IOException {
+	public static void loadFromCsv() throws IOException {
 
 		Scanner scanner = new Scanner(new File(
-				"inputFrozenEndosomes.csv"));
+//				"inputFrozenEndosomes.csv")); esto es cuando no es en Batch
+//		ESTO ES PARA BATCH.  LEE LOS ENDOSOMAS DE UN FOLDER DATA RELATIVO.  El folder se llama "data" y allí está 
+//				también el file de input inputIntrTransp3.csv
+				".//data//inputFrozenEndosomes.csv"));
+
 		scanner.useDelimiter(",");
 
 //		ObjectMapper objectMapper = new ObjectMapper();
@@ -140,7 +144,12 @@ public class FreezeDryEndosomes {
 			switch (subString) {
 
 			// INITIAL ORGANELLES kind 7 is for phagosomes
- // if the first two letters are "en", load data for an endosome
+
+			case "ki":
+			{
+				break;
+// if the first two letters are "en", load data for an endosome
+			}
 			case "en":
 			{
 				InitialOrganelles inOr = InitialOrganelles.getInstance();

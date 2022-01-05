@@ -22,7 +22,7 @@ public class UpdateParameters {
 
 	private static UpdateParameters instance;
 	//CAMBIO
-	LocalPath mainpath=new LocalPath(); 
+	LocalPath mainpath= LocalPath.getInstance(); 
 	String InputPath = mainpath.getPathInputIT();
 	
 	public static UpdateParameters getInstance() {
@@ -97,24 +97,24 @@ public class UpdateParameters {
 				
 				
 
-//				InitialOrganelles inOr = InitialOrganelles.getInstance();
-				System.out
-						.println("A VER?" +  InitialOrganelles.getInstance().getInitOrgProp());
-				
-				try {
-					Thread.sleep(4000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-//				System.out.println(InitialOrganelles.getInstance()
-//						.getInitRabContent());
-//				System.out.println(InitialOrganelles.getInstance()
-//						.getInitMembraneContent());
-//				System.out.println(InitialOrganelles.getInstance()
-//						.getInitSolubleContent());
-
+////				InitialOrganelles inOr = InitialOrganelles.getInstance();
+//				System.out
+//						.println("A VER?" +  InitialOrganelles.getInstance().getInitOrgProp());
+//				
+//				try {
+//					Thread.sleep(4000);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				
+////				System.out.println(InitialOrganelles.getInstance()
+////						.getInitRabContent());
+////				System.out.println(InitialOrganelles.getInstance()
+////						.getInitMembraneContent());
+////				System.out.println(InitialOrganelles.getInstance()
+////						.getInitSolubleContent());
+//
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

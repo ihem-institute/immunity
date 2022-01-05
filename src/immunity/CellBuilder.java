@@ -192,13 +192,15 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 		else {
 //			if endosomes are loadaed from a freezeDry csv file
 //			CellProperties.getInstance().getCellK().get("freezeDry").equals(1d)
-			//System.out.println("FREEZE DRY METHOD   "+diffOrganelles);
+			System.out.println("FREEZE DRY METHOD   "+diffOrganelles);
 			for (String kind : diffOrganelles){
+				if (kind.substring(0,2).equals("ki")) continue;
+				
 				HashMap<String, Double> initOrgProp =  new HashMap<String, Double>(InitialOrganelles.getInstance().getInitOrgProp().get(kind));
 				HashMap<String, Double> rabContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitRabContent().get(kind));
 				HashMap<String, Double> membraneContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitMembraneContent().get(kind));
 				HashMap<String, Double> solubleContent = new HashMap<String, Double>(InitialOrganelles.getInstance().getInitSolubleContent().get(kind));
-//				System.out.println(membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
+				System.out.println(kind + membraneContent + " " + solubleContent + " " + rabContent+" " + initOrgProp);
 						Endosome end = new Endosome(space, grid, rabContent, membraneContent,
 													solubleContent, initOrgProp);
 						context.add(end);
@@ -278,7 +280,7 @@ public class CellBuilder implements ContextBuilder<Object> { // contextbuilder e
 
 		
 		if (RunEnvironment.getInstance().isBatch()) {
-			RunEnvironment.getInstance().endAt(20);
+			RunEnvironment.getInstance().endAt(5100);
 		}
 
 		collection = context.getObjects(Endosome.class);// se guardan los objetos de la clase endosoma, supongo que seran endosomas

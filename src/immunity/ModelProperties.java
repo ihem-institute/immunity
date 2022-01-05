@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+
+import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.parameter.Parameters;
 // This class contains the properties of the cell.  It is loaded with the same
 // CSV file  used for the inital organelles.  It is updated by the UpdateParameters class.
 public class ModelProperties {
@@ -143,10 +146,24 @@ public class ModelProperties {
 
 	
 	public static void loadFromCsv(ModelProperties modelProperties) throws IOException {
-
+//Para no parameter, usar 
+//		Scanner scanner = new Scanner(new File(
+//				"inputIntrTransp3.csv"));
+//		scanner.useDelimiter(",");
+		
+//		PARA BATCH USAR ESTO.  DE ESTE MODO SE PUEDEN BARRER VARIOS INPUTFILE CON DIFERENTES PROPIEDADES
+		Parameters parm = RunEnvironment.getInstance().getParameters();
+		String inputFile =(String) parm.getValue("inputFile");
 		Scanner scanner = new Scanner(new File(
-				"inputIntrTransp3.csv"));
+		//		"inputIntrTransp3.csv"));
+		// PARA BATCH MODE.  LEE DE UN FOLDER DATA RELATIVO QUE SE GENERA AL CORRER EN BATCH 
+//				el folder se llama data y allí hay que meter todo lo que se lea, como el inputIntrTransp3.csv y los copasi que
+//				se necesiten
+				
+								".//data//"+inputFile)); 
 		scanner.useDelimiter(",");
+
+
 
 //		ObjectMapper objectMapper = new ObjectMapper();
 //		try {
@@ -337,14 +354,14 @@ public class ModelProperties {
 				break;
 			}
 			
-			case "freezeDry":
-				{
-					FreezeDryEndosomes.getInstance();
-					break freezeDryOption; // if freezeDry then exit because the initial organelles will be loaded in a 
-					// different way.  HOWEVER, THE KIND1-KIND6 PROPERTIES NEED TO BE LOADED BECAUSE THEY ARE
-//					USED FOR NEW ORGANELLES (UPTAKE). JUST BY CHANCE THIS IS DONE FOR THE UPDATE CLASS
-//					NEED TO IMPROVE THIS
-			}
+//			case "freezeDry":
+//				{
+//					FreezeDryEndosomes.getInstance();
+//					break freezeDryOption; // if freezeDry then exit because the initial organelles will be loaded in a 
+//					// different way.  HOWEVER, THE KIND1-KIND6 PROPERTIES NEED TO BE LOADED BECAUSE THEY ARE
+////					USED FOR NEW ORGANELLES (UPTAKE). JUST BY CHANCE THIS IS DONE FOR THE UPDATE CLASS
+////					NEED TO IMPROVE THIS
+//			}
 			// INITIAL ORGANELLES kind Large is for phagosomes
 			case "kind1": case "kind2": case "kind3": case "kind4": case "kind5": case "kind6":case "kind7": case "kind8": case "kind9": case "kindLarge":
 			{
@@ -373,7 +390,7 @@ public class ModelProperties {
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
 					inOr.getInitSolubleContent().put(b[0], value);
-//					System.out.println("Proton is there?" + inOr.getInitialSolubleContent());
+					System.out.println("Proton is there?" + inOr.getInitialSolubleContent());
 					break;
 				}
 				case "initMembraneContent": {
@@ -391,7 +408,14 @@ public class ModelProperties {
 				}
 				break;
 			}
-
+			case "freezeDry":
+			{
+				FreezeDryEndosomes.loadFromCsv();
+				break;// freezeDryOption; // if freezeDry then exit because the initial organelles will be loaded in a 
+				// different way.  HOWEVER, THE KIND1-KIND6 PROPERTIES NEED TO BE LOADED BECAUSE THEY ARE
+//				USED FOR NEW ORGANELLES (UPTAKE). JUST BY CHANCE THIS IS DONE FOR THE UPDATE CLASS
+//				NEED TO IMPROVE THIS
+		}
 
 			default: {
 				System.out.println("no a valid entry");
