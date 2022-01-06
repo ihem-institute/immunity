@@ -103,16 +103,16 @@ public class Endosome {
 //	the tick duration. At time scale 1, I move the endosome 30 nm in a tick (50 ticks to travel 1500 nm). Hence
 //	one tick is equivalent to 0.03 seconds
 //	At time scale 0.5, I move the endosome 60 nm (30/timeScale)
-//	
-	double p_EndosomeRecycleStep = 1d/(10d/0.03*Cell.timeScale);
-	double p_EndosomeUptakeStep = 1d/(60d/0.03*Cell.timeScale);
-//	double p_EndosomeNewFromERStep = 1d/(60d/0.03*Cell.timeScale);
-	double p_EndosomeInternalVesicleStep = 1d/(5d/0.03*Cell.timeScale);// change from 2 to .1
-	double p_EndosomeFusionStep =1d/(120d/0.03*Cell.timeScale);
-	double p_EndosomeSplitStep = 1d/(1d/0.03*Cell.timeScale); // use to be 0.4
-	double p_EndosomeTetherStep = 1d/(1d/0.03*Cell.timeScale);
-	double p_EndosomeLysosomalDigestionStep = 1d/(10d/0.03*Cell.timeScale);
-	double p_EndosomeMaturationStep= 1d/(60d/0.03*Cell.timeScale); //FRANCO 10-> 60
+//	NEW 4-1-2022 Now the probabilites are in the inputintrTrans.csv to be able to change from a csv file
+//	double p_EndosomeRecycleStep = 1d/(10d/0.03*Cell.timeScale);
+//	double p_EndosomeUptakeStep = 1d/(60d/0.03*Cell.timeScale);
+////	double p_EndosomeNewFromERStep = 1d/(60d/0.03*Cell.timeScale);
+//	double p_EndosomeInternalVesicleStep = 1d/(5d/0.03*Cell.timeScale);// change from 2 to .1
+//	double p_EndosomeFusionStep =1d/(120d/0.03*Cell.timeScale);
+//	double p_EndosomeSplitStep = 1d/(1d/0.03*Cell.timeScale); // use to be 0.4
+//	double p_EndosomeTetherStep = 1d/(1d/0.03*Cell.timeScale);
+//	double p_EndosomeLysosomalDigestionStep = 1d/(10d/0.03*Cell.timeScale);
+//	double p_EndosomeMaturationStep= 1d/(60d/0.03*Cell.timeScale); //FRANCO 10-> 60
 	public int tickCount;										   //FRANCO
 
 	// constructor of endosomes with grid, space and a set of Rabs, membrane
@@ -122,7 +122,9 @@ public class Endosome {
 			HashMap<String, Double> rabContent,
 			HashMap<String, Double> membraneContent,
 			HashMap<String, Double> solubleContent,
-			HashMap<String, Double> initOrgProp) {
+			HashMap<String, Double> initOrgProp) 
+	{
+
 		this.tickCount=0; //FRANCO
 		this.space = sp;
 		this.grid = gr;
@@ -198,19 +200,21 @@ public class Endosome {
 //		Uptake and new organelles is a procedure of Cell and is not performed by endosomes		
 //		if (Math.random()<p_EndosomeUptakeStep)EndosomeUptakeStep.uptake(this);
 //		if (Math.random()<p_EndosomeNewFromERStep)EndosomeNewFromERStep.newFromEr(this);
-		if (Math.random()<p_EndosomeTetherStep)EndosomeTetherStep.tether(this);
-		if (Math.random()<p_EndosomeInternalVesicleStep)EndosomeInternalVesicleStep.internalVesicle(this);
-		if (Math.random()<p_EndosomeFusionStep) FusionStep.fusion(this);
-		if (Math.random()<p_EndosomeSplitStep) FissionStep.split(this);
-		if (Math.random()<p_EndosomeLysosomalDigestionStep)EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
+//		System.out.println("actionProbabilities " + ModelProperties.getInstance().getActionProbabilities());
+	
+		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_EndosomeTetherStep"))EndosomeTetherStep.tether(this);
+		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_EndosomeInternalVesicleStep"))EndosomeInternalVesicleStep.internalVesicle(this);
+		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_FusionStep"))FusionStep.fusion(this);
+		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_FissionStep"))FissionStep.split(this);
+		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_EndosomeLysosomalDigestionStep"))EndosomeLysosomalDigestionStep.lysosomalDigestion(this);
 //		Double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick%100 ==0) 
 		//if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
 		// rabConversionN();
 		String name =  ModelProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
 		if (Math.random() < 1 && !name.equals("null"))EndosomeCopasiStep.antPresTimeSeriesLoad(this);
-		if (Math.random()<p_EndosomeRecycleStep)RecycleStep.recycle(this);
-		if (Math.random()<p_EndosomeMaturationStep)EndosomeMaturationStep.matureCheck(this); //	
+		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_EndosomeRecycleStep"))RecycleStep.recycle(this);
+		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_EndosomeMaturationStep"))EndosomeMaturationStep.matureCheck(this); //	
 	}
 //	public List<Endosome> getAllEndosomes(){
 //		List<Endosome> allEndosomes = new ArrayList<Endosome>();

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -24,11 +25,13 @@ import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.environment.RunState;
 import repast.simphony.engine.schedule.ScheduledMethod;
+import repast.simphony.parameter.Parameters;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.ui.table.AgentTableFactory;
 import repast.simphony.ui.table.SpreadsheetUtils;
 import repast.simphony.ui.table.TablePanel;
+import repast.simphony.util.FileUtils;
 
 public class Results {
 
@@ -74,12 +77,26 @@ public class Results {
 	}
 	
 	//Constructor.  It is called once from CellBuilder
-	public Results(ContinuousSpace<Object> sp, Grid<Object> gr, HashMap<String, Double> totalRabs, HashMap<String, Double> initialTotalRabs) {
+	public Results(ContinuousSpace<Object> sp, Grid<Object> gr, HashMap<String, Double> totalRabs, HashMap<String, Double> initialTotalRabs)
+	{
 		this.space = sp;
 		this.grid = gr;
 		// Generate a file with the header of the variables that are going to be followed
 		//along the simulation.  Up to now= content distribution according to rabs contents.
+		Parameters parm = RunEnvironment.getInstance().getParameters();
+		String inputFile =(String) parm.getValue("inputFile");
 
+	{
+	File source = new File("C:/Users/lmayo/workspace/immunity/data/"+inputFile);
+	File dest = new File(LocalPath.getInstance().getMyPathOut()+inputFile);
+	System.out.println(source.toString() + dest.toString());
+	    try {
+			FileUtils.copyFile(source, dest);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    }
 	}
 	
 //	@ScheduledMethod(start = 1)

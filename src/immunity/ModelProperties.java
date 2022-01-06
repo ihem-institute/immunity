@@ -38,6 +38,7 @@ public class ModelProperties {
 	}
 //	Cell proterties that are loaded from a csv file by the CellBuilder class
 	public HashMap<String, Double> cellK = new HashMap<String, Double>();
+	public HashMap<String, Double> actionProbabilities = new HashMap<String, Double>();
 	public HashMap<String, Double> cellAgentProperties = new HashMap<String, Double>();
 	public HashMap<String, Double> plasmaMembraneProperties = new HashMap<String, Double>();
 	public HashMap<String, Double> endoplasmicReticulumProperties = new HashMap<String, Double>();
@@ -143,6 +144,9 @@ public class ModelProperties {
 	public HashMap<String, Double> getInitERsolubleRecycle() {
 		return initERsolubleRecycle;
 	}
+	public HashMap<String, Double> getActionProbabilities() {
+		return actionProbabilities;
+	}
 
 	
 	public static void loadFromCsv(ModelProperties modelProperties) throws IOException {
@@ -187,6 +191,15 @@ public class ModelProperties {
 				
 				break;
 			}
+			case "actionProbabilities": {
+				for (int i = 1; i < b.length; i = i + 2) {
+				modelProperties.getActionProbabilities().put(b[i], Double.parseDouble(b[i+1]));
+//				System.out.println("actionProbabilities" + modelProperties.getActionProbabilities());
+				}
+				
+				break;
+			}
+			
 			case "cellAgentProperties": {
 				for (int i = 1; i < b.length; i = i + 2) {
 				modelProperties.getCellAgentProperties().put(b[i], Double.parseDouble(b[i+1]));

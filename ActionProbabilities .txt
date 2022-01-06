@@ -1,0 +1,2 @@
+ 
+actionProbabilities, p_EndosomeRecycleStep, 0.006, p_EndosomeUptakeStep, 0.001, p_EndosomeInternalVesicleStep, 0.012, p_EndosomeFusionStep, 5.0E-4, p_EndosomeSplitStep, 0.06, p_EndosomeTetherStep, 0.06, p_EndosomeLysosomalDigestionStep, 0.006, p_EndosomeMaturationStep, 0.001
