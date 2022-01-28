@@ -201,8 +201,14 @@ public class FreezeDryEndosomes {
 			{
 				switch (b[1]) {
 				case "initOrgProp": {
-					PlasmaMembrane.getInstance().setPlasmaMembraneArea(Double.parseDouble(b[3]));
-					PlasmaMembrane.getInstance().setPlasmaMembraneVolume(Double.parseDouble(b[5]));
+					double area = Double.parseDouble(b[3]);
+					double volume = Double.parseDouble(b[5]);
+					PlasmaMembrane.getInstance().setPlasmaMembraneArea(area);
+					PlasmaMembrane.getInstance().setPlasmaMembraneVolume(volume);
+					ModelProperties.getInstance().getPlasmaMembraneProperties().clear();
+					ModelProperties.getInstance().getPlasmaMembraneProperties().put("plasmaMembraneArea", area);
+					ModelProperties.getInstance().getPlasmaMembraneProperties().put("plasmaMembraneVolume", volume);
+
 					break;
 				}
 				case "initSolubleContent": {
@@ -210,16 +216,30 @@ public class FreezeDryEndosomes {
 					for (int i = 2; i < b.length; i = i + 2) {
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
+					PlasmaMembrane.getInstance().getSolubleRecycle().clear();
 					PlasmaMembrane.getInstance().getSolubleRecycle().putAll(value);
+					Map<String, Double> adjustedValues = new HashMap<>(value);
+					double volume = PlasmaMembrane.getInstance().getInitialPlasmaMembraneVolume();
+					adjustedValues.replaceAll ((k,v) -> v != null ? v/volume : null);
+					ModelProperties.getInstance().getInitPMsolubleRecycle().clear();
+					ModelProperties.getInstance().getInitPMsolubleRecycle().putAll(adjustedValues);
 					break;
 				}
 				case "initMembraneContent": {
 					HashMap<String, Double> value = new HashMap<String, Double>();
 					for (int i = 2; i < b.length; i = i + 2) {
-//						System.out.println("VALOR MALO PM " + b[i] + " " + b[i+1]);
+						System.out.println("VALOR MALO PM " + b[i] + " " + b[i+1]);
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
+					PlasmaMembrane.getInstance().getMembraneRecycle().clear();
 					PlasmaMembrane.getInstance().getMembraneRecycle().putAll(value);
+					Map<String, Double> adjustedValues = new HashMap<>(value);
+					double area = PlasmaMembrane.getInstance().getInitialPlasmaMembraneArea();
+					adjustedValues.replaceAll ((k,v) -> v != null ? v/area : null);
+					ModelProperties.getInstance().getInitPMmembraneRecycle().clear();
+					ModelProperties.getInstance().getInitPMmembraneRecycle().putAll(adjustedValues);
+					System.out.println("VALORES CARGADOS " + " plasma Membrane " + PlasmaMembrane.getInstance().getMembraneRecycle() +	"\n" +
+					ModelProperties.getInstance().getInitPMmembraneRecycle());
 					break;
 				}
 				default: {

@@ -18,19 +18,27 @@ public class PlasmaMembrane {
 
 	// a single Cell is created
 	private static PlasmaMembrane instance;
-	static {
-		instance = new PlasmaMembrane(space, grid);
-	}
-	
 
-	public HashMap<String, Double> membraneRecycle = new HashMap<String, Double>(ModelProperties.getInstance().getInitPMmembraneRecycle()); // contains membrane recycled 
+	public static PlasmaMembrane getInstance() {
+		if (instance == null) {
+			instance = new PlasmaMembrane(space, grid);
+		}
+		return instance;
+	}
+//	private static PlasmaMembrane instance;
+//	static {
+//		instance = new PlasmaMembrane(space, grid);
+//	}
+
+
+	public HashMap<String, Double> membraneRecycle = new HashMap<String, Double>();//ModelProperties.getInstance().getInitPMmembraneRecycle()); // contains membrane recycled 
 	public HashMap<String, Double> solubleRecycle = new HashMap<String, Double>();// contains soluble recycled
 	public int pmcolor = 0;
 	public int red = 0;
 	public int green = 0;	
 	public int blue = 0;
-	private double plasmaMembraneVolume;
-	private double plasmaMembraneArea;
+	public double plasmaMembraneVolume;
+	public double plasmaMembraneArea;
 	private double initialPlasmaMembraneVolume;
 	private double initialPlasmaMembraneArea;
 //	public int area = (int) (1500*400*(1/Cell.orgScale)*(1/Cell.orgScale)); //ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 
@@ -49,21 +57,21 @@ public class PlasmaMembrane {
 // contents.	tMembranes, membrane and soluble content recycling
 
 		ModelProperties modelProperties = ModelProperties.getInstance();
-		plasmaMembraneArea = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 
-		initialPlasmaMembraneArea = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 	
-		plasmaMembraneVolume = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
-		initialPlasmaMembraneVolume = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
+		this.plasmaMembraneArea = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 
+		this.initialPlasmaMembraneArea = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneArea");// 	
+		this.plasmaMembraneVolume = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
+		this.initialPlasmaMembraneVolume = ModelProperties.getInstance().getPlasmaMembraneProperties().get("plasmaMembraneVolume");//
 
 //		plasmaMembraneTimeSeries = null;
 //		
 //		membraneRecycle.putAll(modelProperties.initPMmembraneRecycle);
 // PM now are in the csv file as proportions of the PM area and need to be multiplied by the area		
 		for (String met : modelProperties.initPMmembraneRecycle.keySet() ){
-		membraneRecycle.put(met, modelProperties.initPMmembraneRecycle.get(met)*plasmaMembraneArea);
+		this.membraneRecycle.put(met, modelProperties.initPMmembraneRecycle.get(met)*plasmaMembraneArea);
 		}
 		System.out.println("PM membraneRecycle "+ membraneRecycle);
 		for (String met : modelProperties.initPMsolubleRecycle.keySet() ){
-		solubleRecycle.put(met, modelProperties.initPMsolubleRecycle.get(met)*plasmaMembraneVolume);
+		this.solubleRecycle.put(met, modelProperties.initPMsolubleRecycle.get(met)*plasmaMembraneVolume);
 		}
 		System.out.println("PM solubleRecycle "+ solubleRecycle);		
 //		for (String met : modelProperties.solubleMet ){
@@ -75,11 +83,12 @@ public class PlasmaMembrane {
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
 		changeColor();
-//		this.membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
-//		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
+		System.out.println("111membrane recycle " + membraneRecycle);	
+		this.membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
+		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
+		System.out.println("membrane recycle " + membraneRecycle);
 //		this.plasmaMembraneTimeSeries=PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries();
-		if (Math.random() < 0 && plasmaMembraneCopasi.endsWith(".cps"))PlasmaMembraneCopasiStep.antPresTimeSeriesLoad(this);
-//		this.changeColor();
+		if (Math.random() < 1 && plasmaMembraneCopasi.endsWith(".cps"))PlasmaMembraneCopasiStep.antPresTimeSeriesLoad(PlasmaMembrane.getInstance());
 
 		}
 	
@@ -97,10 +106,16 @@ public class PlasmaMembrane {
 	
 
 	// GETTERS AND SETTERS (to get and set Cell contents)
-	public static PlasmaMembrane getInstance() {
-		return instance;
-	}
-		public HashMap<String, Double> getMembraneRecycle() {
+//	public static PlasmaMembrane getInstance() {
+//		return instance;
+//	}
+//	public static PlasmaMembrane getInstance() {
+//		if (instance == null) {
+//			instance = new PlasmaMembrane(space, grid);
+//		}
+//		return instance;
+//	}
+	public HashMap<String, Double> getMembraneRecycle() {
 		return membraneRecycle;
 	}
 

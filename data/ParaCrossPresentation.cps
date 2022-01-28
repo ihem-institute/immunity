@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- generated with COPASI 4.24 (Build 197) (http://www.copasi.org) at 2021-12-17 21:19:40 UTC -->
+<!-- generated with COPASI 4.24 (Build 197) (http://www.copasi.org) at 2022-01-28 19:44:18 UTC -->
 <?oxygen RNGSchema="http://www.copasi.org/static/schema/CopasiML.rng" type="xml"?>
 <COPASI xmlns="http://www.copasi.org/static/schema" versionMajor="4" versionMinor="24" versionDevel="197" copasiSourcesModified="0">
   <ListOfFunctions>
@@ -171,12 +171,12 @@ Notice that at pH = phlimit, the factor is 1.  k then is the kinetics constant a
       </ListOfParameterDescriptions>
     </Function>
   </ListOfFunctions>
-  <Model key="Model_1" name="AntigenPresentation" simulationType="time" timeUnit="s" volumeUnit="nl" areaUnit="m²" lengthUnit="m" quantityUnit="pmol" type="stochastic" avogadroConstant="6.0221417899999999e+23">
+  <Model key="Model_0" name="AntigenPresentation" simulationType="time" timeUnit="s" volumeUnit="nl" areaUnit="m²" lengthUnit="m" quantityUnit="pmol" type="stochastic" avogadroConstant="6.0221417899999999e+23">
     <MiriamAnnotation>
 <rdf:RDF
    xmlns:dcterms="http://purl.org/dc/terms/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="#Model_1">
+  <rdf:Description rdf:about="#Model_0">
     <dcterms:created>
       <rdf:Description>
         <dcterms:W3CDTF>2017-01-18T16:23:27Z</dcterms:W3CDTF>
@@ -273,9 +273,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
       </Metabolite>
       <Metabolite key="Metabolite_3" name="bMGEn" simulationType="reactions" compartment="Compartment_0" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Metabolite_3">
     <dcterms:created>
       <rdf:Description>
@@ -284,7 +282,6 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
       </Metabolite>
       <Metabolite key="Metabolite_4" name="pepEn" simulationType="reactions" compartment="Compartment_0" addNoise="false">
@@ -421,7 +418,9 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
     <ListOfModelValues>
       <ModelValue key="ModelValue_0" name="pH" simulationType="assignment" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#ModelValue_0">
     <dcterms:created>
       <rdf:Description>
@@ -430,6 +429,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <Expression>
           -log(&lt;CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[protonEn],Reference=Concentration>*1e-3)/log(10)
@@ -497,12 +497,12 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
           <Product metabolite="Metabolite_1" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5395" name="k1" value="0.002"/>
+          <Constant key="Parameter_5441" name="k1" value="0.002"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_80">
-              <SourceParameter reference="Parameter_5395"/>
+              <SourceParameter reference="Parameter_5441"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Metabolite_0"/>
@@ -513,9 +513,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
       </Reaction>
       <Reaction key="Reaction_1" name="MHCI-loading" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_1">
     <dcterms:created>
       <rdf:Description>
@@ -524,7 +522,6 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_5" stoichiometry="1"/>
@@ -535,10 +532,10 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
           <Product metabolite="Metabolite_6" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5394" name="k" value="10"/>
-          <Constant key="Parameter_5393" name="pH" value="6"/>
-          <Constant key="Parameter_5392" name="pHlimit" value="5.8"/>
-          <Constant key="Parameter_5391" name="enhancer" value="3"/>
+          <Constant key="Parameter_5443" name="k" value="10"/>
+          <Constant key="Parameter_5444" name="pH" value="7"/>
+          <Constant key="Parameter_5438" name="pHlimit" value="5.8"/>
+          <Constant key="Parameter_5440" name="enhancer" value="3"/>
         </ListOfConstants>
         <KineticLaw function="Function_41" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
           <ListOfCallParameters>
@@ -552,13 +549,13 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
               <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_268">
-              <SourceParameter reference="Parameter_5394"/>
+              <SourceParameter reference="Parameter_5443"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_267">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_266">
-              <SourceParameter reference="Parameter_5392"/>
+              <SourceParameter reference="Parameter_5438"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_272">
               <SourceParameter reference="ModelValue_2"/>
@@ -586,12 +583,12 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
           <Product metabolite="Metabolite_12" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5390" name="k1" value="0.0008"/>
+          <Constant key="Parameter_5439" name="k1" value="0.0008"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_80">
-              <SourceParameter reference="Parameter_5390"/>
+              <SourceParameter reference="Parameter_5439"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Metabolite_12"/>
@@ -618,19 +615,19 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
           <Product metabolite="Metabolite_7" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5389" name="k1" value="0.04"/>
-          <Constant key="Parameter_5388" name="k2" value="0.04"/>
+          <Constant key="Parameter_5442" name="k1" value="0.04"/>
+          <Constant key="Parameter_5445" name="k2" value="0.04"/>
         </ListOfConstants>
         <KineticLaw function="Function_14" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_69">
-              <SourceParameter reference="Parameter_5389"/>
+              <SourceParameter reference="Parameter_5442"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_68">
               <SourceParameter reference="Metabolite_8"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_78">
-              <SourceParameter reference="Parameter_5388"/>
+              <SourceParameter reference="Parameter_5445"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_79">
               <SourceParameter reference="Metabolite_7"/>
@@ -640,9 +637,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
       </Reaction>
       <Reaction key="Reaction_4" name="MHCIopening" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_4">
     <dcterms:created>
       <rdf:Description>
@@ -651,7 +646,6 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_9" stoichiometry="1"/>
@@ -661,10 +655,10 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
           <Product metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5387" name="k" value="1e-05"/>
-          <Constant key="Parameter_5386" name="pH" value="6"/>
-          <Constant key="Parameter_5385" name="pHlimit" value="6"/>
-          <Constant key="Parameter_5384" name="enhancer" value="-1.5"/>
+          <Constant key="Parameter_5436" name="k" value="1e-05"/>
+          <Constant key="Parameter_3316" name="pH" value="7"/>
+          <Constant key="Parameter_3314" name="pHlimit" value="6"/>
+          <Constant key="Parameter_5437" name="enhancer" value="-1.5"/>
         </ListOfConstants>
         <KineticLaw function="Function_42" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
           <ListOfCallParameters>
@@ -672,13 +666,13 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
               <SourceParameter reference="Metabolite_9"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_278">
-              <SourceParameter reference="Parameter_5387"/>
+              <SourceParameter reference="Parameter_5436"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_277">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_276">
-              <SourceParameter reference="Parameter_5385"/>
+              <SourceParameter reference="Parameter_3314"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_275">
               <SourceParameter reference="ModelValue_3"/>
@@ -710,10 +704,10 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
           <Product metabolite="Metabolite_3" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5383" name="k" value="1e-06"/>
-          <Constant key="Parameter_5382" name="pH" value="6"/>
-          <Constant key="Parameter_5381" name="pHlimit" value="6"/>
-          <Constant key="Parameter_5380" name="enhancer" value="-1.5"/>
+          <Constant key="Parameter_3315" name="k" value="10"/>
+          <Constant key="Parameter_5414" name="pH" value="7"/>
+          <Constant key="Parameter_5412" name="pHlimit" value="6"/>
+          <Constant key="Parameter_5411" name="enhancer" value="-1.5"/>
         </ListOfConstants>
         <KineticLaw function="Function_42" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
           <ListOfCallParameters>
@@ -721,13 +715,13 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
               <SourceParameter reference="Metabolite_6"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_278">
-              <SourceParameter reference="Parameter_5383"/>
+              <SourceParameter reference="Parameter_3315"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_277">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_276">
-              <SourceParameter reference="Parameter_5381"/>
+              <SourceParameter reference="Parameter_5412"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_275">
               <SourceParameter reference="ModelValue_3"/>
@@ -737,7 +731,9 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
       </Reaction>
       <Reaction key="Reaction_6" name="ProtonPumpRabA" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_6">
     <dcterms:created>
       <rdf:Description>
@@ -746,6 +742,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
+
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_13" stoichiometry="1"/>
@@ -755,12 +752,12 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
           <Product metabolite="Metabolite_7" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5379" name="k1" value="5e-05"/>
+          <Constant key="Parameter_5415" name="k1" value="5e-05"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_80">
-              <SourceParameter reference="Parameter_5379"/>
+              <SourceParameter reference="Parameter_5415"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Metabolite_13"/>
@@ -770,9 +767,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
       </Reaction>
       <Reaction key="Reaction_7" name="MHCIclosing" reversible="false" fast="false" addNoise="false">
         <MiriamAnnotation>
-<rdf:RDF
-   xmlns:dcterms="http://purl.org/dc/terms/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="#Reaction_7">
     <dcterms:created>
       <rdf:Description>
@@ -781,7 +776,6 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
     </dcterms:created>
   </rdf:Description>
 </rdf:RDF>
-
         </MiriamAnnotation>
         <ListOfSubstrates>
           <Substrate metabolite="Metabolite_5" stoichiometry="1"/>
@@ -791,10 +785,10 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
           <Product metabolite="Metabolite_9" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5378" name="k" value="0.01"/>
-          <Constant key="Parameter_5377" name="pH" value="6"/>
-          <Constant key="Parameter_5376" name="pHlimit" value="5.8"/>
-          <Constant key="Parameter_5375" name="enhancer" value="3"/>
+          <Constant key="Parameter_5413" name="k" value="0.01"/>
+          <Constant key="Parameter_5417" name="pH" value="7"/>
+          <Constant key="Parameter_5432" name="pHlimit" value="5.8"/>
+          <Constant key="Parameter_5420" name="enhancer" value="3"/>
         </ListOfConstants>
         <KineticLaw function="Function_40" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
           <ListOfCallParameters>
@@ -805,13 +799,13 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
               <SourceParameter reference="Metabolite_3"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_262">
-              <SourceParameter reference="Parameter_5378"/>
+              <SourceParameter reference="Parameter_5413"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_261">
               <SourceParameter reference="ModelValue_0"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_250">
-              <SourceParameter reference="Parameter_5376"/>
+              <SourceParameter reference="Parameter_5432"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_265">
               <SourceParameter reference="ModelValue_2"/>
@@ -840,12 +834,12 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
           <Product metabolite="Metabolite_11" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5374" name="k1" value="0.002"/>
+          <Constant key="Parameter_5434" name="k1" value="0.002"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_80">
-              <SourceParameter reference="Parameter_5374"/>
+              <SourceParameter reference="Parameter_5434"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Metabolite_10"/>
@@ -873,12 +867,12 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
           <Product metabolite="Metabolite_10" stoichiometry="1"/>
         </ListOfProducts>
         <ListOfConstants>
-          <Constant key="Parameter_5373" name="k1" value="0.0001"/>
+          <Constant key="Parameter_5435" name="k1" value="0.0001"/>
         </ListOfConstants>
         <KineticLaw function="Function_13" unitType="Default" scalingCompartment="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]">
           <ListOfCallParameters>
             <CallParameter functionParameter="FunctionParameter_80">
-              <SourceParameter reference="Parameter_5373"/>
+              <SourceParameter reference="Parameter_5435"/>
             </CallParameter>
             <CallParameter functionParameter="FunctionParameter_81">
               <SourceParameter reference="Metabolite_2"/>
@@ -887,8 +881,8 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         </KineticLaw>
       </Reaction>
     </ListOfReactions>
-    <ListOfModelParameterSets activeSet="ModelParameterSet_1">
-      <ModelParameterSet key="ModelParameterSet_1" name="Initial State">
+    <ListOfModelParameterSets activeSet="ModelParameterSet_0">
+      <ModelParameterSet key="ModelParameterSet_0" name="Initial State">
         <ModelParameterGroup cn="String=Initial Time" type="Group">
           <ModelParameter cn="CN=Root,Model=AntigenPresentation" value="0" type="Model" simulationType="time"/>
         </ModelParameterGroup>
@@ -896,23 +890,23 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment]" value="1000000" type="Compartment" simulationType="fixed"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Species Values" type="Group">
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[ovaEn]" value="6.02214179e+17" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[exCxEn]" value="6022141790000000" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[ovaEn]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[exCxEn]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[ovaCy]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[bMGEn]" value="6022141790000000" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[bMGEn]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[pepEn]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[oMHCIEn]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[pepMHCIEn]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[protonEn]" value="602214179000000" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[pepMHCIEn]" value="15055354475000000" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[protonEn]" value="60221417900000" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[protonCy]" value="60221417900000.023" type="Species" simulationType="fixed"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[cMHCIEn]" value="6022141790000000" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[cMHCIEn]" value="0" type="Species" simulationType="reactions"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[pepCy]" value="0" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[imCxEn]" value="6022141790000000" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[RabD]" value="1.0839855222e+18" type="Species" simulationType="reactions"/>
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[RabA]" value="60221417900000000" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[imCxEn]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[RabD]" value="0" type="Species" simulationType="reactions"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[RabA]" value="0" type="Species" simulationType="reactions"/>
         </ModelParameterGroup>
         <ModelParameterGroup cn="String=Initial Global Quantities" type="Group">
-          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[pH]" value="5.9999999999999991" type="ModelValue" simulationType="assignment"/>
+          <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[pH]" value="7" type="ModelValue" simulationType="assignment"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[kpH]" value="0.00020000000000000001" type="ModelValue" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[alkpH]" value="3" type="ModelValue" simulationType="fixed"/>
           <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Values[acidpH]" value="-1.5" type="ModelValue" simulationType="fixed"/>
@@ -923,7 +917,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-loading]" type="Reaction">
             <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-loading],ParameterGroup=Parameters,Parameter=k" value="10" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-loading],ParameterGroup=Parameters,Parameter=pH" value="5.9999999999999991" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-loading],ParameterGroup=Parameters,Parameter=pH" value="7" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
               </InitialExpression>
@@ -944,7 +938,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening]" type="Reaction">
             <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening],ParameterGroup=Parameters,Parameter=k" value="1.0000000000000001e-05" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening],ParameterGroup=Parameters,Parameter=pH" value="5.9999999999999991" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIopening],ParameterGroup=Parameters,Parameter=pH" value="7" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
               </InitialExpression>
@@ -957,8 +951,8 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
             </ModelParameter>
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening]" type="Reaction">
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening],ParameterGroup=Parameters,Parameter=k" value="9.9999999999999995e-07" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening],ParameterGroup=Parameters,Parameter=pH" value="5.9999999999999991" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening],ParameterGroup=Parameters,Parameter=k" value="10" type="ReactionParameter" simulationType="fixed"/>
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCI-peptOpening],ParameterGroup=Parameters,Parameter=pH" value="7" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
               </InitialExpression>
@@ -975,7 +969,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
           </ModelParameterGroup>
           <ModelParameterGroup cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIclosing]" type="Reaction">
             <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIclosing],ParameterGroup=Parameters,Parameter=k" value="0.01" type="ReactionParameter" simulationType="fixed"/>
-            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIclosing],ParameterGroup=Parameters,Parameter=pH" value="5.9999999999999991" type="ReactionParameter" simulationType="assignment">
+            <ModelParameter cn="CN=Root,Model=AntigenPresentation,Vector=Reactions[MHCIclosing],ParameterGroup=Parameters,Parameter=pH" value="7" type="ReactionParameter" simulationType="assignment">
               <InitialExpression>
                 &lt;CN=Root,Model=AntigenPresentation,Vector=Values[pH],Reference=InitialValue>
               </InitialExpression>
@@ -1211,7 +1205,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
       </ModelParameterSet>
     </ListOfModelParameterSets>
     <StateTemplate>
-      <StateTemplateVariable objectReference="Model_1"/>
+      <StateTemplateVariable objectReference="Model_0"/>
       <StateTemplateVariable objectReference="Metabolite_3"/>
       <StateTemplateVariable objectReference="Metabolite_7"/>
       <StateTemplateVariable objectReference="Metabolite_2"/>
@@ -1233,12 +1227,12 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
       <StateTemplateVariable objectReference="ModelValue_3"/>
     </StateTemplate>
     <InitialState type="initialState">
-      0 6022141790000000 602214179000000 0 0 0 0 6.02214179e+17 6022141790000000 0 5.9999999999999991 60221417900000.023 6022141790000000 6022141790000000 1.0839855222e+18 60221417900000000 1000000 0.00020000000000000001 3 -1.5 
+      0 0 60221417900000 0 0 0 15055354475000000 0 0 0 7 60221417900000.023 0 0 0 0 1000000 0.00020000000000000001 3 -1.5 
     </InitialState>
   </Model>
   <ListOfTasks>
-    <Task key="Task_14" name="Steady-State" type="steadyState" scheduled="false" updateModel="false">
-      <Report reference="Report_9" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_12" name="Steady-State" type="steadyState" scheduled="false" updateModel="false">
+      <Report reference="Report_8" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="JacobianRequested" type="bool" value="1"/>
         <Parameter name="StabilityAnalysisRequested" type="bool" value="1"/>
@@ -1255,13 +1249,13 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Parameter name="Maximum duration for backward integration" type="unsignedFloat" value="1000000"/>
       </Method>
     </Task>
-    <Task key="Task_15" name="Time-Course" type="timeCourse" scheduled="false" updateModel="false">
-      <Report reference="Report_9" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_11" name="Time-Course" type="timeCourse" scheduled="false" updateModel="false">
+      <Report reference="Report_8" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="AutomaticStepSize" type="bool" value="0"/>
         <Parameter name="StepNumber" type="unsignedInteger" value="120"/>
-        <Parameter name="StepSize" type="float" value="10"/>
-        <Parameter name="Duration" type="float" value="1200"/>
+        <Parameter name="StepSize" type="float" value="0.41666666670000002"/>
+        <Parameter name="Duration" type="float" value="50"/>
         <Parameter name="TimeSeriesRequested" type="bool" value="1"/>
         <Parameter name="OutputStartTime" type="float" value="0"/>
         <Parameter name="Output Event" type="bool" value="0"/>
@@ -1276,7 +1270,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Parameter name="Max Internal Step Size" type="unsignedFloat" value="0"/>
       </Method>
     </Task>
-    <Task key="Task_16" name="Scan" type="scan" scheduled="false" updateModel="false">
+    <Task key="Task_10" name="Scan" type="scan" scheduled="false" updateModel="false">
       <Problem>
         <Parameter name="Subtask" type="unsignedInteger" value="1"/>
         <ParameterGroup name="ScanItems">
@@ -1295,15 +1289,15 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
       <Method name="Scan Framework" type="ScanFramework">
       </Method>
     </Task>
-    <Task key="Task_17" name="Elementary Flux Modes" type="fluxMode" scheduled="false" updateModel="false">
-      <Report reference="Report_10" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_9" name="Elementary Flux Modes" type="fluxMode" scheduled="false" updateModel="false">
+      <Report reference="Report_7" target="" append="1" confirmOverwrite="1"/>
       <Problem>
       </Problem>
       <Method name="EFM Algorithm" type="EFMAlgorithm">
       </Method>
     </Task>
-    <Task key="Task_18" name="Optimization" type="optimization" scheduled="false" updateModel="false">
-      <Report reference="Report_11" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_8" name="Optimization" type="optimization" scheduled="false" updateModel="false">
+      <Report reference="Report_6" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="Subtask" type="cn" value="CN=Root,Vector=TaskList[Steady-State]"/>
         <ParameterText name="ObjectiveExpression" type="expression">
@@ -1324,8 +1318,8 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Parameter name="Seed" type="unsignedInteger" value="0"/>
       </Method>
     </Task>
-    <Task key="Task_19" name="Parameter Estimation" type="parameterFitting" scheduled="false" updateModel="false">
-      <Report reference="Report_12" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_7" name="Parameter Estimation" type="parameterFitting" scheduled="false" updateModel="false">
+      <Report reference="Report_5" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="Maximize" type="bool" value="0"/>
         <Parameter name="Randomize Start Values" type="bool" value="0"/>
@@ -1353,10 +1347,10 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Parameter name="Stop after # Stalled Generations" type="unsignedInteger" value="0"/>
       </Method>
     </Task>
-    <Task key="Task_20" name="Metabolic Control Analysis" type="metabolicControlAnalysis" scheduled="false" updateModel="false">
-      <Report reference="Report_13" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_6" name="Metabolic Control Analysis" type="metabolicControlAnalysis" scheduled="false" updateModel="false">
+      <Report reference="Report_4" target="" append="1" confirmOverwrite="1"/>
       <Problem>
-        <Parameter name="Steady-State" type="key" value="Task_14"/>
+        <Parameter name="Steady-State" type="key" value="Task_12"/>
       </Problem>
       <Method name="MCA Method (Reder)" type="MCAMethod(Reder)">
         <Parameter name="Modulation Factor" type="unsignedFloat" value="1.0000000000000001e-09"/>
@@ -1364,8 +1358,8 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Parameter name="Use Smallbone" type="bool" value="1"/>
       </Method>
     </Task>
-    <Task key="Task_21" name="Lyapunov Exponents" type="lyapunovExponents" scheduled="false" updateModel="false">
-      <Report reference="Report_14" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_5" name="Lyapunov Exponents" type="lyapunovExponents" scheduled="false" updateModel="false">
+      <Report reference="Report_3" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="ExponentNumber" type="unsignedInteger" value="3"/>
         <Parameter name="DivergenceRequested" type="bool" value="1"/>
@@ -1379,8 +1373,8 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Parameter name="Max Internal Steps" type="unsignedInteger" value="10000"/>
       </Method>
     </Task>
-    <Task key="Task_22" name="Time Scale Separation Analysis" type="timeScaleSeparationAnalysis" scheduled="false" updateModel="false">
-      <Report reference="Report_15" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_4" name="Time Scale Separation Analysis" type="timeScaleSeparationAnalysis" scheduled="false" updateModel="false">
+      <Report reference="Report_2" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="StepNumber" type="unsignedInteger" value="100"/>
         <Parameter name="StepSize" type="float" value="0.01"/>
@@ -1392,8 +1386,8 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Parameter name="Deuflhard Tolerance" type="unsignedFloat" value="9.9999999999999995e-07"/>
       </Method>
     </Task>
-    <Task key="Task_23" name="Sensitivities" type="sensitivities" scheduled="false" updateModel="false">
-      <Report reference="Report_16" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_3" name="Sensitivities" type="sensitivities" scheduled="false" updateModel="false">
+      <Report reference="Report_1" target="" append="1" confirmOverwrite="1"/>
       <Problem>
         <Parameter name="SubtaskType" type="unsignedInteger" value="1"/>
         <ParameterGroup name="TargetFunctions">
@@ -1416,13 +1410,13 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Parameter name="Delta minimum" type="unsignedFloat" value="9.9999999999999998e-13"/>
       </Method>
     </Task>
-    <Task key="Task_24" name="Moieties" type="moieties" scheduled="false" updateModel="false">
+    <Task key="Task_2" name="Moieties" type="moieties" scheduled="false" updateModel="false">
       <Problem>
       </Problem>
       <Method name="Householder Reduction" type="Householder">
       </Method>
     </Task>
-    <Task key="Task_25" name="Cross Section" type="crosssection" scheduled="false" updateModel="false">
+    <Task key="Task_1" name="Cross Section" type="crosssection" scheduled="false" updateModel="false">
       <Problem>
         <Parameter name="AutomaticStepSize" type="bool" value="0"/>
         <Parameter name="StepNumber" type="unsignedInteger" value="100"/>
@@ -1457,17 +1451,17 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Parameter name="Max Internal Step Size" type="unsignedFloat" value="0"/>
       </Method>
     </Task>
-    <Task key="Task_26" name="Linear Noise Approximation" type="linearNoiseApproximation" scheduled="false" updateModel="false">
-      <Report reference="Report_17" target="" append="1" confirmOverwrite="1"/>
+    <Task key="Task_13" name="Linear Noise Approximation" type="linearNoiseApproximation" scheduled="false" updateModel="false">
+      <Report reference="Report_0" target="" append="1" confirmOverwrite="1"/>
       <Problem>
-        <Parameter name="Steady-State" type="key" value="Task_14"/>
+        <Parameter name="Steady-State" type="key" value="Task_12"/>
       </Problem>
       <Method name="Linear Noise Approximation" type="LinearNoiseApproximation">
       </Method>
     </Task>
   </ListOfTasks>
   <ListOfReports>
-    <Report key="Report_9" name="Steady-State" taskType="steadyState" separator="&#x09;" precision="6">
+    <Report key="Report_8" name="Steady-State" taskType="steadyState" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1475,7 +1469,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Object cn="CN=Root,Vector=TaskList[Steady-State]"/>
       </Footer>
     </Report>
-    <Report key="Report_10" name="Elementary Flux Modes" taskType="fluxMode" separator="&#x09;" precision="6">
+    <Report key="Report_7" name="Elementary Flux Modes" taskType="fluxMode" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1483,7 +1477,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Object cn="CN=Root,Vector=TaskList[Elementary Flux Modes],Object=Result"/>
       </Footer>
     </Report>
-    <Report key="Report_11" name="Optimization" taskType="optimization" separator="&#x09;" precision="6">
+    <Report key="Report_6" name="Optimization" taskType="optimization" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1507,7 +1501,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Object cn="CN=Root,Vector=TaskList[Optimization],Object=Result"/>
       </Footer>
     </Report>
-    <Report key="Report_12" name="Parameter Estimation" taskType="parameterFitting" separator="&#x09;" precision="6">
+    <Report key="Report_5" name="Parameter Estimation" taskType="parameterFitting" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1531,7 +1525,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Object cn="CN=Root,Vector=TaskList[Parameter Estimation],Object=Result"/>
       </Footer>
     </Report>
-    <Report key="Report_13" name="Metabolic Control Analysis" taskType="metabolicControlAnalysis" separator="&#x09;" precision="6">
+    <Report key="Report_4" name="Metabolic Control Analysis" taskType="metabolicControlAnalysis" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1543,7 +1537,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Object cn="CN=Root,Vector=TaskList[Metabolic Control Analysis],Object=Result"/>
       </Footer>
     </Report>
-    <Report key="Report_14" name="Lyapunov Exponents" taskType="lyapunovExponents" separator="&#x09;" precision="6">
+    <Report key="Report_3" name="Lyapunov Exponents" taskType="lyapunovExponents" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1555,7 +1549,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Object cn="CN=Root,Vector=TaskList[Lyapunov Exponents],Object=Result"/>
       </Footer>
     </Report>
-    <Report key="Report_15" name="Time Scale Separation Analysis" taskType="timeScaleSeparationAnalysis" separator="&#x09;" precision="6">
+    <Report key="Report_2" name="Time Scale Separation Analysis" taskType="timeScaleSeparationAnalysis" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1567,7 +1561,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Object cn="CN=Root,Vector=TaskList[Time Scale Separation Analysis],Object=Result"/>
       </Footer>
     </Report>
-    <Report key="Report_16" name="Sensitivities" taskType="sensitivities" separator="&#x09;" precision="6">
+    <Report key="Report_1" name="Sensitivities" taskType="sensitivities" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1579,7 +1573,7 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
         <Object cn="CN=Root,Vector=TaskList[Sensitivities],Object=Result"/>
       </Footer>
     </Report>
-    <Report key="Report_17" name="Linear Noise Approximation" taskType="linearNoiseApproximation" separator="&#x09;" precision="6">
+    <Report key="Report_0" name="Linear Noise Approximation" taskType="linearNoiseApproximation" separator="&#x09;" precision="6">
       <Comment>
         Automatically generated report.
       </Comment>
@@ -1770,15 +1764,15 @@ Optimikzación de los parámetrosde loading y opening para que sean pH dependien
   </ListOfPlots>
   <GUI>
     <ListOfSliders>
-      <Slider key="Slider_0" associatedEntityKey="Task_16" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[protonEn],Reference=InitialConcentration" objectType="float" objectValue="0.001" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_1" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[protonEn],Reference=InitialConcentration" objectType="float" objectValue="0.001" minValue="0.001" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_2" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.04" minValue="5e-05" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_3" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k2,Reference=Value" objectType="float" objectValue="0.04" minValue="5e-05" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_4" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonPumpRabD],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.0008" minValue="0.0005" maxValue="0.01" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_5" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[cMHCIEn],Reference=InitialConcentration" objectType="float" objectValue="0.01" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_6" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[oMHCIEn],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="2" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_7" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[bMGEn],Reference=InitialConcentration" objectType="float" objectValue="0.01" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
-      <Slider key="Slider_8" associatedEntityKey="Task_15" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[RabD],Reference=InitialConcentration" objectType="float" objectValue="1.8" minValue="0" maxValue="1.8" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_0" associatedEntityKey="Task_10" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[protonEn],Reference=InitialConcentration" objectType="float" objectValue="0.0001" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_1" associatedEntityKey="Task_11" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[protonEn],Reference=InitialConcentration" objectType="float" objectValue="0.0001" minValue="0.0001" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_2" associatedEntityKey="Task_11" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.04" minValue="5e-05" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_3" associatedEntityKey="Task_11" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonLeak],ParameterGroup=Parameters,Parameter=k2,Reference=Value" objectType="float" objectValue="0.04" minValue="5e-05" maxValue="0.1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_4" associatedEntityKey="Task_11" objectCN="CN=Root,Model=AntigenPresentation,Vector=Reactions[ProtonPumpRabD],ParameterGroup=Parameters,Parameter=k1,Reference=Value" objectType="float" objectValue="0.0008" minValue="0.0005" maxValue="0.01" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_5" associatedEntityKey="Task_11" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[cMHCIEn],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_6" associatedEntityKey="Task_11" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[oMHCIEn],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="2" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_7" associatedEntityKey="Task_11" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[bMGEn],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1" tickNumber="1000" tickFactor="100" scaling="linear"/>
+      <Slider key="Slider_8" associatedEntityKey="Task_11" objectCN="CN=Root,Model=AntigenPresentation,Vector=Compartments[compartment],Vector=Metabolites[RabD],Reference=InitialConcentration" objectType="float" objectValue="0" minValue="0" maxValue="1.8" tickNumber="1000" tickFactor="100" scaling="linear"/>
     </ListOfSliders>
   </GUI>
   <ListOfUnitDefinitions>

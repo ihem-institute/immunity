@@ -81,12 +81,12 @@ public class UpdateParameters {
 //	Cell. This might be useful for knocking down a Rab in the middle of an experiment
 //	Also for uptake chase simulations changing the .csv file			
 				Cell.getInstance().getRabCell().putAll(modelProperties.getInitRabCell());
-				PlasmaMembrane.getInstance().getMembraneRecycle().putAll(modelProperties.getInitPMmembraneRecycle());
-				PlasmaMembrane.getInstance().getSolubleRecycle().putAll(modelProperties.getInitPMsolubleRecycle());				
-				EndoplasmicReticulum.getInstance().getMembraneRecycle().putAll(modelProperties.getInitERmembraneRecycle());
-				EndoplasmicReticulum.getInstance().getSolubleRecycle().putAll(modelProperties.getInitERsolubleRecycle());				
+//				PlasmaMembrane.getInstance().getMembraneRecycle().putAll(modelProperties.getInitPMmembraneRecycle());
+//				PlasmaMembrane.getInstance().getSolubleRecycle().putAll(modelProperties.getInitPMsolubleRecycle());				
+//				EndoplasmicReticulum.getInstance().getMembraneRecycle().putAll(modelProperties.getInitERmembraneRecycle());
+//				EndoplasmicReticulum.getInstance().getSolubleRecycle().putAll(modelProperties.getInitERsolubleRecycle());				
 
-				System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle());
+				System.out.println("UPDATE PARAMETERS"+ PlasmaMembrane.getInstance().getMembraneRecycle());
 				System.out.println(EndoplasmicReticulum.getInstance().getMembraneRecycle());
 //				System.out.println(modelProperties.rabCompatibility);
 //				System.out.println(modelProperties.membraneMet);

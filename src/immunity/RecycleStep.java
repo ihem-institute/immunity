@@ -152,7 +152,7 @@ public class RecycleStep {
 //			to delete the recycled endosome.
 			Context<Object> context = ContextUtils.getContext(endosome);
 			context.remove(endosome);
-
+			PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
 		}
 		
 	}
@@ -209,6 +209,7 @@ public class RecycleStep {
 				System.out.println("SECRETION TGN  " + plasmaMembrane);
 			Context<Object> context = ContextUtils.getContext(endosome);
 			context.remove(endosome);
+			PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
 			}
 		}
 

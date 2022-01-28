@@ -478,7 +478,7 @@ public class Results {
 		
 		
 //		sum in cytosol
-		System.out.println(" TOTAL INDIVIDUAL ENTROPY      " + cisternsArea.get("entropyInd"));
+//		System.out.println(" TOTAL INDIVIDUAL ENTROPY      " + cisternsArea.get("entropyInd"));
 
 
 	}

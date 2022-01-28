@@ -1705,7 +1705,7 @@ endosome425O,initMembraneContent,NOXEn,0.0,Tf,344.0537793968879,exCxEn,6.9756694
 endosome425O,initSolubleContent,lyEnzEn,37856.13929939172,protonEn,54.74664573667054,lyEnzEn,95423.13787706668,mvb,0.0,pepEn,0.0
 plasmaMembrane,initOrgProp,area,2513624.8031002665,volume,4.8E9,
 plasmaMembrane,initMembraneContent,NOXEn,0,Tf,0,exCxEn,0,vATPaseEn,0,oMHCIEn,0,loCxEn,0,membraneMarker,0.0,cMHCIEn,0,pepMHCIEn,600,imCxEn,0
-plasmaMembrane,initSolubleContent,lyEnzEn,0,protonEn,0,lyEnzEn,0,mvb,0,pepEn,0000000
+plasmaMembrane,initSolubleContent,lyEnzEn,0,protonEn,191040,lyEnzEn,0,mvb,0,pepEn,0000000
 EReticulum,initOrgProp,area,2379717.221291167,volume,4.8E9,
 EReticulum,initMembraneContent,NOXEn,0.0,exCxEn,2396132.646672346,oMHCIEn,0.0,loCxEn,2396132.646672346,vATPaseEn,0.0,membraneMarker,0.0,cMHCIEn,239613.26466723462,imCxEn,2396132.646672346
 EReticulum,initSolubleContent,mvb,0.0,protonEn,0,lyEnzEn,0

@@ -102,7 +102,9 @@ public class UptakeStep2 {
 		String selectedOrganelle = ModelProperties.getInstance().getRabOrganelle().get(selectedRab);
 		System.out.println(" 	NEW UPTAKE OTHER   " + selectedRab + "  " + deltaRabs);
 		if (selectedOrganelle.equals("EE")){ 
-			newUptake(cell,selectedRab);}
+			newUptake(cell,selectedRab);
+			PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();	
+		}
 		else if (selectedOrganelle.equals("ERGIC")){ 
 			newSecretion(cell,selectedRab);}
 		else {newOrganelle(cell, selectedRab, rabCode);
@@ -278,7 +280,7 @@ public class UptakeStep2 {
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick == 1) uptakeArea = 0d;
 		uptakeArea = uptakeArea + area;
-		System.out.println(uptakeArea + " TOTAL UPTAKE UPTAKE "+ plasmaMembrane + "  "+ tick);
+		System.out.println(area + " "+ uptakeArea + " TOTAL UPTAKE UPTAKE "+ plasmaMembrane + "  "+ tick);
 		PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
 		double volume = 4d/3d*Math.PI*a*a*c;
 		initOrgProp.put("area", area);
@@ -319,10 +321,12 @@ public class UptakeStep2 {
 			if (PlasmaMembrane.getInstance().getMembraneRecycle().containsKey(mem))
 			{
 				double valuePM = PlasmaMembrane.getInstance().getMembraneRecycle().get(mem);
+
 				valueInPM = valuePM * ModelProperties.getInstance().getUptakeRate().get(mem) * area/ PlasmaMembrane.getInstance().getPlasmaMembraneArea();	
-				//				System.out.println(mem + valuePM + "   UPTAKE FROM PM 1111  " + valueInPM+membraneContent);
+			//				System.out.println(mem + valuePM + "   UPTAKE FROM PM 1111  " + valueInPM+membraneContent);
 				// decrease PM content
 				PlasmaMembrane.getInstance().getMembraneRecycle().put(mem, valuePM-valueInPM);
+	//			System.out.println(mem + " initial PM valule "+valuePM +"\n" + "final PM value " + PlasmaMembrane.getInstance().getMembraneRecycle().get(mem));
 			}
 			//			 FOR UPTAKE LOADING IN NEW ENDOSOMES
 			if (InitialOrganelles.getInstance().getInitMembraneContent().get("kind1").
@@ -333,7 +337,7 @@ public class UptakeStep2 {
 			valueInTotal = valueInEn + valueInPM; 
 			if (valueInTotal >= area) valueInTotal= area;// cannot incorporate more metabolite than its area
 			membraneContent.put(mem, valueInTotal);
-			System.out.println(mem + valueInTotal + "   UPTAKE FROM PM 1111  " + valueInPM+membraneContent);
+			System.out.println(mem + valueInTotal + "   UPTAKE FROM PM 1111  " + membraneContent);
 
 
 		}
@@ -415,6 +419,7 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		//			e.printStackTrace();
 		//		}
 	PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
+	System.out.println("TIME SERIES PM DELETED" + PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries());
 		
 	}
 

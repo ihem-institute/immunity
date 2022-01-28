@@ -403,7 +403,7 @@ public class ModelProperties {
 						value.put(b[i], Double.parseDouble(b[i + 1]));
 					}
 					inOr.getInitSolubleContent().put(b[0], value);
-					System.out.println("Proton is there?" + inOr.getInitialSolubleContent());
+	//				System.out.println("Proton is there?" + inOr.getInitSolubleContent());
 					break;
 				}
 				case "initMembraneContent": {
