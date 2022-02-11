@@ -212,7 +212,7 @@ public class Endosome {
 		//if (Math.random() < 1)EndosomeRabConversionStep.rabTimeSeriesLoad(this);
 		// rabConversionN();
 		String name =  ModelProperties.getInstance().getCopasiFiles().get("endosomeCopasi");
-		if (Math.random() < 1 && !name.equals("null"))EndosomeCopasiStep.antPresTimeSeriesLoad(this);
+		if (Math.random() < 1 && name.endsWith(".cps"))EndosomeCopasiStep.antPresTimeSeriesLoad(this);
 		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_EndosomeRecycleStep"))RecycleStep.recycle(this);
 		if (Math.random()<ModelProperties.getInstance().getActionProbabilities().get("p_EndosomeMaturationStep"))EndosomeMaturationStep.matureCheck(this); //	
 	}

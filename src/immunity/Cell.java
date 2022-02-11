@@ -69,7 +69,7 @@ public class Cell {
 		this.solubleCell.put("protonCy", 1E-4);
 //		this.changeColor();
 		String name = ModelProperties.getInstance().getCopasiFiles().get("cellCopasi");
-		if (Math.random() < 0.1 && !name.equals("null")){
+		if (Math.random() < 0.0 && name.endsWith(".cps")){
 			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
 			CellCopasiStep.antPresTimeSeriesLoad(this);
 		}
@@ -111,6 +111,13 @@ public class Cell {
 		return membraneCell;
 	}
 	public HashMap<String, Double> getSolubleCell() {
+//		System.out.println("ACTUALIZA SOLUBLE CELL " + solubleCell);
+//		try {
+//			Thread.sleep(1000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		return solubleCell;
 	}
 	public final TreeMap<Integer, HashMap<String, Double>> getCellTimeSeries() {

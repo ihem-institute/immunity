@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.Collections;
 import org.COPASI.CModel;
 import org.COPASI.CTimeSeries;
@@ -19,6 +20,13 @@ public class PlasmaMembraneCopasiStep {
 		if (plasmaMembrane.getPlasmaMembraneTimeSeries().isEmpty()){			
 			callReceptorDynamics(plasmaMembrane);
 			timeSeriesLoadintoPlasmaMembrane(plasmaMembrane);
+//			
+//						System.out.println("re calculate because uptake" );
+//						try {
+//						TimeUnit.SECONDS.sleep(5);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
 
 			return;
 		} 
@@ -26,6 +34,12 @@ public class PlasmaMembraneCopasiStep {
 			timeSeriesLoadintoPlasmaMembrane(plasmaMembrane);
 			plasmaMembrane.getPlasmaMembraneTimeSeries().clear();
 			callReceptorDynamics(plasmaMembrane);
+//			System.out.println("re calculate se acabaron" );
+//			try {
+//			TimeUnit.SECONDS.sleep(5);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 
 			return;
 			}
@@ -54,7 +68,7 @@ public class PlasmaMembraneCopasiStep {
 		}
 		for (String met :presentValues.keySet()){
 //			Organelle (endosomes/Golgi) metabolites are not considered. The reaction should be called from endosomes.
-			String met1 = met.substring(0, met.length()-2);
+			String met1 = met;//.substring(0, met.length()-2);
 //			metabolites in the Cell are expressed in concentration. I am using the area ratio between PM and Cell 
 //			for dilution of the metabilite that is released into the cell.  I may use volume ratio? 
 //			Only a fraction of the metabolite in the cell participates
@@ -71,13 +85,15 @@ public class PlasmaMembraneCopasiStep {
 								Cell.getInstance().getSolubleCell().put(met1, metValue);
 			}
 			
-			else if (StringUtils.endsWith(met, "Pm") && ModelProperties.getInstance().getSolubleMet().contains(met1)){
+			else if (StringUtils.endsWith(met, "Pm") || StringUtils.endsWith(met, "En") && ModelProperties.getInstance().getSolubleMet().contains(met1)){
 				double metValue = presentValues.get(met)* PlasmaMembrane.getInstance().getPlasmaMembraneVolume();
 				plasmaMembrane.getSolubleRecycle().put(met1, metValue);
 			}
-			else if (StringUtils.endsWith(met, "Pm") && ModelProperties.getInstance().getMembraneMet().contains(met1)) {
+			else if (StringUtils.endsWith(met, "Pm") || StringUtils.endsWith(met, "En") && ModelProperties.getInstance().getMembraneMet().contains(met1)) {
 				double metValue = presentValues.get(met)* PlasmaMembrane.getInstance().getPlasmaMembraneArea();
 				plasmaMembrane.getMembraneRecycle().put(met1, metValue);
+							 System.out.println("TICK " + met+tick + "\n " + pastTick + "\n " + presentValues.get(met) + "\n " + pastValues.get(met) + "\n" + 
+							 plasmaMembrane.getMembraneRecycle());
 			}
 		}
 		
@@ -92,7 +108,7 @@ public class PlasmaMembraneCopasiStep {
 
 		Set<String> metabolites = receptorDynamics.getInstance().getMetabolites();
 		HashMap<String, Double> localM = new HashMap<String, Double>();
-		System.out.println("PM MEMBRENE RECYCLE " + plasmaMembrane.getMembraneRecycle());
+//		System.out.println("PM MEMBRENE RECYCLE " + plasmaMembrane.getMembraneRecycle());
 		
 		for (String met : metabolites) {
 //			System.out.println("metabolito que no anda" + met);
@@ -125,8 +141,9 @@ public class PlasmaMembraneCopasiStep {
 				localM.put(met, 0.0);
 			}
 		}
-		receptorDynamics.setInitialConcentration("protonCy", 1e-04);
-		localM.put("protonCy", 1e-04);
+//		For PM, no exchange of proton with the cytoplasm.  Arbitrarily protonCy = protonPm
+		receptorDynamics.setInitialConcentration("protonCy", 3.98e-5);
+		localM.put("protonCy", 3.98e-5);
 
 	//	if (localM.get("protonEn")==null||localM.get("protonEn") < 1e-05){
 			receptorDynamics.setInitialConcentration("protonEn", 3.98e-5);

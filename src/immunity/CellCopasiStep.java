@@ -56,7 +56,7 @@ public class CellCopasiStep {
 
 		for (String met :presentValues.keySet()){
 //			Organelle (endosomes/Golgi) metabolites are not considered. The reaction should be called from endosomes.
-			String met1 = met.substring(0, met.length()-2);
+			String met1 = met;//.substring(0, met.length()-2);
 //			metabolites in the Cell are expressed in concentration. Only a fraction of the metabolite in the cell participates
 //			in copasi, hence the concentration are added to the existing values.
 			if (met.endsWith("Cy")){
@@ -89,7 +89,7 @@ public class CellCopasiStep {
 		HashMap<String, Double> localM = new HashMap<String, Double>();
 
 		for (String met : metabolites) {
-			String met1 = met.substring(0, met.length()-2);
+			String met1 = met;//.substring(0, met.length()-2);
 //			I will only consider cyto metabolites.  If PM metabolites are necessary, I will have to consider rest from  PM and to reset the PM time series
 //			if (StringUtils.endsWith(met, "Pm") && PlasmaMembrane.getInstance().getMembraneRecycle().containsKey(met1)) {
 //				double metValue = PlasmaMembrane.getInstance().getMembraneRecycle().get(met1)/PlasmaMembrane.getInstance().area;

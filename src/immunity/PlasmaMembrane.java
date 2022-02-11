@@ -61,11 +61,11 @@ public class PlasmaMembrane {
 		for (String met : modelProperties.initPMmembraneRecycle.keySet() ){
 		membraneRecycle.put(met, modelProperties.initPMmembraneRecycle.get(met)*plasmaMembraneArea);
 		}
-		System.out.println("PM membraneRecycle "+ membraneRecycle);
+//		System.out.println("PM membraneRecycle "+ membraneRecycle);
 		for (String met : modelProperties.initPMsolubleRecycle.keySet() ){
 		solubleRecycle.put(met, modelProperties.initPMsolubleRecycle.get(met)*plasmaMembraneVolume);
 		}
-		System.out.println("PM solubleRecycle "+ solubleRecycle);		
+//		System.out.println("PM solubleRecycle "+ solubleRecycle);		
 //		for (String met : modelProperties.solubleMet ){
 //		solubleRecycle.put(met,  0.0);
 //		}
@@ -75,10 +75,10 @@ public class PlasmaMembrane {
 	@ScheduledMethod(start = 1, interval = 1)
 	public void step() {
 		changeColor();
-//		this.membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
-//		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
-//		this.plasmaMembraneTimeSeries=PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries();
-		if (Math.random() < 0 && plasmaMembraneCopasi.endsWith(".cps"))PlasmaMembraneCopasiStep.antPresTimeSeriesLoad(this);
+		this.membraneRecycle = PlasmaMembrane.getInstance().getMembraneRecycle();
+		this.solubleRecycle = PlasmaMembrane.getInstance().getSolubleRecycle();
+		this.plasmaMembraneTimeSeries=PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries();
+		if (Math.random() < 1 && plasmaMembraneCopasi.endsWith(".cps"))PlasmaMembraneCopasiStep.antPresTimeSeriesLoad(PlasmaMembrane.getInstance());
 //		this.changeColor();
 
 		}

@@ -130,6 +130,7 @@ public class ModelProperties {
 		return rabSet;
 	}
 	public HashMap<String, Double> getSolubleCell() {
+//		System.out.println("DEVUELVE SOLUBLE CELL " + solubleCell);
 		return solubleCell;
 	}
 	public HashMap<String, Double> getInitPMmembraneRecycle() {

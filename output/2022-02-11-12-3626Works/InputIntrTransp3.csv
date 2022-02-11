@@ -13,7 +13,7 @@ plasmaMembraneProperties,plasmaMembraneArea,2400000,plasmaMembraneVolume,4800000
 initPMmembraneRecycle,vATPaseEn,00000,Tf,0000,,,,,,,,,,,,,,,
 initPMsolubleRecycle,lyEnzEn,000000000,pepEn,000000000,,,,,,,,,,,,,,,,,,,,,,,
 uptakeRate,membraneMarker,0,cMHCIEn,0.2,oMHCIEn,0.6,exCxEn,10,imCxEn,10,loCxEn,10,lyEnzEn,1,vATPaseEn,0.001,NOXEn,10,pepMHCIEn,0.2,Tf,.3,,,,,,,,
-plasmaMembraneCopasi,.//data//ParaCrossPresentation.cps,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+plasmaMembraneCopasi,.//data//ParaCrossPresentation.cp,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ENDOPLASMIC RETICULUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 endoplasmicReticulumProperties,endoplasmicReticulumArea,2400000,endoplasmicReticulumVolume,4800000000,,,,,,,,,,,,,,,,,,,,,,,,,,,
 initERmembraneRecycle,cMHCIEn,240000,oMHCIEn,0,exCxEn,2400000,imCxEn,2400000,loCxEn,2400000,,,,,,,,,,,,,,,,,,,,,,,,,,,

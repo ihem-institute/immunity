@@ -86,9 +86,22 @@ public class Results {
 		Parameters parm = RunEnvironment.getInstance().getParameters();
 		String inputFile =(String) parm.getValue("inputFile");
 
+//		Copy the input file from data to folder with the Results
 	{
 	File source = new File("C:/Users/lmayo/workspace/immunity/data/"+inputFile);
 	File dest = new File(LocalPath.getInstance().getMyPathOut()+inputFile);
+	System.out.println(source.toString() + dest.toString());
+	    try {
+			FileUtils.copyFile(source, dest);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    }
+//	Copy the inputFrozenEndosomes file from data to folder with the Results
+	{
+	File source = new File("C:/Users/lmayo/workspace/immunity/data/inputFrozenEndosomes.csv");
+	File dest = new File(LocalPath.getInstance().getMyPathOut()+"inputFrozenEndosomes.csv");
 	System.out.println(source.toString() + dest.toString());
 	    try {
 			FileUtils.copyFile(source, dest);
@@ -118,7 +131,7 @@ public class Results {
 //		}
 //	}
 
-	@ScheduledMethod(start = 0, interval = 5000)
+	@ScheduledMethod(start = 1, interval = 5000)
 	public void stepTable() {
 //	log();
 //		freeze endosome set
@@ -184,7 +197,7 @@ public class Results {
 	// to load the file
 	private void writeToCsv(TreeMap<String, Double> orderContDist) throws IOException {
 		double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-		if (tick <10){// HEADER
+		if (tick <210){// HEADER
 		String line = "";
 		for (String key : orderContDist.keySet()) {
             line = line+ key + ",";
@@ -192,11 +205,13 @@ public class Results {
 		line = line + "\n";
 		Writer output;
 		//CAMBIO
-		output = new BufferedWriter(new FileWriter(ITResultsPath, false));		
+		output = new BufferedWriter(new FileWriter(ITResultsPath, true));		
 //		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
 		output.append(line);
 		output.close();	
 	}
+//		end of header
+		
 		String line = "";
 		for (String key : orderContDist.keySet()) {
             line = line+ sigFigs(orderContDist.get(key),4) + ",";
@@ -306,28 +321,28 @@ public class Results {
 		List<Endosome> allEndosomes = new ArrayList<Endosome>();
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		if (tick == 1) {
-			for (String mem : ModelProperties.getInstance().getMembraneMet()) {
-			initialTotalMembraneCargo.put(mem, 0d);	
-			}
-			for (String sol : ModelProperties.getInstance().getSolubleMet()) {
-			initialTotalSolubleCargo.put(sol, 0d);	
-			}
-			for (Object obj : grid.getObjects()) {
-				if (obj instanceof Endosome) {
-					allEndosomes.add((Endosome) obj);
-				}
-			}
-			for (Endosome end : allEndosomes) {
-				for (String mem : end.membraneContent.keySet()) {
-					double value = initialTotalMembraneCargo.get(mem) + end.membraneContent.get(mem);
-					initialTotalMembraneCargo.put(mem, value);
-				}
-				for (String sol : end.solubleContent.keySet()) {
-//					System.out.println(sol +" soluble");
-					double value = initialTotalSolubleCargo.get(sol) + end.solubleContent.get(sol);
-					initialTotalSolubleCargo.put(sol, value);
-				}
-			}
+//			for (String mem : ModelProperties.getInstance().getMembraneMet()) {
+//			initialTotalMembraneCargo.put(mem, 0d);	
+//			}
+//			for (String sol : ModelProperties.getInstance().getSolubleMet()) {
+//			initialTotalSolubleCargo.put(sol, 0d);	
+//			}
+//			for (Object obj : grid.getObjects()) {
+//				if (obj instanceof Endosome) {
+//					allEndosomes.add((Endosome) obj);
+//				}
+//			}
+//			for (Endosome end : allEndosomes) {
+//				for (String mem : end.membraneContent.keySet()) {
+//					double value = initialTotalMembraneCargo.get(mem) + end.membraneContent.get(mem);
+//					initialTotalMembraneCargo.put(mem, value);
+//				}
+//				for (String sol : end.solubleContent.keySet()) {
+////					System.out.println(sol +" soluble");
+//					double value = initialTotalSolubleCargo.get(sol) + end.solubleContent.get(sol);
+//					initialTotalSolubleCargo.put(sol, value);
+//				}
+//			}
 		}
 		content();// initialize all contents to zero
 // include in the contentDistribution all the recycled components, soluble and membrane
@@ -337,6 +352,7 @@ public class Results {
 		HashMap<String, Double> solubleSecretion = EndoplasmicReticulum.getInstance().getSolubleRecycle();
 		HashMap<String, Double> membraneSecretion = EndoplasmicReticulum.getInstance().getMembraneRecycle();
 		HashMap<String, Double> solubleCell = Cell.getInstance().getSolubleCell();
+		System.out.println(solubleCell + " VEAMOS ANTES Y DESPUES" + Cell.getInstance().getSolubleCell());
 		for (String sol : solubleRecycle.keySet()) {
 //			System.out.println(" soluble "+ sol);
 			double value = solubleRecycle.get(sol);
@@ -359,13 +375,13 @@ public class Results {
 			//System.out.println(" soluble "+ sol + " Rab " +rab);
 			double value = membraneSecretion.get(mem);
 			contentDist.put(mem+"Er" , value);
-			System.out.println("MEMBRANE ER  "+ mem + value);
+	//		System.out.println("MEMBRANE ER  "+ mem + value);
 		}
 		for (String sol : solubleCell.keySet()) {
 //			System.out.println(" soluble "+ sol);
 			double value = solubleCell.get(sol);
 			contentDist.put(sol+"Cy", value);
-//			System.out.println("SOLUBLE CELL  "+ sol + value );
+			System.out.println("SOLUBLE CELL  "+ sol + value +Cell.getInstance().getSolubleCell() );
 		}
 		
 //		for the set of all endosomes, calculate the content distribution among the different

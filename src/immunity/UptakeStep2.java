@@ -192,7 +192,6 @@ public class UptakeStep2 {
 		HashMap<String, Double> solubleContent = new HashMap<String,Double>();
 		Set<String> solubleMet = new HashSet<String>(ModelProperties.getInstance().getSolubleMet());
 		for (String sol : solubleMet){
-			double valueInEn = 0d;
 			double valueInER =0d;
 			
 			if (EndoplasmicReticulum.getInstance().getSolubleRecycle().containsKey(sol))
@@ -406,15 +405,16 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		double upPosition = 25 + rnd* (25 - 4 * cellLimit);
 		space.moveTo(bud, rnd * 50, upPosition);
 		grid.moveTo(bud, (int) rnd * 50, (int) upPosition);
-		
-		//			System.out.println(area + "NEW UPTAKE" + bud.membraneContent);
-		//			try {
-		//			TimeUnit.SECONDS.sleep(5);
-		//		} catch (InterruptedException e) {
-		//			// TODO Auto-generated catch block
-		//			e.printStackTrace();
-		//		}
+
 	PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
+	
+//				System.out.println(area + "NEW UPTAKE" + bud.membraneContent);
+//				try {
+//				TimeUnit.SECONDS.sleep(5);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 		
 	}
 
