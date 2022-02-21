@@ -277,7 +277,7 @@ public class UptakeStep2 {
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 //		if (tick == 1) uptakeArea = 0d;
 		uptakeArea = uptakeArea + area;
-		System.out.println(uptakeArea + " TOTAL UPTAKE UPTAKE "+ plasmaMembrane + "  "+ tick);
+		System.out.println(uptakeArea + " TOTAL UPTAKE UPTAKE "+ plasmaMembrane + "  "+ area + " " + tick);
 		PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
 		double volume = 4d/3d*Math.PI*a*a*c;
 		initOrgProp.put("area", area);
@@ -332,7 +332,7 @@ public class UptakeStep2 {
 			valueInTotal = valueInEn + valueInPM; 
 			if (valueInTotal >= area) valueInTotal= area;// cannot incorporate more metabolite than its area
 			membraneContent.put(mem, valueInTotal);
-			System.out.println(mem + valueInTotal + "   UPTAKE FROM PM 1111  " + valueInPM+membraneContent);
+//			System.out.println(mem + valueInTotal + "   UPTAKE FROM PM 1111  " + valueInPM+membraneContent);
 
 
 		}

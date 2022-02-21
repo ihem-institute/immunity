@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.Collections;
+
+import org.COPASI.CCompartment;
 import org.COPASI.CModel;
 import org.COPASI.CTimeSeries;
 import org.apache.commons.lang3.StringUtils;
@@ -105,8 +107,31 @@ public class PlasmaMembraneCopasiStep {
 //the values in mM.  Back from copasi, I recalculate the values to area and volume
 //
 		PlasmaMembraneCopasi receptorDynamics = PlasmaMembraneCopasi.getInstance();
+//        int i, iMax = (int)model.getCompartments().size();
+//        System.out.println("Number of Compartments: " + (new Integer(iMax)).toString());
+//        System.out.println("Compartments: ");
+//        for (i = 0;i < iMax;++i)
+//        {
+//            CCompartment compartment = model.getCompartment(i);
+//            assert compartment != null;
+//            model.getCompartment(i).setInitialValue(1.2e9);
+//            System.out.println("compartimiento volumen \t" + compartment.getObjectName() + model.getCompartment(i).getInitialValue());
+//        }
+		
+		int iMax = (int) receptorDynamics.getModel().getCompartments().size();
+		for (int i = 0;i < iMax;++i)
+        {
+		if (receptorDynamics.getModel().getCompartment(i).getObjectName().equals("membrane"))
+			receptorDynamics.getModel().getCompartment(i).setInitialValue(plasmaMembrane.getPlasmaMembraneArea());
+//      
+		else if (receptorDynamics.getModel().getCompartment(i).getObjectName().equals("soluble"))
+			receptorDynamics.getModel().getCompartment(i).setInitialValue(plasmaMembrane.getPlasmaMembraneVolume());
+		else 
+			receptorDynamics.getModel().getCompartment(i).setInitialValue(1);
+		System.out.println("compartimiento volumen \t" + receptorDynamics.getModel().getCompartment(i).getObjectName() + receptorDynamics.getModel().getCompartment(i).getInitialValue());
+        }
 
-		Set<String> metabolites = receptorDynamics.getInstance().getMetabolites();
+		Set<String> metabolites = receptorDynamics.getMetabolites();
 		HashMap<String, Double> localM = new HashMap<String, Double>();
 //		System.out.println("PM MEMBRENE RECYCLE " + plasmaMembrane.getMembraneRecycle());
 		
@@ -136,6 +161,16 @@ public class PlasmaMembraneCopasiStep {
 				Cell.getInstance().getSolubleCell().put(met1, metLeft);
 				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
 				localM.put(met, metValue);
+			} else if (met.equals("area")) {
+				double metValue = plasmaMembrane.getPlasmaMembraneArea();
+//				System.out.println(Cell.area + "volume cell "+Cell.volume);
+				receptorDynamics.setInitialConcentration(met, sigFigs(metValue,6));
+				localM.put(met, sigFigs(metValue,6));
+			} else if (met.equals("volume")) {
+				double metValue = plasmaMembrane.getPlasmaMembraneVolume();
+//				System.out.println(Cell.area + "volume cell "+Cell.volume);
+				receptorDynamics.setInitialConcentration(met, sigFigs(metValue,6));
+				localM.put(met, sigFigs(metValue,6));
 			} else {
 				receptorDynamics.setInitialConcentration(met, 0.0);
 				localM.put(met, 0.0);
@@ -150,7 +185,8 @@ public class PlasmaMembraneCopasiStep {
 			localM.put("protonEn", 3.98e-05);
 	//	}
 		
-		
+			System.out.println(plasmaMembrane.getMembraneRecycle().get("pepMHCIEn")+" METABOLITES IN PM"+ localM);
+
 	
 //System.out.println("LOCAL MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM " + localM);
 
@@ -158,6 +194,7 @@ public class PlasmaMembraneCopasiStep {
 		
 
 		CTimeSeries timeSeries = receptorDynamics.getTrajectoryTask().getTimeSeries();
+//		System.out.println("time series " + timeSeries);
 		int stepNro = (int) timeSeries.getRecordedSteps();
 		int metNro = metabolites.size();
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
@@ -165,8 +202,10 @@ public class PlasmaMembraneCopasiStep {
 			HashMap<String, Double> value = new HashMap<String, Double>();
 			for (int met = 1; met < metNro +1; met = met +1){
 				value.put(timeSeries.getTitle(met), timeSeries.getConcentrationData(time, met));
-				plasmaMembrane.getPlasmaMembraneTimeSeries().put((int) (tick+time*Cell.timeScale/0.03),value);
 			}
+			System.out.println("tick "+tick+"time " + time  + " time series " + value);
+			plasmaMembrane.getPlasmaMembraneTimeSeries().put((int) (tick+time*Cell.timeScale/0.03),value);
+
 		}
 		
 			
@@ -174,6 +213,14 @@ public class PlasmaMembraneCopasiStep {
 			
 
 		}
+	public static double sigFigs(double n, int sig) {
+//		if (Math.abs(n) < 1E-20) return 0d;
+//		else 
+//		{
+		double mult = Math.pow(10, sig - Math.floor(Math.log(n) / Math.log(10) + 1));
+	    return Math.round(n * mult) / mult;
+//	    }
+	}
 	
 }
 

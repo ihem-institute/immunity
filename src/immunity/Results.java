@@ -381,7 +381,7 @@ public class Results {
 //			System.out.println(" soluble "+ sol);
 			double value = solubleCell.get(sol);
 			contentDist.put(sol+"Cy", value);
-			System.out.println("SOLUBLE CELL  "+ sol + value +Cell.getInstance().getSolubleCell() );
+//			System.out.println("SOLUBLE CELL  "+ sol + value +Cell.getInstance().getSolubleCell() );
 		}
 		
 //		for the set of all endosomes, calculate the content distribution among the different

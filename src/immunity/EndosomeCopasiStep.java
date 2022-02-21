@@ -118,9 +118,21 @@ public class EndosomeCopasiStep {
 //
 		EndosomeCopasi lipidMetabolism = EndosomeCopasi
 				.getInstance();
+// to set the size of the compartments in copasi.  Soluble = volume ; membrane = area		
+		int iMax = (int) lipidMetabolism.getModel().getCompartments().size();
+		for (int i = 0;i < iMax;++i)
+        {
+		if (lipidMetabolism.getModel().getCompartment(i).getObjectName().equals("membrane"))
+			lipidMetabolism.getModel().getCompartment(i).setInitialValue(endosome.area);
+//      
+		else if (lipidMetabolism.getModel().getCompartment(i).getObjectName().equals("soluble"))
+			lipidMetabolism.getModel().getCompartment(i).setInitialValue(endosome.volume);
+		else 
+			lipidMetabolism.getModel().getCompartment(i).setInitialValue(1);
+//		System.out.println("compartimiento volumen \t" + lipidMetabolism.getModel().getCompartment(i).getObjectName() + lipidMetabolism.getModel().getCompartment(i).getInitialValue());
+        }
 
-		Set<String> metabolites = lipidMetabolism.getInstance()
-				.getMetabolites();
+		Set<String> metabolites = lipidMetabolism.getMetabolites();
 		HashMap<String, Double> localM = new HashMap<String, Double>();
 		for (String met : metabolites) {
 			String met1 = met;//met.substring(0, met.length()-2);
@@ -181,6 +193,7 @@ public class EndosomeCopasiStep {
 		lipidMetabolism.setInitialConcentration("protonCy", 1e-04); // pH 7
 //		lipidMetabolism.setInitialConcentration("protonEn", 1e-04); // pH 7
 		localM.put("protonCy", 1e-04);
+//		localM.put("protonEn", 1e-04);
 //		System.out.println(endosome.membraneContent.get("pepMHCIEn")+" METABOLITES IN "+ localM);
 
 //		if (localM.get("proton")==null||localM.get("proton") < 1e-05){
@@ -200,6 +213,7 @@ public class EndosomeCopasiStep {
 		for (int time = 0; time < stepNro; time = time + 1){
 			HashMap<String, Double> value = new HashMap<String, Double>();
 			for (int met = 1; met < metNro +1; met = met +1){
+//				if (timeSeries.getTitle(met).equals("protonEn")) System.out.println(time + " EndosomeEn "+timeSeries.getConcentrationData(time, met));
 				if (timeSeries.getTitle(met).equals("pepMHCIEn")){
 						if (time == 1 ) initpepMHC = timeSeries.getConcentrationData(time, met);
 						else if (time == stepNro - 1 ) finalpepMHC = timeSeries.getConcentrationData(time, met);

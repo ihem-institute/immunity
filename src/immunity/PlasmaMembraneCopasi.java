@@ -79,7 +79,8 @@ public class PlasmaMembraneCopasi {
         {
             CCompartment compartment = model.getCompartment(i);
             assert compartment != null;
-            System.out.println("\t" + compartment.getObjectName());
+//
+//            System.out.println("compartimiento volumen \t" + compartment.getObjectName() + model.getCompartment(i).getInitialValue());
         }
 
         // output number and names of all metabolites
@@ -309,10 +310,10 @@ public class PlasmaMembraneCopasi {
             // the unit of the other variables may not be particle numbers
             // the concentration data can be acquired with getConcentrationData
 //            System.out.println("\n"+ timeSeries.getTitle(i) + ": ");
-//        	for (int j =0; j <= lastIndex; j = j +1 ){
-//        	
-//            System.out.print(timeSeries.getConcentrationData(j, i)+ " ");
-//        	}
+        	for (int j =0; j <= lastIndex; j = j +1 ){
+        	
+//            System.out.print(timeSeries.getConcentrationData(j, i)+ "PRUEBA ");
+        	}
         }
         
 //        System.out.println("Ending ...");
@@ -321,7 +322,7 @@ public class PlasmaMembraneCopasi {
         {
             CMetab metab = model.getMetabolite(i);
             assert metab != null;            
-//            System.out.println(metab.getObjectName() + ": initial " + metab.getInitialConcentration()+" final "+metab.getConcentration());
+            System.out.println(metab.getObjectName() + ": initial " + metab.getInitialConcentration()+" final "+metab.getConcentration());
         }
 
 	}
