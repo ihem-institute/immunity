@@ -197,7 +197,7 @@ public class Results {
 	// to load the file
 	private void writeToCsv(TreeMap<String, Double> orderContDist) throws IOException {
 		double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-		if (tick <210){// HEADER
+		if (tick <10){// HEADER
 		String line = "";
 		for (String key : orderContDist.keySet()) {
             line = line+ key + ",";
@@ -471,22 +471,26 @@ public class Results {
 			}
 		}
 		}
-		
-//		double totalCisternsArea = 0d;
-//		for (String rab : cisternsArea.keySet()) {
-//			totalCisternsArea = totalCisternsArea + cisternsArea.get(rab);
-//		}
-//		HashMap<String, Double> relativeCisternsArea = new HashMap<String, Double>();
-//
-//		double entropy = 0d;
-//		for (String rab : cisternsArea.keySet()) {
-//			double value = cisternsArea.get(rab)/totalCisternsArea;
-//			relativeCisternsArea.put(rab, value);
-//			entropy = entropy - value * Math.log(value + 1E-30);
-//		}
+		totalRabs.put("xPM", PlasmaMembrane.getInstance().getPlasmaMembraneArea());
+		totalRabs.put("xER", EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea());
+		cisternsArea.putAll(totalRabs);
+		double totalCisternsArea = 0d;
+		for (String rab : cisternsArea.keySet()) {
+			totalCisternsArea = totalCisternsArea + cisternsArea.get(rab);
+		}
+		HashMap<String, Double> relativeCisternsArea = new HashMap<String, Double>();
+		System.out.println(" CISTERNA AREA      " + cisternsArea);
+
+
+		double entropy = 0d;
+		for (String rab : cisternsArea.keySet()) {
+			double value = cisternsArea.get(rab)/totalCisternsArea;
+			relativeCisternsArea.put(rab, value);
+			entropy = entropy - value * Math.log(value + 1E-30);
+		}
 		cisternsArea.clear();
-//		cisternsArea.putAll(relativeCisternsArea);
-//		cisternsArea.put("entropy", entropy);
+		cisternsArea.putAll(relativeCisternsArea);
+		cisternsArea.put("entropy", entropy);
 		cisternsArea.put("entropyInd", totalIndividualEntropy/totalArea);
 		int endosomeNumber = allEndosomes.size();	
 //		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();

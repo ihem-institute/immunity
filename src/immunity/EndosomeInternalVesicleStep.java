@@ -42,7 +42,14 @@ public class EndosomeInternalVesicleStep {
 		}
 		double vp = vo + vIV;
 		double sp = so - sIV;
-		//	if after the formation of a single vesicles is a sphere (no extra membrane for the volume) stop
+//		not enough membrane to contain the already present internal vesicles plus the new one
+		if (endosome.solubleContent.containsKey("mvb")) {
+			double mvbVolume = endosome.solubleContent.get("mvb")*vIV + vIV;
+			if (sp * sp * sp / (mvbVolume * mvbVolume) <= 36 * Math.PI) return;
+
+		} 
+
+//	if after the formation of a new vesicles is a sphere (no extra membrane for the volume) stop
 		if (sp * sp * sp / (vp * vp) <= 36 * Math.PI) return;
 
 		//		System.out.println("INTERNAL VESICLE ORGANELLE" + organelle);
@@ -59,22 +66,22 @@ public class EndosomeInternalVesicleStep {
 		// Other organelles form a single vesicle (notice that the for loop run at least once)
 
 		int nroVesicles = 1;
-		if (organelle.equals("LE"))
-		//for LE, several vesicles can form in a single tick. For EE and SE only one vesicle
-		{
-			int lysSurface = (int) (endosome.getRabContent().get(maxRab)/sIV);
-			// about 1 times the area of and internal vesicle
-			for (int i = 1; i<=lysSurface ; i++)
-			{
-				if (Math.random()<0.5) continue; // in each loop there is a 50% chance of forming an internal vesicle 
-				vp = vp + vIV;
-				sp = sp - sIV;
-				//	if after the formation of the vesicles is a sphere (no extra membrane for the volume) stop
-				if (sp * sp * sp / (vp * vp) <= 36 * Math.PI) break;// if the resulting surface cannot embrance the resulting
-				else nroVesicles = nroVesicles + 1;
-				// volume
-			}
-		}
+//		if (organelle.equals("LE"))
+//		//for LE, several vesicles can form in a single tick. For EE and SE only one vesicle
+//		{
+//			int lysSurface = (int) (endosome.getRabContent().get(maxRab)/sIV);
+//			// about 1 times the area of and internal vesicle
+//			for (int i = 1; i<=lysSurface ; i++)
+//			{
+//				if (Math.random()<0.5) continue; // in each loop there is a 50% chance of forming an internal vesicle 
+//				vp = vp + vIV;
+//				sp = sp - sIV;
+//				//	if after the formation of the vesicles is a sphere (no extra membrane for the volume) stop
+//				if (sp * sp * sp / (vp * vp) <= 36 * Math.PI) break;// if the resulting surface cannot embrance the resulting
+//				else nroVesicles = nroVesicles + 1;
+//				// volume
+//			}
+//		}
 		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
 				ModelProperties.getInstance().getRabTropism());
 		endosome.area = endosome.area - nroVesicles * sIV;

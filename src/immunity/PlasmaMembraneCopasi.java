@@ -321,7 +321,9 @@ public class PlasmaMembraneCopasi {
         for (int i = 0; i < (int) model.getMetabolites().size(); ++i)
         {
             CMetab metab = model.getMetabolite(i);
-            assert metab != null;            
+            assert metab != null;  
+  //          if (((Double) metab.getConcentration()).isNaN())
+            
             System.out.println(metab.getObjectName() + ": initial " + metab.getInitialConcentration()+" final "+metab.getConcentration());
         }
 
@@ -337,8 +339,9 @@ public class PlasmaMembraneCopasi {
 		} else {
 			CMetab m = nameMetabs.get(name);
 			d = m.getConcentration();
+//			if (d.isNaN()) d= 0.0;
 		}
-		//System.out.println("FINAL ANTPR       "+ name + d);
+//		System.out.println("FINAL ANTPR       "+ name + d);
 		return d;
 	}
 	public Set<String> getMetabolites(){

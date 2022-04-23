@@ -15,8 +15,9 @@ import org.apache.commons.lang3.StringUtils;
 import repast.simphony.engine.environment.RunEnvironment;
 
 public class PlasmaMembraneCopasiStep {
-	
+	static double delta = 0;
 	public static void antPresTimeSeriesLoad(PlasmaMembrane plasmaMembrane){
+		double delta = 0;
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 
 		if (plasmaMembrane.getPlasmaMembraneTimeSeries().isEmpty()){			
@@ -58,6 +59,7 @@ public class PlasmaMembraneCopasiStep {
 //		values in plasmaMembraneTimeSeries are in mM.  Transform back in area and volume units multiplying
 //		by area the membrane metabolites and by volume the soluble metabolites
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+//		System.out.println("tick "+ plasmaMembrane.getPlasmaMembraneTimeSeries().get(tick).get("R-TfEn"));
 		HashMap<String, Double> presentValues = new HashMap<String, Double>(plasmaMembrane.getPlasmaMembraneTimeSeries().get(tick));
 		HashMap<String, Double> pastValues = new HashMap<String, Double>();
 		int pastTick = 0;
@@ -94,8 +96,8 @@ public class PlasmaMembraneCopasiStep {
 			else if (StringUtils.endsWith(met, "Pm") || StringUtils.endsWith(met, "En") && ModelProperties.getInstance().getMembraneMet().contains(met1)) {
 				double metValue = presentValues.get(met)* PlasmaMembrane.getInstance().getPlasmaMembraneArea();
 				plasmaMembrane.getMembraneRecycle().put(met1, metValue);
-							 System.out.println("TICK " + met+tick + "\n " + pastTick + "\n " + presentValues.get(met) + "\n " + pastValues.get(met) + "\n" + 
-							 plasmaMembrane.getMembraneRecycle());
+//							 System.out.println("TICK " + met+tick + "\n " + pastTick + "\n " + presentValues.get(met) + "\n " + pastValues.get(met) + "\n" + 
+//							 plasmaMembrane.getMembraneRecycle());
 			}
 		}
 		
@@ -139,38 +141,39 @@ public class PlasmaMembraneCopasiStep {
 //			System.out.println("metabolito que no anda" + met);
 			String met1 = met; //.substring(0, met.length()-2);COPASI uses metabolite names  with the substring incorporated
 
-			if (met.endsWith("Pm") && plasmaMembrane.getMembraneRecycle().containsKey(met1)) {
+//			if (met.endsWith("Pm") && plasmaMembrane.getMembraneRecycle().containsKey(met1)) {
+//				double metValue = plasmaMembrane.getMembraneRecycle().get(met1)/PlasmaMembrane.getInstance().getPlasmaMembraneArea();
+//				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
+//				localM.put(met, metValue);
+//			} else if (met.endsWith("Pm") && plasmaMembrane.getSolubleRecycle().containsKey(met1)) {
+//				double metValue = Math.abs(plasmaMembrane.getSolubleRecycle().get(met1))/PlasmaMembrane.getInstance().getPlasmaMembraneVolume();
+//				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
+//				localM.put(met, metValue);
+//			} else 
+			if (met.endsWith("En") && plasmaMembrane.getMembraneRecycle().containsKey(met1)) {
 				double metValue = plasmaMembrane.getMembraneRecycle().get(met1)/PlasmaMembrane.getInstance().getPlasmaMembraneArea();
-				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
-				localM.put(met, metValue);
-			} else if (met.endsWith("Pm") && plasmaMembrane.getSolubleRecycle().containsKey(met1)) {
-				double metValue = Math.abs(plasmaMembrane.getSolubleRecycle().get(met1))/PlasmaMembrane.getInstance().getPlasmaMembraneVolume();
-				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
-				localM.put(met, metValue);
-			} else if (met.endsWith("En") && plasmaMembrane.getMembraneRecycle().containsKey(met1)) {
-				double metValue = plasmaMembrane.getMembraneRecycle().get(met1)/PlasmaMembrane.getInstance().getPlasmaMembraneArea();
-				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
+				receptorDynamics.setInitialConcentration(met, sigFigs(metValue,6));
 				localM.put(met, metValue);
 			} else if (met.endsWith("En") && plasmaMembrane.getSolubleRecycle().containsKey(met1)) {
-				double metValue = Math.abs(plasmaMembrane.getSolubleRecycle().get(met1))/PlasmaMembrane.getInstance().getPlasmaMembraneVolume();
-				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
+				double metValue = plasmaMembrane.getSolubleRecycle().get(met1)/PlasmaMembrane.getInstance().getPlasmaMembraneVolume();
+				receptorDynamics.setInitialConcentration(met, sigFigs(metValue,6));
 				localM.put(met, metValue);				
 			} else if (met.endsWith("Cy") && Cell.getInstance().getSolubleCell().containsKey(met1)) {
 				double metValue = Cell.getInstance().getSolubleCell().get(met1);
 				double metLeft = metValue*(Cell.getInstance().getCellVolume() - PlasmaMembrane.getInstance().getPlasmaMembraneVolume())/(Cell.getInstance().getCellVolume());
 				Cell.getInstance().getSolubleCell().put(met1, metLeft);
-				receptorDynamics.setInitialConcentration(met, Math.round(metValue*1E9d)/1E9d);
+				receptorDynamics.setInitialConcentration(met, sigFigs(metValue,6));
 				localM.put(met, metValue);
-			} else if (met.equals("area")) {
-				double metValue = plasmaMembrane.getPlasmaMembraneArea();
-//				System.out.println(Cell.area + "volume cell "+Cell.volume);
-				receptorDynamics.setInitialConcentration(met, sigFigs(metValue,6));
-				localM.put(met, sigFigs(metValue,6));
-			} else if (met.equals("volume")) {
-				double metValue = plasmaMembrane.getPlasmaMembraneVolume();
-//				System.out.println(Cell.area + "volume cell "+Cell.volume);
-				receptorDynamics.setInitialConcentration(met, sigFigs(metValue,6));
-				localM.put(met, sigFigs(metValue,6));
+//			} else if (met.equals("area")) {
+//				double metValue = plasmaMembrane.getPlasmaMembraneArea();
+////				System.out.println(Cell.area + "volume cell "+Cell.volume);
+//				receptorDynamics.setInitialConcentration(met, sigFigs(metValue,6));
+//				localM.put(met, sigFigs(metValue,6));
+//			} else if (met.equals("volume")) {
+//				double metValue = plasmaMembrane.getPlasmaMembraneVolume();
+////				System.out.println(Cell.area + "volume cell "+Cell.volume);
+//				receptorDynamics.setInitialConcentration(met, sigFigs(metValue,6));
+//				localM.put(met, sigFigs(metValue,6));
 			} else {
 				receptorDynamics.setInitialConcentration(met, 0.0);
 				localM.put(met, 0.0);
@@ -185,7 +188,7 @@ public class PlasmaMembraneCopasiStep {
 			localM.put("protonEn", 3.98e-05);
 	//	}
 		
-			System.out.println(plasmaMembrane.getMembraneRecycle().get("pepMHCIEn")+" METABOLITES IN PM"+ localM);
+//			System.out.println(plasmaMembrane.getMembraneRecycle().get("pepMHCIEn")+" METABOLITES IN PM"+ localM);
 
 	
 //System.out.println("LOCAL MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM " + localM);
@@ -198,18 +201,23 @@ public class PlasmaMembraneCopasiStep {
 		int stepNro = (int) timeSeries.getRecordedSteps();
 		int metNro = metabolites.size();
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+		System.out.println("steps "+stepNro+"metNro " + metNro  + " tick " + tick);
 		for (int time = 0; time < stepNro; time = time + 1){
 			HashMap<String, Double> value = new HashMap<String, Double>();
 			for (int met = 1; met < metNro +1; met = met +1){
 				value.put(timeSeries.getTitle(met), timeSeries.getConcentrationData(time, met));
 			}
-			System.out.println("tick "+tick+"time " + time  + " time series " + value);
+//			System.out.println("tick "+tick+"time " + time  + " time series " + value);
 			plasmaMembrane.getPlasmaMembraneTimeSeries().put((int) (tick+time*Cell.timeScale/0.03),value);
 
 		}
 		
+//		delta = delta + (localM.get("pepMHCIEn")*plasmaMembrane.getPlasmaMembraneArea()+localM.get("pepEn")*plasmaMembrane.getPlasmaMembraneVolume())-
+//				(timeSeries.getConcentrationData(1, 10)*plasmaMembrane.getPlasmaMembraneArea()+timeSeries.getConcentrationData(1, 4)*plasmaMembrane.getPlasmaMembraneVolume());
 			
-
+//		delta = delta + (localM.get("cMHCIEn")+localM.get("oMHCIEn")+localM.get("pepMHCIEn"))-
+//				(timeSeries.getConcentrationData(1, 9)+timeSeries.getConcentrationData(1, 10)+timeSeries.getConcentrationData(1, 11));
+//			System.out.println("DELTA PM "+ delta);
 			
 
 		}
@@ -217,8 +225,9 @@ public class PlasmaMembraneCopasiStep {
 //		if (Math.abs(n) < 1E-20) return 0d;
 //		else 
 //		{
-		double mult = Math.pow(10, sig - Math.floor(Math.log(n) / Math.log(10) + 1));
-	    return Math.round(n * mult) / mult;
+		Double mult = Math.pow(10, sig - Math.floor(Math.log(n) / Math.log(10) + 1));
+		if (mult.isNaN()) return 0.0;
+		else return Math.round(n * mult) / mult;
 //	    }
 	}
 	

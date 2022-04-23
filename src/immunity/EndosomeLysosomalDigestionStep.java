@@ -20,16 +20,23 @@ public class EndosomeLysosomalDigestionStep {
 		// All organelles with a s/v similar to the sphere undergoes a loss of volume
 		else if (so*so*so/(vo*vo) < 1.1*36*Math.PI// small surface/volume ration
 				&& endosome.volume > 2*4/3*Math.PI*Cell.rcyl*Cell.rcyl*Cell.rcyl)// it is big enough
-			{
+			{			
 			squeezeOrganelle(endosome);
+//			System.out.println(so/vo+" INICIAL "+so*so*so/(vo*vo)/(36*Math.PI) +" FINAL"+so/endosome.volume+endosome);
 			}
 
 	}
 
 	private static void squeezeOrganelle(Endosome endosome) {		
-//The Organelle volume is decreased
-		endosome.volume = endosome.volume * 0.99;	//era 0.99		
+//The Organelle volume is decreased.  If it contains internal vesicles, controls that it has enough volume
+		double r = Cell.rcyl;		
+		double newVolume = endosome.volume * 0.999;	//era 0.99	
+		if(!endosome.solubleContent.containsKey("mvb")
+				|| newVolume > endosome.solubleContent.get("mvb")*4/3*Math.PI*r*r*r)
+		{
+		endosome.volume = newVolume;
 		Endosome.endosomeShape(endosome);		
+		}
 	}
 
 	private static void digestLysosome(Endosome endosome) {
@@ -54,11 +61,11 @@ public class EndosomeLysosomalDigestionStep {
 //		Internal vesicles are digested proportional to the RabD content and to the number of internal vesicles
 		if (endosome.solubleContent.containsKey("mvb")) {
 			initialMvb = endosome.solubleContent.get("mvb");
-			if (Math.random() < 0.01 * rabDratio * initialMvb) {
-				finalMvb = initialMvb*0.99;
+			if (Math.random() < 0.1 * rabDratio) {// was 0.01
+				finalMvb = Math.round(initialMvb*0.99);
 //				Area of the internal area digested is added to the plasma membrane (synthesis is assumed)
-				double plasmaMembrane = PlasmaMembrane.getInstance().getPlasmaMembraneArea() + areaIV;
-				PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
+//				double plasmaMembrane = PlasmaMembrane.getInstance().getPlasmaMembraneArea() + (initialMvb-finalMvb)*areaIV;//OJO
+//				PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
 			} else {
 				finalMvb = initialMvb;
 			}
@@ -89,12 +96,12 @@ public class EndosomeLysosomalDigestionStep {
 			endosome.membraneContent.put("membraneMarker", 1d);}
 //		endosome.membraneContent.put("vATPase", finalvATPase);
 		
-			// volume is decreased
+// volume is decreased
 		if (endosome.solubleContent.containsKey("mvb")) {
-				deltaV = (initialMvb - finalMvb) * volIV + endosome.volume * 0.01
+				deltaV = (initialMvb - finalMvb) * volIV + endosome.volume * 0.001
 						* rabDratio;
 			} else {
-				deltaV = endosome.volume * 0.01 * rabDratio;
+				deltaV = endosome.volume * 0.001 * rabDratio;
 			}
 		endosome.volume = endosome.volume - deltaV;
 		if (endosome.volume < Math.PI*Cell.rcyl*Cell.rcyl*endosome.c) {

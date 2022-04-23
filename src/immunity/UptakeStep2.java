@@ -279,6 +279,7 @@ public class UptakeStep2 {
 		uptakeArea = uptakeArea + area;
 		System.out.println(uptakeArea + " TOTAL UPTAKE UPTAKE "+ plasmaMembrane + "  "+ area + " " + tick);
 		PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
+		
 		double volume = 4d/3d*Math.PI*a*a*c;
 		initOrgProp.put("area", area);
 		double value = Results.instance.getTotalRabs().get("RabA");

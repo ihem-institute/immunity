@@ -177,11 +177,8 @@ public class RecycleStep {
 				}
 			}
 
-			endosome.membraneContent.clear();
-
 			HashMap<String, Double> solubleRecycle = PlasmaMembrane.getInstance()
 					.getSolubleRecycle();
-			double endopH = endosome.solubleContent.get("protonEn");
 			for (String key1 : endosome.solubleContent.keySet()) {
 				if (solubleRecycle.containsKey(key1)) {
 					double sum = solubleRecycle.get(key1)
@@ -191,24 +188,27 @@ public class RecycleStep {
 					solubleRecycle.put(key1, endosome.solubleContent.get(key1));
 				}
 			}
-
-			endosome.solubleContent.clear();
-			endosome.solubleContent.put("protonEn", endopH);
+//			to delete the 100% of the TGN and 2% of the RE fusing with PM
+			if (maxRab.equals("RabE")
+					|| (maxRab.equals("RabC") && Math.random()<0.04)// era 0.02
+					) {
+				PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
+				double plasmaMembrane = endosome.area + PlasmaMembrane.getInstance().getPlasmaMembraneArea();
+				PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
+				System.out.println("SECRETION TGN OR RE" + plasmaMembrane);
+			Context<Object> context = ContextUtils.getContext(endosome);
+			context.remove(endosome);
+			}
+			else {// if it is not deleted, it forms an empty tubule
+			endosome.membraneContent.clear();
+			endosome.solubleContent.clear();		
 			endosome.getEndosomeTimeSeries().clear();
 			PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries().clear();
 			double rcyl = ModelProperties.getInstance().getCellK().get("rcyl");// radius tubule
 			double h = (endosome.area-2*Math.PI*rcyl*rcyl)/(2*Math.PI*rcyl);// length of a tubule with the area of the recycled endosome
 			endosome.volume = Math.PI*rcyl*rcyl*h; // new volume of the endosome, now converted in a tubule.
+			endosome.solubleContent.put("protonEn", 3.98e-5*endosome.volume); //pH 7.4
 			endosome.heading = -90; //moving in the nucleus direction
-//			to delete the 100% of the TGN and 1% of the RE fusing with PM
-			if (maxRab.equals("RabE")
-					|| (maxRab.equals("RabC") && Math.random()<0.01)
-					) {
-				double plasmaMembrane = endosome.area + PlasmaMembrane.getInstance().getPlasmaMembraneArea();
-				PlasmaMembrane.getInstance().setPlasmaMembraneArea(plasmaMembrane);
-				System.out.println("SECRETION TGN  " + plasmaMembrane);
-			Context<Object> context = ContextUtils.getContext(endosome);
-			context.remove(endosome);
 			}
 		}
 

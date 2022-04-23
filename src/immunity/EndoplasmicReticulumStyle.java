@@ -46,7 +46,7 @@ public class EndoplasmicReticulumStyle implements StyleOGL2D<EndoplasmicReticulu
 
 	@Override
 	public Color getBorderColor(EndoplasmicReticulum object) {
-		return new Color(150,150,150);
+		return new Color(159,0,159);
 	}
 
 	@Override

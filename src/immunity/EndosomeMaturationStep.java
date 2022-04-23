@@ -23,19 +23,19 @@ public class EndosomeMaturationStep {
 			mature(endosome, "RabA", "RabD", 0.9);// EE to LE
 			break;
 		case "RabI":
-			mature(endosome, "RabI", "RabH", 0.9);//ERGIC to cisG
+			mature(endosome, "RabI", "RabH", 0.8);//ERGIC to cisG was 0.9 for all Golgi
 			break;
 		case "RabH":
-			mature(endosome, "RabH", "RabG", 0.9);//cisG to medialG
+			mature(endosome, "RabH", "RabG", 0.8);//cisG to medialG
 			break;
 		case "RabG":
-			mature(endosome, "RabG", "RabF", 0.9);//medialG to transG
+			mature(endosome, "RabG", "RabF", 0.8);//medialG to transG
 			break;
 		case "RabF":
-			mature(endosome, "RabF", "RabE", 0.9);//transG to TGN
+			mature(endosome, "RabF", "RabE", 0.8);//transG to TGN
 			break;
 		case "RabB":
-			mature(endosome, "RabB", "RabC", 0.015);//SE to RE era 0.05
+			mature(endosome, "RabB", "RabC", 0.04);//SE to RE era 0.05// luego 0.015 que anda bien
 			break;			
 			
 		 default: return;

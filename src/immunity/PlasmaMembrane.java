@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 import repast.simphony.context.Context;
+import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ISchedulableAction;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.space.continuous.ContinuousSpace;
@@ -80,7 +81,8 @@ public class PlasmaMembrane {
 		this.plasmaMembraneTimeSeries=PlasmaMembrane.getInstance().getPlasmaMembraneTimeSeries();
 		if (Math.random() < 1 && plasmaMembraneCopasi.endsWith(".cps"))PlasmaMembraneCopasiStep.antPresTimeSeriesLoad(PlasmaMembrane.getInstance());
 //		this.changeColor();
-
+		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+//		if (tick == 30000) PlasmaMembrane.getInstance().getMembraneRecycle().put("pepMHCIEn", 0.0);//to generate a 30 min pulse
 		}
 	
 	public void changeColor() {

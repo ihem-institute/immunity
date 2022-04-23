@@ -77,8 +77,10 @@ public class Cell {
 // eventual use for cell metabolism
 	}
 	@ScheduledMethod(start = 1, interval = 1)
+//	0.01/2d)// era /3 y luego /1, pero demasiado uptake desde PM
 	public void uptake() {
-		if (Math.random() < 0.01/1d){// era /3
+		if (Math.random() <ModelProperties.getInstance().getActionProbabilities().get("p_ERUptake"))
+		{
 //			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
 			double areaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
 			EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(areaER*1.005);//1.005
