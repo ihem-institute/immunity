@@ -260,6 +260,38 @@ public class FreezeDryEndosomes {
 				}
 				break;
 			}
+			case "Cy":
+			{
+				switch (b[1]) {
+				case "initOrgProp": {
+					Cell.getInstance().setcellArea(Double.parseDouble(b[3]));
+					Cell.getInstance().setcellVolume(Double.parseDouble(b[5]));
+					break;
+				}
+				case "initSolubleContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+//						System.out.println("VALOR MALO ER " + b[i] + " " + b[i+1]);
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					Cell.getInstance().getSolubleCell().putAll(value);
+					break;
+				}
+				case "initMembraneContent": {
+					HashMap<String, Double> value = new HashMap<String, Double>();
+					for (int i = 2; i < b.length; i = i + 2) {
+//						System.out.println("VALOR MALO " + b[i] + " " + b[i+1]);
+						value.put(b[i], Double.parseDouble(b[i + 1]));
+					}
+					Cell.getInstance().getMembraneCell().putAll(value);
+					break;
+				}
+				default: {
+					System.out.println("no a valid entry");
+				}
+				}
+				break;
+			}
 			default: {
 				System.out.println("no a valid entry");
 			}
@@ -443,6 +475,47 @@ public class FreezeDryEndosomes {
 			line = "";  
 	        line = line + "EReticulum"+ ",";        
 	        String solubleContent = endoplasmicReticulum.getSolubleRecycle().toString().replaceAll("=",",");        
+			solubleContent = solubleContent.replace("{","");
+			solubleContent = solubleContent.replace("}","");
+	        solubleContent = solubleContent.replace(" ","");
+	        line = line + "initSolubleContent" + "," + solubleContent;
+	        line = line + "\n";
+//			Writer output;
+//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
+			output.append(line);
+			output.close();
+		}
+		public void writeToCsvCy() throws IOException {
+			
+			Cell cell = Cell.getInstance();
+
+			Writer output;	
+				String	line = "";
+//				String ch = RandomStringUtils.randomAlphabetic(1);
+	            line = line + "CyCell" + ",";
+	            line = line + "initOrgProp" + ",";
+	            line = line + "area" + "," + cell.getCellArea() + ",";
+	            line = line + "volume" + "," + cell.getCellVolume() + ",";
+			line = line + "\n";	
+			output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
+//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/outputFrozenEndosomes.csv", true));
+			output.append(line);
+			
+			line = "";  
+	        line = line + "CyCell"+ ",";
+			String membraneContent = cell.getMembraneCell().toString().replaceAll("=",","); 
+			membraneContent = membraneContent.replace("{","");
+			membraneContent = membraneContent.replace("}","");
+	        membraneContent = membraneContent.replace(" ","");
+	        line = line + "initMembraneContent" + "," + membraneContent;
+	        line = line + "\n";
+//			Writer output;
+//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
+			output.append(line);
+			
+			line = "";  
+	        line = line + "CyCell"+ ",";        
+	        String solubleContent = cell.getSolubleCell().toString().replaceAll("=",",");        
 			solubleContent = solubleContent.replace("{","");
 			solubleContent = solubleContent.replace("}","");
 	        solubleContent = solubleContent.replace(" ","");

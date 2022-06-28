@@ -111,14 +111,15 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	@Override
 	public Color getColor(Endosome object) {
 		// color code for contents
-		double red = object.getRed();
+		double red = object.getRed()*5;
 		if (red>1) {
 	//		System.out.println("RED FUERA ESCALA "+red);
 			red=1; 
 		}
-		double green = object.getGreen();
+		double green = object.getGreen()*0.068*1E9/3;
+//		System.out.println("GREEN FUERA ESCALA "+green);
 		if (green>1) {
-	//		System.out.println("GREEN FUERA ESCALA "+green);
+		System.out.println("GREEN FUERA ESCALA "+green);
 			green=1; 
 		}
 		double blue = object.getBlue();
@@ -226,9 +227,9 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 			else if (rabColor.equals("RabC"))	return new Color (0,255,0);//RE
 			else if (rabColor.equals("RabD"))	return new Color (255,0,0);//LE
 			else if (rabColor.equals("RabE"))	return new Color (255,255,0);//TGN
-			else if (rabColor.equals("RabF"))	return new Color (224,224,224);//transG
-			else if (rabColor.equals("RabG"))	return new Color (160,160,160);//medialG
-			else if (rabColor.equals("RabH"))	return new Color (96,96,96);//cisG
+			else if (rabColor.equals("RabF"))	return new Color (225,128,0);//transG
+			else if (rabColor.equals("RabG"))	return new Color (191,96,0);//medialG
+			else if (rabColor.equals("RabH"))	return new Color (128,64,0);//cisG
 			else if (rabColor.equals("RabI"))	return new Color (255,0,255);//ERGIC
 			else	return new Color (0,0,0);
 		}

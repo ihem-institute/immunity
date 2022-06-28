@@ -1088,8 +1088,8 @@ endosome271L,initRabContent,RabD,45473.780364528735
 endosome271L,initMembraneContent,NOXEn,0.0,Tf,0.0,exCxEn,0.0,oMHCIEn,0.0,loCxEn,0.0,vATPaseEn,0.0,membraneMarker,0.0,cMHCIEn,0.0,pepMHCIEn,0.0,imCxEn,0.0
 endosome271L,initSolubleContent,ovaEn,0.0,protonEn,142.29137951497535,lyEnzEn,0.0,mvb,0.0,bMGEn,0.0,pepEn,0.0
 plasmaMembrane,initOrgProp,area,2459045.3495801077,volume,4.8E9,
-plasmaMembrane,initMembraneContent,Tf,2.4E5,oMHCIEn,2.4E5,
+plasmaMembrane,initMembraneContent,Tf,2.4E1,oMHCIEn,2.4E1,
 plasmaMembrane,initSolubleContent,ovaEn,4.8E8,protonEn,71566.59171715916,
 EReticulum,initOrgProp,area,2329542.2546050996,volume,4.8E9,
-EReticulum,initMembraneContent,cMHCIEn,2.4E5,imCxEn,2.4E5,vATPaseEn,2.4E5
-EReticulum,initSolubleContent,lyEnzEn,4.8E8,protonEn,71566.59171715916,
+EReticulum,initMembraneContent,cMHCIEn,2.4E5,imCxEn,2.4E1,vATPaseEn,2.4E1
+EReticulum,initSolubleContent,lyEnzEn,4.8E6,protonEn,71566.59171715916,

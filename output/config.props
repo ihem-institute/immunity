@@ -5,5 +5,5 @@ poll.frequency = 60.0
 model.output = C:/Users/lmayo/workspace/immunity/output
 
 vm.arguments = 
-local.0.instances = 4
+local.0.instances = 2
 local.0.working_directory = C:/Users/lmayo/AppData/Local/Temp/

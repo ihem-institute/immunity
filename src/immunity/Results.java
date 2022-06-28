@@ -140,6 +140,7 @@ public class Results {
 			FreezeDryEndosomes.getInstance().writeToCsv();
 			FreezeDryEndosomes.getInstance().writeToCsvPM();
 			FreezeDryEndosomes.getInstance().writeToCsvER();
+			FreezeDryEndosomes.getInstance().writeToCsvCy();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

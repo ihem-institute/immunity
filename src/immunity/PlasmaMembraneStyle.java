@@ -36,7 +36,7 @@ public class PlasmaMembraneStyle implements StyleOGL2D<PlasmaMembrane> {
 	public Color getColor(PlasmaMembrane object) {
 		// eventually the color will reflect some local PlasmaMembrane characteristics
 		int red = (int)object.getPmcolor();
-		return new Color(255, 255-red, 255-red);
+		return new Color(255-red, 255, 255-red);
 	}
 
 	@Override

@@ -82,17 +82,42 @@ public class PlasmaMembrane {
 		if (Math.random() < 1 && plasmaMembraneCopasi.endsWith(".cps"))PlasmaMembraneCopasiStep.antPresTimeSeriesLoad(PlasmaMembrane.getInstance());
 //		this.changeColor();
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-//		if (tick == 30000) PlasmaMembrane.getInstance().getMembraneRecycle().put("pepMHCIEn", 0.0);//to generate a 30 min pulse
-		}
+		
+//		//to generate a 30 min pulse of Ab anti cMHCI with acid wash
+//		if (tick == 30000) {
+//		double MHCIPM= PlasmaMembrane.getInstance().getMembraneRecycle().get("pepMHCIEn");
+//		PlasmaMembrane.getInstance().getMembraneRecycle().put("pepMHCIEn", 0.0);
+//		PlasmaMembrane.getInstance().getMembraneRecycle().put("oMHCIEn", MHCIPM);
+//		PlasmaMembrane.getInstance().getMembraneRecycle().put("cMHCIEn", 0.0);
+//		PlasmaMembrane.getInstance().getMembraneRecycle().put("pepEn", 0.0);ERROR DEBERÍA SER SOLUBLERECYCLING
+//		};//to generate a 30 min pulse with acid wash
+		
+//		//to generate a 5 min pulse	
+//		if (tick == 5000) {
+//			PlasmaMembrane.getInstance().getMembraneRecycle().clear();
+//			PlasmaMembrane.getInstance().getSolubleRecycle().clear();
+//			EndoplasmicReticulum.getInstance().getMembraneRecycle().clear();
+//			EndoplasmicReticulum.getInstance().getSolubleRecycle().clear();
+
+//		}
+		
+//		to generate a 30 min pulse of OVA with wash		
+		if (tick > 30000 && tick < 30200 ) {
+		PlasmaMembrane.getInstance().getSolubleRecycle().put("pepEn", 0.0);
+		PlasmaMembrane.getInstance().getSolubleRecycle().put("ovaEn", 0.0);
+		};
+
+	}
 	
 	public void changeColor() {
 		double c1 = 0d;
-		{
-//		c1 = membraneRecycle.get("chol");
-		c1 = c1/plasmaMembraneArea;
-//		if (c1>1) c1=1;
-//		pmcolor = (int) (c1*255);
-		}
+		
+		if (membraneRecycle.containsKey("pepMHCIEn")) c1 = membraneRecycle.get("pepMHCIEn");
+		c1 = c1/plasmaMembraneArea*0.3E9;
+		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + c1+" " + pmcolor);
+		if (c1>1) c1=1;
+		pmcolor = (int) (c1*255);
+		
 
 //		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + pmcolor+" " + pmcolor);
 	}

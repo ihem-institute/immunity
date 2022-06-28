@@ -3,6 +3,7 @@ package immunity;
 import java.util.HashMap;
 import java.util.TreeMap;
 
+import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.grid.Grid;
@@ -65,8 +66,20 @@ public class Cell {
 	}
 	@ScheduledMethod(start = 1, interval = 100)
 	public void step() {
-//		System.gc();
-		this.solubleCell.put("protonCy", 1E-4);
+//		Cytosol pH = 7
+		Cell.getInstance().getSolubleCell().put("protonCy", 1E-4);
+//		Cytosol digestion
+		HashMap<String, Double> soluble = Cell.getInstance().getSolubleCell(); 
+		System.out.println("soluble Cell  wwwww  " + soluble);
+		if (soluble.containsKey("pepCy")) {
+		double cyto = soluble.get("pepCy")*0.9995;
+		Cell.getInstance().getSolubleCell().put("pepCy", cyto);
+		}
+		if (soluble.containsKey("ovaCy")) {
+		double cyto = soluble.get("ovaCy")*0.9995;
+		Cell.getInstance().getSolubleCell().put("ovaCy", cyto);
+		}
+
 //		this.changeColor();
 		String name = ModelProperties.getInstance().getCopasiFiles().get("cellCopasi");
 		if (Math.random() < 0.0 && name.endsWith(".cps")){
@@ -81,9 +94,17 @@ public class Cell {
 	public void uptake() {
 		if (Math.random() <ModelProperties.getInstance().getActionProbabilities().get("p_ERUptake"))
 		{
+//			int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+			double growth = 1.005;
+//			if (tick < 120000) growth = 1.005;
+//			else if (tick >= 120000 && tick < 300000)growth = 1.0025;
+//			else growth = 1.01;
 //			System.out.println("soluble Cell  wwwww  " +this.getSolubleCell());
+//			ER growth here, but should be in ER and not depending on ER uptake probability.
+//			As set here, it growth ar 0.005(uptake prob set in the input)*0.005*1000 = 0.025 of ER 
+//			area per 1000 tick (1 min) = 2.5%/min
 			double areaER = EndoplasmicReticulum.getInstance().getendoplasmicReticulumArea();
-			EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(areaER*1.005);//1.005
+			EndoplasmicReticulum.getInstance().setendoplasmicReticulumArea(areaER*growth);//1.005
 			UptakeStep2.uptake(this);
 			}
 			
@@ -98,8 +119,14 @@ public class Cell {
 	public double getCellVolume() {
 		return cellVolume;
 	}
+	public void setcellVolume(double cellVolume) {
+		this.cellVolume = cellVolume;
+	}
 	public double getCellArea() {
-		return cellArea;
+		return cellArea;	
+	}
+	public void setcellArea(double cellArea) {
+		this.cellArea = cellArea;
 	}
 	public void settMembrane(double tMembrane) {
 		this.tMembrane = tMembrane;

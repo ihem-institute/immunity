@@ -85,7 +85,7 @@ public class EndosomeCopasiStep {
 //				 );
 				double delta =  presentValues.get(met) - pastValues.get(met);
 				double metValue = Cell.getInstance().getSolubleCell().get(met)
-						+ delta * endosome.area/Cell.getInstance().getCellArea();
+						+ delta * endosome.volume/Cell.getInstance().getCellVolume();
 				Cell.getInstance().getSolubleCell().put(met, metValue);
 //			 System.out.println("SOLUBLE CELL " + Cell.getInstance().getSolubleCell()+ " MET " + met);
 //				endosome.solubleContent.remove(met);
@@ -168,13 +168,19 @@ public class EndosomeCopasiStep {
 				double metValue = endosome.rabContent.get(met)/endosome.area;
 				lipidMetabolism.setInitialConcentration(met, sigFigs(metValue,6));
 				localM.put(met, sigFigs(metValue,6));
+//				ERROR
 //				for metabolites in the cell, only a fraction participate in the reaction and it is consumed 
 //				metabolites in the cell are in concentration units and only soluble metabolites are considered
+//				I found this ERROR when observed that the ovaCy was going down even in the absence of proteosomal hydrolysis
+//				CORRECTION
+//				A portion of the CY, the size of the organelle is modified by COPASI, but the DELTA is
+//				considered to change the CY.  Hence if no change, CY no changes; if it changes it does
+//				proportional to the volume of endosome.  In brief, no need to consider a metLeft
 			} else if (met.endsWith("Cy") && Cell.getInstance().getSolubleCell().containsKey(met1)) {
 				double metValue = Cell.getInstance().getSolubleCell().get(met1);
 //				System.out.println(Cell.area + "volume cell "+Cell.volume);
-				double metLeft = metValue*(Cell.getInstance().getCellVolume() - endosome.volume)/(Cell.getInstance().getCellVolume());
-				Cell.getInstance().getSolubleCell().put(met1, metLeft);
+//				double metLeft = metValue*(Cell.getInstance().getCellVolume() - endosome.volume)/(Cell.getInstance().getCellVolume());
+//				Cell.getInstance().getSolubleCell().put(met1, metLeft);
 				lipidMetabolism.setInitialConcentration(met, sigFigs(metValue,6));
 				localM.put(met, sigFigs(metValue,6));
 //			} else if (met.equals("area")) {

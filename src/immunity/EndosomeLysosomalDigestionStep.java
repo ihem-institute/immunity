@@ -78,9 +78,10 @@ public class EndosomeLysosomalDigestionStep {
 //		}
 //		finalvATPase = endosome.membraneContent.get("vATPase");
 //		Soluble component are digested proportional to the RabD content
+//		Observo que membrane y soluble se digieren diferente.  Concluyo que la mayor parte de los cargos de membrana se digieren
+//		por la formación de los mvb, no por la digestión aqui.  Los solubles no sufren esa digestión.  Voy a meter mayor digestión para solubles
 		for (String sol : endosome.solubleContent.keySet()) {
-				double solDigested = endosome.solubleContent.get(sol) * 0.0000001
-						* rabDratio;
+				double solDigested = endosome.solubleContent.get(sol) * 0.0005 * rabDratio;
 				endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
 			}
 		if (endosome.solubleContent.containsKey("mvb"))
