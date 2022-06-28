@@ -111,7 +111,7 @@ public class EndosomeStyle implements StyleOGL2D<Endosome> {
 	@Override
 	public Color getColor(Endosome object) {
 		// color code for contents
-		double red = object.getRed()*5;
+		double red = object.getRed();
 		if (red>1) {
 	//		System.out.println("RED FUERA ESCALA "+red);
 			red=1; 

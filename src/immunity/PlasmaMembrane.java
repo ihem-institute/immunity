@@ -102,10 +102,10 @@ public class PlasmaMembrane {
 //		}
 		
 //		to generate a 30 min pulse of OVA with wash		
-		if (tick > 30000 && tick < 30200 ) {
-		PlasmaMembrane.getInstance().getSolubleRecycle().put("pepEn", 0.0);
-		PlasmaMembrane.getInstance().getSolubleRecycle().put("ovaEn", 0.0);
-		};
+//		if (tick > 30000 && tick < 30200 ) {
+//		PlasmaMembrane.getInstance().getSolubleRecycle().put("pepEn", 0.0);
+//		PlasmaMembrane.getInstance().getSolubleRecycle().put("ovaEn", 0.0);
+//		};
 
 	}
 	
@@ -113,7 +113,7 @@ public class PlasmaMembrane {
 		double c1 = 0d;
 		
 		if (membraneRecycle.containsKey("pepMHCIEn")) c1 = membraneRecycle.get("pepMHCIEn");
-		c1 = c1/plasmaMembraneArea*0.3E9;
+		c1 = c1/plasmaMembraneArea;
 		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + c1+" " + pmcolor);
 		if (c1>1) c1=1;
 		pmcolor = (int) (c1*255);
