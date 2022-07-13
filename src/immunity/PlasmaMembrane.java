@@ -102,10 +102,10 @@ public class PlasmaMembrane {
 //		}
 		
 //		to generate a 30 min pulse of OVA with wash		
-		if (tick > 30000 && tick < 30200 ) {
-		PlasmaMembrane.getInstance().getSolubleRecycle().put("pepEn", 0.0);
-		PlasmaMembrane.getInstance().getSolubleRecycle().put("ovaEn", 0.0);
-		};
+//		if (tick > 30000 && tick < 30200 ) {
+//		PlasmaMembrane.getInstance().getSolubleRecycle().put("pepEn", 0.0);
+//		PlasmaMembrane.getInstance().getSolubleRecycle().put("ovaEn", 0.0);
+//		};
 
 	}
 	

@@ -80,6 +80,7 @@ public class EndosomeLysosomalDigestionStep {
 //		Soluble component are digested proportional to the RabD content
 //		Observo que membrane y soluble se digieren diferente.  Concluyo que la mayor parte de los cargos de membrana se digieren
 //		por la formación de los mvb, no por la digestión aqui.  Los solubles no sufren esa digestión.  Voy a meter mayor digestión para solubles
+//		Hago la digestión de los solubles dependiente de pH
 		double pH = endosome.solubleContent.get("protonEn")*1E-3/endosome.volume;
 		pH = -Math.log10(pH);
 		double pHlogistic = 1/(1+Math.exp(-4*(5.5-pH))); // 0.5 a pH = 5; 0.007 a pH 6

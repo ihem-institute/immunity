@@ -43,6 +43,7 @@ public class EndosomeInternalVesicleStep {
 		double vp = vo + vIV;
 		double sp = so - sIV;
 //		not enough membrane to contain the already present internal vesicles plus the new one
+//		Agrego una condición de que el vo no pude ser mayor que la suma de los volumenes de las IV
 		if (endosome.solubleContent.containsKey("mvb")) {
 			double mvbVolume = endosome.solubleContent.get("mvb")*vIV + vIV;
 			if (sp * sp * sp / (mvbVolume * mvbVolume) <= 36 * Math.PI
