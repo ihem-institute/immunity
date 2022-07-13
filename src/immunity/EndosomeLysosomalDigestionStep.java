@@ -80,8 +80,13 @@ public class EndosomeLysosomalDigestionStep {
 //		Soluble component are digested proportional to the RabD content
 //		Observo que membrane y soluble se digieren diferente.  Concluyo que la mayor parte de los cargos de membrana se digieren
 //		por la formación de los mvb, no por la digestión aqui.  Los solubles no sufren esa digestión.  Voy a meter mayor digestión para solubles
+		double pH = endosome.solubleContent.get("protonEn")*1E-3/endosome.volume;
+		pH = -Math.log10(pH);
+		double pHlogistic = 1/(1+Math.exp(-4*(5.5-pH))); // 0.5 a pH = 5; 0.007 a pH 6
 		for (String sol : endosome.solubleContent.keySet()) {
-				double solDigested = endosome.solubleContent.get(sol) * 0.0005 * rabDratio;
+//				double solDigested = endosome.solubleContent.get(sol) * 0.002 * rabDratio * pHlogistic;
+				double solDigested = endosome.solubleContent.get(sol) * 1 * rabDratio * pHlogistic;
+//				if (endosome.solubleContent.get(sol)<solDigested) solDigested = endosome.solubleContent.get(sol);
 				endosome.solubleContent.put(sol, endosome.solubleContent.get(sol) - solDigested);
 			}
 		if (endosome.solubleContent.containsKey("mvb"))
@@ -90,7 +95,7 @@ public class EndosomeLysosomalDigestionStep {
 			endosome.solubleContent.put("solubleMarker", 1d);
 
 		for (String mem : endosome.membraneContent.keySet()) {
-				double memDigested = endosome.membraneContent.get(mem) * 0.0000001 * rabDratio;
+				double memDigested = endosome.membraneContent.get(mem) * 0.0000002 * rabDratio * pHlogistic;
 				endosome.membraneContent.put(mem, endosome.membraneContent.get(mem) - memDigested);
 			}
 		if (endosome.membraneContent.containsKey("membraneMarker") && endosome.membraneContent.get("membraneMarker")>0.9){

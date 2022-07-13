@@ -113,7 +113,7 @@ public class PlasmaMembrane {
 		double c1 = 0d;
 		
 		if (membraneRecycle.containsKey("pepMHCIEn")) c1 = membraneRecycle.get("pepMHCIEn");
-		c1 = c1/plasmaMembraneArea*0.3E9;
+		c1 = c1/plasmaMembraneArea*0.068*1E8;
 		System.out.println(PlasmaMembrane.getInstance().getMembraneRecycle()+"\n COLOR PLASMA  " + c1+" " + pmcolor);
 		if (c1>1) c1=1;
 		pmcolor = (int) (c1*255);

@@ -71,7 +71,19 @@ public class EndosomeCopasi {
         assert model != null;
         System.out.println("Model statistics for model \"" + model.getObjectName() + "\".");
         
-     // output number and names of all compartments
+// output number and names of all compartments.  
+//        To gain access to all the reaction's parameters
+//     model.getReaction("MHCIclosing").setParameterValue("k", 60);
+//        double alkpH = 6.6;//6.5
+//        double acidpH = 6;//5.4
+//     model.getReaction("ProtonLeak").setParameterValue("k1", 0.02);
+//     model.getReaction("ProtonLeak").setParameterValue("k2", 0.02);
+//     model.getReaction("MHCIclosing").setParameterValue("alkpH", alkpH);
+//     model.getReaction("MHCI-loading").setParameterValue("alkpH", alkpH); 
+//     model.getReaction("MHCI-peptOpening").setParameterValue("acidpH", acidpH);
+//     model.getReaction("MHCIopening").setParameterValue("acidpH", acidpH);   
+//        double k1 = model.getReaction("ProtonLeak").getParameterValue("k1");
+//        System.out.println("kkkkkkkkkkkkk1 " + k1);
         int i, iMax = (int)model.getCompartments().size();
         System.out.println("Number of Compartments: " + (new Integer(iMax)).toString());
         System.out.println("Compartments: ");

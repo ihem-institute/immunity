@@ -72,6 +72,7 @@ public class PlasmaMembraneCopasi {
         System.out.println("Model statistics for model \"" + model.getObjectName() + "\".");
         
      // output number and names of all compartments
+
         int i, iMax = (int)model.getCompartments().size();
         System.out.println("Number of Compartments: " + (new Integer(iMax)).toString());
         System.out.println("Compartments: ");
