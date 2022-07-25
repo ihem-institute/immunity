@@ -8,13 +8,13 @@ import java.util.Set;
 //	This class contains the properties of the initial organelles.  It is modified
 // by the ModelProperties that gets the values from a CSV file 
 
-public class InitialOrganelles {
+public class InitialOrganelle {
 
-	private static InitialOrganelles instance;
+	private static InitialOrganelle instance;
 
-	public static InitialOrganelles getInstance() {
+	public static InitialOrganelle getInstance() {
 		if (instance == null) {
-			instance = new InitialOrganelles();
+			instance = new InitialOrganelle();
 		}
 		return instance;
 	}

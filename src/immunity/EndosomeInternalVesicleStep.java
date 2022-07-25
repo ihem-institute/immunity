@@ -146,8 +146,8 @@ public class EndosomeInternalVesicleStep {
 			else 
 			{
 
-				double mem = endosome.membraneContent.get(content) * (so - nroVesicles * sIV)
-						/ so;
+				double mem = endosome.membraneContent.get(content);
+					//	* (so - nroVesicles * sIV)/ so;
 				endosome.membraneContent.put(content, mem);
 			}
 		}

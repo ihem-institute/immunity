@@ -10,7 +10,7 @@ import repast.simphony.random.RandomHelper;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.grid.Grid;
 
-public class MT {
+public class MTs {
 	// globals
 	private ContinuousSpace<Object> space;
 	private Grid<Object> grid;
@@ -22,7 +22,7 @@ public class MT {
 	public double mtheading = -mth * 180 / Math.PI;
 
 	// constructor
-	public MT(ContinuousSpace<Object> sp, Grid<Object> gr) {
+	public MTs(ContinuousSpace<Object> sp, Grid<Object> gr) {
 		this.space = sp;
 		this.grid = gr;
 	}
@@ -33,7 +33,7 @@ public class MT {
 			changePosition(this);
 	}
 
-	public void changePosition(MT mt) {
+	public void changePosition(MTs mt) {
 		//if (Math.random() < 0.1) return;
 		// move the origin and the end of the MT
 		xorigin = RandomHelper.nextDoubleFromTo(15, 35);
