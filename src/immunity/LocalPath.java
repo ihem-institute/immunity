@@ -24,6 +24,8 @@ import java.util.Date;
 		if( instance == null ) {
 			instance = new  LocalPath();
 		}
+//		System.out.println("PPPPPPPPPPPnewinstance;");
+
 		return instance;
 	}
 	
@@ -40,8 +42,9 @@ import java.util.Date;
 //      to get the results from the batch in different folders, the directory must be created
 //      Cannot stores de files in a non existing directory
       String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mmss").format(new Date());
-      mypathOut="C:/Users/lmayo/workspace/immunity/output/"+folderName+"/";
+      mypathOut="C:/Users/lmayo/eclipse-workspace/immunity/output/"+folderName+"/";
       Path path = Paths.get(mypathOut);
+	System.out.println("PPPPPPPPPPPaaaath;"+mypathOut);
       Files.createDirectory(path);
       }
     catch(Exception e) {
@@ -58,7 +61,7 @@ import java.util.Date;
 		} 
 	
 	public String getPathResultsIT(){ 
-		
+		System.out.println("PPPPPPPPPPPaaaath;"+mypathOut);
 		mypath1=mypathOut+"/ResultsIntrTransp3.csv";
 		return this.mypath1; 
 		} 

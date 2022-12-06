@@ -88,7 +88,8 @@ public class Results {
 
 //		Copy the input file from data to folder with the Results
 	{
-	File source = new File("C:/Users/lmayo/workspace/immunity/data/"+inputFile);
+		//C:\Users\lmayo\eclipse-workspace\immunity\output
+	File source = new File("C:/Users/lmayo/eclipse-workspace/immunity/data/"+inputFile);
 	File dest = new File(LocalPath.getInstance().getMyPathOut()+inputFile);
 	System.out.println(source.toString() + dest.toString());
 	    try {
@@ -100,7 +101,7 @@ public class Results {
 	    }
 //	Copy the inputFrozenEndosomes file from data to folder with the Results
 	{
-	File source = new File("C:/Users/lmayo/workspace/immunity/data/inputFrozenEndosomes.csv");
+	File source = new File("C:/Users/lmayo/eclipse-workspace/immunity/data/inputFrozenEndosomes.csv");
 	File dest = new File(LocalPath.getInstance().getMyPathOut()+"inputFrozenEndosomes.csv");
 	System.out.println(source.toString() + dest.toString());
 	    try {
@@ -206,6 +207,7 @@ public class Results {
 		line = line + "\n";
 		Writer output;
 		//CAMBIO
+//		System.out.println("PPPPPPPPPPPath;"+ITResultsPath);
 		output = new BufferedWriter(new FileWriter(ITResultsPath, true));		
 //		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", false));
 		output.append(line);
@@ -218,10 +220,10 @@ public class Results {
             line = line+ sigFigs(orderContDist.get(key),4) + ",";
 		}
 		line = line + "\n";
-		Writer output;
-		//CAMBIO
+//		System.out.println("PPPPPPPPPPPaaaath;"+ITResultsPath);
+		Writer output;		
 		output = new BufferedWriter(new FileWriter(ITResultsPath, true));
-//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace/immunity/ResultsIntrTransp3.csv", true));
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/eclipse-workspace/immunity/ResultsIntrTransp3.csv", true));
 		output.append(line);
 		output.close();
 	}
