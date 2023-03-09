@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import repast.simphony.engine.environment.RunEnvironment;
+
 	public class LocalPath {
 		
 	private String mypath;
@@ -40,7 +42,9 @@ import java.util.Date;
 //      to get the results from the batch in different folders, the directory must be created
 //      Cannot stores de files in a non existing directory
       String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mmss").format(new Date());
-
+		if (RunEnvironment.getInstance().isBatch()) {
+			 mypath="C:/Users/lmayo/Workspace-glut4/immunity/";	
+			}
       mypathOut= mypath + "/output/"+ folderName+"/";
 //      System.out.println("folder name "+mypathOut);
 //		try {
