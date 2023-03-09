@@ -47,6 +47,8 @@ import repast.simphony.engine.environment.RunEnvironment;
       String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mmss").format(new Date());
       
       mypathOut=mypath+"/output/"+folderName+"/";
+      
+      
       Path path = Paths.get(mypathOut);
       Files.createDirectory(path);
       }
