@@ -40,7 +40,15 @@ import java.util.Date;
 //      to get the results from the batch in different folders, the directory must be created
 //      Cannot stores de files in a non existing directory
       String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mmss").format(new Date());
-      mypathOut="C:/Users/lmayo/workspace-glut4/immunity/output/"+folderName+"/";
+
+      mypathOut= mypath + "/output/"+ folderName+"/";
+//      System.out.println("folder name "+mypathOut);
+//		try {
+//		Thread.sleep(10000);
+//	} catch (InterruptedException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
       Path path = Paths.get(mypathOut);
       Files.createDirectory(path);
       }
